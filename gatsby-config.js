@@ -2,9 +2,9 @@ const path = require('path');
 
 module.exports = {
   siteMetadata: {
-    title: 'mazipan.xyz',
+    title: process.env.SITE_NAME,
     description: 'A personal blog by mazipan',
-    siteUrl: 'https://www.mazipan.xyz', // full path to blog - no ending slash
+    siteUrl: process.env.FULL_DOMAIN, // full path to blog - no ending slash
   },
   mapping: {
     'MarkdownRemark.frontmatter.author': 'AuthorYaml',
@@ -47,7 +47,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-canonical-urls',
       options: {
-        siteUrl: 'https://www.mazipan.xyz',
+        siteUrl: process.env.FULL_DOMAIN,
       },
     },
     'gatsby-plugin-emotion',
@@ -65,7 +65,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        trackingId: 'UA-25065548-6',
+        trackingId: process.env.GA_KEY,
         // Puts tracking script in the head instead of the body
         head: true,
         // IP anonymization for GDPR compliance
