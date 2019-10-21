@@ -6,12 +6,13 @@
   "author": "Irfan Maulana <github.com/mazipan>",
   "license": "MIT",
   "scripts": {
-    "build": "rimraf public && gatsby build",
+    "build": "yarn clean && gatsby build && yarn copy:static",
     "clean": "rimraf public",
+    "copy:static": "node ./copy-static.js",
     "dev": "gatsby develop",
     "lint": "eslint src/**/**/*.tsx",
     "lint:fix": "eslint --fix src/**/*/*.tsx",
-    "start": "npm run dev",
+    "start": "yarn dev",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
@@ -19,6 +20,7 @@
     "@emotion/styled": "10.0.17",
     "@emotion/styled-base": "10.0.19",
     "classnames": "2.2.6",
+    "cp-file": "^7.0.0",
     "cssnano": "4.1.10",
     "dotenv": "^8.2.0",
     "emotion": "10.0.17",

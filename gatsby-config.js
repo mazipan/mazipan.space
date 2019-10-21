@@ -1,8 +1,8 @@
 const path = require('path');
 require('dotenv').config();
 
-const SITE_NAME = process.env.SITE_NAME || '/';
-const FULL_DOMAIN = process.env.FULL_DOMAIN || '/';
+const SITE_NAME = process.env.SITE_NAME || '@mazipan';
+const FULL_DOMAIN = process.env.FULL_DOMAIN || 'https://www.mazipan.xyz';
 
 module.exports = {
   siteMetadata: {
