@@ -1,6 +1,11 @@
 const path = require('path');
 const _ = require('lodash');
 
+const availableLangs = [
+  'en',
+  'id'
+]
+
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions;
 
@@ -16,7 +21,11 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       let slug = permalink;
 
       if (!slug) {
-        slug = `/${relativePath.replace('.md', '')}/`;
+        if (relativePath.indexOf('en.md') >= 0) {
+          slug = `/${relativePath.replace('en.md', 'en')}/`;
+        } else {
+          slug = `/${relativePath.replace('/index.md', '')}/`;
+        }
       }
 
       // Used to generate URL to view this content.
@@ -48,6 +57,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const result = await graphql(`
     {
       allMarkdownRemark(
+        lang: id
         limit: 2000
         sort: { fields: [frontmatter___date], order: ASC }
         filter: { frontmatter: { draft: { ne: true } } }
@@ -109,7 +119,9 @@ exports.createPages = async ({ graphql, actions }) => {
   }
 
   // Create post pages
-  const posts = result.data.allMarkdownRemark.edges;
+  const posts = result.data.allMarkdownRemark.edges.filter(i => {
+    return i.node && i.node.fields && i.node.fields.slug && i.node.fields.slug.indexOf('/en/') < 0
+  });
 
   // Create paginated index
   const postsPerPage = 6;
@@ -123,7 +135,7 @@ exports.createPages = async ({ graphql, actions }) => {
         limit: postsPerPage,
         skip: i * postsPerPage,
         numPages,
-        currentPage: i + 1,
+        currentPage: i + 1
       },
     });
   });
@@ -164,6 +176,7 @@ exports.createPages = async ({ graphql, actions }) => {
       }),
     ),
   );
+
   tags.forEach(tag => {
     createPage({
       path: `/tags/${_.kebabCase(tag)}/`,

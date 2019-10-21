@@ -1,10 +1,14 @@
 const path = require('path');
+require('dotenv').config();
+
+const SITE_NAME = process.env.SITE_NAME || '/';
+const FULL_DOMAIN = process.env.FULL_DOMAIN || '/';
 
 module.exports = {
   siteMetadata: {
-    title: process.env.SITE_NAME,
+    title: SITE_NAME,
     description: 'A personal blog by mazipan',
-    siteUrl: process.env.FULL_DOMAIN, // full path to blog - no ending slash
+    siteUrl: FULL_DOMAIN, // full path to blog - no ending slash
   },
   mapping: {
     'MarkdownRemark.frontmatter.author': 'AuthorYaml',
@@ -40,6 +44,12 @@ module.exports = {
               quality: 90,
             },
           },
+          {
+            resolve: 'gatsby-remark-prismjs',
+            options: {
+              inlineCodeMarker: '÷',
+            },
+          },
         ],
       },
     },
@@ -47,7 +57,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-canonical-urls',
       options: {
-        siteUrl: process.env.FULL_DOMAIN,
+        siteUrl: FULL_DOMAIN,
       },
     },
     'gatsby-plugin-emotion',

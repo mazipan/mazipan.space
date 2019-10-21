@@ -1,15 +1,23 @@
 - id: Ghost
-  avatar: avatars/mazipan.png
+  avatar: images/avatars/mazipan.png
   bio: The professional publishing platform
   twitter: TryGhost
   facebook: ghost
   website: https://ghost.org/
   location: On a plane
 - id: Another Author
-  avatar: avatars/mazipan.png
+  avatar: images/avatars/mazipan.png
   bio: This is another test author with a profile background image
   twitter: TryGhost
   facebook: ghost
   website: https://ghost.org/
   location: On a plane
-  profile_image: img/alex-knight-326705-unsplash.jpg
+  profile_image: images/avatars/mazipan.png
+- id: mazipan
+  avatar: images/avatars/mazipan.png
+  profile_image: images/avatars/mazipan.png
+  bio: Frontend Engineer
+  twitter: maz_ipan
+  facebook: mazipanneh
+  website: https://www.mazipan.xyz/
+  location: Jakarta, Indonesia

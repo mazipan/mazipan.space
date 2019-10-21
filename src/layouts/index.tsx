@@ -5,7 +5,7 @@ import Helmet from 'react-helmet';
 
 import { colors } from '../styles/colors';
 // @ts-ignore
-import favicon from '../../src/statics/favicon.ico';
+import favicon from '../../src/static/favicon-16x16.png';
 
 interface IndexProps {
   className?: string;
