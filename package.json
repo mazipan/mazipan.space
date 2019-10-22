@@ -57,8 +57,8 @@
     "postcss-color-function": "4.1.0",
     "prism-themes": "1.2.0",
     "prismjs": "1.17.1",
-    "react": "16.10.2",
-    "react-dom": "16.10.2",
+    "react": "16.11.0",
+    "react-dom": "16.11.0",
     "react-emotion": "10.0.0",
     "react-helmet": "5.2.1",
     "rehype-react": "4.0.1"
@@ -79,7 +79,7 @@
     "eslint-config-xo-typescript": "0.19.0",
     "eslint-plugin-import": "2.18.2",
     "eslint-plugin-react": "7.16.0",
-    "eslint-plugin-react-hooks": "2.1.2",
+    "eslint-plugin-react-hooks": "2.2.0",
     "rimraf": "3.0.0",
     "typescript": "3.6.4"
   },
