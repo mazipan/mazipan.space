@@ -164,6 +164,18 @@ exports.createPages = async ({ graphql, actions }) => {
         primaryTag: node.frontmatter.tags ? node.frontmatter.tags[0] : '',
       },
     });
+
+    createPage({
+      path: slug + '/en',
+      component: postTemplate,
+      context: {
+        lang,
+        slug,
+        prev,
+        next,
+        primaryTag: node.frontmatter.tags ? node.frontmatter.tags[0] : '',
+      },
+    });
   });
 
   // Create tag pages
