@@ -27,6 +27,8 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
         }
       }
 
+      console.log('>>>> slug onCreateNode', slug)
+
       // Used to generate URL to view this content.
       createNodeField({
         node,
@@ -150,8 +152,11 @@ exports.createPages = async ({ graphql, actions }) => {
 
   posts.forEach(({ node }, index) => {
     const { slug, lang } = node.fields;
+    const slugEn = slug + 'en/'
     const prev = index === 0 ? null : posts[index - 1].node;
     const next = index === posts.length - 1 ? null : posts[index + 1].node;
+
+    console.log('>>>> slug onCreatePage', slug, slugEn)
 
     createPage({
       path: slug,
@@ -166,11 +171,11 @@ exports.createPages = async ({ graphql, actions }) => {
     });
 
     createPage({
-      path: slug + '/en',
+      path: slugEn,
       component: postTemplate,
       context: {
         lang,
-        slug,
+        slug: slugEn,
         prev,
         next,
         primaryTag: node.frontmatter.tags ? node.frontmatter.tags[0] : '',
