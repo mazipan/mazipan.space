@@ -14,10 +14,11 @@ lang: en
 
 I just realized this after replying to a comment on a post on Facebook related to the 2019 DevC Build Day event, I realized that this was the third time I was asked to help to become a mentor to fellow participants who took part in their event.
 
-<img v-lazyload src="/images/placeholder-1x1.png" data-src="/content-images/3-years-3-different-company/fb-comment-1.png" alt="Facebook comment from me" height="200px" width="200px">
+![Facebook comment from me](images/3-years-3-different-company/fb-comment-1.png)
 
 And one of the replies from that comment managed to remind me that in the past three years I have joined the DevC Build Day event but for three different companies.
-<img v-lazyload src="/images/placeholder-1x1.png" data-src="/content-images/3-years-3-different-company/fb-comment-2.png" alt="Facebook comment from my friend" height="200px" width="200px">
+
+![Facebook comment from my friend](images/3-years-3-different-company/fb-comment-2.png)
 
 I want to discuss this in a separate blog post also after being reminded by friends to try share things related to moving around this company.
 
@@ -29,7 +30,7 @@ I joined Blibli.com in October 2015 after previously I worked in a company such 
 The decision to leave Blibli.com was one of the toughest and most risky decisions that I took considering that I was already in a "comfort zone" while working here. Another difficult thing is having to leave friends that I have known and met almost every day for almost 3 years.
 Being on the Mas team [must include ↗️](https://www.linkedin.com/in/ifnubima/?source=mazipan) from joining Blibli.com, I felt I was in a team that really understood each other.I was afraid at the time that I was going to miss out on moments with my friends.
 
-<img v-lazyload src="/images/placeholder-1x1.png" data-src="/content-images/3-years-3-different-company/in-blibli.jpg" alt="In Blibli" height="200px" width="200px">
+![In Blibli](images/3-years-3-different-company/in-blibli.jpg)
 
 ## At Bizzy Indonesia
 
@@ -53,7 +54,7 @@ and assisted by the best and certified DevOps duo, uncle
  [Wib ↗️](https://www.linkedin.com/in/genta-wibowo/)
 we as _Frontend Developers_ felt very facilitated and assisted so that we can complete our work easily and more efficiently without being disturbed by the integration of various internal tools and deployment matters.
 
-<img v-lazyload src="/images/placeholder-1x1.png" data-src="/content-images/3-years-3-different-company/in-bizzy.jpg" alt="In Bizzy" height="200px" width="200px">
+![In Bizzy](images/3-years-3-different-company/in-bizzy.jpg)
 
 I joined Bizzy since July 2018 and decided to resign in June 2019, one year or so. I moved after Eid Eid (- again) 2019. In fact, Bizzy Indonesia had also become a "comfort zone" for me at that time, just imagine that I could keep working after taking the school kids in the morning. Such free time is very valuable to me, especially in times when children need more of my presence at home.
 
@@ -61,7 +62,7 @@ I joined Bizzy since July 2018 and decided to resign in June 2019, one year or s
 
 I joined Tokopedia since June 2019 with many hopes pinned,I hoped that will not have trouble adapting because they have more than 4200 Nakama (- Tokopedia employees), also hoping to learn a lot of new things because previously I was always coding Vue while Tokopedia was already famous for React users, hoping to learn from great people which I know are in it.
 
-<img v-lazyload src="/images/placeholder-1x1.png" data-src="/content-images/3-years-3-different-company/in-tokopedia.jpg" alt="In Tokopedia" height="200px" width="200px">
+![In Tokopedia](images/3-years-3-different-company/in-tokopedia.jpg)
 
 But from the start, I had prepared myself for many things that were different from my expectations because even in places that you think is the best place on earth, there will always be flaws and challenges that are different from one and another.
 
