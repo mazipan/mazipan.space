@@ -1,3 +1,39 @@
-- id: speeches
-  description: Some of the greatest words ever spoken.
-  image: img/speeches-cover.jpg
+- id: amp
+  description: About accelerated mobile pages
+  image: images/computer.jpg
+- id: eslint
+  description: About accelerated mobile pages
+  image: images/computer.jpg
+- id: experience
+  description: About accelerated mobile pages
+  image: images/computer.jpg
+- id: firebase
+  description: About accelerated mobile pages
+  image: images/computer.jpg
+- id: gridsome
+  description: About accelerated mobile pages
+  image: images/computer.jpg
+- id: javascript
+  description: About accelerated mobile pages
+  image: images/computer.jpg
+- id: lesson-learned
+  description: About accelerated mobile pages
+  image: images/computer.jpg
+- id: non-technical
+  description: About accelerated mobile pages
+  image: images/computer.jpg
+- id: programming
+  description: About accelerated mobile pages
+  image: images/computer.jpg
+- id: react
+  description: About accelerated mobile pages
+  image: images/computer.jpg
+- id: reasonml
+  description: About accelerated mobile pages
+  image: images/computer.jpg
+- id: testing
+  description: About accelerated mobile pages
+  image: images/computer.jpg
+- id: typescript
+  description: About accelerated mobile pages
+  image: images/computer.jpg

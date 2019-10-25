@@ -174,7 +174,7 @@ const ReadNextCard: React.FC<ReadNextProps> = props => {
     <StaticQuery
       query={graphql`
         query ReadNextQuery {
-          header: file(relativePath: { eq: "img/blog-cover.jpg" }) {
+          header: file(relativePath: { eq: "images/blog-cover.jpg" }) {
             childImageSharp {
               # Specify the image processing specifications right in the query.
               # Makes it trivial to update as your page's design changes.
@@ -192,9 +192,11 @@ const ReadNextCard: React.FC<ReadNextProps> = props => {
             <ReadNextCardHeaderSitetitle>
               &mdash; {config.title} &mdash;
             </ReadNextCardHeaderSitetitle>
-            <ReadNextCardHeaderTitle>
-              <Link to={`/tags/${_.kebabCase(props.tags[0])}/`}>{props.tags[0]}</Link>
-            </ReadNextCardHeaderTitle>
+            {props.tags && props.tags.length > 0 && (
+              <ReadNextCardHeaderTitle>
+                <Link to={`/tags/${_.kebabCase(props.tags[0])}/`}>{props.tags[0]}</Link>
+              </ReadNextCardHeaderTitle>
+            )}
           </ReadNextCardHeader>
           <ReadNextDivider>
             <InfinityIcon />
@@ -210,14 +212,16 @@ const ReadNextCard: React.FC<ReadNextProps> = props => {
               })}
             </ul>
           </ReadNextCardContent>
-          <ReadNextCardFooter>
-            <Link to={`/tags/${_.kebabCase(props.tags[0])}/`}>
-              {props.relatedPosts.totalCount > 1 &&
-                `See all ${props.relatedPosts.totalCount} posts`}
-              {props.relatedPosts.totalCount === 1 && '1 post'}
-              {props.relatedPosts.totalCount === 0 && 'No posts'} →
-            </Link>
-          </ReadNextCardFooter>
+          {props.tags && props.tags.length > 0 && (
+            <ReadNextCardFooter>
+              <Link to={`/tags/${_.kebabCase(props.tags[0])}/`}>
+                {props.relatedPosts.totalCount > 1 &&
+                  `See all ${props.relatedPosts.totalCount} posts`}
+                {props.relatedPosts.totalCount === 1 && '1 post'}
+                {props.relatedPosts.totalCount === 0 && 'No posts'} →
+              </Link>
+            </ReadNextCardFooter>
+          )}
         </ReadNextCardStyles>
       )}
     />

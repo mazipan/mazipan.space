@@ -1,12 +1,10 @@
 const path = require('path');
 const _ = require('lodash');
-const homeComponent = path.resolve('./src/templates/index.tsx');
-const tagTemplate = path.resolve('./src/templates/tags.tsx');
 
-const availableLang = [
-  'en',
-  'id'
-]
+const homeTemplate = path.resolve('./src/templates/index.tsx');
+const tagTemplate = path.resolve('./src/templates/tags.tsx');
+const authorTemplate = path.resolve('./src/templates/author.tsx');
+const postTemplate = path.resolve('./src/templates/post.tsx');
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions;
@@ -136,7 +134,7 @@ exports.createPages = async ({ graphql, actions }) => {
   Array.from({ length: numPages }).forEach((_, i) => {
     createPage({
       path: i === 0 ? '/' : `/${i + 1}`,
-      component: homeComponent,
+      component: homeTemplate,
       context: {
         limit: postsPerPage,
         skip: i * postsPerPage,
@@ -154,10 +152,8 @@ exports.createPages = async ({ graphql, actions }) => {
 
     createPage({
       path: path,
-      // Note that the template has to exist first, or else the build will fail.
-      component: path.resolve(`./src/templates/${layout || 'post'}.tsx`),
+      component: postTemplate,
       context: {
-        // Data passed to context is available in page queries as GraphQL variables.
         lang,
         slug: path,
         prev,
@@ -187,7 +183,6 @@ exports.createPages = async ({ graphql, actions }) => {
   });
 
   // Create author pages
-  const authorTemplate = path.resolve('./src/templates/author.tsx');
   result.data.allAuthorYaml.edges.forEach(edge => {
     createPage({
       path: `/author/${_.kebabCase(edge.node.id)}/`,
