@@ -98,6 +98,9 @@ const PostFullImage = styled.figure`
     margin: 0 -4vw -100px;
     height: 600px;
     border-radius: 0;
+    & > .gatsby-image-wrapper {
+      border-radius: 0;
+    }
   }
 
   @media (max-width: 800px) {
