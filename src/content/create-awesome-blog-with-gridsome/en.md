@@ -1,13 +1,12 @@
 ---
 title: Create awesome blog with Gridsome
-slug: create-awesome-blog-with-gridsome
 date: '2019-03-14'
-minute2read: 10
 description: How to start creating awesome static Blogs using Gridsome - a Vue.js static site generator in a short time
 author: mazipan
 draft: false
 tags: [javascript, gridsome]
 image: https://raw.githubusercontent.com/gridsome/gridsome.org/master/docs/images/how-it-works.png
+lang: en
 ---
 
 ## About Static Blog

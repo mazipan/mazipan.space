@@ -8,6 +8,7 @@ author: mazipan
 draft: false
 tags: [javascript, react, reasonml]
 image: ../images/tasting-reasonml-for-react/reasonml-users.png
+lang: en
 ---
 
 ## ReasonML, what food?

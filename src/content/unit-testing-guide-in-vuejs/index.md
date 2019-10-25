@@ -8,6 +8,7 @@ author: mazipan
 draft: false
 tags: [javascript, testing]
 image: ../images/unit-testing-guide-in-vuejs/commitstrip.jpg
+lang: id
 ---
 
 <h2 id="navigasi">Navigasi</h2>

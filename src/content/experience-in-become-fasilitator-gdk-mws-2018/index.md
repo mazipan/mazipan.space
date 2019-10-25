@@ -8,6 +8,7 @@ author: mazipan
 draft: false
 tags: [experience]
 image: ../images/experience-in-become-fasilitator-gdk-mws-2018/gdk-mws-dev-showcase.jpg
+lang: id
 ---
 
 ## Mengenai Google Developer Kejar 🏃‍

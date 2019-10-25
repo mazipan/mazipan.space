@@ -178,6 +178,7 @@ interface PageTemplateProps {
 
 export interface PageContext {
   excerpt: string;
+  lang?: string;
   timeToRead: number;
   fields: {
     slug: string;

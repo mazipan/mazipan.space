@@ -1,13 +1,12 @@
 ---
 title: Mengeksten HTML Formatter resmi ESLint
-slug: eslint-formatter-html-extended
 date: '2019-02-19'
-minute2read: 3
 description: Alasan mengapa kami memutuskan untuk mengeksten HTML Formatter resmi ESLint's
 author: mazipan
 draft: false
 tags: [javascript, eslint]
 image: ../images/eslint-formatter-html-extended/eslint-html.png
+lang: id
 ---
 
 ## Latar Belakang ⛈

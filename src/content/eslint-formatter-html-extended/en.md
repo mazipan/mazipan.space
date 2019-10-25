@@ -1,13 +1,12 @@
 ---
 title: Extend an official ESLint's HTML Formatter
-slug: eslint-formatter-html-extended
 date: '2019-02-19'
-minute2read: 3
 description: Why we decide to extend an official ESLint's HTML formatter
 author: mazipan
 draft: false
 tags: [javascript, eslint]
 image: ../images/eslint-formatter-html-extended/eslint-html.png
+lang: en
 ---
 
 ## Background Story ⛈

@@ -8,6 +8,7 @@ author: mazipan
 draft: false
 tags: [javascript, nuxt, typescript]
 image: ../images/migrate-nuxt-to-typescript/quran-offline.png
+lang: en
 ---
 
 As we all know that the default from the Nuxt project will be to create a code based on JavaScript Vanilla. Whereas the increasingly widespread use of TypeScript among JavaScript developers makes me personally interested in implementing the use of TypeScript on my open source code project.

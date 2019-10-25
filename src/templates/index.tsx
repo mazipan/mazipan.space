@@ -68,6 +68,7 @@ const HomePosts = css`
 
 export interface IndexProps {
   pageContext: {
+    lang: string;
     currentPage: number;
     numPages: number;
   };
@@ -180,7 +181,7 @@ export default IndexPage;
 
 export const pageQuery = graphql`
   query blogPageQuery($skip: Int!, $limit: Int!) {
-    logo: file(relativePath: { eq: "img/ghost-logo.png" }) {
+    logo: file(relativePath: { eq: "images/logo.png" }) {
       childImageSharp {
         # Specify the image processing specifications right in the query.
         # Makes it trivial to update as your page's design changes.
@@ -189,7 +190,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    header: file(relativePath: { eq: "img/blog-cover.jpg" }) {
+    header: file(relativePath: { eq: "images/blog-cover.jpg" }) {
       childImageSharp {
         # Specify the image processing specifications right in the query.
         # Makes it trivial to update as your page's design changes.
@@ -200,7 +201,16 @@ export const pageQuery = graphql`
     }
     allMarkdownRemark(
       sort: { fields: [frontmatter___date], order: DESC },
-      filter: { frontmatter: { draft: { ne: true } } },
+      filter: {
+        frontmatter: {
+          draft: {
+            ne: true
+          }
+          lang: {
+            eq: "id"
+          }
+        }
+      },
       limit: $limit,
       skip: $skip
     ) {
@@ -211,6 +221,7 @@ export const pageQuery = graphql`
             title
             date
             tags
+            lang
             draft
             image {
               childImageSharp {

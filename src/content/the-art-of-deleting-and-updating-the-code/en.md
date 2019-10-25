@@ -8,6 +8,7 @@ author: mazipan
 draft: false
 tags: [programming]
 image: ../images/the-art-of-deleting-and-updating-the-code/quadran.png
+lang: en
 ---
 
 ## Introduction to the problem

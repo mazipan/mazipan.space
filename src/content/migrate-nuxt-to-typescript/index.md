@@ -8,6 +8,7 @@ author: mazipan
 draft: false
 tags: [javascript, nuxt, typescript]
 image: ../images/migrate-nuxt-to-typescript/quran-offline.png
+lang: id
 ---
 
 Seperti kita tau bersama bahwa bawaan dari project Nuxt akan membuat kode dengan basis JavaScript Vanilla. Sedangkan dengan makin maraknya penggunaan TypeScript di kalangan para pengembang JavaScript membuat saya pribadi ikut kepincut untuk mengimplementasikan penggunaan TypeScript pada projek kode sumber terbuka saya.

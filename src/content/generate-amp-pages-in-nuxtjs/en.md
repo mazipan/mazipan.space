@@ -8,6 +8,7 @@ author: mazipan
 draft: false
 tags: [javascript, nuxt, amp]
 image: ../images/generate-amp-pages-in-nuxtjs/mazipan-amp.png
+lang: en
 ---
 
 ## About AMP

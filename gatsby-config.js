@@ -6,6 +6,7 @@ const FULL_DOMAIN = process.env.FULL_DOMAIN || 'https://www.mazipan.xyz';
 
 module.exports = {
   siteMetadata: {
+    lang: 'id',
     title: SITE_NAME,
     description: 'A personal blog by mazipan',
     siteUrl: FULL_DOMAIN, // full path to blog - no ending slash
