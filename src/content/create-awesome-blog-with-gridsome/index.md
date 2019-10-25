@@ -5,7 +5,7 @@ description: Bagaimana memulai membuat Blog statis keren menggunakan Vue.js stat
 author: mazipan
 draft: false
 tags: [javascript, gridsome]
-image: https://raw.githubusercontent.com/gridsome/gridsome.org/master/docs/images/how-it-works.png
+image: ./images/computer.jpg
 lang: id
 ---
 
