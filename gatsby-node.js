@@ -20,8 +20,8 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       let slug = permalink;
 
       if (!slug) {
-        if (relativePath.indexOf('en.md') >= 0) {
-          slug = `/${relativePath.replace('en.md', 'en')}/`;
+        if (relativePath.indexOf('en/index.md') >= 0) {
+          slug = `/${relativePath.replace('en/index.md', 'en')}/`;
         } else {
           slug = `/${relativePath.replace('/index.md', '')}/`;
         }
