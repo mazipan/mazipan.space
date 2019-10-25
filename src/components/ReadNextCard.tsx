@@ -143,22 +143,26 @@ const ReadNextCardFooter = styled.footer`
   }
 `;
 
+export interface RelatedPostNode {
+  timeToRead: number;
+  frontmatter: {
+    title: string;
+  };
+  fields: {
+    slug: string;
+  };
+}
+
+export interface RelatedPosts {
+  totalCount: number;
+  edges: Array<{
+    node: RelatedPostNode
+  }>;
+}
+
 export interface ReadNextProps {
   tags: string[];
-  relatedPosts: {
-    totalCount: number;
-    edges: Array<{
-      node: {
-        timeToRead: number;
-        frontmatter: {
-          title: string;
-        };
-        fields: {
-          slug: string;
-        };
-      };
-    }>;
-  };
+  relatedPosts: RelatedPosts;
 }
 
 export interface ReadNextQuery {
@@ -170,6 +174,11 @@ export interface ReadNextQuery {
 }
 
 const ReadNextCard: React.FC<ReadNextProps> = props => {
+  const relatedPosts: RelatedPosts = {
+    totalCount: props.relatedPosts.totalCount ? props.relatedPosts.totalCount / 2 : 0,
+    edges: props.relatedPosts.edges.filter((i) => i.node.fields.slug.indexOf('/en/') < 0)
+  };
+
   return (
     <StaticQuery
       query={graphql`
@@ -203,7 +212,7 @@ const ReadNextCard: React.FC<ReadNextProps> = props => {
           </ReadNextDivider>
           <ReadNextCardContent>
             <ul>
-              {props.relatedPosts.edges.map(n => {
+              {relatedPosts.edges.map(n => {
                 return (
                   <li key={n.node.frontmatter.title}>
                     <Link to={n.node.fields.slug}>{n.node.frontmatter.title}</Link>
@@ -215,10 +224,10 @@ const ReadNextCard: React.FC<ReadNextProps> = props => {
           {props.tags && props.tags.length > 0 && (
             <ReadNextCardFooter>
               <Link to={`/tags/${_.kebabCase(props.tags[0])}/`}>
-                {props.relatedPosts.totalCount > 1 &&
-                  `See all ${props.relatedPosts.totalCount} posts`}
-                {props.relatedPosts.totalCount === 1 && '1 post'}
-                {props.relatedPosts.totalCount === 0 && 'No posts'} →
+                {relatedPosts.totalCount > 1 &&
+                  `See all ${relatedPosts.totalCount} posts`}
+                {relatedPosts.totalCount === 1 && '1 post'}
+                {relatedPosts.totalCount === 0 && 'No posts'} →
               </Link>
             </ReadNextCardFooter>
           )}

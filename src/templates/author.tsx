@@ -286,7 +286,14 @@ export const pageQuery = graphql`
       }
     }
     allMarkdownRemark(
-      filter: { frontmatter: { draft: { ne: true } } },
+      filter: {
+        frontmatter: {
+          draft: { ne: true }
+          lang: {
+            eq: "id"
+          }
+        }
+      },
       sort: { fields: [frontmatter___date], order: DESC },
       limit: 2000,
     ) {

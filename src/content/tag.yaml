@@ -1,39 +1,39 @@
 - id: amp
-  description: About accelerated mobile pages
+  description: All about accelerated mobile pages
   image: images/computer.jpg
 - id: eslint
-  description: About accelerated mobile pages
+  description: ESLint
   image: images/computer.jpg
 - id: experience
-  description: About accelerated mobile pages
+  description: Sharing about my personal experience
   image: images/computer.jpg
 - id: firebase
-  description: About accelerated mobile pages
+  description: How I use the Firebase
   image: images/computer.jpg
 - id: gridsome
-  description: About accelerated mobile pages
+  description: Static site generator for Vue
   image: images/computer.jpg
 - id: javascript
-  description: About accelerated mobile pages
+  description: Easy learning JavaScript
   image: images/computer.jpg
 - id: lesson-learned
-  description: About accelerated mobile pages
+  description: A story telling about good and bad things
   image: images/computer.jpg
 - id: non-technical
-  description: About accelerated mobile pages
+  description: Because we live as a human, do not just talk a technical language
   image: images/computer.jpg
 - id: programming
-  description: About accelerated mobile pages
+  description: Programming articles
   image: images/computer.jpg
 - id: react
-  description: About accelerated mobile pages
+  description: React
   image: images/computer.jpg
 - id: reasonml
-  description: About accelerated mobile pages
+  description: ReasonML, another Type Safe for JavaScript
   image: images/computer.jpg
 - id: testing
-  description: About accelerated mobile pages
+  description: Good testing is a guarantee for good software
   image: images/computer.jpg
 - id: typescript
-  description: About accelerated mobile pages
+  description: Superset for a weak JavaScript
   image: images/computer.jpg

@@ -88,7 +88,11 @@ const PostFullImage = styled.figure`
   height: 800px;
   background: ${colors.lightgrey} center center;
   background-size: cover;
-  border-radius: 5px;
+  border-radius: 10px;
+
+  & > .gatsby-image-wrapper {
+    border-radius: 10px;
+  }
 
   @media (max-width: 1170px) {
     margin: 0 -4vw -100px;

@@ -14,6 +14,7 @@ export const PostFullContent = styled.section`
   font-size: 2.2rem;
   line-height: 1.6em;
   background: #fff;
+  border-radius: 5px;
 
   @media (max-width: 1170px) {
     padding: 5vw 7vw 0;
@@ -76,9 +77,8 @@ export const PostFullContent = styled.section`
   }
 
   a {
-    color: #000;
+    text-decoration: none;
     word-break: break-word;
-    box-shadow: ${colors.blue} 0 -1px 0 inset;
   }
 
   a:hover {
@@ -97,7 +97,7 @@ export const PostFullContent = styled.section`
     line-height: 1.6em;
   }
 
-  li:first-child {
+  li:first-of-type {
     margin-top: 0;
   }
 
@@ -333,7 +333,7 @@ export const PostFullContent = styled.section`
     background-repeat: no-repeat;
   }
 
-  table td:first-child {
+  table td:first-of-type {
     background-image: linear-gradient(
       to right,
       rgba(255, 255, 255, 1) 50%,
