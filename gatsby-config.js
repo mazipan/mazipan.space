@@ -15,8 +15,8 @@ module.exports = {
     'MarkdownRemark.frontmatter.author': 'AuthorYaml',
   },
   plugins: [
-    'gatsby-plugin-sitemap',
     'gatsby-plugin-sharp',
+    'gatsby-transformer-sharp',
     {
       resolve: 'gatsby-source-filesystem',
       options: {
@@ -63,10 +63,10 @@ module.exports = {
     },
     'gatsby-plugin-emotion',
     'gatsby-plugin-typescript',
-    'gatsby-transformer-sharp',
     'gatsby-plugin-react-helmet',
     'gatsby-transformer-yaml',
     'gatsby-plugin-netlify-cache',
+    'gatsby-plugin-sitemap',
     {
       resolve: `gatsby-plugin-feed`,
       options: {

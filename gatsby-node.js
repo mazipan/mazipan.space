@@ -1,5 +1,6 @@
 const path = require('path');
 const _ = require('lodash');
+const { fmImagesToRelative } = require('gatsby-remark-relative-images');
 
 const homeTemplate = path.resolve('./src/templates/index.tsx');
 const tagTemplate = path.resolve('./src/templates/tags.tsx');
@@ -8,6 +9,9 @@ const postTemplate = path.resolve('./src/templates/post.tsx');
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions;
+
+  fmImagesToRelative(node);
+
   switch (node.internal.type) {
     case 'MarkdownRemark': {
       const { permalink, layout, primaryTag } = node.frontmatter;
@@ -79,7 +83,7 @@ exports.createPages = async ({ graphql, actions }) => {
               lang
               image {
                 childImageSharp {
-                  fluid(maxWidth: 3720) {
+                  fluid(maxWidth: 1200) {
                     aspectRatio
                     base64
                     sizes
