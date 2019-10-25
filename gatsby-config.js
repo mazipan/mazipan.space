@@ -65,6 +65,12 @@ module.exports = {
     'gatsby-plugin-typescript',
     'gatsby-plugin-react-helmet',
     'gatsby-transformer-yaml',
+    {
+      resolve: 'gatsby-plugin-postcss',
+      options: {
+        postCssPlugins: [require('postcss-color-function'), require('cssnano')()],
+      },
+    },
     'gatsby-plugin-netlify-cache',
     'gatsby-plugin-sitemap',
     {
@@ -123,12 +129,6 @@ module.exports = {
             match: "^/blog/",
           },
         ],
-      },
-    },
-    {
-      resolve: 'gatsby-plugin-postcss',
-      options: {
-        postCssPlugins: [require('postcss-color-function'), require('cssnano')()],
       },
     },
     {
