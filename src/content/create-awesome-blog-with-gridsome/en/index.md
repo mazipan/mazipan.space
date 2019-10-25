@@ -5,7 +5,7 @@ description: How to start creating awesome static Blogs using Gridsome - a Vue.j
 author: mazipan
 draft: false
 tags: [javascript, gridsome]
-image: ../images/computer.jpg
+image: ../images/how-it-works.png
 lang: en
 ---
 
@@ -15,7 +15,7 @@ lang: en
 
 ## What is Gridsome?
 
-![Gridsome Logo](https://gridsome.org/logos/logo-normal-dark.svg)
+![Gridsome Logo](../images/logo-normal-dark.svg)
 
 [Gridsome ↗️](https://gridsome.org/) is a new kid in the Vue.js ecosystem that specializes in creating static pages. If you are a React.js user, of course you are familiar with the name [Gatsby ↗️](https://www.gatsbyjs.org/) as one of the best static page generator at the moment. Well, Gridsome was very inspired by Gatsby in the React.js ecosystem.
 
@@ -27,7 +27,7 @@ Nuxt is basically intended to create web applications in Vue that require render
 
 While Gridsome is a player who has specialists in this section. Gridsome has *generate* features that are armed with various *built-in* other features needed when creating static blogs such as automatic *code-splitting*, image compression, full PWA support, and of course the very friendly with SEO. We can also easily organize our content files with **Markdown** without the need for any additional configuration. If you look at the [Blog 2.0 repository↗️](/blog-2-0-in-nuxtjs) that I made with Nuxt, of course you will know that I have to do various "cheats" to do the same thing.
 
-![How Gridsome Works](https://raw.githubusercontent.com/gridsome/gridsome.org/master/docs/images/how-it-works.png)
+![How Gridsome Works](../images/how-it-works.png)
 
 ## Create awesome blog with Gridsome
 

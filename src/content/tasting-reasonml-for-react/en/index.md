@@ -63,7 +63,7 @@ I decided to see and learn how ReasonML could be combined with React to build a 
 
 Creating your own project is based on a project that has become easier for me to go through various steps to setup a project which is usually quite time consuming at the beginning. I made a simple project [https://github.com/mazipan/ghibli-reasonreact ↗️](https://github.com/mazipan/ghibli-reasonreact) which I would like to do more or less I will make two pages namely the listing page and the detail page , the data will be retrieved from public APIs provided by third parties.
 
-![Ghibli ReasonReact](https://github.com/mazipan/ghibli-reasonreact/raw/master/screenshoot.png)
+![Ghibli ReasonReact](../images/ghibli-reasonreact.png)
 
 ## What I have learned so far
 

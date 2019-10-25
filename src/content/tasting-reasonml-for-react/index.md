@@ -63,7 +63,7 @@ Saya memutuskan untuk melihat dan mempelajari bagaimana ReasonML bisa dikombinas
 
 Membuat proyek sendiri berdasarkan proyek yang sudah jadi lebih mudah bagi saya untuk melewati berbagai langkah untuk setup sebuah proyek yang biasanya lumayan memakan waktu di awal. Saya membuat proyek sederhana [https://github.com/mazipan/ghibli-reasonreact ↗️](https://github.com/mazipan/ghibli-reasonreact) yang kurang lebih saya akan membuat dua halaman yakni halaman listing dan halaman detail, datanya akan mengambil dari API publik yang disediakan pihak ketiga.
 
-![Ghibli ReasonReact](https://github.com/mazipan/ghibli-reasonreact/raw/master/screenshoot.png)
+![Ghibli ReasonReact](images/ghibli-reasonreact.png)
 
 ## Yang saya pelajari sampai saat ini
 
