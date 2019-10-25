@@ -1,5 +1,7 @@
 # Blog 3.0
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/ea89845c-5896-4ea8-a3c5-788877883c0b/deploy-status)](https://app.netlify.com/sites/mazipan-blog-v3/deploys)
+
 A personal blog by @mazipan
 
 ## Starter

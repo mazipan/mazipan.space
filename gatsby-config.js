@@ -66,6 +66,7 @@ module.exports = {
     'gatsby-transformer-sharp',
     'gatsby-plugin-react-helmet',
     'gatsby-transformer-yaml',
+    'gatsby-plugin-netlify-cache',
     'gatsby-plugin-feed',
     {
       resolve: 'gatsby-plugin-postcss',
@@ -89,6 +90,24 @@ module.exports = {
         sampleRate: 100,
         // Determines how often site speed tracking beacons will be sent
         siteSpeedSampleRate: 10,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `@mazipan`,
+        short_name: `@mazipan`,
+        start_url: `/`,
+        background_color: `#f4f8fb`,
+        theme_color: `#15171A`,
+        display: `standalone`,
+        icon: `src/static/icon.png`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-offline`,
+      options: {
+        precachePages: [`/about/`],
       },
     },
   ],

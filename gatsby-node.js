@@ -145,17 +145,16 @@ exports.createPages = async ({ graphql, actions }) => {
   });
 
   posts.forEach(({ node }, index) => {
-    const { slug, layout, lang } = node.fields;
+    const { slug, lang } = node.fields;
     const prev = index === 0 ? null : posts[index - 1].node;
     const next = index === posts.length - 1 ? null : posts[index + 1].node;
-    const path = lang == 'id' ? `${slug}` : `${slug}/${lang}`
 
     createPage({
-      path: path,
+      path: slug,
       component: postTemplate,
       context: {
         lang,
-        slug: path,
+        slug,
         prev,
         next,
         primaryTag: node.frontmatter.tags ? node.frontmatter.tags[0] : '',
