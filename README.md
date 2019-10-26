@@ -10,6 +10,7 @@ Based on this starter [gatsby-casper](https://github.com/scttcper/gatsby-casper)
 
 ## Live
 
+- [mazipan.space](https://mazipan.space/)
 - [mazipan-blog-v3.netlify.com](https://mazipan-blog-v3.netlify.com/)
 
 ----
