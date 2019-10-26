@@ -37,3 +37,6 @@
 - id: typescript
   description: Superset for a weak JavaScript
   image: images/computer.jpg
+- id: web
+  description: Story about web in general
+  image: images/computer.jpg
