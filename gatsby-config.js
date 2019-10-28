@@ -51,6 +51,13 @@ module.exports = {
               inlineCodeMarker: '÷',
             },
           },
+          {
+            resolve: "gatsby-remark-embed-gist",
+            options: {
+              username: 'mazipan',
+              includeDefaultCss: true
+            }
+          }
         ],
       },
     },
