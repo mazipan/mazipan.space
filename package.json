@@ -19,7 +19,7 @@
     "@emotion/core": "10.0.22",
     "@emotion/styled": "10.0.22",
     "@emotion/styled-base": "10.0.22",
-    "add": "^2.0.6",
+    "add": "2.0.6",
     "classnames": "2.2.6",
     "cp-file": "7.0.0",
     "cssnano": "4.1.10",
@@ -44,7 +44,7 @@
     "gatsby-plugin-typescript": "2.1.15",
     "gatsby-remark-abbr": "1.0.0",
     "gatsby-remark-copy-linked-files": "2.1.28",
-    "gatsby-remark-embed-gist": "^1.1.9",
+    "gatsby-remark-embed-gist": "1.1.9",
     "gatsby-remark-images": "3.1.28",
     "gatsby-remark-prismjs": "3.3.20",
     "gatsby-remark-relative-images": "0.2.3",
@@ -67,7 +67,7 @@
     "react-emotion": "10.0.0",
     "react-helmet": "5.2.1",
     "rehype-react": "4.0.1",
-    "yarn": "^1.19.1"
+    "yarn": "1.19.1"
   },
   "devDependencies": {
     "@types/classnames": "2.2.9",
