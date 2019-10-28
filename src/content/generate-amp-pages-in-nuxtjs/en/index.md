@@ -1,6 +1,5 @@
 ---
 title: Generate AMP Pages in Nuxt.js
-slug: generate-amp-pages-in-nuxtjs
 date: '2019-06-02'
 minute2read: 20
 description: How to generate AMP Pages for you blog using Nuxt.js

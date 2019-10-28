@@ -1,6 +1,5 @@
 ---
 title: Unit Testing Guide in Vue.js
-slug: unit-testing-guide-in-vuejs
 date: '2019-03-19'
 minute2read: 20
 description: Steps to install and test the code Vue.js and Nuxt.js by learning from various cases that occur in real world projects

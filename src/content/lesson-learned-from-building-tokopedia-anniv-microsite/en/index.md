@@ -1,6 +1,5 @@
 ---
 title: Lesson Learned from Building Tokopedia Anniversary Microsite
-slug: lesson-learned-from-building-tokopedia-anniv-microsite
 date: '2019-08-29'
 minute2read: 15
 description: Lessons we learned as a team when building a microsite for Tokopedia 10th Anniversary

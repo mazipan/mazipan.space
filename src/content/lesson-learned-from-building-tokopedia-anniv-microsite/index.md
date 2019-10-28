@@ -1,6 +1,5 @@
 ---
 title: Pelajaran dari membangun microsite untuk Tokopedia Anniversary
-slug: lesson-learned-from-building-tokopedia-anniv-microsite
 date: '2019-08-29'
 minute2read: 15
 description: Berbagai pelajaran yang kami dapat saat membangun microsite untuk acara ulang tahun Tokopedia ke-10

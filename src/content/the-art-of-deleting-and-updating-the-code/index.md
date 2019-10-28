@@ -1,6 +1,5 @@
 ---
 title: Seni menghapus dan memperbarui sebuah kode
-slug: the-art-of-deleting-and-updating-the-code
 date: '2019-07-02'
 minute2read: 10
 description: Menceritakan bagaimana pekerjaan saya sehari-hari yang seringkali berhadapan dengan keharusan untuk menghapus kode orang lain

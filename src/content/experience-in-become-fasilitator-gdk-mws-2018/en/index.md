@@ -1,6 +1,5 @@
 ---
 title: Experience in become facilitator Google Developer Kejar - Mobile Web Specialist 2018
-slug: experience-in-become-fasilitator-gdk-mws-2018
 date: '2019-02-26'
 minute2read: 10
 description: Share my experiences when I became a facilitator in the Google Developer Kejar program for Mobile Web Specialist in 2018

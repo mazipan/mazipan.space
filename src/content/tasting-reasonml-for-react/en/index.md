@@ -1,6 +1,5 @@
 ---
 title: Tasting ReasonML for React
-slug: tasting-reasonml-for-react
 date: '2019-05-19'
 minute2read: 10
 description: Story telling in how it feels to taste ReasonML syntax to build the user interface of a website

@@ -1,6 +1,5 @@
 ---
 title: The art of deleting and updating the code
-slug: the-art-of-deleting-and-updating-the-code
 date: '2019-07-02'
 minute2read: 10
 description: Story telling about my daily job to deleting my peer's code

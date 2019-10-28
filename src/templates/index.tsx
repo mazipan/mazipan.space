@@ -223,6 +223,7 @@ export const pageQuery = graphql`
             tags
             lang
             draft
+            description
             image {
               childImageSharp {
                 fluid(maxWidth: 3720) {

@@ -1,6 +1,5 @@
 ---
 title: Migrate Nuxt to TypeScript
-slug: migrate-nuxt-to-typescript
 date: '2019-05-15'
 minute2read: 10
 description: Story telling about the steps that I worked on when migrating the Nuxt project from using vanilla JavaScript to using TypeScript
