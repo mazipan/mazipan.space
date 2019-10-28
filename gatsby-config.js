@@ -2,6 +2,7 @@ const path = require('path');
 require('dotenv').config();
 
 const SITE_NAME = process.env.SITE_NAME || '@mazipan';
+const SITE_VERIFICATION = process.env.SITE_VERIFICATION || '';
 const FULL_DOMAIN = process.env.FULL_DOMAIN || 'https://www.mazipan.xyz';
 
 module.exports = {
@@ -10,6 +11,7 @@ module.exports = {
     title: SITE_NAME,
     description: 'A personal blog by mazipan',
     siteUrl: FULL_DOMAIN, // full path to blog - no ending slash
+    googleSiteVerification: SITE_VERIFICATION,
   },
   mapping: {
     'MarkdownRemark.frontmatter.author': 'AuthorYaml',
