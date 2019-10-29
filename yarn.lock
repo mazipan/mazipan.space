@@ -1723,7 +1723,7 @@ acorn@^7.1.0:
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-7.1.0.tgz#949d36f2c292535da602283586c2477c57eb2d6c"
   integrity sha512-kL5CuoXA/dgxlBbVrflsflzQ3PAas7RYZB52NOm/6839iVYJgKMJ3cQJD+t2i5+qFa8h3MDpEOJiS64E8JLnSQ==
 
-add@^2.0.6:
+add@2.0.6:
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/add/-/add-2.0.6.tgz#248f0a9f6e5a528ef2295dbeec30532130ae2235"
   integrity sha1-JI8Kn25aUo7yKV2+7DBTITCuIjU=
@@ -6159,7 +6159,7 @@ gatsby-remark-copy-linked-files@2.1.28:
     probe-image-size "^4.1.1"
     unist-util-visit "^1.4.1"
 
-gatsby-remark-embed-gist@^1.1.9:
+gatsby-remark-embed-gist@1.1.9:
   version "1.1.9"
   resolved "https://registry.yarnpkg.com/gatsby-remark-embed-gist/-/gatsby-remark-embed-gist-1.1.9.tgz#8c633de2df3105f7681fea8ec92bc62dc6f424d7"
   integrity sha512-FCn2kymq/okNDYo/2ZUTt7XYOeJJL7jF0wzmo0AapbgX5IGy/eEnQ3xfQH3B3h+5B5nmUoDtsVmuCjrxSDN0vg==
@@ -14322,7 +14322,7 @@ yargs@^9.0.0:
     y18n "^3.2.1"
     yargs-parser "^7.0.0"
 
-yarn@^1.19.1:
+yarn@1.19.1:
   version "1.19.1"
   resolved "https://registry.yarnpkg.com/yarn/-/yarn-1.19.1.tgz#14b92410dd1ba5bab87a12b4a3d807f4569bea97"
   integrity sha512-gBnfbL9rYY05Gt0cjJhs/siqQXHYlZalTjK3nXn2QO20xbkIFPob+LlH44ML47GcR4VU9/2dYck1BWFM0Javxw==
