@@ -174,6 +174,42 @@ module.exports = {
       resolve: `gatsby-plugin-offline`,
       options: {
         precachePages: [`/about/`],
+        workboxConfig: {
+          importWorkboxFrom: `local`,
+          cacheId: `mazipan`,
+          // Don't cache-bust JS or CSS files, and anything in the static directory,
+          // since these files have unique URLs and their contents will never change
+          dontCacheBustURLsMatching: /(\.js$|\.css$|static\/)/,
+          runtimeCaching: [
+            {
+              // Use cacheFirst since these don't need to be revalidated (same RegExp
+              // and same reason as above)
+              urlPattern: /(\.js$|\.css$|static\/)/,
+              handler: `CacheFirst`,
+            },
+            {
+              // page-data.json files are not content hashed
+              urlPattern: /^https?:.*\page-data\/.*\/page-data\.json/,
+              handler: `NetworkFirst`,
+            },
+            {
+              // Add runtime caching of various other page resources
+              urlPattern: /^https?:.*\.(png|jpg|jpeg|webp|svg|gif|tiff|js|woff|woff2|json|css)$/,
+              handler: `StaleWhileRevalidate`,
+            },
+            {
+              // Google Fonts CSS (doesn't end in .css so we need to specify it)
+              urlPattern: /^https?:\/\/fonts\.googleapis\.com\/css/,
+              handler: `StaleWhileRevalidate`,
+            },
+            {
+              urlPattern: /^https?:\/\/raw\.githubusercontent\.com\/json/,
+              handler: `StaleWhileRevalidate`,
+            },
+          ],
+          skipWaiting: true,
+          clientsClaim: true,
+        }
       },
     },
   ],
