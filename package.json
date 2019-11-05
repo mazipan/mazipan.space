@@ -66,7 +66,7 @@
     "react-emotion": "10.0.0",
     "react-helmet": "5.2.1",
     "rehype-react": "4.0.1",
-    "shelljs": "^0.8.3"
+    "shelljs": "0.8.3"
   },
   "devDependencies": {
     "@types/classnames": "2.2.9",
