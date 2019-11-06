@@ -25,7 +25,7 @@
     "dotenv": "8.2.0",
     "emotion": "10.0.23",
     "emotion-server": "10.0.17",
-    "gatsby": "2.17.9",
+    "gatsby": "2.17.10",
     "gatsby-image": "2.2.30",
     "gatsby-plugin-canonical-urls": "2.1.13",
     "gatsby-plugin-catch-links": "2.1.15",
