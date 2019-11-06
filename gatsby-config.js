@@ -3,7 +3,7 @@ require('dotenv').config();
 
 const SITE_NAME = process.env.SITE_NAME || '@mazipan';
 const SITE_VERIFICATION = process.env.SITE_VERIFICATION || '';
-const FULL_DOMAIN = process.env.FULL_DOMAIN || 'https://www.mazipan.xyz';
+const FULL_DOMAIN = process.env.FULL_DOMAIN || 'https://mazipan.space';
 
 module.exports = {
   siteMetadata: {
@@ -43,8 +43,11 @@ module.exports = {
           {
             resolve: 'gatsby-remark-images',
             options: {
-              maxWidth: 1170,
-              quality: 90,
+              maxWidth: 800,
+              quality: 50,
+              sizeByPixelDensity: true,
+              withWebp: true,
+              showCaptions: ['alt', 'title']
             },
           },
           {
@@ -130,7 +133,7 @@ module.exports = {
               }
             `,
             output: "/rss.xml",
-            title: "Your Site's RSS Feed",
+            title: "mazipan.space RSS Feed",
             // optional configuration to insert feed reference in pages:
             // if `string` is used, it will be used to create RegExp and then test if pathname of
             // current page satisfied this regular expression;

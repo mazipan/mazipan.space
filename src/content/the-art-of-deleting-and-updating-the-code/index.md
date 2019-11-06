@@ -10,6 +10,8 @@ image: ./images/quadran.png
 lang: id
 ---
 
+Menceritakan bagaimana pekerjaan saya sehari-hari yang seringkali berhadapan dengan keharusan untuk menghapus kode orang lain
+
 ## Pengenalan terhadap masalah
 
 Programmer seringkali diidentikkan dengan seseorang yang menulis sebuah kode untuk membuat sebuah perangkat lunak. Tidak salah, karena sebagian besar kita (programmer) memang memiliki pekerjaan sehari-hari untuk menulis berbaris-baris kode untuk membangun sebuah fitur, memperbaiki galat (cacat) pada sebuah perangkat lunak.

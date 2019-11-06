@@ -10,6 +10,8 @@ image: ../images/reasonml-users.png
 lang: en
 ---
 
+Story telling in how it feels to taste ReasonML syntax to build the user interface of a website
+
 ## ReasonML, what food?
 
 ReasonML (do not read as Reasons for Making in Love), if I quote from the words of Mas Riza on his blog published [here ↗️](https://rizafahmi.com/2018/12/10/perkenalan-reasonml/) is a syntax that is above the other language called [OCaml ↗️](https://ocaml.org/). ReasonML can be a language *compiled-to-js* with [BuckleScript ↗️](https://bucklescript.github.io/) help so that ReasonML can ultimately be directly compared to TypeScript nowadays.

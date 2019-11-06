@@ -27,6 +27,15 @@ const PostTemplate = css`
     background: #fff;
     padding-bottom: 4vw;
   }
+
+  .gatsby-resp-image-figcaption{
+    width: 100%;
+    text-align: center;
+    display: block;
+    font-size: 1.5rem;
+    font-style: italic;
+    margin-top: 2.5em;
+  }
 `;
 
 export const PostFull = css`

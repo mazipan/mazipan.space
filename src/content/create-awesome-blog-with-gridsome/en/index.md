@@ -9,6 +9,8 @@ image: ../images/how-it-works.png
 lang: en
 ---
 
+How to start creating awesome static Blogs using Gridsome - a Vue.js static site generator in a short time
+
 ## About Static Blog
 
 "Static blog" is a blog that we create without using * backend *, so that we can deploy easily to various static hosts such as Github Pages, Netlify, Firebase, and others. This static blog usually uses templates like * Markdown * that will * build * shortly before * deploy * to produce static HTML, CSS, and JavaScript files.

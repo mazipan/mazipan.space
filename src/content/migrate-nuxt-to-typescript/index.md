@@ -10,6 +10,8 @@ image: ./images/quran-offline.png
 lang: id
 ---
 
+Menceritakan beberapa langkah yang saya kerjakan ketika melakukan migrasi project Nuxt dari menggunakan JavaScript vanilla menjadi menggunakan TypeScript
+
 Seperti kita tau bersama bahwa bawaan dari project Nuxt akan membuat kode dengan basis JavaScript Vanilla. Sedangkan dengan makin maraknya penggunaan TypeScript di kalangan para pengembang JavaScript membuat saya pribadi ikut kepincut untuk mengimplementasikan penggunaan TypeScript pada projek kode sumber terbuka saya.
 
 ![Quran Offline](images/quran-offline.png)

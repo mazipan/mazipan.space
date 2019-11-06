@@ -23,6 +23,9 @@ const PageTemplate = css`
   .talk-year{
     margin-bottom: 1em;
   }
+  .talk-list{
+    padding-top: 1em;
+  }
   .talk-item{
     margin-bottom: 1em;
     margin-left: 1em;
@@ -32,7 +35,7 @@ const PageTemplate = css`
     opacity: .8;
   }
   .talk-topic{
-    font-size: 2rem;
+    font-size: 1.8rem;
     font-style: italic;
   }
   .talk-slide, .talk-link{
@@ -66,7 +69,7 @@ const Talks: React.FC = () => {
                   return (
                     <details key={year} className="talk-year" open={index === 0}>
                       <summary className="talk-year-text">
-                        #{year}
+                        #{year} ({allTalks[year].length} talks)
                       </summary>
                       <div className="talk-list">
                         {

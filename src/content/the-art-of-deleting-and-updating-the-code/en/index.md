@@ -10,6 +10,8 @@ image: ../images/quadran.png
 lang: en
 ---
 
+Story telling about my daily job to deleting my peer's code
+
 ## Introduction to the problem
 
 Programmers are often identified with someone who writes code to make software.Not wrong, because most of us (programmers) do have daily work to write lines of code to build a feature, fix errors (defects) in a software.

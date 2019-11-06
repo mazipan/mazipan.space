@@ -9,6 +9,8 @@ image: ../images/eslint-html.png
 lang: en
 ---
 
+Why we decide to extend an official ESLint's HTML formatter
+
 ## Background Story ⛈
 
 In my daily job, we are using ESLint in almost all of our repository especially for our FrontEnd (FE) code (because I only work in FE repository). Ideally, developers should run ESLint in its development phase and make sure all branch that he working for is clean from ESLint warnings and errors. For the sake of teams, we also put git hook using `husky` to run ESLint before pushing changes to its origin. But it wasn't enough for our current flow, I don't know why, sometimes still there is a code that not passing ESLint's rule in the origin branch. Recently, we put this ESLint script into our Continuous Integration (CI) process.

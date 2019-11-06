@@ -10,6 +10,8 @@ image: ./images/mazipan-amp.png
 lang: id
 ---
 
+Menceritakan bagaimana cara membuat AMP Pages untuk blog kalian dengan framework Nuxt.js
+
 ## Sekilas Mengenai AMP
 
 AMP (Accelerated Mobile Pages - [amp.dev ↗️](https://amp.dev)) merupakan inisiatif yang diawali oleh Google dalam membantu para publisher, developer dan para pemilik website agar bisa menyediakan website dengan kecepatan muat yang sangat cepat bahkan mendekati instan untuk device mobile. Untuk mencapai titik muat instan ini tentu tidak didapatkan secara gratis, ini dilakukan dengan peraturan ketat yang diterapkan oleh AMP. Ekstremnya bisa disebut bahwa AMP bahkan tidak memperbolehkan untuk menyisipkan sembarang skrip JavaScript ke dalam halaman website kita, ditambah dengan berbagai aturan ketat lainnya yang bisa menjamin bahwa website dengan dukungan AMP yang valid bisa tetap dimuat dengan kecepatan yang luar biasa cepat.

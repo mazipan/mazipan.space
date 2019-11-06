@@ -10,6 +10,8 @@ image: ./images/commitstrip.jpg
 lang: id
 ---
 
+Langkah-langkah memasang dan melakukan testing pada kode Vue.js dan Nuxt.js dengan belajar dari berbagai kasus yang terjadi pada proyek nyata
+
 <h2 id="navigasi">Navigasi</h2>
 
 + [Mengenai Unit Testing](#Mengenai-Unit-Testing)

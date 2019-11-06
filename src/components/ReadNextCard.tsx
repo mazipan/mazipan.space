@@ -175,7 +175,7 @@ export interface ReadNextQuery {
 
 const ReadNextCard: React.FC<ReadNextProps> = props => {
   const relatedPosts: RelatedPosts = {
-    totalCount: props.relatedPosts.totalCount ? props.relatedPosts.totalCount / 2 : 0,
+    totalCount: props.relatedPosts.totalCount ? Math.ceil(props.relatedPosts.totalCount / 2) : 0,
     edges: props.relatedPosts.edges.filter((i) => i.node.fields.slug.indexOf('/en/') < 0)
   };
 

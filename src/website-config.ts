@@ -1,6 +1,6 @@
 const SITE_NAME = process.env.SITE_NAME || '@mazipan';
 const SITE_VERIFICATION = process.env.SITE_VERIFICATION || '';
-const FULL_DOMAIN = process.env.FULL_DOMAIN || 'https://www.mazipan.xyz';
+const FULL_DOMAIN = process.env.FULL_DOMAIN || 'https://mazipan.space';
 
 export interface WebsiteConfig {
   title: string;

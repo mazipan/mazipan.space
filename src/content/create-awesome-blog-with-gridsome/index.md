@@ -9,6 +9,8 @@ image: ./images/how-it-works.png
 lang: id
 ---
 
+Bagaimana memulai membuat Blog statis keren menggunakan Vue.js static site generator Gridsome dalam waktu yang singkat
+
 ## Mengenal Blog Statis
 
 "Blog statis" merupakan blog yang kita buat tanpa menggunakan *backend*, sehingga bisa kita deploy dengan mudah pada berbagai static host seperti Github Pages, Netlify, Firebase dan lainnya. Blog statis ini biasanya menggunakan templat seperti *Markdown* yang akan *build* sesaat sebelum *deploy* untuk menghasilkan file statis HTML, CSS dan JavaScript.

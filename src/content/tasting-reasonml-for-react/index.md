@@ -10,6 +10,8 @@ image: ./images/reasonml-users.png
 lang: id
 ---
 
+Menceritakan bagaimana rasanya mencicipi sintaksis ReasonML untuk membangun antarmuka sebuah website
+
 ## ReasonML, makanan apa ya?
 
 ReasonML (baca: Alasan Bercinta), bila saya kutip dari kata-kata mas Riza di blognya yang dipublikasikan [disini  ↗️](https://rizafahmi.com/2018/12/10/perkenalan-reasonml/) adalah sebuah sintaks yang berada diatas bahasa [OCaml  ↗️](https://ocaml.org/). ReasonML bisa menjadi bahasa yang *compiled-to-js* dengan bantuan [BuckleScript  ↗️](https://bucklescript.github.io/) sehingga menjadikan ReasonML pada akhirnya bisa langsung dibandingkan dengan TypeScript.

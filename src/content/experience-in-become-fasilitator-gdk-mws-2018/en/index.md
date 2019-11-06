@@ -10,6 +10,8 @@ image: ../images/gdk-mws-dev-showcase.jpg
 lang: en
 ---
 
+Share my experiences when I became a facilitator in the Google Developer Kejar program for Mobile Web Specialist in 2018
+
 ## About Google Developer Kejar 🏃‍
 
 As explained on this [website ↗️](https://events.withgoogle.com/googledeveloperskejar/), **Google Developers Kejar 2018** is ap program initiated by Google Developers to hone the capabilities of Indonesian developers in developing Mobile Application Android based Kotlin and Mobile Web Specialists.

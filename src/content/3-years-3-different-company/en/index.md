@@ -9,8 +9,9 @@ image: ../images/lion-nTfGYGPURFA.jpg
 lang: en
 ---
 
-## Opening
+Story about my last 3 years experience, especially when moving from one to another company
 
+## Opening
 
 I just realized this after replying to a comment on a post on Facebook related to the 2019 DevC Build Day event, I realized that this was the third time I was asked to help to become a mentor to fellow participants who took part in their event.
 

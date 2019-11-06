@@ -1,13 +1,15 @@
 ---
 title: Best practice dalam memuat halaman website
 date: '2018-06-09'
-description: Berbagai best practice yang bisa kita pelajari dan optimalkan dalam memuat halaman website.
+description: Berbagai best practice yang bisa kita pelajari dan optimalkan dalam memuat halaman website
 author: mazipan
 draft: false
 tags: [web]
 image: ./images/devtools.png
 lang: id
 ---
+
+Berbagai best practice yang bisa kita pelajari dan optimalkan dalam memuat halaman website
 
 Pernahkah kita merasa frustasi dengan bagaimana browser memuat website yang sudah kita buat dengan susah payah? Pernahkah kita merasa sudah melakukan berbagai optimasi di website kita namun hasilnya tetap saja tidak memuaskan? Nah, untuk mengetahui apakah hal yang sudah kita lakukan berada pada jalan yang benar maka pada tulisan ini kita akan sama-sama belajar memahami bagaimana browser memuat sebuah halaman website serta berbagai hal yang bisa kita optimasi dari website kita untuk memperbaiki performa rendering website kita di browser.
 

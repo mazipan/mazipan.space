@@ -10,6 +10,8 @@ image: ./images/gdk-mws-dev-showcase.jpg
 lang: id
 ---
 
+Berbagi pengalaman bagaimana ketika saya menjadi fasilitator pada program Google Developer Kejar - Mobile Web Specialis tahun 2018
+
 ## Mengenai Google Developer Kejar 🏃‍
 
 Seperti telah dijelaskan pada website [ini ↗️](https://events.withgoogle.com/googledeveloperskejar/), **Google Developers Kejar 2018** adalah program yang diinisiasi oleh Google Developers untuk mengasah kemampuan developer Indonesia dalam mengembangkan aplikasi Mobile Android berbasis Kotlin dan Mobile Web Specialis.

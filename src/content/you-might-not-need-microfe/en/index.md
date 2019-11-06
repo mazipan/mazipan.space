@@ -1,7 +1,7 @@
 ---
 title: You might not need MicroFE
 date: "2019-10-28"
-description: Story telling about Micro-Frontend trade-off
+description: Story telling about Micro-Frontend from both sides, the benefits and the problems
 author: mazipan
 draft: false
 tags: [web, programming]
@@ -9,6 +9,7 @@ image: ../images/microfe.png
 lang: en
 ---
 
+Story telling about Micro-Frontend from both sides, the benefits and the problems
 
 ## Disclaimer
 
@@ -34,17 +35,13 @@ This is maybe the coolest thing in MFE, you can have seperate teams which normal
 
 This approach somehow can increase the effectiveness and efficiency of teams working on frontend code, and the teams entirely. They will have a full ownership on their own fragments, they can iterate faster in development. Instead of organizing the team based on their specialization, we can organizing based on bussiness scope or we usually called as a "vertical" alignment.
 
-![Micro FE horizontal teams](../images/horizontal.png)
-
-*Image source from https://martinfowler.com*
+![Micro FE horizontal teams, source: martinfowler.com](../images/horizontal.png)
 
 #### Ease of deployments with better isolation
 
 The other key point from MFE is that you can deploy your code with more confident without scare you will break feature or code from the another teams. This is because MFE often coming from different repository with different deployment pipeline and different server to serve the code in production environment.
 
-![Micro FE horizontal teams](../images/deployment.png)
-
-*Image source from https://martinfowler.com*
+![Micro FE deployment, source: martinfowler.com](../images/deployment.png)
 
 #### Improved scalability with smaller pieces
 

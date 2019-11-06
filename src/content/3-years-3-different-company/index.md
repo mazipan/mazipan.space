@@ -9,6 +9,8 @@ image: ./images/lion-nTfGYGPURFA.jpg
 lang: id
 ---
 
+Cerita mengenai pengalaman saya 3 tahun terakhir, terutama bagaimana saya berpindah dari satu perusahaan ke perusahaan lain
+
 ## Pembukaan
 
 Saya baru menyadari hal ini setelah berbalas komentar pada sebuah post di Facebook terkait acara DevC Build Day 2019, saya menyadari kalau ini adalah kali ketiga saya diminta bantuan untuk menjadi mentor untuk teman-teman peserta yang ikut acara mereka.

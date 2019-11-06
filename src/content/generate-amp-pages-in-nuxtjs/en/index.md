@@ -10,6 +10,8 @@ image: ../images/mazipan-amp.png
 lang: en
 ---
 
+How to generate AMP Pages for you blog using Nuxt.js
+
 ## About AMP
 
 AMP (Accelerated Mobile Pages - [amp.dev ↗️](https://amp.dev)) is Google's iniisatif for helping publishers, developers and website owner to serve website with fast first load time even nearly instant in mobile devices. For achieving that instant loading is not free, this can be done by AMP with applying so many strict rule for websites. We can say that AMP is strip down all your custom JavaScript to guarantee your website have instant load time.

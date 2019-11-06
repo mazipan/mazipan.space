@@ -10,7 +10,11 @@ image: ../images/tokopedia-anniv.png
 lang: en
 ---
 
-> *Disclaimer: Tulisan ini adalah pandangan pribadi saya, tanpa mewakili Tokopedia secara resmi. Semua pekerjaan di dalam artikel ini adalah hasil kerja tim, semua pujian saya sampaikan terhadap keseluruhan anggota tim yang terlibat. Artikel ini dibuat dengan tujuan pembelajaran bersama tanpa ada tujuan untuk menyudutkan pihak manapun.
+Lessons we learned as a team when building a microsite for Tokopedia 10th Anniversary
+
+## Disclaimer
+
+Tulisan ini adalah pandangan pribadi saya, tanpa mewakili Tokopedia secara resmi. Semua pekerjaan di dalam artikel ini adalah hasil kerja tim, semua pujian saya sampaikan terhadap keseluruhan anggota tim yang terlibat. Artikel ini dibuat dengan tujuan pembelajaran bersama tanpa ada tujuan untuk menyudutkan pihak manapun.
 
 ## Inroduction
 

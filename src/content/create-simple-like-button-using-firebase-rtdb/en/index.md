@@ -9,6 +9,8 @@ image: ../images/button-like-firebase.png
 lang: en
 ---
 
+Sharing experiences using Firebase Realtime Database to make simple button likes as seen in Blog 2.0
+
 ## Background Story
 
 As I explained in the previous article that Blog 2.0 is just a static Blog without Backend, I only use static hosting services from Netlify to place and present the build files. Because I do not use Backend and do not want to use it, I have difficulty when adding features that require me to store data in the database like the number of people who like an article. Such data is clearly not data that can be stored in each browser. The data must be centered and all visitors see the same amount. Data like this is most ideal in the DB, whatever type of DB is used.

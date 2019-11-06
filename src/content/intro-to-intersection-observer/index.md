@@ -1,13 +1,15 @@
 ---
 title: Pengantar Intersection Observer
 date: '2018-04-16'
-description: Mengupas sedikit banyak hal mengenai Intersection Observer dengan berbagai contoh kasus di lapangan.
+description: Mengupas sedikit banyak hal mengenai Intersection Observer dengan berbagai contoh kasus di lapangan
 author: mazipan
 draft: false
 tags: [web]
 image: ./images/intersection-observer.jpeg
 lang: id
 ---
+
+Mengupas sedikit banyak hal mengenai Intersection Observer dengan berbagai contoh kasus di lapangan
 
 Dari developer.google [update bulan april 2016](https://developers.google.com/web/updates/2016/04/intersectionobserver), Intersection Observer pertama kali di release ke user di chrome versi 51. Lalu sebenarnya apa sih Intersection Observer ini? Lantas apa juga hal yang membuatnya menjadi menarik untuk kamu coba? Berikut akan kita bahas berbagai hal mengenai Intersection Observer.
 

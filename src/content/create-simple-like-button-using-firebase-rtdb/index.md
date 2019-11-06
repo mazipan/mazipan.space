@@ -1,13 +1,15 @@
 ---
 title: Membuat button Like sederhana menggunakan Firebase Realtime Database
 date: '2019-02-21'
-description: Berbagi pengalaman dalam menggunakan Firebase RTDB untuk membuat button Like sederhana seperti yang terlihat pada Blog 2.0 ini
+description: Berbagi pengalaman dalam menggunakan Firebase RTDB untuk membuat button Like sederhana seperti yang terlihat pada Blog 2.0
 author: mazipan
 draft: false
 tags: [javascript, nuxt, firebase]
 image: ./images/button-like-firebase.png
 lang: id
 ---
+
+Berbagi pengalaman dalam menggunakan Firebase RTDB untuk membuat button Like sederhana seperti yang terlihat pada Blog 2.0
 
 ## Latar Belakang
 
