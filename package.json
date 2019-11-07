@@ -6,9 +6,10 @@
   "author": "Irfan Maulana <github.com/mazipan>",
   "license": "MIT",
   "scripts": {
-    "build": "yarn clean && gatsby build && yarn copy:static",
+    "build": "yarn clean && yarn copy:talks && gatsby build && yarn copy:static",
     "clean": "rimraf public",
     "copy:static": "node ./copy-static.js",
+    "copy:talks": "node ./copy-talks.js",
     "dev": "gatsby develop",
     "lint": "eslint src/**/**/*.tsx",
     "lint:fix": "eslint --fix src/**/*/*.tsx",
