@@ -3,7 +3,7 @@ title: My Hacktoberfest 2019
 date: "2019-11-07"
 description: My hacktoberfest 2019 story
 author: mazipan
-draft: true
+draft: false
 tags: [experience]
 image: ./images/hacktoberfest.png
 lang: id
@@ -15,7 +15,11 @@ October is already ended, and the **HackToberfest** become **HackOverfest**. Thi
 
 [Hacktoberfest](https://hacktoberfest.digitalocean.com/) is an event held by Digital Ocean and Dev.to along with its sponsors and supporters as a celebration of open source software and it open to everyone in global community.
 
-Hacktoberfest have several rules, but in general you just need to make any certain number (4 in 2019) of pull request to any open source repository. Of course you need to sign up first on their website to make sure your contributions is tracked. When you made pull request as in the rule of game, you can claim rewards some swags like T-shirt and stickers.
+Hacktoberfest have several rules, but in general you just need to make any certain number (4 in 2019) of pull request to any open source repository you like. 
+
+Of course you need to sign up first on their website to make sure your contributions is tracked. 
+
+When you made pull request as in the rule of game, you can claim rewards some swags like T-shirt and stickers.
 
 ## Year of VuejsID
 
@@ -59,5 +63,9 @@ It very easy win for me.
 
 But I see my team mate **Antony** creating a good repository called Gitcard, and I see he's not really focus on the UI area since it's very early phase.
 
-I decided to create some PR to his repository to help tackle UI issues.
+I decided to create some PR to his repository to tackle UI issues. It also help me to achieve the pull requests target.
+
+----
+
+That's all, keep hacking!
 
