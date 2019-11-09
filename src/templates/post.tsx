@@ -388,7 +388,19 @@ export const query = graphql`
       }
     }
     relatedPosts: allMarkdownRemark(
-      filter: { frontmatter: { tags: { in: [$primaryTag] }, draft: { ne: true } } }
+      filter: { 
+        frontmatter: { 
+          tags: { 
+            in: [$primaryTag] 
+          }, 
+          draft: { 
+            ne: true 
+          },
+          lang: {
+            eq: "id"
+          }
+        } 
+      }
       limit: 3
     ) {
       totalCount
