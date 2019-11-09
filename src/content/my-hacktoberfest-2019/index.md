@@ -31,8 +31,11 @@ This year, I try to focusing my energy to finishing my personal goal. Driving th
 
 Actually, this project is already run for several months ago but we lost our focus and the progress was stucked without any contributors creating any pull requests again.
 
-You can check the finish one in our website ![docs.vuejs.id](./images/docs-vuejs-id.png), the repo is already integrated with Netlify build so it will always update as our PR merged.
+You can check the finish one in our website [docs.vuejs.id](https://docs.vuejs.id), the repo is already integrated with Netlify build so it will always update as our PR merged.
 
+
+ ![docs.vuejs.id](./images/docs-vuejs-id.png)
+ 
 For achieving the goal to finish up the translation project, when the October started I also starting to create many issues to chunking the translation section for any contributors. 
 
 With this they can easily pick their own issues, claim it and starting to work on the translation process.
