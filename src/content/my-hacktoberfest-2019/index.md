@@ -34,17 +34,18 @@ Actually, this project is already run for several months ago but we lost our foc
 You can check the finish one in our website [docs.vuejs.id](https://docs.vuejs.id), the repo is already integrated with Netlify build so it will always update as our PR merged.
 
 
- ![docs.vuejs.id](./images/docs-vuejs-id.png)
+![Homepage screenshot from docs.vuejs.id](./images/docs-vuejs-id.png)
+
  
 For achieving the goal to finish up the translation project, when the October started I also starting to create many issues to chunking the translation section for any contributors. 
 
 With this they can easily pick their own issues, claim it and starting to work on the translation process.
 
-I must say thank you very much for all contributors help us in this Hacktoberfest, You've very help us.
+I must say thank you very much for all contributors, You've very help us.
 
 **VuejsID closed [35 PR in October](https://github.com/vuejs-id/docs/pulls?utf8=%E2%9C%93&q=is%3Apr+merged%3A2019-10-01..2019-11-01+) 🥳🥳🥳**
 
-But actually, it's not finish yet. If you have time, please help us to pick the issue and translate the docs to Bahasa Indonesia.
+But actually, *it's not finish yet*. If you have time, please help us to pick the issue and translate the docs to Bahasa Indonesia.
 
 ## Helping first timers
 
