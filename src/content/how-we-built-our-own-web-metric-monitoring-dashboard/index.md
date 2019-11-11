@@ -17,12 +17,12 @@ Before we starting, you need to take a note that all in this article is my own w
 
 ## About Web Metric Monitoring
 
-Monitoring is one of tasks you need to think about when you decided any technologies. 
+Monitoring is one of tasks you need to think about when you decided any technologies.
 Especially when we plan to use it in production environment.
 This is because monitoring with any tools can give us a better visibility about our current product or technology in production.
 With a good monitoring tools, we can get insight about our current condition and creating another plan to fixing or improving the product based on the data we get from the monitoring tools.
 
-In term of web technology, there are many metrics we can monitor for day to day operational. 
+In term of web technology, there are many metrics we can monitor for day to day operational.
 Specific in frontend web technology there are some key metrics we need to monitor because it might be impacted to your product impressions in the end user.
 
 For the higher position stakeholders, they need to take a look a big picture of the web metrics.
@@ -30,17 +30,25 @@ Showing how long it takes your web to be loaded is the one you should do for the
 But as web developers, we need to care about another metrics that direct or indirect will cause increasing or decreasing the web load time.
 That's why we need to take a many more data than just the load time it self.
 
-## Mainstream Monitoring Tools 
+## Mainstream Monitoring Tools
 
 Currently, in the industry there are some alternative we can use to do monitoring our web metrics.
-You can use pagespeed insight, [web.dev/measure](https://web.dev/measure/), webpagetest.org, and many others website we can use for monitor our web metrics.
+You can use [pagespeed insight](https://developers.google.com/speed/pagespeed/insights/), [web.dev/measure](https://web.dev/measure/), [webpagetest.org](https://www.webpagetest.org/), and many others website we can use for monitor our web metrics.
+
+### Pagespeed Insight
+
+![Pagespeed Insight report](./images/pagespeed-result.png)
 
 When we say, you must monitoring your web metrics day by day so you can see the changes in every code deployed to the production, how it will impact this metrics, which deployment that cause decreasing your web metrics or is your initiative can increasing your web metrics.
 In this scenario, we can use Pagespeed Insight because it can not record your day to day changes. Except you want to do manual screenshot the report everytime.
-But it's not because of Pagespeed Insight is bad, sure you can take a look a report aggregated from Chrome UX Report in the Pagespeed Insight. 
+But it's not because of Pagespeed Insight is bad, sure you can take a look a report aggregated from Chrome UX Report in the Pagespeed Insight.
 Those kind of report might doesn't provided by any other tools.
 You can see how long the average for real users using Chrome browser accessing you web.
 Is it included in fast category, medium or slow.
+
+### Web.dev
+
+![Web.dev report](./images/webdev-result.png)
 
 Move to web.dev/measure, it is basically just running the lighthouse engine under the hood.
 Yes, lighthouse is one of the most popular engine to used to test your web page and get a rich reports from the summary one until the details one.
@@ -52,6 +60,10 @@ I still didn't know how to automate this jobs.
 Yes, I am lazy and didn't want to open the web.dev everyday and testing my web page to record my web page test.
 Also how if we need to analyze custom data since the web.dev only show the generic report and didn't compare the data as we want to.
 
+### Webpagetest
+
+![Webpagetest.org](./images/wpt.jpg)
+
 The last, webpagetest.org is one of the most powerful site to be used to monitor your web page metrics.
 Also, it already support lighthouse engine if you need it.
 Webpage test can be use easily without any account login and you can get the same (even richer) report compare to Pagespeed Insight and Web.dev.
@@ -59,12 +71,12 @@ But yeah, you need to do this manually and we don't want it.
 
 The good news is webpagetest also give you an API you can hit from anywhere you want and give you the same report in the response.
 You need to register and get your API key to use this feature, you can visit this [request API key page](https://www.webpagetest.org/getkey.php).
-There are some limitations in this API, like you can only hit 200 page load every day. 
+There are some limitations in this API, like you can only hit 200 page load every day.
 In every one running the test, webpagetest will run 10 times to get more consistent report.
 It will causing reduction 10 rate limit in every API call.
 Yes, it might be not scale for some case.
 
-Hnestly, we already tried it.
+Honestly, we already tried it.
 Creating our own web metrics monitoring tools which hit webpagetest API everyday with Crob job triggered in the midnight.
 Our big problem is we can not add more page to be analyzed by webpagetest because of rate limiter.
 That's why we starting to looking another solutions that scale.
