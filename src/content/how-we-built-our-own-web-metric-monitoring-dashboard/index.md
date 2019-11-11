@@ -82,7 +82,7 @@ Our big problem is we can not add more page to be analyzed by webpagetest becaus
 That's why we starting to looking another solutions that scale.
 Another solution with nearly same with webpagetest and still give us the flexibility to creating our own reporters based on the data we collect.
 
-## An In House Monitoring Tools
+## Next-Gen Monitoring Tools
 
 Lighthouse gain it's popularity because of Progressive Web Apps (PWA) is also become hottest topic in modern web development.
 Developers needs a tools to test it's PWA implementation, see the result score and get the best practices checklists which can be applied in their web.
@@ -97,6 +97,20 @@ You can passing Cookies, extra headers, blocking some domain from page load, and
 The problem is the JSON report may be too big for you to save in the disk or database, since you may never use all the data in the JSON file.
 You can pick the data that you think important for your developers and other stakeholders and remove the rest of it.
 But if you doing this, your report may be will become invalid to be viewed by any other lighthouse report viewer.
+Yes, the decision is your own. Pick carefully.
+
+After trying to run the lighthouse CI several times, you might realized that the result have some variants even you test it with same setup or config.
+The result depend on many things including your own network condition when running the test.
+Because of this variants, Lighthouse recommend us to run lighthouse in several times to get better consistency in the result.
+You can increase the number of hit per run until you get the stability and confident with the result.
+Currently, we decide to run 5 times per run.
+
+## How we built it
+
+We built our dashboard monitoring tools in top of docker container.
+This is increase our portability because we still didn't get fixed server in the beginning.
+Developing websites using docker also have better developer experience since we don't need to force the developers to install program A to Z just for make it run in their local machine.
+
 
 ## Another Alternative
 
