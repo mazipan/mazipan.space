@@ -80,9 +80,23 @@ Honestly, we already tried it.
 Creating our own web metrics monitoring tools which hit webpagetest API everyday with Crob job triggered in the midnight.
 Our big problem is we can not add more page to be analyzed by webpagetest because of rate limiter.
 That's why we starting to looking another solutions that scale.
-Another solution with nearly same with webpagetest and still give us flexibility to creating our own reporters based on the data we collect.
+Another solution with nearly same with webpagetest and still give us the flexibility to creating our own reporters based on the data we collect.
 
 ## An In House Monitoring Tools
+
+Lighthouse gain it's popularity because of Progressive Web Apps (PWA) is also become hottest topic in modern web development.
+Developers needs a tools to test it's PWA implementation, see the result score and get the best practices checklists which can be applied in their web.
+This phenomenon drive us to using Lighthouse engine for our next web metrics monitoring dashboard.
+
+Lighthouse engine is available in many alternatives, it's built-in by default with our Chrome DevTools, it available as a CI that can validate our pull requests, it available as an NPM library along with Puppeteer for launching a Chrome browser programmatically.
+It also available as a CLI tools if you prefer a simpler usage.
+CLI tools from Lighthouse can produce a JSON or HTML file as an output.
+You will amaze about how the CLI can be very flexible for you to develop custom reporting.
+You can passing Cookies, extra headers, blocking some domain from page load, and passing your own network throttle to simulate your dominant users network. 
+
+The problem is the JSON report may be too big for you to save in the disk or database, since you may never use all the data in the JSON file.
+You can pick the data that you think important for your developers and other stakeholders and remove the rest of it.
+But if you doing this, your report may be will become invalid to be viewed by any other lighthouse report viewer.
 
 ## Another Alternative
 
