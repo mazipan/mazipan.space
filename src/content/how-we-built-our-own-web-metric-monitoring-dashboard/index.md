@@ -80,9 +80,59 @@ Honestly, we already tried it.
 Creating our own web metrics monitoring tools which hit webpagetest API everyday with Crob job triggered in the midnight.
 Our big problem is we can not add more page to be analyzed by webpagetest because of rate limiter.
 That's why we starting to looking another solutions that scale.
-Another solution with nearly same with webpagetest and still give us flexibility to creating our own reporters based on the data we collect.
+Another solution with nearly same with webpagetest and still give us the flexibility to creating our own reporters based on the data we collect.
 
-## An In House Monitoring Tools
+## Next-Gen Monitoring Tools
+
+Lighthouse gain it's popularity because of Progressive Web Apps (PWA) is also become hottest topic in modern web development.
+Developers needs a tools to test it's PWA implementation, see the result score and get the best practices checklists which can be applied in their web.
+This phenomenon drive us to using Lighthouse engine for our next web metrics monitoring dashboard.
+
+Lighthouse engine is available in many alternatives, it's built-in by default with our Chrome DevTools, it available as a CI that can validate our pull requests, it available as an NPM library along with Puppeteer for launching a Chrome browser programmatically.
+It also available as a CLI tools if you prefer a simpler usage.
+CLI tools from Lighthouse can produce a JSON or HTML file as an output.
+You will amaze about how the CLI can be very flexible for you to develop custom reporting.
+You can passing Cookies, extra headers, blocking some domain from page load, and passing your own network throttle to simulate your dominant users network. 
+
+The problem is the JSON report may be too big for you to save in the disk or database, since you may never use all the data in the JSON file.
+You can pick the data that you think important for your developers and other stakeholders and remove the rest of it.
+But if you doing this, your report may be will become invalid to be viewed by any other lighthouse report viewer.
+Yes, the decision is your own. Pick carefully.
+
+After trying to run the lighthouse CI several times, you might realized that the result have some variants even you test it with same setup or config.
+The result depend on many things including your own network condition when running the test.
+Because of this variants, Lighthouse recommend us to run lighthouse in several times to get better consistency in the result.
+You can increase the number of hit per run until you get the stability and confident with the result.
+Currently, we decide to run 5 times per run.
+
+## Tech inside
+
+We built our dashboard monitoring tools in top of docker container.
+This is increase our app portability because we still didn't get fixed server in the beginning.
+Developing websites using docker also have better developer experience since we don't need to force the developers to install program A to Z just for make it run in their local machine.
+
+Basically, our web apps is just simply client-server app, using MongoDB as a database storage.
+The server built using express.js and Apollo GraphQL for communicate with our client.
+Opening a web socket secure protocol instead of http request, and it can be achieved with very simple code in Apollo.
+We use Mongoose.js for Object Document Modelling (ODM) as a bridge for accessing our Mongo database.
+It seems easier to use than the native Mongo one.
+
+For the client, we rely on React and Material UI as a backbone UI Kit for faster prototyping because we didn't want spend too much time in the design part, we just simply use the Material UI components and it works magically.
+When developing a dashboard monitoring you'll face with many Chart building blocks. We use Rechart because of the simplicity.
+Calling the backend only via Apollo Client.
+
+All written in TypeScript 🙊
+
+## Basic Flow
+
+Our dashboard have Cron Job that executed daily, run in the midnight, call our Lighthouse CLI custom script, running for all pages we already set before.
+Running 5 times for each pages, get the median value of it, then save the report to MongoDB.
+We also set threshold for some metrics like Time to Interactive, Performance Score, Size of Script, CSS and Images for each pages.
+This threshold act as a gate that will keep sending alert to slack when the score is under our expectation.
+We know that we are too lazy to check the dashboard frequently, that's why sending a direct notification to Slack is one of our solution to increase the awareness of our developers and other stakeholders.
+After the data is stored, we can show the result in a Chart as we want.
+For example, we show a chart for total requests per page, size of resources, performance and PWA score, and web page load timing.
+The data is already there, we just need to explore to show the most important data for our self.
 
 ## Another Alternative
 
