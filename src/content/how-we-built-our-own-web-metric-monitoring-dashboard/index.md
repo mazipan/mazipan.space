@@ -105,12 +105,34 @@ Because of this variants, Lighthouse recommend us to run lighthouse in several t
 You can increase the number of hit per run until you get the stability and confident with the result.
 Currently, we decide to run 5 times per run.
 
-## How we built it
+## Tech inside
 
 We built our dashboard monitoring tools in top of docker container.
-This is increase our portability because we still didn't get fixed server in the beginning.
+This is increase our app portability because we still didn't get fixed server in the beginning.
 Developing websites using docker also have better developer experience since we don't need to force the developers to install program A to Z just for make it run in their local machine.
 
+Basically, our web apps is just simply client-server app, using MongoDB as a database storage.
+The server built using express.js and Apollo GraphQL for communicate with our client.
+Opening a web socket secure protocol instead of http request, and it can be achieved with very simple code in Apollo.
+We use Mongoose.js for Object Document Modelling (ODM) as a bridge for accessing our Mongo database.
+It seems easier to use than the native Mongo one.
+
+For the client, we rely on React and Material UI as a backbone UI Kit for faster prototyping because we didn't want spend too much time in the design part, we just simply use the Material UI components and it works magically.
+When developing a dashboard monitoring you'll face with many Chart building blocks. We use Rechart because of the simplicity.
+Calling the backend only via Apollo Client.
+
+All written in TypeScript 🙊
+
+## Basic Flow
+
+Our dashboard have Cron Job that executed daily, run in the midnight, call our Lighthouse CLI custom script, running for all pages we already set before.
+Running 5 times for each pages, get the median value of it, then save the report to MongoDB.
+We also set threshold for some metrics like Time to Interactive, Performance Score, Size of Script, CSS and Images for each pages.
+This threshold act as a gate that will keep sending alert to slack when the score is under our expectation.
+We know that we are too lazy to check the dashboard frequently, that's why sending a direct notification to Slack is one of our solution to increase the awareness of our developers and other stakeholders.
+After the data is stored, we can show the result in a Chart as we want.
+For example, we show a chart for total requests per page, size of resources, performance and PWA score, and web page load timing.
+The data is already there, we just need to explore to show the most important data for our self.
 
 ## Another Alternative
 
