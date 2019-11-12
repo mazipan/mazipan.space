@@ -6,7 +6,12 @@ import { css } from '@emotion/core';
 
 import { colors } from '../styles/colors';
 import { outer, inner } from '../styles/shared';
+
 import config from '../website-config';
+import Facebook from './icons/facebook';
+import Twitter from './icons/twitter';
+import Github from './icons/github';
+import Linkedin from './icons/linkedin';
 
 const SiteFooter = css`
   position: relative;
@@ -65,6 +70,28 @@ const SiteFooterNav = styled.nav`
   }
 `;
 
+const SocialLinks = styled.div`
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+
+  @media (min-width: 700px) {
+    display: none;
+  }
+
+  a {
+    padding: 0 10px;
+  }
+
+  svg {
+    fill: rgba(255, 255, 255, 0.7);
+
+    &:hover {
+      fill: rgba(255, 255, 255, 1);
+    }
+  }
+`;
+
 const Footer: React.FC = () => {
   return (
     <footer css={[outer, SiteFooter]}>
@@ -73,10 +100,57 @@ const Footer: React.FC = () => {
           <Link to="/">{config.title}</Link> &copy; {new Date().getFullYear()}{' '}
           { config.footer }
         </section>
+
         <SiteFooterNav>
           <Link to="/">Latest Posts</Link>
           <a href="/rss.xml">RSS</a>
         </SiteFooterNav>
+
+        <SocialLinks>
+          {config.facebook && (
+            <a
+              href={config.facebook}
+              target="_blank"
+              title="Facebook"
+              rel="noopener noreferrer"
+            >
+              <Facebook />
+            </a>
+          )}
+
+          {config.twitter && (
+            <a
+              href={config.twitter}
+              title="Twitter"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Twitter />
+            </a>
+          )}
+
+          {config.github && (
+            <a
+              href={config.github}
+              title="Github"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Github />
+            </a>
+          )}
+
+          {config.linkedin && (
+            <a
+              href={config.linkedin}
+              title="Linkedin"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Linkedin />
+            </a>
+          )}
+        </SocialLinks>
       </div>
     </footer>
   );

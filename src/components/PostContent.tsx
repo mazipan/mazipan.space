@@ -531,17 +531,15 @@ export const PostFullContent = styled.section`
     overflow: auto;
   }
 
-  @media (max-width: 672px) {
-    .gatsby-highlight {
-      border-radius: 0;
-    }
-  }
-
   .gatsby-highlight pre[class*='language-'] {
     float: left;
     min-width: 100%;
   }
   /* End Syntax Highlighting */
+
+  .gatsby-resp-image-image{
+    border-radius: 5px;
+  }
 `;
 
 const renderAst = new RehypeReact({
