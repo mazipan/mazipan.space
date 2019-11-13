@@ -165,6 +165,7 @@ The data is already there, we just need to explore to show the most important da
 ## Alternatives
 
 You might don't need to develop your monitoring dashboard like us.
-You can see some alternatives tools we found already cover a basic requirement for web metric monitoring.
+
+You can see some alternatives tools we found to cover a basic requirement.
 
 - [Sitespeed.io](https://www.sitespeed.io/)
