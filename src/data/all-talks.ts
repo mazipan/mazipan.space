@@ -25,14 +25,14 @@ export default {
       "event": "DevC Jakarta Build Day 2019",
       "place": "Shopee Indonesia Office",
       "topic": "Lesson Learned Scaling React in Tokopedia",
-      "slide": "",
+      "slide": "https://speakerdeck.com/mazipan/create-a-delightful-web-with-good-dx",
       "link": [
         "https://jkt23-jakarta-buildday-2019.splashthat.com/"
       ]
     },
     {
       "date": "July 21, 2019",
-      "event": "JakartaJS Meetup",
+      "event": "Seminar Desain & Workshop IT",
       "place": "STIKOM CKI",
       "topic": "Create A Delightful Website With Good DX",
       "slide": "https://speakerdeck.com/mazipan/create-a-delightful-web-with-good-dx",
