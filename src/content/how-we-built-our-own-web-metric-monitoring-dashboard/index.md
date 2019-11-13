@@ -5,7 +5,7 @@ description: Story from Tokopedia web platform team in building an in-house web 
 author: mazipan
 draft: false
 tags: [lesson-learned]
-image: ./images/computer.jpg
+image: ./images/luke-chesser-JKUTrJ4vK00-unsplash.jpg
 lang: id
 ---
 
