@@ -110,11 +110,40 @@ Without complex options, you can call lighthouse with basic code:
 npx lighthouse https://m.tokopedia.com/ --output json --chrome-flags="--headless"
 ```
 
-Read [throttling docs](https://github.com/GoogleChrome/lighthouse/blob/master/docs/throttling.md) for getting-know how Lighthouse doing throttle into your test.
+Lighthouse by default will use Fast 3G as their network throttle base, it might not fit with your needs. 
+Read more about [throttling docs](https://github.com/GoogleChrome/lighthouse/blob/master/docs/throttling.md) for getting-know how Lighthouse doing throttle into your test.
 
 The problem is the JSON report may be too big for you to save in the disk or database, since you may never use all the data in the JSON file.
 You can pick the data that you think important for your developers and other stakeholders and remove the rest of it.
 But if you doing this, your report may be will become invalid to be viewed by any other lighthouse report viewer like [the official previewer one](https://googlechrome.github.io/lighthouse/viewer/).
+
+[Sample of Lighthouse report in JSON file](https://gist.github.com/paulirish/a207a43c8164a7ab728481b496aa8a27#file-localhost_2018-03-12_17-55-45-lighthouse-report-json).
+Here is the important data you should save from the JSON:
+
+```js
+
+{
+  fetchTime: 'time when the report generated',
+  finalUrl: 'tested URL by lighthouse',
+  audits: {
+    'first-contentful-paint': {},
+    'first-meaningful-paint': {},
+    'speed-index': {},
+    'estimated-input-latency': {},
+    'time-to-first-byte': {},
+    'first-cpu-idle': {},
+    'interactive': {},
+    'network-requests': {},
+  },
+  categories: {
+    'performance': '',
+    'accessibility': '',
+    'best-practices': '',
+    'seo': '',
+    'pwa': '',
+  }
+}
+```
 
 Yes, the decision is your own.
 
