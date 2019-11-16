@@ -6,6 +6,7 @@ author: mazipan
 draft: false
 tags: [lesson-learned]
 image: ./images/luke-chesser-JKUTrJ4vK00-unsplash.jpg
+imageCaption: Image by Luke Chesser on Unsplash
 lang: id
 ---
 

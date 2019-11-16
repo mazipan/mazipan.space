@@ -79,7 +79,7 @@ Server Side Includes (SSI) is technique thet using the Web Server power to inclu
 
 SSI can be achieve with a simple this below snippet code:
 
-```
+```bash
 <!--# include file="/path-target-to-another-app" -->
 ```
 

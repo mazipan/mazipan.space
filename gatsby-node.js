@@ -6,6 +6,7 @@ const homeTemplate = path.resolve('./src/templates/index.tsx');
 const tagTemplate = path.resolve('./src/templates/tags.tsx');
 const authorTemplate = path.resolve('./src/templates/author.tsx');
 const postTemplate = path.resolve('./src/templates/post.tsx');
+const POST_PER_PAGE = 13;
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions;
@@ -133,16 +134,15 @@ exports.createPages = async ({ graphql, actions }) => {
   const posts = result.data.allMarkdownRemark.edges;
 
   // Create paginated index
-  const postsPerPage = 6;
-  const numPages = Math.ceil(posts.length / postsPerPage);
+  const numPages = Math.ceil(posts.length / POST_PER_PAGE);
 
   Array.from({ length: numPages }).forEach((_, i) => {
     createPage({
       path: i === 0 ? '/' : `/${i + 1}`,
       component: homeTemplate,
       context: {
-        limit: postsPerPage,
-        skip: i * postsPerPage,
+        limit: POST_PER_PAGE,
+        skip: i * POST_PER_PAGE,
         numPages,
         currentPage: i + 1
       },
