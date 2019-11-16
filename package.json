@@ -82,7 +82,7 @@
     "babel-plugin-styled-components": "1.10.6",
     "eslint": "6.6.0",
     "eslint-config-xo-react": "0.20.0",
-    "eslint-config-xo-space": "0.21.0",
+    "eslint-config-xo-space": "0.22.0",
     "eslint-config-xo-typescript": "0.21.0",
     "eslint-plugin-import": "2.18.2",
     "eslint-plugin-react": "7.16.0",
