@@ -6,6 +6,7 @@ author: mazipan
 draft: false
 tags: [lesson-learned]
 image: ../images/luke-chesser-JKUTrJ4vK00-unsplash.jpg
+imageCaption: Image by Luke Chesser on Unsplash
 lang: en
 ---
 
@@ -88,7 +89,7 @@ Our big problem is we can not add more pages to be analyzed by webpagetest becau
 That's why we start to look at another solution that scales better.
 Another solution with nearly the same with webpagetest and still gives us the flexibility of creating our reporters based on the data we collect.
 
-## Next-Gen Monitoring Tools
+## Lighthouse FTW
 
 Lighthouse gain it's popularity because Progressive Web Apps (PWA) also becomes the hottest topic in modern web development.
 Developers need tools to test it's PWA implementation, see the result score and get the best practices checklists that can be applied in their web.
@@ -110,13 +111,77 @@ Without complex options, you can call lighthouse with basic code:
 npx lighthouse https://m.tokopedia.com/ --output json --chrome-flags="--headless"
 ```
 
-Read [throttling docs](https://github.com/GoogleChrome/lighthouse/blob/master/docs/throttling.md) for getting-know how Lighthouse doing throttle into your test.
+Or if you prefer using Node.js script, you can call lighthouse with code:
 
-The problem is the JSON report may be too big for you to save in the disk or database, since you may never use all the data in the JSON file.
-You can pick the data that you think important for your developers and other stakeholders and remove the rest of it.
-But if you doing this, your report may be will become invalid to be viewed by any other lighthouse report viewer like [the official previewer one](https://googlechrome.github.io/lighthouse/viewer/).
+```js
+const lighthouse = require('lighthouse');
+const chromeLauncher = require('chrome-launcher');
 
-Yes, the decision is your own.
+function launchChromeAndRunLighthouse(url, opts, config = null) {
+  return chromeLauncher.launch({chromeFlags: opts.chromeFlags}).then(chrome => {
+    opts.port = chrome.port;
+    return lighthouse(url, opts, config).then(results => {
+      // use results.lhr for the JS-consumeable output
+      // https://github.com/GoogleChrome/lighthouse/blob/master/types/lhr.d.ts
+      // use results.report for the HTML/JSON/CSV output as a string
+      // use results.artifacts for the trace/screenshots/other specific case you need (rarer)
+      return chrome.kill().then(() => results.lhr)
+    });
+  });
+}
+
+const opts = {
+  chromeFlags: ['--show-paint-rects']
+};
+
+// Usage:
+launchChromeAndRunLighthouse('https://example.com', opts).then(results => {
+  // Use results!
+});
+```
+
+You need to add lighthouse module and chrome laucher via NPM:
+
+```
+yarn add --dev lighthouse chrome-launcher
+```
+
+Read [Using Lighthouse programmatically](https://github.com/GoogleChrome/lighthouse/blob/master/docs/readme.md#using-programmatically) for help getting started.
+
+Lighthouse by default will use Fast 3G as their network throttle base, it might not fit with your needs.
+Read more about [throttling docs](https://github.com/GoogleChrome/lighthouse/blob/master/docs/throttling.md) for getting-know how Lighthouse doing throttle into your test.
+
+The problem is the JSON report may be too big for you to save in the disk or database, since you may never use all the data in the JSON file. You need to pick the data that you think important for your developers and other stakeholders and remove the rest of it.
+But if you doing this, your report may be will become invalid to be viewed by any other lighthouse report viewer like [the official lighthouse previewer](https://googlechrome.github.io/lighthouse/viewer/).
+
+[Sample of Lighthouse report in JSON file](https://gist.github.com/paulirish/a207a43c8164a7ab728481b496aa8a27#file-localhost_2018-03-12_17-55-45-lighthouse-report-json).
+Here is the important data you should save from the JSON:
+
+```javascript
+
+{
+  fetchTime: 'time when the report generated',
+  finalUrl: 'tested URL by lighthouse',
+  audits: {
+    'first-contentful-paint': {},
+    'first-meaningful-paint': {},
+    'speed-index': {},
+    'estimated-input-latency': {},
+    'time-to-first-byte': {},
+    'first-cpu-idle': {},
+    'interactive': {},
+    'network-requests': {},
+    // ...other
+  },
+  categories: {
+    'performance': {},
+    'accessibility': {},
+    'best-practices': {},
+    'seo': {},
+    'pwa': {},
+  }
+}
+```
 
 After trying to run the lighthouse CI several times, you might realize that the result has some variability even you test it with the same setup or config.
 The result depends on many things including your network condition when running the test.
@@ -142,7 +207,7 @@ When developing a dashboard monitoring you'll face many Chart building blocks. W
 
 All written in [TypeScript](https://www.typescriptlang.org/) 🙊
 
-## Basic Flow
+## Task Flow
 
 Our dashboard has Cron Job that executed daily, run in the midnight, call our Lighthouse CLI custom script, running for all pages we already set before.
 Running 5 times for each page, get the median value of it, then save the report to MongoDB.
@@ -152,20 +217,31 @@ This threshold acts as a gate that will keep sending an alert to slack when the 
 
 We know that we are too lazy to check the dashboard frequently, that's why sending a direct notification to Slack is one of our solutions to increasing the awareness of our developers and other stakeholders.
 
-After the data is stored, we can show the result in a Chart as we want.
-For example, we show a chart for total requests per page, size of resources, performance and PWA score, and web page load timing.
+After the data is stored, we can show the result in a Chart as we want. In our cases, we show a chart for total requests per page, size of resources, performance and PWA score, and web page load timing.
 The data is already there, we just need to explore to show the most important data for our self.
 
-## Teaser
+## Image Analyzer
 
-![Sample of daily web metric chart](../images/teaser-perf.png)
+We know that image is one of the biggest cost in the websites. Monitor all the images requested in the first load of your websites become a mandatory task because it will give us a visibility about the image that not optimized and creating action items from our finding then distributed to the person who in charge with the image.
 
-![Image analyzer](../images/teaser-image-analyzer.png)
+From lighthouse report, you can grep all the data images after you hit the lighthouse job.
+
+You can deep dive your report on the field:
+
+```javascript
+// let say we have JS object `report` from lighthouse
+// then we can get the images from this field
+const report  = {}
+const IMAGE_REGEX = /\.(jpe?g|png|gif|tiff|bmp|webp|svg)$/i
+
+const allImagesFromLighthouse = report.audits["network-requests"].details.items.filter(i => i.resourceType === "Image" && IMAGE_REGEX.test(i.url) )
+```
+
+Unfortunately, we only get the data about `resourceSize` (original size) and `transferSize` (compressed size) from lighthouse. It will not good for us to create the presentations based on this data only. Thanks for npm module [image-size](https://www.npmjs.com/package/image-size), we can get more information about dimension of the image with this module.
 
 ## Alternatives
 
 You might don't need to develop your monitoring dashboard like us.
-
-You can see some alternatives tools we found to cover a basic requirement.
+Here are some best free alternatives tools we found for you:
 
 - [Sitespeed.io](https://www.sitespeed.io/)
