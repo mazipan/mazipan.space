@@ -217,8 +217,16 @@ This threshold acts as a gate that will keep sending an alert to slack when the 
 
 We know that we are too lazy to check the dashboard frequently, that's why sending a direct notification to Slack is one of our solutions to increasing the awareness of our developers and other stakeholders.
 
+![Sample of config page](./images/screen-config.png)
+
 After the data is stored, we can show the result in a Chart as we want. In our cases, we show a chart for total requests per page, size of resources, performance and PWA score, and web page load timing.
 The data is already there, we just need to explore to show the most important data for our self.
+
+![Sample of chart presentations](./images/screen-chart.png)
+
+![Sample of table presentations](./images/screen-table.png)
+
+![Sample of detail report](./images/screen-detail.png)
 
 ## Image Analyzer
 
@@ -238,6 +246,8 @@ const allImagesFromLighthouse = report.audits["network-requests"].details.items.
 ```
 
 Unfortunately, we only get the data about `resourceSize` (original size) and `transferSize` (compressed size) from lighthouse. It will not good for us to create the presentations based on this data only. Thanks for npm module [image-size](https://www.npmjs.com/package/image-size), we can get more information about dimension of the image with this module.
+
+![Sample of image scatter plot](./images/screen-image.png)
 
 ## Alternatives
 
