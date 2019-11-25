@@ -80,7 +80,7 @@
     "@typescript-eslint/eslint-plugin": "2.7.0",
     "@typescript-eslint/parser": "2.7.0",
     "babel-plugin-styled-components": "1.10.6",
-    "eslint": "6.6.0",
+    "eslint": "6.7.1",
     "eslint-config-xo-react": "0.20.0",
     "eslint-config-xo-space": "0.22.0",
     "eslint-config-xo-typescript": "0.21.0",
