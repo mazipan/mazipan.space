@@ -163,6 +163,7 @@ module.exports = {
         respectDNT: true,
         // Avoids sending pageview hits from custom paths
         exclude: ['/preview/**'],
+        pageTransitionDelay: 300,
         // Specifies what percentage of users should be tracked
         sampleRate: 100,
         // Determines how often site speed tracking beacons will be sent
