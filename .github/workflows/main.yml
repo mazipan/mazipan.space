@@ -11,6 +11,7 @@ jobs:
           urls: |
             https://mazipan.space/
           temporaryPublicStorage: true
+          upload.token: ${{ secrets.LHCI_TOKEN }}  
       - name: Save results
         uses: actions/upload-artifact@v1
         with:
