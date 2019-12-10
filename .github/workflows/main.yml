@@ -9,8 +9,7 @@ jobs:
         uses: treosh/lighthouse-ci-action@v2
         with:
           urls: |
-            https://treo.sh/
-            https://treo.sh/demo
+            https://mazipan.space/
       - name: Save results
         uses: actions/upload-artifact@v1
         with:
