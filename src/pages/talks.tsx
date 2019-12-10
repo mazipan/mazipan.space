@@ -108,6 +108,9 @@ const Talks: React.FC = () => {
                 })
               }
               </div>
+              <div>
+               Found a typo? please help me fix the typo on <a href="https://github.com/mazipan/talks" target="blank" rel="noopener noreferrer">Github repo</a>
+              </div>
             </PostFullContent>
           </article>
         </main>
