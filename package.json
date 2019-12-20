@@ -88,6 +88,6 @@
     "eslint-plugin-react": "7.17.0",
     "eslint-plugin-react-hooks": "2.3.0",
     "rimraf": "3.0.0",
-    "typescript": "3.7.3"
+    "typescript": "3.7.4"
   }
 }
