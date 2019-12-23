@@ -1,5 +1,5 @@
 ---
-title: Ingin menjadi pembicata di tech talk, mulai dari mana?
+title: Ingin menjadi pembicara di tech talk, mulai dari mana?
 date: "2019-12-06"
 description: Beberapa saran dan tips mengenai memulai untuk mengisi tech talk berdasarkan pengalaman yang saya dapatkan selama ini
 author: mazipan
