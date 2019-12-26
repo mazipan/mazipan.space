@@ -1,4 +1,4 @@
-import { graphql, Link } from 'gatsby';
+import { Link, graphql } from 'gatsby';
 import Img from 'gatsby-image';
 import * as _ from 'lodash';
 import { setLightness } from 'polished';
@@ -21,6 +21,7 @@ import IndexLayout from '../layouts';
 import { colors } from '../styles/colors';
 import { inner, outer, SiteHeader, SiteMain } from '../styles/shared';
 import config from '../website-config';
+import { getJsonLdBreadcrumb, getJsonLdArticle } from '../utils/jsonld'
 
 const PostTemplate = css`
   .site-main {
@@ -133,98 +134,8 @@ const ReadNextFeed = styled.div`
   padding: 40px 0 0 0;
 `;
 
-interface PageTemplateProps {
-  pathContext: {
-    slug: string;
-  };
-  data: {
-    logo: {
-      childImageSharp: {
-        fixed: any;
-      };
-    };
-    markdownRemark: {
-      html: string;
-      htmlAst: any;
-      excerpt: string;
-      timeToRead: string;
-      frontmatter: {
-        title: string;
-        date: string;
-        userDate: string;
-        image: {
-          childImageSharp: {
-            fluid: any;
-          };
-        };
-        tags: string[];
-        author: {
-          id: string;
-          bio: string;
-          avatar: {
-            children: Array<{
-              fixed: {
-                src: string;
-              };
-            }>;
-          };
-        };
-      };
-    };
-    relatedPosts: {
-      totalCount: number;
-      edges: Array<{
-        node: {
-          timeToRead: number;
-          frontmatter: {
-            title: string;
-          };
-          fields: {
-            slug: string;
-          };
-        };
-      }>;
-    };
-  };
-  pageContext: {
-    prev: PageContext;
-    next: PageContext;
-  };
-}
-
-export interface PageContext {
-  excerpt: string;
-  lang?: string;
-  timeToRead: number;
-  fields: {
-    slug: string;
-  };
-  frontmatter: {
-    image: {
-      childImageSharp: {
-        fluid: any;
-      };
-    };
-    title: string;
-    date: string;
-    draft?: boolean;
-    tags: string[];
-    author: {
-      id: string;
-      bio: string;
-      avatar: {
-        children: Array<{
-          fixed: {
-            src: string;
-          };
-        }>;
-      };
-    };
-  };
-}
-
 const PageTemplate: React.FC<PageTemplateProps> = props => {
-  const post = props.data.markdownRemark;
+  const post = props.data && props.data.markdownRemark;
   let width = '';
   let height = '';
   if (post && post.frontmatter.image && post.frontmatter.image.childImageSharp) {
@@ -274,6 +185,9 @@ const PageTemplate: React.FC<PageTemplateProps> = props => {
         />}
         {width && <meta property="og:image:width" content={width} />}
         {height && <meta property="og:image:height" content={height} />}
+
+        <script type="application/ld+json">{`${getJsonLdBreadcrumb({ category: post?.frontmatter?.tags?.[0] || '', title: post?.frontmatter?.title || '', slug: props?.pathContext?.slug || ''})}`}</script>
+        <script type="application/ld+json">{`${getJsonLdArticle({ title: post?.frontmatter?.title || '', slug: props?.pathContext?.slug || '', cover: config.siteUrl + post?.frontmatter?.image?.childImageSharp?.fluid?.src || '', date: post?.frontmatter?.date, desc: post?.excerpt || ''})}`}</script>
       </Helmet>
       <Wrapper css={PostTemplate}>
         <header css={[outer, SiteHeader]}>
@@ -329,7 +243,7 @@ const PageTemplate: React.FC<PageTemplateProps> = props => {
         <aside className="read-next" css={outer}>
           <div css={inner}>
             <ReadNextFeed>
-              {props.data.relatedPosts && (
+              {props.data && props.data.relatedPosts && (
                 <ReadNextCard tags={post && post.frontmatter.tags} relatedPosts={props.data.relatedPosts} />
               )}
 
@@ -345,7 +259,6 @@ const PageTemplate: React.FC<PageTemplateProps> = props => {
 };
 
 export default PageTemplate;
-
 export const query = graphql`
   query($slug: String, $primaryTag: String) {
     logo: file(relativePath: { eq: "images/logo.png" }) {
@@ -388,18 +301,18 @@ export const query = graphql`
       }
     }
     relatedPosts: allMarkdownRemark(
-      filter: { 
-        frontmatter: { 
-          tags: { 
-            in: [$primaryTag] 
-          }, 
-          draft: { 
-            ne: true 
+      filter: {
+        frontmatter: {
+          tags: {
+            in: [$primaryTag]
+          },
+          draft: {
+            ne: true
           },
           lang: {
             eq: "id"
           }
-        } 
+        }
       }
       limit: 3
     ) {

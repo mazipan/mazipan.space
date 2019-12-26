@@ -20,7 +20,7 @@ const PageTemplate = css`
 const About: React.FC = () => (
   <IndexLayout>
     <Helmet>
-      <title>About</title>
+      <title>About @mazipan</title>
     </Helmet>
     <Wrapper css={PageTemplate}>
       <header css={[outer, SiteHeader]}>

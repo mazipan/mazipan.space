@@ -137,7 +137,7 @@ module.exports = {
             // if `string` is used, it will be used to create RegExp and then test if pathname of
             // current page satisfied this regular expression;
             // if not provided or `undefined`, all pages will have feed reference inserted
-            match: "^/blog/",
+            // match: "^/blog/",
           },
         ],
       },
@@ -196,7 +196,7 @@ module.exports = {
             {
               // Use cacheFirst since these don't need to be revalidated (same RegExp
               // and same reason as above)
-              urlPattern: /(\.js$|\.css$|static\/)/,
+              urlPattern: /(\.js$|\.css$|static|images\/)/,
               handler: `CacheFirst`,
             },
             {

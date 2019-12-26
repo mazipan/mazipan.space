@@ -1,5 +1,5 @@
-import { graphql } from 'gatsby';
 import * as React from 'react';
+import { graphql } from 'gatsby';
 import { css } from '@emotion/core';
 import Helmet from 'react-helmet';
 
@@ -22,7 +22,6 @@ import {
   SiteMain,
   SiteTitle,
 } from '../styles/shared';
-import { PageContext } from './post';
 
 const HomePosts = css`
   @media (min-width: 795px) {
@@ -66,34 +65,9 @@ const HomePosts = css`
   }
 `;
 
-export interface IndexProps {
-  pageContext: {
-    lang: string;
-    currentPage: number;
-    numPages: number;
-  };
-  data: {
-    logo: {
-      childImageSharp: {
-        fixed: any;
-      };
-    };
-    header: {
-      childImageSharp: {
-        fluid: any;
-      };
-    };
-    allMarkdownRemark: {
-      edges: Array<{
-        node: PageContext;
-      }>;
-    };
-  };
-}
-
 const IndexPage: React.FC<IndexProps> = props => {
-  const width = props.data.header.childImageSharp.fluid.sizes.split(', ')[1].split('px')[0];
-  const height = String(Number(width) / props.data.header.childImageSharp.fluid.aspectRatio);
+  const width = props.data ? props.data.header.childImageSharp.fluid.sizes.split(', ')[1].split('px')[0] : 100;
+  const height = props.data ? String(Number(width) / props.data.header.childImageSharp.fluid.aspectRatio) : '100';
 
   return (
     <IndexLayout css={HomePosts}>
@@ -108,7 +82,7 @@ const IndexPage: React.FC<IndexProps> = props => {
         <meta property="og:url" content={config.siteUrl} />
         <meta
           property="og:image"
-          content={`${config.siteUrl}${props.data.header.childImageSharp.fluid.src}`}
+          content={`${config.siteUrl}${props.data ? props.data.header.childImageSharp.fluid.src : config.logo}`}
         />
         {config.facebook && <meta property="article:publisher" content={config.facebook} />}
         {config.googleSiteVerification && <meta name="google-site-verification" content={config.googleSiteVerification} />}
@@ -118,7 +92,7 @@ const IndexPage: React.FC<IndexProps> = props => {
         <meta name="twitter:url" content={config.siteUrl} />
         <meta
           name="twitter:image"
-          content={`${config.siteUrl}${props.data.header.childImageSharp.fluid.src}`}
+          content={`${config.siteUrl}${props.data ? props.data.header.childImageSharp.fluid.src : config.logo}`}
         />
         {config.twitter && (
           <meta
@@ -133,13 +107,13 @@ const IndexPage: React.FC<IndexProps> = props => {
         <header
           css={[outer, SiteHeader]}
           style={{
-            backgroundImage: `url('${props.data.header.childImageSharp.fluid.src}')`,
+            backgroundImage: `url('${props.data && props.data.header.childImageSharp.fluid.src}')`,
           }}
         >
           <div css={inner}>
             <SiteHeaderContent>
               <SiteTitle>
-                {props.data.logo ? (
+                {props.data && props.data.logo ? (
                   <img
                     style={{ maxHeight: '45px' }}
                     src={props.data.logo.childImageSharp.fixed.src}
@@ -157,7 +131,7 @@ const IndexPage: React.FC<IndexProps> = props => {
         <main id="site-main" css={[SiteMain, outer]}>
           <div css={inner}>
             <div css={[PostFeed, PostFeedRaise]}>
-              {props.data.allMarkdownRemark.edges.map(post => {
+              {props.data && props.data.allMarkdownRemark.edges.map(post => {
                 // filter out drafts in production
                 return (
                   (post.node.frontmatter.draft !== true ||
@@ -178,80 +152,79 @@ const IndexPage: React.FC<IndexProps> = props => {
 };
 
 export default IndexPage;
-
-export const pageQuery = graphql`
-  query blogPageQuery($skip: Int!, $limit: Int!) {
-    logo: file(relativePath: { eq: "images/logo.png" }) {
-      childImageSharp {
-        # Specify the image processing specifications right in the query.
-        # Makes it trivial to update as your page's design changes.
-        fixed {
-          ...GatsbyImageSharpFixed
-        }
+export const pageQuery =  graphql`
+query blogPageQuery($skip: Int!, $limit: Int!) {
+  logo: file(relativePath: { eq: "images/logo.png" }) {
+    childImageSharp {
+      # Specify the image processing specifications right in the query.
+      # Makes it trivial to update as your page's design changes.
+      fixed {
+        ...GatsbyImageSharpFixed
       }
     }
-    header: file(relativePath: { eq: "images/blog-cover.jpg" }) {
-      childImageSharp {
-        # Specify the image processing specifications right in the query.
-        # Makes it trivial to update as your page's design changes.
-        fluid(maxWidth: 2000) {
-          ...GatsbyImageSharpFluid
-        }
+  }
+  header: file(relativePath: { eq: "images/blog-cover.jpg" }) {
+    childImageSharp {
+      # Specify the image processing specifications right in the query.
+      # Makes it trivial to update as your page's design changes.
+      fluid(maxWidth: 2000) {
+        ...GatsbyImageSharpFluid
       }
     }
-    allMarkdownRemark(
-      sort: { fields: [frontmatter___date], order: DESC },
-      filter: {
-        frontmatter: {
-          draft: {
-            ne: true
-          }
-          lang: {
-            eq: "id"
-          }
+  }
+  allMarkdownRemark(
+    sort: { fields: [frontmatter___date], order: DESC },
+    filter: {
+      frontmatter: {
+        draft: {
+          ne: true
         }
-      },
-      limit: $limit,
-      skip: $skip
-    ) {
-      edges {
-        node {
-          timeToRead
-          frontmatter {
-            title
-            date
-            tags
-            lang
-            draft
-            description
-            image {
-              childImageSharp {
-                fluid(maxWidth: 3720) {
-                  ...GatsbyImageSharpFluid
-                }
+        lang: {
+          eq: "id"
+        }
+      }
+    },
+    limit: $limit,
+    skip: $skip
+  ) {
+    edges {
+      node {
+        timeToRead
+        frontmatter {
+          title
+          date
+          tags
+          lang
+          draft
+          description
+          image {
+            childImageSharp {
+              fluid(maxWidth: 3720) {
+                ...GatsbyImageSharpFluid
               }
             }
-            author {
-              id
-              bio
-              avatar {
-                children {
-                  ... on ImageSharp {
-                    fixed(quality: 90) {
-                      src
-                    }
+          }
+          author {
+            id
+            bio
+            avatar {
+              children {
+                ... on ImageSharp {
+                  fixed(quality: 90) {
+                    src
                   }
                 }
               }
             }
           }
-          excerpt
-          fields {
-            layout
-            slug
-          }
+        }
+        excerpt
+        fields {
+          layout
+          slug
         }
       }
     }
   }
+}
 `;

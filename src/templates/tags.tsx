@@ -1,5 +1,5 @@
-import { graphql } from 'gatsby';
 import React from 'react';
+import { graphql } from 'gatsby';
 
 import Footer from '../components/Footer';
 import SiteNav from '../components/header/SiteNav';
@@ -17,44 +17,13 @@ import {
   SiteMain,
   SiteTitle,
 } from '../styles/shared';
-import { PageContext } from './post';
 import Helmet from 'react-helmet';
 import config from '../website-config';
 
-interface TagTemplateProps {
-  pathContext: {
-    slug: string;
-  };
-  pageContext: {
-    tag: string;
-  };
-  data: {
-    allTagYaml: {
-      edges: Array<{
-        node: {
-          id: string;
-          description: string;
-          image?: {
-            childImageSharp: {
-              fluid: any;
-            };
-          };
-        };
-      }>;
-    };
-    allMarkdownRemark: {
-      totalCount: number;
-      edges: Array<{
-        node: PageContext;
-      }>;
-    };
-  };
-}
-
 const Tags: React.FC<TagTemplateProps> = props => {
   const tag = props.pageContext.tag ? props.pageContext.tag : '';
-  const { edges, totalCount } = props.data.allMarkdownRemark;
-  const tagData = props.data.allTagYaml.edges.find(
+  const { edges, totalCount } = props.data ? props.data.allMarkdownRemark : { edges: [], totalCount: 0 };
+  const tagData = props.data && props.data.allTagYaml.edges.find(
     n => n.node.id.toLowerCase() === tag.toLowerCase(),
   );
 
@@ -72,11 +41,19 @@ const Tags: React.FC<TagTemplateProps> = props => {
         <meta property="og:site_name" content={config.title} />
         <meta property="og:type" content="website" />
         <meta property="og:title" content={`${tag} - ${config.title}`} />
-        <meta property="og:url" content={config.siteUrl + props.pathContext.slug} />
-        {config.facebook && <meta property="article:publisher" content={config.facebook} />}
+        <meta property="og:url" content={config.siteUrl + tag} />
+        {/* // @ts-ignore */}
+        <meta property="og:image" content={`${config.siteUrl}${(tagData && tagData.node && tagData.node.image && tagData.node.image.childImageSharp && tagData.node.image.childImageSharp.fluid && tagData.node.image.childImageSharp.fluid.src )? tagData.node.image.childImageSharp.fluid.src : 'icons/icon-384x384'}`} />
+
+        <meta property="article:publisher" content={`${config.facebook}`} />
+        <meta property="article:author" content={`${config.facebook}`} />
+
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={`${tag} - ${config.title}`} />
-        <meta name="twitter:url" content={config.siteUrl + props.pathContext.slug} />
+        <meta name="twitter:url" content={config.siteUrl + tag} />
+        {/* // @ts-ignore */}
+        <meta name="twitter:image" content={`${config.siteUrl}${(tagData && tagData.node && tagData.node.image && tagData.node.image.childImageSharp && tagData.node.image.childImageSharp.fluid && tagData.node.image.childImageSharp.fluid.src )? tagData.node.image.childImageSharp.fluid.src : 'icons/icon-384x384'}`} />
+
         {config.twitter && (
           <meta
             name="twitter:site"
@@ -116,7 +93,7 @@ const Tags: React.FC<TagTemplateProps> = props => {
         <main id="site-main" css={[SiteMain, outer]}>
           <div css={inner}>
             <div css={[PostFeed, PostFeedRaise]}>
-              {edges.map(({ node }) => (
+              {edges && edges.length > 0 && edges.map(({ node }) => (
                 <PostCard key={node.fields.slug} post={node} />
               ))}
             </div>
@@ -129,77 +106,76 @@ const Tags: React.FC<TagTemplateProps> = props => {
 };
 
 export default Tags;
-
 export const pageQuery = graphql`
-  query($tag: String) {
-    allTagYaml {
-      edges {
-        node {
-          id
-          description
-          image {
-            childImageSharp {
-              fluid(maxWidth: 3720) {
-                ...GatsbyImageSharpFluid
-              }
+query($tag: String) {
+  allTagYaml {
+    edges {
+      node {
+        id
+        description
+        image {
+          childImageSharp {
+            fluid(maxWidth: 3720) {
+              ...GatsbyImageSharpFluid
             }
-          }
-        }
-      }
-    }
-    allMarkdownRemark(
-      limit: 2000
-      sort: { fields: [frontmatter___date], order: DESC }
-      filter: {
-        frontmatter: {
-          tags: {
-            in: [$tag]
-          }
-          draft: {
-            ne: true
-          }
-          lang: {
-            eq: "id"
-          }
-        }
-      }
-    ) {
-      totalCount
-      edges {
-        node {
-          excerpt
-          timeToRead
-          frontmatter {
-            title
-            tags
-            date
-            image {
-              childImageSharp {
-                fluid(maxWidth: 1240) {
-                  ...GatsbyImageSharpFluid
-                }
-              }
-            }
-            author {
-              id
-              bio
-              avatar {
-                children {
-                  ... on ImageSharp {
-                    fixed(quality: 90) {
-                      src
-                    }
-                  }
-                }
-              }
-            }
-          }
-          fields {
-            layout
-            slug
           }
         }
       }
     }
   }
+  allMarkdownRemark(
+    limit: 2000
+    sort: { fields: [frontmatter___date], order: DESC }
+    filter: {
+      frontmatter: {
+        tags: {
+          in: [$tag]
+        }
+        draft: {
+          ne: true
+        }
+        lang: {
+          eq: "id"
+        }
+      }
+    }
+  ) {
+    totalCount
+    edges {
+      node {
+        excerpt
+        timeToRead
+        frontmatter {
+          title
+          tags
+          date
+          image {
+            childImageSharp {
+              fluid(maxWidth: 1240) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
+          author {
+            id
+            bio
+            avatar {
+              children {
+                ... on ImageSharp {
+                  fixed(quality: 90) {
+                    src
+                  }
+                }
+              }
+            }
+          }
+        }
+        fields {
+          layout
+          slug
+        }
+      }
+    }
+  }
+}
 `;

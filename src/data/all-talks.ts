@@ -1,6 +1,16 @@
 export default {
   "2019": [
     {
+      "date": "Nov 30, 2019",
+      "event": "WebUnconf 2019",
+      "place": "Jambuluwuk Resort Batu",
+      "topic": "Build Performant Mobile Web at Tokopedia",
+      "slide": "",
+      "link": [
+        "https://www.instagram.com/p/B5nQXW_HS7U/"
+      ]
+    },
+    {
       "date": "Oct 30, 2019",
       "event": "#53 JakartaJs x Shopee (JSDay Retrospektif)",
       "place": "Shopee Indonesia Office",
@@ -190,14 +200,6 @@ export default {
       "link": [
         "https://www.codepolitan.com/tambah-pengetahuan-tren-teknologimu-terbaru-bersama-php-indonesia"
       ]
-    },
-    {
-      "date": "Feb 29, 2016",
-      "event": "Blibli Brown Bag",
-      "place": "Blibli.com Office Slipi",
-      "topic": "The Other Side of Javascript",
-      "slide": "https://www.slideshare.net/IrfanMaulana21/blibli-brown-bag-nodejs-the-other-side-of-javascript-58692089",
-      "link": []
     }
   ]
 }

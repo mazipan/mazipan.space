@@ -1,16 +1,19 @@
+import * as React from 'react';
+import { css } from '@emotion/core';
+import Helmet from 'react-helmet';
+
 import IndexLayout from '../layouts';
 import Wrapper from '../components/Wrapper';
 import SiteNav from '../components/header/SiteNav';
 import { SiteHeader, outer, inner, SiteMain } from '../styles/shared';
-import * as React from 'react';
-import { css } from '@emotion/core';
 
+// @ts-ignore
 import allTalks from '../data/all-talks';
 
 import { PostFullHeader, PostFullTitle, NoImage, PostFull } from '../templates/post';
 import { PostFullContent } from '../components/PostContent';
 import Footer from '../components/Footer';
-import Helmet from 'react-helmet';
+import config from '../website-config';
 
 const PageTemplate = css`
   .site-main {
@@ -18,7 +21,7 @@ const PageTemplate = css`
     padding-bottom: 4vw;
   }
   .talk-year-text{
-    font-size: 3rem;
+    font-size: 2rem;
   }
   .talk-year{
     margin-bottom: 1em;
@@ -45,10 +48,40 @@ const PageTemplate = css`
 `;
 
 const Talks: React.FC = () => {
+  const title = 'Talks by @mazipan' || config.title;
+  const desc = 'A complete list of technology talk sessions from @mazipan' || config.description;
   return (
     <IndexLayout>
       <Helmet>
-        <title>Talks</title>
+        <html lang={config.lang} />
+        <title>{title}</title>
+
+        <meta name="description" content={desc} />
+        <meta property="og:site_name" content={config.title} />
+        <meta property="og:type" content="profile" />
+        <meta property="og:title" content={`${title}`} />
+        <meta property="og:url" content={config.siteUrl + '/talks'} />
+        <meta property="og:image" content={`${config.siteUrl}/'icons/icon-384x384'`} />
+
+        <meta property="article:publisher" content={`${config.facebook}`} />
+        <meta property="article:author" content={`${config.facebook}`} />
+
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content={`${title}`} />
+        <meta name="twitter:url" content={config.siteUrl + '/talks'} />
+        <meta name="twitter:image" content={`${config.siteUrl}/'icons/icon-384x384'`} />
+        {config.twitter && (
+          <meta
+            name="twitter:site"
+            content={`@${config.twitter.split('https://twitter.com/')[1]}`}
+          />
+        )}
+        {config.twitter && (
+          <meta
+            name="twitter:creator"
+            content={`@${config.twitter.split('https://twitter.com/')[1]}`}
+          />
+        )}
       </Helmet>
       <Wrapper css={PageTemplate}>
         <header css={[outer, SiteHeader]}>
@@ -108,9 +141,7 @@ const Talks: React.FC = () => {
                 })
               }
               </div>
-              <div>
-               Found a typo? please help me fix the typo on <a href="https://github.com/mazipan/talks" target="blank" rel="noopener noreferrer">Github repo</a>
-              </div>
+              <div>Found a typo? please help me fix the typo on this <a href="https://github.com/mazipan/talks" target="blank" rel="noopener noreferrer">Github repo</a></div>
             </PostFullContent>
           </article>
         </main>

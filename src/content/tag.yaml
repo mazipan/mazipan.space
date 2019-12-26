@@ -6,7 +6,7 @@
   image: images/tags/eslint.jpg
 - id: experience
   description: Sharing about my personal experience
-  image: images/tags/experiencce.jpeg
+  image: images/computer.jpg
 - id: firebase
   description: How I use the Firebase
   image: images/tags/firebase.jpg
@@ -19,6 +19,9 @@
 - id: lesson-learned
   description: A story telling about good and bad things
   image: images/tags/lesson-learned.jpg
+- id: life-experience
+  description: Sharing about my personal life experience
+  image: images/computer.jpg
 - id: non-technical
   description: Because we live as a human, do not just talk a technical language
   image: images/tags/non-technical.jpg
@@ -36,6 +39,9 @@
   image: images/tags/testing.jpg
 - id: typescript
   description: Superset for a weak JavaScript
+  image: images/computer.jpg
+- id: tips
+  description: Tips by me
   image: images/computer.jpg
 - id: web
   description: Story about web in general

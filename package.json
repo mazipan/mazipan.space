@@ -7,7 +7,10 @@
   "license": "MIT",
   "scripts": {
     "build": "yarn clean && yarn copy:talks && gatsby build && yarn copy:static",
-    "clean": "rimraf public",
+    "build:no-clean": "gatsby build && yarn copy:static",
+    "build:no-cache": "yarn clean && yarn clean:cache && gatsby build && yarn copy:static",
+    "clean": "rimraf ./public",
+    "clean:cache": "rimraf ./.cache",
     "copy:static": "node ./copy-static.js",
     "copy:talks": "node ./copy-talks.js",
     "dev": "gatsby develop",
