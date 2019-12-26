@@ -1,13 +1,19 @@
 import React from 'react';
+import Helmet from 'react-helmet';
 import { graphql } from 'gatsby';
-import styled from '@emotion/styled';
-import { css } from '@emotion/core';
+
+import IndexLayout from '../layouts';
 
 import Footer from '../components/Footer';
 import SiteNav from '../components/header/SiteNav';
 import PostCard from '../components/PostCard';
 import Wrapper from '../components/Wrapper';
-import IndexLayout from '../layouts';
+import Facebook from '../components/icons/facebook';
+import Website from '../components/icons/website';
+import Twitter from '../components/icons/twitter';
+
+import config from '../website-config';
+
 import {
   AuthorProfileImage,
   inner,
@@ -20,55 +26,14 @@ import {
   SiteMain,
   SocialLink,
 } from '../styles/shared';
-import Facebook from '../components/icons/facebook';
-import Helmet from 'react-helmet';
-import config from '../website-config';
-import Website from '../components/icons/website';
-import Twitter from '../components/icons/twitter';
 
-const HiddenMobile = css`
-  @media (max-width: 500px) {
-    display: none;
-  }
-`;
-
-const AuthorMeta = styled.div`
-  z-index: 10;
-  flex-shrink: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0 0 10px 0;
-  font-family: Georgia, serif;
-  font-style: italic;
-`;
-
-const AuthorBio = styled.h2`
-  z-index: 10;
-  flex-shrink: 0;
-  margin: 5px 0 10px 0;
-  max-width: 600px;
-  font-size: 2rem;
-  line-height: 1.3em;
-  font-weight: 300;
-  letter-spacing: 0.5px;
-  opacity: 0.8;
-`;
-
-const Bull = styled.span`
-  display: inline-block;
-  margin: 0 12px;
-  opacity: 0.5;
-`;
-
-const AuthorProfileBioImage = css`
-  z-index: 10;
-  flex-shrink: 0;
-  margin: 0 0 20px 0;
-  width: 100px;
-  height: 100px;
-  box-shadow: rgba(255, 255, 255, 0.1) 0 0 0 6px;
-`;
+import {
+  HiddenMobile,
+  AuthorMeta,
+  AuthorBio,
+  Bull,
+  AuthorProfileBioImage,
+} from './styles/author';
 
 const Author: React.FC<AuthorTemplateProps> = props => {
   const author = props.data && props.data.authorYaml;
@@ -186,22 +151,6 @@ const Author: React.FC<AuthorTemplateProps> = props => {
                     <Facebook />
                   </a>
                 )}
-                {/* TODO: RSS for author */}
-                {/* <a
-                  css={SocialLink} className="social-link-rss"
-                  href="https://feedly.com/i/subscription/feed/https://demo.ghost.io/author/ghost/rss/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    style={{ height: '1.9rem' }}
-                  >
-                    <circle cx="6.18" cy="17.82" r="2.18" />
-                    <path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z" />
-                  </svg>
-                </a> */}
               </AuthorMeta>
             </SiteHeaderContent>
           </div>

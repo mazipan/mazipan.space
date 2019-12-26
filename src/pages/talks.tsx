@@ -3,17 +3,28 @@ import { css } from '@emotion/core';
 import Helmet from 'react-helmet';
 
 import IndexLayout from '../layouts';
+
 import Wrapper from '../components/Wrapper';
 import SiteNav from '../components/header/SiteNav';
-import { SiteHeader, outer, inner, SiteMain } from '../styles/shared';
+import Footer from '../components/Footer';
+import { PostFullContent } from '../components/PostContent';
 
+import config from '../website-config';
 // @ts-ignore
 import allTalks from '../data/all-talks';
 
-import { PostFullHeader, PostFullTitle, NoImage, PostFull } from '../templates/post';
-import { PostFullContent } from '../components/PostContent';
-import Footer from '../components/Footer';
-import config from '../website-config';
+import {
+  SiteHeader,
+  outer,
+  inner,
+  SiteMain
+} from '../styles/shared';
+import {
+  PostFullHeader,
+  PostFullTitle,
+  NoImage,
+  PostFull
+} from '../templates/styles/post';
 
 const PageTemplate = css`
   .site-main {

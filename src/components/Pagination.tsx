@@ -4,6 +4,7 @@ import { darken } from 'polished';
 import { css } from '@emotion/core';
 
 import { colors } from '../styles/colors';
+import { trackEvent } from '../utils/ga';
 
 export interface PaginationProps {
   currentPage: number;
@@ -53,24 +54,36 @@ const Pagination: React.FunctionComponent<PaginationProps> = ({ currentPage, num
   const prevPage = currentPage - 1 === 1 ? '/' : (currentPage - 1).toString();
   const nextPage = (currentPage + 1).toString();
 
+  const trackPageClick = (link: string) => {
+    trackEvent({
+      eventAction: 'click',
+      eventCategory: 'Click Pagination',
+      eventLabel: link
+    })
+  }
+
   return (
     <nav css={navCss}>
       <div>
         {!isFirst && (
-          <Link to={prevPage} rel="prev">
+          <Link to={prevPage} rel="prev" onClick={()=> { trackPageClick('Prev') }}>
             {/* << symbol */}
             {String.fromCharCode(171)}
           </Link>
         )}
 
         {Array.from({ length: numPages }, (_, i) => (
-          <Link key={`pagination-number${i + 1}`} className={i + 1 === currentPage ? 'active' : ''} to={`/${i === 0 ? '' : i + 1}`}>
+          <Link
+            key={`pagination-number${i + 1}`}
+            className={i + 1 === currentPage ? 'active' : ''}
+            to={`/${i === 0 ? '' : i + 1}`}
+            onClick={()=> { trackPageClick(`Page ${i + 1}`) }}>
             {i + 1}
           </Link>
         ))}
 
         {!isLast && (
-          <Link to={nextPage} rel="next">
+          <Link to={nextPage} rel="next" onClick={()=> { trackPageClick('Next') }}>
             {/* >> symbol */}
             {String.fromCharCode(187)}
           </Link>

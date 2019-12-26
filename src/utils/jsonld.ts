@@ -1,19 +1,5 @@
 import config from '../website-config';
 
-export interface JsonldBreadcrumbParam {
-  category: string;
-  title: string;
-  slug: string;
-}
-
-export interface JsonldArticleParam {
-  cover: string;
-  title: string;
-  slug: string;
-  date: string;
-  desc: string;
-}
-
 export function getJsonLdWebsite (): string {
   return JSON.stringify({
     "@context": "http://schema.org",
@@ -22,7 +8,15 @@ export function getJsonLdWebsite (): string {
     "description": `${config.description}`,
     "image": `${config.siteUrl}/${config.logo}`,
     "thumbnailUrl": `${config.siteUrl}/${config.logo}`,
-    "name": `${config.title}`
+    "name": `${config.title}`,
+    "sameAs": [
+      "https://www.facebook.com/mazipanneh",
+      "https://instagram.com/maz_ipan",
+      "https://twitter.com/Maz_Ipan",
+      "https://id.linkedin.com/in/mazipan",
+      "https://www.slideshare.net/IrfanMaulana21",
+      "https://github.com/mazipan"
+    ]
   })
 }
 

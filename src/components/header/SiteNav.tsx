@@ -4,13 +4,18 @@ import * as React from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 
-import { SocialLink } from '../../styles/shared';
-import config from '../../website-config';
 import Facebook from '../icons/facebook';
 import Twitter from '../icons/twitter';
 import Github from '../icons/github';
 import Linkedin from '../icons/linkedin';
+
+import { SocialLink } from '../../styles/shared';
+
+import config from '../../website-config';
+import { trackOutbond, trackEvent } from '../../utils/ga';
+
 import SubscribeModal from '../subscribe/SubscribeOverlay';
+
 import SiteNavLogo from './SiteNavLogo';
 
 const HomeNavRaise = css`
@@ -118,6 +123,13 @@ interface SiteNavProps {
   isHome?: boolean;
 }
 
+const trackMenuClick = (menuName: string) => {
+  trackEvent({
+    eventAction: 'click',
+    eventCategory: 'Click Main Menu',
+    eventLabel: menuName
+  })
+}
 class SiteNav extends React.Component<SiteNavProps> {
   subscribe = React.createRef<SubscribeModal>();
 
@@ -126,6 +138,7 @@ class SiteNav extends React.Component<SiteNavProps> {
       this.subscribe.current.open();
     }
   };
+
 
   render() {
     const { isHome = false } = this.props;
@@ -136,13 +149,13 @@ class SiteNav extends React.Component<SiteNavProps> {
           <ul css={NavStyles} role="menu">
             {/* TODO: mark current nav item - add class nav-current */}
             <li role="menuitem">
-              <Link to="/">Home</Link>
+              <Link to="/" onClick={() => { trackMenuClick('Home') }}>Home</Link>
             </li>
             <li role="menuitem">
-              <Link to="/about">About</Link>
+              <Link to="/about" onClick={() => { trackMenuClick('About') }}>About</Link>
             </li>
             <li role="menuitem">
-              <Link to="/talks">Talks</Link>
+              <Link to="/talks" onClick={() => { trackMenuClick('Talks') }}>Talks</Link>
             </li>
           </ul>
         </SiteNavLeft>
@@ -155,6 +168,7 @@ class SiteNav extends React.Component<SiteNavProps> {
                 target="_blank"
                 title="Facebook"
                 rel="noopener noreferrer"
+                onClick={() => { trackOutbond(config.facebook || '') }}
               >
                 <Facebook />
               </a>
@@ -167,6 +181,7 @@ class SiteNav extends React.Component<SiteNavProps> {
                 title="Twitter"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => { trackOutbond(config.twitter || '') }}
               >
                 <Twitter />
               </a>
@@ -179,6 +194,7 @@ class SiteNav extends React.Component<SiteNavProps> {
                 title="Github"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => { trackOutbond(config.github || '') }}
               >
                 <Github />
               </a>
@@ -191,6 +207,7 @@ class SiteNav extends React.Component<SiteNavProps> {
                 title="Linkedin"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => { trackOutbond(config.linkedin || '') }}
               >
                 <Linkedin />
               </a>

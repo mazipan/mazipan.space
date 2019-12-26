@@ -194,29 +194,35 @@ module.exports = {
           dontCacheBustURLsMatching: /(\.js$|\.css$|static\/)/,
           runtimeCaching: [
             {
+              // page-data.json files are not content hashed
+              urlPattern: /^https?:.*\page-data\/.*\/page-data\.json/,
+              handler: `NetworkFirst`,
+            },
+            {
               // Use cacheFirst since these don't need to be revalidated (same RegExp
               // and same reason as above)
               urlPattern: /(\.js$|\.css$|static|images\/)/,
               handler: `CacheFirst`,
             },
             {
-              // page-data.json files are not content hashed
-              urlPattern: /^https?:.*\page-data\/.*\/page-data\.json/,
-              handler: `NetworkFirst`,
-            },
-            {
-              // Add runtime caching of various other page resources
-              urlPattern: /^https?:.*\.(png|jpg|jpeg|webp|svg|gif|tiff|js|woff|woff2|json|css)$/,
+              urlPattern: /^https?:.*\.(js|json|css)$/,
               handler: `StaleWhileRevalidate`,
             },
             {
-              // Google Fonts CSS (doesn't end in .css so we need to specify it)
-              urlPattern: /^https?:\/\/fonts\.googleapis\.com\/css/,
-              handler: `StaleWhileRevalidate`,
+              urlPattern: /^https?:.*\.(png|jpg|jpeg|webp|svg|gif|tiff|woff|woff2)$/,
+              handler: `CacheFirst`,
             },
             {
-              urlPattern: /^https?:\/\/raw\.githubusercontent\.com\/json/,
-              handler: `StaleWhileRevalidate`,
+              urlPattern: /^https?:\/\/(api|fonts)\.googleapis\.com\/.*/,
+              handler: `CacheFirst`,
+            },
+            {
+              urlPattern: /^https?:\/\/github\.githubassets\.com\/.*/,
+              handler: `CacheFirst`,
+            },
+            {
+              urlPattern: /^https?:\/\/raw\.githubusercontent\.com\/.*/,
+              handler: `CacheFirst`,
             },
           ],
           skipWaiting: true,

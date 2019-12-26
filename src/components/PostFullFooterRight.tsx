@@ -5,6 +5,8 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { lighten } from 'polished';
 
+import { trackEvent } from '../utils/ga';
+
 import { colors } from '../styles/colors';
 
 const PostFullFooterRightDiv = styled.div`
@@ -35,9 +37,17 @@ export interface PostFullFooterRightProps {
   authorId: string;
 }
 
+const trackClick = (linkName: string) => {
+  trackEvent({
+    eventAction: 'click',
+    eventCategory: 'Click Full Footer Link',
+    eventLabel: linkName
+  })
+}
+
 const PostFullFooterRight: React.FC<PostFullFooterRightProps> = props => (
   <PostFullFooterRightDiv>
-    <Link css={AuthorCardButton} to={`/author/${_.kebabCase(props.authorId)}/`}>
+    <Link css={AuthorCardButton} to={`/author/${_.kebabCase(props.authorId)}/`} onClick={() => { trackClick('Read more') }}>
       Read More
     </Link>
   </PostFullFooterRightDiv>

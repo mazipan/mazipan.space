@@ -5,6 +5,7 @@ import styled from '@emotion/styled';
 
 import { colors } from '../styles/colors';
 import { AuthorProfileImage } from '../styles/shared';
+import { trackEvent } from '../utils/ga';
 
 const AuthorCardSection = styled.section`
   display: flex;
@@ -38,20 +39,26 @@ export interface AuthorCardProps {
 }
 
 const AuthorCard: React.FC<AuthorCardProps> = ({ author }) => {
+  const trackAuthorClick = (linkName: string) => {
+    trackEvent({
+      eventAction: 'click',
+      eventCategory: 'Click Author Link',
+      eventLabel: linkName
+    })
+  }
+
   return (
     <AuthorCardSection>
-      {/* TODO: default avatar */}
-      {/* TODO: author page url */}
       <img css={AuthorProfileImage} src={author.avatar.children[0].fixed.src} alt={author.id} />
       <AuthorCardContent>
         <AuthorCardName>
-          <Link to={`/author/${_.kebabCase(author.id)}/`}>{author.id}</Link>
+          <Link to={`/author/${_.kebabCase(author.id)}/`} onClick={() => { trackAuthorClick('Author name') }}>{author.id}</Link>
         </AuthorCardName>
         {author.bio ? (
           <p>{author.bio}</p>
         ) : (
           <p>
-            Read <Link to={`/author/${_.kebabCase(author.id)}/`}>more posts</Link> by this author.
+            Read <Link to={`/author/${_.kebabCase(author.id)}/`}  onClick={() => { trackAuthorClick('More posts') }}>more posts</Link> by this author.
           </p>
         )}
       </AuthorCardContent>

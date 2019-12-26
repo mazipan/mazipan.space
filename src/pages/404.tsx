@@ -3,13 +3,19 @@ import * as React from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 
+import IndexLayout from '../layouts';
+
 import SiteNavLogo from '../components/header/SiteNavLogo';
 import PostCard from '../components/PostCard';
 import Wrapper from '../components/Wrapper';
-import IndexLayout from '../layouts';
+
 import { colors } from '../styles/colors';
-import { inner, outer, PostFeed, SiteHeader } from '../styles/shared';
-import { PageContext } from '../templates/post';
+import {
+  inner,
+  outer,
+  PostFeed,
+  SiteHeader
+} from '../styles/shared';
 
 const SiteNavCenter = styled.nav`
   display: flex;

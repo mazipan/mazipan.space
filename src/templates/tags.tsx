@@ -1,11 +1,16 @@
 import React from 'react';
 import { graphql } from 'gatsby';
+import Helmet from 'react-helmet';
+
+import IndexLayout from '../layouts';
 
 import Footer from '../components/Footer';
 import SiteNav from '../components/header/SiteNav';
 import PostCard from '../components/PostCard';
 import Wrapper from '../components/Wrapper';
-import IndexLayout from '../layouts';
+
+import config from '../website-config';
+
 import {
   inner,
   outer,
@@ -17,8 +22,6 @@ import {
   SiteMain,
   SiteTitle,
 } from '../styles/shared';
-import Helmet from 'react-helmet';
-import config from '../website-config';
 
 const Tags: React.FC<TagTemplateProps> = props => {
   const tag = props.pageContext.tag ? props.pageContext.tag : '';

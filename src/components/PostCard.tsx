@@ -7,7 +7,7 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 
 import { colors } from '../styles/colors';
-import { PageContext } from '../templates/post';
+import { trackEvent } from '../utils/ga';
 
 const PostCardStyles = css`
   flex: 1 1 300px;
@@ -197,13 +197,22 @@ export interface PostCardProps {
 }
 
 const PostCard: React.FC<PostCardProps> = ({ post }) => {
+
+  const trackPostClick = (link: string) => {
+    trackEvent({
+      eventAction: 'click',
+      eventCategory: 'Click Post Card Item',
+      eventLabel: link
+    })
+  }
+
   return (
     <article
       className={`post-card ${post.frontmatter.image ? '' : 'no-image'}`}
       css={PostCardStyles}
     >
       {post.frontmatter.image && (
-        <Link className="post-card-image-link" css={PostCardImageLink} to={post.fields.slug}>
+        <Link onClick={() => { trackPostClick('Post image cover') }} className="post-card-image-link" css={PostCardImageLink} to={post.fields.slug}>
           <PostCardImage className="post-card-image">
             {post.frontmatter.image &&
               post.frontmatter.image.childImageSharp &&
@@ -218,7 +227,8 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
         </Link>
       )}
       <PostCardContent className="post-card-content">
-        <Link className="post-card-content-link" css={PostCardContentLink} to={post.fields.slug}>
+
+        <Link onClick={() => { trackPostClick('Post excerpt text') }} className="post-card-content-link" css={PostCardContentLink} to={post.fields.slug}>
           <header className="post-card-header">
             {post.frontmatter.tags && <PostCardTags>{post.frontmatter.tags[0]}</PostCardTags>}
             <PostCardTitle>{post.frontmatter.title}</PostCardTitle>
@@ -227,13 +237,14 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
             <p>{post.excerpt}</p>
           </PostCardExcerpt>
         </Link>
+
         <PostCardMeta className="post-card-meta">
           <AuthorList>
             <AuthorListItem>
               <AuthorNameTooltip className="author-name-tooltip">
                 {post.frontmatter.author.id}
               </AuthorNameTooltip>
-              <Link css={StaticAvatar} to={`/author/${_.kebabCase(post.frontmatter.author.id)}/`}>
+              <Link onClick={() => { trackPostClick('Post author') }} css={StaticAvatar} to={`/author/${_.kebabCase(post.frontmatter.author.id)}/`}>
                 <AuthorProfileImage
                   src={post.frontmatter.author.avatar.children[0].fixed.src}
                   alt={post.frontmatter.author.id}

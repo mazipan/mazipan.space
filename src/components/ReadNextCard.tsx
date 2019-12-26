@@ -5,6 +5,8 @@ import * as _ from 'lodash';
 
 import { colors } from '../styles/colors';
 import InfinityIcon from './icons/infinity';
+
+import { trackEvent } from '../utils/ga';
 import config from '../website-config';
 
 export interface ReadNextCardStylesProps {
@@ -174,6 +176,15 @@ export interface ReadNextQuery {
 }
 
 const ReadNextCard: React.FC<ReadNextProps> = props => {
+
+  const trackRelatedPostClick = (linkName: string) => {
+    trackEvent({
+      eventAction: 'click',
+      eventCategory: 'Click Related Post',
+      eventLabel: linkName
+    })
+  }
+
   const relatedPosts: RelatedPosts = {
     totalCount: props.relatedPosts.totalCount ? Math.ceil(props.relatedPosts.totalCount / 2) : 0,
     edges: props.relatedPosts.edges.filter((i) => i.node.fields.slug.indexOf('/en/') < 0)
@@ -203,7 +214,9 @@ const ReadNextCard: React.FC<ReadNextProps> = props => {
             </ReadNextCardHeaderSitetitle>
             {props.tags && props.tags.length > 0 && (
               <ReadNextCardHeaderTitle>
-                <Link to={`/tags/${_.kebabCase(props.tags[0])}/`}>{props.tags[0]}</Link>
+                <Link
+                  to={`/tags/${_.kebabCase(props.tags[0])}/`}
+                  onClick={() => { trackRelatedPostClick('Primary tags above') }}>{props.tags[0]}</Link>
               </ReadNextCardHeaderTitle>
             )}
           </ReadNextCardHeader>
@@ -215,7 +228,9 @@ const ReadNextCard: React.FC<ReadNextProps> = props => {
               {relatedPosts.edges.map(n => {
                 return (
                   <li key={n.node.frontmatter.title}>
-                    <Link to={n.node.fields.slug}>{n.node.frontmatter.title}</Link>
+                    <Link
+                    to={n.node.fields.slug}
+                    onClick={() => { trackRelatedPostClick(n.node.frontmatter.title) }}>{n.node.frontmatter.title}</Link>
                   </li>
                 );
               })}
@@ -223,7 +238,9 @@ const ReadNextCard: React.FC<ReadNextProps> = props => {
           </ReadNextCardContent>
           {props.tags && props.tags.length > 0 && (
             <ReadNextCardFooter>
-              <Link to={`/tags/${_.kebabCase(props.tags[0])}/`}>
+              <Link
+                to={`/tags/${_.kebabCase(props.tags[0])}/`}
+                onClick={() => { trackRelatedPostClick('See all in tags') }}>
                 {relatedPosts.totalCount > 1 &&
                   `See all ${relatedPosts.totalCount} posts`}
                 {relatedPosts.totalCount === 1 && '1 post'}

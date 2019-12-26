@@ -2,6 +2,7 @@ import { graphql, Link, StaticQuery } from 'gatsby';
 import * as React from 'react';
 import { css } from '@emotion/core';
 
+import { trackEvent } from '../../utils/ga';
 import config from '../../website-config';
 
 const SiteNavLogoStyles = css`
@@ -34,6 +35,14 @@ interface SiteNavLogoProps {
   };
 }
 
+const trackLogoClick = () => {
+  trackEvent({
+    eventAction: 'click',
+    eventCategory: 'Click Logo',
+    eventLabel: ''
+  })
+}
+
 const SiteNavLogo = () => (
   <StaticQuery
     query={graphql`
@@ -49,7 +58,7 @@ const SiteNavLogo = () => (
     `}
     // tslint:disable-next-line:react-this-binding-issue
     render={(data: SiteNavLogoProps) => (
-      <Link className="site-nav-logo" css={SiteNavLogoStyles} to="/">
+      <Link className="site-nav-logo" css={SiteNavLogoStyles} to="/" onClick={ () => { trackLogoClick() } }>
         {data.logo ? (
           <img src={data.logo.childImageSharp.fixed.src} alt={config.title} />
         ) : (
