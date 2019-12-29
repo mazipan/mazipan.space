@@ -1,26 +1,31 @@
+import { trackCustomEvent } from 'gatsby-plugin-google-analytics'
+
+
 export function trackOutbond (href: string): void {
   // @ts-ignore
-  if (window && window.ga) {
+  if (trackCustomEvent) {
     // @ts-ignore
-    window.ga.send({
-      hitType: 'event',
-      eventCategory: 'Outbond Link',
-      eventAction: 'click',
-      eventLabel: href,
-      transport: 'beacon'
+    trackCustomEvent({
+  
+      category: 'Outbond Link',
+      action: 'click',
+      label: href,
+      
+  
     })
   }
 }
 
 export function trackEvent ({ eventCategory, eventAction, eventLabel }: EventProps): void {
   // @ts-ignore
-  if (window && window.ga) {
+  if (trackCustomEvent) {
     // @ts-ignore
-    window.ga.send({
-      hitType: 'event',
-      eventCategory,
-      eventAction,
-      eventLabel,
+    trackCustomEvent({
+  
+      category: eventCategory,
+      action: eventAction,
+      label: eventLabel,
+    
     })
   }
 }
@@ -28,13 +33,14 @@ export function trackEvent ({ eventCategory, eventAction, eventLabel }: EventPro
 export function trackTiming (): void {
   if (window.performance) {
     // @ts-ignore
-    if (window.ga) {
+    if (trackCustomEvent) {
       // @ts-ignore
-      window.ga('send', {
-        hitType: 'timing',
-        timingCategory: 'JS Dependencies',
-        timingVar: 'load',
-        timingValue: Math.round(performance.now())
+      trackCustomEvent({
+       
+        category: 'Timing',
+        action: 'load',
+        label: 'JS Deps',
+        value: Math.round(performance.now())
       })
     }
   }
