@@ -211,7 +211,7 @@ Terkait dengan langkah *checkout* pada bagian sebelumnya yang diharuskan menamba
 
 ## Bagaimana dengan hasilnya?
 
-![Pesan commit otomatis](../images/commit-mesage.png)
+![Pesan commit otomatis](../images/commit-message.png)
 
 ![Github Statistik](../images/github-stats.png)
 
