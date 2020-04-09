@@ -1,6 +1,6 @@
 ---
 title: Membuat commit otomatis ke Github
-date: "2020-14-08"
+date: "2020-04-08"
 description: Bagaimana saya membuat commit otomatis menggunakan Github Actions
 author: mazipan
 draft: false
