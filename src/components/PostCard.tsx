@@ -16,7 +16,7 @@ const PostCardStyles = css`
   overflow: hidden;
   margin: 0 20px 40px;
   min-height: 300px;
-  background: #fff center center;
+  background: var(--bg-card) center center;
   background-size: cover;
   border-radius: 5px;
   box-shadow: rgba(39, 44, 49, 0.06) 8px 14px 38px, rgba(39, 44, 49, 0.03) 1px 3px 8px;
@@ -55,7 +55,7 @@ const PostCardContentLink = css`
   flex-grow: 1;
   display: block;
   padding: 25px 25px 0;
-  color: ${colors.darkgrey};
+  color: var(--text-color);
 
   :hover {
     text-decoration: none;
@@ -63,9 +63,8 @@ const PostCardContentLink = css`
 `;
 
 const PostCardTags = styled.span`
-  display: block;
   margin-bottom: 4px;
-  color: ${colors.midgrey};
+  color: var(--text-link-color);
   font-size: 1.2rem;
   line-height: 1.15em;
   font-weight: 500;
@@ -75,10 +74,11 @@ const PostCardTags = styled.span`
 
 const PostCardTitle = styled.h2`
   margin-top: 0;
+  color: var(--text-title-color);
 `;
 
 const PostCardExcerpt = styled.section`
-  font-family: Georgia, serif;
+  font-family: 'Montserrat', sans-serif;
 `;
 
 const PostCardMeta = styled.footer`
@@ -144,11 +144,11 @@ const AuthorNameTooltip = styled.div`
   z-index: 999;
   display: block;
   padding: 2px 8px;
-  color: white;
   font-size: 1.2rem;
   letter-spacing: 0.2px;
   white-space: nowrap;
-  background: ${colors.darkgrey};
+  background: var(--text-color);
+  color: var(--bg-content);
   border-radius: 3px;
   box-shadow: rgba(39, 44, 49, 0.08) 0 12px 26px, rgba(39, 44, 49, 0.03) 1px 3px 8px;
   opacity: 0;
@@ -175,8 +175,7 @@ const AuthorProfileImage = styled.img`
   display: block;
   width: 100%;
   height: 100%;
-  /* background: color(var(--lightgrey) l(+10%)); */
-  background: ${lighten('0.1', colors.lightgrey)};
+  background: var(--text-color-grey);
   border-radius: 100%;
   object-fit: cover;
 `;
@@ -184,7 +183,7 @@ const AuthorProfileImage = styled.img`
 const ReadingTime = styled.span`
   flex-shrink: 0;
   margin-left: 20px;
-  color: ${colors.midgrey};
+  color: var(--text-color-grey);
   font-size: 1.2rem;
   line-height: 33px;
   font-weight: 500;

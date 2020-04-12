@@ -1,16 +1,48 @@
 
 
 import { css } from '@emotion/core';
-import { darken, lighten } from 'polished';
+import { lighten } from 'polished';
 import { colors } from '../styles/colors';
 
 const GlobalStyles = css`
+  .dark {
+    --text-color: #f8f8f2;
+    --text-title-color: #bd93f9;
+    --text-subtitle-color: #ff79c6;
+    --text-color-grey: #b4b5b5;
+    --text-link-color: #57c3ff;
+    --bg-content: #282a36;
+    --bg-card: #44475a;
+    --bg-card-comment: #6272a4;
+
+    --bg-inline-code: #44475a;
+    --text-inline-code: #f8f8f2;
+
+    --bg-header: #212121;
+    --text-header: #fff;
+  }
+
+  .light {
+    --text-color: #2d373b;
+    --text-title-color: #6272a4;
+    --text-subtitle-color: #ff79c6;
+    --text-color-grey: #647a83;
+    --text-link-color: #57c3ff;
+    --bg-content: #f3f8fb;
+    --bg-card: #fff;
+    --bg-card-comment: #15171A;
+
+    --bg-inline-code: #44475a;
+    --text-inline-code: #f8f8f2;
+
+    --bg-header: #212121;  /* keep same with dark */
+    --text-header: #fff;
+  }
+
   html,
   body,
   div,
   span,
-  applet,
-  object,
   iframe,
   h1,
   h2,
@@ -23,35 +55,17 @@ const GlobalStyles = css`
   pre,
   a,
   abbr,
-  acronym,
-  address,
-  big,
-  cite,
   code,
-  del,
-  dfn,
   em,
   img,
-  ins,
-  kbd,
   q,
   s,
-  samp,
   small,
   strike,
   strong,
-  sub,
-  sup,
-  tt,
-  var,
-  dl,
-  dt,
-  dd,
   ol,
   ul,
   li,
-  fieldset,
-  form,
   label,
   legend,
   table,
@@ -71,17 +85,12 @@ const GlobalStyles = css`
   figcaption,
   footer,
   header,
-  hgroup,
   menu,
   nav,
-  output,
-  ruby,
   section,
   summary,
   time,
-  mark,
-  audio,
-  video {
+  mark {
     margin: 0;
     padding: 0;
     border: 0;
@@ -138,8 +147,7 @@ const GlobalStyles = css`
     font-weight: bold;
   }
   i,
-  em,
-  dfn {
+  em {
     font-style: italic;
   }
   h1 {
@@ -149,27 +157,11 @@ const GlobalStyles = css`
   small {
     font-size: 80%;
   }
-  sub,
-  sup {
-    position: relative;
-    font-size: 75%;
-    line-height: 0;
-    vertical-align: baseline;
-  }
-  sup {
-    top: -0.5em;
-  }
-  sub {
-    bottom: -0.25em;
-  }
   img {
     border: 0;
   }
   svg:not(:root) {
     overflow: hidden;
-  }
-  mark {
-    background-color: #fdffb6;
   }
   code,
   kbd,
@@ -200,7 +192,6 @@ const GlobalStyles = css`
   input[type='reset'],
   input[type='submit'] {
     cursor: pointer;
-
     -webkit-appearance: button;
   }
   button[disabled],
@@ -217,28 +208,6 @@ const GlobalStyles = css`
   }
   input:focus {
     outline: none;
-  }
-  input[type='checkbox'],
-  input[type='radio'] {
-    box-sizing: border-box;
-    padding: 0;
-  }
-  input[type='number']::-webkit-inner-spin-button,
-  input[type='number']::-webkit-outer-spin-button {
-    height: auto;
-  }
-  input[type='search'] {
-    box-sizing: content-box;
-
-    -webkit-appearance: textfield;
-  }
-  input[type='search']::-webkit-search-cancel-button,
-  input[type='search']::-webkit-search-decoration {
-    -webkit-appearance: none;
-  }
-  legend {
-    padding: 0;
-    border: 0;
   }
   textarea {
     overflow: auto;
@@ -261,16 +230,15 @@ const GlobalStyles = css`
   }
   body {
     overflow-x: hidden;
-    color: ${darken('0.25', colors.midgrey)};
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
-      'Open Sans', 'Helvetica Neue', sans-serif;
+    color: var(--text-color);
+    font-family: 'Montserrat', sans-serif;
     font-size: 1.5rem;
     line-height: 1.6em;
     font-weight: 400;
     font-style: normal;
     letter-spacing: 0;
     text-rendering: optimizeLegibility;
-    background: #fff;
+    background: var(--bg-content);
 
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -397,7 +365,7 @@ const GlobalStyles = css`
   }
 
   a {
-    color: ${darken('0.05', colors.blue)};
+    color: var(--text-link-color);
     text-decoration: none;
   }
 
@@ -468,8 +436,174 @@ const GlobalStyles = css`
   }
 
   body {
-    background: #f4f8fb;
+    background: var(--bg-content);
   }
+
+
+  /* Start Syntax Highlighting */
+  /* Taken from overreacted https://github.com/gaearon/overreacted.io/blob/942b41555f5e5ccbb5f93f6c26142cd90b314236/src/utils/global.css#L68 */
+  /**
+   * Based on copypasta from Remy Bach and Sarah Drasner
+   */
+  code[class*='language-'],
+  pre[class*='language-'] {
+    color: white;
+    background: none;
+    font-family: Consolas, Menlo, Monaco, source-code-pro, Courier New, monospace;
+    font-feature-settings: normal;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+    margin-bottom: 0;
+
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+  }
+
+  /* Code blocks */
+  pre[class*='language-'] {
+    overflow: auto;
+    padding: 1.3125rem;
+  }
+
+  pre[class*='language-']::-moz-selection {
+    /* Firefox */
+    background: hsl(207, 4%, 16%);
+  }
+
+  pre[class*='language-']::selection {
+    /* Safari */
+    background: hsl(207, 4%, 16%);
+  }
+
+  /* Text Selection colour */
+  pre[class*='language-']::-moz-selection,
+  pre[class*='language-'] ::-moz-selection {
+    text-shadow: none;
+    background: hsla(0, 0%, 100%, 0.15);
+  }
+
+  pre[class*='language-']::selection,
+  pre[class*='language-'] ::selection {
+    text-shadow: none;
+    background: hsla(0, 0%, 100%, 0.15);
+  }
+
+  /* Inline code */
+  :not(pre) > code[class*='language-'] {
+    border-radius: 0.3em;
+    background: var(--bg-inline-code);
+    color: var(--text-inline-code);
+    padding: 0.15em 0.2em 0.05em;
+    white-space: normal;
+  }
+
+  .token.attr-name {
+    color: rgb(173, 219, 103);
+    font-style: italic;
+  }
+
+  .token.comment {
+    color: rgb(128, 147, 147);
+  }
+
+  .token.string,
+  .token.url {
+    color: rgb(173, 219, 103);
+  }
+
+  .token.variable {
+    color: rgb(214, 222, 235);
+  }
+
+  .token.number {
+    color: rgb(247, 140, 108);
+  }
+
+  .token.builtin,
+  .token.char,
+  .token.constant,
+  .token.function {
+    color: rgb(130, 170, 255);
+  }
+
+  .token.punctuation {
+    color: rgb(199, 146, 234);
+  }
+
+  .token.selector,
+  .token.doctype {
+    color: rgb(199, 146, 234);
+    font-style: 'italic';
+  }
+
+  .token.class-name {
+    color: rgb(255, 203, 139);
+  }
+
+  .token.tag,
+  .token.operator,
+  .token.keyword {
+    color: #ffa7c4;
+  }
+
+  .token.boolean {
+    color: rgb(255, 88, 116);
+  }
+
+  .token.property {
+    color: rgb(128, 203, 196);
+  }
+
+  .token.namespace {
+    color: rgb(178, 204, 214);
+  }
+
+  pre[data-line] {
+    padding: 1em 0 1em 3em;
+    position: relative;
+  }
+
+  .gatsby-highlight-code-line {
+    background-color: hsla(207, 95%, 15%, 1);
+    display: block;
+    margin-right: -1.3125rem;
+    margin-left: -1.3125rem;
+    padding-right: 1em;
+    padding-left: 1.25em;
+    border-left: 0.25em solid #ffa7c4;
+  }
+
+  .gatsby-highlight {
+    margin-bottom: 1.75rem;
+    margin-left: -1.3125rem;
+    margin-right: -1.3125rem;
+    border-radius: 10px;
+    background: #011627;
+    -webkit-overflow-scrolling: touch;
+    overflow: auto;
+  }
+
+  @media (max-width: 672px) {
+    .gatsby-highlight {
+      border-radius: 0;
+    }
+  }
+
+  .gatsby-highlight pre[class*='language-'] {
+    float: left;
+    min-width: 100%;
+  }
+  /* End Syntax Highlighting */
 `;
 
 export default GlobalStyles;

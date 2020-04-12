@@ -3,15 +3,14 @@ import React, { FC, useEffect } from 'react';
 import Helmet from 'react-helmet';
 
 import GlobalStyles from './styles';
-import { getJsonLdWebsite } from '../utils/jsonld';
+import { getJsonLdWebsite } from '../utils/jsonld';
 import { trackTiming } from '../utils/ga';
 
 interface IndexProps {
   className?: string;
 }
 
-const IndexLayout: FC<IndexProps> = props => {
-
+const IndexLayout: FC<IndexProps> = (props) => {
   useEffect(() => {
     trackTiming();
   }, []);

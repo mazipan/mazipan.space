@@ -187,7 +187,7 @@ module.exports = {
       options: {
         precachePages: [`/about/`],
         workboxConfig: {
-          importWorkboxFrom: `local`,
+          importWorkboxFrom: `cdn`,
           cacheId: `mazipan`,
           // Don't cache-bust JS or CSS files, and anything in the static directory,
           // since these files have unique URLs and their contents will never change
@@ -230,5 +230,13 @@ module.exports = {
         }
       },
     },
+    // {
+    //   resolve: "gatsby-plugin-webpack-bundle-analyser-v2",
+    //   options: {
+    //     analyzerMode: "static",
+    //     defaultSizes: "gzip",
+    //     openAnalyzer: false
+    //   },
+    // },
   ],
 };

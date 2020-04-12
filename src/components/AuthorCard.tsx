@@ -3,7 +3,6 @@ import * as _ from 'lodash';
 import * as React from 'react';
 import styled from '@emotion/styled';
 
-import { colors } from '../styles/colors';
 import { AuthorProfileImage } from '../styles/shared';
 import { trackEvent } from '../utils/ga';
 
@@ -17,7 +16,7 @@ const AuthorCardName = styled.h4`
   font-size: 2rem;
 
   a {
-    color: ${colors.darkgrey};
+    color: var(--text-color);
     font-weight: 700;
   }
 
@@ -29,7 +28,7 @@ const AuthorCardName = styled.h4`
 const AuthorCardContent = styled.section`
   p {
     margin: 0;
-    color: ${colors.midgrey};
+    color: var(--text-color-grey);
     line-height: 1.3em;
   }
 `;

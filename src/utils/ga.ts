@@ -34,7 +34,7 @@ export function trackTiming (): void {
         category: 'Timing',
         action: 'load',
         label: 'JS Deps',
-        value: Math.round(performance.now())
+        value: `${Math.round(performance.now())}`
       })
     }
   }

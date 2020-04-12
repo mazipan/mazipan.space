@@ -4,6 +4,7 @@ import Helmet from 'react-helmet';
 
 import IndexLayout from '../layouts';
 
+import ThemeSwitcher from '../components/ThemeSwitcher';
 import Footer from '../components/Footer';
 import SiteNav from '../components/header/SiteNav';
 import PostCard from '../components/PostCard';
@@ -23,6 +24,7 @@ import {
   SiteMain,
   SiteTitle,
 } from '../styles/shared';
+
 import { HomePosts } from './styles/index';
 
 const IndexPage: React.FC<IndexProps> = props => {
@@ -64,12 +66,9 @@ const IndexPage: React.FC<IndexProps> = props => {
         <meta property="og:image:height" content={height} />
       </Helmet>
       <Wrapper>
+        <ThemeSwitcher/>
         <header
-          css={[outer, SiteHeader]}
-          style={{
-            backgroundImage: `url('${props.data && props.data.header.childImageSharp.fluid.src}')`,
-          }}
-        >
+          css={[outer, SiteHeader]}>
           <div css={inner}>
             <SiteHeaderContent>
               <SiteTitle>

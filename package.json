@@ -29,6 +29,7 @@
     "dotenv": "8.2.0",
     "emotion": "10.0.27",
     "emotion-server": "10.0.27",
+    "emotion-theming": "^10.0.27",
     "gatsby": "2.18.17",
     "gatsby-image": "2.2.37",
     "gatsby-plugin-canonical-urls": "2.1.18",
@@ -82,6 +83,7 @@
     "@types/react-helmet": "5.0.14",
     "@typescript-eslint/eslint-plugin": "2.13.0",
     "@typescript-eslint/parser": "2.13.0",
+    "add": "^2.0.6",
     "babel-plugin-styled-components": "1.10.6",
     "eslint": "6.8.0",
     "eslint-config-xo-react": "0.20.0",
@@ -90,7 +92,9 @@
     "eslint-plugin-import": "2.19.1",
     "eslint-plugin-react": "7.17.0",
     "eslint-plugin-react-hooks": "2.3.0",
+    "gatsby-plugin-webpack-bundle-analyser-v2": "^1.1.8",
     "rimraf": "3.0.0",
-    "typescript": "3.7.4"
+    "typescript": "3.7.4",
+    "yarn": "^1.22.4"
   }
 }

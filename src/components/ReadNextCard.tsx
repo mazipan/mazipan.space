@@ -3,7 +3,6 @@ import * as React from 'react';
 import styled from '@emotion/styled';
 import * as _ from 'lodash';
 
-import { colors } from '../styles/colors';
 import InfinityIcon from './icons/infinity';
 
 import { trackEvent } from '../utils/ga';
@@ -22,11 +21,10 @@ const ReadNextCardStyles = styled.article<ReadNextCardStylesProps>`
   margin: 0 20px 40px;
   padding: 25px;
   color: #fff;
-  background: ${colors.darkgrey} center center;
+  background: var(--bg-card-comment) center center;
   background-size: cover;
   border-radius: 5px;
   box-shadow: rgba(39, 44, 49, 0.06) 8px 14px 38px, rgba(39, 44, 49, 0.03) 1px 3px 8px;
-  background-image: url(${props => props.coverImage});
 
   :before {
     content: "";

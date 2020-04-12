@@ -7,7 +7,7 @@ import { colors } from '../../styles/colors';
 
 export const PostTemplate = css`
   .site-main {
-    background: #fff;
+    background: var(--bg-content);
     padding-bottom: 4vw;
   }
 
@@ -52,7 +52,7 @@ export const PostFullMeta = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
-  color: ${colors.midgrey};
+  color: var(--text-link-color);
   font-size: 1.4rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -64,12 +64,12 @@ export const PostFullMeta = styled.section`
 `;
 
 export const PostFullMetaDate = styled.time`
-  color: ${colors.blue};
+  color: var(--text-link-color);
 `;
 
 export const PostFullTitle = styled.h1`
   margin: 0;
-  color: ${setLightness('0.05', colors.darkgrey)};
+  color: var(--text-title-color);
   @media (max-width: 500px) {
     font-size: 2.9rem;
   }
@@ -78,7 +78,7 @@ export const PostFullTitle = styled.h1`
 export const PostFullImage = styled.figure`
   margin: 0 -10vw -165px;
   height: 800px;
-  background: ${colors.lightgrey} center center;
+  background: var(--text-color-grey) center center;
   background-size: cover;
   border-radius: 10px;
 

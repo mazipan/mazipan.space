@@ -13,9 +13,6 @@ import { SocialLink } from '../../styles/shared';
 
 import config from '../../website-config';
 import { trackOutbond, trackEvent } from '../../utils/ga';
-
-import SubscribeModal from '../subscribe/SubscribeOverlay';
-
 import SiteNavLogo from './SiteNavLogo';
 
 const HomeNavRaise = css`
@@ -102,23 +99,6 @@ const SocialLinks = styled.div`
   }
 `;
 
-const SubscribeButton = styled.a`
-  display: block;
-  padding: 4px 10px;
-  border: #fff 1px solid;
-  color: #fff;
-  font-size: 1.2rem;
-  line-height: 1em;
-  border-radius: 10px;
-  opacity: 0.8;
-
-  :hover {
-    text-decoration: none;
-    opacity: 1;
-    cursor: pointer;
-  }
-`;
-
 interface SiteNavProps {
   isHome?: boolean;
 }
@@ -131,15 +111,6 @@ const trackMenuClick = (menuName: string) => {
   })
 }
 class SiteNav extends React.Component<SiteNavProps> {
-  subscribe = React.createRef<SubscribeModal>();
-
-  openModal = () => {
-    if (this.subscribe.current) {
-      this.subscribe.current.open();
-    }
-  };
-
-
   render() {
     const { isHome = false } = this.props;
     return (
@@ -170,7 +141,7 @@ class SiteNav extends React.Component<SiteNavProps> {
                 rel="noopener noreferrer"
                 onClick={() => { trackOutbond(config.facebook || '') }}
               >
-                <Facebook />
+                <Facebook height="2rem"/>
               </a>
             )}
 
@@ -183,7 +154,7 @@ class SiteNav extends React.Component<SiteNavProps> {
                 rel="noopener noreferrer"
                 onClick={() => { trackOutbond(config.twitter || '') }}
               >
-                <Twitter />
+                <Twitter height="2rem" />
               </a>
             )}
 
@@ -196,7 +167,7 @@ class SiteNav extends React.Component<SiteNavProps> {
                 rel="noopener noreferrer"
                 onClick={() => { trackOutbond(config.github || '') }}
               >
-                <Github />
+                <Github height="2rem" />
               </a>
             )}
 
@@ -209,14 +180,10 @@ class SiteNav extends React.Component<SiteNavProps> {
                 rel="noopener noreferrer"
                 onClick={() => { trackOutbond(config.linkedin || '') }}
               >
-                <Linkedin />
+                <Linkedin height="2rem" />
               </a>
             )}
           </SocialLinks>
-          {config.showSubscribe && (
-            <SubscribeButton onClick={this.openModal}>Subscribe</SubscribeButton>
-          )}
-          {config.showSubscribe && <SubscribeModal ref={this.subscribe} />}
         </SiteNavRight>
       </nav>
     );

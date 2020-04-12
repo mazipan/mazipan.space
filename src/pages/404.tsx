@@ -9,7 +9,6 @@ import SiteNavLogo from '../components/header/SiteNavLogo';
 import PostCard from '../components/PostCard';
 import Wrapper from '../components/Wrapper';
 
-import { colors } from '../styles/colors';
 import {
   inner,
   outer,
@@ -42,7 +41,7 @@ const ErrorCode = styled.h1`
 
 const ErrorDescription = styled.p`
   margin: 0;
-  color: ${colors.midgrey};
+  color: var(--text-color-grey);
   font-size: 3rem;
   line-height: 1.3em;
   font-weight: 400;

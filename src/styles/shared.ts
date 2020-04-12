@@ -1,14 +1,13 @@
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import { colors } from './colors';
-import { darken, lighten } from 'polished';
+import { lighten } from 'polished';
 
 export const outer = css`
   position: relative;
   padding: 0 4vw;
 `;
 
-// Centered content container blocks
 export const inner = css`
   margin: 0 auto;
   max-width: 1040px;
@@ -65,20 +64,14 @@ export const SocialLink = css`
   :hover {
     opacity: 1;
   }
-
-  svg {
-    height: 1.8rem;
-    fill: #fff;
-  }
 `;
 
 export const SiteHeader = css`
   position: relative;
   padding-top: 12px;
   padding-bottom: 12px;
-  color: #fff;
-  /* background: color(var(--darkgrey) l(-5%)) no-repeat center center; */
-  background: ${darken('0.05', colors.darkgrey)} no-repeat center center;
+  color: var(--text-header);
+  background: var(--bg-header) no-repeat center center;
   background-size: cover;
 `;
 
@@ -137,8 +130,7 @@ export const SiteHeaderStyles = css`
 
 export const AuthorProfileImage = css`
   display: block;
-  /* background: color(var(--lightgrey) l(+10%)); */
-  background: ${lighten('0.1', colors.lightgrey)};
+  background: var(--bg-content);
   border-radius: 100%;
   object-fit: cover;
   margin-right: 15px;

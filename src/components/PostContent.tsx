@@ -1,4 +1,4 @@
-import { lighten, setLightness, darken, setSaturation } from 'polished';
+import { lighten, darken, setSaturation } from 'polished';
 import * as React from 'react';
 import styled from '@emotion/styled';
 import RehypeReact from 'rehype-react';
@@ -10,10 +10,9 @@ export const PostFullContent = styled.section`
   margin: 0 auto;
   padding: 70px 100px 0;
   min-height: 230px;
-  font-family: Georgia, serif;
-  font-size: 2.2rem;
+  font-size: 1.7rem;
   line-height: 1.6em;
-  background: #fff;
+  background: var(--bg-content);
   border-radius: 5px;
 
   @media (max-width: 1170px) {
@@ -82,14 +81,8 @@ export const PostFullContent = styled.section`
   }
 
   a:hover {
-    color: ${colors.blue};
+    color: var(--text-link-color);
     text-decoration: none;
-  }
-
-  strong,
-  em {
-    /* color: color(var(--darkgrey) l(-5%)); */
-    color: ${darken('0.05', colors.darkgrey)};
   }
 
   small {
@@ -212,21 +205,17 @@ export const PostFullContent = styled.section`
     margin-left: -10px;
     width: 1px;
     height: 30px;
-    /* background: color(var(--lightgrey) l(+10%)); */
     background: ${lighten('0.1', colors.lightgrey)};
     box-shadow: #fff 0 0 0 5px;
     transform: rotate(45deg);
   }
 
-  h1,
   h2,
   h3,
   h4,
   h5,
   h6 {
-    color: ${setLightness('0.05', colors.darkgrey)};
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
-      'Open Sans', 'Helvetica Neue', sans-serif;
+    color: var(--text-subtitle-color);
   }
 
   h1 {
@@ -234,6 +223,7 @@ export const PostFullContent = styled.section`
     font-size: 4.6rem;
     font-weight: 700;
   }
+
   @media (max-width: 500px) {
     h1 {
       font-size: 2.8rem;
@@ -245,6 +235,7 @@ export const PostFullContent = styled.section`
     font-size: 3.6rem;
     font-weight: 700;
   }
+
   @media (max-width: 500px) {
     h2 {
       font-size: 2.6rem;
@@ -256,6 +247,7 @@ export const PostFullContent = styled.section`
     font-size: 2.8rem;
     font-weight: 700;
   }
+
   @media (max-width: 500px) {
     h3 {
       font-size: 2.2rem;
@@ -267,6 +259,7 @@ export const PostFullContent = styled.section`
     font-size: 2.8rem;
     font-weight: 700;
   }
+
   @media (max-width: 500px) {
     h4 {
       font-size: 2.2rem;
@@ -278,17 +271,17 @@ export const PostFullContent = styled.section`
     margin: 0.5em 0;
     padding: 1em 0 1.5em;
     border: 0;
-    color: ${colors.blue};
-    font-family: Georgia, serif;
     font-size: 3.2rem;
     line-height: 1.35em;
     text-align: center;
   }
+
   @media (min-width: 1180px) {
     h5 {
       max-width: 1060px;
     }
   }
+
   @media (max-width: 500px) {
     h5 {
       padding: 0 0 0.5em;
@@ -301,6 +294,7 @@ export const PostFullContent = styled.section`
     font-size: 2.3rem;
     font-weight: 700;
   }
+
   @media (max-width: 500px) {
     h6 {
       font-size: 2rem;
@@ -316,8 +310,6 @@ export const PostFullContent = styled.section`
     width: auto;
     border-spacing: 0;
     border-collapse: collapse;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
-      'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 1.6rem;
     white-space: nowrap;
     vertical-align: top;
@@ -381,161 +373,6 @@ export const PostFullContent = styled.section`
       display: none;
     }
   }
-
-  /* Start Syntax Highlighting */
-  /* Taken from overreacted https://github.com/gaearon/overreacted.io/blob/942b41555f5e5ccbb5f93f6c26142cd90b314236/src/utils/global.css#L68 */
-  code[class*='language-'],
-  pre[class*='language-'] {
-    background: none;
-    font-family: Consolas, Menlo, Monaco, source-code-pro, Courier New, monospace;
-    font-feature-settings: normal;
-    text-align: left;
-    white-space: pre;
-    word-spacing: normal;
-    word-break: normal;
-    word-wrap: normal;
-    line-height: 1.5;
-    margin-bottom: 0;
-
-    -moz-tab-size: 4;
-    -o-tab-size: 4;
-    tab-size: 4;
-
-    -webkit-hyphens: none;
-    -moz-hyphens: none;
-    -ms-hyphens: none;
-    hyphens: none;
-  }
-
-  /* Code blocks */
-  pre[class*='language-'] {
-    overflow: auto;
-    padding: 1.3125rem;
-  }
-
-  pre[class*='language-']::-moz-selection {
-    /* Firefox */
-    background: hsl(207, 4%, 16%);
-  }
-
-  pre[class*='language-']::selection {
-    /* Safari */
-    background: hsl(207, 4%, 16%);
-  }
-
-  /* Text Selection colour */
-  pre[class*='language-']::-moz-selection,
-  pre[class*='language-'] ::-moz-selection {
-    text-shadow: none;
-    background: hsla(0, 0%, 100%, 0.15);
-  }
-
-  pre[class*='language-']::selection,
-  pre[class*='language-'] ::selection {
-    text-shadow: none;
-    background: hsla(0, 0%, 100%, 0.15);
-  }
-
-  /* Inline code */
-  :not(pre) > code[class*='language-'] {
-    border-radius: 0.3em;
-    background: var(--inlineCode-bg);
-    color: var(--inlineCode-text);
-    padding: 0.15em 0.2em 0.05em;
-    white-space: normal;
-  }
-
-  .token.attr-name {
-    color: rgb(173, 219, 103);
-    font-style: italic;
-  }
-
-  .token.comment {
-    color: rgb(128, 147, 147);
-  }
-
-  .token.string,
-  .token.url {
-    color: rgb(173, 219, 103);
-  }
-
-  .token.variable {
-    color: rgb(214, 222, 235);
-  }
-
-  .token.number {
-    color: rgb(247, 140, 108);
-  }
-
-  .token.builtin,
-  .token.char,
-  .token.constant,
-  .token.function {
-    color: rgb(130, 170, 255);
-  }
-
-  .token.punctuation {
-    color: rgb(199, 146, 234);
-  }
-
-  .token.selector,
-  .token.doctype {
-    color: rgb(199, 146, 234);
-    font-style: 'italic';
-  }
-
-  .token.class-name {
-    color: rgb(255, 203, 139);
-  }
-
-  .token.tag,
-  .token.operator,
-  .token.keyword {
-    color: #ffa7c4;
-  }
-
-  .token.boolean {
-    color: rgb(255, 88, 116);
-  }
-
-  .token.property {
-    color: rgb(128, 203, 196);
-  }
-
-  .token.namespace {
-    color: rgb(178, 204, 214);
-  }
-
-  pre[data-line] {
-    padding: 1em 0 1em 3em;
-    position: relative;
-  }
-
-  .gatsby-highlight-code-line {
-    background-color: hsla(207, 95%, 15%, 1);
-    display: block;
-    /* margin-left: -1.3125rem; */
-    /* margin-right: -1.3125rem; */
-    padding-right: 1em;
-    padding-left: 1.25em;
-    border-left: 0.25em solid #ffa7c4;
-  }
-
-  .gatsby-highlight {
-    margin-bottom: 1.75rem;
-    /* margin-left: -1.3125rem; */
-    /* margin-right: -1.3125rem; */
-    border-radius: 10px;
-    background: #011627;
-    -webkit-overflow-scrolling: touch;
-    overflow: auto;
-  }
-
-  .gatsby-highlight pre[class*='language-'] {
-    float: left;
-    min-width: 100%;
-  }
-  /* End Syntax Highlighting */
 
   .gatsby-resp-image-image{
     border-radius: 5px;

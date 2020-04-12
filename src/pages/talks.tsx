@@ -28,7 +28,7 @@ import {
 
 const PageTemplate = css`
   .site-main {
-    background: #fff;
+    background: var(--bg-content);
     padding-bottom: 4vw;
   }
   .talk-year-text{

@@ -16,6 +16,8 @@ export const AuthorMeta = styled.div`
   align-items: center;
   margin: 0 0 10px 0;
   font-family: Georgia, serif;
+
+  font-family: 'Montserrat', sans-serif;
   font-style: italic;
 `;
 

@@ -19,8 +19,8 @@ const SiteFooter = css`
   position: relative;
   padding-top: 20px;
   padding-bottom: 60px;
-  color: #fff;
-  background: ${setLightness('0.0015', colors.darkgrey)};
+  color: var(--text-header);
+  background: var(--bg-header);
 `;
 
 const SiteFooterContent = css`
@@ -84,14 +84,6 @@ const SocialLinks = styled.div`
   a {
     padding: 0 10px;
   }
-
-  svg {
-    fill: rgba(255, 255, 255, 0.7);
-
-    &:hover {
-      fill: rgba(255, 255, 255, 1);
-    }
-  }
 `;
 
 
@@ -127,7 +119,7 @@ const Footer: React.FC = () => {
               rel="noopener noreferrer"
               onClick={() => { trackOutbond(config.facebook || '') }}
             >
-              <Facebook />
+              <Facebook height="2rem" />
             </a>
           )}
 
@@ -139,7 +131,7 @@ const Footer: React.FC = () => {
               rel="noopener noreferrer"
                 onClick={() => { trackOutbond(config.twitter || '') }}
             >
-              <Twitter />
+              <Twitter height="2rem" />
             </a>
           )}
 
@@ -151,7 +143,7 @@ const Footer: React.FC = () => {
               rel="noopener noreferrer"
                 onClick={() => { trackOutbond(config.github || '') }}
             >
-              <Github />
+              <Github height="2rem" />
             </a>
           )}
 
@@ -163,7 +155,7 @@ const Footer: React.FC = () => {
               rel="noopener noreferrer"
                 onClick={() => { trackOutbond(config.linkedin || '') }}
             >
-              <Linkedin />
+              <Linkedin height="2rem" />
             </a>
           )}
         </SocialLinks>
