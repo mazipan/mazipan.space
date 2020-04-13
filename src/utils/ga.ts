@@ -39,3 +39,28 @@ export function trackTiming (): void {
     }
   }
 }
+
+// @ts-ignore
+export function trackClick ({ eventCategory, eventLabel }): void {
+  // @ts-ignore
+  if (trackCustomEvent) {
+    // @ts-ignore
+    trackCustomEvent({
+      category: eventCategory,
+      action: 'click',
+      label: eventLabel,
+    })
+  }
+}
+
+export function trackView (pageGroup: string): void {
+  // @ts-ignore
+  if (trackCustomEvent) {
+    // @ts-ignore
+    trackCustomEvent({
+      category: pageGroup,
+      action: 'view',
+      label: typeof window !== 'undefined' ? window.location.pathname : '',
+    })
+  }
+}
