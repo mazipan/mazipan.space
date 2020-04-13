@@ -200,8 +200,8 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
   const trackPostClick = (link: string) => {
     trackEvent({
       eventAction: 'click',
-      eventCategory: 'Click Post Card Item',
-      eventLabel: link
+      eventCategory: `Click Post Card Item`,
+      eventLabel: `${link} - ${post.frontmatter.title}`,
     })
   }
 
