@@ -38,9 +38,9 @@ interface SiteNavLogoProps {
 const trackLogoClick = () => {
   trackClick({
     eventCategory: 'Click Logo',
-    eventLabel: 'Click on the header logo'
-  })
-}
+    eventLabel: 'Click on the header logo',
+  });
+};
 
 const SiteNavLogo = () => (
   <StaticQuery
@@ -58,7 +58,11 @@ const SiteNavLogo = () => (
 
     // tslint:disable-next-line:react-this-binding-issue
     render={(data: SiteNavLogoProps) => (
-      <Link className="site-nav-logo" css={SiteNavLogoStyles} to="/" onClick={ () => { trackLogoClick() } }>
+      <Link className="site-nav-logo" css={SiteNavLogoStyles} to="/"
+        onClick={() => {
+          trackLogoClick();
+        }}
+      >
         {data.logo ? (
           <img src={data.logo.childImageSharp.fixed.src} alt={config.title} />
         ) : (

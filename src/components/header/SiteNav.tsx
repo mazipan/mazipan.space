@@ -1,6 +1,6 @@
 // tslint:disable:no-http-string
 import { Link } from 'gatsby';
-import * as React from 'react';
+import React, { FC } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 
@@ -103,90 +103,119 @@ interface SiteNavProps {
   isHome?: boolean;
 }
 
-const trackMenuClick = (menuName: string) => {
-  trackClick({
-    eventCategory: 'Click Main Menu',
-    eventLabel: `Menu ${menuName}`
-  })
-}
-class SiteNav extends React.Component<SiteNavProps> {
-  render() {
-    const { isHome = false } = this.props;
-    return (
-      <nav css={[isHome && HomeNavRaise, SiteNavStyles]}>
-        <SiteNavLeft>
-          {!isHome && <SiteNavLogo />}
-          <ul css={NavStyles} role="menu">
-            {/* TODO: mark current nav item - add class nav-current */}
-            <li role="menuitem">
-              <Link to="/" onClick={() => { trackMenuClick('Home') }}>Home</Link>
-            </li>
-            <li role="menuitem">
-              <Link to="/about" onClick={() => { trackMenuClick('About') }}>About</Link>
-            </li>
-            <li role="menuitem">
-              <Link to="/talks" onClick={() => { trackMenuClick('Talks') }}>Talks</Link>
-            </li>
-          </ul>
-        </SiteNavLeft>
-        <SiteNavRight>
-          <SocialLinks>
-            {config.facebook && (
-              <a
-                css={SocialLink}
-                href={config.facebook}
-                target="_blank"
-                title="Facebook"
-                rel="noopener noreferrer"
-                onClick={() => { trackOutbond(config.facebook || '', 'Sosial Media') }}
-              >
-                <Facebook height="2rem"/>
-              </a>
-            )}
+const SiteNav: FC<SiteNavProps> = props => {
+  const { isHome = false } = props;
 
-            {config.twitter && (
-              <a
-                css={SocialLink}
-                href={config.twitter}
-                title="Twitter"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => { trackOutbond(config.twitter || '', 'Sosial Media') }}
-              >
-                <Twitter height="2rem" />
-              </a>
-            )}
+  const trackMenuClick = (menuName: string) => {
+    trackClick({
+      eventCategory: 'Click Main Menu',
+      eventLabel: `Menu ${menuName}`,
+    });
+  };
 
-            {config.github && (
-              <a
-                css={SocialLink}
-                href={config.github}
-                title="Github"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => { trackOutbond(config.github || '', 'Sosial Media') }}
-              >
-                <Github height="2rem" />
-              </a>
-            )}
+  return (
+    <nav css={[isHome && HomeNavRaise, SiteNavStyles]}>
+      <SiteNavLeft>
+        {!isHome && <SiteNavLogo />}
+        <ul css={NavStyles} role="menu">
+          {/* TODO: mark current nav item - add class nav-current */}
+          <li role="menuitem">
+            <Link
+              to="/"
+              onClick={() => {
+                trackMenuClick('Home');
+              }}
+            >
+              Home
+            </Link>
+          </li>
+          <li role="menuitem">
+            <Link
+              to="/about"
+              onClick={() => {
+                trackMenuClick('About');
+              }}
+            >
+              About
+            </Link>
+          </li>
+          <li role="menuitem">
+            <Link
+              to="/talks"
+              onClick={() => {
+                trackMenuClick('Talks');
+              }}
+            >
+              Talks
+            </Link>
+          </li>
+        </ul>
+      </SiteNavLeft>
+      <SiteNavRight>
+        <SocialLinks>
+          {config.facebook && (
+            <a
+              css={SocialLink}
+              href={config.facebook}
+              target="_blank"
+              title="Facebook"
+              rel="noopener noreferrer"
+              onClick={() => {
+                trackOutbond(config.facebook ?? '', 'Sosial Media');
+              }}
+            >
+              <Facebook height="2rem" />
+            </a>
+          )}
 
-            {config.linkedin && (
-              <a
-                css={SocialLink}
-                href={config.linkedin}
-                title="Linkedin"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => { trackOutbond(config.linkedin || '', 'Sosial Media') }}
-              >
-                <Linkedin height="2rem" />
-              </a>
-            )}
-          </SocialLinks>
-        </SiteNavRight>
-      </nav>
-    );
-  }
-}
+          {config.twitter && (
+            <a
+              css={SocialLink}
+              href={config.twitter}
+              title="Twitter"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => {
+                trackOutbond(config.twitter ?? '', 'Sosial Media');
+              }}
+            >
+              <Twitter height="2rem" />
+            </a>
+          )}
+
+          {config.github && (
+            <a
+              css={SocialLink}
+              href={config.github}
+              title="Github"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => {
+                trackOutbond(config.github ?? '', 'Sosial Media');
+              }}
+            >
+              <Github height="2rem" />
+            </a>
+          )}
+
+          {config.linkedin && (
+            <a
+              css={SocialLink}
+              href={config.linkedin}
+              title="Linkedin"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => {
+                trackOutbond(config.linkedin ?? '', 'Sosial Media');
+              }}
+            >
+              <Linkedin height="2rem" />
+            </a>
+          )}
+        </SocialLinks>
+      </SiteNavRight>
+    </nav>
+  );
+};
 
 export default SiteNav;
