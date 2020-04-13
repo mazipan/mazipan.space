@@ -5,7 +5,7 @@ import * as _ from 'lodash';
 
 import InfinityIcon from './icons/infinity';
 
-import { trackEvent } from '../utils/ga';
+import { trackClick } from '../utils/ga';
 import config from '../website-config';
 
 export interface ReadNextCardStylesProps {
@@ -176,10 +176,9 @@ export interface ReadNextQuery {
 const ReadNextCard: React.FC<ReadNextProps> = props => {
 
   const trackRelatedPostClick = (linkName: string) => {
-    trackEvent({
-      eventAction: 'click',
+    trackClick({
       eventCategory: 'Click Related Post',
-      eventLabel: linkName
+      eventLabel: `Next card - ${linkName}`
     })
   }
 

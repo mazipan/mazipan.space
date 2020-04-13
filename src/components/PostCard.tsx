@@ -1,13 +1,12 @@
 import { Link } from 'gatsby';
 import Img from 'gatsby-image';
 import * as _ from 'lodash';
-import { lighten } from 'polished';
 import * as React from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 
 import { colors } from '../styles/colors';
-import { trackEvent } from '../utils/ga';
+import { trackClick } from '../utils/ga';
 
 const PostCardStyles = css`
   flex: 1 1 300px;
@@ -198,10 +197,9 @@ export interface PostCardProps {
 const PostCard: React.FC<PostCardProps> = ({ post }) => {
 
   const trackPostClick = (link: string) => {
-    trackEvent({
-      eventAction: 'click',
+    trackClick({
       eventCategory: `Click Post Card Item`,
-      eventLabel: `${link} - ${post.frontmatter.title}`,
+      eventLabel: `Card Post - ${link} - ${post.frontmatter.title}`,
     })
   }
 

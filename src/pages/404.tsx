@@ -1,5 +1,5 @@
 import { graphql, Link } from 'gatsby';
-import * as React from 'react';
+import React, { FC, useEffect } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 
@@ -8,6 +8,7 @@ import IndexLayout from '../layouts';
 import SiteNavLogo from '../components/header/SiteNavLogo';
 import PostCard from '../components/PostCard';
 import Wrapper from '../components/Wrapper';
+import { trackView } from '../utils/ga';
 
 import {
   inner,
@@ -63,7 +64,12 @@ interface NotFoundTemplateProps {
   };
 }
 
-const NotFoundPage: React.FC<NotFoundTemplateProps> = props => {
+const NotFoundPage: FC<NotFoundTemplateProps> = props => {
+
+  useEffect(() => {
+    trackView('Page 404');
+  }, []);
+
   const { edges } = props.data.allMarkdownRemark;
 
   return (

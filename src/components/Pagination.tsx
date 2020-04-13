@@ -1,7 +1,7 @@
 import { Link } from 'gatsby';
 import * as React from 'react';
 import { css } from '@emotion/core';
-import { trackEvent } from '../utils/ga';
+import { trackClick } from '../utils/ga';
 
 export interface PaginationProps {
   currentPage: number;
@@ -43,10 +43,9 @@ const Pagination: React.FunctionComponent<PaginationProps> = ({ currentPage, num
   const nextPage = (currentPage + 1).toString();
 
   const trackPageClick = (link: string) => {
-    trackEvent({
-      eventAction: 'click',
+    trackClick({
       eventCategory: 'Click Pagination',
-      eventLabel: link
+      eventLabel: `Pagination - ${link}`
     })
   }
 

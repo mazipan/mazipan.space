@@ -12,7 +12,7 @@ import Linkedin from '../icons/linkedin';
 import { SocialLink } from '../../styles/shared';
 
 import config from '../../website-config';
-import { trackOutbond, trackEvent } from '../../utils/ga';
+import { trackOutbond, trackClick } from '../../utils/ga';
 import SiteNavLogo from './SiteNavLogo';
 
 const HomeNavRaise = css`
@@ -104,10 +104,9 @@ interface SiteNavProps {
 }
 
 const trackMenuClick = (menuName: string) => {
-  trackEvent({
-    eventAction: 'click',
+  trackClick({
     eventCategory: 'Click Main Menu',
-    eventLabel: menuName
+    eventLabel: `Menu ${menuName}`
   })
 }
 class SiteNav extends React.Component<SiteNavProps> {
@@ -139,7 +138,7 @@ class SiteNav extends React.Component<SiteNavProps> {
                 target="_blank"
                 title="Facebook"
                 rel="noopener noreferrer"
-                onClick={() => { trackOutbond(config.facebook || '') }}
+                onClick={() => { trackOutbond(config.facebook || '', 'Sosial Media') }}
               >
                 <Facebook height="2rem"/>
               </a>
@@ -152,7 +151,7 @@ class SiteNav extends React.Component<SiteNavProps> {
                 title="Twitter"
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={() => { trackOutbond(config.twitter || '') }}
+                onClick={() => { trackOutbond(config.twitter || '', 'Sosial Media') }}
               >
                 <Twitter height="2rem" />
               </a>
@@ -165,7 +164,7 @@ class SiteNav extends React.Component<SiteNavProps> {
                 title="Github"
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={() => { trackOutbond(config.github || '') }}
+                onClick={() => { trackOutbond(config.github || '', 'Sosial Media') }}
               >
                 <Github height="2rem" />
               </a>
@@ -178,7 +177,7 @@ class SiteNav extends React.Component<SiteNavProps> {
                 title="Linkedin"
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={() => { trackOutbond(config.linkedin || '') }}
+                onClick={() => { trackOutbond(config.linkedin || '', 'Sosial Media') }}
               >
                 <Linkedin height="2rem" />
               </a>

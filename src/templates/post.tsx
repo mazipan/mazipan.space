@@ -1,7 +1,7 @@
 import { Link, graphql } from 'gatsby';
 import Img from 'gatsby-image';
 import * as _ from 'lodash';
-import * as React from 'react';
+import React, { FC, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 
 import IndexLayout from '../layouts';
@@ -16,12 +16,13 @@ import PostFullFooterRight from '../components/PostFullFooterRight';
 import ReadNextCard from '../components/ReadNextCard';
 import Wrapper from '../components/Wrapper';
 
-import config from '../website-config';
-
+import { trackView } from '../utils/ga';
 import {
   getJsonLdBreadcrumb,
   getJsonLdArticle
-} from '../utils/jsonld'
+} from '../utils/jsonld';
+
+import config from '../website-config';
 
 import {
   inner,
@@ -43,7 +44,11 @@ import {
   ReadNextFeed
 } from './styles/post';
 
-const PageTemplate: React.FC<PageTemplateProps> = props => {
+const PageTemplate: FC<PageTemplateProps> = props => {
+  useEffect(() => {
+    trackView('Page Post');
+  }, []);
+
   const post = props.data && props.data.markdownRemark;
   let width = '';
   let height = '';
@@ -134,7 +139,8 @@ const PageTemplate: React.FC<PageTemplateProps> = props => {
                     />
                   </PostFullImage>
                 )}
-                <PostContent htmlAst={post.htmlAst} />
+
+                <PostContent htmlAst={post.htmlAst} title={post.frontmatter.title} desc={post.frontmatter.description}/>
                 <PostFullFooter>
                   <AuthorCard author={post.frontmatter.author} />
                   <PostFullFooterRight authorId={post.frontmatter.author.id} />
@@ -180,6 +186,7 @@ export const query = graphql`
       timeToRead
       frontmatter {
         title
+        description
         userDate: date(formatString: "D MMMM YYYY")
         date
         tags

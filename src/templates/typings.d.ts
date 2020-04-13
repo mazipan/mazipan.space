@@ -71,6 +71,7 @@ interface PageTemplateProps {
       timeToRead: string;
       frontmatter: {
         title: string;
+        description: string;
         date: string;
         userDate: string;
         image: {

@@ -2,7 +2,7 @@ import { graphql, Link, StaticQuery } from 'gatsby';
 import * as React from 'react';
 import { css } from '@emotion/core';
 
-import { trackEvent } from '../../utils/ga';
+import { trackClick } from '../../utils/ga';
 import config from '../../website-config';
 
 const SiteNavLogoStyles = css`
@@ -36,10 +36,9 @@ interface SiteNavLogoProps {
 }
 
 const trackLogoClick = () => {
-  trackEvent({
-    eventAction: 'click',
+  trackClick({
     eventCategory: 'Click Logo',
-    eventLabel: ''
+    eventLabel: 'Click on the header logo'
   })
 }
 

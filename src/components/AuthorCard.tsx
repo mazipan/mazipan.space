@@ -4,7 +4,7 @@ import * as React from 'react';
 import styled from '@emotion/styled';
 
 import { AuthorProfileImage } from '../styles/shared';
-import { trackEvent } from '../utils/ga';
+import { trackClick } from '../utils/ga';
 
 const AuthorCardSection = styled.section`
   display: flex;
@@ -39,10 +39,9 @@ export interface AuthorCardProps {
 
 const AuthorCard: React.FC<AuthorCardProps> = ({ author }) => {
   const trackAuthorClick = (linkName: string) => {
-    trackEvent({
-      eventAction: 'click',
+    trackClick({
       eventCategory: 'Click Author Link',
-      eventLabel: linkName
+      eventLabel: `Author card - ${linkName}`
     })
   }
 

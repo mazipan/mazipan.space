@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC, useEffect } from 'react';
 import Helmet from 'react-helmet';
 import { graphql } from 'gatsby';
 
@@ -12,6 +12,7 @@ import Facebook from '../components/icons/facebook';
 import Website from '../components/icons/website';
 import Twitter from '../components/icons/twitter';
 
+import { trackView } from '../utils/ga';
 import config from '../website-config';
 
 import {
@@ -35,7 +36,11 @@ import {
   AuthorProfileBioImage,
 } from './styles/author';
 
-const Author: React.FC<AuthorTemplateProps> = props => {
+const Author: FC<AuthorTemplateProps> = props => {
+  useEffect(() => {
+    trackView('Page Author');
+  }, []);
+
   const author = props.data && props.data.authorYaml;
 
   const edges = props.data && props.data.allMarkdownRemark.edges.filter(

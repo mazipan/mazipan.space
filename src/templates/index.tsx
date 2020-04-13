@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { FC, useEffect } from 'react';
 import { graphql } from 'gatsby';
 import Helmet from 'react-helmet';
 
@@ -10,6 +10,7 @@ import SiteNav from '../components/header/SiteNav';
 import PostCard from '../components/PostCard';
 import Wrapper from '../components/Wrapper';
 import Pagination from '../components/Pagination';
+import { trackView } from '../utils/ga';
 
 import config from '../website-config';
 
@@ -27,7 +28,11 @@ import {
 
 import { HomePosts } from './styles/index';
 
-const IndexPage: React.FC<IndexProps> = props => {
+const IndexPage: FC<IndexProps> = props => {
+  useEffect(() => {
+    trackView('Page Index');
+  }, []);
+
   const width = props.data ? props.data.header.childImageSharp.fluid.sizes.split(', ')[1].split('px')[0] : 100;
   const height = props.data ? String(Number(width) / props.data.header.childImageSharp.fluid.aspectRatio) : '100';
 

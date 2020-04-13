@@ -3,9 +3,8 @@ import * as _ from 'lodash';
 import * as React from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-import { lighten } from 'polished';
 
-import { trackEvent } from '../utils/ga';
+import { trackClick } from '../utils/ga';
 
 import { colors } from '../styles/colors';
 
@@ -36,17 +35,16 @@ export interface PostFullFooterRightProps {
   authorId: string;
 }
 
-const trackClick = (linkName: string) => {
-  trackEvent({
-    eventAction: 'click',
+const handleClick = (linkName: string) => {
+  trackClick({
     eventCategory: 'Click Full Footer Link',
-    eventLabel: linkName
+    eventLabel: `Footer right - ${linkName}`
   })
 }
 
 const PostFullFooterRight: React.FC<PostFullFooterRightProps> = props => (
   <PostFullFooterRightDiv>
-    <Link css={AuthorCardButton} to={`/author/${_.kebabCase(props.authorId)}/`} onClick={() => { trackClick('Read more') }}>
+    <Link css={AuthorCardButton} to={`/author/${_.kebabCase(props.authorId)}/`} onClick={() => { handleClick('Read more') }}>
       Read More
     </Link>
   </PostFullFooterRightDiv>

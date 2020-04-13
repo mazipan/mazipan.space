@@ -3,7 +3,7 @@ import React, { FC, useState } from 'react';
 import styled from '@emotion/styled';
 import MoonIcon from './icons/moon';
 import SunIcon from './icons/sun';
-import { trackEvent } from '../utils/ga';
+import { trackClick } from '../utils/ga';
 
 const Switch = styled.div`
   position: absolute;
@@ -27,10 +27,9 @@ const ThemeSwitcher: FC = () => {
   const toggleTheme = () => {
     const newTheme = theme === 'dark' ? 'light' : 'dark';
 
-    trackEvent({
-      eventAction: 'click',
+    trackClick({
       eventCategory: 'Click Theme Switcher',
-      eventLabel: newTheme
+      eventLabel: `Switch to ${newTheme}`
     })
 
     setTheme(newTheme);

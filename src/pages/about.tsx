@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { FC, useEffect } from 'react';
 import Helmet from 'react-helmet';
 import { css } from '@emotion/core';
 
@@ -8,6 +8,7 @@ import Wrapper from '../components/Wrapper';
 import SiteNav from '../components/header/SiteNav';
 import { PostFullContent } from '../components/PostContent';
 import Footer from '../components/Footer';
+import { trackView } from '../utils/ga';
 
 import {
   SiteHeader,
@@ -30,7 +31,13 @@ const PageTemplate = css`
   }
 `;
 
-const About: React.FC = () => (
+const About: FC = () => {
+
+  useEffect(() => {
+    trackView('Page About');
+  }, []);
+
+  return (
   <IndexLayout>
     <Helmet>
       <title>About @mazipan</title>
@@ -74,6 +81,7 @@ const About: React.FC = () => (
       <Footer />
     </Wrapper>
   </IndexLayout>
-);
+  )
+};
 
 export default About;

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { FC, useEffect } from 'react';
 import { css } from '@emotion/core';
 import Helmet from 'react-helmet';
 
@@ -9,6 +9,7 @@ import SiteNav from '../components/header/SiteNav';
 import Footer from '../components/Footer';
 import { PostFullContent } from '../components/PostContent';
 
+import { trackView } from '../utils/ga';
 import config from '../website-config';
 // @ts-ignore
 import allTalks from '../data/all-talks';
@@ -58,7 +59,12 @@ const PageTemplate = css`
   }
 `;
 
-const Talks: React.FC = () => {
+const Talks: FC = () => {
+
+  useEffect(() => {
+    trackView('Page Talks');
+  }, []);
+
   const title = 'Talks by @mazipan' || config.title;
   const desc = 'A complete list of technology talk sessions from @mazipan' || config.description;
   return (

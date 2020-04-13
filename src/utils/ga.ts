@@ -1,11 +1,11 @@
 import { trackCustomEvent } from 'gatsby-plugin-google-analytics'
 
-export function trackOutbond (href: string): void {
+export function trackOutbond (href: string, category?: string): void {
   // @ts-ignore
   if (trackCustomEvent) {
     // @ts-ignore
     trackCustomEvent({
-      category: 'Outbond Link',
+      category: category || 'Outbond Link',
       action: 'click',
       label: href,
       transport: 'beacon',
@@ -60,7 +60,7 @@ export function trackView (pageGroup: string): void {
     trackCustomEvent({
       category: pageGroup,
       action: 'view',
-      label: typeof window !== 'undefined' ? window.location.pathname : '',
+      label: typeof window !== 'undefined' ? `view - ${window.location.pathname}` : '',
     })
   }
 }

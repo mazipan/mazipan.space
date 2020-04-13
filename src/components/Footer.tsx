@@ -1,5 +1,4 @@
 import { Link } from 'gatsby';
-import { setLightness } from 'polished';
 import * as React from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
@@ -9,11 +8,10 @@ import Twitter from './icons/twitter';
 import Github from './icons/github';
 import Linkedin from './icons/linkedin';
 
-import { colors } from '../styles/colors';
 import { outer, inner } from '../styles/shared';
 
 import config from '../website-config';
-import { trackEvent, trackOutbond } from '../utils/ga';
+import { trackClick, trackOutbond } from '../utils/ga';
 
 const SiteFooter = css`
   position: relative;
@@ -86,28 +84,46 @@ const SocialLinks = styled.div`
   }
 `;
 
-
 const Footer: React.FC = () => {
-
   const trackFooterClick = (linkName: string) => {
-    trackEvent({
-      eventAction: 'click',
+    trackClick({
       eventCategory: 'Click Footer Link',
-      eventLabel: linkName
-    })
-  }
+      eventLabel: `Footer - ${linkName}`,
+    });
+  };
 
   return (
     <footer css={[outer, SiteFooter]}>
       <div css={[inner, SiteFooterContent]}>
         <section className="copyright">
-          <Link to="/" onClick={ ()=> { trackFooterClick('Site title') }}>{config.title}</Link> &copy; {new Date().getFullYear()}{' '}
-          { config.footer }
+          <Link
+            to="/"
+            onClick={() => {
+              trackFooterClick('Site title');
+            }}
+          >
+            {config.title}
+          </Link>{' '}
+          &copy; {new Date().getFullYear()} {config.footer}
         </section>
 
         <SiteFooterNav>
-          <Link to="/" onClick={ ()=> { trackFooterClick('Latest posts') }}>Latest Posts</Link>
-          <a href="/rss.xml" onClick={ ()=> { trackFooterClick('Rss') }}>RSS</a>
+          <Link
+            to="/"
+            onClick={() => {
+              trackFooterClick('Latest posts');
+            }}
+          >
+            Latest Posts
+          </Link>
+          <a
+            href="/rss.xml"
+            onClick={() => {
+              trackFooterClick('Rss');
+            }}
+          >
+            RSS
+          </a>
         </SiteFooterNav>
 
         <SocialLinks>
@@ -117,7 +133,9 @@ const Footer: React.FC = () => {
               target="_blank"
               title="Facebook"
               rel="noopener noreferrer"
-              onClick={() => { trackOutbond(config.facebook || '') }}
+              onClick={() => {
+                trackOutbond(config.facebook || '', 'Sosial Media');
+              }}
             >
               <Facebook height="2rem" />
             </a>
@@ -129,7 +147,9 @@ const Footer: React.FC = () => {
               title="Twitter"
               target="_blank"
               rel="noopener noreferrer"
-                onClick={() => { trackOutbond(config.twitter || '') }}
+              onClick={() => {
+                trackOutbond(config.twitter || '', 'Sosial Media');
+              }}
             >
               <Twitter height="2rem" />
             </a>
@@ -141,7 +161,9 @@ const Footer: React.FC = () => {
               title="Github"
               target="_blank"
               rel="noopener noreferrer"
-                onClick={() => { trackOutbond(config.github || '') }}
+              onClick={() => {
+                trackOutbond(config.github || '', 'Sosial Media');
+              }}
             >
               <Github height="2rem" />
             </a>
@@ -153,7 +175,9 @@ const Footer: React.FC = () => {
               title="Linkedin"
               target="_blank"
               rel="noopener noreferrer"
-                onClick={() => { trackOutbond(config.linkedin || '') }}
+              onClick={() => {
+                trackOutbond(config.linkedin || '', 'Sosial Media');
+              }}
             >
               <Linkedin height="2rem" />
             </a>

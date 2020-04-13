@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC, useEffect } from 'react';
 import { graphql } from 'gatsby';
 import Helmet from 'react-helmet';
 
@@ -9,6 +9,7 @@ import SiteNav from '../components/header/SiteNav';
 import PostCard from '../components/PostCard';
 import Wrapper from '../components/Wrapper';
 
+import { trackView } from '../utils/ga';
 import config from '../website-config';
 
 import {
@@ -23,7 +24,11 @@ import {
   SiteTitle,
 } from '../styles/shared';
 
-const Tags: React.FC<TagTemplateProps> = props => {
+const Tags: FC<TagTemplateProps> = props => {
+  useEffect(() => {
+    trackView('Page Tag');
+  }, []);
+
   const tag = props.pageContext.tag ? props.pageContext.tag : '';
   const { edges, totalCount } = props.data ? props.data.allMarkdownRemark : { edges: [], totalCount: 0 };
   const tagData = props.data && props.data.allTagYaml.edges.find(
