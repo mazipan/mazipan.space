@@ -39,7 +39,7 @@ Setelah memasang dan akses sudah diberikan, maka kalian cukup tinggal duduk samb
 
 Berikut tampilan salah satu pull request yang dibuat secara otomatis oleh ImgBot
 
-![Pull request otomatis oleh ImgBot](./images/pull-request-img-bot.png)
+![Pull request otomatis oleh ImgBot](./images/pull-request-imgbot.png)
 
 Terakhir, bola ada ditangan kalian. Kapanpun kalian mau dan sempat, kalian bisa melakukan merge pull request tersebut ke projek kalian.
 
