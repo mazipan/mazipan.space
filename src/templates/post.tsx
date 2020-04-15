@@ -72,6 +72,9 @@ const PageTemplate: FC<PageTemplateProps> = props => {
         {(post && post.frontmatter.image && post.frontmatter.image.childImageSharp) && (
           <meta property="og:image" content={`${config.siteUrl}${post.frontmatter.image.childImageSharp.fluid.src}`} />
         )}
+        {width && <meta property="og:image:width" content={width} />}
+        {height && <meta property="og:image:height" content={height} />}
+
         <meta property="article:published_time" content={post && post.frontmatter.date} />
         {/* not sure if modified time possible */}
         {/* <meta property="article:modified_time" content="2018-08-20T15:12:00.000Z" /> */}
@@ -97,9 +100,6 @@ const PageTemplate: FC<PageTemplateProps> = props => {
           name="twitter:creator"
           content={`@${config.twitter.split('https://twitter.com/')[1]}`}
         />}
-        {width && <meta property="og:image:width" content={width} />}
-        {height && <meta property="og:image:height" content={height} />}
-
         <script type="application/ld+json">{`${getJsonLdBreadcrumb({ category: post?.frontmatter?.tags?.[0] || '', title: post?.frontmatter?.title || '', slug: props?.pathContext?.slug || ''})}`}</script>
         <script type="application/ld+json">{`${getJsonLdArticle({ title: post?.frontmatter?.title || '', slug: props?.pathContext?.slug || '', cover: config.siteUrl + post?.frontmatter?.image?.childImageSharp?.fluid?.src || '', date: post?.frontmatter?.date, desc: post?.excerpt || ''})}`}</script>
       </Helmet>

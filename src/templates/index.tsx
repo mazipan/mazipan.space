@@ -49,8 +49,11 @@ const IndexPage: FC<IndexProps> = props => {
         <meta property="og:url" content={config.siteUrl} />
         <meta
           property="og:image"
-          content={`${config.siteUrl}${props.data ? props.data.header.childImageSharp.fluid.src : config.logo}`}
+          content={`${config.siteUrl}/meta-image-home.jpg`}
         />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+
         {config.facebook && <meta property="article:publisher" content={config.facebook} />}
         {config.googleSiteVerification && <meta name="google-site-verification" content={config.googleSiteVerification} />}
         <meta name="twitter:card" content="summary_large_image" />
@@ -59,7 +62,7 @@ const IndexPage: FC<IndexProps> = props => {
         <meta name="twitter:url" content={config.siteUrl} />
         <meta
           name="twitter:image"
-          content={`${config.siteUrl}${props.data ? props.data.header.childImageSharp.fluid.src : config.logo}`}
+          content={`${config.siteUrl}/meta-image-home.jpg`}
         />
         {config.twitter && (
           <meta
@@ -67,8 +70,6 @@ const IndexPage: FC<IndexProps> = props => {
             content={`@${config.twitter.split('https://twitter.com/')[1]}`}
           />
         )}
-        <meta property="og:image:width" content={width} />
-        <meta property="og:image:height" content={height} />
       </Helmet>
       <Wrapper>
         <ThemeSwitcher/>

@@ -1,5 +1,6 @@
 import { graphql, Link } from 'gatsby';
 import React, { FC, useEffect } from 'react';
+import Helmet from 'react-helmet';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 
@@ -9,6 +10,7 @@ import SiteNavLogo from '../components/header/SiteNavLogo';
 import PostCard from '../components/PostCard';
 import Wrapper from '../components/Wrapper';
 import { trackView } from '../utils/ga';
+import config from '../website-config';
 
 import {
   inner,
@@ -72,8 +74,44 @@ const NotFoundPage: FC<NotFoundTemplateProps> = props => {
 
   const { edges } = props.data.allMarkdownRemark;
 
+  const title = '404 Page - @mazipan';
+  const desc = config.description;
+
   return (
     <IndexLayout>
+    <Helmet>
+        <html lang={config.lang} />
+        <title>{title}</title>
+
+        <meta name="description" content={desc} />
+        <meta property="og:site_name" content={config.title} />
+        <meta property="og:type" content="profile" />
+        <meta property="og:title" content={`${title}`} />
+        <meta property="og:url" content={config.siteUrl} />
+        <meta property="og:image" content={`${config.siteUrl}/meta-image-404.jpg`} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+
+        <meta property="article:publisher" content={`${config.facebook}`} />
+        <meta property="article:author" content={`${config.facebook}`} />
+
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content={`${title}`} />
+        <meta name="twitter:url" content={config.siteUrl} />
+        <meta name="twitter:image" content={`${config.siteUrl}/meta-image-404.jpg`} />
+        {config.twitter && (
+          <meta
+            name="twitter:site"
+            content={`@${config.twitter.split('https://twitter.com/')[1]}`}
+          />
+        )}
+        {config.twitter && (
+          <meta
+            name="twitter:creator"
+            content={`@${config.twitter.split('https://twitter.com/')[1]}`}
+          />
+        )}
+      </Helmet>
       <Wrapper>
         <header css={[SiteHeader, outer]}>
           <div className="inner">

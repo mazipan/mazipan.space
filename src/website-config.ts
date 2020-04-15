@@ -5,7 +5,6 @@ const FULL_DOMAIN = process.env.FULL_DOMAIN || 'https://mazipan.space';
 export interface WebsiteConfig {
   title: string;
   description: string;
-  coverImage: string;
   logo: string;
   lang: string;
   siteUrl: string;
@@ -20,7 +19,6 @@ export interface WebsiteConfig {
 const config: WebsiteConfig = {
   title: SITE_NAME,
   description: 'A personal blog by mazipan',
-  coverImage: 'images/blog-cover.jpg',
   logo: 'images/logo.png',
   lang: 'id',
   siteUrl: FULL_DOMAIN,

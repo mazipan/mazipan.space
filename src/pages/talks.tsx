@@ -65,8 +65,9 @@ const Talks: FC = () => {
     trackView('Page Talks');
   }, []);
 
-  const title = 'Talks by @mazipan' || config.title;
-  const desc = 'A complete list of technology talk sessions from @mazipan' || config.description;
+  const title = 'All talks by Irfan Maulana - @mazipan';
+  const desc = 'A complete list of technology talk sessions by @mazipan';
+
   return (
     <IndexLayout>
       <Helmet>
@@ -78,7 +79,9 @@ const Talks: FC = () => {
         <meta property="og:type" content="profile" />
         <meta property="og:title" content={`${title}`} />
         <meta property="og:url" content={config.siteUrl + '/talks'} />
-        <meta property="og:image" content={`${config.siteUrl}/'icons/icon-384x384'`} />
+        <meta property="og:image" content={`${config.siteUrl}/meta-image-talks.jpg`} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
 
         <meta property="article:publisher" content={`${config.facebook}`} />
         <meta property="article:author" content={`${config.facebook}`} />
@@ -86,7 +89,7 @@ const Talks: FC = () => {
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:title" content={`${title}`} />
         <meta name="twitter:url" content={config.siteUrl + '/talks'} />
-        <meta name="twitter:image" content={`${config.siteUrl}/'icons/icon-384x384'`} />
+        <meta name="twitter:image" content={`${config.siteUrl}/meta-image-talks.jpg`} />
         {config.twitter && (
           <meta
             name="twitter:site"
