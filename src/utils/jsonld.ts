@@ -20,6 +20,18 @@ export function getJsonLdWebsite (): string {
   })
 }
 
+export function getJsonLdOrganization (): string {
+  return JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'mazipan',
+    logo: {
+      '@type': 'ImageObject',
+      'url': `${config.siteUrl}/${config.logo}`
+    }
+  })
+}
+
 export function getJsonLdBreadcrumb ({ category, title, slug }: JsonldBreadcrumbParam): string {
   return JSON.stringify({
     '@context': 'https://schema.org',

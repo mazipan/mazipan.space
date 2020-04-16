@@ -100,8 +100,8 @@ const PageTemplate: FC<PageTemplateProps> = props => {
           name="twitter:creator"
           content={`@${config.twitter.split('https://twitter.com/')[1]}`}
         />}
-        <script type="application/ld+json">{`${getJsonLdBreadcrumb({ category: post?.frontmatter?.tags?.[0] || '', title: post?.frontmatter?.title || '', slug: props?.pathContext?.slug || ''})}`}</script>
-        <script type="application/ld+json">{`${getJsonLdArticle({ title: post?.frontmatter?.title || '', slug: props?.pathContext?.slug || '', cover: config.siteUrl + post?.frontmatter?.image?.childImageSharp?.fluid?.src || '', date: post?.frontmatter?.date, desc: post?.excerpt || ''})}`}</script>
+        <script type="application/ld+json" id="ld-breadcrumb">{`${getJsonLdBreadcrumb({ category: post?.frontmatter?.tags?.[0] || '', title: post?.frontmatter?.title || '', slug: props?.pathContext?.slug || ''})}`}</script>
+        <script type="application/ld+json" id="ld-post">{`${getJsonLdArticle({ title: post?.frontmatter?.title || '', slug: props?.pathContext?.slug || '', cover: config.siteUrl + post?.frontmatter?.image?.childImageSharp?.fluid?.src || '', date: post?.frontmatter?.date, desc: post?.excerpt || ''})}`}</script>
       </Helmet>
       <Wrapper css={PostTemplate}>
         <header css={[outer, SiteHeader]}>

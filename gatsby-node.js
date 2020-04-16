@@ -10,7 +10,7 @@ const postTemplate = path.resolve('./src/templates/post.tsx');
 const POST_PER_PAGE = 6;
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
-  const { createNodeField } = actions;
+  const { createNodeField  } = actions;
 
   fmImagesToRelative(node);
 

@@ -3,7 +3,7 @@ import React, { FC, useEffect } from 'react';
 import Helmet from 'react-helmet';
 
 import GlobalStyles from './styles';
-import { getJsonLdWebsite } from '../utils/jsonld';
+import { getJsonLdWebsite, getJsonLdOrganization } from '../utils/jsonld';
 import { trackTiming } from '../utils/ga';
 
 interface IndexProps {
@@ -18,7 +18,8 @@ const IndexLayout: FC<IndexProps> = (props) => {
   return (
     <div className={props.className}>
       <Helmet>
-        <script type="application/ld+json">{` ${getJsonLdWebsite()} `}</script>
+        <script type="application/ld+json" id="ld-website">{` ${getJsonLdWebsite()} `}</script>
+        <script type="application/ld+json" id="ld-org">{` ${getJsonLdOrganization()} `}</script>
       </Helmet>
       <Global styles={GlobalStyles} />
       {props.children}
