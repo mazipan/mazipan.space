@@ -1,4 +1,16 @@
 export default {
+  "2020": [
+    {
+      "date": "Apr 14, 2020",
+      "event": "PHPID Online Learning #4",
+      "place": "Online using Zoom",
+      "topic": "Kinerja Web 101",
+      "slide": "https://speakerdeck.com/mazipan/kinerja-web-101",
+      "link": [
+        "https://web.facebook.com/groups/phpid/permalink/10158077562731101/"
+      ]
+    }
+  ],
   "2019": [
     {
       "date": "Nov 30, 2019",
