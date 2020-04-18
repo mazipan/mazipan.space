@@ -1,8 +1,11 @@
 const fs = require('fs');
 
 const isSkipFiles = (filename, skipFiles) => {
-  const e = skipFiles.find(f => f.trim().toLowerCase() === filename.trim().toLowerCase());
-  return Boolean(e);
+  if (skipFiles) {
+    const e = skipFiles.find(f => f.trim().toLowerCase() === filename.trim().toLowerCase());
+    return Boolean(e);
+  }
+  return false;
 }
 
 const readDirs = (dirname, isRecursive, onFile, onError, skipFiles) => {
@@ -18,7 +21,7 @@ const readDirs = (dirname, isRecursive, onFile, onError, skipFiles) => {
         const isDir = fs.statSync(dirname + '/' + filename).isDirectory();
         if (isRecursive) {
           if (isDir) {
-            readDirs(dirname + '/' + filename, onFile, onError, skipFiles)
+            readDirs(dirname + '/' + filename, true, onFile, onError, skipFiles)
           } else {
             onFile(dirname + '/' + filename);
           }
