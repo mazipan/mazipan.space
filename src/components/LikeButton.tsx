@@ -42,8 +42,10 @@ const LikeButton: FC<LikeButtonProps> = ({ slug }) => {
       // @ts-ignore
       entries.forEach(async (entry) => {
         if (entry.isIntersecting) {
-          if (config.apiLikeButton) {
-            const r = await fetch(`${config.apiLikeButton}/likes/${slug}`);
+          // @ts-ignore
+          if (process.env.GATSBY_API_LIKE_BUTTON) {
+            // @ts-ignore
+            const r = await fetch(`${process.env.GATSBY_API_LIKE_BUTTON}/likes/${slug}`);
             const data = r.json();
             console.log(data);
           }

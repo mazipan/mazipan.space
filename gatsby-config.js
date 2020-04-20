@@ -1,8 +1,12 @@
 const path = require('path');
-require('dotenv').config();
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
 
-const SITE_NAME = process.env.GATSBY_SITE_NAME || '@mazipan';
-const FULL_DOMAIN = process.env.GATSBY_FULL_DOMAIN || 'https://mazipan.space';
+console.log('>>>>>>', process.env.NODE_ENV, process.env.SITE_VERIFICATION);
+
+const SITE_NAME = process.env.SITE_NAME || '@mazipan';
+const FULL_DOMAIN = process.env.FULL_DOMAIN || 'https://mazipan.space';
 
 module.exports = {
   siteMetadata: {
@@ -92,7 +96,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        trackingId: process.env.GATSBY_GA_KEY,
+        trackingId: process.env.GA_KEY,
         // Puts tracking script in the head instead of the body
         head: true,
         // IP anonymization for GDPR compliance
