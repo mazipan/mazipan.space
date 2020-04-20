@@ -6,8 +6,8 @@
   "author": "Irfan Maulana <github.com/mazipan>",
   "license": "MIT",
   "scripts": {
-    "build": "yarn clean && yarn copy:env && yarn copy:talks && gatsby build && yarn copy:static",
-    "build:ci": "yarn clean && yarn copy:talks && gatsby build && yarn copy:static",
+    "build": "yarn clean && gatsby build && yarn copy:static",
+    "build:ci": "yarn clean && yarn copy:env && yarn copy:talks && gatsby build && yarn copy:static",
     "build:no-clean": "gatsby build && yarn copy:static",
     "build:no-cache": "yarn clean && yarn clean:cache && gatsby build && yarn copy:static",
     "clean": "rimraf ./public",
