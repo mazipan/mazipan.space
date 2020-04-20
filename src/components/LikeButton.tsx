@@ -41,15 +41,26 @@ const LikeButton: FC<LikeButtonProps> = ({ slug }) => {
       // @ts-ignore
       entries.forEach(async (entry) => {
         if (entry.isIntersecting) {
-          // @ts-ignore
-          const r = await fetch(`${process.env.API_LIKE_BUTTON}/likes/${slug}`);
-          const data = r.json();
-          console.log(data);
-          const target = document.querySelector('#like-btn');
-          // @ts-ignore
-          observer.unobserve(target);
+          try {
+            // @ts-ignore
+            const r = await fetch(`${process.env.API_LIKE_BUTTON}/like${slug}`);
+            const data = r.json();
+            // @ts-ignore
+            if (data && data.data) {
+              // @ts-ignore
+              document.querySelector('#like-count').innerHTML = data.data;
+            } else {
+              // @ts-ignore
+              document.querySelector('#like-count').innerHTML = '1';
+            }
+            const target = document.querySelector('#like-btn');
+            // @ts-ignore
+            observer.unobserve(target);
+          } catch (error) {
+            console.error(error);
+          }
         }
-      })
+      });
     };
 
     const options = {
@@ -64,7 +75,6 @@ const LikeButton: FC<LikeButtonProps> = ({ slug }) => {
     observer.observe(target);
   }, []);
 
-
   const trackPageClick = (link: string) => {
     trackClick({
       eventCategory: 'Click like button',
@@ -73,7 +83,11 @@ const LikeButton: FC<LikeButtonProps> = ({ slug }) => {
   };
 
   return (
-    <div css={likeBtnWrapper} id="like-btn-wrapper" data-endpoint={`${process.env.API_LIKE_BUTTON}`}>
+    <div
+      css={likeBtnWrapper}
+      id="like-btn-wrapper"
+      data-endpoint={`${process.env.API_LIKE_BUTTON}`}
+    >
       <button
         id="like-btn"
         onClick={() => {
@@ -82,7 +96,9 @@ const LikeButton: FC<LikeButtonProps> = ({ slug }) => {
       >
         Click me if you like this article?
       </button>
-      <span>100 likes 👍</span>
+      <span>
+        <span id="like-count"></span> likes 👍
+      </span>
     </div>
   );
 };
