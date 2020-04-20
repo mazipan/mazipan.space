@@ -42,12 +42,9 @@ const LikeButton: FC<LikeButtonProps> = ({ slug }) => {
       entries.forEach(async (entry) => {
         if (entry.isIntersecting) {
           // @ts-ignore
-          if (process.env.GATSBY_API_LIKE_BUTTON) {
-            // @ts-ignore
-            const r = await fetch(`${process.env.GATSBY_API_LIKE_BUTTON}/likes/${slug}`);
-            const data = r.json();
-            console.log(data);
-          }
+          const r = await fetch(`${process.env.API_LIKE_BUTTON}/likes/${slug}`);
+          const data = r.json();
+          console.log(data);
           const target = document.querySelector('#like-btn');
           // @ts-ignore
           observer.unobserve(target);
@@ -76,7 +73,7 @@ const LikeButton: FC<LikeButtonProps> = ({ slug }) => {
   };
 
   return (
-    <div css={likeBtnWrapper} id="like-btn-wrapper" data-api={`${process.env.GATSBY_API_LIKE_BUTTON}`}>
+    <div css={likeBtnWrapper} id="like-btn-wrapper" data-endpoint={`${process.env.API_LIKE_BUTTON}`}>
       <button
         id="like-btn"
         onClick={() => {
