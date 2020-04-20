@@ -76,7 +76,7 @@ const LikeButton: FC<LikeButtonProps> = ({ slug }) => {
   };
 
   return (
-    <div css={likeBtnWrapper} id="like-btn-wrapper" data-api={process.env.GATSBY_API_LIKE_BUTTON}>
+    <div css={likeBtnWrapper} id="like-btn-wrapper" data-api={`${process.env.GATSBY_API_LIKE_BUTTON}`}>
       <button
         id="like-btn"
         onClick={() => {

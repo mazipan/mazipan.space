@@ -56,7 +56,8 @@ const IndexPage: FC<IndexProps> = props => {
 
         {config.facebook && <meta property="article:publisher" content={config.facebook} />}
         {/* @ts-ignore */}
-        <meta name="google-site-verification" content={process.env.GATSBY_SITE_VERIFICATION} />
+        <meta name="google-site-verification" content={`${process.env.GATSBY_SITE_VERIFICATION}`} />
+        <meta name="google-site-verification2" content={`${process.env.SITE_VERIFICATION}`} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={config.title} />
         <meta name="twitter:description" content={config.description} />
