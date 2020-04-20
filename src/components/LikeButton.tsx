@@ -35,6 +35,8 @@ const likeBtnWrapper = css`
 `;
 
 const LikeButton: FC<LikeButtonProps> = ({ slug }) => {
+  const baseUrl = `${process.env.API_LIKE_BUTTON}`;
+
   useEffect(() => {
     // @ts-ignore
     const handleIntersection = (entries, observer) => {
@@ -43,8 +45,8 @@ const LikeButton: FC<LikeButtonProps> = ({ slug }) => {
         if (entry.isIntersecting) {
           try {
             // @ts-ignore
-            const r = await fetch(`${process.env.API_LIKE_BUTTON}/like${slug}`);
-            const data = r.json();
+            const r = await fetch(`${baseUrl}/like${slug.slice(0, -1)}`);
+            const data = await r.json();
             // @ts-ignore
             if (data && data.data) {
               // @ts-ignore
@@ -75,11 +77,20 @@ const LikeButton: FC<LikeButtonProps> = ({ slug }) => {
     observer.observe(target);
   }, []);
 
-  const trackPageClick = (link: string) => {
+  const trackPageClick = async (link: string) => {
     trackClick({
       eventCategory: 'Click like button',
       eventLabel: `Like - ${link}`,
     });
+
+    const r = await fetch(`${baseUrl}/like${slug.slice(0, -1)}`, {
+      method: 'POST',
+      body: JSON.stringify({
+        // remove / in the first and last char
+        slug: slug.slice(0, -1).substring(1)
+      })
+    });
+    await r.json();
   };
 
   return (
