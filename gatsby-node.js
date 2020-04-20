@@ -1,6 +1,3 @@
-require("dotenv").config({
-  path: `.env.${process.env.NODE_ENV}`,
-})
 const path = require('path');
 const _ = require('lodash');
 const { fmImagesToRelative } = require('gatsby-remark-relative-images');
@@ -222,16 +219,4 @@ exports.onCreateWebpackConfig = ({ plugins, stage, actions }) => {
       devtool: 'eval-source-map',
     });
   }
-
-  const API_LIKE_BUTTON = process.env.API_LIKE_BUTTON || '';
-  const SITE_VERIFICATION = process.env.SITE_VERIFICATION || '';
-
-  actions.setWebpackConfig({
-    plugins: [
-      plugins.define({
-        __API_LIKE_BUTTON__: JSON.stringify(API_LIKE_BUTTON),
-        __SITE_VERIFICATION__: JSON.stringify(SITE_VERIFICATION),
-      }),
-    ],
-  })
 };

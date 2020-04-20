@@ -1,7 +1,6 @@
 import React, { FC, useEffect } from 'react';
 import { css } from '@emotion/core';
 import { trackClick } from '../utils/ga';
-import config from'../website-config';
 
 export interface LikeButtonProps {
   slug: string;
@@ -77,15 +76,16 @@ const LikeButton: FC<LikeButtonProps> = ({ slug }) => {
   };
 
   return (
-    <div css={likeBtnWrapper} id="like-btn-wrapper" data-api={config.apiLikeButton}>
+    <div css={likeBtnWrapper} id="like-btn-wrapper" data-api={process.env.GATSBY_API_LIKE_BUTTON}>
       <button
+        id="like-btn"
         onClick={() => {
           trackPageClick(slug);
         }}
       >
         Click me if you like this article?
       </button>
-      <span id="like-btn">100 likes 👍</span>
+      <span>100 likes 👍</span>
     </div>
   );
 };
