@@ -25,8 +25,8 @@ const AuthorCardButton = css`
   transition: all ease 0.2s;
 
   :hover {
-    border-color: ${colors.blue};
-    color: ${colors.blue};
+    border-color:var(--text-link-color);
+    color: var(--text-link-color);
     text-decoration: none;
   }
 `;

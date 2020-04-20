@@ -46,6 +46,12 @@ import {
 
 const PageTemplate: FC<PageTemplateProps> = props => {
   useEffect(() => {
+    (async function loadPolyfills() {
+      if (typeof window.IntersectionObserver === 'undefined') {
+        // @ts-ignore
+        await import('intersection-observer')
+      }
+    })();
     trackView('Page Post');
   }, []);
 
@@ -140,7 +146,7 @@ const PageTemplate: FC<PageTemplateProps> = props => {
                   </PostFullImage>
                 )}
 
-                <PostContent htmlAst={post.htmlAst} title={post.frontmatter.title} desc={post.frontmatter.description}/>
+                <PostContent htmlAst={post.htmlAst} title={post.frontmatter.title} desc={post.frontmatter.description} slug={props?.pathContext?.slug || ''}/>
                 <PostFullFooter>
                   <AuthorCard author={post.frontmatter.author} />
                   <PostFullFooterRight authorId={post.frontmatter.author.id} />

@@ -1,6 +1,7 @@
-const SITE_NAME = process.env.SITE_NAME || '@mazipan';
-const SITE_VERIFICATION = process.env.SITE_VERIFICATION || '';
-const FULL_DOMAIN = process.env.FULL_DOMAIN || 'https://mazipan.space';
+const SITE_NAME = process.env.GATSBY_SITE_NAME || '@mazipan';
+const SITE_VERIFICATION = process.env.GATSBY_SITE_VERIFICATION || '';
+const FULL_DOMAIN = process.env.GATSBY_FULL_DOMAIN || 'https://mazipan.space';
+const API_LIKE_BUTTON = process.env.GATSBY_API_LIKE_BUTTON || '';
 
 export interface WebsiteConfig {
   title: string;
@@ -14,6 +15,7 @@ export interface WebsiteConfig {
   linkedin?: string;
   googleSiteVerification?: string;
   footer?: string;
+  apiLikeButton?: string;
 }
 
 const config: WebsiteConfig = {
@@ -28,6 +30,7 @@ const config: WebsiteConfig = {
   linkedin: 'https://www.linkedin.com/in/mazipan',
   googleSiteVerification: SITE_VERIFICATION,
   footer: 'All rights reserved',
+  apiLikeButton: API_LIKE_BUTTON,
 };
 
 export default config;

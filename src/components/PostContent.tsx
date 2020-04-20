@@ -3,6 +3,7 @@ import * as React from 'react';
 import styled from '@emotion/styled';
 import RehypeReact from 'rehype-react';
 import SharePost from './SharePost';
+import LikeButton from './LikeButton';
 
 import { colors } from '../styles/colors';
 
@@ -395,13 +396,15 @@ export interface PostContentProps {
   htmlAst: any;
   title: string;
   desc: string;
+  slug: string;
 }
 
-const PostContent: React.FC<PostContentProps> = ({ htmlAst, title, desc }) => {
+const PostContent: React.FC<PostContentProps> = ({ htmlAst, title, desc, slug }) => {
   return (
     <PostFullContent className="post-full-content">
       {/* TODO: this will apply the class when rehype-react is published https://github.com/rhysd/rehype-react/pull/11 */}
       <Ast className="post-content" ast={htmlAst} />
+      <LikeButton slug={slug}/>
       <SharePost title={title} desc={desc}/>
     </PostFullContent>
   );

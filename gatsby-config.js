@@ -1,17 +1,15 @@
 const path = require('path');
 require('dotenv').config();
 
-const SITE_NAME = process.env.SITE_NAME || '@mazipan';
-const SITE_VERIFICATION = process.env.SITE_VERIFICATION || '';
-const FULL_DOMAIN = process.env.FULL_DOMAIN || 'https://mazipan.space';
+const SITE_NAME = process.env.GATSBY_SITE_NAME || '@mazipan';
+const FULL_DOMAIN = process.env.GATSBY_FULL_DOMAIN || 'https://mazipan.space';
 
 module.exports = {
   siteMetadata: {
     lang: 'id',
     title: SITE_NAME,
     description: 'A personal blog by mazipan',
-    siteUrl: FULL_DOMAIN, // full path to blog - no ending slash
-    googleSiteVerification: SITE_VERIFICATION,
+    siteUrl: FULL_DOMAIN,
   },
   mapping: {
     'MarkdownRemark.frontmatter.author': 'AuthorYaml',
@@ -94,7 +92,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        trackingId: process.env.GA_KEY,
+        trackingId: process.env.GATSBY_GA_KEY,
         // Puts tracking script in the head instead of the body
         head: true,
         // IP anonymization for GDPR compliance
