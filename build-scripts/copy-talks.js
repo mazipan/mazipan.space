@@ -10,4 +10,5 @@ const stream = fs.createWriteStream(pathDest);
 stream.once('open', function(fd) {
   stream.write(talks);
   stream.end();
+  console.log(`✅ Success copied 'all-talks.ts' files`);
 });

@@ -3,8 +3,6 @@ require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 })
 
-console.log('>>>>>>', process.env.NODE_ENV, process.env.SITE_VERIFICATION);
-
 const SITE_NAME = process.env.SITE_NAME || '@mazipan';
 const FULL_DOMAIN = process.env.FULL_DOMAIN || 'https://mazipan.space';
 

@@ -11,7 +11,6 @@ const SKIP_FILES = ['.DS_Store'];
     try {
       const destPath = filepath.replace('/src/static/', '/public/');
       await cpFile(filepath, destPath);
-      console.log(`✅ File copied to: /${destPath.split('/public/')[1]}`);
     } catch (err) {
       console.error(err)
     }
@@ -24,7 +23,6 @@ const SKIP_FILES = ['.DS_Store'];
     try {
       const destPath = filepath.replace('/src/content/images/', '/public/images/');
       await cpFile(filepath, destPath);
-      console.log(`✅ File copied to: /${destPath.split('/public/images/')[1]}`);
     } catch (err) {
       console.error(err)
     }
@@ -35,3 +33,4 @@ const SKIP_FILES = ['.DS_Store'];
 
 cpFile(path.resolve('./README.md'), path.resolve('./public/README.md'));
 cpFile(path.resolve('./LICENSE'), path.resolve('./public/LICENSE'));
+console.log(`✅ Success copied static files`);
