@@ -40,6 +40,35 @@ export function trackTiming (): void {
   }
 }
 
+export function trackJsErrors (): void {
+  if (typeof window !== 'undefined') {
+
+    const handleError = (event: ErrorEvent) => {
+      trackCustomEvent({
+        category: 'JS Error',
+        action: 'js-error',
+        label: 'ErrorEvent',
+        value: `${event.message}`
+      })
+    }
+
+    // @ts-ignore
+    const handleErrorRejection = (e: any) => {
+      if (e.reason) {
+        trackCustomEvent({
+          category: 'JS Error',
+          action: 'js-error',
+          label: 'UnhandledRejection',
+          value: `${e.reason.stack || e.reason.message}`
+        })
+      }
+    }
+
+    window.addEventListener('unhandledrejection', handleErrorRejection);
+    window.addEventListener('error', handleError);
+  }
+}
+
 // @ts-ignore
 export function trackClick ({ eventCategory, eventLabel }): void {
   // @ts-ignore

@@ -4,7 +4,7 @@ import Helmet from 'react-helmet';
 
 import GlobalStyles from './styles';
 import { getJsonLdWebsite, getJsonLdOrganization } from '../utils/jsonld';
-import { trackTiming } from '../utils/ga';
+import { trackTiming, trackJsErrors } from '../utils/ga';
 
 interface IndexProps {
   className?: string;
@@ -13,6 +13,7 @@ interface IndexProps {
 const IndexLayout: FC<IndexProps> = (props) => {
   useEffect(() => {
     trackTiming();
+    trackJsErrors();
   }, []);
 
   return (

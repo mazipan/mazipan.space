@@ -59,7 +59,9 @@ const LikeButton: FC<LikeButtonProps> = ({ slug }) => {
             // @ts-ignore
             observer.unobserve(target);
           } catch (error) {
-            console.error(error);
+            // @ts-ignore
+            document.querySelector('#like-count').innerHTML = '1';
+            console.error('> Error get like data', error);
           }
         }
       });
@@ -82,15 +84,18 @@ const LikeButton: FC<LikeButtonProps> = ({ slug }) => {
       eventCategory: 'Click like button',
       eventLabel: `Like - ${link}`,
     });
-
-    const r = await fetch(`${baseUrl}/like${slug.slice(0, -1)}`, {
-      method: 'POST',
-      body: JSON.stringify({
-        // remove / in the first and last char
-        slug: slug.slice(0, -1).substring(1)
-      })
-    });
-    await r.json();
+    try {
+      const r = await fetch(`${baseUrl}/like`, {
+        method: 'POST',
+        body: JSON.stringify({
+          // remove / in the first and last char
+          slug: slug.slice(0, -1).substring(1),
+        }),
+      });
+      await r.json();
+    } catch (error) {
+      console.error('> Error update like data', error);
+    }
   };
 
   return (
@@ -108,7 +113,7 @@ const LikeButton: FC<LikeButtonProps> = ({ slug }) => {
         Click me if you like this article?
       </button>
       <span>
-        <span id="like-count"></span> likes 👍
+        <span id="like-count">0</span> likes 👍
       </span>
     </div>
   );
