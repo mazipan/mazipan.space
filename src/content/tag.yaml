@@ -63,6 +63,11 @@
   description: ReasonML, another Type Safe for JavaScript
   image: images/computer.jpg
 
+- id: vue
+  slug: /tags/vue
+  description: Vue
+  image: images/computer.jpg
+
 - id: testing
   slug: /tags/testing
   description: Good testing is a guarantee for good software
