@@ -254,22 +254,16 @@ module.exports = {
               }
             }
           }
-          allMarkdownRemark (
-            filter: {
-              frontmatter: {
-                draft: {
-                  ne: true
-                }
-                lang: {
-                  eq: "id"
-                }
-              }
-            },
+          allMarkdownRemark(
+            sort: { order: DESC, fields: [frontmatter___date] }
           ) {
             edges {
               node {
-                fields {
-                  slug
+                excerpt
+                fields { slug }
+                frontmatter {
+                  title
+                  date
                 }
               }
             }
