@@ -235,6 +235,7 @@ module.exports = {
           `/404.html`,
           /(\/)?hash-\S*/,
         ],
+        createLinkInHead: true,
         addUncaughtPages: true,
         query: `
         {
@@ -257,7 +258,7 @@ module.exports = {
           allSitePage {
             edges {
               node {
-                path
+                slug
               }
             }
           }
