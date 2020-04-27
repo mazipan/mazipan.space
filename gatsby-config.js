@@ -255,13 +255,6 @@ module.exports = {
               }
             }
           }
-          allSitePage {
-            edges {
-              node {
-                slug
-              }
-            }
-          }
         }
       `,
         mapping: {
@@ -270,9 +263,6 @@ module.exports = {
           },
           allTagYaml: {
             sitemap: `tags`,
-          },
-          allSitePage: {
-            sitemap: `sites`,
           }
         },
       }
