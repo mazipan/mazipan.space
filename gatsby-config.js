@@ -254,6 +254,13 @@ module.exports = {
               }
             }
           }
+          allSitePage {
+            edges {
+              node {
+                path
+              }
+            }
+          }
           allMarkdownRemark(
             sort: { order: DESC, fields: [frontmatter___date] }
           ) {
@@ -280,6 +287,9 @@ module.exports = {
           allMarkdownRemark: {
             sitemap: `posts`,
           },
+          allSitePage: {
+            sitemap: `all-sites`,
+          }
         },
       }
     },
