@@ -233,9 +233,10 @@ module.exports = {
         exclude: [
           `/404`,
           `/404.html`,
-          /(\/)?hash-\S*/, // you can also pass valid RegExp to exclude internal tags for example
+          /(\/)?hash-\S*/,
         ],
-        // addUncaughtPages: true,
+        createLinkInHead: true,
+        addUncaughtPages: true,
         query: `
         {
           allAuthorYaml {
@@ -254,26 +255,6 @@ module.exports = {
               }
             }
           }
-          allMarkdownRemark (
-            filter: {
-              frontmatter: {
-                draft: {
-                  ne: true
-                }
-                lang: {
-                  eq: "id"
-                }
-              }
-            },
-          ) {
-            edges {
-              node {
-                fields {
-                  slug
-                }
-              }
-            }
-          }
         }
       `,
         mapping: {
@@ -282,10 +263,7 @@ module.exports = {
           },
           allTagYaml: {
             sitemap: `tags`,
-          },
-          allMarkdownRemark: {
-            sitemap: `posts`,
-          },
+          }
         },
       }
     },
