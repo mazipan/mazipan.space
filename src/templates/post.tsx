@@ -15,6 +15,7 @@ import PostFullFooter from '../components/PostFullFooter';
 import PostFullFooterRight from '../components/PostFullFooterRight';
 import ReadNextCard from '../components/ReadNextCard';
 import Wrapper from '../components/Wrapper';
+import AllTagsComponent from '../components/AllTags';
 
 import { trackView } from '../utils/ga';
 import {
@@ -62,6 +63,7 @@ const PageTemplate: FC<PageTemplateProps> = props => {
     width = post.frontmatter.image.childImageSharp.fluid.sizes.split(', ')[1].split('px')[0];
     height = String(Number(width) / post.frontmatter.image.childImageSharp.fluid.aspectRatio);
   }
+  const allTags = props.data && props.data.allTagYaml.edges;
 
   return (
     <IndexLayout className="post-template">
@@ -167,6 +169,7 @@ const PageTemplate: FC<PageTemplateProps> = props => {
               {props.pageContext.prev && <PostCard post={props.pageContext.prev} />}
               {props.pageContext.next && <PostCard post={props.pageContext.next} />}
             </ReadNextFeed>
+            <AllTagsComponent tags={allTags} />
           </div>
         </aside>
         <Footer />
@@ -182,6 +185,13 @@ export const query = graphql`
       childImageSharp {
         fixed {
           ...GatsbyImageSharpFixed
+        }
+      }
+    }
+    allTagYaml {
+      edges {
+        node {
+          id
         }
       }
     }

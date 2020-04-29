@@ -8,6 +8,7 @@ import Footer from '../components/Footer';
 import SiteNav from '../components/header/SiteNav';
 import PostCard from '../components/PostCard';
 import Wrapper from '../components/Wrapper';
+import AllTagsComponent from '../components/AllTags';
 
 import { trackView } from '../utils/ga';
 import config from '../website-config';
@@ -34,6 +35,7 @@ const Tags: FC<TagTemplateProps> = props => {
   const tagData = props.data && props.data.allTagYaml.edges.find(
     n => n.node.id.toLowerCase() === tag.toLowerCase(),
   );
+  const allTags = props.data && props.data.allTagYaml.edges;
 
   return (
     <IndexLayout>
@@ -105,6 +107,7 @@ const Tags: FC<TagTemplateProps> = props => {
                 <PostCard key={node.fields.slug} post={node} />
               ))}
             </div>
+            <AllTagsComponent tags={allTags} />
           </div>
         </main>
         <Footer />
