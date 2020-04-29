@@ -7,6 +7,7 @@ export interface LikeButtonProps {
 }
 
 const likeBtnWrapper = css`
+  margin-top: 1em;
   margin-bottom: 1em;
   display: flex;
   align-items: center;
@@ -22,7 +23,7 @@ const likeBtnWrapper = css`
     font-size: 1.2rem;
     line-height: 1;
     font-weight: 500;
-    border-radius: 20px;
+    border-radius: 4px;
     box-shadow: rgba(39, 44, 49, 0.06) 8px 14px 38px, rgba(39, 44, 49, 0.03) 1px 3px 8px;
     transition: all 0.5s ease;
 
@@ -45,7 +46,7 @@ const LikeButton: FC<LikeButtonProps> = ({ slug }) => {
         if (entry.isIntersecting) {
           try {
             // @ts-ignore
-            const r = await fetch(`${baseUrl}/like${slug.slice(0, -1)}`);
+            const r = await fetch(`${baseUrl}/like${slug.slice(0, -1)}/get`);
             const data = await r.json();
             // @ts-ignore
             if (data && data.data) {
@@ -84,13 +85,10 @@ const LikeButton: FC<LikeButtonProps> = ({ slug }) => {
       eventCategory: 'Click like button',
       eventLabel: `Like - ${link}`,
     });
+
     try {
-      const r = await fetch(`${baseUrl}/like`, {
+      const r = await fetch(`${baseUrl}/like/${slug.slice(0, -1).substring(1)}/update`, {
         method: 'POST',
-        body: JSON.stringify({
-          // remove / in the first and last char
-          slug: slug.slice(0, -1).substring(1),
-        }),
       });
       await r.json();
     } catch (error) {
@@ -113,7 +111,7 @@ const LikeButton: FC<LikeButtonProps> = ({ slug }) => {
         Click me if you like this article?
       </button>
       <span>
-        <span id="like-count">0</span> likes 👍
+        <span id="like-count">✨</span> likes 👍
       </span>
     </div>
   );
