@@ -1,5 +1,6 @@
-import React, { FC, useEffect } from 'react';
+import React, { useEffect, FunctionComponent } from 'react';
 import { css } from '@emotion/core';
+import { ToastContainer, toast } from 'react-toastify';
 import { trackClick } from '../utils/ga';
 
 export interface LikeButtonProps {
@@ -35,7 +36,7 @@ const likeBtnWrapper = css`
   }
 `;
 
-const LikeButton: FC<LikeButtonProps> = ({ slug }) => {
+const LikeButton: FunctionComponent<LikeButtonProps> = ({ slug }) => {
   const baseUrl = `${process.env.API_LIKE_BUTTON}`;
 
   useEffect(() => {
@@ -91,7 +92,13 @@ const LikeButton: FC<LikeButtonProps> = ({ slug }) => {
         method: 'POST',
       });
       await r.json();
+      toast('Thank you for your support!', {
+        type: toast.TYPE.SUCCESS,
+      });
     } catch (error) {
+      toast('Sorry, some error happen!', {
+        type: toast.TYPE.ERROR,
+      });
       console.error('> Error update like data', error);
     }
   };
@@ -113,8 +120,10 @@ const LikeButton: FC<LikeButtonProps> = ({ slug }) => {
       <span>
         <span id="like-count">✨</span> likes 👍
       </span>
+      <ToastContainer autoClose={5000} />
     </div>
   );
 };
 
+// @ts-ignore
 export default LikeButton;
