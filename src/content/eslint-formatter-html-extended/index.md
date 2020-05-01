@@ -7,6 +7,7 @@ draft: false
 tags: [javascript, eslint]
 image: ./images/eslint-html.png
 lang: id
+enready: true
 ---
 
 Alasan mengapa kami memutuskan untuk mengeksten HTML Formatter resmi ESLint

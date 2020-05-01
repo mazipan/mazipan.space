@@ -7,6 +7,7 @@ draft: false
 tags: [life-experience]
 image: ./images/phpid-event.JPG
 lang: id
+enready: false
 ---
 
 Saya yang hari ini sedikit banyak adalah berkat bantuan komunitas programming di Indonesia karenanya saya akan deskripsikan bagaimana perjalanan saya sampai hari ini bersama berbagai komunitas programming di Indonesia.

@@ -180,7 +180,7 @@ const PageTemplate: FC<PageTemplateProps> = props => {
 
 export default PageTemplate;
 export const query = graphql`
-  query($slug: String, $primaryTag: String) {
+  query($slug: String, $primaryTag: String, $lang: String) {
     logo: file(relativePath: { eq: "images/logo.png" }) {
       childImageSharp {
         fixed {
@@ -206,6 +206,8 @@ export const query = graphql`
         userDate: date(formatString: "D MMMM YYYY")
         date
         tags
+        lang
+        enready
         image {
           childImageSharp {
             fluid(maxWidth: 3720) {
@@ -238,7 +240,7 @@ export const query = graphql`
             ne: true
           },
           lang: {
-            eq: "id"
+            eq: $lang
           }
         }
       }

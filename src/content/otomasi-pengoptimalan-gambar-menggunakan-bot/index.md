@@ -7,6 +7,7 @@ draft: false
 tags: [open-source]
 image: ./images/optimize-image.jpg
 lang: id
+enready: false
 ---
 
 Seperti kita sama-sama ketahui bahwa selain dari kode yang kita tulis baik HTML, CSS dan JavaScript, sebuah web juga diperkaya dengan berbagai media untuk mendukung penyampaian informasi lebih mudah salah satunya adalah media gambar. Gambar merupakan bagian penting dari sebuah website bahkan tidak sedikit website yang memuat banyak sekali gambar seperti beberapa pasar online (marketplace) yang kita ketahui saat ini. Saking banyaknya memang gambar yang digunakan, pada akhirnya bukan lagi kode yang ditulis si pemrogram yang menjadi beban terbesar bagi web tersebut, melainkan gambar yang dimuatnya.

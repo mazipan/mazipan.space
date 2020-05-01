@@ -7,6 +7,7 @@ draft: false
 tags: [javascript, nuxt, firebase]
 image: ./images/button-like-firebase.png
 lang: id
+enready: true
 ---
 
 Berbagi pengalaman dalam menggunakan Firebase RTDB untuk membuat button Like sederhana seperti yang terlihat pada Blog 2.0

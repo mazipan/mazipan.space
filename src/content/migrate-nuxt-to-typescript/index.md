@@ -8,6 +8,7 @@ draft: false
 tags: [javascript, nuxt, typescript]
 image: ./images/quran-offline.png
 lang: id
+enready: true
 ---
 
 Menceritakan beberapa langkah yang saya kerjakan ketika melakukan migrasi project Nuxt dari menggunakan JavaScript vanilla menjadi menggunakan TypeScript

@@ -83,6 +83,7 @@ exports.createPages = async ({ graphql, actions }) => {
               date
               draft
               lang
+              enready
               description
               image {
                 childImageSharp {

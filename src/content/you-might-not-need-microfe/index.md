@@ -7,6 +7,7 @@ draft: false
 tags: [web, programming]
 image: ./images/microfe.png
 lang: id
+enready: true
 ---
 
 Story telling about Micro-Frontend from both sides, the benefits and the problems

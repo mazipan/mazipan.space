@@ -8,6 +8,7 @@ tags: [lesson-learned]
 image: ./images/luke-chesser-JKUTrJ4vK00-unsplash.jpg
 imageCaption: Image by Luke Chesser on Unsplash
 lang: id
+enready: true
 ---
 
 Story from Tokopedia web platform team in building an in-house web metric monitoring dashboard for not just make a  fast web but keep that page in fast mode.

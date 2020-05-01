@@ -7,6 +7,7 @@ draft: false
 tags: [life-experience]
 image: ./images/mazipan-dunkin.jpeg
 lang: id
+enready: false
 ---
 
 Cerita panjang perjalanan hidup dan karir saya sampai bisa menjadi programmer di beberapa peruasahaan teknologi besar di Indonesia.

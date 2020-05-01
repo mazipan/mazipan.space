@@ -2,16 +2,12 @@ interface CSSModule {
   [className: string]: string;
 }
 
-// type shims for CSS modules
-
 declare module '*.module.scss' {
   const cssModule: CSSModule;
-  = cssModule;
 }
 
 declare module '*.module.css' {
   const cssModule: CSSModule;
-  = cssModule;
 }
 
 declare module 'rehype-react' {
@@ -23,7 +19,6 @@ declare module 'rehype-react' {
     Compiler: any
     constructor(options: RehypeOptions);
   }
-  default RehypeReact;
 }
 
 type TagEdges = Array<{
@@ -37,6 +32,32 @@ type TagEdges = Array<{
     };
   };
 }>;
+
+type Logo =  {
+  childImageSharp: {
+    fixed: any;
+  };
+};
+
+type Author = {
+  id: string;
+  website?: string;
+  twitter?: string;
+  facebook?: string;
+  location?: string;
+  // eslint-disable-next-line @typescript-eslint/camelcase
+  profile_image?: {
+    childImageSharp: {
+      fluid: any;
+    };
+  };
+  bio?: string;
+  avatar: {
+    childImageSharp: {
+      fluid: any;
+    };
+  };
+};
 
 interface PageContext {
   excerpt: string;
@@ -54,18 +75,9 @@ interface PageContext {
     title: string;
     date: string;
     draft?: boolean;
+    lang?: string;
     tags: string[];
-    author: {
-      id: string;
-      bio: string;
-      avatar: {
-        children: Array<{
-          fixed: {
-            src: string;
-          };
-        }>;
-      };
-    };
+    author: Author;
   };
 }
 
@@ -76,11 +88,7 @@ interface IndexProps {
     numPages: number;
   };
   data: {
-    logo: {
-      childImageSharp: {
-        fixed: any;
-      };
-    };
+    logo: Logo;
     header: {
       childImageSharp: {
         fluid: any;
@@ -94,48 +102,37 @@ interface IndexProps {
   };
 }
 
+interface MarkdownRemark {
+  html: string;
+  htmlAst: any;
+  excerpt: string;
+  timeToRead: string;
+  frontmatter: {
+    title: string;
+    description: string;
+    date: string;
+    userDate: string;
+    lang?: string;
+    enready?: string;
+    image: {
+      childImageSharp: {
+        fluid: any;
+      };
+    };
+    tags: string[];
+    author: Author;
+  };
+}
 interface PageTemplateProps {
   pathContext: {
     slug: string;
   };
   data: {
-    logo: {
-      childImageSharp: {
-        fixed: any;
-      };
-    };
+    logo: Logo;
     allTagYaml: {
       edges: TagEdges;
     };
-    markdownRemark: {
-      html: string;
-      htmlAst: any;
-      excerpt: string;
-      timeToRead: string;
-      frontmatter: {
-        title: string;
-        description: string;
-        date: string;
-        userDate: string;
-        image: {
-          childImageSharp: {
-            fluid: any;
-          };
-        };
-        tags: string[];
-        author: {
-          id: string;
-          bio: string;
-          avatar: {
-            children: Array<{
-              fixed: {
-                src: string;
-              };
-            }>;
-          };
-        };
-      };
-    };
+    markdownRemark: MarkdownRemark;
     relatedPosts: {
       totalCount: number;
       edges: Array<{
@@ -165,36 +162,14 @@ interface AuthorTemplateProps {
     author: string;
   };
   data: {
-    logo: {
-      childImageSharp: {
-        fluid: any;
-      };
-    };
+    logo: Logo;
     allMarkdownRemark: {
       totalCount: number;
       edges: Array<{
         node: PageContext;
       }>;
     };
-    authorYaml: {
-      id: string;
-      website?: string;
-      twitter?: string;
-      facebook?: string;
-      location?: string;
-      // eslint-disable-next-line @typescript-eslint/camelcase
-      profile_image?: {
-        childImageSharp: {
-          fluid: any;
-        };
-      };
-      bio?: string;
-      avatar: {
-        childImageSharp: {
-          fluid: any;
-        };
-      };
-    };
+    authorYaml: Author;
   };
 }
 

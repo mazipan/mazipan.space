@@ -8,6 +8,7 @@ draft: false
 tags: [programming, lesson-learned]
 image: ./images/tokopedia-anniv.png
 lang: id
+enready: true
 ---
 
 Berbagai pelajaran yang kami dapat saat membangun microsite untuk acara ulang tahun Tokopedia ke-10

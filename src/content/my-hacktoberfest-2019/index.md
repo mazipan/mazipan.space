@@ -7,6 +7,7 @@ draft: false
 tags: [experience]
 image: ./images/hacktoberfest.png
 lang: id
+enready: true
 ---
 
 October is already ended, and the **HackToberfest** become **HackOverfest**. This article is trying to breakdown my hacking activities in this yearly festival.

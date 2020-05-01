@@ -7,6 +7,7 @@ draft: false
 tags: [web]
 image: ./images/devtools.png
 lang: id
+enready: false
 ---
 
 Berbagai best practice yang bisa kita pelajari dan optimalkan dalam memuat halaman website

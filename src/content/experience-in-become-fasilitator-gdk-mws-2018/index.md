@@ -8,6 +8,7 @@ draft: false
 tags: [experience]
 image: ./images/gdk-mws-dev-showcase.jpg
 lang: id
+enready: true
 ---
 
 Berbagi pengalaman bagaimana ketika saya menjadi fasilitator pada program Google Developer Kejar - Mobile Web Specialis tahun 2018

@@ -7,6 +7,7 @@ draft: false
 tags: [non-technical, lesson-learned]
 image: ./images/lion-nTfGYGPURFA.jpg
 lang: id
+enready: true
 ---
 
 Cerita mengenai pengalaman saya 3 tahun terakhir, terutama bagaimana saya berpindah dari satu perusahaan ke perusahaan lain

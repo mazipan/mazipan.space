@@ -6,8 +6,9 @@ description: Menceritakan bagaimana cara membuat AMP Pages untuk blog kalian den
 author: mazipan
 draft: false
 tags: [javascript, nuxt, amp]
-image: ./images/mazipan-amp.png
+image: ./images/amp.jpg
 lang: id
+enready: true
 ---
 
 Menceritakan bagaimana cara membuat AMP Pages untuk blog kalian dengan framework Nuxt.js
@@ -331,14 +332,6 @@ Setelah proses selesai dan kalian sudah menghasilkan berkas statis yang mendukun
 
 - [https://search.google.com/test/amp](https://search.google.com/test/amp)
 - [https://validator.ampproject.org/](https://validator.ampproject.org/)
-
-Untuk hasil test blog saya sendiri kalian bisa lihat di beberapa tautan berikut:
-
-- [Halaman Beranda](https://search.google.com/test/amp?url=https%3A%2F%2Fwww.mazipan.xyz%2Famp)
-- [Halaman Tentang](https://search.google.com/test/amp?url=https%3A%2F%2Fwww.mazipan.xyz%2Famp%2Fabout)
-- [Halaman Post Tanpa Gambar](https://search.google.com/test/amp?url=https%3A%2F%2Fwww.mazipan.xyz%2Famp%2Feslint-formatter-html-extended%2F)
-- [Halaman Post Dengan Gambar](https://search.google.com/test/amp?url=https%3A%2F%2Fwww.mazipan.xyz%2Famp%2Ftasting-reasonml-for-react%2F)
-
 
 ## Repositori hasil belajar
 

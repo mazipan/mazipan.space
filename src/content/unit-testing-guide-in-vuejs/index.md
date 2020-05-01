@@ -8,6 +8,7 @@ draft: false
 tags: [javascript, testing]
 image: ./images/commitstrip.jpg
 lang: id
+enready: false
 ---
 
 Langkah-langkah memasang dan melakukan testing pada kode Vue.js dan Nuxt.js dengan belajar dari berbagai kasus yang terjadi pada proyek nyata

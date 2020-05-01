@@ -8,6 +8,7 @@ tags: [programming]
 image: ./images/membuat-commit-otomatis.jpg
 imageCaption: Gambar dibuat dengan Pixlr
 lang: id
+enready: false
 ---
 
 Sudah sekian lama saya tidak melakukan commit dengan akun Github utama saya di `@mazipan`, itu karena saya memutuskan membuat akun baru untuk memisahkan pekerjaan saya dengan Github yang memang saya tujukan untuk eskplorasi hal-hal yang biasanya di luar pekerjaan. Hal ini menjadikan statistik saya di Github tidak menjadi hijau lagi 😂.

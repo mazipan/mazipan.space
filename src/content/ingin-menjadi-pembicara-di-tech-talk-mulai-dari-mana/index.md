@@ -7,6 +7,7 @@ draft: false
 tags: [tips]
 image: ./images/tech-talk-mazipan.png
 lang: id
+enready: false
 ---
 
 Saya selama beberapa tahun belakangan mendapatkan kesempatan untuk mengisi beberapa acara tech talk, meskipun skalanya masih tergolong kecil tapi bagi saya pribadi hal tersebut sudah merupakan sebuah pencapaian yang teramat luar biasa mengingat saya sebenarnya tidak begitu pandai dalam menyampaikan berbagai hal kepada orang lain.

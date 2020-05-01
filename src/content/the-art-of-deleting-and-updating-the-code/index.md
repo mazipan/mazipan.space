@@ -8,6 +8,7 @@ draft: false
 tags: [programming]
 image: ./images/quadran.png
 lang: id
+enready: true
 ---
 
 Menceritakan bagaimana pekerjaan saya sehari-hari yang seringkali berhadapan dengan keharusan untuk menghapus kode orang lain

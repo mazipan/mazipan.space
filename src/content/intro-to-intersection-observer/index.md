@@ -7,6 +7,7 @@ draft: false
 tags: [web]
 image: ./images/intersection-observer.jpeg
 lang: id
+enready: false
 ---
 
 Mengupas sedikit banyak hal mengenai Intersection Observer dengan berbagai contoh kasus di lapangan

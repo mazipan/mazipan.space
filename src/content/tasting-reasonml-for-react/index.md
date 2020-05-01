@@ -8,6 +8,7 @@ draft: false
 tags: [javascript, react, reasonml]
 image: ./images/reasonml-users.png
 lang: id
+enready: true
 ---
 
 Menceritakan bagaimana rasanya mencicipi sintaksis ReasonML untuk membangun antarmuka sebuah website

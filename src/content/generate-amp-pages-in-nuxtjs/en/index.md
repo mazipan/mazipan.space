@@ -6,7 +6,7 @@ description: How to generate AMP Pages for you blog using Nuxt.js
 author: mazipan
 draft: false
 tags: [javascript, nuxt, amp]
-image: ../images/mazipan-amp.png
+image: ../images/amp.jpg
 lang: en
 ---
 
@@ -321,14 +321,6 @@ Not all AMP can be shown in Google Search result, only the valid pages that can 
 
 - [https://search.google.com/test/amp](https://search.google.com/test/amp)
 - [https://validator.ampproject.org/](https://validator.ampproject.org/)
-
-For my blog itself, you can see the test results in below list:
-
-- [Homepage](https://search.google.com/test/amp?url=https%3A%2F%2Fwww.mazipan.xyz%2Famp)
-- [About Page](https://search.google.com/test/amp?url=https%3A%2F%2Fwww.mazipan.xyz%2Famp%2Fabout)
-- [Article Page - without any images](https://search.google.com/test/amp?url=https%3A%2F%2Fwww.mazipan.xyz%2Famp%2Feslint-formatter-html-extended%2F)
-- [Article Page - with images](https://search.google.com/test/amp?url=https%3A%2F%2Fwww.mazipan.xyz%2Famp%2Ftasting-reasonml-for-react%2F)
-
 
 ## Github Repo
 

@@ -7,6 +7,7 @@ draft: false
 tags: [javascript, gridsome]
 image: ./images/how-it-works.png
 lang: id
+enready: true
 ---
 
 Bagaimana memulai membuat Blog statis keren menggunakan Vue.js static site generator Gridsome dalam waktu yang singkat
