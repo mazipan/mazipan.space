@@ -2,15 +2,13 @@
 title: Generate AMP Pages in Nuxt.js
 date: '2019-06-02'
 minute2read: 20
-description: How to generate AMP Pages for you blog using Nuxt.js
+description: How to generate AMP Pages for your blog using Nuxt.js
 author: mazipan
 draft: false
 tags: [javascript, nuxt, amp]
 image: ../images/amp.jpg
 lang: en
 ---
-
-How to generate AMP Pages for you blog using Nuxt.js
 
 ## About AMP
 

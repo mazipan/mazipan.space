@@ -20,10 +20,12 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       const { relativePath } = getNode(node.parent);
 
       let slug = permalink;
+      let lang = 'id';
 
       if (!slug) {
         if (relativePath.indexOf('en/index.md') >= 0) {
           slug = `/${relativePath.replace('en/index.md', 'en')}/`;
+          lang = 'en';
         } else {
           slug = `/${relativePath.replace('/index.md', '')}/`;
         }
@@ -47,6 +49,12 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
         node,
         name: 'primaryTag',
         value: primaryTag || '',
+      });
+
+      createNodeField({
+        node,
+        name: 'lang',
+        value: lang || '',
       });
     }
   }
@@ -143,6 +151,7 @@ exports.createPages = async ({ graphql, actions }) => {
       path: i === 0 ? '/' : `/${i + 1}`,
       component: homeTemplate,
       context: {
+        lang: 'id',
         limit: POST_PER_PAGE,
         skip: i * POST_PER_PAGE,
         numPages,
@@ -152,16 +161,15 @@ exports.createPages = async ({ graphql, actions }) => {
   });
 
   posts.forEach(({ node }, index) => {
-    const { slug, lang } = node.fields;
+    const { slug } = node.fields;
     const slugEn = slug + 'en/'
     const prev = index === 0 ? null : posts[index - 1].node;
     const next = index === posts.length - 1 ? null : posts[index + 1].node;
-
     createPage({
       path: slug,
       component: postTemplate,
       context: {
-        lang,
+        lang: 'id',
         slug,
         prev,
         next,
@@ -173,7 +181,7 @@ exports.createPages = async ({ graphql, actions }) => {
       path: slugEn,
       component: postTemplate,
       context: {
-        lang,
+        lang: 'en',
         slug: slugEn,
         prev,
         next,

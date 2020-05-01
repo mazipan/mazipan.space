@@ -1,5 +1,6 @@
 import { lighten, darken, setSaturation } from 'polished';
 import * as React from 'react';
+import { Link } from 'gatsby';
 import styled from '@emotion/styled';
 import RehypeReact from 'rehype-react';
 import SharePost from './SharePost';
@@ -381,6 +382,13 @@ export const PostFullContent = styled.section`
   }
 `;
 
+const LangWrapper = styled.div`
+  border: 2px solid var(--text-link-color);
+  border-radius: 5px;
+  padding: 1em;
+  margin-bottom: .5em;
+`;
+
 const renderAst = new RehypeReact({
   createElement: React.createElement,
   // components: { 'interactive-counter': Counter },
@@ -397,11 +405,18 @@ export interface PostContentProps {
   title: string;
   desc: string;
   slug: string;
+  lang: string;
+  enready?: boolean;
 }
 
-const PostContent: React.FC<PostContentProps> = ({ htmlAst, title, desc, slug }) => {
+const PostContent: React.FC<PostContentProps> = ({ htmlAst, title, desc, slug, lang, enready }) => {
   return (
     <PostFullContent className="post-full-content">
+      {
+        lang === 'id' && enready && (
+          <LangWrapper>📌 Baca artikel dalam <Link to={`/${slug}/en/`}>bahasa inggris</Link></LangWrapper>
+        )
+      }
       {/* TODO: this will apply the class when rehype-react is published https://github.com/rhysd/rehype-react/pull/11 */}
       <Ast className="post-content" ast={htmlAst} />
       <LikeButton slug={slug}/>

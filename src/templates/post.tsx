@@ -148,7 +148,7 @@ const PageTemplate: FC<PageTemplateProps> = props => {
                   </PostFullImage>
                 )}
 
-                <PostContent htmlAst={post.htmlAst} title={post.frontmatter.title} desc={post.frontmatter.description} slug={props?.pathContext?.slug || ''}/>
+                <PostContent htmlAst={post.htmlAst} title={post.frontmatter.title} desc={post.frontmatter.description} slug={props?.pathContext?.slug || ''} lang={post.frontmatter.lang} enready={post.frontmatter.enready} />
                 <PostFullFooter>
                   <AuthorCard author={post.frontmatter.author} />
                   <PostFullFooterRight authorId={post.frontmatter.author.id} />
