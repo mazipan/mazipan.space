@@ -1,6 +1,8 @@
 import React, { useEffect, FunctionComponent } from 'react';
 import { css } from '@emotion/core';
 import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
+
 import { trackClick } from '../utils/ga';
 
 export interface LikeButtonProps {
@@ -92,12 +94,14 @@ const LikeButton: FunctionComponent<LikeButtonProps> = ({ slug }) => {
         method: 'POST',
       });
       await r.json();
-      toast('Thank you for your support!', {
+      toast('🙏 Thank you for your support!', {
         type: toast.TYPE.SUCCESS,
+        position: toast.POSITION.BOTTOM_LEFT
       });
     } catch (error) {
-      toast('Sorry, some error happen!', {
+      toast('😭 Sorry, some error happen!', {
         type: toast.TYPE.ERROR,
+        position: toast.POSITION.BOTTOM_LEFT
       });
       console.error('> Error update like data', error);
     }
@@ -115,7 +119,7 @@ const LikeButton: FunctionComponent<LikeButtonProps> = ({ slug }) => {
           trackPageClick(slug);
         }}
       >
-        Click me if you like this article?
+        Click me if you like this article
       </button>
       <span>
         <span id="like-count">✨</span> likes 👍
