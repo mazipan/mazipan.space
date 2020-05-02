@@ -1,6 +1,6 @@
 ---
 title: Advance Sitemap di Projek Nuxt
-date: "2019-05-03"
+date: "2020-05-03"
 description: Bagaimana membuat sitemap dengan lebih baik, lebih optimal dan tertata rapi untuk projek Nuxt
 author: mazipan
 draft: false
