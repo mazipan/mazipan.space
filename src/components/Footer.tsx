@@ -116,8 +116,18 @@ const Footer: React.FC = () => {
           >
             Latest Posts
           </Link>
+          <Link
+            to="/archieves"
+            onClick={() => {
+              trackFooterClick('Archieves');
+            }}
+          >
+            Archieves
+          </Link>
           <a
             href="/rss.xml"
+            target="_blank"
+            rel="noopener"
             onClick={() => {
               trackFooterClick('Rss');
             }}
