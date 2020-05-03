@@ -5,7 +5,7 @@ minute2read: 10
 description: Story telling about the steps that I worked on when migrating the Nuxt project from using vanilla JavaScript to using TypeScript
 author: mazipan
 draft: false
-tags: [javascript, nuxt, typescript]
+tags: [nuxt, typescript]
 image: ../images/quran-offline.png
 lang: en
 ---

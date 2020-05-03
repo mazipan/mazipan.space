@@ -5,7 +5,7 @@ minute2read: 10
 description: Menceritakan beberapa langkah yang saya kerjakan ketika melakukan migrasi project Nuxt dari menggunakan JavaScript vanilla menjadi menggunakan TypeScript
 author: mazipan
 draft: false
-tags: [javascript, nuxt, typescript]
+tags: [nuxt, typescript]
 image: ./images/quran-offline.png
 lang: id
 enready: true

@@ -4,8 +4,8 @@ date: '2019-02-21'
 description: Sharing experiences using Firebase Realtime Database to make simple button likes as seen in Blog 2.0
 author: mazipan
 draft: false
-tags: [javascript, nuxt, firebase]
-image: ../images/button-like-firebase.png
+tags: [firebase, nuxt, javascript]
+image: ../images/create-like-button-with-firebase-rtdb.jpg
 lang: en
 ---
 

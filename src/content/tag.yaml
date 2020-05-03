@@ -43,6 +43,11 @@
   description: Because we live as a human, do not just talk a technical language
   image: images/tags/non-technical.jpg
 
+- id: now
+  slug: /tags/now
+  description: Playing with Now by Vercel
+  image: images/computer.jpg
+
 - id: open-source
   slug: /tags/open-source
   description: Sharing about my personal life experience

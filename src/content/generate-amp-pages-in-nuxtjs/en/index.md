@@ -5,7 +5,7 @@ minute2read: 20
 description: How to generate AMP Pages for your blog using Nuxt.js
 author: mazipan
 draft: false
-tags: [javascript, nuxt, amp]
+tags: [nuxt, amp]
 image: ../images/amp.jpg
 lang: en
 ---
