@@ -54,26 +54,21 @@ Menambahkan konfigurasi sitemap, berikut adalah konfiguasi lama yang saya gunaka
 
 Fungsi `getSitemapRoutes` sendiri kurang lebih berisi kode seperti berikut:
 
-```ts
-interface sitemap {
-  url: string
-  changefreq: string
-  priority: number
-  lastmodISO: string
-}
-
+```js
 const getAllRoutes = () => {
   const r = ['/about', '/all-surah'];
   for (let i = 1; i < 115; i++) {
+    // Surah page
     r.push(`/${i}`)
     for (let j = 1; j < surah.ayah_count; j++) {
+      // Ayah page
       r.push(`/${i}/${j}`)
     }
   }
   return r;
 }
 
-const getSitemapRoutes = (): sitemap[] => {
+const getSitemapRoutes = () => {
   return getAllRoutes().map((el) => {
     const item: sitemap = {
       url: el,
@@ -173,7 +168,7 @@ const getSitemaps = () => {
     routes: getAllSurahRoutes()
   }
 
-  const res: sitemapConfigs[] = [staticSitemap, allSurahSitemap].concat(getSurahSitemaps())
+  const res = [staticSitemap, allSurahSitemap].concat(getSurahSitemaps())
   return res
 }
 
