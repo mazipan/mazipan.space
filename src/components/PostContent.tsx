@@ -3,6 +3,7 @@ import * as React from 'react';
 import { Link } from 'gatsby';
 import styled from '@emotion/styled';
 import RehypeReact from 'rehype-react';
+import HyvorTalk from 'hyvor-talk-react';
 import SharePost from './SharePost';
 import LikeButton from './LikeButton';
 
@@ -421,6 +422,7 @@ const PostContent: React.FC<PostContentProps> = ({ htmlAst, title, desc, slug, l
       <Ast className="post-content" ast={htmlAst} />
       <LikeButton slug={slug}/>
       <SharePost title={title} desc={desc}/>
+      <HyvorTalk.Embed websiteId={600} />
     </PostFullContent>
   );
 };
