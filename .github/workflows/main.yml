@@ -35,11 +35,38 @@ jobs:
           key: ${{ runner.OS }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.OS }}-yarn-
+
+      - name: Gatsby Cache Folder
+        uses: actions/cache@v1
+        id: gatsby-cache-folder
+        with:
+          path: .cache
+          key: ${{ runner.os }}-cache-gatsby
+          restore-keys: |
+            ${{ runner.os }}-cache-gatsby
+
+      - name: Gatsby Public Folder
+        uses: actions/cache@v1
+        id: gatsby-public-folder
+        with:
+          path: public/
+          key: ${{ runner.os }}-public-gatsby
+          restore-keys: |
+            ${{ runner.os }}-public-gatsby
+
       - name: Install dependencies
-        run: yarn
+        run: yarn install --pure-lockfile
 
       - name: Build project
         run: yarn build:ci
+        env:
+          ADS_CLIENT: ${{ secrets.ADS_CLIENT }}
+          API_LIKE_BUTTON: ${{ secrets.API_LIKE_BUTTON }}
+          FULL_DOMAIN: ${{ secrets.FULL_DOMAIN }}
+          GA_KEY: ${{ secrets.GA_KEY }}
+          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+          SITE_NAME: ${{ secrets.SITE_NAME }}
+          SITE_VERIFICATION: ${{ secrets.SITE_VERIFICATION }}
 
       - name: GitHub Pages Deploy
         uses: peaceiris/actions-gh-pages@v3
