@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - master
-  #schedule:
-  #  - cron: "0 0 1 * *"
 
 jobs:
   deploy:
@@ -17,7 +15,6 @@ jobs:
         with:
          persist-credentials: false
          fetch-depth: 0
-         submodules: true
 
       - name: Use node 12
         uses: actions/setup-node@v1
