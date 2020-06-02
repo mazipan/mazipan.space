@@ -12,20 +12,20 @@ enready: true
 ---
 
 Long time not creating any commit for me because of my daily jobs using different Github account with my personal account `@mazipan`, this is for separating my activity for my professional job and my hobbies. This situation make my "Green" activity in my main account become white 😂
-
 When first time knowing [Github Actions](https://help.github.com/en/actions), I already fall in love in the first sight with this feature. Finally, I can create my CI/CD without leaving the platform. Before Github Actions, I used third party service for maintaining my CI/CD, mostly on Travis CI, but I also exploring Circle CI in short time. I need to move from Github to Travis to see the logs and status of my CI/CD job. Maybe not a big thing for you, but for me it's quite wasting my time. Github Actions, come to solve this problem. I also believe that Github Actions will have seamless integration with the Github Platform since the already know their own platform. 
 
 Yash, after exploring the Documentation and playing around in my open source repository I feel very helpful with this tools. Very handy, simple script, and works very well with the Github itself.
 
-Kebetulan sekali topik ini pas sedang saya butuhkan juga untuk membuat otomasti terhadap [repository halaman beranda](https://github.com/vuejs-id/homepage) milik Vue.js Indonesia, mereka menggunakan dua repository yang mana repository satu merupakan kode sumber dan repository satunya lagi menjadi penampung hasil yang telah diproses oleh VuePress.
+Back to my problem, I have idea to automatically create a commit in any repository to make Github recognize as an activity and mark a green square in my profile.
+This problem is quite same with one of my use case in the [homepage repository](https://github.com/vuejs-id/homepage) in Vue.js Indonesia organisation that I helped to maintained, they use two repository, one for source of development and for the other one is for generated code by VuePress.
 
 Susah-susah gampang. Susah, karena saya memang belum pernah mengerjakan model ini. Gampang, setelah mengerjakan (oh, ternyata cuma begini toh 😂).
 
-## Memulai Github Actions
+## Get started with Github Actions
 
-File konfigurasi Github Actions menggunakan berkas YAML dan terletak di direktori `.github/workflows` pada umumnya. Pada contoh kasus sederhana kali ini saya membuat berkas `.github/workflows/autocommit.yml`. Kita bisa menambahkan lebih dari satu berkas dalam direktori ini yang biasanya kalau kita memiliki beberapa pekerjaan yang tidak saling terkait satu sama lain, agar lebih mudah untuk mengaturnya di masa depan.
+Configuration file for Github Actions is using Yaml and placed in the directory `.github/workflows`. In this folder we can create multiple file Yaml which is good for separating a job with different trigger or split some task to achieve better readability.
 
-Pertama kita perlu menambahkan nama dari workflow kita, maka saya hanya perlu menambahkan kode di dalam berkas YAML tersebut seperti ini:
+For my case, I will create configuration file named `.github/workflows/autocommit.yml`. First thing we will add in this file is field `name` so we can read the status easier based on the name we type in here. You can see this code to know how we adding a name in our Yaml:
 
 ```yaml
 name: Auto commit
