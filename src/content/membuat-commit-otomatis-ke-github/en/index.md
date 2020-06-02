@@ -17,9 +17,8 @@ When first time knowing [Github Actions](https://help.github.com/en/actions), I 
 Yash, after exploring the Documentation and playing around in my open source repository I feel very helpful with this tools. Very handy, simple script, and works very well with the Github itself.
 
 Back to my problem, I have idea to automatically create a commit in any repository to make Github recognize as an activity and mark a green square in my profile.
-This problem is quite same with one of my use case in the [homepage repository](https://github.com/vuejs-id/homepage) in Vue.js Indonesia organisation that I helped to maintained, they use two repository, one for source of development and for the other one is for generated code by VuePress.
-
-Susah-susah gampang. Susah, karena saya memang belum pernah mengerjakan model ini. Gampang, setelah mengerjakan (oh, ternyata cuma begini toh 😂).
+This problem is quite same with one of my use case in the [homepage repository](https://github.com/vuejs-id/homepage) in Vue.js Indonesia organization that I helped to maintained, they use two repository, one for source of development and the other one is for generated code by VuePress.
+Now I have two cases that need to be solved, so I must read more about the Github Actions, how it can solve my problem.
 
 ## Get started with Github Actions
 
@@ -31,9 +30,14 @@ For my case, I will create configuration file named `.github/workflows/autocommi
 name: Auto commit
 ```
 
-## Mengenal Trigger
+## Trigger
 
-Hal dasar yang umum mesti diketahui akan membuat CI menurut saya adalah mengerti soal trigger dan job. Trigger merupakan kode yang menentukan kapan CI kita akan dieksekusi, sedangkan Job adalah pekerjaan yang akan dijalankan ketika aturan dalam trigger telah terpenuhi. Di dalam Github Actions, Trigger ini dikenal dengan nama `Events` di Github Actions dan ditandai dengan sintaks `on` atau bahasa mudahnya "pas apa nih?". jadi pas lagi apa kode ini mau dijalankan. Karena saya mau melakukan pengujian terlebih dahulu, maka saya menambahkan Trigger pas lagi di `push` aja. Saya bisa menambahkan kode berikut:
+Trigger is a common thing in CI. Basically it's define the time when the job should be triggered and which job should be triggered.
+Github Actions coming with easy syntax to define the trigger. Some of them is very similar with Github Web Hook if we already learn about before.
+Even you haven't read or play with Web Hook, it still easy to you to understand from the Documentation.
+You can read in "[Events that trigger workflows documentation)(https://help.github.com/en/actions/reference/events-that-trigger-workflows)".
+
+We will create our first trigger with this code:
 
 ```yaml
 name: Auto commit
@@ -43,9 +47,13 @@ on:
       - master
 ```
 
-Bisa kembali disimak kodenya kalau masih ngawang-ngawang, kode diatas bisa dijelaskan bahwa saya menambahkan trigger ketika terjadi sebuah `push` pada branch `master` saya. Jadi setiap kali `push`, maka workflow `Auto commit` ini akan jalan.
+You can see the code above, we just adding `on` which represent the trigger block, we adding `push` which we want to command the Github Actions to listen the push event to any branch. For that we define `master` as a branch that we listen about.
+We already create our first trigger on Github Actions, but this is can not solve our problem.
+Our case need some scheduler that run automatically and doing a commit activity.
+And yay, Github Actions also coming with programmatically scheduler.
 
-Namun sebenarnya kan bukan ini yang ingin saya capai, saya mau membuat kode penjadwalan agar tidak perlu manual `push` terus-terusan. Maka dari itu saya menambahkan lagi Trigger yang akan dijalankan secara otomatis ketika waktu yang ditentukan sudah tercapai. Saya menambahkan kode berikut:
+We can use Cron string to define our scheduler time, if you are not familiar with Cron string, I suggest you to read about it or you can jump to [crontab.guru](https://crontab.guru/) to generate your own Cron string without need to memorize all the syntax.
+This below code show you how to define scheduler that run in every 7 morning.
 
 ```yaml
 name: Auto commit
@@ -57,11 +65,12 @@ on:
   - cron: "0 7 * * *"
 ```
 
-Bisa kita simak ulang ya kodenya. Kode diatas saya bisa jelaskan bahwa saya ingin workflow ini dijalankan setiap hari pada jam 7 pagi. Kalian lihat saya menambahkan dibawah `on` sejajar dengan `push` yakni `schedule` yang artinya menjadwalkan suatu pekerjaan. Jadwalnya menggunakan apa, paling gampang dan terkenal sih memanfaatkan cron string. Ini semacam text yang bisa kita gunakan untuk menentukan sebuah penjadwalan. Saya biasa menggunakan web [crontab.guru](https://crontab.guru/) kalau memang masih ragu dengan text yang sudah saya buat.
+## Adding job on Github Actions
 
-## Menambahkan tugas pada Github Actions
+After the trigger is meet requirements, CI will execute some job we already create. 
+This is the main part of our CI code.
 
-Menambahkan tugas atau job yang akan dijalankan pada saat trigger terpenuhi merupakan bagian utama yang biasanya sih susah-susah gampang. Pertama kita menambahkan kata kunci `jobs` yang menandakan dimulainya sebuah blok untuk tugas yang akan dijalankan. Dibawahnya kita kita bisa memberi nama pada job kita, saya memberikan nama `auto_commit`. Dalam satu workflow dan sekali trigger, kita bisa saja menambahkan lebih dari satu job. langkah berikutnya kita bisa mendefiniskan langkah-langkah secara berurutan yang harus dikerjakan dari job yang ingin kita buat. Berikut contoh kode sederhana untuk membuat job pada Github Actions:
+Let's see this simple code to understand about the job:
 
 ```yaml
 name: Auto commit
@@ -80,13 +89,27 @@ jobs:
           echo "just another test"
 ```
 
-Saya menambahkan satu langkan untuk pengujian saja, cuma mendefinisikan bahwa tugas ini akan dijalankan di sistem operasi *ubuntu* teranyar dan memberikan satu langkah yang isinya hanya mencetak kata "just another test".
+We create our first job after type `job` to start the job block.
+After that we adding `auto_commit` as our job name. One workflow can contain more than one job, that's why we need to give it a unique name for identifier.
+Inside an `auto_commit` block, we start to define the operation system we want.
+I choose the latest Ubuntu to running this job, so I add `runs-on` with single value `ubuntu-latest`.
+Github Actions have capability to define multiple operation system to run one job.
 
-Sampai disini kalian sudah bisa melakukan commit dan push ke branch `master` kalian untuk dilakukan pengecekan apakah workflow yang kita buat sudah dieksekusi dengan benar sesuai keinginan kita apa belum. Untuk mengeceknya, setelah kode kita push, kita bisas mengunjungi tab `Actions` pada repository kita (contoh: https://github.com/mazipan/auto-commit/actions) dan kita bisa melihat daftar workflow yang telah atau sedang dijalankan.
+After define the OS, we can start our job inside `steps` block.
+Every block inside `steps` means the serial step that need to be run by the Github Actions according the order.
+We just add our simple `echo` to test our script is executed or not.
 
-## Checkout git repository
+From this step, you can commit and push the changes to the master branch and we can goes to Actions tab in the Github Web to inspect our job.
+The job along with all details and logs should be shown on the Github Web.
+You can explore the UI to get more familiar with Github Actions.
 
-Langkah pertama yang harus saya lakukan ketika memiliki tujuan untuk membuat commit otomatis adalah bisa *checkout* kode dari git repository yang sedang kita kerjakan saat ini. Salah satu hal keren dari Github Actions adalah modelnya yang bisa cabut pasang dari berbagai Actions yang sudah dipublikasikan, baik yang resmi dari Github maupun dari perorangan. Layaknya di JavaScript yang memanfaatkan banyaknya pustaka yang telah dipublikasikan untuk memudahkan tugas kita. Untuk melakukan *checkout* sendiri, sudah ada Actions resmi dari Github dan kita cukup menggunakannya saja. Berikut contoh kodenya:
+## Checkout the git
+
+We will start with real syntax to solve our problem. We will start with checkout the Git repository where we run the Actions.
+Github Actions is coming with good design, they allow everyone to create their own Actions and share with the other users. This is like the Dependency Manager use on the programming language environment.
+We just need to put any 3rd party scripts along with their version to use it in our code.
+
+You can see this sample code to checkout the Git repository:
 
 ```yaml
 name: Auto commit
@@ -106,11 +129,16 @@ jobs:
          fetch-depth: 0
 ```
 
-Cukup menambahkan `uses` dan gunakan nama dari Actions yang telah dipublikasikan. Actions yang kita gunakan berasal dari [https://github.com/actions/checkout](https://github.com/actions/checkout). Di bawahnya ada `with`, ini merupakan parameter yang ingin kita oper bersamaan pada saat memanggil Actions checkout tersebut. Dua parameter `persist-credentials` dan `fetch-depth` dibutuhkan untuk memastikan proses commit balik sukses dikarenakan ada issue terkait ini pada Actions yang akan kita gunakan nanti. Kita akan jelaskan pada bagian selanjutnya.
+We add `uses` and using Actions from [https://github.com/actions/checkout](https://github.com/actions/checkout) which is official Actions to checkout the Git repository. 
+I adding two arguments or parameters inside `with` block.
+This is because the Actions we used for commit back have an issue and need to adding these two param to make it work.
 
-## Memastikan ada changes setiap saat
+## Create a changes
 
-Agar bisa dilakukan commit dan push balik ke repository yang kita sedang gunakan, kita mesti memastikan bahwa ada perubahan (*changes*) yang terjadi pada salah satu atau beberapa berkas kita. Untuk menyiasati hal ini, saya membuat satu berkas yang nantinya akan saya perbarui setiap kali workflow ini dijalankan. Saya membuat berkas `LAST_UPDATED` yang tidak perlu diisi apapun pada saat ini. Kembali pada workflow kita,saya menambahkan kode sederhana untuk memanipulasi isi dari berkas yang telah kita buat ke dalam salah satu langkah dalam workflow kita. Berikut kodenya:
+To make sure the auto commit job is working well, we need to make sure that we always have a file changes in the Git so commit and push command can be executed correctly without any errors.
+I create a cheat by creating file `LAST_UPDATED` that always updating the content with the latest timestamp.
+
+You can see this code:
 
 ```yaml
 name: Auto commit
@@ -134,43 +162,19 @@ jobs:
           echo $d > LAST_UPDATED
 ```
 
-Bisa dilihat bahwa saya cuma mengisi berkas `LAST_UPDATED` dengan tanggal saat menjalankan workflow tersebut. 🙈
+## Commit dan push back
 
-## Melakukan commit dan push balik
+In our local, we usually use this flow to push to the Git:
 
-Kalau di lokal, kita biasa setelah membuat perubahan kita bisa menggunakan perintah `git commit -m "sebuah pesan"` kemudian `git push origin master` untuk menyelesaikan prosesnya. Di workflow ini pada dasarnya sama, hanya saja kita akan memanfaatkan Actions dari [ad-m/github-push-action](https://github.com/ad-m/github-push-action) untuk melakukan push balik ke repository kita.
+- `git add -A`, staged all changes
+- `git commit -m "some message"`, commit to local Git with a message
+- `git push origin master`, push to the origin.
 
-Pertama, kita akan melakukan commit dengan kode berikut:
+For Github Actions, basically we run same steps. 
+Just note that in the Github Actions we doesn't have a global git configuration so we need to set it in our step.
+We also need to use [ad-m/github-push-action](https://github.com/ad-m/github-push-action) to push back to our repository.
 
-```yaml
-name: Auto commit
-on:
-  push:
-    branches:
-      - master
-  schedule:
-  - cron: "0 7,8,9,10,11 * * *"
-jobs:
-  auto_commit:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-        with:
-         persist-credentials: false
-         fetch-depth: 0
-      - name: Modify LAST_UPDATED file
-        run: |
-          d=`date '+%Y-%m-%dT%H:%M:%SZ'`
-          echo $d > LAST_UPDATED
-      - name: Commit changes
-        run: |
-          git config --local user.email "{YOUR_EMAIL}"
-          git config --local user.name "{YOUR_USERNAME}"
-          git add -A
-          git commit -m "Sebuah pesan"
-```
-
-Kode diatas melakukan commit dengan sebelumnya kita set dengan email dan nama yang kita inginkan. Berikutnya menambahkan langkah baru untuk melakukan commit balik ke repository kita, berikut ini contoh kodenya:
+This code will show you how to commit a changes to the Git with a message and configuration that we set:
 
 ```yaml
 name: Auto commit
@@ -197,7 +201,37 @@ jobs:
           git config --local user.email "{YOUR_EMAIL}"
           git config --local user.name "{YOUR_USERNAME}"
           git add -A
-          git commit -m "Sebuah pesan"
+          git commit -m "Some message"
+```
+
+This code show you how to push back to the repo:
+
+```yaml
+name: Auto commit
+on:
+  push:
+    branches:
+      - master
+  schedule:
+  - cron: "0 7,8,9,10,11 * * *"
+jobs:
+  auto_commit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+         persist-credentials: false
+         fetch-depth: 0
+      - name: Modify LAST_UPDATED file
+        run: |
+          d=`date '+%Y-%m-%dT%H:%M:%SZ'`
+          echo $d > LAST_UPDATED
+      - name: Commit changes
+        run: |
+          git config --local user.email "{YOUR_EMAIL}"
+          git config --local user.name "{YOUR_USERNAME}"
+          git add -A
+          git commit -m "Some message"
       - name: Push Back
         uses: ad-m/github-push-action@v0.5.0
         with:
@@ -206,24 +240,25 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
 ```
 
-Kita menggunakan Actions `ad-m/github-push-action@v0.5.0` dengan menambahkan parameter `force` untuk melakukan *force push*, `directory` dengan nilai titik yang artinya semua perubahan dari semua direktori akan di push balik, dan `github_token` dengan memanfaatkan token standar yang sudah ditanamkan oleh Github Actions sehingga kita tidak perlu menambahkan personal akses token kita secara manual.
+We use the Actions from `ad-m/github-push-action@v0.5.0` and adding 3 parameters, 
+`force` to doing a *force push*, 
+and the parameter `directory` with `.` value which means all changes will be commit back to the repo,
+and `github_token` is a token provided to doing a push. We use value `secrets.GITHUB_TOKEN` which is provided by Github Actions so we don't need to add our own personal token.
 
-Terkait dengan langkah *checkout* pada bagian sebelumnya yang diharuskan menambahkan parameter tambahan bersangkutan dengan issue [#44](https://github.com/ad-m/github-push-action/issues/44#issuecomment-590010727) yang pada repo `ad-m/github-push-action` yang telah dijawab oleh pembuatnya sendiri.
+When you use this Actions, you need to read this issue [#44](https://github.com/ad-m/github-push-action/issues/44#issuecomment-590010727) in `ad-m/github-push-action` which answered by the creator.
 
-## Bagaimana dengan hasilnya?
+## The result
 
-![Pesan commit otomatis](../images/commit-message.png)
+![Auto commit message](../images/commit-message.png)
 
-![Github Statistik](../images/github-stats.png)
+![Github Stats](../images/github-stats.png)
 
-Ya, kalian pada dasarnya bisa mengubah konfigurasi sendiri mau berapa kali dalam sehari commit otomatis ini dijalankan. Pada kasus saya, cukup 5 kali lah. Gak hijau-hijau amat, tapi lumayan lah tidak kering kerontang 🌳
+You can change your own scheduler more than one per day, just change the Cron string.
 
-## Sumber repository
-
-Semua tulisan ini, didasarkan pada repository yang bisa kalian lihat pada tautan berikut:
+## Repository
 
 [https://github.com/mazipan/auto-commit/](https://github.com/mazipan/auto-commit/)
 
 ---
 
-Terima kasih dan semoga tidak disalahgunakan 🙏
+Thank you, and don't abuse your power 🙏
