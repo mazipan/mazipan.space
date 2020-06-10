@@ -193,7 +193,6 @@ module.exports = {
                   date: edge.node.frontmatter.date,
                   url: site.siteMetadata.siteUrl + edge.node.fields.slug,
                   guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
-                  custom_elements: [{ "content:encoded": edge.node.html }],
                 })
               })
             },
@@ -201,6 +200,7 @@ module.exports = {
               {
                 allMarkdownRemark(
                   sort: { order: DESC, fields: [frontmatter___date] },
+                  limit: 10
                 ) {
                   edges {
                     node {
@@ -267,7 +267,7 @@ module.exports = {
         },
       }
     },
-    'gatsby-plugin-netlify-cache',
+    // 'gatsby-plugin-netlify-cache',
     // {
     //   resolve: "gatsby-plugin-webpack-bundle-analyser-v2",
     //   options: {
