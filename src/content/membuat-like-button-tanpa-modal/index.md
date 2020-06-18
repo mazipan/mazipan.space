@@ -7,6 +7,7 @@ draft: false
 tags: [now, javascript]
 image: ./images/membuat-tombol-like.jpg
 lang: id
+enready: true
 ---
 
 Jika kalian mengikuti blog ini, sebelumnya saya pernah menulis topik yang hampir mirip mengenai [membuat like button dengan Firebase Real Time DB](create-simple-like-button-using-firebase-rtdb). Silahkan baca artikel tersebut bila lebih senang dengan platform Firebase karena pada artikel kali ini kita akan menggunakan cara lain dan platform lain. Kenapa harus platform lain? Karena kenapa tidak? Saya sudah pernah menulis dan mengerjakan hal tersebut, kalau saya kerjakan dengan cara yang sama maka saya hanya mengulang saja dan tidak belajar sesuatu yang baru yang mana memang sudah sering saya lakukan dalam projek-projek open source saya.
