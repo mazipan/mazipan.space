@@ -2,6 +2,7 @@
 title: Create Like Button with No Cost
 date: "2020-05-04"
 description: How I create a Like Button on this blog without any servers and no cost
+author: mazipan
 draft: false
 tags: [now, javascript]
 image: ../images/membuat-tombol-like.jpg
