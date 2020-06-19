@@ -1,7 +1,7 @@
 ---
-title: Create "Like Button" with No Cost
+title: Create Like Button with No Cost
 date: "2020-05-04"
-description: How I create a Like Button on this blog without any servers and no cost.
+description: How I create a Like Button on this blog without any servers and no cost
 draft: false
 tags: [now, javascript]
 image: ../images/membuat-tombol-like.jpg
@@ -14,25 +14,36 @@ If you feel bored with a mainstream platform, you might need to read this articl
 
 ## The Platform
 
-Firebase jelas saya coret dari daftar ini, karena sudah pernah menggunakannya. Firebase sangat mudah untuk digunakan dan sangat handal apalagi ditambah kemampuan untuk real time update pada semua aplikasi yang sedang diakses oleh pengguna. Kalau teman-teman memilih jalan yang mudah, saya sangat menyarankan menggunakan platform ini.
+Firebase jelas saya coret dari daftar ini, karena sudah pernah menggunakannya. 
+Firebase sangat mudah untuk digunakan dan sangat handal apalagi ditambah kemampuan untuk real time update pada semua aplikasi yang sedang diakses oleh pengguna. Kalau teman-teman memilih jalan yang mudah, saya sangat menyarankan menggunakan platform ini.
 
-Karena saya tidak punya server dan tidak terbiasa mengurusi server maka pilihan terbaik buat saya adalah menggunakan platform Serverless. Ditambah karena saya modal dengkul dan malas keluar duit untuk hal semacam ini, maka tentu platform yang menyediakan gratisan lah yang akan jadi pilihan saya.
+Karena saya tidak punya server dan tidak terbiasa mengurusi server maka pilihan terbaik buat saya adalah menggunakan platform Serverless. 
+Ditambah karena saya modal dengkul dan malas keluar duit untuk hal semacam ini, maka tentu platform yang menyediakan gratisan lah yang akan jadi pilihan saya.
 
-Sebelumnya saya sudah pernah mencoba menggunakan Heroku untuk projek [graphql-pokeapi](https://github.com/mazipan/graphql-pokeapi), saya tidak perlu mengurus server dan platform ini juga menyediakan versi gratis. Saya bisa memilih framework yang saya gunakan untuk membuat Rest-API sederhana. Awalnya saya memilih platform ini, sekalian karena memang ingin mencoba menggunakan fastify untuk membuat Rest-API. Sayangnya versi gratis Heroku ini sangat lambat untuk diakses, ya wajar sih sebenarnya, gratis minta cepet? Tapi kok saya gak puas ya dengan hasilnya.
+Sebelumnya saya sudah pernah mencoba menggunakan Heroku untuk projek [graphql-pokeapi](https://github.com/mazipan/graphql-pokeapi), saya tidak perlu mengurus server dan platform ini juga menyediakan versi gratis. 
+Saya bisa memilih framework yang saya gunakan untuk membuat Rest-API sederhana. 
+Awalnya saya memilih platform ini, sekalian karena memang ingin mencoba menggunakan fastify untuk membuat Rest-API. 
+Sayangnya versi gratis Heroku ini sangat lambat untuk diakses, ya wajar sih sebenarnya, gratis minta cepet? Tapi kok saya gak puas ya dengan hasilnya.
 
-Akhirnya saya mencoba platform yang lagi tenar yakni [Vercel Now](https://vercel.com/) atau beberapa mungkin lebih kenal dengan Zeit Now. Ini pertama kali saya mencoba menggunakan Now karena memang belum ada kebutuhan dan keinginan untuk menggunakannya sebelumnya. Sekalian sajalah untuk belajar bagaimana menggunakan platform ini.
+Akhirnya saya mencoba platform yang lagi tenar yakni [Vercel Now](https://vercel.com/) atau beberapa mungkin lebih kenal dengan Zeit Now. 
+Ini pertama kali saya mencoba menggunakan Now karena memang belum ada kebutuhan dan keinginan untuk menggunakannya sebelumnya. 
+Sekalian sajalah untuk belajar bagaimana menggunakan platform ini.
 
 ## Project Initialisation
 
-Saya tidak menggunakan CLI untuk memulai projek dengan Now ini, kalian bisa saja memulai dengan menggunakan Now CLI yang bisa lebih mudah. Saya lebih memilih memulai dengan membaca [Dokumentasi platform Serverless](https://vercel.com/docs/v2/serverless-functions/introduction) mereka untuk memahami dan melihat kebutuhan minimal untuk membuat sebuah Rest API. Sepertinya cukup mudah dan sederhana, tapi kok seperti masih ada yang kurang ya? Ah, saya perlu melihat projek nyata seseorang membangun Rest API menggunakan platform Now. Projek pertama yang saya ingat kok ya [Covid-19 API dari @mathdroid](https://github.com/mathdroid/covid-19-api). Mencoba ubek-ubek repository yang tersedia secara terbuka tersebut, mencari tau bagaimana cara meletakkan sebuah kode, bagaimana membuat endpoint dengan parameter, dan lain sebagainya. Saya memang lebih menikmati waktu untuk ubek-ubek kode yang sudah tertata dibandingkan membaca dokumentasi 😂.
-
+Saya tidak menggunakan CLI untuk memulai projek dengan Now ini, kalian bisa saja memulai dengan menggunakan Now CLI yang bisa lebih mudah. 
+Saya lebih memilih memulai dengan membaca [Dokumentasi platform Serverless](https://vercel.com/docs/v2/serverless-functions/introduction) mereka untuk memahami dan melihat kebutuhan minimal untuk membuat sebuah Rest API. 
+Sepertinya cukup mudah dan sederhana, tapi kok seperti masih ada yang kurang ya? Ah, saya perlu melihat projek nyata seseorang membangun Rest API menggunakan platform Now. 
+Projek pertama yang saya ingat kok ya [Covid-19 API dari @mathdroid](https://github.com/mathdroid/covid-19-api). 
+Mencoba ubek-ubek repository yang tersedia secara terbuka tersebut, mencari tau bagaimana cara meletakkan sebuah kode, bagaimana membuat endpoint dengan parameter, dan lain sebagainya. 
+Saya memang lebih menikmati waktu untuk ubek-ubek kode yang sudah tertata dibandingkan membaca dokumentasi 😂.
 Maka dari situ saya bisa memulai projek saya sendiri dengan cara berikut:
 
-1. Pastikan sudah mendaftar untuk mendapatkan Akun vercel
-2. Memasang Now CLI untuk melakukan development dan deployment nanti
-3. Semua endpoint diletakkan di direktori `api/**`
-4. Endpoint berdasarkan direktori, mirip dengan Next dan Nuxt dalam membuat route halaman
-5. Membuat API pertama dengan data hardcode, buat berkas `index.ts` pada direktori `api` dengan kode berikut:
+1. Register and create an account in Vercel website.
+2. Install Now CLI for development and deployment.
+3. All endpoint is on the `api/**` directory
+4. The endpoint of your API is based on your directory. Same approach with Next and Nuxt. You need to manage your directory structure to create any API endpoint.
+5. Create your first API, create a file `index.ts` in a directory `api` with this simple code:
 
 ```ts
 import { NowRequest, NowResponse } from '@now/node'
@@ -44,8 +55,8 @@ export default (req: NowRequest, res: NowResponse) => {
 }
 ```
 
-6. Deploy untuk pertama kalinya dengan perintah `now`, pastikan kalian sudah memasang Now CLI ya.
-7. Buka halaman dashboard setelah selesai dan uji Rest API sederhana kalian.
+6. Deploy for very first time with command `now`, make sure you already installing Now CLI.
+7. Open your Vercel dashboard, and you can start to test your API
 
 ## Saving "Like" Data
 
