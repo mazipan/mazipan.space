@@ -124,7 +124,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-offline`,
       options: {
-        precachePages: [`/about/`],
+        precachePages: [`/about`, `/404`],
         workboxConfig: {
           importWorkboxFrom: `cdn`,
           cacheId: `mazipan`,

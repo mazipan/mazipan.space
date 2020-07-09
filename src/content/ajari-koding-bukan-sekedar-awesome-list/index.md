@@ -5,7 +5,7 @@ description: Berbagai best practice yang bisa kita pelajari dan optimalkan dalam
 author: mazipan
 draft: false
 tags: [open-source]
-image: ./images/ajari-koding-showcase.png
+image: ./images/ajari-koding.png
 lang: id
 enready: false
 ---
@@ -21,7 +21,7 @@ Cara termudah dalam mengumpulkan data ini adalah dengan membuat daftar di Github
 Saya menginisiasi projek ini dengan nama "Ajari Koding", sesimpel karena saya kepikirannya itu.
 Tidak ada arti yang mendalam apalagi visi misi yang gamblang.
 
-![Ajari Koding](images/ajari-koding.png)
+![Ajari Koding](images/ajari-koding-showcase.png)
 
 Projek seperti "Ajari Koding" cuma akan menjadi sampah kalau tidak ada yang mau membantu melengkapi koleksi data yang ada di dalamnya. Syukurlah om Peter punya kemampuan marketing dan punya banyak pengikut yang bisa dengan cepat melejitkan nama projek ini.
 
@@ -148,8 +148,6 @@ Saya memilih menggunakan CDN dari Bootstrap untuk mulai menggunakan CSS ini, dik
 ```
 
 Saya tidak menambahkan Script pendamping apapun selain hanya CSS ini, semua interaksi akan saya kerjakan di level Svelte saja tanpa bantuan dari Script dari Bootstrap dan pendukungnya.
-
-![Ajari Koding Showcase](images/ajari-koding-showcase.png)
 
 ### Migrasi ke Sapper
 
