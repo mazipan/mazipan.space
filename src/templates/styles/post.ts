@@ -1,9 +1,6 @@
 
-import { setLightness } from 'polished';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-
-import { colors } from '../../styles/colors';
 
 export const PostTemplate = css`
   .site-main {
@@ -63,44 +60,11 @@ export const PostFullMeta = styled.section`
   }
 `;
 
-export const PostFullMetaDate = styled.time`
-  color: var(--text-link-color);
-`;
-
 export const PostFullTitle = styled.h1`
   margin: 0;
   color: var(--text-title-color);
   @media (max-width: 500px) {
     font-size: 2.9rem;
-  }
-`;
-
-export const PostFullImage = styled.figure`
-  margin: 0 -10vw -165px;
-  height: 800px;
-  background: var(--text-color-grey) center center;
-  background-size: cover;
-  border-radius: 10px;
-
-  & > .gatsby-image-wrapper {
-    border-radius: 10px;
-  }
-
-  @media (max-width: 1170px) {
-    margin: 0 -4vw -100px;
-    height: 600px;
-    border-radius: 0;
-    & > .gatsby-image-wrapper {
-      border-radius: 0;
-    }
-  }
-
-  @media (max-width: 800px) {
-    height: 400px;
-  }
-  @media (max-width: 500px) {
-    margin-bottom: 4vw;
-    height: 350px;
   }
 `;
 
