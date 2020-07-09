@@ -50,7 +50,7 @@
 
 - id: open-source
   slug: /tags/open-source
-  description: Sharing about my personal life experience
+  description: Sharing about contributions to the open source
   image: images/computer.jpg
 
 - id: programming
