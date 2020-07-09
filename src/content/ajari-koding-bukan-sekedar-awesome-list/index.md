@@ -27,7 +27,7 @@ Projek seperti "Ajari Koding" cuma akan menjadi sampah kalau tidak ada yang mau 
 
 Sialnya si projek belum siap ketika disebarkan, saya cuma menginisiasi sebuah *awesome-list*.
 
-## Wujudkan dulu, perbaiki kmudian
+## Wujudkan dulu, perbaiki kemudian
 
 Yap, tak perlu menunggu waktu lama sejak obrolan dengan om Peter dimulai. Saya beberapa waktu setelahnya langsung memberikan kabar kalau saya sudah membuatkan repositori untuk projek ini dan menjelaskan sedikit kalau nantinya akan begini dan begitu.
 
