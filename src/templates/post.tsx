@@ -5,16 +5,14 @@ import { Helmet } from 'react-helmet';
 
 import IndexLayout from '../layouts';
 
-import AuthorCard from '../components/AuthorCard';
 import Footer from '../components/Footer';
 import SiteNav from '../components/header/SiteNav';
 import PostCard from '../components/PostCard';
 import PostContent from '../components/PostContent';
-import PostFullFooter from '../components/PostFullFooter';
-import PostFullFooterRight from '../components/PostFullFooterRight';
 import ReadNextCard from '../components/ReadNextCard';
 import Wrapper from '../components/Wrapper';
 import AllTagsComponent from '../components/AllTags';
+import ThemeSwitcher from '../components/ThemeSwitcher';
 
 import { trackView } from '../utils/ga';
 import {
@@ -37,7 +35,6 @@ import {
   NoImage,
   PostFullHeader,
   PostFullMeta,
-  PostFullMetaDate,
   PostFullTitle,
   PostTemplate,
   ReadNextFeed,
@@ -110,7 +107,7 @@ const PageTemplate: FC<PageTemplateProps> = props => {
         />}
 
         <link rel="canonical" href={config.siteUrl + props.pathContext.slug} />
-        
+
         <script type="application/ld+json" id="ld-breadcrumb">{`${getJsonLdBreadcrumb({ category: post?.frontmatter?.tags?.[0] || '', title: post?.frontmatter?.title || '', slug: props?.pathContext?.slug || '' })}`}</script>
         <script type="application/ld+json" id="ld-post">{`${getJsonLdArticle({ title: post?.frontmatter?.title || '', slug: props?.pathContext?.slug || '', cover: config.siteUrl + post?.frontmatter?.image?.childImageSharp?.fluid?.src || '', date: post?.frontmatter?.date, desc: post?.excerpt || '' })}`}</script>
       </Helmet>
@@ -120,6 +117,7 @@ const PageTemplate: FC<PageTemplateProps> = props => {
             <SiteNav />
           </div>
         </header>
+        <ThemeSwitcher floating />
         <main id="site-main" className="site-main" css={[SiteMain, outer]}>
           <div css={inner}>
             { post && (
@@ -143,10 +141,6 @@ const PageTemplate: FC<PageTemplateProps> = props => {
                 </PostFullHeader>
 
                 <PostContent htmlAst={post.htmlAst} title={post.frontmatter.title} desc={post.frontmatter.description} slug={props?.pathContext?.slug || ''} lang={post.frontmatter.lang} enready={post.frontmatter.enready} />
-                <PostFullFooter>
-                  <AuthorCard author={post.frontmatter.author} />
-                  <PostFullFooterRight authorId={post.frontmatter.author.id} />
-                </PostFullFooter>
               </article>
             )}
           </div>

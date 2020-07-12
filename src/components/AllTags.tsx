@@ -1,3 +1,4 @@
+import React from 'react';
 import { Link } from 'gatsby';
 import { css } from '@emotion/core';
 
@@ -20,11 +21,9 @@ export interface AllTagProps {
 const AllTags: React.FC<AllTagProps> = ({ tags }) => {
   return (
     <div css={TagsLabelWrapper}>
-      {
-        tags.map(i => (<Link css={TagsLabel} to={`/tags/${i.node.id}/`}>{i.node.id}</Link>))
-      }
+      {tags.map(i => (<Link key={i.node.id} css={TagsLabel} to={`/tags/${i.node.id}/`}>{i.node.id}</Link>))}
     </div>
-  )
-}
+  );
+};
 
 export default AllTags;

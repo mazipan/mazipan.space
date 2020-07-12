@@ -21,7 +21,7 @@ const SharePost: FC<SharePostProps> = ({ title, desc }) => {
 
   return (
     <div>
-      <span style={{ marginRight: '.25em' }}>Bagikan ke</span>
+      <span style={{ marginRight: '.25em' }}>🤝 Bagikan ke</span>
       <a
         target="_blank"
         rel="noopener"

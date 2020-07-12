@@ -72,10 +72,10 @@ const IndexPage: FC<IndexProps> = props => {
         )}
 
         <link rel="canonical" href={config.siteUrl} />
-        
+
       </Helmet>
       <Wrapper>
-        <ThemeSwitcher/>
+        <ThemeSwitcher />
         <header
           css={[outer, SiteHeader]}>
           <div css={inner}>

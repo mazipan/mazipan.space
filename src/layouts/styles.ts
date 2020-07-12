@@ -1,5 +1,4 @@
 
-
 import { css } from '@emotion/core';
 import { lighten } from 'polished';
 import { colors } from '../styles/colors';
@@ -15,11 +14,12 @@ const GlobalStyles = css`
     --bg-card: #44475a;
     --bg-card-comment: #6272a4;
 
-    --bg-inline-code: #44475a;
+    --bg-inline-code: rgb(14, 16, 18);
     --text-inline-code: #f8f8f2;
 
     --bg-header: #212121;
     --text-header: #fff;
+    --bg-gradient: linear-gradient(to right, #DA22FF 0%, #9733EE 51%, #DA22FF 100%)
   }
 
   .light {
@@ -37,6 +37,7 @@ const GlobalStyles = css`
 
     --bg-header: #212121;  /* keep same with dark */
     --text-header: #fff;
+    --bg-gradient: linear-gradient(to right, #fe8c00 0%, #f83600 51%, #fe8c00 100%);
   }
 
   html,
