@@ -70,6 +70,9 @@ const Tags: FC<TagTemplateProps> = props => {
             content={`@${config.twitter.split('https://twitter.com/')[1]}`}
           />
         )}
+
+       <link rel="canonical" href={config.siteUrl + tag} />
+        
       </Helmet>
       <Wrapper>
         <header
