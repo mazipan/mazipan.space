@@ -15,6 +15,7 @@ const likeBtnWrapper = css`
   margin-bottom: 1em;
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
 
   > .support {
     margin-right: 1em;
@@ -25,6 +26,7 @@ const likeBtnWrapper = css`
     background: none;
     display: block;
     margin-right: 0.5em;
+    margin-bottom: 0.5em;
     padding: 9px 16px;
     background-image: var(--bg-gradient);
     background-size: 200% auto;
