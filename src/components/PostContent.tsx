@@ -394,7 +394,7 @@ const PostContent: React.FC<PostContentProps> = ({ htmlAst, title, desc, slug, l
       <Ast className="post-content" ast={htmlAst} />
       <LikeButton slug={slug}/>
       <SharePost title={title} desc={desc}/>
-      <HyvorTalk.Embed websiteId={600} id={slug} url={`https://mazipan.space/${slug}`}/>
+      <HyvorTalk.Embed websiteId={600} id={`https://mazipan.space/${slug}`} url={`https://mazipan.space/${slug}`}/>
     </PostFullContent>
   );
 };
