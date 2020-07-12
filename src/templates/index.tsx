@@ -70,6 +70,9 @@ const IndexPage: FC<IndexProps> = props => {
             content={`@${config.twitter.split('https://twitter.com/')[1]}`}
           />
         )}
+
+        <link rel="canonical" href={config.siteUrl} />
+        
       </Helmet>
       <Wrapper>
         <ThemeSwitcher/>
