@@ -99,7 +99,7 @@ const LikeButton: FunctionComponent<LikeButtonProps> = ({ slug }) => {
 
   return (
     <div css={likeBtnWrapper} data-endpoint={`${process.env.API_LIKE_BUTTON}`}>
-      <span className="support">💪 Dukungan</span>
+      <span className="support">💪 Support me</span>
       <button
         ref={targetRef}
         type="button"

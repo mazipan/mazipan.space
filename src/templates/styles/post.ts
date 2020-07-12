@@ -62,7 +62,15 @@ export const PostFullMeta = styled.section`
 
 export const PostFullTitle = styled.h1`
   margin: 0;
-  color: var(--text-title-color);
+  background: var(--bg-gradient-vertical);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  &::selection, &::-moz-selection {
+    -webkit-text-fill-color: #fff !important;
+    color: #fff;
+  }
+
   @media (max-width: 500px) {
     font-size: 2.9rem;
   }

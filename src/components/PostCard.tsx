@@ -73,7 +73,14 @@ const PostCardTags = styled.span`
 
 const PostCardTitle = styled.h2`
   margin-top: 0;
-  color: var(--text-title-color);
+  background: var(--bg-gradient-vertical);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  &::selection, &::-moz-selection {
+    -webkit-text-fill-color: #fff !important;
+    color: #fff;
+  }
 `;
 
 const PostCardExcerpt = styled.section`

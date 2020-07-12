@@ -10,8 +10,8 @@ const GlobalStyles = css`
     --text-subtitle-color: #ff79c6;
     --text-color-grey: #b4b5b5;
     --text-link-color: #57c3ff;
-    --bg-content: #282a36;
-    --bg-card: #44475a;
+    --bg-content: #100e17;
+    --bg-card: #17141d    ;
     --bg-card-comment: #6272a4;
 
     --bg-inline-code: rgb(14, 16, 18);
@@ -19,7 +19,8 @@ const GlobalStyles = css`
 
     --bg-header: #212121;
     --text-header: #fff;
-    --bg-gradient: linear-gradient(to right, #DA22FF 0%, #9733EE 51%, #DA22FF 100%)
+    --bg-gradient: linear-gradient(to right, #DA22FF 0%, #9733EE 51%, #DA22FF 100%);
+    --bg-gradient-vertical: linear-gradient(90deg, #ff8a00, #e52e71);
   }
 
   .light {
@@ -37,7 +38,8 @@ const GlobalStyles = css`
 
     --bg-header: #212121;  /* keep same with dark */
     --text-header: #fff;
-    --bg-gradient: linear-gradient(to right, #fe8c00 0%, #f83600 51%, #fe8c00 100%);
+    --bg-gradient: linear-gradient(to right, #ff8a00 0%, #e52e71 100%);
+    --bg-gradient-vertical: linear-gradient(90deg, #DA22FF, #9733EE);
   }
 
   html,

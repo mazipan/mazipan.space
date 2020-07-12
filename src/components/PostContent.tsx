@@ -12,7 +12,7 @@ import { colors } from '../styles/colors';
 export const PostFullContent = styled.section`
   position: relative;
   margin: 0 auto;
-  padding: 70px 100px 0;
+  padding: 0 100px 0;
   min-height: 230px;
   font-size: 1.7rem;
   line-height: 1.6em;
@@ -20,8 +20,9 @@ export const PostFullContent = styled.section`
   border-radius: 5px;
 
   @media (max-width: 1170px) {
-    padding: 5vw 7vw 0;
+    padding: 0 7vw 0;
   }
+
   @media (max-width: 800px) {
     font-size: 1.9rem;
   }
