@@ -5,7 +5,7 @@ description: Cerita bagaimana saya bergumul dengan berbagai komunitas teknologi 
 author: mazipan
 draft: false
 tags: [life-experience]
-image: ./images/meetup-jakartajs.jpeg
+image: ./images/meetup-jakartajs.jpg
 lang: id
 enready: false
 ---
