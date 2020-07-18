@@ -3,7 +3,7 @@ import * as React from 'react';
 import { Link } from 'gatsby';
 import styled from '@emotion/styled';
 import RehypeReact from 'rehype-react';
-import HyvorTalk from 'hyvor-talk-react';
+// import HyvorTalk from 'hyvor-talk-react';
 import SharePost from './SharePost';
 import LikeButton from './LikeButton';
 
@@ -363,6 +363,7 @@ const LangWrapper = styled.div`
   margin-bottom: .5em;
 `;
 
+// @ts-ignore
 const renderAst = new RehypeReact({
   createElement: React.createElement,
   // components: { 'interactive-counter': Counter },
@@ -383,6 +384,7 @@ export interface PostContentProps {
   enready?: boolean;
 }
 
+// @ts-ignore
 const PostContent: React.FC<PostContentProps> = ({ htmlAst, title, desc, slug, lang, enready }) => {
   return (
     <PostFullContent className="post-full-content">
@@ -395,7 +397,7 @@ const PostContent: React.FC<PostContentProps> = ({ htmlAst, title, desc, slug, l
       <Ast className="post-content" ast={htmlAst} />
       <LikeButton slug={slug}/>
       <SharePost title={title} desc={desc}/>
-      <HyvorTalk.Embed websiteId={600} id={`https://mazipan.space/${slug}`} url={`https://mazipan.space/${slug}`}/>
+      {/* <HyvorTalk.Embed websiteId={600} id={`https://mazipan.space/${slug}`} url={`https://mazipan.space/${slug}`}/> */}
     </PostFullContent>
   );
 };
