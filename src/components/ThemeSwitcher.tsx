@@ -26,7 +26,7 @@ const SwitchButton = styled.button`
 
 const ThemeSwitcher: FC = ({ floating }) => {
   // @ts-ignore
-  const [theme, setTheme] = useState(window ? window.__theme : 'light');
+  const [theme, setTheme] = useState(typeof window !== 'undefined' ? window.__theme : 'light');
 
   const toggleTheme = () => {
     const newTheme = theme === 'dark' ? 'light' : 'dark';
