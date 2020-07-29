@@ -1,7 +1,6 @@
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
-import { colors } from './colors';
-import { lighten } from 'polished';
+import pxToRem from './pxToRem';
 
 export const outer = css`
   position: relative;
@@ -23,15 +22,28 @@ export const SiteTitle = styled.h1`
   z-index: 10;
   margin: 0;
   padding: 0;
-  font-size: 3.8rem;
+  font-size: ${pxToRem(24)};
   font-weight: 700;
+
+  background: var(--bg-gradient-vertical);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  @media (min-width: 700px) {
+    font-size: ${pxToRem(30)};
+  }
+
+  &::selection, &::-moz-selection {
+    -webkit-text-fill-color: #fff !important;
+    color: #fff;
+  }
 `;
 
 export const SiteDescription = styled.h2`
   z-index: 10;
   margin: 0;
   padding: 5px 0;
-  font-size: 2.2rem;
+  font-size: ${pxToRem(18)};
   font-weight: 300;
   letter-spacing: 0.5px;
   opacity: 0.8;

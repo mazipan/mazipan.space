@@ -33,9 +33,6 @@ const IndexPage: FC<IndexProps> = props => {
     trackView('Page Index');
   }, []);
 
-  const width = props.data ? props.data.header.childImageSharp.fluid.sizes.split(', ')[1].split('px')[0] : 100;
-  const height = props.data ? String(Number(width) / props.data.header.childImageSharp.fluid.aspectRatio) : '100';
-
   return (
     <IndexLayout css={HomePosts}>
       <Helmet>
@@ -77,19 +74,12 @@ const IndexPage: FC<IndexProps> = props => {
       <Wrapper>
         <ThemeSwitcher />
         <header
-          css={[outer, SiteHeader]}>
+          css={[outer, SiteHeader]}
+        >
           <div css={inner}>
             <SiteHeaderContent>
               <SiteTitle>
-                {props.data && props.data.logo ? (
-                  <img
-                    style={{ maxHeight: '45px' }}
-                    src={props.data.logo.childImageSharp.fixed.src}
-                    alt={config.title}
-                  />
-                ) : (
-                  config.title
-                )}
+                &lt;MazipanSpace&nbsp;/&gt;
               </SiteTitle>
               <SiteDescription>{config.description}</SiteDescription>
             </SiteHeaderContent>
@@ -120,7 +110,7 @@ const IndexPage: FC<IndexProps> = props => {
 };
 
 export default IndexPage;
-export const pageQuery =  graphql`
+export const pageQuery = graphql`
 query blogPageQuery($skip: Int!, $limit: Int!) {
   logo: file(relativePath: { eq: "images/logo.png" }) {
     childImageSharp {

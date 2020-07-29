@@ -1,6 +1,7 @@
 
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
+import pxToRem from '../../styles/pxToRem';
 
 export const HiddenMobile = css`
   @media (max-width: 500px) {
@@ -26,7 +27,7 @@ export const AuthorBio = styled.h2`
   flex-shrink: 0;
   margin: 5px 0 10px 0;
   max-width: 600px;
-  font-size: 2rem;
+  font-size: ${pxToRem(18)};
   line-height: 1.3em;
   font-weight: 300;
   letter-spacing: 0.5px;

@@ -1,6 +1,7 @@
 
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
+import pxToRem from '../../styles/pxToRem';
 
 export const PostTemplate = css`
   .site-main {
@@ -12,7 +13,7 @@ export const PostTemplate = css`
     width: 100%;
     text-align: center;
     display: block;
-    font-size: 1.5rem;
+    font-size: ${pxToRem(12)};
     font-style: italic;
     margin-top: 2.5em;
   }
@@ -50,18 +51,19 @@ export const PostFullMeta = styled.section`
   justify-content: center;
   align-items: center;
   color: var(--text-link-color);
-  font-size: 1.4rem;
+  font-size: ${pxToRem(14)};
   font-weight: 600;
   text-transform: uppercase;
 
   @media (max-width: 500px) {
-    font-size: 1.2rem;
+    font-size: ${pxToRem(12)};
     line-height: 1.3em;
   }
 `;
 
 export const PostFullTitle = styled.h1`
   margin: 0;
+  font-size: ${pxToRem(35)};
   background: var(--bg-gradient-vertical);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -69,10 +71,6 @@ export const PostFullTitle = styled.h1`
   &::selection, &::-moz-selection {
     -webkit-text-fill-color: #fff !important;
     color: #fff;
-  }
-
-  @media (max-width: 500px) {
-    font-size: 2.9rem;
   }
 `;
 

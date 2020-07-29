@@ -11,12 +11,13 @@ import PostCard from '../components/PostCard';
 import Wrapper from '../components/Wrapper';
 import { trackView } from '../utils/ga';
 import config from '../website-config';
+import pxToRem from '../styles/pxToRem';
 
 import {
   inner,
   outer,
   PostFeed,
-  SiteHeader
+  SiteHeader,
 } from '../styles/shared';
 
 const SiteNavCenter = styled.nav`
@@ -45,7 +46,7 @@ const ErrorCode = styled.h1`
 const ErrorDescription = styled.p`
   margin: 0;
   color: var(--text-color-grey);
-  font-size: 3rem;
+  font-size: ${pxToRem(30)};
   line-height: 1.3em;
   font-weight: 400;
 `;

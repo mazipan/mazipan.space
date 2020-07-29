@@ -1,4 +1,5 @@
 import { css } from '@emotion/core';
+import pxToRem from '../../styles/pxToRem';
 
 export const HomePosts = css`
   @media (min-width: 795px) {
@@ -24,11 +25,11 @@ export const HomePosts = css`
     }
 
     .post-card:nth-of-type(6n + 1):not(.no-image) h2 {
-      font-size: 2.6rem;
+      font-size: ${pxToRem(20)};
     }
 
     .post-card:nth-of-type(6n + 1):not(.no-image) p {
-      font-size: 1.8rem;
+      font-size: ${pxToRem(18)};
       line-height: 1.55em;
     }
 

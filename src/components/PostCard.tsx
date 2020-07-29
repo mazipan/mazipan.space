@@ -5,6 +5,7 @@ import * as React from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 
+import pxToRem from '../styles/pxToRem';
 import { colors } from '../styles/colors';
 import { trackClick } from '../utils/ga';
 
@@ -24,7 +25,6 @@ const PostCardStyles = css`
   :hover {
     box-shadow: rgba(39, 44, 49, 0.07) 8px 28px 50px, rgba(39, 44, 49, 0.04) 1px 6px 12px;
     transition: all 0.4s ease;
-    transform: translate3D(0, -1px, 0) scale(1.02);
   }
 `;
 
@@ -61,16 +61,6 @@ const PostCardContentLink = css`
   }
 `;
 
-const PostCardTags = styled.span`
-  margin-bottom: 4px;
-  color: var(--text-link-color);
-  font-size: 1.2rem;
-  line-height: 1.15em;
-  font-weight: 500;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-`;
-
 const PostCardTitle = styled.h2`
   margin-top: 0;
   background: var(--bg-gradient-vertical);
@@ -90,109 +80,26 @@ const PostCardExcerpt = styled.section`
 const PostCardMeta = styled.footer`
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: center;
   padding: 0 25px 25px;
 `;
 
-const AuthorList = styled.ul`
-  display: flex;
-  flex-wrap: wrap-reverse;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-`;
-
-const AuthorListItem = styled.li`
-  position: relative;
-  flex-shrink: 0;
-  margin: 0;
-  padding: 0;
-
-  :nth-of-type(1) {
-    z-index: 10;
-  }
-  :nth-of-type(2) {
-    z-index: 9;
-  }
-  :nth-of-type(3) {
-    z-index: 8;
-  }
-  :nth-of-type(4) {
-    z-index: 7;
-  }
-  :nth-of-type(5) {
-    z-index: 6;
-  }
-  :nth-of-type(6) {
-    z-index: 5;
-  }
-  :nth-of-type(7) {
-    z-index: 4;
-  }
-  :nth-of-type(8) {
-    z-index: 3;
-  }
-  :nth-of-type(9) {
-    z-index: 2;
-  }
-  :nth-of-type(10) {
-    z-index: 1;
-  }
-  :hover .author-name-tooltip {
-    opacity: 1;
-    transform: translateY(0px);
-  }
-`;
-
-const AuthorNameTooltip = styled.div`
-  position: absolute;
-  bottom: 105%;
-  z-index: 999;
-  display: block;
-  padding: 2px 8px;
-  font-size: 1.2rem;
-  letter-spacing: 0.2px;
-  white-space: nowrap;
-  background: var(--text-color);
-  color: var(--bg-content);
-  border-radius: 3px;
-  box-shadow: rgba(39, 44, 49, 0.08) 0 12px 26px, rgba(39, 44, 49, 0.03) 1px 3px 8px;
-  opacity: 0;
-  transition: all 0.3s cubic-bezier(0.4, 0.01, 0.165, 0.99);
-  transform: translateY(6px);
-  pointer-events: none;
-
-  @media (max-width: 650px) {
-    display: none;
-  }
-`;
-
-const StaticAvatar = css`
-  display: block;
-  overflow: hidden;
-  margin: 0 -5px;
-  width: 34px;
-  height: 34px;
-  border: #fff 2px solid;
-  border-radius: 100%;
-`;
-
-const AuthorProfileImage = styled.img`
-  display: block;
-  width: 100%;
-  height: 100%;
-  background: var(--text-color-grey);
-  border-radius: 100%;
-  object-fit: cover;
+const PostCardTags = styled.span`
+  background-color: var(--text-subtitle-color);
+  font-size: ${pxToRem(10)};
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  border-radius: 4px;
+  padding: .5em;
 `;
 
 const ReadingTime = styled.span`
   flex-shrink: 0;
   margin-left: 20px;
   color: var(--text-color-grey);
-  font-size: 1.2rem;
-  line-height: 33px;
-  font-weight: 500;
+  font-size: ${pxToRem(10)};
+  font-weight: 600;
   letter-spacing: 0.5px;
   text-transform: uppercase;
 `;
@@ -202,13 +109,12 @@ export interface PostCardProps {
 }
 
 const PostCard: React.FC<PostCardProps> = ({ post }) => {
-
   const trackPostClick = (link: string) => {
     trackClick({
-      eventCategory: `Click Post Card Item`,
+      eventCategory: 'Click Post Card Item',
       eventLabel: `Card Post - ${link} - ${post.frontmatter.title}`,
-    })
-  }
+    });
+  };
 
   return (
     <article
@@ -216,7 +122,11 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
       css={PostCardStyles}
     >
       {post.frontmatter.image && (
-        <Link onClick={() => { trackPostClick('Post image cover') }} className="post-card-image-link" css={PostCardImageLink} to={post.fields.slug}>
+        <Link className="post-card-image-link" css={PostCardImageLink} to={post.fields.slug}
+          onClick={() => {
+            trackPostClick('Post image cover');
+          }}
+        >
           <PostCardImage className="post-card-image">
             {post.frontmatter.image &&
               post.frontmatter.image.childImageSharp &&
@@ -231,10 +141,12 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
         </Link>
       )}
       <PostCardContent className="post-card-content">
-
-        <Link onClick={() => { trackPostClick('Post excerpt text') }} className="post-card-content-link" css={PostCardContentLink} to={post.fields.slug}>
+        <Link className="post-card-content-link" css={PostCardContentLink} to={post.fields.slug}
+          onClick={() => {
+            trackPostClick('Post excerpt text');
+          }}
+        >
           <header className="post-card-header">
-            {post.frontmatter.tags && <PostCardTags>{post.frontmatter.tags[0]}</PostCardTags>}
             <PostCardTitle>{post.frontmatter.title}</PostCardTitle>
           </header>
           <PostCardExcerpt>
@@ -243,19 +155,7 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
         </Link>
 
         <PostCardMeta className="post-card-meta">
-          <AuthorList>
-            <AuthorListItem>
-              <AuthorNameTooltip className="author-name-tooltip">
-                {post.frontmatter.author.id}
-              </AuthorNameTooltip>
-              <Link onClick={() => { trackPostClick('Post author') }} css={StaticAvatar} to={`/author/${_.kebabCase(post.frontmatter.author.id)}/`}>
-                <AuthorProfileImage
-                  src={post.frontmatter.author.avatar.children[0].fixed.src}
-                  alt={post.frontmatter.author.id}
-                />
-              </Link>
-            </AuthorListItem>
-          </AuthorList>
+          {post.frontmatter.tags && <PostCardTags>{post.frontmatter.tags[0]}</PostCardTags>}
           <ReadingTime>{post.timeToRead} min read</ReadingTime>
         </PostCardMeta>
       </PostCardContent>

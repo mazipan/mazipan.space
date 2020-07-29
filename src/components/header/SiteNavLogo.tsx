@@ -2,6 +2,7 @@ import { graphql, Link, StaticQuery } from 'gatsby';
 import * as React from 'react';
 import { css } from '@emotion/core';
 
+import pxToRem from '../../styles/pxToRem';
 import { trackClick } from '../../utils/ga';
 import config from '../../website-config';
 
@@ -11,7 +12,7 @@ const SiteNavLogoStyles = css`
   margin-right: 24px;
   padding: 11px 0;
   color: #fff;
-  font-size: 1.7rem;
+  font-size: ${pxToRem(16)};
   line-height: 1em;
   font-weight: bold;
   letter-spacing: -0.5px;

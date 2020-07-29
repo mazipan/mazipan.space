@@ -1,4 +1,4 @@
-const SITE_NAME = process.env.SITE_NAME || '@mazipan';
+const SITE_NAME = process.env.SITE_NAME || 'mazipan.space';
 const FULL_DOMAIN = process.env.FULL_DOMAIN || 'https://mazipan.space';
 
 export interface WebsiteConfig {

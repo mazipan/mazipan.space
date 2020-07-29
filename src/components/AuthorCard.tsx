@@ -3,6 +3,7 @@ import * as _ from 'lodash';
 import * as React from 'react';
 import styled from '@emotion/styled';
 
+import pxToRem from '../styles/pxToRem';
 import { AuthorProfileImage } from '../styles/shared';
 import { trackClick } from '../utils/ga';
 
@@ -13,7 +14,7 @@ const AuthorCardSection = styled.section`
 const AuthorCardName = styled.h4`
   margin: 8px 0 2px 0;
   padding: 0;
-  font-size: 2rem;
+  font-size: ${pxToRem(10)};
 
   a {
     color: var(--text-color);

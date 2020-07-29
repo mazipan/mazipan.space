@@ -1,7 +1,7 @@
 // tslint:disable:no-http-string
 import React, { FC } from 'react';
 
-const Linkedin: FC<IconProps> = ({ height = '1.5rem' }) => (
+const Linkedin: FC<IconProps> = ({ height = '1rem' }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="24"

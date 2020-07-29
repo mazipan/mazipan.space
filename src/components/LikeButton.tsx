@@ -5,6 +5,7 @@ import 'react-toastify/dist/ReactToastify.min.css';
 
 import useIntersect from '../hooks/useIntersect.js';
 import { trackClick } from '../utils/ga';
+import pxToRem from '../styles/pxToRem';
 
 export interface LikeButtonProps {
   slug: string;
@@ -24,6 +25,8 @@ const likeBtnWrapper = css`
   > button, a {
     appearance: none;
     background: none;
+    border: 0;
+    outline: 0;
     display: block;
     margin-right: 0.5em;
     margin-bottom: 0.5em;
@@ -32,7 +35,7 @@ const likeBtnWrapper = css`
     background-size: 200% auto;
     text-transform: uppercase;
     color: var(--text-color);
-    font-size: 1.2rem;
+    font-size: ${pxToRem(12)};
     line-height: 1;
     border-radius: 20px;
     transition: all 0.5s;

@@ -8,6 +8,7 @@ import Twitter from './icons/twitter';
 import Github from './icons/github';
 import Linkedin from './icons/linkedin';
 
+import pxToRem from '../styles/pxToRem';
 import { outer, inner } from '../styles/shared';
 
 import config from '../website-config';
@@ -15,8 +16,7 @@ import { trackClick, trackOutbond } from '../utils/ga';
 
 const SiteFooter = css`
   position: relative;
-  padding-top: 20px;
-  padding-bottom: 60px;
+  padding: 20px 0;
   color: var(--text-header);
   background: var(--bg-header);
 `;
@@ -27,14 +27,17 @@ const SiteFooterContent = css`
   justify-content: space-between;
   align-items: center;
   color: rgba(255, 255, 255, 0.7);
-  font-size: 1.3rem;
+  font-size: ${pxToRem(12)};
+
   a {
     color: rgba(255, 255, 255, 0.7);
   }
+
   a:hover {
     color: rgba(255, 255, 255, 1);
     text-decoration: none;
   }
+
   @media (max-width: 650px) {
     flex-direction: column;
   }
@@ -42,27 +45,13 @@ const SiteFooterContent = css`
 
 const SiteFooterNav = styled.nav`
   display: flex;
+  margin-top: 10px;
 
   a {
     position: relative;
     margin-left: 20px;
   }
 
-  a:before {
-    content: '';
-    position: absolute;
-    top: 11px;
-    left: -11px;
-    display: block;
-    width: 2px;
-    height: 2px;
-    background: #fff;
-    border-radius: 100%;
-  }
-
-  a:first-of-type:before {
-    display: none;
-  }
   @media (max-width: 650px) {
     a:first-of-type {
       margin-left: 0;
@@ -74,6 +63,7 @@ const SocialLinks = styled.div`
   flex-shrink: 0;
   display: flex;
   align-items: center;
+  margin-top: 10px;
 
   @media (min-width: 700px) {
     display: none;
@@ -96,14 +86,6 @@ const Footer: React.FC = () => {
     <footer css={[outer, SiteFooter]}>
       <div css={[inner, SiteFooterContent]}>
         <section className="copyright">
-          <Link
-            to="/"
-            onClick={() => {
-              trackFooterClick('Site title');
-            }}
-          >
-            {config.title}
-          </Link>{' '}
           &copy; {new Date().getFullYear()} {config.footer}
         </section>
 
@@ -144,10 +126,10 @@ const Footer: React.FC = () => {
               title="Facebook"
               rel="noopener noreferrer"
               onClick={() => {
-                trackOutbond(config.facebook || '', 'Sosial Media');
+                trackOutbond(config.facebook ?? '', 'Sosial Media');
               }}
             >
-              <Facebook height="2rem" />
+              <Facebook height="1rem" />
             </a>
           )}
 
@@ -158,10 +140,10 @@ const Footer: React.FC = () => {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => {
-                trackOutbond(config.twitter || '', 'Sosial Media');
+                trackOutbond(config.twitter ?? '', 'Sosial Media');
               }}
             >
-              <Twitter height="2rem" />
+              <Twitter height="1rem" />
             </a>
           )}
 
@@ -172,10 +154,10 @@ const Footer: React.FC = () => {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => {
-                trackOutbond(config.github || '', 'Sosial Media');
+                trackOutbond(config.github ?? '', 'Sosial Media');
               }}
             >
-              <Github height="2rem" />
+              <Github height="1rem" />
             </a>
           )}
 
@@ -186,10 +168,10 @@ const Footer: React.FC = () => {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => {
-                trackOutbond(config.linkedin || '', 'Sosial Media');
+                trackOutbond(config.linkedin ?? '', 'Sosial Media');
               }}
             >
-              <Linkedin height="2rem" />
+              <Linkedin height="1rem" />
             </a>
           )}
         </SocialLinks>

@@ -2,6 +2,7 @@ import { Link } from 'gatsby';
 import * as React from 'react';
 import { css } from '@emotion/core';
 import { trackClick } from '../utils/ga';
+import pxToRem from '../styles/pxToRem';
 
 export interface PaginationProps {
   currentPage: number;
@@ -15,18 +16,19 @@ const navCss = css`
   }
 
   a {
+    font-size: ${pxToRem(12)};
     background: var(--bg-card);
     color: var(--text-color);
     float: left;
-    padding: 8px 16px;
+    padding: 8px;
     text-decoration: none;
     transition: all 0.4s ease;
     transform: translate3D(0,-1px,0) scale(1.02);
-    margin: 0 4px;
+    margin: 0 2px;
     box-shadow: rgba(39,44,49,0.06) 8px 14px 38px, rgba(39,44,49,0.03) 1px 3px 8px;
     border-radius: 6px;
     margin-bottom: 5px;
-    min-width: 50px;
+    min-width: 35px;
 
     &.active {
       -webkit-box-shadow:inset 3px 0px 0px 0px var(--text-link-color);

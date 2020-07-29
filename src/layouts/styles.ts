@@ -1,20 +1,23 @@
 
 import { css } from '@emotion/core';
-import { lighten } from 'polished';
-import { colors } from '../styles/colors';
+import normalize from '../styles/normalize';
 
 const GlobalStyles = css`
   .dark {
     --text-color: #f8f8f2;
     --text-title-color: #bd93f9;
     --text-subtitle-color: #ff79c6;
+    --text-subsubtitle-color: #ff5555;
+    --text-sub3title-color: #ffb86c;
+    --text-sub4title-color: #8be9fd;
+    --text-sub5title-color: #50fa7b;
     --text-color-grey: #b4b5b5;
-    --text-link-color: #57c3ff;
+    --text-link-color: #8be9fd;
     --bg-content: #100e17;
     --bg-card: #17141d    ;
     --bg-card-comment: #6272a4;
 
-    --bg-inline-code: rgb(14, 16, 18);
+    --bg-inline-code: rgb(51, 53, 54);
     --text-inline-code: #f8f8f2;
 
     --bg-header: #212121;
@@ -27,8 +30,12 @@ const GlobalStyles = css`
     --text-color: #2d373b;
     --text-title-color: #6272a4;
     --text-subtitle-color: #ff79c6;
+    --text-subsubtitle-color: #ff5555;
+    --text-sub3title-color: #ffb86c;
+    --text-sub4title-color: #8be9fd;
+    --text-sub5title-color: #50fa7b;
     --text-color-grey: #647a83;
-    --text-link-color: #57c3ff;
+    --text-link-color: #bd93f9;
     --bg-content: #f3f8fb;
     --bg-card: #fff;
     --bg-card-comment: #15171A;
@@ -42,245 +49,36 @@ const GlobalStyles = css`
     --bg-gradient-vertical: linear-gradient(90deg, #DA22FF, #9733EE);
   }
 
-  html,
-  body,
-  div,
-  span,
-  iframe,
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  p,
-  blockquote,
-  pre,
-  a,
-  abbr,
-  code,
-  em,
-  img,
-  q,
-  s,
-  small,
-  strike,
-  strong,
-  ol,
-  ul,
-  li,
-  label,
-  legend,
-  table,
-  caption,
-  tbody,
-  tfoot,
-  thead,
-  tr,
-  th,
-  td,
-  article,
-  aside,
-  canvas,
-  details,
-  embed,
-  figure,
-  figcaption,
-  footer,
-  header,
-  menu,
-  nav,
-  section,
-  summary,
-  time,
-  mark {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font: inherit;
-    font-size: 100%;
-    vertical-align: baseline;
+  ${normalize}
+
+  *:focus{
+    outline:none
   }
+  html{
+    box-sizing:border-box;
+    font-size:14px;
+  }
+
+  html,body{
+    margin:0;
+    padding:0;
+    height:100%;
+  }
+
+  *,*::before,*::after{box-sizing:inherit}
+
   body {
-    line-height: 1;
-  }
-  ol,
-  ul {
-    list-style: none;
-  }
-  blockquote,
-  q {
-    quotes: none;
-  }
-  blockquote:before,
-  blockquote:after,
-  q:before,
-  q:after {
-    content: '';
-    content: none;
-  }
-  table {
-    border-spacing: 0;
-    border-collapse: collapse;
-  }
-  img {
-    max-width: 100%;
-  }
-  html {
-    box-sizing: border-box;
-    font-family: sans-serif;
-
-    -ms-text-size-adjust: 100%;
-    -webkit-text-size-adjust: 100%;
-  }
-  *,
-  *:before,
-  *:after {
-    box-sizing: inherit;
-  }
-  a {
-    background-color: transparent;
-  }
-  a:active,
-  a:hover {
-    outline: 0;
-  }
-  b,
-  strong {
-    font-weight: bold;
-  }
-  i,
-  em {
-    font-style: italic;
-  }
-  h1 {
-    margin: 0.67em 0;
-    font-size: 2em;
-  }
-  small {
-    font-size: 80%;
-  }
-  img {
-    border: 0;
-  }
-  svg:not(:root) {
-    overflow: hidden;
-  }
-  code,
-  kbd,
-  pre,
-  samp {
-    font-family: monospace, monospace;
-    font-size: 1em;
-  }
-  button,
-  input,
-  optgroup,
-  select,
-  textarea {
-    margin: 0;
-    color: inherit;
-    font: inherit;
-  }
-  button {
-    overflow: visible;
-    border: none;
-  }
-  button,
-  select {
-    text-transform: none;
-  }
-  button,
-  html input[type='button'],
-  input[type='reset'],
-  input[type='submit'] {
-    cursor: pointer;
-    -webkit-appearance: button;
-  }
-  button[disabled],
-  html input[disabled] {
-    cursor: default;
-  }
-  button::-moz-focus-inner,
-  input::-moz-focus-inner {
-    padding: 0;
-    border: 0;
-  }
-  input {
-    line-height: normal;
-  }
-  input:focus {
-    outline: none;
-  }
-  textarea {
-    overflow: auto;
-  }
-  table {
-    border-spacing: 0;
-    border-collapse: collapse;
-  }
-  td,
-  th {
-    padding: 0;
-  }
-
-  html {
-    overflow-x: hidden;
-    overflow-y: scroll;
-    font-size: 62.5%;
-
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  }
-  body {
-    overflow-x: hidden;
+    background: var(--bg-content);
     color: var(--text-color);
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1.5rem;
-    line-height: 1.6em;
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     font-weight: 400;
     font-style: normal;
-    letter-spacing: 0;
     text-rendering: optimizeLegibility;
     background: var(--bg-content);
 
+    scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    -moz-font-feature-settings: 'liga' on;
-  }
-
-  ::selection {
-    text-shadow: none;
-    background: ${lighten('0.3', colors.blue)};
-  }
-
-  hr {
-    position: relative;
-    display: block;
-    width: 100%;
-    margin: 2.5em 0 3.5em;
-    padding: 0;
-    height: 1px;
-    border: 0;
-    border-top: 1px solid ${lighten('0.1', colors.lightgrey)};
-  }
-
-  audio,
-  canvas,
-  iframe,
-  img,
-  svg,
-  video {
-    vertical-align: middle;
-  }
-
-  fieldset {
-    margin: 0;
-    padding: 0;
-    border: 0;
-  }
-
-  textarea {
-    resize: vertical;
   }
 
   p,
@@ -323,24 +121,9 @@ const GlobalStyles = css`
     line-height: 1.6em;
   }
 
-  dt {
-    float: left;
-    margin: 0 20px 0 0;
-    width: 120px;
-    color: ${colors.darkgrey};
-    font-weight: 500;
-    text-align: right;
-  }
-
-  dd {
-    margin: 0 0 5px 0;
-    text-align: left;
-  }
-
   blockquote {
     margin: 1.5em 0;
     padding: 0 1.6em 0 1.6em;
-    border-left: ${colors.whitegrey} 0.5em solid;
   }
 
   blockquote p {
@@ -387,61 +170,6 @@ const GlobalStyles = css`
     font-weight: 700;
     text-rendering: optimizeLegibility;
   }
-
-  h1 {
-    margin: 0 0 0.5em 0;
-    font-size: 5rem;
-    font-weight: 700;
-  }
-  @media (max-width: 500px) {
-    h1 {
-      font-size: 2.2rem;
-    }
-  }
-
-  h2 {
-    margin: 1.5em 0 0.5em 0;
-    font-size: 2rem;
-  }
-  @media (max-width: 500px) {
-    h2 {
-      font-size: 1.8rem;
-    }
-  }
-
-  h3 {
-    margin: 1.5em 0 0.5em 0;
-    font-size: 1.8rem;
-    font-weight: 500;
-  }
-  @media (max-width: 500px) {
-    h3 {
-      font-size: 1.7rem;
-    }
-  }
-
-  h4 {
-    margin: 1.5em 0 0.5em 0;
-    font-size: 1.6rem;
-    font-weight: 500;
-  }
-
-  h5 {
-    margin: 1.5em 0 0.5em 0;
-    font-size: 1.4rem;
-    font-weight: 500;
-  }
-
-  h6 {
-    margin: 1.5em 0 0.5em 0;
-    font-size: 1.4rem;
-    font-weight: 500;
-  }
-
-  body {
-    background: var(--bg-content);
-  }
-
 
   /* Start Syntax Highlighting */
   /* Taken from overreacted https://github.com/gaearon/overreacted.io/blob/942b41555f5e5ccbb5f93f6c26142cd90b314236/src/utils/global.css#L68 */

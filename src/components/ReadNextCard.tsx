@@ -5,6 +5,7 @@ import * as _ from 'lodash';
 
 import InfinityIcon from './icons/infinity';
 
+import pxToRem from '../styles/pxToRem';
 import { trackClick } from '../utils/ga';
 import config from '../website-config';
 
@@ -49,7 +50,7 @@ const ReadNextCardHeader = styled.header`
 
 const ReadNextCardHeaderSitetitle = styled.small`
   display: block;
-  font-size: 1.3rem;
+  font-size: ${pxToRem(14)};
   line-height: 1.3em;
   opacity: 0.8;
 `;
@@ -58,7 +59,7 @@ const ReadNextCardHeaderTitle = styled.h3`
   margin: 0;
   padding: 0 20px;
   color: #fff;
-  font-size: 3rem;
+  font-size: ${pxToRem(18)};
   line-height: 1.2em;
   letter-spacing: 1px;
 
@@ -94,7 +95,7 @@ const ReadNextCardContent = styled.div`
   z-index: 50;
   flex-grow: 1;
   display: flex;
-  font-size: 1.7rem;
+  font-size: ${pxToRem(16)};
 
   ul {
     display: flex;
@@ -108,7 +109,7 @@ const ReadNextCardContent = styled.div`
   li {
     margin: 0;
     padding: 0;
-    font-size: 1.6rem;
+    font-size: ${pxToRem(14)};
     line-height: 1.25em;
     font-weight: 200;
     letter-spacing: -0.5px;
@@ -119,7 +120,7 @@ const ReadNextCardContent = styled.div`
     padding: 20px 0;
     border-bottom: rgba(255, 255, 255, 0.3) 1px solid;
     color: #fff;
-    font-weight: 500;
+    font-weight: 600;
     vertical-align: top;
     transition: opacity 0.3s ease;
   }

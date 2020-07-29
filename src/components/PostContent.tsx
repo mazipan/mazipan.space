@@ -1,4 +1,3 @@
-import { lighten, darken, setSaturation } from 'polished';
 import * as React from 'react';
 import { Link } from 'gatsby';
 import styled from '@emotion/styled';
@@ -7,24 +6,20 @@ import RehypeReact from 'rehype-react';
 import SharePost from './SharePost';
 import LikeButton from './LikeButton';
 
-import { colors } from '../styles/colors';
+import pxToRem from '../styles/pxToRem';
 
 export const PostFullContent = styled.section`
   position: relative;
   margin: 0 auto;
   padding: 0 100px 0;
   min-height: 230px;
-  font-size: 1.7rem;
+  font-size: ${pxToRem(16)};
   line-height: 1.6em;
   background: var(--bg-content);
   border-radius: 5px;
 
   @media (max-width: 1170px) {
     padding: 0 7vw 0;
-  }
-
-  @media (max-width: 800px) {
-    font-size: 1.9rem;
   }
 
   h1,
@@ -110,14 +105,10 @@ export const PostFullContent = styled.section`
   blockquote {
     margin: 0 0 1.5em;
     padding: 0 1.5em;
-    border-left: ${colors.blue} 3px solid;
   }
 
   blockquote p {
     margin: 0 0 1em 0;
-    color: inherit;
-    font-size: inherit;
-    line-height: inherit;
     font-style: italic;
   }
 
@@ -130,7 +121,6 @@ export const PostFullContent = styled.section`
     font-size: 0.8em;
     line-height: 1em;
     font-weight: 400 !important;
-    background: ${colors.whitegrey};
     border-radius: 3px;
   }
 
@@ -140,16 +130,12 @@ export const PostFullContent = styled.section`
 
   pre {
     overflow-x: auto;
-    /* margin: 1.5em 0 3em; */
     padding: 20px;
     max-width: 100%;
-    /* border: color(var(--darkgrey) l(-10%)) 1px solid; */
-    border: ${darken('0.01', colors.darkgrey)} 1px solid;
-    color: ${colors.whitegrey};
-    font-size: 1.4rem;
+    border: var(--darkgrey) 1px solid;
+    color: var(--darkgrey);
+    font-size: ${pxToRem(10)};
     line-height: 1.5em;
-    /* background: color(var(--darkgrey) l(-3%)); */
-    background: ${darken('0.03', colors.darkgrey)};
     border-radius: 5px;
   }
 
@@ -161,7 +147,7 @@ export const PostFullContent = styled.section`
   }
 
   pre code :not(span) {
-    color: inherit;
+    color: #fff;
   }
 
   /* .fluid-width-video-wrapper { */
@@ -169,113 +155,43 @@ export const PostFullContent = styled.section`
     margin: 1.5em 0 3em;
   }
 
-  hr {
-    margin: 4vw 0;
-  }
-
-  hr:after {
-    content: '';
-    position: absolute;
-    top: -15px;
-    left: 50%;
-    display: block;
-    margin-left: -10px;
-    width: 1px;
-    height: 30px;
-    background: ${lighten('0.1', colors.lightgrey)};
-    box-shadow: #fff 0 0 0 5px;
-    transform: rotate(45deg);
-  }
-
+  h1,
   h2,
   h3,
   h4,
   h5,
   h6 {
-    color: var(--text-subtitle-color);
+    margin: 0.5em 0;
+    font-weight: 700;
   }
 
   h1 {
-    margin: 0.5em 0 0.2em 0;
-    font-size: 4.6rem;
-    font-weight: 700;
-  }
-
-  @media (max-width: 500px) {
-    h1 {
-      font-size: 2.8rem;
-    }
+    font-size: ${pxToRem(30)};
   }
 
   h2 {
-    margin: 0.5em 0 0.2em 0;
-    font-size: 3.6rem;
-    font-weight: 700;
-  }
-
-  @media (max-width: 500px) {
-    h2 {
-      font-size: 2.6rem;
-    }
+    font-size: ${pxToRem(26)};
+    color: var(--text-title-color);
   }
 
   h3 {
-    margin: 0.5em 0 0.2em 0;
-    font-size: 2.8rem;
-    font-weight: 700;
-  }
-
-  @media (max-width: 500px) {
-    h3 {
-      font-size: 2.2rem;
-    }
+    font-size: ${pxToRem(20)};
+    color: var(--text-subsubtitle-color);
   }
 
   h4 {
-    margin: 0.5em 0 0.2em 0;
-    font-size: 2.8rem;
-    font-weight: 700;
-  }
-
-  @media (max-width: 500px) {
-    h4 {
-      font-size: 2.2rem;
-    }
+    font-size: ${pxToRem(18)};
+    color: var(--text-sub3title-color);
   }
 
   h5 {
-    display: block;
-    margin: 0.5em 0;
-    padding: 1em 0 1.5em;
-    border: 0;
-    font-size: 3.2rem;
-    line-height: 1.35em;
-    text-align: center;
-  }
-
-  @media (min-width: 1180px) {
-    h5 {
-      max-width: 1060px;
-    }
-  }
-
-  @media (max-width: 500px) {
-    h5 {
-      padding: 0 0 0.5em;
-      font-size: 2.2rem;
-    }
+    font-size: ${pxToRem(16)};
+    color: var(--text-sub4title-color);
   }
 
   h6 {
-    margin: 0.5em 0 0.2em 0;
-    font-size: 2.3rem;
-    font-weight: 700;
-  }
-
-  @media (max-width: 500px) {
-    h6 {
-      font-size: 2rem;
-    }
+    font-size: ${pxToRem(14)};
+    color: var(--text-sub5title-color);
   }
 
   /* Tables */
@@ -287,7 +203,7 @@ export const PostFullContent = styled.section`
     width: auto;
     border-spacing: 0;
     border-collapse: collapse;
-    font-size: 1.6rem;
+    font-size: ${pxToRem(16)};
     white-space: nowrap;
     vertical-align: top;
   }
@@ -324,21 +240,17 @@ export const PostFullContent = styled.section`
   }
 
   table th {
-    color: ${colors.darkgrey};
-    font-size: 1.2rem;
+    font-size: ${pxToRem(14)};
     font-weight: 700;
     letter-spacing: 0.2px;
     text-align: left;
     text-transform: uppercase;
-    /* background-color: color(var(--whitegrey) l(+4%)); */
-    background-color: ${lighten('0.04', colors.whitegrey)};
   }
 
   table th,
   table td {
     padding: 6px 12px;
     /* border: color(var(--whitegrey) l(-1%) s(-5%)) 1px solid; */
-    border: ${setSaturation('0.05', darken('0.01', colors.whitegrey))} 1px solid;
   }
 
   @media (max-width: 500px) {

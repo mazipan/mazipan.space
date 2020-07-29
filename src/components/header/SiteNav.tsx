@@ -9,6 +9,7 @@ import Twitter from '../icons/twitter';
 import Github from '../icons/github';
 import Linkedin from '../icons/linkedin';
 
+import pxToRem from '../../styles/pxToRem';
 import { SocialLink } from '../../styles/shared';
 
 import config from '../../website-config';
@@ -30,7 +31,6 @@ const SiteNavStyles = css`
   align-items: flex-start;
   overflow-y: hidden;
   height: 40px;
-  font-size: 1.2rem;
 `;
 
 const SiteNavLeft = styled.div`
@@ -70,12 +70,7 @@ const NavStyles = css`
     margin: 0;
     padding: 10px 12px;
     color: #fff;
-    opacity: 0.8;
-  }
-
-  li a:hover {
-    text-decoration: none;
-    opacity: 1;
+    font-size: ${pxToRem(12)};
   }
 `;
 
@@ -164,7 +159,7 @@ const SiteNav: FC<SiteNavProps> = props => {
                 trackOutbond(config.facebook ?? '', 'Sosial Media');
               }}
             >
-              <Facebook height="2rem" />
+              <Facebook height="1rem" />
             </a>
           )}
 
@@ -179,7 +174,7 @@ const SiteNav: FC<SiteNavProps> = props => {
                 trackOutbond(config.twitter ?? '', 'Sosial Media');
               }}
             >
-              <Twitter height="2rem" />
+              <Twitter height="1rem" />
             </a>
           )}
 
@@ -194,7 +189,7 @@ const SiteNav: FC<SiteNavProps> = props => {
                 trackOutbond(config.github ?? '', 'Sosial Media');
               }}
             >
-              <Github height="2rem" />
+              <Github height="1rem" />
             </a>
           )}
 
@@ -209,7 +204,7 @@ const SiteNav: FC<SiteNavProps> = props => {
                 trackOutbond(config.linkedin ?? '', 'Sosial Media');
               }}
             >
-              <Linkedin height="2rem" />
+              <Linkedin height="1rem" />
             </a>
           )}
         </SocialLinks>

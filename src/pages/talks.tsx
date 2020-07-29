@@ -9,6 +9,7 @@ import SiteNav from '../components/header/SiteNav';
 import Footer from '../components/Footer';
 import { PostFullContent } from '../components/PostContent';
 
+import pxToRem from '../styles/pxToRem';
 import { trackView } from '../utils/ga';
 import config from '../website-config';
 // @ts-ignore
@@ -18,13 +19,13 @@ import {
   SiteHeader,
   outer,
   inner,
-  SiteMain
+  SiteMain,
 } from '../styles/shared';
 import {
   PostFullHeader,
   PostFullTitle,
   NoImage,
-  PostFull
+  PostFull,
 } from '../templates/styles/post';
 
 const PageTemplate = css`
@@ -33,7 +34,7 @@ const PageTemplate = css`
     padding-bottom: 4vw;
   }
   .talk-year-text{
-    font-size: 2rem;
+    font-size: ${pxToRem(18)};
   }
   .talk-year{
     margin-bottom: 1em;
@@ -46,21 +47,32 @@ const PageTemplate = css`
     margin-left: 1em;
   }
   .talk-date{
-    font-size: 1.5rem;
+    font-size: ${pxToRem(16)};
     opacity: .8;
   }
+  .talk-event{
+    font-size: ${pxToRem(18)};
+    font-weight: 700;
+  }
   .talk-topic{
-    font-size: 1.8rem;
+    font-size: ${pxToRem(18)};
     font-style: italic;
   }
   .talk-slide, .talk-link{
-    font-size: 1.5rem;
-    opacity: .8;
+    background-color: var(--text-title-color);
+    color: var(--bg-card);
+    font-size: ${pxToRem(12)};
+    border-radius: 4px;
+    padding: .5em;
+    margin-right: 1em;
+
+    &:hover {
+      color: var(--bg-card);
+    }
   }
 `;
 
 const Talks: FC = () => {
-
   useEffect(() => {
     trackView('Page Talks');
   }, []);
@@ -117,58 +129,58 @@ const Talks: FC = () => {
 
             <PostFullContent className="post-full-content">
               <div className="post-content">
-              {
-                Object.keys(allTalks).reverse().map((year: any, index: number) => {
-                  return (
-                    <details key={year} className="talk-year" open={index === 0}>
-                      <summary className="talk-year-text">
+                {
+                  Object.keys(allTalks).reverse().map((year: any, index: number) => {
+                    return (
+                      <details key={year} className="talk-year" open={index === 0}>
+                        <summary className="talk-year-text">
                         #{year} ({allTalks[year].length} talks)
-                      </summary>
-                      <div className="talk-list">
-                        {
-                          allTalks[year].map((list: any) => {
-                            return (
-                              <div className="talk-item" key={list.date}>
-                                <div className="talk-date">{list.date}</div>
-                                <div className="talk-event">{list.event}</div>
-                                <div className="talk-topic">{list.topic}</div>
-                                { list.link && list.link.length > 0 && (
-                                  <>
-                                    {
-                                      list.link.map((link: string, idx: number) => (
-                                        <a className="talk-link" href={link} target="blank" rel="noopener noreferrer">
-                                          Event info
-                                          {(idx !== list.link.length -1) && ', '}
-                                        </a>
-                                      ))
-                                    }
-                                  </>
+                        </summary>
+                        <div className="talk-list">
+                          {
+                            allTalks[year].map((list: any) => {
+                              return (
+                                <div key={list.date} className="talk-item">
+                                  <div className="talk-date">{list.date}</div>
+                                  <div className="talk-event">{list.event}</div>
+                                  <div className="talk-topic">{list.topic}</div>
 
-                                )}
+                                  { list.link && list.link.length > 0 && (
+                                    <>
+                                      {
+                                        list.link.map((link: string, idx: number) => (
+                                          <a className="talk-link" href={link} target="blank" rel="noopener noreferrer">
+                                          Event ➡️
+                                            {(idx !== list.link.length - 1) && ', '}
+                                          </a>
+                                        ))
+                                      }
+                                      { list.slide && (
+                                          <a className="talk-slide" href={list.slide} target="blank" rel="noopener noreferrer">Slide ➡️</a>
+                                      )}
+                                    </>
 
-                                { list.slide && (
-                                  <div className="talk-slide">
-                                    <a href={list.slide} target="blank" rel="noopener noreferrer">See presentation slide ></a>
-                                  </div>
-                                )}
-                              </div>
-                            )
-                          })
-                        }
-                      </div>
-                    </details>
-                  )
-                })
-              }
+                                  )}
+
+
+                                </div>
+                              );
+                            })
+                          }
+                        </div>
+                      </details>
+                    );
+                  })
+                }
               </div>
-              <div>Found a typo? please help me fix the typo on this <a href="https://github.com/mazipan/talks" target="blank" rel="noopener noreferrer">Github repo</a></div>
+              <small>Found a typo? please help me fix the typo on this <a href="https://github.com/mazipan/talks" target="blank" rel="noopener noreferrer">Github repo</a></small>
             </PostFullContent>
           </article>
         </main>
         <Footer />
       </Wrapper>
     </IndexLayout>
-  )
+  );
 };
 
 export default Talks;
