@@ -159,7 +159,7 @@ const SiteNav: FC<SiteNavProps> = props => {
                 trackOutbond(config.facebook ?? '', 'Sosial Media');
               }}
             >
-              <Facebook height="1rem" />
+              <Facebook height="48" width="1rem" />
             </a>
           )}
 
@@ -174,7 +174,7 @@ const SiteNav: FC<SiteNavProps> = props => {
                 trackOutbond(config.twitter ?? '', 'Sosial Media');
               }}
             >
-              <Twitter height="1rem" />
+              <Twitter height="48" width="1rem" />
             </a>
           )}
 
@@ -189,7 +189,7 @@ const SiteNav: FC<SiteNavProps> = props => {
                 trackOutbond(config.github ?? '', 'Sosial Media');
               }}
             >
-              <Github height="1rem" />
+              <Github height="48" width="1rem" />
             </a>
           )}
 
@@ -204,7 +204,7 @@ const SiteNav: FC<SiteNavProps> = props => {
                 trackOutbond(config.linkedin ?? '', 'Sosial Media');
               }}
             >
-              <Linkedin height="1rem" />
+              <Linkedin height="48" width="1rem" />
             </a>
           )}
         </SocialLinks>

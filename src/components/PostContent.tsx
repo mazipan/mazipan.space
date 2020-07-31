@@ -134,7 +134,7 @@ export const PostFullContent = styled.section`
     max-width: 100%;
     border: var(--darkgrey) 1px solid;
     color: var(--darkgrey);
-    font-size: ${pxToRem(10)};
+    font-size: ${pxToRem(14)};
     line-height: 1.5em;
     border-radius: 5px;
   }

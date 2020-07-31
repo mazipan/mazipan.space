@@ -18,9 +18,10 @@ const SwitchButton = styled.button`
   border-radius: 0.5em;
   box-shadow: rgba(39, 44, 49, 0.06) 8px 14px 38px, rgba(39, 44, 49, 0.03) 1px 3px 8px;
   background-color: var(--bg-card);
-  color: var(--text-color);
+  color: var(--text-sub3title-color);
+  border: 2px solid var(--text-sub3title-color);
   cursor: pointer;
-  border: 0;
+  cursor: pointer;
   outline: 0;
 `;
 

@@ -316,8 +316,6 @@ const GlobalStyles = css`
 
   .gatsby-highlight {
     margin-bottom: 1.75rem;
-    margin-left: -1.3125rem;
-    margin-right: -1.3125rem;
     border-radius: 10px;
     background: #011627;
     -webkit-overflow-scrolling: touch;
