@@ -184,6 +184,9 @@ define('myModule', ['dep1', 'dep2'], function (dep1, dep2) {
 
 Bagi yang pernah menggunakan `AngularJS` mungkin kode ini terasa familiar, meskipun sebenarnya `AngularJS` tidak melakukan pemuatan dependensi secara otomatis melainkan hanya mendefinisikan dependensi dengan cara yang mirip dengan `RequireJS`.
 
+AMD menjadi satu-satunya pilihan bagi pengguna JavaScript yang mendambakan *module system* pada saat itu. Dengan AMD kita bisa mengisolasi kode kita dari satu file dengan file lainnya karena hampir semua kode kita di definisikan di dalam fungsi pembungkus dari pustaka yang menerapkan sistem ini semacam RequireJS.
+Ditambah kemampuannya yang bisa otomatis memuat dependensi yang dibutuhkan langsung di browser, AMD pada akhirnya memiliki masanya sendiri pada waktu itu.
+
 Karena bukan *module system* resmi, maka bisa dimaklumi kalau cara ini tidak begitu populer di kalangan pengguna JavaScript, meskipun sampai saat ini masih ada sedikit penggunanya, bahkan di beberapa build tools modern sampai saat ini masih mendukung target kompilasi ke dalam *module system* AMD. 
 Saat ini pengguna AMD besar salah satunya adalah [Dojo](https://dojotoolkit.org/documentation/tutorials/1.10/hello_dojo/index.html).
 
@@ -193,6 +196,15 @@ Saat ini pengguna AMD besar salah satunya adalah [Dojo](https://dojotoolkit.org/
 Ini merupakan *module system* yang dijadikan standar oleh Node.js ketika harus berurusan dengan kode-kode Node.js. 
 Ya, memang untuk kode Server Side seperti Node.js, *module system* adalah barang wajib. 
 Karena pada saat itu belum ada *module system* yang bisa digunakan maka dari itu Node.js membuat standar sendiri untuk lingkungannya.
+
+CommonJS menurut saya pribadi adalah revolusi, JavaScript yang tadinya tidak pernah memikirkan soal standarisasi module system mau tidak mau harus mulai memikirkannya.
+Kalau tidak ya sudah pasti implementasi lain seperti CommonJS akan muncul di masa depan dengan pendekatan yang bisa jadi berbeda lagi.
+Meskipun secara desain CommonJS memang tidak diperuntukkan untuk JavaScript secara umum yang bisa jalan di berbagai environment, melainkan hanya dikhususkan bagi pengguna JavaScript dengan lingkungan Node.js saja.
+Namun seiring naiknya popularitas Node.js, semakin banyak pula orang maupun pembuat pustaka di luaran yang menerapkan CommonJS sebagai target build mereka.
+
+Satu sisi lain CommonJS juga bisa dilihat sebagai malapetaka bagi JavaScript, ketika hal yang bukan standar tapi sudah keburu populer karena memang dari sisi standarisasi belum menyediakan fiturnya.
+CommonJS menjadi hal lumrah dan seolah menjadi standar dari JavaScript padahal hanya bisa jalan di Node.js.
+Hal semacam ini bisa jadi membingungkan bagi kalian yang baru belajar JavaScript atau Node.ja dan tidak tau sejarah sampai adanya CommonJS.
 
 Kode CommonJS bisa terlihat pada contoh berikut:
 
@@ -247,13 +259,14 @@ const mySquare = new Square(2);
 console.log(`The area of mySquare is ${mySquare.area()}`);
 ```
 
-Karena dikembangkan oleh Node.js maka mindset dari *module system* ini memang Server Side dan bukan Client Side. 
+Karena dikembangkan oleh Node.js maka mindset dari *module system* ini memang *Server Side* dan bukan *Client Side*. 
 Karenanya pada masanya ada *bundler* semacam [Browserify](http://browserify.org/) dan [SystemJS](https://github.com/systemjs/systemjs) yang populer untuk memastikan module CommonJS bisa berjalan di browser.
 
 ## ESM
 
-ESM (ES Module) merupakan format standar yang diberikan oleh ECMA seperti bisa dilihat pada [dokumen spesifikasi](https://tc39.es/ecma262/#sec-modules). 
-Karena ESM merupakan standar yang diberikan oleh ECMA, Node.js pun sudah mulai mendukung *module system* ini di versi teranyarnya tanpa perlu lagi menambahkan *build tools* dengan target CommonJS lagi.
+**ESM (ES Module)** atau beberapa orang menyebutnya juga dengan **ES Harmony** merupakan format standar yang diberikan oleh ECMA seperti bisa dilihat pada [dokumen spesifikasi](https://tc39.es/ecma262/#sec-modules). 
+Karena ESM merupakan standar yang diberikan oleh ECMA, maka mau tidak mau Node.js pun harus sudah mulai mendukung *module system* ini. 
+Syukurnya di versi teranyarnya (sedari versi 14 kalau tidak salah) Node.js sudah memasukkan dukungan terhadap ESM, sehingga tidak perlu lagi menambahkan *build tools* semacam webpack lagi kalau ingin koding dengan ESM di lingkungan Node.js.
 
 Berikut contoh kode ES Module:
 
@@ -284,7 +297,7 @@ Ada artikel menarik dengan visualisasi yang bagus kalau kalian ingin memahami pe
 
 ESM juga telah didukung secara native di beberapa peramban modern dengan memberikan atribut tambahan `module` pada saat memuat berkas, baca kabarnya di artikel "[ECMAScript modules in browsers](https://jakearchibald.com/2017/es-modules-in-browsers/)". 
 
-Berikut adalah contoh kode implementasi ESM:
+Berikut adalah contoh kode implementasi ESM di browser:
 
 ```html
 <script type="module">
