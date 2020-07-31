@@ -7,7 +7,7 @@ const tagTemplate = path.resolve('./src/templates/tags.tsx');
 const authorTemplate = path.resolve('./src/templates/author.tsx');
 const postTemplate = path.resolve('./src/templates/post.tsx');
 
-const POST_PER_PAGE = 6;
+const POST_PER_PAGE = 7;
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField  } = actions;
