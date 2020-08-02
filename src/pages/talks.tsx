@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-key */
 import React, { FC, useEffect } from 'react';
 import { css } from '@emotion/core';
 import Helmet from 'react-helmet';
@@ -43,28 +44,38 @@ const PageTemplate = css`
     padding-top: 1em;
   }
   .talk-item{
+    background: var(--bg-card) center center;
+    box-shadow: rgba(39, 44, 49, 0.06) 8px 14px 38px, rgba(39, 44, 49, 0.03) 1px 3px 8px;
+    transition: all 0.5s ease;
+    border-radius: 5px;
+
+    padding: 1em;
     margin-bottom: 1em;
     margin-left: 1em;
+
+    :hover {
+      box-shadow: rgba(39, 44, 49, 0.07) 8px 28px 50px, rgba(39, 44, 49, 0.04) 1px 6px 12px;
+      transition: all 0.4s ease;
+    }
   }
   .talk-date{
-    font-size: ${pxToRem(16)};
-    opacity: .8;
+    font-size: ${pxToRem(12)};
   }
   .talk-event{
     font-size: ${pxToRem(18)};
     font-weight: 700;
   }
   .talk-topic{
-    font-size: ${pxToRem(18)};
-    font-style: italic;
+    font-size: ${pxToRem(14)};
+    margin-bottom: 2em;
   }
   .talk-slide, .talk-link{
     background-color: var(--text-title-color);
     color: var(--bg-card);
     font-size: ${pxToRem(12)};
     border-radius: 4px;
-    padding: .5em;
-    margin-right: 1em;
+    padding: .5em 1em;
+    margin-right: .5em;
 
     &:hover {
       color: var(--bg-card);
@@ -141,7 +152,7 @@ const Talks: FC = () => {
                             allTalks[year].map((list: any) => {
                               return (
                                 <div key={list.date} className="talk-item">
-                                  <div className="talk-date">{list.date}</div>
+                                  <div className="talk-date">🗓 {list.date}</div>
                                   <div className="talk-event">{list.event}</div>
                                   <div className="talk-topic">{list.topic}</div>
 
@@ -150,18 +161,17 @@ const Talks: FC = () => {
                                       {
                                         list.link.map((link: string, idx: number) => (
                                           <a className="talk-link" href={link} target="blank" rel="noopener noreferrer">
-                                          Event ➡️
+                                          📖 Event
                                             {(idx !== list.link.length - 1) && ', '}
                                           </a>
                                         ))
                                       }
                                       { list.slide && (
-                                          <a className="talk-slide" href={list.slide} target="blank" rel="noopener noreferrer">Slide ➡️</a>
+                                        <a className="talk-slide" href={list.slide} target="blank" rel="noopener noreferrer">🖥 Slide</a>
                                       )}
                                     </>
 
                                   )}
-
 
                                 </div>
                               );
@@ -173,7 +183,7 @@ const Talks: FC = () => {
                   })
                 }
               </div>
-              <small>Found a typo? please help me fix the typo on this <a href="https://github.com/mazipan/talks" target="blank" rel="noopener noreferrer">Github repo</a></small>
+              <small>Found a typo? please report on <a href="https://github.com/mazipan/talks" target="blank" rel="noopener noreferrer">Github</a></small>
             </PostFullContent>
           </article>
         </main>

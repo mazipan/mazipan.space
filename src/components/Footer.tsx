@@ -129,7 +129,7 @@ const Footer: React.FC = () => {
                 trackOutbond(config.facebook ?? '', 'Sosial Media');
               }}
             >
-              <Facebook height="48" width="1rem" />
+              <Facebook height="24" width="24" />
             </a>
           )}
 
@@ -143,7 +143,7 @@ const Footer: React.FC = () => {
                 trackOutbond(config.twitter ?? '', 'Sosial Media');
               }}
             >
-              <Twitter height="48" width="1rem" />
+              <Twitter height="24" width="24" />
             </a>
           )}
 
@@ -157,7 +157,7 @@ const Footer: React.FC = () => {
                 trackOutbond(config.github ?? '', 'Sosial Media');
               }}
             >
-              <Github height="48" width="1rem" />
+              <Github height="24" width="24" />
             </a>
           )}
 
@@ -171,7 +171,7 @@ const Footer: React.FC = () => {
                 trackOutbond(config.linkedin ?? '', 'Sosial Media');
               }}
             >
-              <Linkedin height="48" width="1rem" />
+              <Linkedin height="24" width="24" />
             </a>
           )}
         </SocialLinks>

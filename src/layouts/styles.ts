@@ -17,7 +17,7 @@ const GlobalStyles = css`
     --bg-card: #17141d    ;
     --bg-card-comment: #6272a4;
 
-    --bg-inline-code: rgb(51, 53, 54);
+    --bg-inline-code: #f55;
     --text-inline-code: #f8f8f2;
 
     --bg-header: #212121;
@@ -320,12 +320,6 @@ const GlobalStyles = css`
     background: #011627;
     -webkit-overflow-scrolling: touch;
     overflow: auto;
-  }
-
-  @media (max-width: 672px) {
-    .gatsby-highlight {
-      border-radius: 0;
-    }
   }
 
   .gatsby-highlight pre[class*='language-'] {

@@ -22,7 +22,7 @@ const PageTemplate = css`
   }
 `;
 
-const Archieves: FC<any> = (props) => {
+const Archieves: FC<any> = props => {
   useEffect(() => {
     trackView('Page Archieves');
   }, []);
@@ -30,7 +30,8 @@ const Archieves: FC<any> = (props) => {
   const title = 'About Irfan Maulana - @mazipan';
   const desc = 'A small introduction about Irfan Maulana';
 
-  const edges = props.data.allMarkdownRemark.edges;
+  const edges = props.data.allMarkdownRemark.edges.filter(e => e.node.frontmatter.lang === 'id');
+
   return (
     <IndexLayout>
       <Helmet>
@@ -84,7 +85,7 @@ const Archieves: FC<any> = (props) => {
                   {edges.map((e: any) => (
                     <tr key={e.node.fields.slug}>
                       <td>{e.node.frontmatter.date}</td>
-                      <td><Link to={e.node.fields.slug}>{e.node.frontmatter.lang === 'id' ? '🇮🇩': '🇬🇧'} {e.node.frontmatter.title}</Link></td>
+                      <td><Link to={e.node.fields.slug}>{e.node.frontmatter.title}</Link></td>
                     </tr>
                   ))}
                 </table>

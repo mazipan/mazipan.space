@@ -302,7 +302,12 @@ const PostContent: React.FC<PostContentProps> = ({ htmlAst, title, desc, slug, l
     <PostFullContent className="post-full-content">
       {
         lang === 'id' && enready && (
-          <LangWrapper>📌 Baca artikel dalam <Link to={`/${slug}/en/`}>bahasa inggris</Link></LangWrapper>
+          <LangWrapper>📌 Also available on <Link to={`/${slug}/en/`}>🇬🇧 English</Link></LangWrapper>
+        )
+      }
+      {
+        lang === 'en' && (
+          <LangWrapper>📌 Baca dalam <Link to={`/${slug}/`}>🇮🇩 Bahasa Indonesia</Link></LangWrapper>
         )
       }
       {/* TODO: this will apply the class when rehype-react is published https://github.com/rhysd/rehype-react/pull/11 */}

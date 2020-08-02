@@ -13,6 +13,7 @@ import ReadNextCard from '../components/ReadNextCard';
 import Wrapper from '../components/Wrapper';
 import AllTagsComponent from '../components/AllTags';
 import ThemeSwitcher from '../components/ThemeSwitcher';
+import BackToTop from '../components/BackToTop';
 
 import { trackView } from '../utils/ga';
 import {
@@ -117,7 +118,6 @@ const PageTemplate: FC<PageTemplateProps> = props => {
             <SiteNav />
           </div>
         </header>
-        <ThemeSwitcher floating />
         <main id="site-main" className="site-main" css={[SiteMain, outer]}>
           <div css={inner}>
             { post && (
@@ -161,6 +161,8 @@ const PageTemplate: FC<PageTemplateProps> = props => {
           </div>
         </aside>
         <Footer />
+        <ThemeSwitcher floating />
+        <BackToTop />
       </Wrapper>
     </IndexLayout>
   );
