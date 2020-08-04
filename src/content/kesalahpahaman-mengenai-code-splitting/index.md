@@ -1,5 +1,5 @@
 ---
-title: Kesalahpahaman Mengenai Code splitting
+title: Kesalahpahaman mengenai code splitting
 date: '2020-08-04'
 description: Membicarakan mengenai bagaimana seharusnya code splitting itu dilakukan dalam ranah dunia frontend
 author: mazipan
