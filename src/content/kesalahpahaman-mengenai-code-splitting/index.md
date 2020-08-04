@@ -28,10 +28,10 @@ Dalam praktek pengembangan frontend sebuah website dengan teknologi JavaScript t
 
 ## Code Splitting di atas Module Bundler
 
-Code splitting umumnya dikerjakan pada projek berbasiskan JavaScript framework kekinian.
+*Code splitting* umumnya dikerjakan pada projek berbasiskan JavaScript framework kekinian.
 Kode framework ini dibangun di atas berbagai Module Bundler seperti webpack, Rollup maupun Parcel.
 
-Implementasi code splitting di atas Module Bundler bisa jadi sedikit ada perbedaan, berikutnya akan kita bahas ketiga bundler populer ini dalam mengimplementasikan code splitting pada lingkungannya. Sebagian besar code splitting akan memanfaatkan dukungan *dynamic import* pada kode JavaScript, meskipun pada beberapa framework juga bisa menggunakan bantuan pustaka tambahann namun biasanya kasusnya sudah sangat spesifik pada framework tertentu, kita mungkin tidak akan membahasnya pada artikel kali ini.
+Implementasi *code splitting* di atas Module Bundler bisa jadi sedikit ada perbedaan, berikutnya akan kita bahas ketiga bundler populer ini dalam mengimplementasikan code splitting pada lingkungannya. Sebagian besar code splitting akan memanfaatkan dukungan *dynamic import* pada kode JavaScript, meskipun pada beberapa framework juga bisa menggunakan bantuan pustaka tambahann namun biasanya kasusnya sudah sangat spesifik pada framework tertentu, kita mungkin tidak akan membahasnya pada artikel kali ini.
 
 ### Parcel
 
@@ -99,15 +99,20 @@ Kode `/* webpackChunkName: "lodash" */` adalah perintah bagi webpack untuk membe
 
 ## Mengenai lazy load
 
-Kendati code splitting sangat erat kaitannya dengan lazy load, namun tidak semua code splitting itu di lazy load. Itu kenapa perlu dipecah dulu pemahaman kita mengenai code splitting dan lazy load.
+Kendati *code splitting* sangat erat kaitannya dengan lazy load, namun tidak semua *code splitting* itu di *lazy load*. Itu kenapa perlu dipecah dulu pemahaman kita mengenai *code splitting* dan *lazy load*.
 
-Code splitting sendiri merupakan teknik untuk memecah kode menjadi beberapa file yang berbeda, sedangkan lazy load adalah teknik untuk meminta suatu sumber daya secara *programmatically* pada saat dibutuhkan saja.
+*Code splitting* sendiri merupakan teknik untuk memecah kode menjadi beberapa file yang berbeda, sedangkan lazy load adalah teknik untuk meminta suatu sumber daya secara *programmatically* pada saat dibutuhkan saja.
 
-Contoh gampang dan umum mengenai impelementasi lazy load ini bisa dilihat pada teknik pemuatan gambar pada suatu web. Gambar atau diwakili tag `<img />` pada HTML secara bawaan memiliki perilaku akan memuat gambar yang terdapat pada atribut `src` yang disematkan kepadanya, dimanapun dia berada selama terdapat pada kode HTML yang akan dimuat. Hal ini menjadi masalah karena biasanya hanya sebagian kecil gambar yang dilihat oleh pengguna saat pertama kali datang ke situs kita. Maka dari itu ada teknik lazy load untuk memuat gambar hanya saat gambar itu sedang atau akan dilihat oleh pengguna.
+Contoh gampang dan umum mengenai impelementasi *lazy load* ini bisa dilihat pada teknik pemuatan gambar pada suatu web. 
+Gambar atau diwakili tag `<img />` pada HTML secara bawaan memiliki perilaku akan memuat gambar yang terdapat pada atribut `src` yang disematkan kepadanya, dimanapun dia berada selama terdapat pada kode HTML yang akan dimuat. 
+Hal ini menjadi masalah karena biasanya hanya sebagian kecil gambar yang dilihat oleh pengguna saat pertama kali datang ke situs kita. Maka dari itu ada teknik lazy load untuk memuat gambar hanya saat gambar itu sedang atau akan dilihat oleh pengguna.
 
-Teknik yang sama juga bisa diaplikasiskan pada sumber daya lain, misalnya JavaScript seperti yang sedang kita bahas. Kita bisa menunda permintaan suatu file JavaScript dikarenakan memang tidak digunakan pada saat itu. Teknik ini sama juga biasa dikenal sebagai lazy load.
+Teknik yang sama juga bisa diaplikasikan pada sumber daya lain, misalnya JavaScript seperti yang sedang kita bahas. 
+Kita bisa menunda permintaan suatu file JavaScript dikarenakan memang tidak digunakan pada saat itu. 
+Teknik ini sama juga biasa dikenal sebagai *lazy load*.
 
-Umumnya code splitting itu sudah lazy load, misalnya kita mengunjungi halaman "Beranda" maka kita tidak akan disajikan kode JavaScript yang ada di halamana "Product Detail", ini ya praktek lazy load. Tapi ada beberapa kasus dimana code splitting yang tidak lazy load, contohnya misal kita memecah pustaka `lodash` menjadi berkas terpisah, dan pada kasus kita ketika kita mengunjungi hamanan "Beranda" kita akan membuat permintaan ke berkas `beranda.js` dan `lodash.js` karena memang halaman "Beranda" kita membutuhkan `lodash`.
+Umumnya *code splitting* itu sudah *lazy load*, misalnya kita mengunjungi halaman "Beranda" maka kita tidak akan disajikan kode JavaScript yang ada di halamana "Product Detail", ini ya praktek *lazy load*. 
+Tapi ada beberapa kasus dimana *code splitting* yang tidak *lazy load*, contohnya misal kita memecah pustaka `lodash` menjadi berkas terpisah, dan pada kasus kita ketika kita mengunjungi hamanan "Beranda" kita akan membuat permintaan ke berkas `beranda.js` dan `lodash.js` karena memang halaman "Beranda" kita membutuhkan `lodash`.
 
 ## Mengenai tree-shaking
 
