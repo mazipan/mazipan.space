@@ -1,6 +1,5 @@
 import { Link } from 'gatsby';
-import * as _ from 'lodash';
-import * as React from 'react';
+import React, { FC } from 'react';
 import styled from '@emotion/styled';
 
 import pxToRem from '../styles/pxToRem';
@@ -38,26 +37,34 @@ export interface AuthorCardProps {
   author: any;
 }
 
-const AuthorCard: React.FC<AuthorCardProps> = ({ author }) => {
+const AuthorCard: FC<AuthorCardProps> = ({ author }) => {
   const trackAuthorClick = (linkName: string) => {
     trackClick({
       eventCategory: 'Click Author Link',
-      eventLabel: `Author card - ${linkName}`
-    })
-  }
+      eventLabel: `Author card - ${linkName}`,
+    });
+  };
 
   return (
     <AuthorCardSection>
       <img css={AuthorProfileImage} src={author.avatar.children[0].fixed.src} alt={author.id} />
       <AuthorCardContent>
         <AuthorCardName>
-          <Link to={`/author/${_.kebabCase(author.id)}/`} onClick={() => { trackAuthorClick('Author name') }}>{author.id}</Link>
+          <Link to={`/author/${author.id}/`} onClick={() => {
+            trackAuthorClick('Author name');
+          }}
+          >{author.id}
+          </Link>
         </AuthorCardName>
         {author.bio ? (
           <p>{author.bio}</p>
         ) : (
           <p>
-            Read <Link to={`/author/${_.kebabCase(author.id)}/`}  onClick={() => { trackAuthorClick('More posts') }}>more posts</Link> by this author.
+            Read <Link to={`/author/${author.id}/`} onClick={() => {
+              trackAuthorClick('More posts');
+            }}
+                 >more posts
+                 </Link> by this author.
           </p>
         )}
       </AuthorCardContent>

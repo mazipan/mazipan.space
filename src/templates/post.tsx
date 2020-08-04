@@ -1,5 +1,5 @@
+/* eslint-disable @typescript-eslint/restrict-plus-operands */
 import { Link, graphql } from 'gatsby';
-import * as _ from 'lodash';
 import React, { FC, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 
@@ -131,7 +131,7 @@ const PageTemplate: FC<PageTemplateProps> = props => {
                       post.frontmatter.tags.length > 0 && (
                       <>
                         <DateDivider>/</DateDivider>
-                        <Link to={`/tags/${_.kebabCase(post.frontmatter.tags[0])}/`}>
+                        <Link to={`/tags/${post.frontmatter.tags[0]}/`}>
                           {post.frontmatter.tags[0]}
                         </Link>
                       </>
@@ -140,7 +140,7 @@ const PageTemplate: FC<PageTemplateProps> = props => {
                   <PostFullTitle>{post.frontmatter.title}</PostFullTitle>
                 </PostFullHeader>
 
-                <PostContent htmlAst={post.htmlAst} title={post.frontmatter.title} desc={post.frontmatter.description} slug={props?.pathContext?.slug || ''} lang={post.frontmatter.lang} enready={post.frontmatter.enready} />
+                <PostContent htmlAst={post.htmlAst} title={post.frontmatter.title} desc={post.frontmatter.description} slug={props?.pathContext?.slug || ''} lang={post.frontmatter.lang} enready={Boolean(post.frontmatter.enready)} />
               </article>
             )}
           </div>

@@ -292,8 +292,8 @@ export interface PostContentProps {
   title: string;
   desc: string;
   slug: string;
-  lang: string;
-  enready?: boolean;
+  lang?: string;
+  enready: boolean;
 }
 
 // @ts-ignore

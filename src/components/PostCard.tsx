@@ -1,7 +1,6 @@
 import { Link } from 'gatsby';
 import Img from 'gatsby-image';
-import * as _ from 'lodash';
-import * as React from 'react';
+import React, { FC } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 
@@ -108,7 +107,7 @@ export interface PostCardProps {
   post: PageContext;
 }
 
-const PostCard: React.FC<PostCardProps> = ({ post }) => {
+const PostCard: FC<PostCardProps> = ({ post }) => {
   const trackPostClick = (link: string) => {
     trackClick({
       eventCategory: 'Click Post Card Item',

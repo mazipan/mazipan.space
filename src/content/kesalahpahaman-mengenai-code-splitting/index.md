@@ -1,6 +1,6 @@
 ---
-title: Code splitting, apa dan bagaimana?
-date: '2020-08-02'
+title: Kesalahpahaman Mengenai Code splitting
+date: '2020-08-04'
 description: Membicarakan mengenai bagaimana seharusnya code splitting itu dilakukan dalam ranah dunia frontend
 author: mazipan
 draft: false
@@ -111,16 +111,49 @@ Umumnya code splitting itu sudah lazy load, misalnya kita mengunjungi halaman "B
 
 ## Mengenai tree-shaking
 
-Contoh kode tree-shake
+Tree-shaking sendiri bukanlah hal yang terkait secara langsung dengan code splitting, namun saya coba angkat sekilas pada artikel ini karena ada kebingungan antara tree-shaking dengan code splitting serta bagaimahna kaitannya dengan code splitting.
 
-## Baik buruk dari code splitting
+Tree-shaking dalam kaitannya dengan konteks JavaScript adalah sebuah teknik untuk menghilangkan kode mati atau tidak pernah dieksekusi. Istilahnya sendiri dipopulerkan pertama kali oleh Rollup. Penerapannya sangat bergantung pada ES Module (Baca artikel "[JavaScript Module dan keribetannya](/javascript-module-dan-keribetannya/)") dengan `import` dam `export` yang bisa sebagian.
 
-Kendati *code splitting* adalah hal esensial bagi sebuah SPA, namun mengerjakannya dengan serampangan bukanlah hal yang ideal. Diperlukan analisa terlebih dahulu sebelum memutuskan untuk memecah satu kode ke dalam berkas lain.
+Pada prakteknya tree-shaking lebih banyak dikaitkan dengan kode yang berasal dari pustaka di luar kode internal kita. Ini karena sudah lumrah bahwa sebuah pustaka memiliki banyak fitur yang belum tentu kita menggunakan kesemuanya di dalam projek kita. Sebagai contoh kita ambil pustaka populer yakni `lodash`. Lodash merupakan pustaka yang berisi kumpulan banyak kode utilitas yang sangat berguna dalam pengembangan aplikasi. Karena `lodash` memiliki teramat banyak utilitas di dalamnya seringkali kita bahkan tidak dapat mengingat hal apa saja yang bisa dilakukan oleh `lodash` atau bahkan kita tidak menggunakan banyak bagian dari `lodash`. Pilihan bagi kita yang membutuhkan sebagian fitur saja dari lodash adalah dengan menggunakan `import` langsung ke berkas yang bersangkutan, misalnya:
 
-## Hal yang paling penting untuk dipecah
+```js
+// daripada menggunakan dengan
+import _ from 'lodash'
 
-- Route
--
+_.get(object, 'key')
+
+// lebih baik kita menggunakan dengan
+import get from 'lodash/get'
+
+get(object, 'key')
+```
+
+Atau bisa tambahkan plugin [babel-plugin-lodash](https://www.npmjs.com/package/babel-plugin-lodash) dan [lodash-webpack-plugin](https://www.npmjs.com/package/lodash-webpack-plugin) untuk mengotomasi proses ini. Akan lebih baik lagi kalau sekalian berpindah ke `lodash-es` yang bisa digunakan dengan cara:
+
+```js
+import { get } from 'lodash-es'
+
+get(object, 'key')
+```
+
+Cara-cara aneh menggunakan `lodash` ini semua tujuannya sama, yakni untuk memastikan kita tidak menyertakan keseluruhan kode `lodash` yang tidak kita gunakan.
+
+Jadi kaitannya dengan code spliting adalah tree-shaking ini hal yang berbeda dari code splitting. Kalau kita memutuskan memecah pustaka `lodash` ke dalam *chunk* terpisah namun tidak melakukan tree-shaking, bisa jadi kita hanya memindahkan permintaan yang tadinya satu file jadi dua file, tidak ada pengaruh besar terhadap ukuran akhir keseluruhan berkas yang diminta.
+
+## Code splitting pada prakteknya
+
+Beberapa hal yang dilakukan saat melakukan code splitting dapat saya jabarkan ke dalam beberapa poin berikut:
+
+1. Hal paling esensial untuk di pecah (*split*) adalah urusan halaman (*routes*). Pastikan saja saat pertama kali bahwa kita tidak memuat kode halaman B saat berada dalam halaman A. Sudah itu saja dulu, tidak perlu berpindah ke poin berikutnya kalau poin ini saja berlum dikerjakan.
+
+2. Pecahkan kode pustaka yang hanya digunakan sebagian namun tercampur kedalam kode global. Misalnya halaman A menggunakan pustaka tambahan untuk membuat Carousel atau Slide, pastikan halaman B tidak perlu memuat kode dari pustaka tersebut. Bisa jadi caranya tidak melalui teknik code splitting, bisa dengan cara import yang diperbaiki atau code splitting tapi di level komponen yang menggunakannya.
+
+3. Berikutnya yang perlu dipecah adalah komponen yang tidak terlihat saat pertama kali dikunjungi. Misalnya saja komponen Dialog Box atau Modal Box, komponen semacam ini umumnya membutuhkan aksi dari pengguna untuk tampil. Bisa juga komponen yang posisinya berada jauh di bawah layar dan memerlukan pengguna untuk scroll kebawah untuk melihatnya. Setelah poin 1 dan 2 dikerjakan, coba cari kemungkinan mengerjakan poin no.3 ini.
+
+4. Ingat kembali fungsi code splitting, bisa jadi berbeda-beda tergantung tujuan yang ingin dicapai, ada yang ingin memaksimalkan kemampuan *caching* dari browser sehingga kode dipecah kecil-kecil, ada juga yang memang ingin memaksimalkan benar-benar ukuran akhir berkas JavaScript yang harus diunduh oleh pengguna. Dengan mengetahui tujuan yang akan dicapai kita bisa mengambil strategi yang berbeda. Mengerjakan code splitting tanpa tujuan yang jelas bisa jadi adalah kegiatan yang percuma, pastikan kita mendapatkan efek baik dari kerja keras kita.
+
+5. Selalu analisa kondisi sebelum dan sesudah, baik melalui alat semacam [BundleAnalyzer](https://www.npmjs.com/package/webpack-bundle-analyzer) untuk melihat komposisi berkas JavaScript kita itu datangnya dari mana saja, juga dari DevTools tab network untuk memperhatikan berkas mana saja yang diminta pada saat pertama dan pada saat ada aksi yang dilakukan oleh pengguna. Hal ini bisa memberikan gambaran pada kita apakah tujuan kita melakukan code splitting sudah tercapai atau belum.
 
 ## Kesimpulan
 
