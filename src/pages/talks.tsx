@@ -162,7 +162,6 @@ const Talks: FC = () => {
                                         list.link.map((link: string, idx: number) => (
                                           <a className="talk-link" href={link} target="blank" rel="noopener noreferrer">
                                           📖 Event
-                                            {(idx !== list.link.length - 1) && ', '}
                                           </a>
                                         ))
                                       }
