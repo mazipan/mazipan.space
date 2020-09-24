@@ -153,7 +153,7 @@ const SiteNav: FC<SiteNavProps> = props => {
               href={config.facebook}
               target="_blank"
               title="Facebook"
-              rel="me noopener noreferrer"
+              rel="noopener noreferrer"
               onClick={() => {
                 trackOutbond(config.facebook ?? '', 'Sosial Media');
               }}
@@ -168,7 +168,7 @@ const SiteNav: FC<SiteNavProps> = props => {
               href={config.twitter}
               title="Twitter"
               target="_blank"
-              rel="me noopener noreferrer"
+              rel="noopener noreferrer"
               onClick={() => {
                 trackOutbond(config.twitter ?? '', 'Sosial Media');
               }}
@@ -198,7 +198,7 @@ const SiteNav: FC<SiteNavProps> = props => {
               href={config.linkedin}
               title="Linkedin"
               target="_blank"
-              rel="me noopener noreferrer"
+              rel="noopener noreferrer"
               onClick={() => {
                 trackOutbond(config.linkedin ?? '', 'Sosial Media');
               }}
