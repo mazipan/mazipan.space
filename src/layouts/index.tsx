@@ -20,6 +20,8 @@ const IndexLayout: FC<IndexProps> = (props) => {
     <div className={props.className}>
       <Helmet>
         <script type="application/ld+json" id="ld-website">{` ${getJsonLdWebsite()} `}</script>
+        <link rel="webmention" href="https://webmention.io/mazipan.space/webmention" />
+        <link rel="pingback" href="https://webmention.io/mazipan.space/xmlrpc" />
       </Helmet>
       <Global styles={GlobalStyles} />
       {props.children}
