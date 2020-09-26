@@ -299,6 +299,24 @@ export interface PostContentProps {
 
 // @ts-ignore
 const PostContent: React.FC<PostContentProps> = ({ htmlAst, title, desc, slug, lang, enready }) => {
+
+React.useEffect(() => {
+  try {
+    const script = document.createElement('script');
+    script.src = "https://utteranc.es/client.js";
+    script.async = true;
+    script['issue-term'] = 'mazipan/blog-comments';
+    script.repo = 'pathname';
+    script.label = 'comment';
+    script.theme = 'github-dark-orange';
+    script.crossorigin = 'anonymous';
+    const id = document.getElementById('comment-block');
+    id.appendChild(script);
+  } catch (e) {
+    console.error('Failed insert utterances.es', e);
+  }
+}, []);
+
   return (
     <PostFullContent className="post-full-content">
       {
@@ -315,16 +333,7 @@ const PostContent: React.FC<PostContentProps> = ({ htmlAst, title, desc, slug, l
       <Ast className="post-content" ast={htmlAst} />
       <LikeButton slug={slug}/>
       <SharePost title={title} desc={desc}/>
-      <Helmet>
-        <script src="https://utteranc.es/client.js"
-          repo="mazipan/blog-comments"
-          issue-term="pathname"
-          label="comment"
-          theme="github-dark-orange"
-          crossorigin="anonymous"
-          async>
-        </script>
-      </Helmet>
+      <div id="comment-block />
       {/* <HyvorTalk.Embed websiteId={600} id={`https://mazipan.space/${slug}`} url={`https://mazipan.space/${slug}`}/> */}
     </PostFullContent>
   );
