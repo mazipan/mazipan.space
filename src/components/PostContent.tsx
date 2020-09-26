@@ -3,7 +3,6 @@ import { Helmet } from 'react-helmet';
 import { Link } from 'gatsby';
 import styled from '@emotion/styled';
 import RehypeReact from 'rehype-react';
-// import HyvorTalk from 'hyvor-talk-react';
 import SharePost from './SharePost';
 import LikeButton from './LikeButton';
 
@@ -333,8 +332,7 @@ React.useEffect(() => {
       <Ast className="post-content" ast={htmlAst} />
       <LikeButton slug={slug}/>
       <SharePost title={title} desc={desc}/>
-      <div id="comment-block />
-      {/* <HyvorTalk.Embed websiteId={600} id={`https://mazipan.space/${slug}`} url={`https://mazipan.space/${slug}`}/> */}
+      <div id="comment-block" />
     </PostFullContent>
   );
 };
