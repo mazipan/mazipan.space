@@ -320,7 +320,7 @@ const PostContent: React.FC<PostContentProps> = ({ htmlAst, title, desc, slug, l
           repo="mazipan/blog-comments"
           issue-term="pathname"
           label="comment"
-          theme="preferred-color-scheme"
+          theme="github-dark-orange"
           crossorigin="anonymous"
           async>
         </script>
