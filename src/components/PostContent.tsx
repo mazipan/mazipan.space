@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Helmet } from 'react-helmet';
 import { Link } from 'gatsby';
 import styled from '@emotion/styled';
 import RehypeReact from 'rehype-react';
@@ -314,6 +315,16 @@ const PostContent: React.FC<PostContentProps> = ({ htmlAst, title, desc, slug, l
       <Ast className="post-content" ast={htmlAst} />
       <LikeButton slug={slug}/>
       <SharePost title={title} desc={desc}/>
+      <Helmet>
+        <script src="https://utteranc.es/client.js"
+          repo="mazipan/blog-comments"
+          issue-term="pathname"
+          label="comment"
+          theme="preferred-color-scheme"
+          crossorigin="anonymous"
+          async>
+        </script>
+      </Helmet>
       {/* <HyvorTalk.Embed websiteId={600} id={`https://mazipan.space/${slug}`} url={`https://mazipan.space/${slug}`}/> */}
     </PostFullContent>
   );
