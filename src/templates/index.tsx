@@ -72,7 +72,7 @@ const IndexPage: FC<IndexProps> = props => {
 
       </Helmet>
       <Wrapper>
-        <ThemeSwitcher />
+        <ThemeSwitcher floating={false} />
         <header
           css={[outer, SiteHeader]}
         >

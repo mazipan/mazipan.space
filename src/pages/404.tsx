@@ -6,8 +6,8 @@ import { css } from '@emotion/core';
 
 import IndexLayout from '../layouts';
 
-import SiteNavLogo from '../components/header/SiteNavLogo';
 import PostCard from '../components/PostCard';
+import SiteNav from '../components/header/SiteNav';
 import Wrapper from '../components/Wrapper';
 import { trackView } from '../utils/ga';
 import config from '../website-config';
@@ -17,19 +17,11 @@ import {
   inner,
   outer,
   PostFeed,
+  SiteDescription,
   SiteHeader,
+  SiteHeaderContent,
+  SiteTitle,
 } from '../styles/shared';
-
-const SiteNavCenter = styled.nav`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-
-  .site-nav-logo {
-    margin-right: 0;
-  }
-`;
 
 const ErrorTemplate = css`
   padding: 7vw 4vw;
@@ -68,7 +60,6 @@ interface NotFoundTemplateProps {
 }
 
 const NotFoundPage: FC<NotFoundTemplateProps> = props => {
-
   useEffect(() => {
     trackView('Page 404');
   }, []);
@@ -80,7 +71,7 @@ const NotFoundPage: FC<NotFoundTemplateProps> = props => {
 
   return (
     <IndexLayout>
-    <Helmet>
+      <Helmet>
         <html lang={config.lang} />
         <title>{title}</title>
 
@@ -114,11 +105,13 @@ const NotFoundPage: FC<NotFoundTemplateProps> = props => {
         )}
       </Helmet>
       <Wrapper>
-        <header css={[SiteHeader, outer]}>
-          <div className="inner">
-            <SiteNavCenter>
-              <SiteNavLogo />
-            </SiteNavCenter>
+        <header css={[outer, SiteHeader]}>
+          <div css={inner}>
+            <SiteHeaderContent>
+              <SiteTitle>&lt;MazipanSpace&nbsp;/&gt;</SiteTitle>
+              <SiteDescription>{config.description}</SiteDescription>
+            </SiteHeaderContent>
+            <SiteNav isHome />
           </div>
         </header>
         <main id="site-main" css={[ErrorTemplate, outer]}>
