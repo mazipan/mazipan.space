@@ -308,13 +308,19 @@ const PostContent: React.FC<PostContentProps> = ({ htmlAst, title, desc, slug, l
       // @ts-ignore
       script.repo = 'mazipan/blog-comments';
       // @ts-ignore
-      script.label = 'comment';
-      // @ts-ignore
       script.theme = 'github-dark-orange';
       // @ts-ignore
       script.crossorigin = 'anonymous';
+      // @ts-ignore
+      script.onload = () => {
+        console.debug('> utteranc.es script loaded', script);
+      };
+
       const id = document.getElementById('comment-block');
       if (id) {
+        id.setAttribute('issue-term', 'title');
+        id.setAttribute('repo', 'mazipan/blog-comments');
+        id.setAttribute('theme', 'github-dark-orange');
         id.appendChild(script);
       }
     } catch (e) {
