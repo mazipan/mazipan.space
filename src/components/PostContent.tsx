@@ -263,7 +263,7 @@ export const PostFullContent = styled.section`
     }
   }
 
-  .gatsby-resp-image-image{
+  .gatsby-resp-image-image {
     border-radius: 5px;
   }
 `;
@@ -272,7 +272,7 @@ const LangWrapper = styled.div`
   border: 2px solid var(--text-link-color);
   border-radius: 5px;
   padding: 1em;
-  margin-bottom: .5em;
+  margin-bottom: 0.5em;
 `;
 
 // @ts-ignore
@@ -298,40 +298,46 @@ export interface PostContentProps {
 
 // @ts-ignore
 const PostContent: React.FC<PostContentProps> = ({ htmlAst, title, desc, slug, lang, enready }) => {
-
-React.useEffect(() => {
-  try {
-    const script = document.createElement('script');
-    script.src = "https://utteranc.es/client.js";
-    script.async = true;
-    script['issue-term'] = 'mazipan/blog-comments';
-    script.repo = 'pathname';
-    script.label = 'comment';
-    script.theme = 'github-dark-orange';
-    script.crossorigin = 'anonymous';
-    const id = document.getElementById('comment-block');
-    id.appendChild(script);
-  } catch (e) {
-    console.error('Failed insert utterances.es', e);
-  }
-}, []);
+  React.useEffect(() => {
+    try {
+      const script = document.createElement('script');
+      script.src = 'https://utteranc.es/client.js';
+      script.async = true;
+      // @ts-ignore
+      script['issue-term'] = 'title';
+      // @ts-ignore
+      script.repo = 'mazipan/blog-comments';
+      // @ts-ignore
+      script.label = 'comment';
+      // @ts-ignore
+      script.theme = 'github-dark-orange';
+      // @ts-ignore
+      script.crossorigin = 'anonymous';
+      const id = document.getElementById('comment-block');
+      if (id) {
+        id.appendChild(script);
+      }
+    } catch (e) {
+      console.error('Failed insert utterances.es', e);
+    }
+  }, []);
 
   return (
     <PostFullContent className="post-full-content">
-      {
-        lang === 'id' && enready && (
-          <LangWrapper>📌 Also available on <Link to={`/${slug}/en/`}>🇬🇧 English</Link></LangWrapper>
-        )
-      }
-      {
-        lang === 'en' && (
-          <LangWrapper>📌 Baca dalam <Link to={`/${slug}/`}>🇮🇩 Bahasa Indonesia</Link></LangWrapper>
-        )
-      }
+      {lang === 'id' && enready && (
+        <LangWrapper>
+          📌 Also available on <Link to={`/${slug}/en/`}>🇬🇧 English</Link>
+        </LangWrapper>
+      )}
+      {lang === 'en' && (
+        <LangWrapper>
+          📌 Baca dalam <Link to={`/${slug}/`}>🇮🇩 Bahasa Indonesia</Link>
+        </LangWrapper>
+      )}
       {/* TODO: this will apply the class when rehype-react is published https://github.com/rhysd/rehype-react/pull/11 */}
       <Ast className="post-content" ast={htmlAst} />
-      <LikeButton slug={slug}/>
-      <SharePost title={title} desc={desc}/>
+      <LikeButton slug={slug} />
+      <SharePost title={title} desc={desc} />
       <div id="comment-block" />
     </PostFullContent>
   );

@@ -14,7 +14,6 @@ import { SocialLink } from '../../styles/shared';
 
 import config from '../../website-config';
 import { trackOutbond, trackClick } from '../../utils/ga';
-import SiteNavLogo from './SiteNavLogo';
 
 const HomeNavRaise = css`
   @media (min-width: 900px) {
