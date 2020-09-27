@@ -75,6 +75,11 @@ module.exports = {
             },
           },
           'css-loader',
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true,
+            },
         ],
       },
       // ... loader lainnya
