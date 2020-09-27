@@ -1,11 +1,11 @@
 ---
-title: Bulma Dracula - Bulma CSS untuk pencinta mode gelaps
+title: Bulma Dracula, CSS untuk pencinta mode gelap
 date: '2020-09-27'
 description: Menceritakan bagaimana Bulma Dracula dibangun
 author: mazipan
 draft: false
 tags: [web]
-image: ./bulma-dracula.png
+image: ./images/bulma-dracula.png
 lang: id
 enready: false
 ---
