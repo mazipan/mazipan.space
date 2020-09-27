@@ -10,6 +10,7 @@ import { PostFullContent } from '../components/PostContent';
 import Footer from '../components/Footer';
 import { trackView } from '../utils/ga';
 import config from '../website-config';
+import pxToRem from '../styles/pxToRem';
 
 import { SiteHeader, outer, inner, SiteMain } from '../styles/shared';
 
@@ -20,9 +21,21 @@ const PageTemplate = css`
     background: var(--bg-content);
     padding-bottom: 4vw;
   }
+  .archieve-card {
+    border-radius: 5px;
+    background: var(--bg-card) center center;
+    box-shadow: rgba(39,44,49,0.06) 8px 14px 38px, rgba(39,44,49,0.03) 1px 3px 8px;
+    margin: .5rem;
+    padding: 1rem;
+
+    & > .date {
+      color: var(--text-color-grey);
+      font-size: ${pxToRem(10)};
+    }
+  }
 `;
 
-const Archieves: FC<any> = props => {
+const Archieves: FC<any> = (props) => {
   useEffect(() => {
     trackView('Page Archieves');
   }, []);
@@ -30,7 +43,7 @@ const Archieves: FC<any> = props => {
   const title = 'About Irfan Maulana - @mazipan';
   const desc = 'A small introduction about Irfan Maulana';
 
-  const edges = props.data.allMarkdownRemark.edges.filter(e => e.node.frontmatter.lang === 'id');
+  const edges = props.data.allMarkdownRemark.edges.filter((e) => e.node.frontmatter.lang === 'id');
 
   return (
     <IndexLayout>
@@ -80,15 +93,23 @@ const Archieves: FC<any> = props => {
             </PostFullHeader>
 
             <PostFullContent className="post-full-content">
-              <div className="post-content" style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
-                <table>
-                  {edges.map((e: any) => (
-                    <tr key={e.node.fields.slug}>
-                      <td>{e.node.frontmatter.date}</td>
-                      <td><Link to={e.node.fields.slug}>{e.node.frontmatter.title}</Link></td>
-                    </tr>
-                  ))}
-                </table>
+              <div
+                className="post-content"
+                style={{
+                  width: '100%',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  flexDirection: 'column',
+                }}
+              >
+                {edges.map((e: any) => (
+                  <div key={e.node.fields.slug} className="archieve-card">
+                    <div className="date">{e.node.frontmatter.date}</div>
+                    <div>
+                      <Link to={e.node.fields.slug}>{e.node.frontmatter.title}</Link>
+                    </div>
+                  </div>
+                ))}
               </div>
             </PostFullContent>
           </article>

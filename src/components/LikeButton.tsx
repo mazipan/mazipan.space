@@ -39,6 +39,7 @@ const likeBtnWrapper = css`
     line-height: 1;
     border-radius: 20px;
     transition: all 0.5s;
+    cursor: pointer;
 
     :hover {
       background-position: right center;

@@ -296,31 +296,30 @@ export interface PostContentProps {
   enready: boolean;
 }
 
+const insertAttribute = (node: HTMLElement) => {
+  node.setAttribute('issue-term', 'url');
+  node.setAttribute('repo', 'mazipan/blog-comments');
+  node.setAttribute('theme', 'github-dark-orange');
+  node.setAttribute('crossorigin', 'anonymous');
+};
+
 // @ts-ignore
 const PostContent: React.FC<PostContentProps> = ({ htmlAst, title, desc, slug, lang, enready }) => {
   React.useEffect(() => {
     try {
       const script = document.createElement('script');
-      script.src = 'https://utteranc.es/client.js';
-      script.async = true;
-      // @ts-ignore
-      script['issue-term'] = 'title';
-      // @ts-ignore
-      script.repo = 'mazipan/blog-comments';
-      // @ts-ignore
-      script.theme = 'github-dark-orange';
-      // @ts-ignore
-      script.crossorigin = 'anonymous';
+      insertAttribute(script);
       // @ts-ignore
       script.onload = () => {
         console.debug('> utteranc.es script loaded', script);
       };
 
+      script.async = true;
+      script.src = 'https://utteranc.es/client.js';
+
       const id = document.getElementById('comment-block');
       if (id) {
-        id.setAttribute('issue-term', 'title');
-        id.setAttribute('repo', 'mazipan/blog-comments');
-        id.setAttribute('theme', 'github-dark-orange');
+        insertAttribute(id);
         id.appendChild(script);
       }
     } catch (e) {
