@@ -1,0 +1,24 @@
+<ol reversed class="postlist">
+{% for post in postslist | reverse %}
+  <li class="p-2 mt-4 rounded overflow-hidden shadow-lg">
+    <div>
+      <span class="text-sm text-gray-500">
+        {% if post.data.lang === "id" %} 🇮🇩 {% else %} 🇬🇧 {% endif %}
+      </span>
+
+      <time class="text-sm text-gray-500 ml-2" datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate }}</time>
+    </div>
+
+    <a href="{{ post.url | url }}" class="text-lg font-bold">{% if post.data.title %}{{ post.data.title }}{% else %}<code>{{ post.url }}</code>{% endif %}</a>
+
+    <div>
+      {% for tag in post.data.tags %}
+        {%- if collections.tagList.indexOf(tag) != -1 -%}
+        {% set tagUrl %}/tags/{{ tag }}/{% endset %}
+        <a href="{{ tagUrl | url }}" class="bg-indigo-500 bg-opacity-50 p-1 rounded text-xs">{{ tag }}</a>
+        {%- endif -%}
+      {% endfor %}
+    </div>
+  </li>
+{% endfor %}
+</ol>

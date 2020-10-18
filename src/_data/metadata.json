@@ -1,0 +1,20 @@
+{
+  "title": "<Mazipan />",
+  "url": "https://mazipan.space/",
+  "description": "A personal blog by mazipan",
+  "feed": {
+    "subtitle": "A personal blog by mazipan",
+    "filename": "feed.xml",
+    "path": "/feed/feed.xml",
+    "id": "https://mazipan.space/"
+  },
+  "jsonfeed": {
+    "path": "/feed/feed.json",
+    "url": "https://mazipan.space/feed/feed.json"
+  },
+  "author": {
+    "name": "mazipan",
+    "email": "mazipanneh@gmail.com",
+    "url": "https://mazipan.space/about-me/"
+  }
+}

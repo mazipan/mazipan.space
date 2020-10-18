@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title or metadata.title }}</title>
+    <meta name="description" content="{{ description or metadata.description }}">
+    <link rel="stylesheet" href="{{ '/style.css' | url }}"/>
+    <link rel="stylesheet" href="{{ '/css/index.css' | url }}">
+    <link rel="stylesheet" href="{{ '/css/prism-base16-monokai.dark.css' | url }}">
+    <link rel="alternate" href="{{ metadata.feed.path | url }}" type="application/atom+xml" title="{{ metadata.title }}">
+    <link rel="alternate" href="{{ metadata.jsonfeed.path | url }}" type="application/json" title="{{ metadata.title }}">
+  </head>
+  <body>
+    <header class="flex bg-white border-b border-gray-200 fixed top-0 inset-x-0 z-100 h-16 items-center">
+      <div class="w-full max-w-screen-xl relative mx-auto px-6">
+        <div class="flex justify-between items-center -mx-6">
+          <div class="lg:w-1/4 xl:w-1/5 pl-6 pr-6 lg:pr-8">
+            <h1 class="home">
+              <a href="{{ '/' | url }}">{{ metadata.title }}</a>
+            </h1>
+          </div>
+
+          {#- Read more about `eleventy-navigation` at https://www.11ty.dev/docs/plugins/navigation/ #}
+          <ul class="flex">
+            {%- for entry in collections.all | eleventyNavigation %}
+              <li class="mr-5{% if entry.url == page.url %} nav--active{% endif %}">
+                <a href="{{ entry.url | url }}">{{ entry.title }}</a>
+              </li>
+            {%- endfor %}
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <main class="w-full max-w-screen-xl mt-16 mx-auto px-6">
+      <div class="pt-2 {% if templateClass %}{{ templateClass }}{% endif %}">
+        {{ content | safe }}
+      </div>
+    </main>
+
+    <footer class="w-full mt-4">
+      <div class="flex justify-center bg-white text-gray-500 border-t border-gray-200 h-16 items-center">
+        <a href="https://www.facebook.com/mazipanneh" target="_blank" title="Facebook" rel="noopener noreferrer" class="mx-2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+          </svg>
+        </a>
+        <a href="https://twitter.com/maz_ipan" title="Twitter" target="_blank" rel="noopener noreferrer" class="mx-2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+          </svg>
+        </a>
+        <a href="https://github.com/mazipan" title="Github" target="_blank" rel="noopener noreferrer" class="mx-2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+          </svg>
+        </a>
+        <a href="https://www.linkedin.com/in/mazipan" title="Linkedin" target="_blank" rel="noopener noreferrer" class="mx-2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+            <rect x="2" y="9" width="4" height="12"></rect>
+            <circle cx="4" cy="4" r="2"></circle>
+          </svg>
+        </a>
+      </div>
+    </footer>
+
+    <!-- Current page: {{ page.url | url }} -->
+  </body>
+</html>

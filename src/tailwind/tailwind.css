@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.page-post h1 {
+  @apply text-5xl font-bold;
+}
