@@ -167,7 +167,7 @@ const Talks: FC = () => {
                                         <i className="icon">📖 </i>Event
                                       </a>
                                     ))}
-                                    {list.slide && link.slide !== 'NOT_AVAILABLE' && (
+                                    {list.slide && list.slide !== 'NOT_AVAILABLE' && (
                                       <a
                                         className="talk-slide"
                                         href={list.slide}
