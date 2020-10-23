@@ -8,7 +8,6 @@ import PostHeader from '../../../components/post-header';
 import Layout from '../../../components/layout';
 import { getPostBySlug, getAllPosts } from '../../../lib/api';
 import PostTitle from '../../../components/post-title';
-import { CMS_NAME } from '../../../lib/constants';
 
 export default function Post({ post, morePosts, preview }) {
   const router = useRouter();
@@ -25,10 +24,8 @@ export default function Post({ post, morePosts, preview }) {
           <>
             <article className="mb-32">
               <Head>
-                <title>
-                  {post.title} | Next.js Blog Example with {CMS_NAME}
-                </title>
-                {/* <meta property="og:image" content={post.ogImage.url} /> */}
+                <title>{post.title} | mazipan.space</title>
+                <meta property="og:image" content={post.coverImage} />
               </Head>
               <PostHeader
                 title={post.title}
