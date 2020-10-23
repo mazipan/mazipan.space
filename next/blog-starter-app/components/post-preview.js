@@ -10,7 +10,7 @@ export default function PostPreview({ title, date, excerpt, slug, coverImage, ta
       </div>
       <div className="px-6 py-4">
         <h3 className="font-bold text-3xl mb-3 leading-snug">
-          <Link as={`/posts/${slug}`} href="/posts/[slug]">
+          <Link as={`/${slug}`} href="/[slug]">
             <a className="hover:underline">{title}</a>
           </Link>
         </h3>
