@@ -5,7 +5,7 @@ excerpt: Beberapa saran dan tips mengenai memulai untuk mengisi tech talk berdas
 author: mazipan
 published: true
 tags: [tips]
-coverImage: ./images/tech-talk-mazipan.png
+coverImage: /thumbnail/ingin-menjadi-pembicara-di-tech-talk-mulai-dari-mana/tech-talk-mazipan.png
 lang: id
 enready: false
 ---
@@ -98,7 +98,7 @@ Jangan lupa minta feedback dari para penonton setelah selesai mengisi tech talk,
 
 Hal yang membuat saya senang mengisi tech talk antaranya saya bisa punya koleksi foto keren saat sedang menyampaikan materi yang mana jarang-jarang saya bisa punya kesempatan tersebut. Dokumentasikan hal tersebut agar bisa menjadi pengingat dan pelecut untuk sesi-sesi lainnya kedepannya. Bukan cuma foto, mungkin kalian bisa buatkan tulisan atau video juga yang menjelaskan lebih jauh soal sesi yang kalian bawakan.
 
-![Tech talk di kantor Shopee Indonesia](images/tech-talk-mazipan-2.png)
+![Tech talk di kantor Shopee Indonesia](/thumbnail/ingin-menjadi-pembicara-di-tech-talk-mulai-dari-mana/tech-talk-mazipan-2.png)
 
 ---
 

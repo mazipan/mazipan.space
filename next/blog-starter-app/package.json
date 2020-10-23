@@ -19,6 +19,8 @@
     "remark-html": "10.0.0"
   },
   "devDependencies": {
+    "app-root-dir": "^1.0.2",
+    "mkdirp": "^1.0.4",
     "postcss-preset-env": "^6.7.0",
     "tailwindcss": "^1.4.0"
   },

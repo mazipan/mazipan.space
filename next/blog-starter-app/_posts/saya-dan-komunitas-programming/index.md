@@ -5,7 +5,7 @@ excerpt: Cerita bagaimana saya bergumul dengan berbagai komunitas teknologi di I
 author: mazipan
 published: true
 tags: [life-experience]
-coverImage: ./images/meetup-jakartajs.jpg
+coverImage: /thumbnail/saya-dan-komunitas-programming/meetup-jakartajs.jpg
 lang: id
 enready: false
 ---
@@ -40,11 +40,11 @@ Tidak pernah terbayang oleh saya, pengalaman saya mengisi tech talk justru datan
 
 Saya ingat saat itu om Peter sudah mengumumkan bahwa beliau dan teman-teman di PHP Indonesia akan mengadakan acara akbar di kantor Microsoft, dari komentar-komentar dalam thread tersebut saya kemudian tau kalau beliau masih membuka kesempatan untuk satu atau dua orang lagi speaker tambahan untuk acara tersebut. Karena saya lihat ada dua speaker yang membahas mengenai JavaScript saya coba memberanikan diri untuk menyapa dan meminta ke Om Peter bahwa kalau masih butuh topik mengenai JavaScript mungkin saya bisa bantu untuk mengisi slot pembicara yang masih tersedia. Benar saja, setelah melemparkan komentar seperti itu tanpa diduga om Peter langsung mengirimkan pesan pribadi ke saya untuk menanyakan perihal keseriusan saya. Setelah beberapa pertanyaan diajukan oleh om Peter, pada akhirnya beliau percaya dan memberikan satu slot pembicara kepada saya.
 
-![PHPID Event](./images/phpid-event-in-microsoft.jpg)
+![PHPID Event](/thumbnail/saya-dan-komunitas-programming/phpid-event-in-microsoft.jpg)
 
 Seperti saya bilang sebelumnya, hampir saja pengalaman pertama saya sebagai pembiacara jatuh pada JakartaJS. Sejujurnya beberapa pekan sebelum peristiwa saya dengan PHP Indonesia diatas terjadi, peristiwa yang hampir sama terjadi juga di slack JakartaJS. Intinya komunitas JakartaJS yang saat itu diwakili oleh om Gio Sakti masih membutuhkan satu speaker tambahan kedua bagi meetup selanjutnya. Dengan kesempatan ini, saya memberanikan diri untuk meminta tolong dibantu dan dipandu untuk bisa menjadi speaker karena dengan jujur saya sudah menyampaikan kalau kesempatan tersebut mungkin adalah kesempatan pertama saya untuk menjadi pembicara dalam acara meetup komunitas. Saya sangat beruntung karena om Gio sangat membantu saya mulai dari bersama-sama mencari ide dan topik yang akan dibahas sampai ketika saya kirimkan draft slidenya, om Gio juga membantu memberikan banyak masukan dan perbaikan. Percaya atau tidak percaya saat itu saya cuma membawakan topik "Bagaimana Saya belajar JavaScript". Saya merasa sangat pesimis dengan judul ini, karena pada meetup-meetup sebelumnya saya selalu mendengarkan topik yang keren tapi om Gio meyakinkan kepada saya untuk tetap lanjut dengan topik tersebut.
 
-![JakartaJS Meetup](./images/meetup-jakartajs.jpg)
+![JakartaJS Meetup](/thumbnail/saya-dan-komunitas-programming/meetup-jakartajs.jpg)
 
 Kedua pengalaman awal saya menjadi pembicara pada tech talk terjadi dalam pekan yang bersamaan cuma selang beberapa hari saja.
 

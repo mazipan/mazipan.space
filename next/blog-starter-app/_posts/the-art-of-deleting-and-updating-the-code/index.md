@@ -6,7 +6,7 @@ excerpt: Menceritakan bagaimana pekerjaan saya sehari-hari yang seringkali berha
 author: mazipan
 published: true
 tags: [programming]
-coverImage: ./images/quadran.png
+coverImage: /thumbnail/the-art-of-deleting-and-updating-the-code/quadran.png
 lang: id
 enready: true
 ---
@@ -31,7 +31,7 @@ Programmer memiliki berbagai alasan kenapa mereka menulis kode yang asal jalan, 
 
 Untuk hal ini kita bisa melihat pada [Technical Debt Quadrant ↗️](https://martinfowler.com/bliki/TechnicalDebtQuadrant.html) yang dijelaskan Martin Fowler, singkatnya bisa menilik pada gambar berikut:
 
-![Technical Debt Quadrant](images/quadran.png)
+![Technical Debt Quadrant](/thumbnail/the-art-of-deleting-and-updating-the-code/quadran.png)
 
 <small class="caption">Gambar diambil dari laman https://martinfowler.com<small>
 

@@ -5,7 +5,7 @@ excerpt: Cerita panjang perjalanan hidup dan karir saya sampai bisa menjadi prog
 author: mazipan
 published: true
 tags: [life-experience]
-coverImage: ./images/mazipan-smp.jpeg
+coverImage: /thumbnail/cerita-anak-kampung-menjadi-programmer/mazipan-smp.jpeg
 lang: id
 enready: false
 ---
@@ -33,7 +33,7 @@ Dari SD saya selalu mendapat peringkat yang cukup baik di dalam kelas meskipun h
 
 Beranjak ke SMP, saya memilih bersekolah di SMP Negeri yang kebetulan masih terletak di desa saya dan mungkin hanya butuh sekitar 20-30 menit untuk berjalan kaki. Saya termasuk beruntung karena banyak teman sekelas saya yang berasal dari desa yang lebih jauh pedalaman dibandingkan tempat saya. Tidak sedikit yang setiap hari harus menempuh perjalanan cukup jauh untuk sampai ke sekolah, ada yang menggunakan sepeda, bus umum bahkan kendaraan kecil dengan bak terbuka untuk sarana antar jemput mereka ke sekolah. Faktanya jumlah SMP tidak sebanyak SD yang biasanya di masing-masing desa memilikinya. Cuma selevel kecamatan yang biasanya mempunyai sekolah SMP. Ini mengapa sistem Zonasi sekolah bisa jadi akan menyulitkan teman-teman yang bersekolah di daerah 😭
 
-![Saya dan beberapa teman kelas di SMP](images/mazipan-smp.jpeg)
+![Saya dan beberapa teman kelas di SMP](/thumbnail/cerita-anak-kampung-menjadi-programmer/mazipan-smp.jpeg)
 
 Setelah selesai SMP, saya diberikan kemampuan untuk bersekolah lebih lanjut ke tingkat SMA. Tentu ini hal yang mewah buat saya. Tapi sebagai anak yang dibesarkan di keluarga yang sederhana saya sudah bisa menempatkan diri dimana sekolah yang kira-kira orang tua saya masih sanggup untuk membiayainya.
 
@@ -44,7 +44,7 @@ Hal ini mengakibatkan saya harus menempuh perjalanan pulang pergi dari desa ke k
 
 Kalau ada yang tanya kenapa saya SMK dan Akuntansi pula jurusannya, jawabnya jelas karena saya sadar bahwa orang tua saya tidak akan mampu menyekolahkan saya ketingkat yang lebih tinggi lagi. Dan pilihan yang paling masuk akal adalah dengan memilih SMK dibandingkan SMA karena rumornya di SMK memang lebih dipersiapkan untuk bisa bekerja setelah lulus. Kenapa akuntansi? ini bukan pilihan saya sebenarnya. Hanya saja pas pertama kali mendaftar di SMK, ada ujian masuk dan sepertinya mereka sorting berdasarkan hasil ujian tersebut, dan Akuntansi biasanya dihuni oleh teman-teman dengan hasil seleksi cukup bagus karena pada masanya jurusan Akuntasi masih menjadi primadona bagi SMK tersebut dan selalu kelebihan peminat.
 
-![Saya dan teman-teman sekelas di SMK](images/mazipan-smk.jpeg)
+![Saya dan teman-teman sekelas di SMK](/thumbnail/cerita-anak-kampung-menjadi-programmer/mazipan-smk.jpeg)
 
 ## Saya dan komputer
 

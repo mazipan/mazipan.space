@@ -5,7 +5,7 @@ excerpt: Alasan mengapa kami memutuskan untuk mengeksten HTML Formatter resmi ES
 author: mazipan
 published: true
 tags: [javascript, eslint]
-coverImage: ./images/eslint-html.png
+coverImage: /thumbnail/eslint-formatter-html-extended/eslint-html.png
 lang: id
 enready: true
 ---
@@ -24,7 +24,7 @@ Akhirnya, kami memutuskan untuk membuat formatter kami sendiri yang menggabungka
 
 Kami menyebutnya `eslint-formatter-html-extended`!
 
-![ESLint formatter HTML Extended](images/eslint-html.png)
+![ESLint formatter HTML Extended](/thumbnail/eslint-formatter-html-extended/eslint-html.png)
 
 ## Unboxing 📦
 

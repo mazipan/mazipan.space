@@ -5,7 +5,7 @@ excerpt: My hacktoberfest 2019 story
 author: mazipan
 draft: true
 tags: [experience]
-coverImage: ../images/computer.jpg
+coverImage: /thumbnail/my-hacktoberfest-2019/computer.jpg
 lang: en
 ---
 
@@ -26,7 +26,7 @@ This year, I try to focusing my energy to finishing my personal goal. Driving th
 Actually, this project is already run for several months ago but we lost our focus and the progress was stucked without any contributors creating any pull requests again.
 You can check the finish one in our website [docs.vuejs.id](https://docs.vuejs.id), the repo is already integrated with Netlify build so it will always update as our PR merged.
 
-![Homepage screenshot from docs.vuejs.id](../images/docs-vuejs-id.png)
+![Homepage screenshot from docs.vuejs.id](/thumbnail/my-hacktoberfest-2019/docs-vuejs-id.png)
 
 For achieving the goal to finish up the translation project, when the October started I also starting to create many issues to chunking the translation section for any contributors.
 They can easily pick their own issues, claim it and starting to work on the translation process.
@@ -54,7 +54,7 @@ I decided to create some PR to his repository to tackle UI issues. It also help 
 
 And here I am, mission accomplished!
 
-![Mission Complete](../images/hacktoberfest-completed.png)
+![Mission Complete](/thumbnail/my-hacktoberfest-2019/hacktoberfest-completed.png)
 
 ## My opinions about Hacktoberfest
 

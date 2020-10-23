@@ -5,7 +5,7 @@ excerpt: Berbagai best practice yang bisa kita pelajari dan optimalkan dalam mem
 author: mazipan
 published: true
 tags: [open-source]
-coverImage: ./images/ajari-koding.png
+coverImage: /thumbnail/ajari-koding-bukan-sekedar-awesome-list/ajari-koding.png
 lang: id
 enready: false
 ---
@@ -32,7 +32,7 @@ Salah satu solusi lain ya memindahkan ke tampilan Web yang terpisah sehingga bis
 Saya menginisiasi projek ini dengan nama "Ajari Koding", sesimpel karena saya kepikirannya itu.
 Tidak ada arti yang mendalam apalagi visi misi yang gamblang.
 
-![Ajari Koding](images/ajari-koding-showcase.png)
+![Ajari Koding](/thumbnail/ajari-koding-bukan-sekedar-awesome-list/ajari-koding-showcase.png)
 
 Projek seperti "Ajari Koding" cuma akan menjadi sampah kalau tidak ada yang mau membantu melengkapi koleksi data yang ada di dalamnya. Syukurlah om Peter punya kemampuan marketing dan punya banyak pengikut yang bisa dengan cepat melejitkan nama projek ini.
 
@@ -216,17 +216,17 @@ Saya memilih menggunakan Firebase untuk membantu saya mengerjakan fitur ini, sel
 
 Berikut tampilan dimana kalian bisa menekan tombol 👍 di masing-masing item yang kalian sukai:
 
-![Tampilan tombol "Like"](images/like-button-ajari-koding.png)
+![Tampilan tombol "Like"](/thumbnail/ajari-koding-bukan-sekedar-awesome-list/like-button-ajari-koding.png)
 
 Tombol tersebut hanya akan muncul setelah kalian login dengan akun Google terlebih dahulu
 
-![Tampilan tombol login](images/login-button-ajari-koding.png)
+![Tampilan tombol login](/thumbnail/ajari-koding-bukan-sekedar-awesome-list/login-button-ajari-koding.png)
 
 ### 🤖 Template untuk menambahkan Issue
 
 Hal ini dibutuhkan untuk memudahkan teman-teman dalam berkontribusi, baik menambahkan galat (error) yang ditemukan, permintaan fitur baru ataupun menambahkan data sumber daya terbaru.
 
-![Contoh menambahkan issue template](images/gh-template.png)
+![Contoh menambahkan issue template](/thumbnail/ajari-koding-bukan-sekedar-awesome-list/gh-template.png)
 
 ## 🙌 Mari mulai berkontribusi
 

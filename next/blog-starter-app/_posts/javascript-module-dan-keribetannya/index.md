@@ -5,7 +5,7 @@ excerpt: Mencoba memahami keribetan dari module system di JavaScript
 author: mazipan
 published: true
 tags: [javascript]
-coverImage: ./images/javascript-module.png
+coverImage: /thumbnail/javascript-module-dan-keribetannya/javascript-module.png
 lang: id
 enready: false
 ---

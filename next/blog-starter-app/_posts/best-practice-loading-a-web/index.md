@@ -5,7 +5,7 @@ excerpt: Berbagai best practice yang bisa kita pelajari dan optimalkan dalam mem
 author: mazipan
 published: true
 tags: [web]
-coverImage: ./images/devtools.png
+coverImage: /thumbnail/best-practice-loading-a-web/devtools.png
 lang: id
 enready: false
 ---
@@ -46,7 +46,7 @@ Bila kita masih menggunakan SSR dimana kode HTML kita harus dibuat di server den
 
 Pengguna tidak akan melihat keseluruhan halaman website kita pada saat pertama kali halaman tersebut dimuat, melainkan hanya bagian teratas sebatas tinggi layar. Karena itu kita wajib memprioritaskan konten-konten yang berada pada wilayah tangkapan ini, sedangkan konten yang berada dibawahnya bisa dimuat belakangan termasuk juga dengan konten yang membutuhkan aksi dari pengguna untuk ditampilkan seperti komponen popup modal sehingga tidak dibutuhkan pada awal muat.
 
-![HTML Optimize](images/html-opt.png)
+![HTML Optimize](/thumbnail/best-practice-loading-a-web/html-opt.png)
 
 ## 💅 CSS
 
@@ -78,7 +78,7 @@ Faktanya sebagian besar website memuat file CSS dengan isi yang sebenarnya hanya
 
 Sedikit trik tambahan, kita bisa melihat coverage dari unused CSS dari suatu halaman website melalui menu coverage yang terdapat pada console drawer di ChromeDevTools.
 
-![Coverage](images/coverage.png)
+![Coverage](/thumbnail/best-practice-loading-a-web/coverage.png)
 
 Jika kalian menggunakan framework modern mungkin bisa menggunakan bantuan semacam **[PurgeCSS](https://www.purgecss.com/)** untuk membuang CSS yang tidak diperlukan.
 
@@ -99,7 +99,7 @@ Ada tools menarik yang bisa malakukan otomatisasi soal kritikal CSS ini dari Add
 
 JS merupakan penggerak dari berbagai website jaman sekarang, perannya kini kian vital seiring berkembangnya kemampuan dari bahasanya sendiri. Sayangnya JS masih menjadi momok sendiri bagi browser, selain karena biasanya memiliki ukuran file yang mendominasi bagian dari website kita, juga karena dibutuhkan proses parsing maupun compile agar bisa dipahami oleh browser itu sendiri. Proses parsing ini sendiri bisa berbeda-beda setiap device dan browsernya, seperti terlihat pada gambar berikut:
 
-![JS Costs](images/js-costs.png)
+![JS Costs](/thumbnail/best-practice-loading-a-web/js-costs.png)
 
 _Image source: https://medium.com/dev-channel/the-cost-of-javascript-84009f51e99e_
 

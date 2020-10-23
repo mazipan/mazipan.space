@@ -6,7 +6,7 @@ excerpt: Story telling in how it feels to taste ReasonML syntax to build the use
 author: mazipan
 published: true
 tags: [javascript, react, reasonml]
-coverImage: ../images/reasonml-users.png
+coverImage: /thumbnail/tasting-reasonml-for-react/reasonml-users.png
 lang: en
 ---
 
@@ -48,7 +48,7 @@ OCaml is indeed a language that basically uses a functional paradigm so that Rea
 
 ## Who has used ReasonML?
 
-![ReasonML Users](../images/reasonml-users.png)
+![ReasonML Users](/thumbnail/tasting-reasonml-for-react/reasonml-users.png)
 
 Not many ReasonML users in the world, but several large companies have started adopting it in their production. In Indonesia itself, it seems that [Ruangguru ↗️](https://career.ruangguru.com/) seems to dare to openly use ReasonML in production.
 
@@ -64,7 +64,7 @@ I decided to see and learn how ReasonML could be combined with React to build a 
 
 Creating your own project is based on a project that has become easier for me to go through various steps to setup a project which is usually quite time consuming at the beginning. I made a simple project [https://github.com/mazipan/ghibli-reasonreact ↗️](https://github.com/mazipan/ghibli-reasonreact) which I would like to do more or less I will make two pages namely the listing page and the detail page , the data will be retrieved from public APIs provided by third parties.
 
-![Ghibli ReasonReact](../images/ghibli-reasonreact.png)
+![Ghibli ReasonReact](/thumbnail/tasting-reasonml-for-react/ghibli-reasonreact.png)
 
 ## What I have learned so far
 

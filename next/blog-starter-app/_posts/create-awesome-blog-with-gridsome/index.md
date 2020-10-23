@@ -5,7 +5,7 @@ excerpt: Bagaimana memulai membuat Blog statis keren menggunakan Vue.js static s
 author: mazipan
 published: true
 tags: [vue, gridsome]
-coverImage: ./images/how-it-works.png
+coverImage: /thumbnail/create-awesome-blog-with-gridsome/how-it-works.png
 lang: id
 enready: true
 ---
@@ -18,7 +18,7 @@ Bagaimana memulai membuat Blog statis keren menggunakan Vue.js static site gener
 
 ## Apa itu Gridsome?
 
-![Gridsome Logo](images/logo-normal-dark.svg)
+![Gridsome Logo](/thumbnail/create-awesome-blog-with-gridsome/logo-normal-dark.svg)
 
 [Gridsome ↗️](https://gridsome.org/) merupakan anak baru di ekosistem Vue.js yang mengkhususkan dirinya sebagai pembuat halaman statis (_static site generator_). Bila kalian pengguna React.js, tentu sudah tidak asing dengan yang namanya [Gatsby ↗️](https://www.gatsbyjs.org/) sebagai salah satu pembuat halaman statis terbaik saat ini. Nah, Gridsome sangat terinspirasi dari apa yang dikerjakan oleh Gatsby di ekosistem React.js.
 
@@ -30,7 +30,7 @@ Nuxt pada dasarnya diperuntukkan untuk membuat aplikasi web di Vue yang membutuh
 
 Sementara Gridsome merupakan pemain yang punya spesialis di bagian ini. Gridsome sudah secara _default_ memiliki fitur _generate_ yang dipersenjatai dengan berbagai _built-in_ fitur lain yang dibutuhkan ketika membuat blog statis seperti otomatis melakukan _code-splitting_, melakukan kompresi gambar, mendukung PWA secara penuh, dan tentunya sangat bersahabat dengan SEO. Kita juga bisa dengan mudah mengorganisasikan berkas konten kita dengan **Markdown** tanpa perlu tambahan konfigurasi apapun lagi. Bila kalian lihat di repository [Blog 2.0 ↗️](/blog-2-0-in-nuxtjs) yang saya buat dengan Nuxt tentu akan tau bahwa saya harus melakukan berbagai "kecurangan" untuk mengerjakan hal yang sama.
 
-![How Gridsome Works](images/how-it-works.png)
+![How Gridsome Works](/thumbnail/create-awesome-blog-with-gridsome/how-it-works.png)
 
 ## Membuat Blog dengan Gridsome
 

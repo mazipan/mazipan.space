@@ -5,7 +5,7 @@ excerpt: Cerita panjang perjalanan hidup dan karir saya sampai bisa menjadi prog
 author: mazipan
 published: true
 tags: [life-experience]
-coverImage: ./images/mazipan-bizzy.jpeg
+coverImage: /thumbnail/cerita-saya-menjadi-programmer/mazipan-bizzy.jpeg
 lang: id
 enready: false
 ---
@@ -38,7 +38,7 @@ Karenanya meskipun terbilang paling cupu diantara yang lain dalam hal web progra
 
 Saya banyak berurusan dengan JS ketika itu, karena memang kami mengadopsi ExtJS Framework untuk membuat berbagai web dashboard sehingga pengetahuan JS saya banyak terasah meskipun saya jadi banyak melewatkan soal dasar HTML dan CSS pada akhirnya.
 
-![Saya dan teman-teman di SML pada hari terakhir kerja](images/mazipan-sml.jpeg)
+![Saya dan teman-teman di SML pada hari terakhir kerja](/thumbnail/cerita-saya-menjadi-programmer/mazipan-sml.jpeg)
 
 Masa-masa terakhir di SML saya tergabung di tim R&D “jadi-jadian”, sehingga punya banyak waktu untuk belajar dan bereksplorasi banyak hal baru. Dua tahun lebih kalau tidak salah, jodoh saya dengan SML, sebelum kemudian memutuskan untuk melanjutkan perjalanan ke tempat lain.
 
@@ -50,7 +50,7 @@ Bisa bekerja di Blibli.com sepertinya menjadi lonjakan besar bagi karir saya seb
 
 Saya bertemu dan kenal dengan banyak sekali orang hebat disini, orang yang sudah puluhan tahun bergelut di dunia IT dengan pengetahuan yang sudah segudang. Sementara saya orang cupu yang baru kenal koding kemarin-kemarin, ada jurang yang sangat dalam di level pengetahuan antara saya dengan teman-teman lain pada masanya. Belum lagi dimana saya harus pindah menjadi lebih banyak mengerjakan bagian tampilan website ketimbang menulis Java sendiri. Saya harus belajar dari awal lagi soal bagaimana menulis JavaScript, utamanya AngulaJS yang pada masanya digunakan oleh Blibli.com.
 
-![Saya dan teman-teman di Blibli.com](images/mazipan-blibli.jpeg)
+![Saya dan teman-teman di Blibli.com](/thumbnail/cerita-saya-menjadi-programmer/mazipan-blibli.jpeg)
 
 Blibli.com pada awal saat saya begabung, tahun 2015-an belum sekeren sekarang. Kodenya masih ditulis dengan banyak jQuery, AngularJS yang dilayani oleh kode Java Spring MVC lengkap dengan *templating*nya JSP dan tag-tag JSTL nya. Saya beruntung karena bergabung pada masa dulu sehingga bisa terlibat banyak proses perbaikan dalam hal teknologi tahap demi tahap sampai sekeren saat ini. Dari yang migrasi besar-besaran cara kita menggunakan CSS ke SCSS, migrasi cara penulisan CSS class ke konvensi BEM, migrasi build tool yang tadinya disematkan di lingkungan Maven ke build tool ala-ala JavaScript, sampai migrasi setahap demi setahap monolith app frontend ke aplikasi kecil-kecil diatas modern framework Vue.js.
 
@@ -68,7 +68,7 @@ Meskipun punya dasar yang sama yakni Vue.js, namun Nuxt.js punya banyak hal yang
 
 Di Bizzy awal-awal saya ditempatkan di tim Om Bobby Siagian. Beruntung karena saya sudah mengenal Istidana di dalam tim tersebut yang membantu saya untuk onboarding. Tim Om Bobby sendiri menangani service yang berkaitan dengan purchasing.
 
-![Saya dan teman-teman di Bizzy](images/mazipan-bizzy.jpeg)
+![Saya dan teman-teman di Bizzy](/thumbnail/cerita-saya-menjadi-programmer/mazipan-bizzy.jpeg)
 
 Bizzy pada masanya merupakan tempat yang sangat ideal bagi pekerja software engineer, berbagai kebijakan di dalam kantor tersebut sangat mendukung agar kita bisa bekerja dengan optimal tanpa ganguan dari hal-hal yang tidak penting. Itu mengapa Bizzy pada masanya cukup jadi magnet bagi banyak teman seperjuangan. Saya pun bertemu dan kenal dengan banyak orang hebat yang berkumpul bekerja di Bizzy. Tech team pada masanya seperti first-class-citizen disana.
 
@@ -82,7 +82,7 @@ Seusai dari Bizzy saya bergabung dengan Tokopedia sebagai Principal Engineer unt
 
 Selain menjadi Principal Engineer saya juga bergabung dengan tim Core di Web Platform, pada dasarnya tim Core ini bertugas membuat atau membenahi berbagai tools yang nantinya akan digunakan oleh teman-teman engineer sehari-hari. Kenapa ada tim Core? karena akan ada banyak tugas yang tidak akan sempat bila dikerjakan oleh teman-teman engineer yang sudah di assign tugas sehari-hari yang cukup banyak dengan jadwal yang hampir selalu mepet pula. Untuk itulah Core tim terdiri dari orang-orang yang sudah diminimalisir pekerjaan sehari-harinya sehingga bisa lebih optimal melakukan berbagai riset baru maupun enhancement terhadap tooling dan platfom web serta membantu teman-teman engineer dalam menyelesaikan masalah-masalah yang membutuhkan teknikal knowledge yang dalam.
 
-![Saya dan teman-teman di Tokopedia](images/mazipan-tokopedia.jpeg)
+![Saya dan teman-teman di Tokopedia](/thumbnail/cerita-saya-menjadi-programmer/mazipan-tokopedia.jpeg)
 
 Belum banyak pencapaian yang bisa saya bagikan, tapi semoga akan ada hal menarik yang bisa saya bagikan nantinya.
 

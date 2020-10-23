@@ -5,7 +5,7 @@ excerpt: Sharing experiences using Firebase Realtime Database to make simple but
 author: mazipan
 published: true
 tags: [firebase, nuxt, javascript]
-coverImage: ../images/create-like-button-with-firebase-rtdb.jpg
+coverImage: /thumbnail/create-simple-like-button-using-firebase-rtdb/create-like-button-with-firebase-rtdb.jpg
 lang: en
 ---
 
@@ -19,7 +19,7 @@ Today fortunately there is a platform like [Firebase ↗️](https://firebase.go
 
 This time we will only use the real-time database feature.
 
-![Button Like Firebase](../images/button-like-firebase.png)
+![Button Like Firebase](/thumbnail/create-simple-like-button-using-firebase-rtdb/button-like-firebase.png)
 
 ## Creating project in Firebase
 
@@ -211,6 +211,6 @@ The last touch is making sure when the build process we set the value of _enviro
 
 In [Travis CI ↗️](https://travis-ci.org) we can also adjust various variables easily. Just enter the `settings' section and we can add _ key-value _ as a variable that will be included during the _ build _ process.
 
-![Travis CI Environment Variable](../images/travis-ci-env.png)
+![Travis CI Environment Variable](/thumbnail/create-simple-like-button-using-firebase-rtdb/travis-ci-env.png)
 
 ### May useful for you...

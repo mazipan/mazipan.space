@@ -1,23 +1,33 @@
-import DateFormatter from '../components/date-formatter'
-import Link from 'next/link'
+import DateFormatter from '../components/date-formatter';
+import CoverImage from '../components/cover-image';
+import Link from 'next/link';
 
-export default function PostPreview({
-  title,
-  date,
-  excerpt,
-  slug,
-}) {
+export default function PostPreview({ title, date, excerpt, slug, coverImage, tags }) {
   return (
-    <div>
-      <h3 className="text-3xl mb-3 leading-snug">
-        <Link as={`/posts/${slug}`} href="/posts/[slug]">
-          <a className="hover:underline">{title}</a>
-        </Link>
-      </h3>
-      <div className="text-lg mb-4">
-        <DateFormatter dateString={date} />
+    <div className="rounded-lg overflow-hidden shadow-lg hover:shadow-medium transition-shadow duration-200s">
+      <div className="mb-2 md:mb-4">
+        <CoverImage title={title} src={coverImage} slug={slug} />
       </div>
-      <p className="text-lg leading-relaxed mb-4">{excerpt}</p>
+      <div className="px-6 py-4">
+        <h3 className="font-bold text-3xl mb-3 leading-snug">
+          <Link as={`/posts/${slug}`} href="/posts/[slug]">
+            <a className="hover:underline">{title}</a>
+          </Link>
+        </h3>
+        <div className="text-sm text-gray-500 mb-4">
+          <DateFormatter dateString={date} />
+        </div>
+        <p className="text-lg leading-relaxed mb-4">{excerpt}</p>
+        {tags && tags.length > 0 && (
+          <div className="py-2">
+            {tags.map((tag) => (
+              <span key={tag} className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+                {`#${tag}`}
+              </span>
+            ))}
+          </div>
+        )}
+      </div>
     </div>
-  )
+  );
 }

@@ -5,7 +5,7 @@ excerpt: Membicarakan mengenai bagaimana seharusnya code splitting itu dilakukan
 author: mazipan
 published: true
 tags: [javascript]
-coverImage: ./images/pizza-slice.jpg
+coverImage: /thumbnail/kesalahpahaman-mengenai-code-splitting/pizza-slice.jpg
 lang: id
 enready: false
 ---
@@ -16,7 +16,7 @@ enready: false
 
 Bagaimana SPA bisa memberikan pengalaman berpindah halaman yang instan? Umumnya karena tidak lagi memerlukan komunikasi dari Server untuk memindahkan halaman serta hanya memanggil sumber daya (JS, CSS, dan gambar) baru dan tidak memanggil sumber daya yang sebelumnya sudah ada. Hal ini akan sangat terlihat pada kunjungan kedua dan seterusnya.
 
-![Perpindahan Halaman di SPA](images/spa-move-route.gif)
+![Perpindahan Halaman di SPA](/thumbnail/kesalahpahaman-mengenai-code-splitting/spa-move-route.gif)
 
 Sayangnya, umumnya SPA memiliki waktu muat pertama yang lebih lambat dibandingkan dengan metode MPA tradisional. Kenapa bisa terjadi? Karena pada MPA kita tidak perlu mencampur kode satu halaman dengan halaman lain, lebih mudah untuk menentukan halaman ini membutuhkan sumber daya apa (teorinya, prakteknya sih tidak kalah rumit juga), berbeda dengan SPA yang umumnya sangat mengandalkan JavaScript dengan berbagai framework nya untuk menangani perpindahan halaman ini yang umumnya hampir sebagian besar framework kekinian menggunakan satu pintu masuk (_entry point_) untuk keseluruhan aplikasi.
 

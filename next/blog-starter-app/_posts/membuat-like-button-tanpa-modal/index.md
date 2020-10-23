@@ -5,7 +5,7 @@ excerpt: Bagaimana saya membuat like button untuk blog ini tanpa perlu modal ser
 author: mazipan
 published: true
 tags: [now, javascript]
-coverImage: ./images/membuat-tombol-like.jpg
+coverImage: /thumbnail/membuat-like-button-tanpa-modal/membuat-tombol-like.jpg
 lang: id
 enready: true
 ---

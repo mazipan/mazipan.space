@@ -5,7 +5,7 @@ excerpt: Why we decide to extend an official ESLint's HTML formatter
 author: mazipan
 published: true
 tags: [javascript, eslint]
-coverImage: ../images/eslint-html.png
+coverImage: /thumbnail/eslint-formatter-html-extended/eslint-html.png
 lang: en
 ---
 
@@ -23,7 +23,7 @@ Finally, we decide to create our own formatter that combined the power of HTML r
 
 We call it as `eslint-formatter-html-extended`!
 
-![ESLint formatter HTML Extended](../images/eslint-html.png)
+![ESLint formatter HTML Extended](/thumbnail/eslint-formatter-html-extended/eslint-html.png)
 
 ## Unboxing 📦
 

@@ -5,7 +5,7 @@ excerpt: Step by step how I creating auto commit using Github Actions
 author: mazipan
 published: true
 tags: [programming]
-coverImage: ../images/membuat-commit-otomatis.jpg
+coverImage: /thumbnail/membuat-commit-otomatis-ke-github/membuat-commit-otomatis.jpg
 imageCaption: Image created using Pixlr
 lang: en
 enready: true
@@ -249,9 +249,9 @@ When you use this Actions, you need to read this issue [#44](https://github.com/
 
 ## The result
 
-![Auto commit message](../images/commit-message.png)
+![Auto commit message](/thumbnail/membuat-commit-otomatis-ke-github/commit-message.png)
 
-![Github Stats](../images/github-stats.png)
+![Github Stats](/thumbnail/membuat-commit-otomatis-ke-github/github-stats.png)
 
 You can change your own scheduler more than one per day, just change the Cron string.
 

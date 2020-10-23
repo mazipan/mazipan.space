@@ -5,7 +5,7 @@ excerpt: Bagaimana saya membuat commit otomatis menggunakan Github Actions
 author: mazipan
 published: true
 tags: [programming]
-coverImage: ./images/membuat-commit-otomatis.jpg
+coverImage: /thumbnail/membuat-commit-otomatis-ke-github/membuat-commit-otomatis.jpg
 imageCaption: Gambar dibuat dengan Pixlr
 lang: id
 enready: true
@@ -212,9 +212,9 @@ Terkait dengan langkah _checkout_ pada bagian sebelumnya yang diharuskan menamba
 
 ## Bagaimana dengan hasilnya?
 
-![Pesan commit otomatis](./images/commit-message.png)
+![Pesan commit otomatis](/thumbnail/membuat-commit-otomatis-ke-github/commit-message.png)
 
-![Github Statistik](./images/github-stats.png)
+![Github Statistik](/thumbnail/membuat-commit-otomatis-ke-github/github-stats.png)
 
 Ya, kalian pada dasarnya bisa mengubah konfigurasi sendiri mau berapa kali dalam sehari commit otomatis ini dijalankan. Pada kasus saya, cukup 5 kali lah. Gak hijau-hijau amat, tapi lumayan lah tidak kering kerontang 🌳
 

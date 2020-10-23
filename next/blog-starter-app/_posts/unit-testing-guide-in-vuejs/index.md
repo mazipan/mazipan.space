@@ -6,7 +6,7 @@ excerpt: Langkah-langkah memasang dan melakukan testing pada kode Vue.js dan Nux
 author: mazipan
 published: true
 tags: [javascript, testing]
-coverImage: ./images/commitstrip.jpg
+coverImage: /thumbnail/unit-testing-guide-in-vuejs/commitstrip.jpg
 lang: id
 enready: false
 ---
@@ -47,7 +47,7 @@ Langkah-langkah memasang dan melakukan testing pada kode Vue.js dan Nuxt.js deng
 
 Unit testing (UT) merupakan bagian terkecil dari proses pengetesan sebuah aplikasi perangkat lunak. UT berfokus untuk mengetest bagian terkecil sebuah aplikasi yakni potongan-potongan kode yang dibuat oleh pengembangnya, itu mengapa UT paling ideal dibuat oleh pengembang itu sendiri. Dengan mengetest kode-kode kecil di dalam sebuah aplikasi diharapkan kita bisa menghasilkan aplikasi perangkat lunak dengan kualitas yang lebih bisa dijamin.
 
-![Unit Test Meme by commitstrip](images/commitstrip.jpg)
+![Unit Test Meme by commitstrip](/thumbnail/unit-testing-guide-in-vuejs/commitstrip.jpg)
 
 [🔼 Kembali ke navigasi](#navigasi)
 

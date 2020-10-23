@@ -6,7 +6,7 @@ excerpt: Menceritakan bagaimana cara membuat AMP Pages untuk blog kalian dengan 
 author: mazipan
 published: true
 tags: [nuxt, amp]
-coverImage: ./images/amp.jpg
+coverImage: /thumbnail/generate-amp-pages-in-nuxtjs/amp.jpg
 lang: id
 enready: true
 ---
@@ -19,7 +19,7 @@ AMP (Accelerated Mobile Pages - [amp.dev ↗️](https://amp.dev)) merupakan ini
 
 AMP merupakan rekomendasi yang dianjurkan oleh Google langsung karena memiliki prioritas yang baik bagi hasil pencarian Google Search. Dan dengan rampingnya teknologi di dalamnya serta ditambah bantuan _cache_ dari Google membuat AMP menjadi sangat cepat diakses dan sangat baik untuk digunakan sebagai halaman pertama bagi pengunjung yang datang dari hasil Google Search ini.
 
-![Mazipan AMP](images/mazipan-amp.png)
+![Mazipan AMP](/thumbnail/generate-amp-pages-in-nuxtjs/mazipan-amp.png)
 
 ## Dasar-dasar Membuat AMP
 

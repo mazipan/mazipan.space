@@ -6,7 +6,7 @@ excerpt: Menceritakan bagaimana rasanya mencicipi sintaksis ReasonML untuk memba
 author: mazipan
 published: true
 tags: [javascript, react, reasonml]
-coverImage: ./images/reasonml-users.png
+coverImage: /thumbnail/tasting-reasonml-for-react/reasonml-users.png
 lang: id
 enready: true
 ---
@@ -49,7 +49,7 @@ OCaml memang bahasa yang dasarnya menggunakan paradigma fungsional sehingga Reas
 
 ## Siapa yang sudah pakai ReasonML?
 
-![ReasonML Users](images/reasonml-users.png)
+![ReasonML Users](/thumbnail/tasting-reasonml-for-react/reasonml-users.png)
 
 Belum banyak pengguna ReasonML di dunia, tapi beberapa perusahaan besar sudah mulai mengadopsinya di production mereka. Di Indonesia sendiri sepertinya baru [Ruangguru ↗️](https://career.ruangguru.com/) yang berani terang-terangan menggunakan ReasonML di production.
 
@@ -65,7 +65,7 @@ Saya memutuskan untuk melihat dan mempelajari bagaimana ReasonML bisa dikombinas
 
 Membuat proyek sendiri berdasarkan proyek yang sudah jadi lebih mudah bagi saya untuk melewati berbagai langkah untuk setup sebuah proyek yang biasanya lumayan memakan waktu di awal. Saya membuat proyek sederhana [https://github.com/mazipan/ghibli-reasonreact ↗️](https://github.com/mazipan/ghibli-reasonreact) yang kurang lebih saya akan membuat dua halaman yakni halaman listing dan halaman detail, datanya akan mengambil dari API publik yang disediakan pihak ketiga.
 
-![Ghibli ReasonReact](images/ghibli-reasonreact.png)
+![Ghibli ReasonReact](/thumbnail/tasting-reasonml-for-react/ghibli-reasonreact.png)
 
 ## Yang saya pelajari sampai saat ini
 

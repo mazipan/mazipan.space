@@ -5,7 +5,7 @@ excerpt: Story from Tokopedia web platform team in building an in-house web metr
 author: mazipan
 published: true
 tags: [lesson-learned]
-coverImage: ./images/luke-chesser-JKUTrJ4vK00-unsplash.jpg
+coverImage: /thumbnail/how-we-built-our-own-web-metric-monitoring-dashboard/luke-chesser-JKUTrJ4vK00-unsplash.jpg
 imageCaption: Image by Luke Chesser on Unsplash
 lang: id
 enready: true
@@ -39,7 +39,7 @@ You can use [pagespeed insight](https://developers.google.com/speed/pagespeed/in
 
 ### Pagespeed Insight
 
-![Pagespeed Insight report](./images/pagespeed-result.png)
+![Pagespeed Insight report](/thumbnail/how-we-built-our-own-web-metric-monitoring-dashboard/pagespeed-result.png)
 
 When we say, you must monitor your web metrics day by day so you can see the changes in every code deployed to the production, how it will impact these metrics, which deployment that causes decreasing your web metrics or is your initiative can increase your web metrics such as a performance score.
 In this scenario, we can use Pagespeed Insight because it can not record your day to day changes. Except you want to do a manual screenshot of the report every time.
@@ -53,7 +53,7 @@ Watch the video about [Using the Chrome UX report to evaluate real-user data](ht
 
 ### Web.dev
 
-![Web.dev report](./images/webdev-result.png)
+![Web.dev report](/thumbnail/how-we-built-our-own-web-metric-monitoring-dashboard/webdev-result.png)
 
 Move to **[web.dev/measure](https://web.dev/measure/)**, it is just running the lighthouse engine under the hood.
 Yes, the lighthouse is one of the most popular engines used to test your web page and get a rich report from summary one until the details one.
@@ -69,7 +69,7 @@ Also how if we need to analyze custom data since the web.dev only shows the gene
 
 ### Webpagetest
 
-![Webpagetest.org](./images/wpt.png)
+![Webpagetest.org](/thumbnail/how-we-built-our-own-web-metric-monitoring-dashboard/wpt.png)
 
 The last, Webpagetest.org is one of the most powerful sites to be used to monitor your web page metrics.
 It already supports the lighthouse engine if you need it.
@@ -96,7 +96,7 @@ Lighthouse gain it's popularity because Progressive Web Apps (PWA) also becomes 
 Developers need tools to test it's PWA implementation, see the result score and get the best practices checklists that can be applied in their web.
 This phenomenon drives us to use the Lighthouse engine for our next web metrics monitoring dashboard.
 
-![Lighthouse Logo](./images/lighthouse.png)
+![Lighthouse Logo](/thumbnail/how-we-built-our-own-web-metric-monitoring-dashboard/lighthouse.png)
 
 Lighthouse engine is available in many alternatives, it's built-in by default with our Chrome DevTools, it available as a CI that can validate our pull requests, it available as an NPM library along with Puppeteer for launching a Chrome browser programmatically.
 It also available as a CLI tool if you prefer a simpler usage.
@@ -218,16 +218,16 @@ This threshold acts as a gate that will keep sending an alert to slack when the 
 
 We know that we are too lazy to check the dashboard frequently, that's why sending a direct notification to Slack is one of our solutions to increasing the awareness of our developers and other stakeholders.
 
-![Sample of config page](./images/screen-config.png)
+![Sample of config page](/thumbnail/how-we-built-our-own-web-metric-monitoring-dashboard/screen-config.png)
 
 After the data is stored, we can show the result in a Chart as we want. In our cases, we show a chart for total requests per page, size of resources, performance and PWA score, and web page load timing.
 The data is already there, we just need to explore to show the most important data for our self.
 
-![Sample of chart presentations](./images/screen-chart.png)
+![Sample of chart presentations](/thumbnail/how-we-built-our-own-web-metric-monitoring-dashboard/screen-chart.png)
 
-![Sample of table presentations](./images/screen-table.png)
+![Sample of table presentations](/thumbnail/how-we-built-our-own-web-metric-monitoring-dashboard/screen-table.png)
 
-![Sample of detail report](./images/screen-detail.png)
+![Sample of detail report](/thumbnail/how-we-built-our-own-web-metric-monitoring-dashboard/screen-detail.png)
 
 ## Image Analyzer
 
@@ -250,7 +250,7 @@ const allImagesFromLighthouse = report.audits['network-requests'].details.items.
 
 Unfortunately, we only get the data about `resourceSize` (original size) and `transferSize` (compressed size) from lighthouse. It will not good for us to create the presentations based on this data only. Thanks for npm module [image-size](https://www.npmjs.com/package/image-size), we can get more information about dimension of the image with this module.
 
-![Sample of image scatter plot](./images/screen-image.png)
+![Sample of image scatter plot](/thumbnail/how-we-built-our-own-web-metric-monitoring-dashboard/screen-image.png)
 
 ## Alternatives
 

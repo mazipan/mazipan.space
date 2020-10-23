@@ -6,7 +6,7 @@ excerpt: Berbagai pelajaran yang kami dapat saat membangun microsite untuk acara
 author: mazipan
 published: true
 tags: [programming, lesson-learned]
-coverImage: ./images/tokopedia-anniv.png
+coverImage: /thumbnail/lesson-learned-from-building-tokopedia-anniv-microsite/tokopedia-anniv.png
 lang: id
 enready: true
 ---
@@ -35,11 +35,11 @@ Sebelum membicarakan lebih lanjut, mungkin teman-teman perlu melihat sekilas tam
 
 ### Tampilan Desktop Web
 
-![Desktop Web](./images/anniv-desktop.gif)
+![Desktop Web](/thumbnail/lesson-learned-from-building-tokopedia-anniv-microsite/anniv-desktop.gif)
 
 ### Tampilan Mobile Web
 
-![Mobile Web](./images/anniv-mobile.gif)
+![Mobile Web](/thumbnail/lesson-learned-from-building-tokopedia-anniv-microsite/anniv-mobile.gif)
 
 ## Timeline
 

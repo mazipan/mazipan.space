@@ -6,7 +6,7 @@ excerpt: Menceritakan beberapa langkah yang saya kerjakan ketika melakukan migra
 author: mazipan
 published: true
 tags: [nuxt, typescript]
-coverImage: ./images/quran-offline.png
+coverImage: /thumbnail/migrate-nuxt-to-typescript/quran-offline.png
 lang: id
 enready: true
 ---
@@ -15,7 +15,7 @@ Menceritakan beberapa langkah yang saya kerjakan ketika melakukan migrasi projec
 
 Seperti kita tau bersama bahwa bawaan dari project Nuxt akan membuat kode dengan basis JavaScript Vanilla. Sedangkan dengan makin maraknya penggunaan TypeScript di kalangan para pengembang JavaScript membuat saya pribadi ikut kepincut untuk mengimplementasikan penggunaan TypeScript pada projek kode sumber terbuka saya.
 
-![Quran Offline](images/quran-offline.png)
+![Quran Offline](/thumbnail/migrate-nuxt-to-typescript/quran-offline.png)
 
 Berikut hal-hal yang saya kerjakan dalam proses migrasi tersebut:
 

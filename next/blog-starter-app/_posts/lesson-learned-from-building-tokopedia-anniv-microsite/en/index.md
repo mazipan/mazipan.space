@@ -6,7 +6,7 @@ excerpt: Lessons we learned as a team when building a microsite for Tokopedia 10
 author: mazipan
 published: true
 tags: [programming, lesson-learned]
-coverImage: ../images/tokopedia-anniv.png
+coverImage: /thumbnail/lesson-learned-from-building-tokopedia-anniv-microsite/tokopedia-anniv.png
 lang: en
 ---
 
@@ -34,11 +34,11 @@ Sebelum membicarakan lebih lanjut, mungkin teman-teman perlu melihat sekilas tam
 
 ### Desktop Web UI
 
-![Desktop Web](../images/anniv-desktop.gif)
+![Desktop Web](/thumbnail/lesson-learned-from-building-tokopedia-anniv-microsite/anniv-desktop.gif)
 
 ### Mobile Web UI
 
-![Mobile Web](../images/anniv-mobile.gif)
+![Mobile Web](/thumbnail/lesson-learned-from-building-tokopedia-anniv-microsite/anniv-mobile.gif)
 
 ## Timeline
 

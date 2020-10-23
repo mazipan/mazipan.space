@@ -5,7 +5,7 @@ excerpt: Bagaimana membuat sitemap dengan lebih baik, lebih optimal dan tertata 
 author: mazipan
 published: true
 tags: [vue, web]
-coverImage: ./images/advance-sitemap-nuxtjs.png
+coverImage: /thumbnail/advance-sitemap-di-projek-nuxt/advance-sitemap-nuxtjs.png
 lang: id
 ---
 

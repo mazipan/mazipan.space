@@ -5,7 +5,7 @@ excerpt: Berbagi pengalaman dalam menggunakan Firebase RTDB untuk membuat button
 author: mazipan
 published: true
 tags: [firebase, nuxt, javascript]
-coverImage: ./images/create-like-button-with-firebase-rtdb.jpg
+coverImage: /thumbnail/create-simple-like-button-using-firebase-rtdb/create-like-button-with-firebase-rtdb.jpg
 lang: id
 enready: true
 ---
@@ -20,7 +20,7 @@ Dewasa ini untunglah ada platform seperti [Firebase ↗️](https://firebase.goo
 
 Kali ini kita hanya akan menggunakan fitur real-time databasenya saja.
 
-![Button Like Firebase](images/button-like-firebase.png)
+![Button Like Firebase](/thumbnail/create-simple-like-button-using-firebase-rtdb/button-like-firebase.png)
 
 ## Membuat Projek di Firebase
 
@@ -212,6 +212,6 @@ Sentuhan terkhir adalah memastikan ketika proses build kita menyetel nilai _envi
 
 Di [Travis CI ↗️](https://travis-ci.org) kita juga bisa menyetel berbagai variabel dengan mudah. Cukup masuk ke bagian `settings` dan kita bisa menambahkan _key-value_ sebagai variabel yang akan diikutkan saat proses _build_.
 
-![Travis CI Environment Variable](images/travis-ci-env.png)
+![Travis CI Environment Variable](/thumbnail/create-simple-like-button-using-firebase-rtdb/travis-ci-env.png)
 
 ### Demikian artikel kali ini, semoga bermanfaat...

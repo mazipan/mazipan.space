@@ -5,7 +5,7 @@ excerpt: How I create a Like Button on this blog without any servers and no cost
 author: mazipan
 published: true
 tags: [now, javascript]
-coverImage: ../images/membuat-tombol-like.jpg
+coverImage: /thumbnail/membuat-like-button-tanpa-modal/membuat-tombol-like.jpg
 lang: en
 ---
 

@@ -6,7 +6,7 @@ excerpt: Story telling about the steps that I worked on when migrating the Nuxt 
 author: mazipan
 published: true
 tags: [nuxt, typescript]
-coverImage: ../images/quran-offline.png
+coverImage: /thumbnail/migrate-nuxt-to-typescript/quran-offline.png
 lang: en
 ---
 
@@ -14,7 +14,7 @@ Story telling about the steps that I worked on when migrating the Nuxt project f
 
 As we all know that the default from the Nuxt project will be to create a code based on JavaScript Vanilla. Whereas the increasingly widespread use of TypeScript among JavaScript developers makes me personally interested in implementing the use of TypeScript on my open source code project.
 
-![Quran Offline](../images/quran-offline.png)
+![Quran Offline](/thumbnail/migrate-nuxt-to-typescript/quran-offline.png)
 
 The following are the things I worked on in the migration process:
 

@@ -6,7 +6,7 @@ excerpt: Share my experiences when I became a facilitator in the Google Develope
 author: mazipan
 published: true
 tags: [experience]
-coverImage: ../images/gdk-mws-dev-showcase.jpg
+coverImage: /thumbnail/experience-in-become-fasilitator-gdk-mws-2018/gdk-mws-dev-showcase.jpg
 lang: en
 ---
 
@@ -46,7 +46,7 @@ For me, offline meetings are always more interesting than online. We can get to 
 
 As I mentioned above, consistency becomes an expensive item for us together. After the first meetup was attended by 13 people the second meetup that I held was only attended by only 4 participants.
 
-![GDK MWS Meetup](../images/gdk-mws-meetup.jpg)
+![GDK MWS Meetup](/thumbnail/experience-in-become-fasilitator-gdk-mws-2018/gdk-mws-meetup.jpg)
 
 But for me personally, this is not a problem, as long as there are still one or two people who are eager to attend then I try to come to an agreed-upon meetup. It is not a loss for me to meet these 4 people. they are the ones who are an encouragement for me to complete the responsibility of being a facilitator until the end of the program. People who will easily become friends with me in the future 🤩
 
@@ -54,7 +54,7 @@ But for me personally, this is not a problem, as long as there are still one or 
 
 A day after the Google For Indonesia event, Google held a Google Developer Showcase event that told the public what Google has been doing lately to build the ecosystem and build human resources in Indonesia, especially to print a lot of new developers through various programs that he declared. Google Developers Kejar itself is one of the many programs created by Google to help this. To attend this event several facilitators and participants were chosen to represent each city.
 
-![Google Developer Showcase](../images/gdk-mws-dev-showcase.jpg)
+![Google Developer Showcase](/thumbnail/experience-in-become-fasilitator-gdk-mws-2018/gdk-mws-dev-showcase.jpg)
 
 ## How is the result? 💎
 

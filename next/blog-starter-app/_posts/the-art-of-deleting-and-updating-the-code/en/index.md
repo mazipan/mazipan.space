@@ -6,7 +6,7 @@ excerpt: Story telling about my daily job to deleting my peer's code
 author: mazipan
 published: true
 tags: [programming]
-coverImage: ../images/quadran.png
+coverImage: /thumbnail/the-art-of-deleting-and-updating-the-code/quadran.png
 lang: en
 ---
 
@@ -29,7 +29,7 @@ Programmers have a variety of reasons why they write code from the origin, of co
 
 For this we can look at [Technical Debt Quadrant ↗️](https://martinfowler.com/bliki/TechnicalDebtQuadrant.html) as Martin Fowler explained, in a nutshell, look at the following picture:
 
-![Technical Debt Quadrant](../images/quadran.png)
+![Technical Debt Quadrant](/thumbnail/the-art-of-deleting-and-updating-the-code/quadran.png)
 
 <small class="caption">Image taken from page https://martinfowler.com<small>
 
