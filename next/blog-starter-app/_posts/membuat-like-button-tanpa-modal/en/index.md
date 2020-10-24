@@ -211,6 +211,3 @@ Because Github have a rate limiter in their API, and I don't need my users see a
 
 You can scroll to the very last of this blog, you will see a blue button with a text "Click me if you like this article". That's my simple like button powered by Now as an API provider.
 
----
-
-Thank you for reading 🖐️

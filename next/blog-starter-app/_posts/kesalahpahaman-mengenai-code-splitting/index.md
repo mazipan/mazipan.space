@@ -172,6 +172,3 @@ Code splitting seharusnya dikombinasikan dengan kemampuan _lazy load_ dan _tree-
 
 - Foto sampul dari [pexels.com](https://www.pexels.com/photo/close-up-photo-of-person-holding-pizza-1653877/)
 
----
-
-Demikian, semoga bermanfaat

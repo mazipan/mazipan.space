@@ -76,6 +76,3 @@ Saya yang buatkan template nya, kalian yang ingin mengimplementasikan bisa menye
 
 Kalian bisa menemukan katalog login template yang saya dan teman-teman kontributor lain buat di tautan [https://mazipan.github.io/login-page-css/](https://mazipan.github.io/login-page-css/)
 
----
-
-Semoga bermanfaat 🙏

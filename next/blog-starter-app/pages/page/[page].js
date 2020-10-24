@@ -15,7 +15,7 @@ export default function Index({ allPosts }) {
     <>
       <Layout>
         <Head>
-          <title>Home | mazipan.space</title>
+          <title>Page | mazipan.space</title>
         </Head>
         <Container>
           <Intro />

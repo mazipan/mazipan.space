@@ -24,3 +24,12 @@
 .markdown h5 {
   @apply font-bold text-lg mt-4 mb-4 leading-snug;
 }
+
+.markdown img {
+  @apply rounded-lg mx-auto;
+}
+
+.markdown code:not([class*="language-"]) {
+  @apply bg-gray-200 text-gray-700 text-sm px-2 py-1 rounded;
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+}

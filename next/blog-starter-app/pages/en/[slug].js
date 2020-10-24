@@ -1,51 +1,70 @@
 import { useRouter } from 'next/router';
 import ErrorPage from 'next/error';
 import Head from 'next/head';
-import Container from '../../components/container';
-import PostBody from '../../components/post-body';
-import Header from '../../components/header';
-import PostHeader from '../../components/post-header';
-import Layout from '../../components/layout';
-import { getPostBySlug, getAllPosts } from '../../lib/api';
-import PostTitle from '../../components/post-title';
+import { Fragment } from 'react';
+
+import PostBody from '@/components/post-body';
+import PostHeader from '@/components/post-header';
+import ShareArticle from '@/components/share-article';
+
+import LayoutArticle from '@/components/layout-article';
+
+import { getPostBySlug, getAllPosts } from '@/lib/api';
+import { SITE_METADATA } from '@/lib/constants';
 
 export default function Post({ post, morePosts, preview }) {
   const router = useRouter();
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />;
   }
+
   return (
-    <Layout preview={preview}>
-      <Container>
-        <Header />
-        {router.isFallback ? (
-          <PostTitle>Loading…</PostTitle>
-        ) : (
-          <>
-            <article className="mb-32">
-              <Head>
-                <title>{post.title} | mazipan.space</title>
-                <meta property="og:image" content={post.coverImage} />
-              </Head>
-              <PostHeader
-                title={post.title}
-                coverImage={post.coverImage}
-                date={post.date}
-                author={post.author}
-              />
-              <PostBody content={post.content} />
-            </article>
-          </>
-        )}
-      </Container>
-    </Layout>
+    <>
+      <LayoutArticle preview={preview}>
+        <Fragment>
+          <Head>
+            <title>{post.title} | mazipan.space</title>
+            <meta name="description" content={post.excerpt} />
+            <meta name="keywords" content={post.tags.join(',')} />
+
+            <meta property="og:site_name" content={SITE_METADATA.title} />
+            <meta property="og:image" content={`${SITE_METADATA.url}${post.coverImage}`} />
+            <meta property="article:author" content={`mazipanneh`} />
+            <meta property="article:tag" content={`${post.tags[0]}`} />
+            <meta property="og:type" content="article" />
+            <meta property="og:title" content={post.title} />
+            <meta property="og:description" content={post.excerpt} />
+            <meta property="og:url" content={`${SITE_METADATA.url}/${post.slug}`} />
+
+            <meta name="twitter:image" content={`${SITE_METADATA.url}${post.coverImage}`} />
+            <meta name="twitter:card" content="summary_large_image" />
+            <meta name="twitter:title" content={post.title} />
+            <meta name="twitter:description" content={post.excerpt} />
+            <meta name="twitter:url" content={`${SITE_METADATA.url}/${post.slug}`} />
+            <meta name="twitter:creator" content={`@maz_ipan`} />
+            <meta name="twitter:label1" content="Under tag" />
+            <meta name="twitter:data1" content={`${post.tags[0]}`} />
+          </Head>
+          <PostHeader
+            title={post.title}
+            coverImage={post.coverImage}
+            date={post.date}
+            author={post.author}
+            tags={post.tags}
+          />
+          <PostBody content={post.content} />
+          <ShareArticle />
+          <CommentBox />
+        </Fragment>
+      </LayoutArticle>
+    </>
   );
 }
 
 export async function getStaticProps({ params }) {
   const post = getPostBySlug(
     params.slug,
-    ['title', 'date', 'slug', 'author', 'content', 'ogImage', 'coverImage'],
+    ['title', 'date', 'slug', 'author', 'content', 'tags', 'coverImage'],
     'en',
   );
 

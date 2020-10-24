@@ -56,6 +56,4 @@ Kenal dengan orang-orang di lingkup terdalam dari komunitas membuka kesempatan j
 
 Hari ini saya punya hubungan baik dengan beberapa komunitas pemrograman di Indonesia, saya kenal baik dengan teman-teman di PHPID, saya membantu AngularID untuk sekedar menghapus spam di telegram mereka, saya juga mengambil sedikit bagian untuk mengurus komunitas VuejsID, saya membantu menjadi jembatan antara ReactjsID dengan RK ([Rumah Komunitas](https://rumahkomunitas.com)) sebagai penyedia berbagai kaos resmi mereka, saya beberapa kali juga membantu JakartaJS menjadi speaker cadangan ketika mereka kesulitan mendapatkan speaker untuk meetup mereka. Saya memilih untuk tidak secara resmi menjadi anggota pengurus dari komunitas-komunitas tersebut karena saya tidak memiliki waktu yang cukup luang, namun saya tetap menjaga agar tetap berada di lingkup terdekat dengan para pengurus dan tetap memberikan kontribusi semampu saya.
 
----
-
-Komunitas pemrograman bukanlah tempat mencari keuntungan pribadi, tapi saya sudah membuktikannya, ketika kita mau memberikan kontribusi terhadap mereka maka mereka akan memberikan keuntungan baik langsung maupun tidak langsung terhadap diri kalian.
+> Komunitas pemrograman bukanlah tempat mencari keuntungan pribadi, tapi saya sudah membuktikannya, ketika kita mau memberikan kontribusi terhadap mereka maka mereka akan memberikan keuntungan baik langsung maupun tidak langsung terhadap diri kalian.

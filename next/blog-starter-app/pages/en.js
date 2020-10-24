@@ -45,7 +45,7 @@ export async function getStaticProps() {
     'coverImage',
     'excerpt',
     'tags',
-  ]);
+  ], 'en');
 
   return {
     props: { allPosts },

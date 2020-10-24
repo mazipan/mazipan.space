@@ -198,6 +198,3 @@ Karena Github memiliki rate limiter seperti sudah kita bahas bersama pada bagian
 
 Kalian bisa scroll ke bagian akhir dari artikel ini, terdapat tombol like cupu yang bisa kalian klik. Bagain tersebut memanfaatkan API yang saya buat dengan paltform Now seperti yang sudah kita perbincangkan di artikel ini.
 
----
-
-Semoga bermanfaat

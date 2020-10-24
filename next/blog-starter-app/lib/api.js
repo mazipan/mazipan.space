@@ -1,14 +1,14 @@
-import fs from 'fs';
-import { join } from 'path';
-import matter from 'gray-matter';
+const fs = require('fs');
+const { join } = require('path');
+const matter = require('gray-matter');
 
 const postsDirectory = join(process.cwd(), '_posts');
 
-export function getPostSlugs() {
+function getPostSlugs() {
   return fs.readdirSync(postsDirectory);
 }
 
-export function getPostSlugsEn() {
+function getPostSlugsEn() {
   const allDirs = fs.readdirSync(postsDirectory);
   const enDirs = [];
   allDirs.forEach((dir) => {
@@ -21,7 +21,7 @@ export function getPostSlugsEn() {
   return enDirs;
 }
 
-export function getPostBySlug(slug, fields = [], lang = 'id') {
+function getPostBySlug(slug, fields = [], lang = 'id') {
   const realSlug = slug.replace(/\.md$/, '');
   const fullPath = join(
     postsDirectory,
@@ -49,7 +49,7 @@ export function getPostBySlug(slug, fields = [], lang = 'id') {
   return items;
 }
 
-export function getAllPosts(fields = [], lang = 'id') {
+function getAllPosts(fields = [], lang = 'id') {
   const slugs = lang === 'id' ? getPostSlugs() : getPostSlugsEn();
   const posts = slugs
     .map((slug) => getPostBySlug(slug, fields, lang))
@@ -57,3 +57,46 @@ export function getAllPosts(fields = [], lang = 'id') {
     .sort((post1, post2) => (post1.date > post2.date ? '-1' : '1'));
   return posts;
 }
+
+function getAllTags(lang = 'id') {
+  const posts = getAllPosts(['tags'], lang);
+  const set = new Set();
+
+  posts.forEach((post) => {
+    if (post.tags) {
+      post.tags.forEach((t) => {
+        set.add(t);
+      });
+    }
+  });
+
+  return Array.from(set);
+}
+
+function getPostsByTag(tag, lang = 'id') {
+  const matchSlug = new Set();
+  const matchPost = [];
+  const posts = getAllPosts(
+    ['title', 'date', 'slug', 'author', 'coverImage', 'excerpt', 'tags'],
+    lang,
+  );
+
+  posts.forEach((post) => {
+    if (post.tags) {
+      const isMatched = post.tags.find((t) => t.toLowerCase() === tag.toLowerCase());
+      const isHaveSlug = matchSlug.has(post.slug);
+      if (isMatched && !isHaveSlug) {
+        matchPost.push(post);
+      }
+    }
+  });
+
+  return matchPost;
+}
+
+exports.getPostSlugs = getPostSlugs;
+exports.getPostSlugsEn = getPostSlugsEn;
+exports.getPostBySlug = getPostBySlug;
+exports.getAllPosts = getAllPosts;
+exports.getAllTags = getAllTags;
+exports.getPostsByTag = getPostsByTag;

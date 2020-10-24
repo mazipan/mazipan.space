@@ -4,13 +4,13 @@ export default function Footer() {
   return (
     <footer className="bg-accent-1 border-t border-accent-2">
       <Container>
-        <div className="py-8 flex justify-center items-center">
+        <div className="pt-8 pb-4 flex justify-center items-center">
           <a
             href="https://www.facebook.com/mazipanneh"
             target="_blank"
             title="Facebook"
             rel="noopener noreferrer"
-            className="mx-2"
+            className="mx-2 text-gray-700 hover:text-gray-900"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -31,7 +31,7 @@ export default function Footer() {
             title="Twitter"
             target="_blank"
             rel="noopener noreferrer"
-            className="mx-2"
+            className="mx-2 text-gray-700 hover:text-gray-900"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -52,7 +52,7 @@ export default function Footer() {
             title="Github"
             target="_blank"
             rel="noopener noreferrer"
-            className="mx-2"
+            className="mx-2 text-gray-700 hover:text-gray-900"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -73,7 +73,7 @@ export default function Footer() {
             title="Linkedin"
             target="_blank"
             rel="noopener noreferrer"
-            className="mx-2"
+            className="mx-2 text-gray-700 hover:text-gray-900"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -91,6 +91,32 @@ export default function Footer() {
               <circle cx="4" cy="4" r="2"></circle>
             </svg>
           </a>
+          <a
+            href="/rss.xml"
+            title="RSS"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mx-2 text-gray-700 hover:text-gray-900"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M4 11a9 9 0 0 1 9 9" />
+              <path d="M4 4a16 16 0 0 1 16 16" />
+              <circle cx="5" cy="19" r="1" />
+            </svg>
+          </a>
+        </div>
+        <div className="pb-8 flex justify-center items-center">
+        © 2020 All rights reserved
         </div>
       </Container>
     </footer>

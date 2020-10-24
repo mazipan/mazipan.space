@@ -345,6 +345,3 @@ Kendati demikian, masih banyak kode yang menggunakan baik CommonJS, AMD bahkan m
 
 Kita sebagai developer JavaScript mestinya mengetahui perbedaan _module system_ yang kadung sudah terjadi ini, sehingga kedepannya kita bisa mengambil keputusan ketika harus memilih _module system_ mana yang ingin didukung.
 
----
-
-Demikian, semoga bermanfaat

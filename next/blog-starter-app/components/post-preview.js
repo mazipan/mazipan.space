@@ -1,6 +1,7 @@
+import Link from 'next/link';
+
 import DateFormatter from '../components/date-formatter';
 import CoverImage from '../components/cover-image';
-import Link from 'next/link';
 
 export default function PostPreview({ title, date, excerpt, slug, coverImage, tags }) {
   return (
@@ -21,9 +22,11 @@ export default function PostPreview({ title, date, excerpt, slug, coverImage, ta
         {tags && tags.length > 0 && (
           <div className="py-2">
             {tags.map((tag) => (
-              <span key={tag} className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-                {`#${tag}`}
-              </span>
+              <Link key={tag} as={`/tag/${tag}`} href="/tag/[tag]">
+                <a className="hover:underline inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+                  {`#${tag}`}
+                </a>
+              </Link>
             ))}
           </div>
         )}

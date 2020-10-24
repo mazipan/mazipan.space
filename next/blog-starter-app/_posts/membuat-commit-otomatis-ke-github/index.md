@@ -224,6 +224,4 @@ Semua tulisan ini, didasarkan pada repository yang bisa kalian lihat pada tautan
 
 [https://github.com/mazipan/auto-commit/](https://github.com/mazipan/auto-commit/)
 
----
-
-Terima kasih dan semoga tidak disalahgunakan 🙏
+#### Terima kasih dan semoga tidak disalahgunakan 🙏

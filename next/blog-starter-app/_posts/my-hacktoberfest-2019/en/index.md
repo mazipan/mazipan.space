@@ -72,6 +72,4 @@ _So why this year you don't get a swags from Hacktoberfest?_
 Come on, it's not hard for you as a developers that creating many pull requests every days.
 Next year you should join this event!
 
----
-
-That's all from me, keep hacking!
+#### That's all from me, keep hacking!

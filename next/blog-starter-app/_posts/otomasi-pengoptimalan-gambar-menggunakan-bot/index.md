@@ -44,6 +44,3 @@ Berikut tampilan salah satu pull request yang dibuat secara otomatis oleh ImgBot
 
 Terakhir, bola ada ditangan kalian. Kapanpun kalian mau dan sempat, kalian bisa melakukan merge pull request tersebut ke projek kalian.
 
----
-
-Semoga bermanfaat!

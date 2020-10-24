@@ -259,6 +259,4 @@ You can change your own scheduler more than one per day, just change the Cron st
 
 [https://github.com/mazipan/auto-commit/](https://github.com/mazipan/auto-commit/)
 
----
-
-Thank you, and don't abuse your power 🙏
+#### Thank you, and don't abuse your power 🙏

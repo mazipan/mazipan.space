@@ -8,21 +8,24 @@
   },
   "dependencies": {
     "classnames": "2.2.6",
-    "date-fns": "2.10.0",
+    "date-fns": "2.16.1",
     "gray-matter": "4.0.2",
     "next": "latest",
-    "react": "^16.13.0",
-    "react-dom": "^16.13.0",
-    "react-markdown": "^5.0.0",
-    "react-syntax-highlighter": "14.0.2",
-    "remark": "11.0.2",
-    "remark-html": "10.0.0"
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-markdown": "^5.0.2",
+    "react-syntax-highlighter": "15.2.1",
+    "remark": "13.0.0",
+    "remark-html": "13.0.1"
   },
   "devDependencies": {
     "app-root-dir": "^1.0.2",
+    "feed": "^4.2.1",
     "mkdirp": "^1.0.4",
+    "nanositemap": "^0.0.2",
     "postcss-preset-env": "^6.7.0",
-    "tailwindcss": "^1.4.0"
+    "shelljs": "^0.8.4",
+    "tailwindcss": "^1.9.6"
   },
   "license": "MIT"
 }
