@@ -1,6 +1,6 @@
 # Blog 3.0
 
-![Website Up](https://img.shields.io/website-up-down-green-red/https/mazipan.space.svg) ![Dependencies](https://img.shields.io/david/mazipan/blog-3.0.svg)
+[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com) ![Website Up](https://img.shields.io/website-up-down-brightgreen-red/https/mazipan.space.svg) ![Dependencies](https://img.shields.io/david/mazipan/blog-3.0.svg)
 
 🥳 A new fresh personal blog built with Next.js
 

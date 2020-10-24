@@ -1,7 +1,7 @@
-import Document, { Html, Head, Main, NextScript } from 'next/document';
+import Document, { Html, Head, Main, NextScript } from 'next/document'
 
 export default class MyDocument extends Document {
-  render() {
+  render () {
     return (
       <Html lang="id">
         <Head />
@@ -14,7 +14,7 @@ export default class MyDocument extends Document {
             gtag('js', new Date());
 
             gtag('config', 'UA-25065548-7');
-              `,
+              `
           }}
         />
         <link rel="webmention" href="https://webmention.io/mazipan.space/webmention" />
@@ -25,6 +25,6 @@ export default class MyDocument extends Document {
           <NextScript />
         </body>
       </Html>
-    );
+    )
   }
 }

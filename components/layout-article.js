@@ -1,9 +1,9 @@
-import Footer from '../components/footer';
-import Meta from '../components/meta';
-import Container from '@/components/container';
-import Header from '@/components/header';
+import Footer from '../components/footer'
+import Meta from '../components/meta'
+import Container from '@/components/container'
+import Header from '@/components/header'
 
-export default function Layout({ preview, children }) {
+export default function Layout ({ preview, children }) {
   return (
     <>
       <Meta />
@@ -19,5 +19,5 @@ export default function Layout({ preview, children }) {
       </div>
       <Footer />
     </>
-  );
+  )
 }

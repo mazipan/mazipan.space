@@ -1,12 +1,12 @@
-import Head from 'next/head';
-import { Fragment } from 'react';
+import Head from 'next/head'
+import { Fragment } from 'react'
 
-import PostPreview from '@/components/post-preview';
-import LayoutArticle from '@/components/layout-article';
+import PostPreview from '@/components/post-preview'
+import LayoutArticle from '@/components/layout-article'
 
-import { getPostsByTag, getAllTags } from '@/lib/api';
+import { getPostsByTag, getAllTags } from '@/lib/api'
 
-export default function Index({ allPosts, tag }) {
+export default function Index ({ allPosts, tag }) {
   return (
     <>
       <LayoutArticle>
@@ -37,30 +37,30 @@ export default function Index({ allPosts, tag }) {
         </Fragment>
       </LayoutArticle>
     </>
-  );
+  )
 }
 
-export async function getStaticProps({ params }) {
-  const allPosts = getPostsByTag(params.tag);
+export async function getStaticProps ({ params }) {
+  const allPosts = getPostsByTag(params.tag)
   return {
     props: {
       allPosts,
-      tag: params.tag,
-    },
-  };
+      tag: params.tag
+    }
+  }
 }
 
-export async function getStaticPaths() {
-  const tags = getAllTags();
+export async function getStaticPaths () {
+  const tags = getAllTags()
 
   return {
     paths: tags.map((tag) => {
       return {
         params: {
-          tag: tag,
-        },
-      };
+          tag: tag
+        }
+      }
     }),
-    fallback: false,
-  };
+    fallback: false
+  }
 }

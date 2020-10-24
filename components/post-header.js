@@ -1,9 +1,9 @@
-import Link from 'next/link';
+import Link from 'next/link'
 
-import DateFormatter from '../components/date-formatter';
-import PostTitle from '../components/post-title';
+import DateFormatter from '../components/date-formatter'
+import PostTitle from '../components/post-title'
 
-export default function PostHeader({ title, tags, coverImage, date, author }) {
+export default function PostHeader ({ title, tags, coverImage, date, author }) {
   return (
     <>
       <PostTitle>{title}</PostTitle>
@@ -21,5 +21,5 @@ export default function PostHeader({ title, tags, coverImage, date, author }) {
         </div>
       </div>
     </>
-  );
+  )
 }

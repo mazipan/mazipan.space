@@ -1,16 +1,16 @@
-import Head from 'next/head';
+import Head from 'next/head'
 
-import Container from '@/components/container';
-import MoreStories from '@/components/more-stories';
-import HeroPost from '@/components/hero-post';
-import Intro from '@/components/intro';
-import Layout from '@/components/layout';
+import Container from '@/components/container'
+import MoreStories from '@/components/more-stories'
+import HeroPost from '@/components/hero-post'
+import Intro from '@/components/intro'
+import Layout from '@/components/layout'
 
-import { getAllPosts } from '@/lib/api';
+import { getAllPosts } from '@/lib/api'
 
-export default function Index({ allPosts }) {
-  const heroPost = allPosts[0];
-  const morePosts = allPosts.slice(1);
+export default function Index ({ allPosts }) {
+  const heroPost = allPosts[0]
+  const morePosts = allPosts.slice(1)
   return (
     <>
       <Layout>
@@ -33,10 +33,10 @@ export default function Index({ allPosts }) {
         </Container>
       </Layout>
     </>
-  );
+  )
 }
 
-export async function getStaticProps() {
+export async function getStaticProps () {
   const allPosts = getAllPosts([
     'title',
     'date',
@@ -44,10 +44,10 @@ export async function getStaticProps() {
     'author',
     'coverImage',
     'excerpt',
-    'tags',
-  ], 'en');
+    'tags'
+  ], 'en')
 
   return {
-    props: { allPosts },
-  };
+    props: { allPosts }
+  }
 }

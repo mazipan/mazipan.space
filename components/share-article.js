@@ -1,26 +1,26 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react'
 
-export default function ShareArticle({ text, url }) {
-  const [isSupportWebShare, setSupportWebShare] = useState(false);
+export default function ShareArticle ({ text, url }) {
+  const [isSupportWebShare, setSupportWebShare] = useState(false)
 
   useEffect(() => {
     if (navigator.share) {
-      setSupportWebShare(true);
+      setSupportWebShare(true)
     }
-  }, []);
+  }, [])
 
   const shareMe = (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
     navigator
       .share({
         title: 'mazipan.space',
         text: text,
-        url: url,
+        url: url
       })
       .then(() => console.log('Successful share'))
-      .catch((error) => console.log('Error sharing', error));
-  };
+      .catch((error) => console.log('Error sharing', error))
+  }
 
   return (
     <div id="share-article" className="my-4 p-2 text-center border-red-600 border-dashed border-2">
@@ -28,7 +28,7 @@ export default function ShareArticle({ text, url }) {
       <div className="flex justify-center items-center">
         {isSupportWebShare ? (
           <a
-            href={``}
+            href={''}
             onClick={shareMe}
             title="Share Article"
             className="flex justify-center items-center text-blue-400 hover:text-blue-700"
@@ -53,7 +53,7 @@ export default function ShareArticle({ text, url }) {
         ) : (
           <a
             href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
-              text,
+              text
             )}by%20%40maz_ipan&url=${url}`}
             title="Share to Twitter"
             target="_blank"
@@ -79,5 +79,5 @@ export default function ShareArticle({ text, url }) {
         )}
       </div>
     </div>
-  );
+  )
 }

@@ -1,21 +1,23 @@
-import { useRouter } from 'next/router';
-import ErrorPage from 'next/error';
-import Head from 'next/head';
-import { Fragment } from 'react';
+import { useRouter } from 'next/router'
+import ErrorPage from 'next/error'
+import Head from 'next/head'
+import { Fragment } from 'react'
 
-import PostBody from '@/components/post-body';
-import PostHeader from '@/components/post-header';
-import ShareArticle from '@/components/share-article';
+import PostBody from '@/components/post-body'
+import PostHeader from '@/components/post-header'
 
-import LayoutArticle from '@/components/layout-article';
+import CommentBox from '@/components/comment-box'
+import ShareArticle from '@/components/share-article'
 
-import { getPostBySlug, getAllPosts } from '@/lib/api';
-import { SITE_METADATA } from '@/lib/constants';
+import LayoutArticle from '@/components/layout-article'
 
-export default function Post({ post, morePosts, preview }) {
-  const router = useRouter();
+import { getPostBySlug, getAllPosts } from '@/lib/api'
+import { SITE_METADATA } from '@/lib/constants'
+
+export default function Post ({ post, morePosts, preview }) {
+  const router = useRouter()
   if (!router.isFallback && !post?.slug) {
-    return <ErrorPage statusCode={404} />;
+    return <ErrorPage statusCode={404} />
   }
 
   return (
@@ -29,7 +31,7 @@ export default function Post({ post, morePosts, preview }) {
 
             <meta property="og:site_name" content={SITE_METADATA.title} />
             <meta property="og:image" content={`${SITE_METADATA.url}${post.coverImage}`} />
-            <meta property="article:author" content={`mazipanneh`} />
+            <meta property="article:author" content={'mazipanneh'} />
             <meta property="article:tag" content={`${post.tags[0]}`} />
             <meta property="og:type" content="article" />
             <meta property="og:title" content={post.title} />
@@ -41,7 +43,7 @@ export default function Post({ post, morePosts, preview }) {
             <meta name="twitter:title" content={post.title} />
             <meta name="twitter:description" content={post.excerpt} />
             <meta name="twitter:url" content={`${SITE_METADATA.url}/${post.slug}`} />
-            <meta name="twitter:creator" content={`@maz_ipan`} />
+            <meta name="twitter:creator" content={'@maz_ipan'} />
             <meta name="twitter:label1" content="Under tag" />
             <meta name="twitter:data1" content={`${post.tags[0]}`} />
           </Head>
@@ -58,37 +60,37 @@ export default function Post({ post, morePosts, preview }) {
         </Fragment>
       </LayoutArticle>
     </>
-  );
+  )
 }
 
-export async function getStaticProps({ params }) {
+export async function getStaticProps ({ params }) {
   const post = getPostBySlug(
     params.slug,
     ['title', 'date', 'slug', 'author', 'content', 'tags', 'coverImage'],
-    'en',
-  );
+    'en'
+  )
 
   return {
     props: {
       post: {
         ...post,
-        content: post.content,
-      },
-    },
-  };
+        content: post.content
+      }
+    }
+  }
 }
 
-export async function getStaticPaths() {
-  const posts = getAllPosts(['slug'], 'en');
+export async function getStaticPaths () {
+  const posts = getAllPosts(['slug'], 'en')
 
   return {
     paths: posts.map((post) => {
       return {
         params: {
-          slug: post.slug,
-        },
-      };
+          slug: post.slug
+        }
+      }
     }),
-    fallback: false,
-  };
+    fallback: false
+  }
 }

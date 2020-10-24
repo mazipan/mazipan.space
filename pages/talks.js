@@ -1,10 +1,10 @@
-import Head from 'next/head';
-import { Fragment } from 'react';
+import Head from 'next/head'
+import { Fragment } from 'react'
 
-import LayoutArticle from '@/components/layout-article';
-import allTalks from '@/lib/all-talks';
+import LayoutArticle from '@/components/layout-article'
+import allTalks from '@/lib/all-talks'
 
-export default function Index({ talks }) {
+export default function Index ({ talks }) {
   return (
     <>
       <LayoutArticle>
@@ -27,7 +27,10 @@ export default function Index({ talks }) {
                     <div className="py-4">
                       {talks[year].map((item) => {
                         return (
-                          <div key={item.date} className="rounded-lg p-4 mb-2 overflow-hidden shadow-lg hover:shadow-medium transition-shadow duration-200s">
+                          <div
+                            key={item.date}
+                            className="rounded-lg p-4 mb-2 overflow-hidden shadow-lg hover:shadow-medium transition-shadow duration-200s"
+                          >
                             <div className="text-gray-700 text-sm mb-2">
                               <span className="mr-2">🗓 </span>
                               {item.date}
@@ -39,12 +42,14 @@ export default function Index({ talks }) {
                               <>
                                 {item.link.map((link) => (
                                   <a
+                                    key={link}
                                     className="hover:underline mr-4"
                                     href={link}
                                     target="blank"
                                     rel="noopener noreferrer"
                                   >
-                                    <span className="mr-2">📖 </span><span>Event</span>
+                                    <span className="mr-2">📖 </span>
+                                    <span>Event</span>
                                   </a>
                                 ))}
                                 {item.slide && item.slide !== 'NOT_AVAILABLE' && (
@@ -60,23 +65,23 @@ export default function Index({ talks }) {
                               </>
                             )}
                           </div>
-                        );
+                        )
                       })}
                     </div>
                   </details>
-                );
+                )
               })}
           </div>
         </Fragment>
       </LayoutArticle>
     </>
-  );
+  )
 }
 
-export async function getStaticProps() {
+export async function getStaticProps () {
   return {
     props: {
-      talks: allTalks,
-    },
-  };
+      talks: allTalks
+    }
+  }
 }

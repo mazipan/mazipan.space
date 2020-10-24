@@ -1,9 +1,9 @@
-import Head from 'next/head';
-import { Fragment } from 'react';
+import Head from 'next/head'
+import { Fragment } from 'react'
 
-import LayoutArticle from '@/components/layout-article';
+import LayoutArticle from '@/components/layout-article'
 
-export default function Index({}) {
+export default function Index () {
   return (
     <>
       <LayoutArticle>
@@ -62,5 +62,5 @@ export default function Index({}) {
         </Fragment>
       </LayoutArticle>
     </>
-  );
+  )
 }
