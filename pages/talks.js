@@ -47,7 +47,7 @@ export default function Index({ talks }) {
                                     <span className="mr-2">📖 </span><span>Event</span>
                                   </a>
                                 ))}
-                                {item.slide && (
+                                {item.slide && item.slide !== 'NOT_AVAILABLE' && (
                                   <a
                                     className="hover:underline"
                                     href={item.slide}
