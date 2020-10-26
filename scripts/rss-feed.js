@@ -42,6 +42,6 @@ getAllPosts(
   })
 })
 
-fs.writeFileSync(path.join('./.next/static', 'feed.json'), feed.json1())
-fs.writeFileSync(path.join('./.next/static', 'rss.xml'), feed.rss2())
-fs.writeFileSync(path.join('./.next/static', 'feed.xml'), feed.atom1())
+fs.writeFileSync(path.join('./public', 'feed.json'), feed.json1())
+fs.writeFileSync(path.join('./public', 'rss.xml'), feed.rss2())
+fs.writeFileSync(path.join('./public', 'feed.xml'), feed.atom1())

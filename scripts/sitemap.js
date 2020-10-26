@@ -25,4 +25,4 @@ const sitemap = nanositemap(SITE_METADATA.url, {
   ...sitemapObj
 })
 
-fs.writeFileSync(path.join('./.next/static', 'sitemap.xml'), sitemap)
+fs.writeFileSync(path.join('./public', 'sitemap.xml'), sitemap)

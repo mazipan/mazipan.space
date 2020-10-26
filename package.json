@@ -10,7 +10,7 @@
     "gen:rss": "node ./scripts/rss-feed.js",
     "gen:sitemap": "node ./scripts/sitemap.js",
     "dev": "next",
-    "build": "yarn gen:talks && next build && yarn gen:rss && yarn gen:sitemap",
+    "build": "yarn gen:talks && yarn gen:rss && yarn gen:sitemap && next build ",
     "start": "next start",
     "lint": "eslint . --fix"
   },
