@@ -1,12 +1,14 @@
 module.exports = {
+  settings: {
+    react: {
+      version: 'detect'
+    }
+  },
   env: {
     browser: true,
     es2021: true
   },
-  extends: [
-    'plugin:react/recommended',
-    'standard'
-  ],
+  extends: ['plugin:react/recommended', 'standard'],
   parserOptions: {
     ecmaFeatures: {
       jsx: true
@@ -14,9 +16,7 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: 'module'
   },
-  plugins: [
-    'react'
-  ],
+  plugins: ['react'],
   rules: {
     'react/react-in-jsx-scope': 'off',
     'react/prop-types': 'off',

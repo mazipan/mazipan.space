@@ -36,13 +36,13 @@ export default function Post ({ post, morePosts, preview }) {
             <meta property="og:type" content="article" />
             <meta property="og:title" content={post.title} />
             <meta property="og:description" content={post.excerpt} />
-            <meta property="og:url" content={`${SITE_METADATA.url}/${post.slug}`} />
+            <meta property="og:url" content={`${SITE_METADATA.url}/en/${post.slug}`} />
 
             <meta name="twitter:image" content={`${SITE_METADATA.url}${post.coverImage}`} />
             <meta name="twitter:card" content="summary_large_image" />
             <meta name="twitter:title" content={post.title} />
             <meta name="twitter:description" content={post.excerpt} />
-            <meta name="twitter:url" content={`${SITE_METADATA.url}/${post.slug}`} />
+            <meta name="twitter:url" content={`${SITE_METADATA.url}/en/${post.slug}`} />
             <meta name="twitter:creator" content={'@maz_ipan'} />
             <meta name="twitter:label1" content="Under tag" />
             <meta name="twitter:data1" content={`${post.tags[0]}`} />
@@ -55,7 +55,7 @@ export default function Post ({ post, morePosts, preview }) {
             tags={post.tags}
           />
           <PostBody content={post.content} />
-          <ShareArticle />
+          <ShareArticle text={post.title} url={`${SITE_METADATA.url}/en/${post.slug}`} />
           <CommentBox />
         </Fragment>
       </LayoutArticle>

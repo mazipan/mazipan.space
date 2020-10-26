@@ -54,7 +54,7 @@ export default function Post ({ post, morePosts, preview }) {
             tags={post.tags}
           />
           <PostBody content={post.content} />
-          <ShareArticle />
+          <ShareArticle text={post.title} url={`${SITE_METADATA.url}/${post.slug}`} />
           <CommentBox />
         </Fragment>
       </LayoutArticle>
