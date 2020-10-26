@@ -6,8 +6,11 @@
   "author": "Irfan Maulana <github.com/mazipan>",
   "license": "MIT",
   "scripts": {
+    "gen:talks": "node ./scripts/copy-talks.js",
+    "gen:rss": "node ./scripts/rss-feed.js",
+    "gen:sitemap": "node ./scripts/sitemap.js",
     "dev": "next",
-    "build": "next build",
+    "build": "yarn gen:talk && next build && yarn gen:rss && yarn gen:sitemap",
     "start": "next start",
     "lint": "eslint . --fix"
   },
