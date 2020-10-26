@@ -14,19 +14,19 @@ Dunia per-JS-an memang semakin kesini semakin liar saja, bisa sebulan sekali kit
 
 Sebelum memulai, saya perlu berikan sedikit konteks mengenai latar belakang saya. Saya sudah hampir 5 tahunan belakangan ini memang bergelut dengan JavaScript, sehingga beberapa fitur dasar JavaScript yang umum sudah cukup sering saya gunakan dalam koding sehari-hari. Saya lebih banyak berurusan dengan sisi depan (_frontend_) karena pekerjaan saya memang spesifik di bagian ini selama 5 tahun terakhir.
 
-Jadi mari kita mulai saja...
+Jadi, mari kita mulai saja...
 
 ## Bagaimana saya memilih teknologi untuk dipelajari?
 
-Teknologi terlalu banyak, pustaka di npm terlalu bertebaran, framework bahkan seringkali mirip-mirip. Sebagai developer full time yang masih kerja ke perusahaan orang lain, tentu kita tidak memiliki waktu yang cukup banyak untuk mempelajari semuanya. Berikut ini beberapa poin yang jadi pertimbangan saya dalam memilih teknologi untuk dipelajari:
+Teknologi terlalu banyak, pustaka di npm registry juga terlalu bertebaran, framework bahkan seringkali mirip-mirip satu sama lain. Sebagai developer full time yang masih kerja di perusahaan punya orang lain, tentu saya tidak memiliki waktu yang cukup banyak untuk mempelajari semuanya. Berikut ini beberapa poin yang jadi pertimbangan saya dalam memilih teknologi untuk dipelajari:
 
 ### 1. Pilih yang kemungkinan bersinggungan dengan pekerjaan utama
 
-Contoh kasus saja, misalnya saya saat ini menggunakan GraphQL di pekerjaan sehari-hari dan GraphQL Client yang digunakan di kantor adalah Apollo GraphQL. Maka saya memutuskan belajar mengenai Relay, karena ini bisa jadi solusi bagi masalah-masalah fundamental yang ditemukan di pekerjaan sehari-hari.
+Contoh kasus saja, misalnya saya saat ini menggunakan GraphQL di pekerjaan sehari-hari dan GraphQL Client yang digunakan di kantor adalah Apollo GraphQL. Maka saya memutuskan belajar mengenai Relay, karena ini bisa jadi solusi bagi masalah-masalah fundamental yang ditemukan di pekerjaan sehari-hari dengan Apollo.
 
 Ini contoh kasus saja, faktanya saya bahkan sampai saat ini belum pernah mencoba Relay 😂
 
-Kita bisa ambil contoh kasus nyata saja lah yang kemungkinan juga dialami sama teman-teman. Misalnya di kantor kalian belum menerapkan unit test, sedangkan kalian dan teman-teman kantor sudah menyadari mengenai pentingnya penerapan unit test ke kode kalian, maka kalian bisa belajar teknologi mengenai Unit Test di JavaScript. Pilihannya kan ada banyak, bisa dicek dulu satu persatu yang kemungkinan cocok, bikin projek kecil dan implementasikan teknologi Unit Test ke dalamnya.
+Kita bisa ambil contoh kasus nyata saja lah yang kemungkinan juga dialami sama teman-teman. Misalnya di kantor kalian belum menerapkan unit test, sedangkan kalian dan teman-teman kantor sudah menyadari mengenai pentingnya penerapan unit test ke kode kalian, maka kalian bisa belajar teknologi mengenai Unit Test di JavaScript. Pilihannya kan ada banyak, bisa dicek dulu satu persatu yang kemungkinan cocok, bikin projek kecil dan implementasikan teknologi unit test ke dalamnya.
 
 Hal yang perlu digarisbawahi dari bagian ini adalah bahwa ada tujuan dari proses belajarnya, biasanya untuk memecahkan masalah yang sedang/akan ditemukan dipekerjakan sehari-hari. Enaknya dari belajar teknologi dengan alasan di bagian ini adalah karena seringnya bisa dilakukan di jam kerja. Tentu karena proses belajarnya memang diharapkan mendukung pekerjaan sehari-hari kita nantinya.
 
@@ -60,9 +60,9 @@ Paling penting pilih yang memang bisa diadopsi ke sebuah projek kita. Percuma ba
 
 Kalau kalian baca bagian awal, saya sudah memberikan konteks bahwa saya sudah lebih dari 5 tahun dan 5 hari dalam seminggu menulis coding yang berkaitan dengan JavaScript, ini mengapa mungkin terlihatnya mudah untuk belajar hal baru yang masih sama di lingkungan JavaScript juga. Yap, jangan lewatkan belajar hal dasarnya, meskipun sembari belajar teknologi di atasnya, namun kalau ketemu kesulitan yang berasal dari akar bahasa tersebut maka mungkin kita perlu mundur ke belakang dulu belajarnya untuk kembali mempelajari dasar JavaScriptnya. Barulah setelahnya kita bisa kembali meneruskan belajar teknologi di atasnya. Bisa juga caranya yang dibalik, belajar teknologi yang memang juga secara tidak langsung memaksa kita untuk memperkuat pengetahuan dasar JavaScriptnya. Saya kembalikan ke personal masing-masing.
 
-### 2. Baca dokumentasi bagian intro dan get started
+### 2. Baca dokumentasi bagian intro dan _get started_
 
-Saya tipe yang tidak mau terlalu tenggelam jauh di awal belajar teknologi, biasanya saya akan pusing duluan bahkan sebelum memulainya. Makanya cara yang saya tempuh biasanya saya membaca bagian pengenalan dan bagian arsitektur dasar atau bagian konsepnya. Kemudian langsung ke bagian get started dan ikuti bagian itu sampai bisa jalan. Beberapa teknnologiu sudah memberikan boilerplate yang bisa dengan cepat digunakan untuk memulai belajar dan menggunakan teknologi mereka, saya pasti akan memilih menggunakannyadi awal. Meskipun nantinya bisa saja saya tidak cocok dengan boilerplate tersebut, tapi tidak akan saya lakukan di awal.
+Saya tipe yang tidak mau terlalu tenggelam jauh di tahap awal belajar teknologi baru, biasanya yang terjadi justru saya akan pusing duluan bahkan sebelum memulainya. Makanya cara yang saya tempuh biasanya saya membaca bagian pengenalan dan bagian arsitektur dasar atau bagian konsepnya. Kemudian langsung ke bagian _get started_ dan ikuti bagian itu sampai bisa jalan. Beberapa teknnologi sudah memberikan _boilerplate_ yang bisa dengan cepat digunakan untuk memulai belajar dan menggunakan teknologi mereka, saya pasti akan memilih menggunakannyadi awal. Meskipun nantinya bisa saja saya tidak cocok dengan _boilerplate_ tersebut, tapi tidak akan saya lakukan di awal.
 
 ### 3. Ikuti saja dulu dokumentasinya
 
