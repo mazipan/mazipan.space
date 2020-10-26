@@ -5,7 +5,7 @@ excerpt: Mengupas sedikit banyak hal mengenai Intersection Observer dengan berba
 author: mazipan
 published: true
 tags: [web]
-coverImage: /thumbnail/intro-to-intersection-observer/intersection-observer.jpeg
+coverImage: /thumbnail/intro-to-intersection-observer/intersection-observer.jpg
 lang: id
 enready: false
 ---
