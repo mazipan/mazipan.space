@@ -1,11 +1,41 @@
 {
+  "redirects": [
+    {
+      "source": "/s/tech-talk",
+      "destination": "/ingin-menjadi-pembicara-di-tech-talk-mulai-dari-mana"
+    },
+    {
+      "source": "/s/belajar-js",
+      "destination": "/cara-saya-belajar-teknologi-baru-di-js"
+    },
+    {
+      "source": "/s/cerita-saya",
+      "destination": "/cerita-anak-kampung-menjadi-programmer"
+    },
+    {
+      "source": "/s/gh",
+      "destination": "https://github.com/mazipan"
+    },
+    {
+      "source": "/s/tw",
+      "destination": "https://twitter.com/maz_ipan"
+    },
+    {
+      "source": "/s/fb",
+      "destination": "https://www.facebook.com/mazipanneh"
+    },
+    {
+      "source": "/s/in",
+      "destination": "https://www.linkedin.com/in/mazipan/"
+    }
+  ],
   "headers": [
     {
       "source": "/(thumbnail|meta|favicon|avatars)/(.*)",
       "headers": [
         {
           "key": "Cache-Control",
-          "value" : "public, max-age=86400"
+          "value": "public, max-age=86400"
         }
       ]
     },
@@ -14,7 +44,7 @@
       "headers": [
         {
           "key": "Cache-Control",
-          "value" : "public, max-age=3600"
+          "value": "public, max-age=3600"
         }
       ]
     }
