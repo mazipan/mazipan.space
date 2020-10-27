@@ -5,7 +5,7 @@ import PostPreview from '@/components/post-preview'
 import LayoutArticle from '@/components/layout-article'
 
 import { getPostsByTag, getAllTags } from '@/lib/api'
-import { SITE_METADATA, OG_IMAGE_HOME } from '../lib/constants'
+import { SITE_METADATA, OG_IMAGE_HOME } from '@/lib/constants'
 
 export default function Index ({ allPosts, tag }) {
   return (
