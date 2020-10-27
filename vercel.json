@@ -1,16 +1,20 @@
 {
   "redirects": [
     {
-      "source": "/s/tech-talk",
-      "destination": "/ingin-menjadi-pembicara-di-tech-talk-mulai-dari-mana"
-    },
-    {
       "source": "/s/belajar-js",
       "destination": "/cara-saya-belajar-teknologi-baru-di-js"
     },
     {
+      "source": "/s/berkomunitas",
+      "destination": "/saya-dan-komunitas-programming"
+    },
+    {
       "source": "/s/cerita-saya",
       "destination": "/cerita-anak-kampung-menjadi-programmer"
+    },
+    {
+      "source": "/s/tech-talk",
+      "destination": "/ingin-menjadi-pembicara-di-tech-talk-mulai-dari-mana"
     },
     {
       "source": "/s/gh",
