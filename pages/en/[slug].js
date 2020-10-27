@@ -31,6 +31,8 @@ export default function Post ({ post, morePosts, preview }) {
 
             <meta property="og:site_name" content={SITE_METADATA.title} />
             <meta property="og:image" content={`${SITE_METADATA.url}${post.coverImage}`} />
+            <meta property="og:image:width" content="1200" />
+            <meta property="og:image:height" content="630" />
             <meta property="article:author" content={'mazipanneh'} />
             <meta property="article:tag" content={`${post.tags[0]}`} />
             <meta property="og:type" content="article" />
@@ -39,6 +41,8 @@ export default function Post ({ post, morePosts, preview }) {
             <meta property="og:url" content={`${SITE_METADATA.url}/en/${post.slug}`} />
 
             <meta name="twitter:image" content={`${SITE_METADATA.url}${post.coverImage}`} />
+            <meta name="twitter:image:width" content="1200" />
+            <meta name="twitter:image:height" content="630" />
             <meta name="twitter:card" content="summary_large_image" />
             <meta name="twitter:title" content={post.title} />
             <meta name="twitter:description" content={post.excerpt} />
@@ -66,7 +70,8 @@ export default function Post ({ post, morePosts, preview }) {
 export async function getStaticProps ({ params }) {
   const post = getPostBySlug(
     params.slug,
-    ['title', 'date', 'slug', 'author', 'content', 'tags', 'coverImage'],
+    ['title', 'date', 'slug',
+      'excerpt', 'author', 'content', 'tags', 'coverImage'],
     'en'
   )
 

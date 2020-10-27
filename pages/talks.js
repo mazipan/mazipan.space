@@ -3,6 +3,7 @@ import { Fragment } from 'react'
 
 import LayoutArticle from '@/components/layout-article'
 import allTalks from '@/lib/all-talks'
+import { SITE_METADATA, OG_IMAGE_TALKS } from '@/lib/constants'
 
 export default function Index ({ talks }) {
   return (
@@ -11,6 +12,21 @@ export default function Index ({ talks }) {
         <Fragment>
           <Head>
             <title>Talks | mazipan.space</title>
+            <meta
+              name="description"
+              content="All talks presented by mazipan"
+            />
+
+            <meta property="og:url" content={`${SITE_METADATA.url}/talks`} />
+            <meta name="twitter:title" content="Talks | mazipan.space" />
+            <meta name="twitter:description" content="All talks presented by mazipan" />
+            <meta name="twitter:image" content={`${OG_IMAGE_TALKS}`} />
+
+            <meta name="twitter:url" content={`${SITE_METADATA.url}/talks`} />
+            <meta property="og:title" content="Talks | mazipan.space" />
+            <meta property="og:description" content="All talks presented by mazipan" />
+            <meta property="og:image" content={OG_IMAGE_TALKS} />
+
           </Head>
           <h2 className="mb-8 text-6xl md:text-7xl font-bold tracking-tighter leading-tight">
             Talks
