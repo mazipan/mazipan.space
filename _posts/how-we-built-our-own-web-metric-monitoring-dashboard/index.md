@@ -1,7 +1,7 @@
 ---
-title: How we built our own web metric monitoring dashboard
+title: Bagaimana kami membangun web metric monitoring dashboard
 date: '2019-11-13'
-excerpt: Story from Tokopedia web platform team in building an in-house web metric monitoring dashboard for not just make a  fast web but keep that page in fast mode
+excerpt: Cerita kami di Tokopedia dalam membangun web metric monitoring dashboard dalam rangka membudayakan kepedulian mengenai performa web
 author: mazipan
 published: true
 tags: [lesson-learned]
@@ -11,58 +11,59 @@ lang: id
 enready: true
 ---
 
-Story from Tokopedia web platform team in building an in-house web metric monitoring dashboard for not just make a fast web but keep that page in fast mode.
+## Sangkalan
 
-## Disclaimer
+Semua hal yang saya tulis adalah pendapat saya pribadi berdasarkan pengalaman dan tidak mewakili pendapat Tokopedia.
+Hal yang ditulis valid pada saat artikel diterbitkan dan sangat mungkin menjadi tidak relevan lagi pada waktu kalian membacanya.
 
-Before we starting, you need to take note that all in this article is my own words. It may be wrong, subjective and doesn't work well with your current situation. Do not take any decisions based on only this article.
+## Mengenai Web Metric Monitoring
 
-## About Web Metric Monitoring
+_Monitoring_ atau pemantauan adalah tugas yang seharusnya perlu kalian pikirkan sebelum memutuskan mengadopsi teknologi apapun.
+Khususnya ketika kita merencanakan untuk menggunakannya pada lingkungan produksi.
+Hal ini dikarenakan proses pemantauan dengan alat apapun diharapkan bisa memberikan penglihatan terhadap kondisi terkini dari produk maupun teknologi yang kita gunakan di produksi.
+Menggunakan alat pantau yang tepat, kita bisa mendapatkan wawasan terhadap kondisi terkini dan mampu membuat rencana untuk berbagai perbaikan maupun peningkatan terhadap produk kita berdasarkan data yang didapat dari alat pantau tersebut.
 
-Monitoring is one of the tasks you need to think about when you decided on any technologies.
-Especially when we plan to use it in a production environment.
-This is because monitoring with any tools can give us better visibility about our current product or technology in production.
-With good monitoring tools, we can an insight into our current condition and creating another plan for fixing or improving the product based on the data we get from the monitoring tools.
+Dalam kaitannya dengan teknologi web, ada beberapa metrik yang bisa kita pantau hari demi hari sepanjang beroperasi.
+Lebih khusus lagi terkait dengan pengembangan antarmuka web, ada beberapa metrik utama yang seharusnya kita pantau karena telah dibuktikan bahwa metrik tersebut mampu memberikan dampak dan impresi dari pengguna akhir.
 
-In terms of web technology, there are many metrics we can monitor for a day to day operations.
-Specific in frontend web technology there are some key metrics we need to monitor because it might be impacted on your product impressions in the end-user.
+Untuk para pemegang jabatan yang lebih tinggi di suatu perusahaan, mereka membutuhkan untuk melihat gambaran besar dari metrik-metrik tersebut akan atau telah mempengaruhi bisnis yang berjalan.
+Salah satu diantaranya yang perlu kalian tunjukkan adalah kecepatan waktu muat dari website yang kalian bangun.
+Sebagai pengembang web, kita diharuskan punya kepedulian lebih terhadap metrik lainnya yang secara langsung maupun tidak langsung akan meningkatkan atau menurunkan waktu muat dari web kita.
+Itu mengapa kita perlu mengumpulkan lebih banyak data lain, selain dari waktu muat secara umum tadi.
 
-For the higher position stakeholders, they need to take a look at a big picture of the web metrics.
-Showing how long it takes your web to be loaded is the one you should do for them.
-But as web developers, we need to care about other metrics that direct or indirect will cause increasing or decreasing the web load time.
-That's why we need to take much more data than just the load time itself.
-
-## Mainstream Monitoring Tools
+## Alat pantau umum
 
 In the industry, there is some alternative we can use to do monitoring our web metrics.
 You can use [pagespeed insight](https://developers.google.com/speed/pagespeed/insights/), [web.dev/measure](https://web.dev/measure/), [webpagetest.org](https://www.webpagetest.org/), and many others website we can use for monitor our web metrics.
 
 ### Pagespeed Insight
 
-![Pagespeed Insight report](/thumbnail/how-we-built-our-own-web-metric-monitoring-dashboard/pagespeed-result.png)
+![Laporan Pagespeed Insight](/thumbnail/how-we-built-our-own-web-metric-monitoring-dashboard/pagespeed-result.png)
 
-When we say, you must monitor your web metrics day by day so you can see the changes in every code deployed to the production, how it will impact these metrics, which deployment that causes decreasing your web metrics or is your initiative can increase your web metrics such as a performance score.
-In this scenario, we can use Pagespeed Insight because it can not record your day to day changes. Except you want to do a manual screenshot of the report every time.
-But it's not because of Pagespeed Insight is bad, sure you can take a look at a report aggregated from Chrome UX Report in the Pagespeed Insight.
-Those kinds of report might never be provided by any other tools.
-You can see how long the average for real users using the Chrome browser accessing your web.
+Ketika saya bilang, kalian harus memantau metrik web tersebut hari demi hari, sehingga kalian bisa mengetahui dampak dari kode yang kalian kirim ke produksi terhadap berbagai metrik yang terlah disiapkan, deployment mana yang menyebabkan penurunan pada metrik, atau apakah inisiatif yang kalian kerjakan memang bisa meningkatkan skor performa kalian.
+Dalam skenario ini, kita tidak bisa menggunakan Pagespeed Insight sebab tidak bisa merekam hasil pengetesan hari demi hari.
+Kecuali kalian melakukan manual screenshot atau scrapping terhadap laporan yang dihasilkan.
+Itu semua bukan karena Pagespeed Insight jelek, hanya saja tidak sesuai dengan apa yang kita butuhkan.
+Tentu saja kalian bisa mendapatkan Data Lapangan ketika menggunakan Pagespeed Insight, ini adalah salah satu kelebihan dari menggunakan Pagespeed Insight.
+Data seperti itu mungkin tidak akan pernah bisa kalian dapatkan dari alat pantau lainnya.
+Data ini didapatkan dari pengalaman pengguna nyata yang dikumpulkan oleh peramban Chrome.
+Kalian bisa tau seberapa lama website kalian dimuat oleh pengguna peramban Chrome dalam persetil 75.
+Apakah masuk ke kategori cepat, sedang atau tergolong lambat.
 
-Is it included in a fast category, medium or slow?
-
-Watch the video about [Using the Chrome UX report to evaluate real-user data](https://www.youtube.com/watch?v=UvK9zAsSM8Q) from Google I/O 2018
+Tonton video mengenai [Menggunakan laporan Chrome UX untuk mengevaluasi pengguna nyata](https://www.youtube.com/watch?v=UvK9zAsSM8Q) dari Google I/O 2018
 
 ### Web.dev
 
 ![Web.dev report](/thumbnail/how-we-built-our-own-web-metric-monitoring-dashboard/webdev-result.png)
 
-Move to **[web.dev/measure](https://web.dev/measure/)**, it is just running the lighthouse engine under the hood.
-Yes, the lighthouse is one of the most popular engines used to test your web page and get a rich report from summary one until the details one.
-It also gives you a clear recommendation on how to tackle issues detected by the lighthouse to be action items for your next improvement.
+Berpindah ke **[web.dev/measure](https://web.dev/measure/)**, pada dasarnya menjalankan Lighthouse dibelakangnya.
+Ya, Lighthouse adalah satau alat paling populer yabg dikembangkan oleh tim Chrome untuk melakukan pengujian terhadap web dan mendapatkan laporan yang cukup komprehensif dari umu sampai ke bagian detail.
+Itu juga mampu memberikan rekomendasi yang jelas mengenai bagaimana menyelesaikan isu yang ditemukan oleh Lighthouse pada saat pengujian sehingga bisa menjadi poin untuk peningkatan berikutnya.
 
-**Web.dev/measure** also can record your last test and compare it to your current test report.
-It give you a better visibility about the trends and the changes.
-You can unlock this feature with log in to your Google account and web.dev will save the data based on the login account.
-I still didn't know how to automate these jobs.
+**Web.dev/measure** (pada saat artikel ini dibuat), bisa merekam dan menyimpan hasil dari test terakhir pada suatu alamat web.
+Dengan begitu kita bisa melihat tren dan perbandingan dengan laporan sebelumnya.
+Kita bisa menyimpan laporan dengan cara masuk ke akun Google di halaman web.dev sehingga data bisa disimpan berdasarkan akun kita masing-masing.
+Sayangnya cara ini memang cukup manual, dan saya masih tidak terpikir cara otomasi yang mudah.
 
 Yes, I am lazy and didn't want to open the web.dev every day and testing my web page to record my web page test.
 Also how if we need to analyze custom data since the web.dev only shows the generic report and didn't compare the data as we want to.
@@ -90,7 +91,7 @@ Our big problem is we can not add more pages to be analyzed by webpagetest becau
 That's why we start to look at another solution that scales better.
 Another solution with nearly the same with webpagetest and still gives us the flexibility of creating our reporters based on the data we collect.
 
-## Lighthouse FTW
+## Lighthouse
 
 Lighthouse gain it's popularity because Progressive Web Apps (PWA) also becomes the hottest topic in modern web development.
 Developers need tools to test it's PWA implementation, see the result score and get the best practices checklists that can be applied in their web.
@@ -252,9 +253,11 @@ Unfortunately, we only get the data about `resourceSize` (original size) and `tr
 
 ![Sample of image scatter plot](/thumbnail/how-we-built-our-own-web-metric-monitoring-dashboard/screen-image.png)
 
-## Alternatives
+## Alternatif
 
-You might don't need to develop your monitoring dashboard like us.
-Here are some best free alternatives tools we found for you:
+Kalian mungkin tidak perlu membangun alat pantau kalian sendiri seperti yang kami kerjakan, berikut saya sertakan beberapa alternatif yang bisa kalian gunakan:
 
-- [Sitespeed.io](https://www.sitespeed.io/)
+- [Sitespeed.io](https://www.sitespeed.io/) - Gratis dan bisa dipasang di server sendiri
+- Threo.sh - Gratis dan ada versi berbayar
+- Lighthouse CI - Gratis
+- WebPageTest.org - Gratis
