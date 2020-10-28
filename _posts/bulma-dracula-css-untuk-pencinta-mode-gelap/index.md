@@ -56,7 +56,7 @@ Kunci utama pada konfigurasi webpack saya tentu ada pada `MiniCssExtractPlugin` 
 
 Kode sederhana dari penggunakan `MiniCssExtractPlugin` adalah sebagai berikut:
 
-```js
+```javascript
 // berkas: webpack.config.js
 var webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -100,7 +100,7 @@ Seperti terlihat saya menggunakan nama berkas statis `bulma-dracula.css` yang ma
 
 Selain dari berkas CSS, saya juga mengunggah berkas sumbernya yakni dalam format `.scss` agar bisa ditimpa kembali bila dibutuhkan. Untuk hal ini, saya cukup memainkan properti di `package.json` dengan menyebutkan berkas mana saja yang akan saya unggah, seperti terlihat pada contoh kode berikut:
 
-```js
+```json
 {
   "main": "src/bulma-dracula.scss",
   "unpkg": "dist/bulma-dracula.css",

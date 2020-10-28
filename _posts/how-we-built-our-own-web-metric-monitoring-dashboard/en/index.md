@@ -113,7 +113,7 @@ npx lighthouse https://m.tokopedia.com/ --output json --chrome-flags="--headless
 
 Or if you prefer using Node.js script, you can call lighthouse with code:
 
-```js
+```javascript
 const lighthouse = require('lighthouse');
 const chromeLauncher = require('chrome-launcher');
 

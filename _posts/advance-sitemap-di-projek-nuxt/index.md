@@ -29,7 +29,7 @@ $ npm i @nuxtjs/sitemap --dev
 
 Setelahnya kita perlu menambahkan module ke dalam konfigurasi utama Nuxt, `nuxt.config.ts` seperti berikut ini:
 
-```js
+```javascript
 {
   // pastikan sitemap menjadi module paling akhir yang kalian sematkan
   modules: ['@nuxtjs/pwa', '@nuxtjs/sitemap'];
@@ -38,7 +38,7 @@ Setelahnya kita perlu menambahkan module ke dalam konfigurasi utama Nuxt, `nuxt.
 
 Menambahkan konfigurasi sitemap, berikut adalah konfiguasi lama yang saya gunakan di `nuxt.config.ts`:
 
-```js
+```javascript
 {
   sitemap: {
     hostname: PROD_PATH,
@@ -51,7 +51,7 @@ Menambahkan konfigurasi sitemap, berikut adalah konfiguasi lama yang saya gunaka
 
 Fungsi `getSitemapRoutes` sendiri kurang lebih berisi kode seperti berikut:
 
-```js
+```javascript
 const getAllRoutes = () => {
   const r = ['/about', '/all-surah'];
   for (let i = 1; i < 115; i++) {
@@ -103,7 +103,7 @@ Berbekal dokumentasi terbaru dari `@nuxtjs/sitemap`, saya memutuskan untuk memec
 
 Untuk mengakomodir pemecahan sitemaps seperti diatas saya perlu menambahkan konfigurasi berikut di `nuxt.config.ts`:
 
-```js
+```javascript
 {
   sitemap: {
     hostname: PROD_PATH,
@@ -117,7 +117,7 @@ Untuk mengakomodir pemecahan sitemaps seperti diatas saya perlu menambahkan konf
 
 Saya memisahkan script yang saya gunakan untuk mengerjakan pemecahan sitemaps ke dalam fungsi `getSitemaps()`, script tersebut berisi kurang lebih:
 
-```js
+```javascript
 import SurahConstant from './surah';
 
 const getAllSurahRoutes = () => {

@@ -41,7 +41,7 @@ Begitu pula untuk mengaktifkan fitur code splitting di Parcel, tidak ada konfigu
 
 Cukup menambahkan _dynamic import_ pada kode kalian, dan Parcel akan memecahnya secara out of the box, contoh kode bisa dilihat pada baris berikut ini:
 
-```js
+```javascript
 const pages = {
   about: import('./pages/about'), // dynamic import
   blog: import('./pages/blog'), // dynamic import
@@ -65,7 +65,7 @@ Rollup sudah menyediakan juga [contoh kode penerapan code splitting](https://git
 
 Biasanya untuk memproduksi file chunk kita perlu menambahkan konfigurasi `output.chunkFilename` agar bisa mendefinisikan akan seperti nama file yang akan dibuat nantinya.
 
-```js
+```javascript
 output: {
   filename: '[name].[contenthash].js',
   chunkFilename: '[name].chunk.[contenthash].js',
@@ -75,7 +75,7 @@ output: {
 
 Untuk menambahkan optimisasi lebih, kita bisa menambahkan konfigurasi di bawah `optimization.splitChunks` sesuai dengan strategi yang kita inginkan, misalnya saja seperti kode berikut:
 
-```js
+```javascript
 optimization: {
   splitChunks: {
     chunks: 'all',
@@ -87,7 +87,7 @@ Untuk kasus yang lebih mutakhir lagi, kalin bisa melihat ke dalam berbagai conto
 
 Webpack pada dasarnya pun memanfaatkan fitur _dynamic import_, hanya saja ada _magic comment_ yang hanya tersedia di webpack untuk kita bisa menentukan beberapa hal terkait chunk yang dihasilkan, seperti nama chunk, cara memuat chunk dan beberapa hal lain. Contoh penggunaanya bisa dilihat pada kode berikut:
 
-```js
+```javascript
 return import(/* webpackChunkName: "lodash" */ 'lodash')
   .then(({ default: _ }) => {
     const element = document.createElement('div');
@@ -124,7 +124,7 @@ Tree-shaking dalam kaitannya dengan konteks JavaScript adalah sebuah teknik untu
 
 Pada prakteknya tree-shaking lebih banyak dikaitkan dengan kode yang berasal dari pustaka di luar kode internal kita. Ini karena sudah lumrah bahwa sebuah pustaka memiliki banyak fitur yang belum tentu kita menggunakan kesemuanya di dalam projek kita. Sebagai contoh kita ambil pustaka populer yakni `lodash`. Lodash merupakan pustaka yang berisi kumpulan banyak kode utilitas yang sangat berguna dalam pengembangan aplikasi. Karena `lodash` memiliki teramat banyak utilitas di dalamnya seringkali kita bahkan tidak dapat mengingat hal apa saja yang bisa dilakukan oleh `lodash` atau bahkan kita tidak menggunakan banyak bagian dari `lodash`. Pilihan bagi kita yang membutuhkan sebagian fitur saja dari lodash adalah dengan menggunakan `import` langsung ke berkas yang bersangkutan, misalnya:
 
-```js
+```javascript
 // daripada menggunakan dengan
 import _ from 'lodash';
 
@@ -138,7 +138,7 @@ get(object, 'key');
 
 Atau bisa tambahkan plugin [babel-plugin-lodash](https://www.npmjs.com/package/babel-plugin-lodash) dan [lodash-webpack-plugin](https://www.npmjs.com/package/lodash-webpack-plugin) untuk mengotomasi proses ini. Akan lebih baik lagi kalau sekalian berpindah ke `lodash-es` yang bisa digunakan dengan cara:
 
-```js
+```javascript
 import { get } from 'lodash-es';
 
 get(object, 'key');

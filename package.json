@@ -21,12 +21,10 @@
     "date-fns": "2.16.1",
     "gray-matter": "4.0.2",
     "next": "^10.0.0",
+    "prism-react-renderer": "^1.1.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "react-markdown": "^5.0.2",
-    "react-syntax-highlighter": "15.2.1",
-    "remark": "^13.0.0",
-    "remark-external-links": "^8.0.0"
+    "react-markdown": "^5.0.2"
   },
   "devDependencies": {
     "app-root-dir": "^1.0.2",
@@ -42,6 +40,7 @@
     "nanositemap": "^0.0.2",
     "postcss-preset-env": "^6.7.0",
     "shelljs": "^0.8.4",
-    "tailwindcss": "^1.9.6"
+    "tailwindcss": "^1.9.6",
+    "tailwindcss-dark-mode": "^1.1.7"
   }
 }

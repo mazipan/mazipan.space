@@ -26,7 +26,13 @@
 }
 
 .markdown img {
-  @apply rounded-lg mx-auto max-w-lg;
+  @apply rounded-lg mx-auto;
+}
+
+@media (min-width: 768px) {
+  .markdown img {
+    @apply max-w-lg;
+  }
 }
 
 .markdown figcaption {
@@ -40,4 +46,8 @@
 .markdown code:not([class*="language-"]) {
   @apply bg-indigo-100 text-indigo-700 text-sm px-2 py-1 rounded;
   font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+}
+
+.markdown pre[class*="language-"] {
+  @apply p-4 rounded-lg text-sm overflow-auto;
 }

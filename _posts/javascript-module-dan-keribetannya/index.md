@@ -127,7 +127,7 @@ Meskipun untuk masalah No. 1 mungkin belum ada solusinya, namun untuk masalah No
 
 Dari kode `file-1.js` di atas, kita bisa mengubahnya dengan implementasi IIFE menjadi:
 
-```js
+```javascript
 var person = (function () {
   var firstName = 'Irfan';
   var lastName = 'Maulana';
@@ -141,7 +141,7 @@ var person = (function () {
 
 Sehingga kita juga perlu mengubah cara pemanggilan pada `file-2.js` menjadi:
 
-```js
+```javascript
 console.log(person.getFirstName());
 ```
 
@@ -149,7 +149,7 @@ Dengan cara ini kita memastikan bahwa fungsi lain tidak bisa mengubah secara lan
 Seperti dibahas sebelumnya, karena memang secara bahasa belum ada dukungan untuk _module system_, maka penggunaan IIFE ini pun menjadi sangat populer terutama untuk kalangan yang memang peduli dengan isolasi kode.
 Pada jaman kejayaan `jQuery`, sudah sangat umum kita melihat kode-kode semacam ini:
 
-```js
+```javascript
 // IIFE di jQuery
 (function ($) {
   var myPrivateFunction = function () {};
@@ -173,7 +173,7 @@ Kita tinggal menambahkan pustaka RequireJS dan mendefinisikan _module system_ AM
 
 Berikut contoh kode dari website `RequireJS`:
 
-```js
+```javascript
 //Calling define with module ID, dependency array, and factory function
 define('myModule', ['dep1', 'dep2'], function (dep1, dep2) {
   //Define the module value by returning a value.
@@ -207,7 +207,7 @@ Hal semacam ini bisa jadi membingungkan bagi kalian yang baru belajar JavaScript
 
 Kode CommonJS bisa terlihat pada contoh berikut:
 
-```js
+```javascript
 const fs = require('fs');
 
 fs.writeFile('pesan.txt', 'Sebuah pesan untuk seseorang', 'utf8', (err) => {
@@ -219,7 +219,7 @@ fs.writeFile('pesan.txt', 'Sebuah pesan untuk seseorang', 'utf8', (err) => {
 Setidaknya terdapat 2 cara untuk mendefinisikan sebuah modul CommonJS yakni dengan `exports` dan `module.exports`.
 Keduanya sedikit agak berbeda, berikut dilihat dan dipelajari lewat contoh kode berikut:
 
-```js
+```javascript
 // file circle.js
 const { PI } = Math;
 
@@ -229,7 +229,7 @@ exports.circumference = (r) => 2 * PI * r;
 
 Kita bisa menggunakan modul di atas dengan:
 
-```js
+```javascript
 const circle = require('./circle.js');
 
 const area = circle.area(4);
@@ -238,7 +238,7 @@ console.log(`The area of a circle of radius 4 is ${area}`);
 
 Sedangkan menggunakan `module.exports` bisa dilihat dari kode berikut:
 
-```js
+```javascript
 module.exports = class Square {
   constructor(width) {
     this.width = width;
@@ -252,7 +252,7 @@ module.exports = class Square {
 
 Dipanggil pada file lain dengan:
 
-```js
+```javascript
 const Square = require('./square.js');
 const mySquare = new Square(2);
 console.log(`The area of mySquare is ${mySquare.area()}`);
@@ -269,7 +269,7 @@ Syukurnya di versi teranyarnya (sedari versi 14 kalau tidak salah) Node.js sudah
 
 Berikut contoh kode ES Module:
 
-```js
+```javascript
 const firstName = 'Irfan';
 const lastName = 'Maulana';
 
@@ -288,7 +288,7 @@ export default function() {
 
 Dan bisa digunakan pada file lain dengan cara:
 
-```js
+```javascript
 import fullName, { getFirstName, getLastName } from './file-1';
 ```
 
@@ -306,7 +306,7 @@ Berikut adalah contoh kode implementasi ESM di browser:
 </script>
 ```
 
-```js
+```javascript
 // utils.mjs
 export function addTextToBody(text) {
   const div = document.createElement('div');
@@ -322,7 +322,7 @@ Format ini sering digunakan sebagai _fallback_ oleh beberapa _bundler_ seperti R
 
 Contoh kode UMD bisa dilihat pada kode berikut:
 
-```js
+```javascript
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
     define(['jquery', 'underscore'], factory);

@@ -165,7 +165,7 @@ Untuk 3 endpoint ini, kita bisa membuat direktori sebagai berikut:
 
 Karena Github memiliki rate limiter seperti sudah kita bahas bersama pada bagian sebelumnya, saya memutuskan untuk tidak selalu membaca data terkini dari jumlah like. Saya menambahkan header dengan cache control `max-age=3600` selain endpoint update. Kita bisa melakukan setting header ini di berkas `now.json` yang tersedia pada root projek seperti berikut:
 
-```js
+```javascript
 {
   "headers": [
 		{

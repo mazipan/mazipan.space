@@ -54,7 +54,7 @@ Untuk membuat _parser_ saya menggunakan Node.js (_saya bisanya itu_), dengan mem
 
 Kalian bisa melihat kode yang sudah saya sederhanakan berikut:
 
-```js
+```javascript
 const fs = require('fs');
 const path = require('path');
 const cheerio = require('cheerio');

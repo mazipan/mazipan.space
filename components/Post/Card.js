@@ -1,9 +1,9 @@
 import Link from 'next/link'
 
-import DateFormatter from '../components/date-formatter'
-import CoverImage from '../components/cover-image'
+import DateFormatter from '@/components/date-formatter'
+import CoverImage from '@/components/Post/Cover'
 
-export default function PostPreview ({ title, date, excerpt, slug, coverImage, tags }) {
+export default function PostCard ({ title, date, excerpt, slug, coverImage, tags }) {
   return (
     <div className="rounded-lg overflow-hidden shadow-lg hover:shadow-medium transition-shadow duration-200s">
       <div className="mb-2 md:mb-4">

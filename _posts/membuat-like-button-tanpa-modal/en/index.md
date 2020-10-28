@@ -178,7 +178,7 @@ To create these 3 API, you need to create directory in your project to follow No
 
 Because Github have a rate limiter in their API, and I don't need my users see a real-time data so I decide to put a cache in my `Now.json` configuration.
 
-```js
+```javascript
 {
   "headers": [
 		{

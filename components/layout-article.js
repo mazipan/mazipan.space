@@ -1,7 +1,7 @@
 import Footer from '../components/footer'
 import Meta from '../components/meta'
 import Container from '@/components/container'
-import Header from '@/components/header'
+import HeaderDefault from '@/components/Header/Default'
 
 export default function Layout ({ preview, children }) {
   return (
@@ -10,7 +10,7 @@ export default function Layout ({ preview, children }) {
       <div className="min-h-screen">
         <main className="mb-32">
           <Container>
-            <Header />
+            <HeaderDefault />
             <article>
               {children}
             </article>

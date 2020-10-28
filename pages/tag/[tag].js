@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import { Fragment } from 'react'
 
-import PostPreview from '@/components/post-preview'
+import PostCard from '@/components/PostCard'
 import LayoutArticle from '@/components/layout-article'
 
 import { getPostsByTag, getAllTags } from '@/lib/api'
@@ -43,9 +43,9 @@ export default function Index ({ allPosts, tag }) {
           </h2>
 
           {allPosts.length > 0 && (
-            <div className="grid grid-cols-1 md:grid-cols-2 md:col-gap-8 lg:col-gap-16 row-gap-5 md:row-gap-16 mb-16">
+            <div className="grid grid-cols-1 md:grid-cols-2 md:col-gap-8 row-gap-5 md:row-gap-8 mb-16">
               {allPosts.map((post) => (
-                <PostPreview
+                <PostCard
                   key={post.slug}
                   title={post.title}
                   coverImage={post.coverImage}

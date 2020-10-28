@@ -1,14 +1,12 @@
 module.exports = {
-  purge: ['./components/**/*.js', './pages/**/*.js'],
+  purge: [
+    './components/**/*.js',
+    './pages/**/*.js',
+    './node_modules/tailwindcss-dark-mode/prefers-dark.js'
+  ],
   theme: {
+    darkSelector: '.dark',
     extend: {
-      colors: {
-        'accent-1': '#FAFAFA',
-        'accent-2': '#EAEAEA',
-        'accent-7': '#333',
-        success: '#0070f3',
-        cyan: '#79FFE1'
-      },
       spacing: {
         28: '7rem'
       },
@@ -29,5 +27,11 @@ module.exports = {
         medium: '0 8px 30px rgba(0, 0, 0, 0.12)'
       }
     }
-  }
+  },
+  variants: {
+    backgroundColor: ['dark', 'dark-hover', 'dark-group-hover', 'dark-even', 'dark-odd'],
+    borderColor: ['dark', 'dark-disabled', 'dark-focus', 'dark-focus-within'],
+    textColor: ['dark', 'dark-hover', 'dark-active', 'dark-placeholder']
+  },
+  plugins: [require('tailwindcss-dark-mode')()]
 }
