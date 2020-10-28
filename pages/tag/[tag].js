@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import { Fragment } from 'react'
 
-import PostCard from '@/components/PostCard'
+import PostCard from '@/components/Post/Card'
 import LayoutArticle from '@/components/layout-article'
 
 import { getPostsByTag, getAllTags } from '@/lib/api'
