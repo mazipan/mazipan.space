@@ -6,9 +6,8 @@ export default function CoverImage ({ title, src, slug }) {
   const image = (
     <Image
       src={src}
-      alt={`Cover Image for ${title}`}
-      width={335}
-      height={223}
+      alt={`Cover ${title}`}
+      unsized
       className={cn('', {
         'w-full rounded-t-lg': slug
       })}
