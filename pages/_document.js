@@ -20,9 +20,11 @@ export default class MyDocument extends Document {
               `
           }}
         />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
+
+        <body>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
             (function() {
               window.__onThemeChange = function() {};
               function setTheme(newTheme) {
@@ -48,10 +50,8 @@ export default class MyDocument extends Document {
               setTheme(preferredTheme || (darkQuery.matches ? 'dark' : 'light'));
             })();
               `
-          }}
-        />
-
-        <body>
+            }}
+          />
           <Main />
           <NextScript />
         </body>

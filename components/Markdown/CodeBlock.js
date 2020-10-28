@@ -8,9 +8,9 @@ function CodeBlock ({ language = null, value }) {
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
         <pre className={className} style={style}>
           {tokens.map((line, i) => (
-            <div {...getLineProps({ line, key: i })} key={line}>
+            <div {...getLineProps({ line, key: i })} key={i}>
               {line.map((token, key) => (
-                <span {...getTokenProps({ token, key })} key />
+                <span {...getTokenProps({ token, key })} key={key} />
               ))}
             </div>
           ))}
