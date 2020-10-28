@@ -1,11 +1,14 @@
 import cn from 'classnames'
 import Link from 'next/link'
+import Image from 'next/image'
 
 export default function CoverImage ({ title, src, slug }) {
   const image = (
-    <img
+    <Image
       src={src}
       alt={`Cover Image for ${title}`}
+      width={335}
+      height={223}
       className={cn('', {
         'w-full rounded-t-lg': slug
       })}

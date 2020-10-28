@@ -15,20 +15,22 @@
     "lint": "eslint . --fix"
   },
   "dependencies": {
+    "@mdx-js/loader": "^1.6.19",
+    "@next/mdx": "^10.0.0",
     "classnames": "2.2.6",
     "date-fns": "2.16.1",
     "gray-matter": "4.0.2",
-    "next": "latest",
+    "next": "^10.0.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-markdown": "^5.0.2",
     "react-syntax-highlighter": "15.2.1",
-    "remark": "13.0.0",
-    "remark-html": "13.0.1"
+    "remark": "^13.0.0",
+    "remark-external-links": "^8.0.0"
   },
   "devDependencies": {
     "app-root-dir": "^1.0.2",
-    "eslint": "^7.12.0",
+    "eslint": "^7.12.1",
     "eslint-config-standard": "^15.0.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-node": "^11.1.0",

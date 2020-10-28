@@ -3,6 +3,8 @@ import ReactMarkdown from 'react-markdown'
 import markdownStyles from './markdown-styles.module.css'
 
 import CodeBlock from './CodeBlock'
+import MarkdownLink from './MarkdownLink'
+import MarkdownImage from './MarkdownImage'
 
 export default function PostBody ({ content }) {
   return (
@@ -12,7 +14,9 @@ export default function PostBody ({ content }) {
         escapeHtml={false}
         source={content}
         renderers={{
-          code: CodeBlock
+          code: CodeBlock,
+          link: MarkdownLink,
+          image: MarkdownImage
         }}
       />
     </div>

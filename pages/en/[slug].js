@@ -3,7 +3,7 @@ import ErrorPage from 'next/error'
 import Head from 'next/head'
 import { Fragment } from 'react'
 
-import PostBody from '@/components/post-body'
+import MarkdownParser from '@/components/Markdown/MarkdownParser'
 import PostHeader from '@/components/post-header'
 
 import CommentBox from '@/components/comment-box'
@@ -58,7 +58,7 @@ export default function Post ({ post, morePosts, preview }) {
             author={post.author}
             tags={post.tags}
           />
-          <PostBody content={post.content} />
+          <MarkdownParser content={post.content} />
           <ShareArticle text={post.title} url={`${SITE_METADATA.url}/en/${post.slug}`} />
           <CommentBox />
         </Fragment>
