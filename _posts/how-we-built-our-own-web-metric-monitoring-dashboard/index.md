@@ -65,8 +65,8 @@ Dengan begitu kita bisa melihat tren dan perbandingan dengan laporan sebelumnya.
 Kita bisa menyimpan laporan dengan cara masuk ke akun Google di halaman web.dev sehingga data bisa disimpan berdasarkan akun kita masing-masing.
 Sayangnya cara ini memang cukup manual, dan saya masih tidak terpikir cara otomasi yang mudah.
 
-Yes, I am lazy and didn't want to open the web.dev every day and testing my web page to record my web page test.
-Also how if we need to analyze custom data since the web.dev only shows the generic report and didn't compare the data as we want to.
+Dan ya, saya masih terlalu malas untuk membuka halaman web web.dev setiap hari dan melakukan test untuk merekam metrik dari web saya secara berkala.
+Serta bagaimana kalau kita membutuhkan untuk menganalisa datanya, bukan hanya report umum yang sudah disediakan.
 
 ### Webpagetest
 
