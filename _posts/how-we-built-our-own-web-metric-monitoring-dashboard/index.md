@@ -1,7 +1,7 @@
 ---
-title: Bagaimana kami membangun web metric monitoring dashboard
+title: Bagaimana kami membangun dashboard pemantau metrik web
 date: '2019-11-13'
-excerpt: Cerita kami di Tokopedia dalam membangun web metric monitoring dashboard dalam rangka membudayakan kepedulian mengenai performa web
+excerpt: Cerita kami di Tokopedia dalam membangun dashboard pemantau metrik web dalam rangka membudayakan kepedulian mengenai performa web
 author: mazipan
 published: true
 tags: [lesson-learned]
@@ -16,7 +16,7 @@ enready: true
 Semua hal yang saya tulis adalah pendapat saya pribadi berdasarkan pengalaman dan tidak mewakili pendapat Tokopedia.
 Hal yang ditulis valid pada saat artikel diterbitkan dan sangat mungkin menjadi tidak relevan lagi pada waktu kalian membacanya.
 
-## Mengenai Web Metric Monitoring
+## Mengenai alat pantau web metrik
 
 _Monitoring_ atau pemantauan adalah tugas yang seharusnya perlu kalian pikirkan sebelum memutuskan mengadopsi teknologi apapun.
 Khususnya ketika kita merencanakan untuk menggunakannya pada lingkungan produksi.
@@ -33,8 +33,7 @@ Itu mengapa kita perlu mengumpulkan lebih banyak data lain, selain dari waktu mu
 
 ## Alat pantau umum
 
-In the industry, there is some alternative we can use to do monitoring our web metrics.
-You can use [pagespeed insight](https://developers.google.com/speed/pagespeed/insights/), [web.dev/measure](https://web.dev/measure/), [webpagetest.org](https://www.webpagetest.org/), and many others website we can use for monitor our web metrics.
+Di industri, ada beberapa alternatif umum yang biasa digunakan oleh para pengembang untuk memantau kondisi dari metrik-metrik web mereka, diantaranya [Pagespeed Insight](https://developers.google.com/speed/pagespeed/insights/), [Web.dev/measure](https://web.dev/measure/), [Webpagetest.org](https://www.webpagetest.org/), dan lainnya. Beerikut akan kita bahas beberapa diantaranya serta kecocokannya dengan projek yang sedang kami rencakanan untuk dibuat:
 
 ### Pagespeed Insight
 
@@ -72,48 +71,49 @@ Serta bagaimana kalau kita membutuhkan untuk menganalisa datanya, bukan hanya re
 
 ![Webpagetest.org](/thumbnail/how-we-built-our-own-web-metric-monitoring-dashboard/wpt.png)
 
-The last, Webpagetest.org is one of the most powerful sites to be used to monitor your web page metrics.
-It already supports the lighthouse engine if you need it.
-Webpagetest can be used easily without any account login and you can get the same (even richer) report compare to Pagespeed Insight and Web.dev.
-But yeah, you need to do this manually and we don't want it.
+Alat terakhir yang umum digunakan adalah Webpagetest.org, salah satu situs yang sangat dasyat untuk digunakan dalam memantau web metrik.
+Sudah mendukung Lighthouse juga ketika dibutuhkan.
+Webpagetest dapat digunakan dengan mudah tanpa perlu login dan kalian bisa mendapatkan laporan yang lebih kaya dan komplit dibandingkan dengan yang kalian dapat di Pagespeed Insight maupun Web.dev.
+Tapi ya, lagi-lagi ini dikerjakan secara manual, dan kami tidak menginginkannya.
 
-The good news is Webpagetest also gives you an API you can hit from anywhere you want and give you the same report in the response.
-You need to register and get your API key to use this feature, you can visit this [request API key page](https://www.webpagetest.org/getkey.php).
-There are some limitations in this API like you can only hit 200 page-load every day.
-In every one running the test, webpagetest will run 10 times to get a more consistent report.
-It will cause a reduction by 10 rate limit in every API call.
-Yes, it might be not scaled for some cases.
+Kabar baiknya, Webpagetest juga menyediakan API yang bisa kalian manfaatkan untuk mendapatkan hasil yang sama dengan apa yang kalian lihat bila menjalankan secara manual lewat tampilan antarmuka.
+Kalian perlu mendaftar terlebih dahulu untuk mendapatkan Kunci API, kalian bisa mengunjungi [halaman permintaan kunci API](https://www.webpagetest.org/getkey.php).
 
-Honestly, we already tried it.
+Ada beberapa batasan ketika ingin menggunakan API dari Webpagetest, kita hanya diperbolehkan untuk menggunakannya 200 kali setiap hari.
+Dalam satu kali test, sebaiknya kita menjalankan sampai 10 kali untuk mendapat hasil yang lebih konsisten, sehingga jatah 200 kali sehari jelas tidak cukup baik buat kasus kami.
 
-Creating our web metrics monitoring tools which hit webpagetest API every day with Crob job triggered in the midnight.
-Our big problem is we can not add more pages to be analyzed by webpagetest because of the rate limiter.
-That's why we start to look at another solution that scales better.
-Another solution with nearly the same with webpagetest and still gives us the flexibility of creating our reporters based on the data we collect.
+Tapi jujur saja, kami pernah menggunakannya juga.
+
+Membuat alat monitor sendiri yang akan memanfaatkan Webpagetest API setiap hari melalui Cronjob yang dijalankan setiap malam.
+Masalah utama yang kita temui pada versi sebelumnya ya karena keterbatasan jumlah test yang sangat sedikit setiap hari membuat kita tidak bisa menambahkan halaman baru untuk di test.
+Itu mengapa kita juga mulai mencari alternatif solusi lain selain daripada menggunakan API dari Webpagetest.
 
 ## Lighthouse
 
-Lighthouse gain it's popularity because Progressive Web Apps (PWA) also becomes the hottest topic in modern web development.
-Developers need tools to test it's PWA implementation, see the result score and get the best practices checklists that can be applied in their web.
-This phenomenon drives us to use the Lighthouse engine for our next web metrics monitoring dashboard.
+Lighthouse mendapatkan popularitasnya bersamaan dengan adopsi Progressive Web Apps (PWA) yang menjadi topik panas bagi pengembangan website modern saat ini.
+Pengembang membutuhkan alat untuk mengukur seberapa baik implementasi PWA mereka, apakah semua trik yang disarankah sudah terpasang dengan baik atau belum.
+
+Fenomena dan kepopuleran Lighthouse ini yang semakin mengarahkkan kami untuk melihat ini sebagai salah satu kandidat terbaik bagi pembuatan dashboard pemantau web metrik kami di versi selanjutnya.
 
 ![Lighthouse Logo](/thumbnail/how-we-built-our-own-web-metric-monitoring-dashboard/lighthouse.png)
 
-Lighthouse engine is available in many alternatives, it's built-in by default with our Chrome DevTools, it available as a CI that can validate our pull requests, it available as an NPM library along with Puppeteer for launching a Chrome browser programmatically.
-It also available as a CLI tool if you prefer a simpler usage.
-CLI tools from Lighthouse can produce a JSON or HTML file as an output.
-CLI tools can be very flexible for you to develop custom reporting.
-You can pass Cookies, extra headers, blocking some domain from page load, and passing your network throttle to simulate your dominant user's network.
-Read [the complete available CLI options](https://github.com/GoogleChrome/lighthouse#cli-options) from Lighthouse CLI.
+Lighthouse sendiri tersedia dalam berbagai alternatif untuk bisa digunakan, secara bawaan Lighthouse sudah tertanam di Chrome Dev Tools pada tab "Lighthouse".
 
-Without complex options, you can call lighthouse with basic code:
+Lighthouse juga tersedia dalam bentuk pustaka dan CLI yang bisa kita gunakan secara lebih luwes sesuai kebutuhan. Untuk yang versi pustakanya sendiri bisa juga dikombinasikan dengan Puppeteer untuk meluncurkan Chrome browser secara terprogram.
+
+Versi CLI dan pustaka bisa menghasilkan dua macam output yakni JSON dan HTML.
+Baik CLI maupun pustaka sangat fleksibel untuk kita gunakan, kita bisa menambahkan custom header, Cookie tambahan, custom Network Throttle, bahakan kita bisa meminta untuk melakukan blocking terhadap suatu sumber daya dengan pola tertentu.
+
+Baca [beberapa opsi yang tersedia untuk Lighthouse-CLI](https://github.com/GoogleChrome/lighthouse#cli-options).
+
+Tanpa opsi yang kompleks, LH-CLI bisa dijalankan dengan cara memberikan perintah:
 
 ```bash
 # Change with your URL
-npx lighthouse https://m.tokopedia.com/ --output json --chrome-flags="--headless"
+$ npx lighthouse https://m.tokopedia.com/ --output json --chrome-flags="--headless"
 ```
 
-Or if you prefer using Node.js script, you can call lighthouse with code:
+Kalau kalian lebih memilih menggunakan script di Node.js, klain bisa menggunakan dengan cara:
 
 ```javascript
 const lighthouse = require('lighthouse');
@@ -142,22 +142,24 @@ launchChromeAndRunLighthouse('https://example.com', opts).then((results) => {
 });
 ```
 
-You need to add lighthouse module and chrome laucher via NPM:
+Kalian perlu menambahkan dependensi yang dibutuhkan terlebih dahulu, seperti `chrome-launcher` dan `lighthouse` dengan cara:
 
+```bash
+$ yarn add --dev lighthouse chrome-launcher
 ```
-yarn add --dev lighthouse chrome-launcher
-```
 
-Read [Using Lighthouse programmatically](https://github.com/GoogleChrome/lighthouse/blob/master/docs/readme.md#using-programmatically) for help getting started.
+Baca artikel [cara menggunakan Lighthouse dengan terprogram](https://github.com/GoogleChrome/lighthouse/blob/master/docs/readme.md#using-programmatically) untuk memulainya.
 
-Lighthouse by default will use Fast 3G as their network throttle base, it might not fit with your needs.
-Read more about [throttling docs](https://github.com/GoogleChrome/lighthouse/blob/master/docs/throttling.md) for getting-know how Lighthouse doing throttle into your test.
+Lighthouse secara bawaan akan menggunakan Throttle **Fast3G**, untuk sebagian kasus kita tidak perlu mengutak-atiknya lagi, di kasus yang unik kita mungkin perlu paham terkait ini. Baca lebih lanjut mengenai [throttle di Lighthouse](https://github.com/GoogleChrome/lighthouse/blob/master/docs/throttling.md) untuk lebih memahami bagaimana Throttle di lighthouse.
 
-The problem is the JSON report may be too big for you to save in the disk or database, since you may never use all the data in the JSON file. You need to pick the data that you think important for your developers and other stakeholders and remove the rest of it.
-But if you doing this, your report may be will become invalid to be viewed by any other lighthouse report viewer like [the official lighthouse previewer](https://googlechrome.github.io/lighthouse/viewer/).
+Salah satu masalah yang timbul adalah, JSON yang dihasilkan oleh Lighthouse cukup besar untuk disimpan semuanya ke dalam ruang penyimpanan, baik disk maupun penyimpanan lain. Apalagi dengan kenyataan bahwa tidak akan keseluruhan laporan yang tersedia tersebut akan kalian gunakan. kalian harus memilah-milah data mana yang kalian dan pemegang kebijakan lain butuhkan dan bisa membuang sisanya yang dirsasa tidak terlalau relevan bagi kalian.
 
-[Sample of Lighthouse report in JSON file](https://gist.github.com/paulirish/a207a43c8164a7ab728481b496aa8a27#file-localhost_2018-03-12_17-55-45-lighthouse-report-json).
-Here is the important data you should save from the JSON:
+Tapi bisa kalian menghilangkan sebagian data yang ada, laporan kalian bisa jadi menjadi tidak vbalid ketika hendak ditampilkan menggunakan alat yang tersedia di pasaran, misalnya saja alat [lighthouse previewer](https://googlechrome.github.io/lighthouse/viewer/).
+
+
+[Contoh dari laporan yang dihasilkan Lighthouse dalam bentuk JSON](https://gist.github.com/paulirish/a207a43c8164a7ab728481b496aa8a27#file-localhost_2018-03-12_17-55-45-lighthouse-report-json).
+
+Berikut adalah beberapa data yang mungkin saja penting untuk kalian simpan:
 
 ```javascript
 
@@ -185,58 +187,53 @@ Here is the important data you should save from the JSON:
 }
 ```
 
-After trying to run the lighthouse CI several times, you might realize that the result has some variability even you test it with the same setup or config.
-The result depends on many things including your network condition when running the test.
-Because of this variability, Lighthouse recommends us to run lighthouse several times to get better consistency and accuracy in the result.
-You can increase the number of hits per run until you get stability and confidence with the result.
-Currently, we decide to run 5 times per run.
+Setelah mencoba beberapa kali Lighthouse secara terprogram, kalian mungkin akan mulai menyadari bahwa hasil yang didaptkan seringkali bervariasi setiap kali kita jalankan bahkan bila menggunakan konfigurasi yang sama dan mesin yang sama.
+Itu mengapa disarankan untuk menjalankan lebih dari seklai untuk mendapatkan hasil yang lebih konsisten.
 
-You can read the public doc for [Lighthouse Metric Variability and Accuracy](https://docs.google.com/document/d/1BqtL-nG53rxWOI5RO0pItSRPowZVnYJ_gBEQCJ5EeUE/edit#heading=h.bdv52es24upi).
+Kalin bisa membaca dokumen publik mengenai [Keberagaman dan Akurasi dari Lighthouse Metrik](https://docs.google.com/document/d/1BqtL-nG53rxWOI5RO0pItSRPowZVnYJ_gBEQCJ5EeUE/edit#heading=h.bdv52es24upi).
 
-## Tech inside
+## Teknologi yang digunakan
 
-We built our dashboard monitoring tools on top of Docker container.
-Developing websites using docker also have better developer experience since we don't need to force the developers to install program A to Z just to make it run in their local machine.
-For the deployment part, we also have more portability with Docker.
+kami membuat dashboard ini di atas Docker Container.
+Pengembangan website dengan Docker memiliki pengalaman yang cukup baik bagi pengembang itu sendiri apalagi bagi aplikasi yang memang membutuhkan prasyarat yang cukup banyak untuk bisa dijalankan.\
+Dengan Docker kita tidak perlu lagi memberitahu si pengembang untuk memasang program A sampai Z untuk bisa menjalankan projeknya.
+Kemudahan memindahkan projek ke level produksi juga jadi alasan kami memilih membangun di atas Docker.
 
-Our web apps are just simply a client-server app, using MongoDB as database storage.
-The server built using [Express.js](https://expressjs.com/) and [Apollo GraphQL](https://www.apollographql.com/) for a gateway with our client app. We choose to open a web socket secure protocol instead of HTTP request. It can be achieved with a very simple code in Apollo GraphQL.
+Web kami sebenanya sesimpel aplikasi cliet-server saja, menggunakan MongoDB sebagai penyimpanan.
+Aplikasi servernya dibuat  diatas [Express.js](https://expressjs.com/) dan [Apollo GraphQL](https://www.apollographql.com/) sebagai pintu bagi komukasi dengan aplikasi Client. Kami memilih menggunakan sebagian besar komunikasi dengan GraphQL dijalankan di atas Web Socket dibandingkan HTTP Request secara langsung, hal ini cukup mudah dicapai dengan Apollo.
 
-We use [Mongoose.js](https://mongoosejs.com/) for Object Document Modelling (ODM) as a bridge for accessing our MongoDB. It seems easier to use than the native Mongo one.
+Kami menggunakan [Mongoose.js](https://mongoosejs.com/) sebagai Object Document Modelling (ODM) untuk jembatan dalam mengakses MongoDB kami sehingga mendapatkan intereface yang lebih mudah.
 
-For the client, we rely on [React](https://reactjs.org/) and [Material UI](https://material-ui.com/) as a backbone UI Kit for faster prototyping because we didn't want to spend too much time in the design part, we just simply use the Material UI components and it works magically.
-When developing a dashboard monitoring you'll face many Chart building blocks. We use [Recharts](http://recharts.org/en-US/) because of the simplicity.
+Untuk aplikasi Client, kami menggunakan [React](https://reactjs.org/) dan [Material UI](https://material-ui.com/) sebagai tulang punggung bagi pengembangan segala antarmuka yang dibutuhkan, ini karena kami tidak memiliki waktu yang cukup untuk memikirkan design yang terbaik, dan Material UI ya bekerja dengan ajaib memudahkan kita mengembangkan fitur dengan cepat.
+Untuk Chart library kami memilih [Recharts](http://recharts.org/en-US/) karena alasan kemudahan.
 
-All written in [TypeScript](https://www.typescriptlang.org/) 🙊
+Semuanya ditulis dengan [TypeScript](https://www.typescriptlang.org/) 🙊
 
-## Task Flow
+## Alur kerja
 
-Our dashboard has Cron Job that executed daily, run in the midnight, call our Lighthouse CLI custom script, running for all pages we already set before.
-Running 5 times for each page, get the median value of it, then save the report to MongoDB.
+Dashboard kami memiliki cronjob yang akan dijalankan beberapa kali sehari dan memanggil custom script dari Lighthouse yang sudah kami buat dan melakukan test kepada halaman-halaman yang sebelumnya juga sudah kita simpan konfigurasinya.
+Menjalankan 10x untuk setiap halamannya, dan mengambil quantile 75 dari keseluruhan skor yang di dapat, kemudian menyimpannya di MongoDB.
 
-We also have config page to set thresholds for some metrics like Time to Interactive, Performance Score, Size of Script, CSS, and Images for each page.
-This threshold acts as a gate that will keep sending an alert to slack when the score is under our expectation.
+Kami juga menyetel ambang batas bagi sebagian metrik seperti TTI, skor performa, ukuran dari Script, CSS, dan gambar untuk masing-masing halaman.
+Ketika sebuah halaman tidak dapat mencapai ambang batas yang sudah ditentukan maka dashboard akan mengirim notifikasi ke Slack baik ke channel maupun direct ke pengelola dari halaman tersebut.
+Alerting diharapkan meningkatkan kepedulian semua orang yang terlibat dengan halaman tersebut, karena banyak orang yang terlalu repot untuk mengecek dashboard berulang-ulang.
 
-We know that we are too lazy to check the dashboard frequently, that's why sending a direct notification to Slack is one of our solutions to increasing the awareness of our developers and other stakeholders.
+![Contoh halaman konfigurasi untuk menambah halaman baru](/thumbnail/how-we-built-our-own-web-metric-monitoring-dashboard/screen-config.png)
 
-![Sample of config page](/thumbnail/how-we-built-our-own-web-metric-monitoring-dashboard/screen-config.png)
+Setelah data berhasil disimpan di tempat kita, kita bisa melakukan analisa dan aggregasi data sesuai kebutuhan. Kita bisa menyajikan hasilnya baik melalui tabel atau chart sesuai apa yang dimau. Datanya sudah ada disana, tinggal kita mau mengolahnya bagaimana.
 
-After the data is stored, we can show the result in a Chart as we want. In our cases, we show a chart for total requests per page, size of resources, performance and PWA score, and web page load timing.
-The data is already there, we just need to explore to show the most important data for our self.
+![Contoh laporan dalam bentuk chart](/thumbnail/how-we-built-our-own-web-metric-monitoring-dashboard/screen-chart.png)
 
-![Sample of chart presentations](/thumbnail/how-we-built-our-own-web-metric-monitoring-dashboard/screen-chart.png)
+![Contoh laporan dalam bentuk tabel](/thumbnail/how-we-built-our-own-web-metric-monitoring-dashboard/screen-table.png)
 
-![Sample of table presentations](/thumbnail/how-we-built-our-own-web-metric-monitoring-dashboard/screen-table.png)
-
-![Sample of detail report](/thumbnail/how-we-built-our-own-web-metric-monitoring-dashboard/screen-detail.png)
+![Contoh detail laporan](/thumbnail/how-we-built-our-own-web-metric-monitoring-dashboard/screen-detail.png)
 
 ## Image Analyzer
 
-We know that image is one of the biggest cost in the websites. Monitor all the images requested in the first load of your websites become a mandatory task because it will give us a visibility about the image that not optimized and creating action items from our finding then distributed to the person who in charge with the image.
+Kita tau gambar adalah salah satu beban terberat di sebuah halaman web. Memantau semua gambar yang dimuat pada saat pertama kali muat adalah tugas wajib bagi tim kami sebab seringkali tidak optimalnya sebuah gambar lah yang menjadin peyebab turunnya performa.
 
-From lighthouse report, you can grep all the data images after you hit the lighthouse job.
-
-You can deep dive your report on the field:
+Dari laporan lighthouse, kalian bisa mendapatkan semua network request yang dilakukan oleh sebuah halaman sampai termuat, termasuk juga dengan gambar.
+Kalian bisa mencoba untuk menengok lebih dalam ke dalam laporan kalian
 
 ```javascript
 // let say we have JS object `report` from lighthouse
@@ -249,9 +246,9 @@ const allImagesFromLighthouse = report.audits['network-requests'].details.items.
 );
 ```
 
-Unfortunately, we only get the data about `resourceSize` (original size) and `transferSize` (compressed size) from lighthouse. It will not good for us to create the presentations based on this data only. Thanks for npm module [image-size](https://www.npmjs.com/package/image-size), we can get more information about dimension of the image with this module.
+Sayangnya, dari Lighthouse kita hanya mendapatkan data mengenai `resourceSize` (ukuran asli) dan `transferSize` (ukuran yang disampaikan melalui network). Ini bisa jadi bias, karena ukuran sebuah gambar juga ditentukandari berapa width, height dan kedalaman pixelnya. Untuk bisa menganalisa lebih lanjut kami memanfaatkan pustaka [image-size](https://www.npmjs.com/package/image-size) berdasarkan data yang sebelumnya dikumpulkan oleh Lighthouse.
 
-![Sample of image scatter plot](/thumbnail/how-we-built-our-own-web-metric-monitoring-dashboard/screen-image.png)
+![Contoh chart scatter dari sebaran gambar](/thumbnail/how-we-built-our-own-web-metric-monitoring-dashboard/screen-image.png)
 
 ## Alternatif
 

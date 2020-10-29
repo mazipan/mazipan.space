@@ -256,4 +256,7 @@ Unfortunately, we only get the data about `resourceSize` (original size) and `tr
 You might don't need to develop your monitoring dashboard like us.
 Here are some best free alternatives tools we found for you:
 
-- [Sitespeed.io](https://www.sitespeed.io/)
+- [Sitespeed.io](https://www.sitespeed.io/) - Free and can be installed on premise
+- Threo.sh - Free and subscription
+- Lighthouse CI - Free
+- WebPageTest.org - Free
