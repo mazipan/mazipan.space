@@ -2,6 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+.dark {
+  --bg-primary: #1A202C;
+  --text-primary: #F7FAFC;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.light {
+  --bg-primary: #F7FAFC;
+  --text-primary: #1A202C;
+}
 /* Your own custom utilities */
 .header-def {
   @apply flex justify-between items-center mb-20 mt-8;

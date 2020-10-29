@@ -1,6 +1,16 @@
-import Container from './container'
+import { useState, useEffect } from 'react'
+
+import Container from '@/components/container'
+import useTheme from '@/hooks/useTheme'
 
 export default function Footer () {
+  const [isMounted, setIsMounted] = useState(false)
+  const { nextThemeIcon, nextTheme, onSwitchTheme } = useTheme()
+
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
+
   return (
     <footer className="bg-accent-1 border-t border-accent-2">
       <Container>
@@ -115,9 +125,12 @@ export default function Footer () {
             </svg>
           </a>
         </div>
-        <div className="pb-8 flex justify-center items-center">
-        © 2020 All rights reserved
-        </div>
+        {isMounted && (
+          <div className="p-2 flex justify-center items-center" onClick={onSwitchTheme}>
+            Switch to {nextTheme} {nextThemeIcon}
+          </div>
+        )}
+        <div className="pb-8 flex justify-center items-center">© 2020 All rights reserved</div>
       </Container>
     </footer>
   )
