@@ -1,11 +1,12 @@
 import { useRouter } from 'next/router'
 import ErrorPage from 'next/error'
 import Head from 'next/head'
-import { Fragment } from 'react'
+import Link from 'next/link'
 
 import MarkdownParser from '@/components/Markdown/MarkdownParser'
 import PostHeader from '@/components/post-header'
 
+import InfoBox from '@/components/InfoBox'
 import CommentBox from '@/components/comment-box'
 import ShareArticle from '@/components/share-article'
 
@@ -23,7 +24,7 @@ export default function Post ({ post, morePosts, preview }) {
   return (
     <>
       <LayoutArticle preview={preview}>
-        <Fragment>
+        <>
           <Head>
             <title>{post.title} | mazipan.space</title>
             <meta name="description" content={post.excerpt} />
@@ -58,10 +59,16 @@ export default function Post ({ post, morePosts, preview }) {
             author={post.author}
             tags={post.tags}
           />
+          <InfoBox>
+            Available in other languages: {' '}
+            <Link as={`/${post.slug}`} href="/[slug]">
+              <a className="font-bold underline">Bahasa Indonesia</a>
+            </Link>
+          </InfoBox>
           <MarkdownParser content={post.content} />
           <ShareArticle text={post.title} url={`${SITE_METADATA.url}/en/${post.slug}`} />
           <CommentBox />
-        </Fragment>
+        </>
       </LayoutArticle>
     </>
   )
@@ -70,8 +77,7 @@ export default function Post ({ post, morePosts, preview }) {
 export async function getStaticProps ({ params }) {
   const post = getPostBySlug(
     params.slug,
-    ['title', 'date', 'slug',
-      'excerpt', 'author', 'content', 'tags', 'coverImage'],
+    ['title', 'date', 'slug', 'excerpt', 'author', 'content', 'tags', 'coverImage'],
     'en'
   )
 

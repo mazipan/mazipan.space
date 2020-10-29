@@ -3,15 +3,17 @@ import Link from 'next/link'
 import DateFormatter from '@/components/date-formatter'
 import CoverImage from '@/components/Post/Cover'
 
-export default function PostCard ({ title, date, excerpt, slug, coverImage, tags }) {
+export default function PostCard ({ title, date, excerpt, slug, coverImage, tags, lang }) {
+  const hrefSlug = lang === 'id' ? '/[slug]' : '/en/[slug]'
+
   return (
     <div className="rounded-lg overflow-hidden shadow-lg hover:shadow-medium transition-shadow duration-200s">
       <div className="mb-2 md:mb-4">
-        <CoverImage title={title} src={coverImage} slug={slug} />
+        <CoverImage title={title} src={coverImage} slug={slug} lang={lang} />
       </div>
       <div className="px-6 py-4">
         <h3 className="font-bold text-3xl mb-3 leading-snug">
-          <Link as={`/${slug}`} href="/[slug]">
+          <Link as={`/${slug}`} href={hrefSlug}>
             <a className="hover:underline">{title}</a>
           </Link>
         </h3>

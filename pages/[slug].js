@@ -1,11 +1,12 @@
 import { useRouter } from 'next/router'
 import ErrorPage from 'next/error'
 import Head from 'next/head'
-import { Fragment } from 'react'
+import Link from 'next/link'
 
 import MarkdownParser from '@/components/Markdown/MarkdownParser'
 import PostHeader from '@/components/post-header'
 
+import InfoBox from '@/components/InfoBox'
 import CommentBox from '@/components/comment-box'
 import ShareArticle from '@/components/share-article'
 
@@ -22,7 +23,7 @@ export default function Post ({ post, morePosts, preview }) {
   return (
     <>
       <LayoutArticle preview={preview}>
-        <Fragment>
+        <>
           <Head>
             <title>{post.title} | mazipan.space</title>
             <meta name="description" content={post.excerpt} />
@@ -57,10 +58,18 @@ export default function Post ({ post, morePosts, preview }) {
             author={post.author}
             tags={post.tags}
           />
+          {post.enready && (
+            <InfoBox>
+              Available in other languages:{' '}
+              <Link as={`/en/${post.slug}`} href="/en/[slug]">
+                <a className="font-bold underline">English</a>
+              </Link>
+            </InfoBox>
+          )}
           <MarkdownParser content={post.content} />
           <ShareArticle text={post.title} url={`${SITE_METADATA.url}/${post.slug}`} />
           <CommentBox />
-        </Fragment>
+        </>
       </LayoutArticle>
     </>
   )
@@ -75,7 +84,8 @@ export async function getStaticProps ({ params }) {
     'author',
     'content',
     'tags',
-    'coverImage'
+    'coverImage',
+    'enready'
   ])
 
   return {

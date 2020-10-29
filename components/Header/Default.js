@@ -1,10 +1,13 @@
 import Link from 'next/link'
+import useLang from '@/hooks/useLang'
 
 export default function Header () {
+  const { isId } = useLang()
+
   return (
     <header className="header-def">
       <h2 className="h2 text-gradient">
-        <Link href="/">
+        <Link href={`${isId ? '/' : '/en'}`}>
           <a className="hover:underline">{'<Mazipan />'}</a>
         </Link>
       </h2>

@@ -1,6 +1,6 @@
 import PostCard from '@/components/Post/Card'
 
-export default function MoreStories ({ posts }) {
+export default function MoreStories ({ posts, lang = 'id' }) {
   return (
     <section>
       <h2 className="mb-8 text-6xl font-bold tracking-tighter leading-tight">
@@ -14,9 +14,10 @@ export default function MoreStories ({ posts }) {
             coverImage={post.coverImage}
             date={post.date}
             author={post.author}
-            slug={post.slug}
+            slug={`${lang === 'id' ? '' : 'en/'}${post.slug}`}
             excerpt={post.excerpt}
             tags={post.tags}
+            lang={lang}
           />
         ))}
       </div>

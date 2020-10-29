@@ -25,11 +25,11 @@ export default function Index ({ allPosts }) {
               coverImage={heroPost.coverImage}
               date={heroPost.date}
               author={heroPost.author}
-              slug={heroPost.slug}
+              slug={`en/${heroPost.slug}`}
               excerpt={heroPost.excerpt}
             />
           )}
-          {morePosts.length > 0 && <MoreStories posts={morePosts} />}
+          {morePosts.length > 0 && <MoreStories posts={morePosts} lang="en" />}
         </Container>
       </Layout>
     </>

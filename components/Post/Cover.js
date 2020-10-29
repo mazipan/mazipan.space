@@ -2,7 +2,9 @@ import cn from 'classnames'
 import Link from 'next/link'
 import Image from 'next/image'
 
-export default function CoverImage ({ title, src, slug }) {
+export default function CoverImage ({ title, src, slug, lang }) {
+  const hrefSlug = lang === 'id' ? '/[slug]' : '/en/[slug]'
+
   const image = (
     <Image
       src={src}
@@ -17,7 +19,7 @@ export default function CoverImage ({ title, src, slug }) {
   return (
     <div className="sm:mx-0">
       {slug ? (
-        <Link as={`/${slug}`} href="/[slug]">
+        <Link as={`/${slug}`} href={hrefSlug}>
           <a aria-label={title}>{image}</a>
         </Link>
       ) : (
