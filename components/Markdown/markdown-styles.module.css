@@ -41,19 +41,28 @@
 
 .markdown a[href] {
   text-decoration: none;
-  display: inline-block;
-  position: relative;
+  @apply relative inline-block;
 }
 
 .markdown a[href]:before {
-  width: 100%;
+  background: none repeat scroll 0 0 transparent;
   left: 0;
   bottom: 3px;
   content: "";
-  display: block;
   height: 4px;
-  position: absolute;
-  @apply bg-indigo-400 bg-opacity-75;
+  @apply absolute block w-full bg-gradient-to-r from-orange-400 via-red-500 to-pink-500;
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+}
+
+.markdown a[href]:hover:before {
+  @apply w-0;
+}
+
+.markdown a[href]:hover {
+  @apply bg-gradient-to-r from-orange-400 via-red-500 to-pink-500;
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .markdown code:not([class*="language-"]) {

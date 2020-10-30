@@ -25,6 +25,32 @@
   -webkit-text-fill-color: transparent;
 }
 
+.text-link {
+  text-decoration: none;
+  @apply relative inline-block;
+}
+
+.text-link:before {
+  background: none repeat scroll 0 0 transparent;
+  left: 0;
+  bottom: 0;
+  content: "";
+  height: 4px;
+  @apply absolute block w-full bg-gradient-to-r from-orange-400 via-red-500 to-pink-500;
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+}
+
+.text-link:hover:before {
+  @apply w-0;
+}
+
+.text-link:hover {
+  @apply bg-gradient-to-r from-orange-400 via-red-500 to-pink-500;
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .h1 {
   @apply text-6xl font-bold tracking-tighter leading-tight;
 }

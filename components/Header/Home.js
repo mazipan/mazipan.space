@@ -9,21 +9,21 @@ export default function Intro () {
       <h1 className="h1 text-gradient">{'<Mazipan />'}</h1>
       <div>
         <Link href="/talks">
-          <a className="hover:underline pr-2 md:pr-4">{'Talks'}</a>
+          <a className="text-link mr-2 md:mr-4">{'Talks'}</a>
         </Link>
         <Link href="/support">
-          <a className="hover:underline pr-2 md:pr-4">{'Support'}</a>
+          <a className="text-link mr-2 md:mr-4">{'Support'}</a>
         </Link>
         <Link href="/about">
-          <a className="hover:underline pr-2 md:pr-4">{'About'}</a>
+          <a className="text-link mr-2 md:mr-4">{'About'}</a>
         </Link>
         {isId ? (
           <Link href="/en">
-            <a className="hover:underline">{'EN'}</a>
+            <a className="text-link">{'EN'}</a>
           </Link>
         ) : (
           <Link href="/">
-            <a className="hover:underline">{'ID'}</a>
+            <a className="text-link">{'ID'}</a>
           </Link>
         )}
       </div>

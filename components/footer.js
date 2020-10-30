@@ -20,7 +20,7 @@ export default function Footer () {
             target="_blank"
             title="Facebook"
             rel="noopener noreferrer"
-            className="mx-2 text-gray-700 hover:text-gray-900"
+            className="mx-2 text-red-500"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -41,7 +41,7 @@ export default function Footer () {
             title="Twitter"
             target="_blank"
             rel="noopener noreferrer"
-            className="mx-2 text-gray-700 hover:text-gray-900"
+            className="mx-2 text-red-500"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -62,7 +62,7 @@ export default function Footer () {
             title="Github"
             target="_blank"
             rel="noopener noreferrer"
-            className="mx-2 text-gray-700 hover:text-gray-900"
+            className="mx-2 text-red-500"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -83,7 +83,7 @@ export default function Footer () {
             title="Linkedin"
             target="_blank"
             rel="noopener noreferrer"
-            className="mx-2 text-gray-700 hover:text-gray-900"
+            className="mx-2 text-red-500"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -106,7 +106,7 @@ export default function Footer () {
             title="RSS"
             target="_blank"
             rel="noopener noreferrer"
-            className="mx-2 text-gray-700 hover:text-gray-900"
+            className="mx-2 text-red-500"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -126,7 +126,7 @@ export default function Footer () {
           </a>
         </div>
         {isMounted && (
-          <div className="p-2 flex justify-center items-center" onClick={onSwitchTheme}>
+          <div className="p-2 flex justify-center items-center text-red-500 cursor-pointer" onClick={onSwitchTheme}>
             Switch to {nextTheme} {nextThemeIcon}
           </div>
         )}
