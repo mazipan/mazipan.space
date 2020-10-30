@@ -4,7 +4,7 @@ date: '2020-10-31'
 excerpt: Bagaimana sih cara-cara membuat pull request yang sedap dipandang mata?
 author: mazipan
 published: true
-tags: [javascript]
+tags: [open-source]
 coverImage: /thumbnail/membuat-pull-request-ciamik/you-shall-not-merge.png
 lang: id
 enready: false
@@ -77,7 +77,6 @@ Beberapa hal yang paling tidak mestinya ada di deskripsi pull request antara lai
 - Kesimpulan atau _summary_ dari pull request
 - Perubahan-perubahan penting yang perlu diperhatikan, misal saja menambahkan kalimat: saya mengubah kode di file A menjadi begini dengan tujuan begitu.
 - Cara atau langkah melakukan pengujian, bisa berupa langkah detail ataupun cukup alamat dimana orang lain bisa melihat dan mengecek perubahannya.
-- 
 
 **3. Menyertakan informasi pendukung**
 
@@ -99,6 +98,19 @@ Ini mengakibatkan orang jadi tidak fokus melakukan pengujian dan review, alhasil
 
 Commit history yang acak-acakan juga bisa menimbulkan gangguan bagi si reviewer, memperbaiki history sebelum pull request dibuka bisa jadi solusi kalau kalian memang hobi bikin commit asal-asalan sebelum siap di bukakan pull request.
 
-## Tips dan trik membuat pull request ciamik
+## Kebiasaan yang bisa meningkatkan kualitas pull request
 
-**
+- Judul pull request umumnya secara otomatis akan mengambil dari judul commit Yang pertama dari suatu branch.
+Karenanya membuat judul commit yang sesuai akan mempermudah kita membuat judul pull request pula.
+
+- Biasakan membuat pull request saat sudah yakin, sudah dilakukan test sana-sini, sudah dibuatkan unit test, dan lainnya.
+Ini untuk mengurangi terlalu banyak perubahan yang mestinya tidak diperlukan saat pull request sudah dibuka.
+Terlalu banyak menambahkan commit baru saat pull request sudah dibuka seringkali juga akan menggangu proses diskusi pada pull request tersebut.
+
+- Bila bekerja sendirian, kita memperbaiki commit history sebelum pull request dibuka
+
+- Biasakan menulis dokumentasi, ini akan melatih kita membuat deskripsi pull request juga
+
+- Sempatkan untuk melakukan review pull request orang lain, agar lebih bisa merasakan kenapa pull request dengan deskripsi yang jelas itu penting
+
+Demikian artikel ini, semoga bermanfaat 🙏
