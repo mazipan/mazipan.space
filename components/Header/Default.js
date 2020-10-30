@@ -6,7 +6,7 @@ export default function Header () {
 
   return (
     <header className="header-def">
-      <h2 className="h2 text-gradient">
+      <h2 className="h2 text-gradient rubberBand">
         <Link href={`${isId ? '/' : '/en'}`}>
           <a>{'<Mazipan />'}</a>
         </Link>

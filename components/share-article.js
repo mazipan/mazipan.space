@@ -23,7 +23,7 @@ export default function ShareArticle ({ text, url }) {
   }
 
   return (
-    <div id="share-article" className="my-4 p-2 text-center border-red-600 border-dashed border-2">
+    <div id="share-article" className="my-4 p-2 text-center border-red-500 border-dashed border-4">
       <div className="mb-2">If you think this article is helpful</div>
       <div className="flex justify-center items-center">
         {isSupportWebShare ? (
@@ -58,7 +58,7 @@ export default function ShareArticle ({ text, url }) {
             title="Share to Twitter"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex justify-center items-center text-blue-400 hover:text-blue-700"
+            className="flex justify-center items-center text-red-500 rubberBand"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"

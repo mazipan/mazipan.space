@@ -9,17 +9,17 @@ export default function Intro () {
       <h1 className="h1 text-gradient">{'<Mazipan />'}</h1>
       <div>
         <Link href="/talks">
-          <a className="text-link mr-2 md:mr-4">{'Talks'}</a>
+          <a className="text-link font-bold mr-2 md:mr-4">{'Talks'}</a>
         </Link>
         <Link href="/support">
-          <a className="text-link mr-2 md:mr-4">{'Support'}</a>
+          <a className="text-link font-bold mr-2 md:mr-4">{'Support'}</a>
         </Link>
         <Link href="/about">
-          <a className="text-link mr-2 md:mr-4">{'About'}</a>
+          <a className="text-link font-bold mr-2 md:mr-4">{'About'}</a>
         </Link>
         {isId ? (
           <Link href="/en">
-            <a className="text-link">{'EN'}</a>
+            <a className="text-link font-bold">{'EN'}</a>
           </Link>
         ) : (
           <Link href="/">
