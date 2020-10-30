@@ -90,7 +90,7 @@ Untuk deploy Gridsome ke Netlify juga sangat mudah, bahkan Gridsome juga menyedi
 ---
 title: Membuat blog keren dengan Gridsome
 slug: create-awesome-blog-with-gridsome
-date: 2019-03-14
+date: '2019-03-14'
 author: mazipan
 published: true
 tags: ['Gridsome', 'JavaScript']

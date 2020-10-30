@@ -40,7 +40,20 @@
 }
 
 .markdown a[href] {
-  @apply text-indigo-700 underline italic;
+  text-decoration: none;
+  display: inline-block;
+  position: relative;
+}
+
+.markdown a[href]:before {
+  width: 100%;
+  left: 0;
+  bottom: 33px;
+  content: "";
+  display: block;
+  height: 4px;
+  position: absolute;
+  @apply bg-indigo-400 bg-opacity-75;
 }
 
 .markdown code:not([class*="language-"]) {

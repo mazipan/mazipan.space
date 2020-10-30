@@ -3,7 +3,9 @@ import Link from 'next/link'
 import DateFormatter from '@/components/date-formatter'
 import Image from 'next/image'
 
-export default function HeroPost ({ title, coverImage, date, excerpt, author, slug }) {
+export default function HeroPost ({ title, coverImage, date, excerpt, author, slug, lang }) {
+  const hrefSlug = lang === 'id' ? '/[slug]' : '/en/[slug]'
+
   return (
     <section>
       <div className="mb-8">
@@ -17,7 +19,7 @@ export default function HeroPost ({ title, coverImage, date, excerpt, author, sl
       </div>
       <div className="mb-20">
         <h3 className="mb-4 font-bold text-3xl md:text-4xl tracking-tighter leading-tight">
-          <Link as={`/${slug}`} href="/[slug]">
+          <Link as={`/${slug}`} href={hrefSlug}>
             <a className="hover:underline">{title}</a>
           </Link>
         </h3>

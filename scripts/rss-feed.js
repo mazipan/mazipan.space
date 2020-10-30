@@ -31,8 +31,8 @@ getAllPosts(
   'id'
 ).forEach((post) => {
   feed.addItem({
-    id: `${SITE_METADATA.url}${post.slug}`,
-    url: `${SITE_METADATA.url}${post.slug}`,
+    id: `${SITE_METADATA.url}/${post.slug}`,
+    url: `${SITE_METADATA.url}/${post.slug}`,
     title: post.title,
     description: `${post.excerpt} - ${SITE_METADATA.url}${post.slug}`,
     content: post.excerpt,

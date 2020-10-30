@@ -1,6 +1,8 @@
+import { useRouter } from 'next/router'
+
 const useLang = () => {
-  const isWindow = typeof window !== 'undefined'
-  const currentLang = isWindow && window.location.pathname.includes('/en') ? 'en' : 'id'
+  const router = useRouter()
+  const currentLang = router.pathname.includes('/en') ? 'en' : 'id'
 
   return {
     lang: currentLang,
