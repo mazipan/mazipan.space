@@ -48,7 +48,7 @@
 .markdown a[href]:before {
   width: 100%;
   left: 0;
-  bottom: 33px;
+  bottom: 3px;
   content: "";
   display: block;
   height: 4px;
