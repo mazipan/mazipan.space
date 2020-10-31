@@ -1,9 +1,9 @@
 import Head from 'next/head'
-import Link from 'next/link'
 
 import Container from '@/components/container'
 import List from '@/components/Post/List'
 import Header from '@/components/Header/Default'
+import Pagination from '@/components/Pagination'
 import Layout from '@/components/layout'
 
 import { getPagedPost, getAvailablePage } from '@/lib/api'
@@ -19,35 +19,7 @@ export default function PagedPost ({ data, page, next, prev }) {
           <Header />
 
           {data.length > 0 && <List posts={data} lang="id" />}
-          <div className="flex justify-between items-center mb-16">
-            {prev ? (
-              <Link as={`/page/${prev}`} href={'/page/[page]'}>
-                <a aria-label="Previous page">
-                  <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-l">
-                    &lt; Prev
-                  </button>
-                </a>
-              </Link>
-            ) : (
-              <button className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l cursor-not-allowed">
-                &lt; Prev
-              </button>
-            )}
-
-            {next ? (
-              <Link as={`/page/${next}`} href={'/page/[page]'}>
-                <a aria-label="Next page">
-                  <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-r">
-                    Next &gt;
-                  </button>
-                </a>
-              </Link>
-            ) : (
-              <button className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r  cursor-not-allowed">
-                Next &gt;
-              </button>
-            )}
-          </div>
+          <Pagination prev={prev} next={next} lang="id"/>
         </Container>
       </Layout>
     </>

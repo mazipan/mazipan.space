@@ -4,13 +4,13 @@ import Container from '@/components/container'
 import MoreStories from '@/components/more-stories'
 import HeroPost from '@/components/FeaturedPost'
 import HeaderHome from '@/components/Header/Home'
+import Pagination from '@/components/Pagination'
 import Layout from '@/components/layout'
 
-import { getAllPosts } from '@/lib/api'
+import { getPagedPost } from '@/lib/api'
 
-export default function Index ({ allPosts }) {
-  const heroPost = allPosts[0]
-  const morePosts = allPosts.slice(1)
+export default function Index ({ data }) {
+  const heroPost = data[0]
   return (
     <>
       <Layout>
@@ -30,7 +30,8 @@ export default function Index ({ allPosts }) {
               lang="id"
             />
           )}
-          {morePosts.length > 0 && <MoreStories posts={morePosts} lang="id" />}
+          <MoreStories posts={data} lang="id" />
+          <Pagination next="2" lang="id" />
         </Container>
       </Layout>
     </>
@@ -38,7 +39,7 @@ export default function Index ({ allPosts }) {
 }
 
 export async function getStaticProps () {
-  const allPosts = getAllPosts([
+  const { data } = getPagedPost([
     'title',
     'date',
     'slug',
@@ -46,9 +47,9 @@ export async function getStaticProps () {
     'coverImage',
     'excerpt',
     'tags'
-  ])
+  ], 1, 'id')
 
   return {
-    props: { allPosts }
+    props: { data }
   }
 }

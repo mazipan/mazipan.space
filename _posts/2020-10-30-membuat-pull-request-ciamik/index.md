@@ -100,17 +100,18 @@ Commit history yang acak-acakan juga bisa menimbulkan gangguan bagi si reviewer,
 
 ## Kebiasaan yang bisa meningkatkan kualitas pull request
 
-- Judul pull request umumnya secara otomatis akan mengambil dari judul commit Yang pertama dari suatu branch.
+👉  Judul pull request umumnya secara otomatis akan mengambil dari judul commit yang pertama dari suatu branch.
 Karenanya membuat judul commit yang sesuai akan mempermudah kita membuat judul pull request pula.
 
-- Biasakan membuat pull request saat sudah yakin, sudah dilakukan test sana-sini, sudah dibuatkan unit test, dan lainnya.
+👉  Biasakan membuat pull request saat sudah yakin, sudah dilakukan test sana-sini, sudah dibuatkan unit test, dan lainnya.
+
 Ini untuk mengurangi terlalu banyak perubahan yang mestinya tidak diperlukan saat pull request sudah dibuka.
 Terlalu banyak menambahkan commit baru saat pull request sudah dibuka seringkali juga akan menggangu proses diskusi pada pull request tersebut.
 
-- Bila bekerja sendirian, kita memperbaiki commit history sebelum pull request dibuka
+👉  Bila bekerja sendirian, kita memperbaiki commit history sebelum pull request dibuka
 
-- Biasakan menulis dokumentasi, ini akan melatih kita membuat deskripsi pull request juga
+👉  Biasakan menulis dokumentasi, ini akan melatih kita membuat deskripsi pull request juga
 
-- Sempatkan untuk melakukan review pull request orang lain, agar lebih bisa merasakan kenapa pull request dengan deskripsi yang jelas itu penting
+👉  Sempatkan untuk melakukan review pull request orang lain, agar lebih bisa merasakan kenapa pull request dengan deskripsi yang jelas itu penting
 
 Demikian artikel ini, semoga bermanfaat 🙏

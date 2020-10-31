@@ -1,7 +1,7 @@
 import Link from 'next/link'
+import Image from 'next/image'
 
 import DateFormatter from '@/components/date-formatter'
-import Image from 'next/image'
 
 export default function HeroPost ({ title, coverImage, date, excerpt, author, slug, lang }) {
   const hrefSlug = lang === 'id' ? '/[slug]' : '/en/[slug]'
@@ -12,7 +12,7 @@ export default function HeroPost ({ title, coverImage, date, excerpt, author, sl
         <Image
           src={coverImage}
           alt={`Cover ${title}`}
-          width={1200}
+          width={1240}
           height={500}
           className="w-full rounded-lg object-cover"
         />

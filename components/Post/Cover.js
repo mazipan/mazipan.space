@@ -9,7 +9,7 @@ export default function CoverImage ({ title, src, slug, lang }) {
     <Image
       src={src}
       alt={`Cover ${title}`}
-      width={588}
+      width={604}
       height={300}
       className={cn('', {
         'w-full rounded-t-lg object-cover': slug

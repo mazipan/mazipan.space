@@ -1,13 +1,21 @@
 import Link from 'next/link'
+import Image from 'next/image'
 
-import DateFormatter from '../components/date-formatter'
-import PostTitle from '../components/post-title'
+import DateFormatter from '@/components/date-formatter'
+import PostTitle from '@/components/post-title'
 
 export default function PostHeader ({ title, tags, coverImage, date, author }) {
   return (
     <>
       <PostTitle>{title}</PostTitle>
-      <div className="mb-6 text-lg">
+      <Image
+        src={coverImage}
+        alt={`Cover ${title}`}
+        width={1240}
+        height={500}
+        className="w-full rounded-lg object-cover"
+      />
+      <div className="mt-8 mb-6 text-lg">
         <DateFormatter dateString={date} />
         <div className="mt-4">
           {tags &&
