@@ -23,7 +23,7 @@ export default function Intro () {
           </Link>
         ) : (
           <Link href="/">
-            <a className="text-link">{'ID'}</a>
+            <a className="text-link font-bold">{'ID'}</a>
           </Link>
         )}
       </div>

@@ -31,7 +31,7 @@ export default function ShareArticle ({ text, url }) {
             href={''}
             onClick={shareMe}
             title="Share Article"
-            className="flex justify-center items-center text-blue-400 hover:text-blue-700"
+            className="flex justify-center items-center text-red-500 rubberBand"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"

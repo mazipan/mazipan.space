@@ -35,6 +35,10 @@
     {
       "source": "/s/in",
       "destination": "https://www.linkedin.com/in/mazipan/"
+    },
+    {
+      "source": "/page/1",
+      "destination": "/"
     }
   ],
   "headers": [

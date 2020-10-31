@@ -51,9 +51,10 @@ export default function Index ({ allPosts, tag }) {
                   coverImage={post.coverImage}
                   date={post.date}
                   author={post.author}
-                  slug={post.slug}
+                  slug={`en/${post.slug}`}
                   excerpt={post.excerpt}
                   tags={post.tags}
+                  lang="en"
                 />
               ))}
             </div>
@@ -65,7 +66,7 @@ export default function Index ({ allPosts, tag }) {
 }
 
 export async function getStaticProps ({ params }) {
-  const allPosts = getPostsByTag(params.tag, 'id')
+  const allPosts = getPostsByTag(params.tag, 'en')
   return {
     props: {
       allPosts,
@@ -75,7 +76,7 @@ export async function getStaticProps ({ params }) {
 }
 
 export async function getStaticPaths () {
-  const tags = getAllTags('id')
+  const tags = getAllTags('en')
 
   return {
     paths: tags.map((tag) => {

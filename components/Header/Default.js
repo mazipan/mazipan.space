@@ -13,13 +13,13 @@ export default function Header () {
       </h2>
       <div>
         <Link href="/talks">
-          <a className="text-link mr-2 md:mr-4">{'Talks'}</a>
+          <a className="text-link mr-2 md:mr-4 font-bold">{'Talks'}</a>
         </Link>
         <Link href="/support">
-          <a className="text-link mr-2 md:mr-4">{'Support'}</a>
+          <a className="text-link mr-2 md:mr-4 font-bold">{'Support'}</a>
         </Link>
         <Link href="/about">
-          <a className="text-link">{'About'}</a>
+          <a className="text-link font-bold">{'About'}</a>
         </Link>
       </div>
     </header>
