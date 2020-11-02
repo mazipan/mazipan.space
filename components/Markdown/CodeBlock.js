@@ -14,11 +14,11 @@ const calculateLinesToHighlight = (meta) => {
   }
 }
 
-function CodeBlock ({ language = null, codeString, metastring }) {
-  const shouldHighlightLine = calculateLinesToHighlight(metastring)
+function CodeBlock ({ language = null, value, node }) {
+  const shouldHighlightLine = calculateLinesToHighlight(node.meta)
 
   return (
-    <Highlight {...defaultProps} theme={theme} code={codeString} language={language}>
+    <Highlight {...defaultProps} theme={theme} code={value} language={language}>
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
         <pre className={className} style={style}>
           {tokens.map((line, i) => {
@@ -27,11 +27,14 @@ function CodeBlock ({ language = null, codeString, metastring }) {
               lineProps.className = `${lineProps.className} highlight-line`
             }
 
-            return (<div {...lineProps} key={i}>
-              {line.map((token, key) => (
-                <span {...getTokenProps({ token, key })} key={key} />
-              ))}
-            </div>)
+            return (
+              <div {...lineProps} key={i}>
+                <span className="code-line">{i + 1}</span>
+                {line.map((token, key) => (
+                  <span {...getTokenProps({ token, key })} key={key} />
+                ))}
+              </div>
+            )
           }
           )}
         </pre>

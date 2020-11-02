@@ -117,3 +117,9 @@
   padding-left: 0.75em;
   border-left: 0.3em solid #f99;
 }
+
+.code-line {
+  padding-right: 1em;
+  user-select: none;
+  opacity: 0.5;
+}

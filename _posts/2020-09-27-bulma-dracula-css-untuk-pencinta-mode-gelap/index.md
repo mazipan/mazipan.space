@@ -56,7 +56,7 @@ Kunci utama pada konfigurasi webpack saya tentu ada pada `MiniCssExtractPlugin` 
 
 Kode sederhana dari penggunakan `MiniCssExtractPlugin` adalah sebagai berikut:
 
-```javascript
+```javascript {13-16,31-34}
 // berkas: webpack.config.js
 var webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
