@@ -30,9 +30,9 @@ Kali ini saya tidak akan berbagi soal _best practice_ atau cara-cara benar yang 
 
 Ilmu hitam yang ingin saya sampaikan kali ini adalah teknik **_"Adaptive Serving"_**.
 
-Intinya adalah kita menyesuaikan kondisi, kita mengirimkan hal yang berbeda tergantung situasi dan kondisi. Kalau di kalangan penganut ilmu putih, _Adaptive Serving_ digunakan dengan mendeteksi jenis perangkat, dukungan suatun fitur ataupun tipe jaringan yang sedang digunakan. Di kalangan ilmu hitam, hal tersebut sih sebenarnya sudah wajib dikerjakan. Ada hal lain yang lebih kelam yang tidak seharusnya kita ikut-ikutan mencobanya.
+Intinya adalah kita menyesuaikan kondisi, kita mengirimkan hal yang berbeda tergantung situasi dan kondisi. Kalau di kalangan penganut ilmu putih, _Adaptive Serving_ digunakan dengan mendeteksi jenis perangkat, dukungan terhadap suatu fitur ataupun tipe jaringan yang sedang digunakan. Di kalangan ilmu hitam, hal-hal tersebut sih sebenarnya sudah wajib dikerjakan. Namun ada hal lain yang lebih kelam yang tidak seharusnya kita ikut-ikutan mencobanya.
 
-Hal tersebut yakni dengan mendeteksi apakah web kita sedang dikunjungi oleh Lighthouse atau tidak. jadi kita bisa saja menyajikan konten yang berbeda saat sedang dilakukan pengujian dengan Lighthouse dibandingkan ketika pengguna asli yang sedang berkunjung. Caranya ya dengan membaca User Agent yang dibawa.
+Hal tersebut yakni dengan mendeteksi apakah web kita sedang dikunjungi oleh Lighthouse atau tidak. Jadi kita bisa saja menyajikan konten yang berbeda saat sedang dilakukan pengujian dengan Lighthouse dibandingkan ketika pengguna asli yang sedang berkunjung. Caranya ya dengan membaca User Agent yang dibawa.
 
 Di peramban kita bisa mengecek User Agent dengan cara:
 
