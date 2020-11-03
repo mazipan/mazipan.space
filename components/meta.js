@@ -27,25 +27,26 @@ export default function Meta () {
       <meta
         name="description"
         content={SITE_METADATA.description}
+        key="description"
       />
 
       <meta property="og:site_name" content={SITE_METADATA.title} />
-      <meta property="og:image" content={`${OG_IMAGE_HOME}`} />
+      <meta key="og-image" property="og:image" content={`${OG_IMAGE_HOME}`} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
       <meta property="article:author" content={'mazipanneh'} />
       <meta property="og:type" content="article" />
-      <meta property="og:title" content={SITE_METADATA.title} />
-      <meta property="og:description" content={SITE_METADATA.description} />
-      <meta property="og:url" content={`${SITE_METADATA.url}`} />
+      <meta key="og-title" property="og:title" content={SITE_METADATA.title} />
+      <meta key="og-description" property="og:description" content={SITE_METADATA.description} />
+      <meta key="og-url" property="og:url" content={`${SITE_METADATA.url}`} />
 
-      <meta name="twitter:image" content={`${OG_IMAGE_HOME}`} />
+      <meta key="tw-image" name="twitter:image" content={`${OG_IMAGE_HOME}`} />
       <meta name="twitter:image:width" content="1200" />
       <meta name="twitter:image:height" content="630" />
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content={SITE_METADATA.title} />
-      <meta name="twitter:description" content={SITE_METADATA.description} />
-      <meta name="twitter:url" content={`${SITE_METADATA.url}`} />
+      <meta key="tw-title" name="twitter:title" content={SITE_METADATA.title} />
+      <meta key="tw-description" name="twitter:description" content={SITE_METADATA.description} />
+      <meta key="tw-url" name="twitter:url" content={`${SITE_METADATA.url}`} />
       <meta name="twitter:creator" content={'@maz_ipan'} />
     </Head>
   )
