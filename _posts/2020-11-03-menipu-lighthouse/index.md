@@ -85,7 +85,7 @@ Keliatan sudah kan, cara ampuh menipu Lighthouse dengan ilmu hitam.
 
 Catatan tambahan:
 
-- Saya tidak bertanggung jawab atas apa yang terjadi karena mengikuti artikel ini
-- Segala kerugian yang diakibatkan karena artikel ini menjadi tanggung jawab masing-masing
+- 😈  Saya tidak bertanggung jawab atas apa yang terjadi karena mengikuti artikel ini
+- 😈  Segala kerugian yang diakibatkan karena artikel ini menjadi tanggung jawab masing-masing
 
 Photo by [Kaique Rocha](https://www.pexels.com/@kaiquestr?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels) from [Pexels](https://www.pexels.com/photo/people-canon-anonymous-levitate-48013/?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels)
