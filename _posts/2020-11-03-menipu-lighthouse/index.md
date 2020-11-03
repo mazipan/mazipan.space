@@ -65,12 +65,13 @@ Jadi, mari kita santet si Lighthouse ini, lihat kode berikut:
 
 ```js
 const Home = () => {
-  const iniLighthouse = /Chrome-Lighthouse/i.test(navigator.userAgent);
+  // Cek string User Agent di peramban, apa memiliki kata "Chrome-Lighthouse" atau tidak
+  const apakahLighthouse = /Chrome-Lighthouse/i.test(navigator.userAgent);
 
   return (
     <div>
       {
-        iniLighthouse ? <KontenBohongan> : <KontenBeneran />
+        apakahLighthouse ? <KontenBohongan /> : <KontenBeneran />
       }
     </div>
   );
