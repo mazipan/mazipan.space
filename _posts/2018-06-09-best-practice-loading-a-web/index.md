@@ -4,7 +4,7 @@ date: '2018-06-09'
 excerpt: Berbagai best practice yang bisa kita pelajari dan optimalkan dalam memuat halaman website
 author: mazipan
 published: true
-tags: [web]
+tags: [web-perf]
 coverImage: /thumbnail/best-practice-loading-a-web/devtools.png
 lang: id
 enready: false

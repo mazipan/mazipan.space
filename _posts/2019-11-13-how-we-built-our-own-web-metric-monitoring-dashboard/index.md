@@ -4,7 +4,7 @@ date: '2019-11-13'
 excerpt: Cerita kami di Tokopedia dalam membangun dashboard pemantau metrik web dalam rangka membudayakan kepedulian mengenai performa web
 author: mazipan
 published: true
-tags: [lesson-learned]
+tags: [lesson-learned, web-perf]
 coverImage: /thumbnail/how-we-built-our-own-web-metric-monitoring-dashboard/luke-chesser-JKUTrJ4vK00-unsplash.jpg
 imageCaption: Image by Luke Chesser on Unsplash
 lang: id
@@ -255,6 +255,6 @@ Sayangnya, dari Lighthouse kita hanya mendapatkan data mengenai `resourceSize` (
 Kalian mungkin tidak perlu membangun alat pantau kalian sendiri seperti yang kami kerjakan, berikut saya sertakan beberapa alternatif yang bisa kalian gunakan:
 
 - [Sitespeed.io](https://www.sitespeed.io/) - Gratis dan bisa dipasang di server sendiri
-- Threo.sh - Gratis dan ada versi berbayar
+- [Treo.sh](https://treo.sh/) - Gratis dan ada versi berbayar
 - Lighthouse CI - Gratis
 - WebPageTest.org - Gratis
