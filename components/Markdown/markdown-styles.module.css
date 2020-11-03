@@ -75,5 +75,5 @@
 }
 
 .markdown blockquote {
-  @apply bg-red-100 text-red-700 p-4 rounded-lg;
+  @apply bg-red-100 text-red-700 p-2 rounded-lg;
 }
