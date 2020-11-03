@@ -26,31 +26,25 @@ export default function Post ({ post, morePosts, preview }) {
       <LayoutArticle preview={preview}>
         <>
           <Head>
-            <title>{post.title} | mazipan.space</title>
-            <meta name="description" content={post.excerpt} />
-            <meta name="keywords" content={post.tags.join(',')} />
+            <title key="title">{post.title} | mazipan.space</title>
+            <meta key="description" name="description" content={post.excerpt} />
 
-            <meta property="og:site_name" content={SITE_METADATA.title} />
-            <meta property="og:image" content={`${SITE_METADATA.url}${post.coverImage}`} />
-            <meta property="og:image:width" content="1200" />
-            <meta property="og:image:height" content="630" />
-            <meta property="article:author" content={'mazipanneh'} />
-            <meta property="article:tag" content={`${post.tags[0]}`} />
-            <meta property="og:type" content="article" />
-            <meta property="og:title" content={post.title} />
-            <meta property="og:description" content={post.excerpt} />
-            <meta property="og:url" content={`${SITE_METADATA.url}/en/${post.slug}`} />
+            <meta key="article-author" property="article:author" content={'mazipanneh'} />
+            <meta key="article-tag" property="article:tag" content={`${post.tags[0]}`} />
 
-            <meta name="twitter:image" content={`${SITE_METADATA.url}${post.coverImage}`} />
-            <meta name="twitter:image:width" content="1200" />
-            <meta name="twitter:image:height" content="630" />
-            <meta name="twitter:card" content="summary_large_image" />
-            <meta name="twitter:title" content={post.title} />
-            <meta name="twitter:description" content={post.excerpt} />
-            <meta name="twitter:url" content={`${SITE_METADATA.url}/en/${post.slug}`} />
-            <meta name="twitter:creator" content={'@maz_ipan'} />
-            <meta name="twitter:label1" content="Under tag" />
-            <meta name="twitter:data1" content={`${post.tags[0]}`} />
+            <meta key="og-image" property="og:image" content={`${SITE_METADATA.url}${post.coverImage}`} />
+            <meta key="og-type" property="og:type" content="article" />
+            <meta key="og-title" property="og:title" content={post.title} />
+            <meta key="og-description" property="og:description" content={post.excerpt} />
+            <meta key="og-url" property="og:url" content={`${SITE_METADATA.url}/en/${post.slug}`} />
+
+            <meta key="tw-image" name="twitter:image" content={`${SITE_METADATA.url}${post.coverImage}`} />
+            <meta key="tw-title" name="twitter:title" content={post.title} />
+            <meta key="tw-description" name="twitter:description" content={post.excerpt} />
+            <meta key="tw-url" name="twitter:url" content={`${SITE_METADATA.url}/en/${post.slug}`} />
+            <meta key="tw-creator" name="twitter:creator" content={'@maz_ipan'} />
+            <meta key="tw-label1" name="twitter:label1" content="Under tag" />
+            <meta key="tw-data1" name="twitter:data1" content={`${post.tags[0]}`} />
           </Head>
           <PostHeader
             title={post.title}
