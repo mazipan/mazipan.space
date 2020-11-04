@@ -13,7 +13,7 @@ import MoreStories from '@/components/more-stories'
 
 import LayoutArticle from '@/components/layout-article'
 
-import { getPostBySlug, getAllPosts, getPostsByTag } from '@/lib/api'
+import { getPostBySlug, getAllPosts, getRelatedPost } from '@/lib/api'
 import { SITE_METADATA } from '@/lib/constants'
 
 export default function Post ({ post, related, preview }) {
@@ -77,7 +77,7 @@ export async function getStaticProps ({ params }) {
     'en'
   )
 
-  const relatedPost = getPostsByTag(post.tags[0], 'id')
+  const related = getRelatedPost(post.tags[0], post.slug, 'en')
 
   return {
     props: {
@@ -85,7 +85,7 @@ export async function getStaticProps ({ params }) {
         ...post,
         content: post.content
       },
-      related: relatedPost.slice(0, 2)
+      related
     }
   }
 }
