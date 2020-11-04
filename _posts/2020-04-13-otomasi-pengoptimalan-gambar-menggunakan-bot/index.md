@@ -4,6 +4,7 @@ date: '2020-04-13'
 excerpt: Hal mudah yang saya lakukan pada blog pribadi agar gambar yang dikirimkan sudah teroptimalkan dengan baik dengan cara yang mudah
 author: mazipan
 published: true
+featured: false
 tags: [image-opt, open-source]
 coverImage: /thumbnail/otomasi-pengoptimalan-gambar-menggunakan-bot/optimize-image.jpg
 lang: id

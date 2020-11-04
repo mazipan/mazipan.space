@@ -4,6 +4,7 @@ date: '2020-05-04'
 excerpt: Bagaimana saya membuat like button untuk blog ini tanpa perlu modal server
 author: mazipan
 published: true
+featured: false
 tags: [now, javascript]
 coverImage: /thumbnail/membuat-like-button-tanpa-modal/membuat-tombol-like.jpg
 lang: id

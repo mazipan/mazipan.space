@@ -4,6 +4,7 @@ date: '2019-11-13'
 excerpt: Story from Tokopedia web platform team in building an in-house web metric monitoring dashboard for not just make a  fast web but keep that page in fast mode
 author: mazipan
 published: true
+featured: false
 tags: [lesson-learned, web-perf]
 coverImage: /thumbnail/how-we-built-our-own-web-metric-monitoring-dashboard/luke-chesser-JKUTrJ4vK00-unsplash.jpg
 imageCaption: Image by Luke Chesser on Unsplash

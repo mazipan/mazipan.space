@@ -5,6 +5,7 @@ minute2read: 15
 excerpt: Berbagai pelajaran yang kami dapat saat membangun microsite untuk acara ulang tahun Tokopedia ke-10
 author: mazipan
 published: true
+featured: false
 tags: [programming, lesson-learned]
 coverImage: /thumbnail/lesson-learned-from-building-tokopedia-anniv-microsite/tokopedia-anniv.png
 lang: id

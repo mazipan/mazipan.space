@@ -4,6 +4,7 @@ date: '2020-07-08'
 excerpt: Berbagai best practice yang bisa kita pelajari dan optimalkan dalam memuat halaman website
 author: mazipan
 published: true
+featured: false
 tags: [open-source]
 coverImage: /thumbnail/ajari-koding-bukan-sekedar-awesome-list/ajari-koding.png
 lang: id

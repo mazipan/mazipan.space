@@ -7,10 +7,9 @@ import HeaderHome from '@/components/Header/Home'
 import Pagination from '@/components/Pagination'
 import Layout from '@/components/layout'
 
-import { getPagedPost } from '@/lib/api'
+import { getPagedPost, getFeaturedPost } from '@/lib/api'
 
-export default function Index ({ data }) {
-  const heroPost = data[0]
+export default function Index ({ data, featured }) {
   return (
     <>
       <Layout>
@@ -19,14 +18,14 @@ export default function Index ({ data }) {
         </Head>
         <Container>
           <HeaderHome />
-          {heroPost && (
+          {featured && (
             <HeroPost
-              title={heroPost.title}
-              coverImage={heroPost.coverImage}
-              date={heroPost.date}
-              author={heroPost.author}
-              slug={`en/${heroPost.slug}`}
-              excerpt={heroPost.excerpt}
+              title={featured.title}
+              coverImage={featured.coverImage}
+              date={featured.date}
+              author={featured.author}
+              slug={`en/${featured.slug}`}
+              excerpt={featured.excerpt}
               lang="en"
             />
           )}
@@ -39,6 +38,17 @@ export default function Index ({ data }) {
 }
 
 export async function getStaticProps () {
+  const { data: featured } = getFeaturedPost([
+    'title',
+    'date',
+    'slug',
+    'author',
+    'featured',
+    'coverImage',
+    'excerpt',
+    'tags'
+  ], 'en')
+
   const { data } = getPagedPost([
     'title',
     'date',
@@ -50,6 +60,6 @@ export async function getStaticProps () {
   ], 1, 'en')
 
   return {
-    props: { data }
+    props: { data, featured }
   }
 }

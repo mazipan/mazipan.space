@@ -4,6 +4,7 @@ date: '2020-05-03'
 excerpt: Bagaimana membuat sitemap dengan lebih baik, lebih optimal dan tertata rapi untuk projek Nuxt
 author: mazipan
 published: true
+featured: false
 tags: [vue, web]
 coverImage: /thumbnail/advance-sitemap-di-projek-nuxt/advance-sitemap-nuxtjs.png
 lang: id

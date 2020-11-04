@@ -75,5 +75,9 @@
 }
 
 .markdown blockquote {
-  @apply bg-red-100 text-red-700 p-2 rounded-lg;
+  @apply bg-indigo-100 text-indigo-700 px-4 py-2 rounded-lg border-indigo-500 border-dashed border-4;
+}
+
+.markdown blockquote p {
+  @apply m-0;
 }

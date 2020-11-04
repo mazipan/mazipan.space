@@ -5,6 +5,7 @@ minute2read: 20
 excerpt: Menceritakan bagaimana cara membuat AMP Pages untuk blog kalian dengan framework Nuxt.js
 author: mazipan
 published: true
+featured: false
 tags: [nuxt, amp]
 coverImage: /thumbnail/generate-amp-pages-in-nuxtjs/amp.jpg
 lang: id

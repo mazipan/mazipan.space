@@ -4,6 +4,7 @@ date: '2019-10-28'
 excerpt: Story telling about Micro-Frontend from both sides, the benefits and the problems
 author: mazipan
 published: true
+featured: false
 tags: [web, programming]
 coverImage: /thumbnail/you-might-not-need-microfe/microfe.png
 lang: en
@@ -132,4 +133,4 @@ Learn to looking from both sides of view, the good one and the bad one.
 - [micro-frontends.org](https://micro-frontends.org/)
 - [martinfowler.com](https://martinfowler.com/articles/micro-frontends.html)
 
-### May useful for you...
+

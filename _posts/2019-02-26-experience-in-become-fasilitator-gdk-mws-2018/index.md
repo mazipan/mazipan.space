@@ -5,6 +5,7 @@ minute2read: 10
 excerpt: Berbagi pengalaman bagaimana ketika saya menjadi fasilitator pada program Google Developer Kejar - Mobile Web Specialis tahun 2018
 author: mazipan
 published: true
+featured: false
 tags: [experience]
 coverImage: /thumbnail/experience-in-become-fasilitator-gdk-mws-2018/gdk-mws-dev-showcase.jpg
 lang: id

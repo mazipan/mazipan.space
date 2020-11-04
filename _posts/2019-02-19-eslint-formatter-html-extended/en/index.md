@@ -4,6 +4,7 @@ date: '2019-02-19'
 excerpt: Why we decide to extend an official ESLint's HTML formatter
 author: mazipan
 published: true
+featured: false
 tags: [javascript, eslint]
 coverImage: /thumbnail/eslint-formatter-html-extended/eslint-html.png
 lang: en
@@ -47,4 +48,4 @@ $ eslint --ext .js . -f html-extended -o eslint-report.html
 
 This formatter is published as open source that you can see in [Github repository ↗️](https://github.com/mazipan/eslint-formatter-html-extended), feel free to fork or submit a new issue.
 
-### May useful for you...
+

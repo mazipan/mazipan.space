@@ -5,6 +5,7 @@ minute2read: 10
 excerpt: Menceritakan bagaimana rasanya mencicipi sintaksis ReasonML untuk membangun antarmuka sebuah website
 author: mazipan
 published: true
+featured: false
 tags: [javascript, react, reasonml]
 coverImage: /thumbnail/tasting-reasonml-for-react/reasonml-users.png
 lang: id

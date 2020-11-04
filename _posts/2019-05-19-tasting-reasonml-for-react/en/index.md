@@ -5,6 +5,7 @@ minute2read: 10
 excerpt: Story telling in how it feels to taste ReasonML syntax to build the user interface of a website
 author: mazipan
 published: true
+featured: false
 tags: [javascript, react, reasonml]
 coverImage: /thumbnail/tasting-reasonml-for-react/reasonml-users.png
 lang: en
@@ -117,4 +118,4 @@ Later I will update this post if I have found the right reference for this.
 
 [https://github.com/mazipan/ghibli-reasonreact ↗️](https://github.com/mazipan/ghibli-reasonreact)
 
-### May useful for you...
+

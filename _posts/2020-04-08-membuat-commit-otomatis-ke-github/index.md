@@ -4,6 +4,7 @@ date: '2020-04-08'
 excerpt: Bagaimana saya membuat commit otomatis menggunakan Github Actions
 author: mazipan
 published: true
+featured: false
 tags: [programming]
 coverImage: /thumbnail/membuat-commit-otomatis-ke-github/membuat-commit-otomatis.jpg
 imageCaption: Gambar dibuat dengan Pixlr

@@ -4,6 +4,7 @@ date: '2019-11-13'
 excerpt: Cerita kami di Tokopedia dalam membangun dashboard pemantau metrik web dalam rangka membudayakan kepedulian mengenai performa web
 author: mazipan
 published: true
+featured: false
 tags: [lesson-learned, web-perf]
 coverImage: /thumbnail/how-we-built-our-own-web-metric-monitoring-dashboard/luke-chesser-JKUTrJ4vK00-unsplash.jpg
 imageCaption: Image by Luke Chesser on Unsplash

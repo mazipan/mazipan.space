@@ -5,6 +5,7 @@ minute2read: 20
 excerpt: Langkah-langkah memasang dan melakukan testing pada kode Vue.js dan Nuxt.js dengan belajar dari berbagai kasus yang terjadi pada proyek nyata
 author: mazipan
 published: true
+featured: false
 tags: [javascript, testing]
 coverImage: /thumbnail/unit-testing-guide-in-vuejs/commitstrip.jpg
 lang: id

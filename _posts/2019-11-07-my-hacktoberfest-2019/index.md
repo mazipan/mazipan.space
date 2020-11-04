@@ -4,6 +4,7 @@ date: '2019-11-07'
 excerpt: My hacktoberfest 2019 story
 author: mazipan
 published: true
+featured: false
 tags: [experience]
 coverImage: /thumbnail/my-hacktoberfest-2019/hacktoberfest.png
 lang: id

@@ -5,6 +5,7 @@ minute2read: 15
 excerpt: Lessons we learned as a team when building a microsite for Tokopedia 10th Anniversary
 author: mazipan
 published: true
+featured: false
 tags: [programming, lesson-learned]
 coverImage: /thumbnail/lesson-learned-from-building-tokopedia-anniv-microsite/tokopedia-anniv.png
 lang: en
@@ -121,4 +122,4 @@ Untuk membuat Service Worker kami menggunakan [Workbox ↗️](https://developer
 - Melakukan kesalahan bukanlah hal yang haram dalam startup yang memiliki _hyper growth_, pastikan kita belajar dari setiap kesalahan yang dialami.
 - GTM (Google Tag Manager) bisa jadi sangat _powerfull_, tapi bisa jadi beban besar ketika tidak dikelola dengan tepat guna.
 
-### May useful for you...
+

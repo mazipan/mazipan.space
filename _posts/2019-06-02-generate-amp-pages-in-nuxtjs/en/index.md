@@ -5,6 +5,7 @@ minute2read: 20
 excerpt: How to generate AMP Pages for your blog using Nuxt.js
 author: mazipan
 published: true
+featured: false
 tags: [nuxt, amp]
 coverImage: /thumbnail/generate-amp-pages-in-nuxtjs/amp.jpg
 lang: en
@@ -385,4 +386,4 @@ Not all AMP can be shown in Google Search result, only the valid pages that can 
 
 [https://github.com/mazipan/blog-2.0 ↗️](https://github.com/mazipan/blog-2.0)
 
-### May useful for you...
+

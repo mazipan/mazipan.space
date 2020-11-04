@@ -5,6 +5,7 @@ minute2read: 10
 excerpt: Menceritakan bagaimana pekerjaan saya sehari-hari yang seringkali berhadapan dengan keharusan untuk menghapus kode orang lain
 author: mazipan
 published: true
+featured: false
 tags: [programming]
 coverImage: /thumbnail/the-art-of-deleting-and-updating-the-code/quadran.png
 lang: id

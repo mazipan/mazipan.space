@@ -4,6 +4,7 @@ date: '2019-11-15'
 excerpt: Cerita panjang perjalanan hidup dan karir saya sampai bisa menjadi programmer di beberapa peruasahaan teknologi besar di Indonesia
 author: mazipan
 published: true
+featured: false
 tags: [life-experience]
 coverImage: /thumbnail/cerita-saya-menjadi-programmer/mazipan-bizzy.jpeg
 lang: id

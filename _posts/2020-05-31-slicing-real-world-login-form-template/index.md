@@ -4,6 +4,7 @@ date: '2020-05-31'
 excerpt: Projek untuk slicing berbagai login form dari website populer dari 0 tanpa framework CSS
 author: mazipan
 published: true
+featured: false
 tags: [programming]
 coverImage: /thumbnail/slicing-real-world-login-form-template/login-css-screenshoot.png
 lang: id

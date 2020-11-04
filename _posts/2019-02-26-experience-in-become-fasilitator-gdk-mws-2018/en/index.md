@@ -5,6 +5,7 @@ minute2read: 10
 excerpt: Share my experiences when I became a facilitator in the Google Developer Kejar program for Mobile Web Specialist in 2018
 author: mazipan
 published: true
+featured: false
 tags: [experience]
 coverImage: /thumbnail/experience-in-become-fasilitator-gdk-mws-2018/gdk-mws-dev-showcase.jpg
 lang: en
@@ -74,4 +75,4 @@ I also struggle to maintain the enthusiasm of friends in the group to learn new 
 
 > That is a bit of a bitter sweet story from me personally when participating in the 2018 Google Developer Kejar program, all the things I wrote above are my opinions and are not related to any party. Because it is based on personal opinion, it does not make this article true in all efforts. This article is intended for the learning process for us together and is not offered to cancel an institution or a person.
 
-### May useful for you...
+

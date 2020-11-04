@@ -5,6 +5,7 @@ minute2read: 10
 excerpt: Story telling about the steps that I worked on when migrating the Nuxt project from using vanilla JavaScript to using TypeScript
 author: mazipan
 published: true
+featured: true
 tags: [nuxt, typescript]
 coverImage: /thumbnail/migrate-nuxt-to-typescript/quran-offline.png
 lang: en
@@ -289,4 +290,4 @@ module.exports = {
 
 [🐙 https://github.com/mazipan/quran-offline ↗️](https://github.com/mazipan/quran-offline)
 
-### May useful for you...
+

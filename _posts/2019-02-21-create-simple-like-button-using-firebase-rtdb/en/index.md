@@ -4,6 +4,7 @@ date: '2019-02-21'
 excerpt: Sharing experiences using Firebase Realtime Database to make simple button likes as seen in Blog 2.0
 author: mazipan
 published: true
+featured: false
 tags: [firebase, nuxt, javascript]
 coverImage: /thumbnail/create-simple-like-button-using-firebase-rtdb/create-like-button-with-firebase-rtdb.jpg
 lang: en
@@ -213,4 +214,4 @@ In [Travis CI ↗️](https://travis-ci.org) we can also adjust various variable
 
 ![Travis CI Environment Variable](/thumbnail/create-simple-like-button-using-firebase-rtdb/travis-ci-env.png)
 
-### May useful for you...
+

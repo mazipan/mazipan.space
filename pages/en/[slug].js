@@ -9,13 +9,14 @@ import PostHeader from '@/components/post-header'
 import InfoBox from '@/components/InfoBox'
 import CommentBox from '@/components/comment-box'
 import ShareArticle from '@/components/share-article'
+import MoreStories from '@/components/more-stories'
 
 import LayoutArticle from '@/components/layout-article'
 
-import { getPostBySlug, getAllPosts } from '@/lib/api'
+import { getPostBySlug, getAllPosts, getPostsByTag } from '@/lib/api'
 import { SITE_METADATA } from '@/lib/constants'
 
-export default function Post ({ post, morePosts, preview }) {
+export default function Post ({ post, related, preview }) {
   const router = useRouter()
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />
@@ -62,6 +63,7 @@ export default function Post ({ post, morePosts, preview }) {
           <MarkdownParser content={post.content} />
           <ShareArticle text={post.title} url={`${SITE_METADATA.url}/en/${post.slug}`} />
           <CommentBox />
+          <MoreStories posts={related} lang="en" />
         </>
       </LayoutArticle>
     </>
@@ -75,12 +77,15 @@ export async function getStaticProps ({ params }) {
     'en'
   )
 
+  const relatedPost = getPostsByTag(post.tags[0], 'id')
+
   return {
     props: {
       post: {
         ...post,
         content: post.content
-      }
+      },
+      related: relatedPost.slice(0, 2)
     }
   }
 }

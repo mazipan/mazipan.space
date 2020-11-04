@@ -4,6 +4,7 @@ date: '2020-08-04'
 excerpt: Membicarakan mengenai bagaimana seharusnya code splitting itu dilakukan dalam ranah dunia frontend
 author: mazipan
 published: true
+featured: false
 tags: [javascript]
 coverImage: /thumbnail/kesalahpahaman-mengenai-code-splitting/pizza-slice.jpg
 lang: id

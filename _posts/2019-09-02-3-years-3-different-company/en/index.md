@@ -4,6 +4,7 @@ date: '2019-09-02'
 excerpt: Story about my last 3 years experience, especially when moving from one to another company
 author: mazipan
 published: true
+featured: false
 tags: [non-technical, lesson-learned]
 coverImage: /thumbnail/3-years-3-different-company/lion-nTfGYGPURFA.jpg
 lang: en
@@ -83,4 +84,4 @@ Always think about it as many times possible before there is a desire to change 
 
 > "Die First, Then Quit" -- Don't go out, before you give your best. If all your energy has been mobilized and the results are still not happy for you, then maybe it's time for you to go out.
 
-### May useful for you...
+

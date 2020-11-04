@@ -4,6 +4,7 @@ date: '2019-12-05'
 excerpt: Cerita bagaimana saya bergumul dengan berbagai komunitas teknologi di Indonesia
 author: mazipan
 published: true
+featured: false
 tags: [life-experience]
 coverImage: /thumbnail/saya-dan-komunitas-programming/meetup-jakartajs.jpg
 lang: id

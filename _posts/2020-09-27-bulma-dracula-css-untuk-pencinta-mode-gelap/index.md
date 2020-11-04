@@ -4,6 +4,7 @@ date: '2020-09-27'
 excerpt: Menceritakan bagaimana Bulma Dracula dibangun
 author: mazipan
 published: true
+featured: false
 tags: [web]
 coverImage: /thumbnail/bulma-dracula-css-untuk-pencinta-mode-gelap/bulma-dracula.png
 lang: id

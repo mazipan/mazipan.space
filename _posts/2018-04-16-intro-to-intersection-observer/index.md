@@ -4,6 +4,7 @@ date: '2018-04-16'
 excerpt: Mengupas sedikit banyak hal mengenai Intersection Observer dengan berbagai contoh kasus di lapangan
 author: mazipan
 published: true
+featured: false
 tags: [web]
 coverImage: /thumbnail/intro-to-intersection-observer/intersection-observer.jpg
 lang: id

@@ -4,6 +4,7 @@ date: '2019-09-02'
 excerpt: Cerita mengenai pengalaman saya 3 tahun terakhir, terutama bagaimana saya berpindah dari satu perusahaan ke perusahaan lain
 author: mazipan
 published: true
+featured: false
 tags: [non-technical, lesson-learned]
 coverImage: /thumbnail/3-years-3-different-company/lion-nTfGYGPURFA.jpg
 lang: id

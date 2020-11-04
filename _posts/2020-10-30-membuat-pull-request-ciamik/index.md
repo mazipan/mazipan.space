@@ -4,6 +4,7 @@ date: '2020-10-31'
 excerpt: Bagaimana sih cara-cara membuat pull request yang sedap dipandang mata?
 author: mazipan
 published: true
+featured: false
 tags: [open-source]
 coverImage: /thumbnail/membuat-pull-request-ciamik/you-shall-not-merge.png
 lang: id

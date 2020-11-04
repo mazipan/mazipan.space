@@ -4,6 +4,7 @@ date: '2020-11-03'
 excerpt: Cara jahat menipu alat pengukur performa web Lighthouse
 author: mazipan
 published: true
+featured: false
 tags: [web-perf]
 coverImage: /thumbnail/menipu-lighthouse/pexels-kaique-rocha-48013.jpg
 lang: id

@@ -4,6 +4,7 @@ date: '2019-02-19'
 excerpt: Alasan mengapa kami memutuskan untuk mengeksten HTML Formatter resmi ESLint
 author: mazipan
 published: true
+featured: false
 tags: [javascript, eslint]
 coverImage: /thumbnail/eslint-formatter-html-extended/eslint-html.png
 lang: id

@@ -4,6 +4,7 @@ date: '2019-12-06'
 excerpt: Beberapa saran dan tips mengenai memulai untuk mengisi tech talk berdasarkan pengalaman yang saya dapatkan selama ini
 author: mazipan
 published: true
+featured: false
 tags: [tips]
 coverImage: /thumbnail/ingin-menjadi-pembicara-di-tech-talk-mulai-dari-mana/tech-talk-mazipan.png
 lang: id

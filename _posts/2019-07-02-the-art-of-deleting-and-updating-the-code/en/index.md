@@ -5,6 +5,7 @@ minute2read: 10
 excerpt: Story telling about my daily job to deleting my peer's code
 author: mazipan
 published: true
+featured: false
 tags: [programming]
 coverImage: /thumbnail/the-art-of-deleting-and-updating-the-code/quadran.png
 lang: en
@@ -78,5 +79,3 @@ The world of technology is developing very fast, there are just breakthroughs an
 Stay updated with the latest developments, don't feel upset when you have to delete and update your code. If you don't do it, someone will have to do it sometime. There is no need to delete and update our code of our previous results, because it could be that it is the best so it must be taken. There is no need to blame the previous programmer for his code either, just assume that every solution really is the best solution he decided to be used.
 
 Keep learning, because it is a process that is increasingly making us big, making us stay afloat and compete in a world with rapid change.
-
-### May it be usefull for you...

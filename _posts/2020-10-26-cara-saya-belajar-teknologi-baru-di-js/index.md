@@ -4,6 +4,7 @@ date: '2020-10-26'
 excerpt: Berbagi cerita mengenai bagaimana saya belajar teknologi baru di JavaScript agar tetap relevan
 author: mazipan
 published: true
+featured: false
 tags: [javascript]
 coverImage: /thumbnail/cara-saya-belajar-teknologi-baru-di-js/pexels-andrea-piacquadio-3768129.jpg
 lang: id

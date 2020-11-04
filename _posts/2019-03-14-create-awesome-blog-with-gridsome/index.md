@@ -4,6 +4,7 @@ date: '2019-03-14'
 excerpt: Bagaimana memulai membuat Blog statis keren menggunakan Vue.js static site generator Gridsome dalam waktu yang singkat
 author: mazipan
 published: true
+featured: false
 tags: [vue, gridsome]
 coverImage: /thumbnail/create-awesome-blog-with-gridsome/how-it-works.png
 lang: id
@@ -93,10 +94,12 @@ slug: create-awesome-blog-with-gridsome
 date: '2019-03-14'
 author: mazipan
 published: true
+featured: false
 tags: ['Gridsome', 'JavaScript']
 cover_coverImage: ./images/logo-poster.png
 canonical_url: false
 published: true
+featured: false
 excerpt: Bagaimana memulai membuat Blog statis keren menggunakan Vue.js static site generator Gridsome dalam waktu yang singkat
 ---
 
