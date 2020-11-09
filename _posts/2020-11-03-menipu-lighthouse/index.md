@@ -11,6 +11,8 @@ lang: id
 enready: false
 ---
 
+## Mengenai Lighthouse
+
 [Lighthouse](https://github.com/GoogleChrome/lighthouse) adalah salah satu alat ukur kecepatan waktu muat sebuah web yang banyak digunakan oleh para pengembang web. Hal ini semakin menjadi dengan keputusan peramban Chrome yang menjadikan Lighthouse menempel secara bawaan di DevTools mereka, menyusul kemudian alat ukur lain yang menjadikan Lighthouse sebagai tenaga dibelakang layar mereka, sebut saja [Web.dev/measure](https://web.dev/measure/), [PageSpeed Insight](https://developers.google.com/speed/pagespeed/insights/), [Treo.sh](https://treo.sh/), [Sitespeed.io](https://www.sitespeed.io/), bahkan [Webpagetest.org](https://www.webpagetest.org/) pun kini menggunakan Lighthouse sebagai tambahan tenaga disamping tenaga utama yang mungkin sudah mereka buat sendiri sebelumnya.
 
 Dengan banyaknya alat ukur yang terintegrasi dengan Lighthouse dan semakin banyaknya pengembang web yang mulai peduli soal kecepatan waktu muat pada web yang mereka bangun, maka semakin banyak pula bertebaran mengenai cara bagaimana cara "cepat" mempercepat website mereka.
@@ -26,6 +28,8 @@ Cukup rumit ya? Ya memang begitu lah, itu kenapa banyak yang memilih menggunakan
 Ini baru urusan gambar, bagaimana dengan JavaScript? Idealnya kan harus di pecah-pecah, atau bahasa kerennya [Code Splitting](/kesalahpahaman-mengenai-code-splitting). Pembahasannya sih seringkali mudah, intinya jangan memuat script yang tidak dibutuhkan, kalian harus memecah script tersebut ke `bundle` terpisah bisa tidak dibutuhkan pada saat pertama kali dikunjungi. Sayangnya prakteknya seringkali tidak semudah itu. Belum lagi kalau sudah urusan kode _third party_ atau pustaka yang digunakan bersama-sama oleh beberapa halaman, makin ribet lagi cara memecahnya.
 
 Biarpun susah dan rumit prakteknya, tapi menurut saya pribadi sih justru disitu letak seninya, kalau gampang dan mudah dikerjakan oleh semua orang, ya gak perlu pamer juga lah kalau skornya bagus. Buat apa? Lha wong gak ada usahanya. Bandingkan kalau sudah berdarah-darah mengerjakannya, terus mendapati kenaikan meskipun sedikit, hal tersebut adalah kepuasan tersendiri bagi kita yang mengerjakannya.
+
+## Tabir ilmu hitam
 
 Kali ini saya tidak akan berbagi soal _best practice_ atau cara-cara benar yang bisa kalian kerjakan untuk memperbaiki skor performa web kalian, saya akan berbagi mengenai ilmu hitam yang seharusnya jangan kalian lakukan kalau tidak kepepet atau dipepet boss kalian 😂.
 
@@ -82,6 +86,21 @@ export default Home;
 ```
 
 Keliatan sudah kan, cara ampuh menipu Lighthouse dengan ilmu hitam.
+
+## Kasus yang cocok
+
+Saya bilang ini ilmu hitam karena rentan sekali dimanfaatkan dengan sembarangan, tapi pun pisau tidak selalu berbahaya bila dipegang oleh oleh orang yang tepat bukan?
+
+Cara ini sesungguhnya memang memiliki contoh kasus yang sesuai untuk diaplikasikan, beberapa diantaranya:
+
+👉  **Menghilangkan gangguan**, pada projek nyata seringkali kita dihadapkan pada berbagai komponen yang seringkali muncul di kunjungan pertama, misalnya popup penawaran newsletter, atau modal dialog sebuah promo kalau di situs e-commerce. 
+Hal-hal seperti itu seringkali mengganggu pengecekan dengan Lighthouse sehingga akan lebih baik kalau dihilangkan pada saat pengetesan dijalankan.
+
+👉  **Melangkahi suatu proses**, ada kalanya terdapat prasyarat untuk bisa mengunjungi suatu halaman, misalnya dibutuhkan proses otentikasi atau lainnya.
+Proses ini bisa saja kita langkahi dengan membaca User Agent si Lighthouse serta menambahkan parameter tidak lazim yang sulit tertebak sebagai tambahan.
+
+Meskipun begitu, kita mesti bijak menggunakannya, jangan karena bisa dan karena tau caranya maka semua hal dihilangkan.
+Ini termasuk cara curang, namun kalau si boss terus menanyakan mengenai peningkatan yang sudah tidak masuk akal, mungkin memang sudah saatnya mengeluarkan jurus terakhir, ilmu hitam 😈
 
 > Cara ini tidak seharusnya kalian gunakan, karena buat apa skor Lighthouse bagus tapi pengguna kalian sebenarnya tetap merana?
 
