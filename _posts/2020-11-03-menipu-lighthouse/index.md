@@ -104,9 +104,10 @@ Ini termasuk cara curang, namun kalau si boss terus menanyakan mengenai peningka
 
 > Cara ini tidak seharusnya kalian gunakan, karena buat apa skor Lighthouse bagus tapi pengguna kalian sebenarnya tetap merana?
 
-Catatan tambahan:
+**_Catatan tambahan:_**
 
-- 😈  Saya tidak bertanggung jawab atas apa yang terjadi karena mengikuti artikel ini
-- 😈  Segala kerugian yang diakibatkan karena artikel ini menjadi tanggung jawab masing-masing
+🏃  Saya tidak bertanggung jawab atas apa yang terjadi karena mengikuti artikel ini
+
+🤸  Segala kerugian yang diakibatkan karena artikel ini menjadi tanggung jawab masing-masing
 
 Photo by [Kaique Rocha](https://www.pexels.com/@kaiquestr?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels) from [Pexels](https://www.pexels.com/photo/people-canon-anonymous-levitate-48013/?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels)
