@@ -181,3 +181,7 @@ Query tersebut akan menghasilkan balikan sebagai berikut:
   }
 }
 ```
+
+Tentunya masih banyak kekurangan di sana-sini, apalagi memang ini saya tujukan untuk penggunaan pribadi sesuai dengan kasus yang saya temui.
+Itu mengapa hanya sedikit yang saya dukung dari versi aslinya yang memiliki banyak sekali data.
+Jika kalian merasa membutuhkan tambahan data, silahkan berkontribusi langsung ke repository yang tersedia bebas di Github saya: [graphql-pokeapi](https://github.com/mazipan/graphql-pokeapi)
