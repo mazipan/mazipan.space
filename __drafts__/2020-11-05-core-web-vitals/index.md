@@ -1,7 +1,7 @@
 ---
 title: Core Web Vitals
 date: '2020-11-05'
-excerpt: Cara jahat menipu alat pengukur performa web Lighthouse
+excerpt: Membahas mengenai core web vital di urusan performa web
 author: mazipan
 published: true
 featured: false
