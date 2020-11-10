@@ -36,7 +36,7 @@ Karena saya sudah memiliki kode dari versi sebelumnya jadi mudah saja untuk memi
 
 GraphQL Playground bisa dijumpai di [GraphQL-PokeAPI](https://graphql-pokeapi.vercel.app/api/graphql), dengan mengunjungi Playground kalian bisa mencoba berbagai query yang tersedia serta melihat dokumentasi untuk memahami struktur data yang ada.
 
-![Contoh penggunaan GraphQL Playground](/thumbnail/graphql-for-pokeapi/query-graphgql-pokeapi.png)
+![Contoh penggunaan GraphQL Playground](/thumbnail/graphql-for-pokeapi/query-graphql-pokeapi.png)
 
 Beberapa contoh query dan penggunaannya antara lain:
 
