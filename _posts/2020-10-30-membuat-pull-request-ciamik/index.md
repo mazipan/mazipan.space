@@ -25,19 +25,19 @@ Pada pekerjaan privat biasanya tidak diperlukan [metode fork](https://docs.githu
 
 Cara umum untuk berkolaborasi dalam kondisi satu repository begini biasanya:
 
-1. **Buat branch baru dari branch utama**, umumnya setiap perusahaan sudah punya konvensi atau aturan tersendiri dalam penamaan branch baru
+👉  **Buat branch baru dari branch utama**, umumnya setiap perusahaan sudah punya konvensi atau aturan tersendiri dalam penamaan branch baru
 
-2. **Bekerja di dalam branch baru yang dibuat**
+👉  **Bekerja di dalam branch baru yang dibuat**
 
-3. **Sinkronisasi secara berkala**, apabila pekerjaan akan memakan waktu yang cukup lama sampai berhari-hari, ada baiknya untuk mengecek secara berkala dengan branch utama
+👉  **Sinkronisasi secara berkala**, apabila pekerjaan akan memakan waktu yang cukup lama sampai berhari-hari, ada baiknya untuk mengecek secara berkala dengan branch utama
 
-4. **Setelah selesai, buat pull request ke branch utama**, ini dilakukan tentu setelah kalian selesai melakukan serangkaian pengujian, baik di lokal kalian ataupun di lingkungan development lainnya.
+👉  **Setelah selesai, buat pull request ke branch utama**, ini dilakukan tentu setelah kalian selesai melakukan serangkaian pengujian, baik di lokal kalian ataupun di lingkungan development lainnya.
 
-5. **Meminta review kode kepada teman sejawat**
+👉  **Meminta review kode kepada teman sejawat**
 
-6. **Memperbaiki kode berdasarkan review yang ada**
+👉  **Memperbaiki kode berdasarkan review yang ada**
 
-7. **Diterima atau ditolak untuk masuk ke branch utama**
+👉  **Diterima atau ditolak untuk masuk ke branch utama**
 
 ## Alur kolaborasi dalam repository hasil fork
 

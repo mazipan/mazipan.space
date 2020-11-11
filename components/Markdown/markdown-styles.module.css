@@ -41,32 +41,15 @@
 
 .markdown a[href] {
   text-decoration: none;
-  @apply relative inline-block;
-}
-
-.markdown a[href]:before {
-  background: none repeat scroll 0 0 transparent;
-  left: 0;
-  bottom: 3px;
-  content: "";
-  height: 4px;
-  @apply absolute block w-full bg-gradient-to-r from-orange-400 via-red-500 to-pink-500;
-  transition: width 0.3s ease 0s, left 0.3s ease 0s;
-}
-
-.markdown a[href]:hover:before {
-  @apply w-0;
+  @apply border-dashed border-red-500 border-b-2 text-red-500;
 }
 
 .markdown a[href]:hover {
-  @apply bg-gradient-to-r from-orange-400 via-red-500 to-pink-500;
-
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  @apply border-b-4 text-red-600;
 }
 
 .markdown li {
-  @apply pb-2;
+  @apply pb-1;
 }
 
 .markdown code:not([class*="language-"]) {
