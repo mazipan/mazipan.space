@@ -1,4 +1,4 @@
-import Footer from '@/components/Footer'
+import Footer from '@/components/FooterSection'
 import Meta from '@/components/Meta/Default'
 import Container from '@/components/ContainerBox'
 import HeaderDefault from '@/components/Header/Default'
