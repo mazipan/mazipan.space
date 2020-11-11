@@ -1,6 +1,6 @@
-import Footer from '../components/footer'
-import Meta from '../components/meta'
-import Container from '@/components/container'
+import Footer from '../Footer'
+import Meta from '../Meta/Default'
+import Container from '@/components/ContainerBox'
 import HeaderDefault from '@/components/Header/Default'
 
 export default function Layout ({ preview, children }) {

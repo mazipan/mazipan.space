@@ -1,17 +1,17 @@
 import { useRouter } from 'next/router'
 import ErrorPage from 'next/error'
-import Head from 'next/head'
 import Link from 'next/link'
 
 import MarkdownParser from '@/components/Markdown/MarkdownParser'
-import PostHeader from '@/components/post-header'
+import PostHeader from '@/components/PostDetail/Heading'
 
+import Meta from '@/components/Meta/Custom'
 import InfoBox from '@/components/InfoBox'
-import CommentBox from '@/components/comment-box'
-import ShareArticle from '@/components/share-article'
-import MoreStories from '@/components/more-stories'
+import CommentBox from '@/components/CommentBox'
+import ShareArticle from '@/components/ShareBox'
+import Related from '@/components/Post/Related'
 
-import LayoutArticle from '@/components/layout-article'
+import LayoutArticle from '@/components/Layout/Default'
 
 import { getPostBySlug, getAllPosts, getRelatedPost } from '@/lib/api'
 import { SITE_METADATA } from '@/lib/constants'
@@ -26,27 +26,14 @@ export default function Post ({ post, related, preview }) {
     <>
       <LayoutArticle preview={preview}>
         <>
-          <Head>
-            <title key="title">{post.title} | mazipan.space</title>
-            <meta key="description" name="description" content={post.excerpt} />
-
-            <meta key="article-author" property="article:author" content={'mazipanneh'} />
-            <meta key="article-tag" property="article:tag" content={`${post.tags[0]}`} />
-
-            <meta key="og-image" property="og:image" content={`${SITE_METADATA.url}${post.coverImage}`} />
-            <meta key="og-type" property="og:type" content="article" />
-            <meta key="og-title" property="og:title" content={post.title} />
-            <meta key="og-description" property="og:description" content={post.excerpt} />
-            <meta key="og-url" property="og:url" content={`${SITE_METADATA.url}/en/${post.slug}`} />
-
-            <meta key="tw-image" name="twitter:image" content={`${SITE_METADATA.url}${post.coverImage}`} />
-            <meta key="tw-title" name="twitter:title" content={post.title} />
-            <meta key="tw-description" name="twitter:description" content={post.excerpt} />
-            <meta key="tw-url" name="twitter:url" content={`${SITE_METADATA.url}/en/${post.slug}`} />
-            <meta key="tw-creator" name="twitter:creator" content={'@maz_ipan'} />
-            <meta key="tw-label1" name="twitter:label1" content="Under tag" />
-            <meta key="tw-data1" name="twitter:data1" content={`${post.tags[0]}`} />
-          </Head>
+          <Meta
+            lang="en"
+            title={`${post.title} | mazipan.space`}
+            description={post.excerpt}
+            url={`${SITE_METADATA.url}/en/${post.slug}`}
+            coverImage={`${SITE_METADATA.url}${post.coverImage}`}
+            tag={`${post.tags[0]}`}
+          />
           <PostHeader
             title={post.title}
             coverImage={post.coverImage}
@@ -63,7 +50,7 @@ export default function Post ({ post, related, preview }) {
           <MarkdownParser content={post.content} />
           <ShareArticle text={post.title} url={`${SITE_METADATA.url}/en/${post.slug}`} />
           <CommentBox />
-          <MoreStories posts={related} lang="en" />
+          <Related posts={related} lang="en" />
         </>
       </LayoutArticle>
     </>

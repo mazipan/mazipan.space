@@ -55,9 +55,11 @@ judul menjadi krusial karena merupakan pembeda, penanda dan gerbang awal untuk p
 Beberapa perusahaan umumnya juga memiliki konvensi atau aturan bagi pembuatan judul pull request.
 Misalnya saja konvensi yang umum mengadopsi dari standard Commitizen juga, contohnya:
 
-- `feat: menambahkan fitur share ke sosial media`
-- `chore: menambahkan linter`
-- `fix: memperbaiki tampilan header`
+👉  `feat: menambahkan fitur share ke sosial media`
+
+👉  `chore: menambahkan linter`
+
+👉  `fix: memperbaiki tampilan header`
 
 Namun bilapun belum ada konvensinya, tetap saja membuat judul yang baik adalah salah satu ciri pull request yang baik.
 
@@ -75,17 +77,21 @@ Dengan adanya penjelasan yang baik, pekerjaan mereview biasanya akan lebih mudah
 
 Beberapa hal yang paling tidak mestinya ada di deskripsi pull request antara lain:
 
-- Kesimpulan atau _summary_ dari pull request
-- Perubahan-perubahan penting yang perlu diperhatikan, misal saja menambahkan kalimat: saya mengubah kode di file A menjadi begini dengan tujuan begitu.
-- Cara atau langkah melakukan pengujian, bisa berupa langkah detail ataupun cukup alamat dimana orang lain bisa melihat dan mengecek perubahannya.
+👉  Kesimpulan atau _summary_ dari pull request
+
+👉  Perubahan-perubahan penting yang perlu diperhatikan, misal saja menambahkan kalimat: saya mengubah kode di file A menjadi begini dengan tujuan begitu.
+
+👉  Cara atau langkah melakukan pengujian, bisa berupa langkah detail ataupun cukup alamat dimana orang lain bisa melihat dan mengecek perubahannya.
 
 **3. Menyertakan informasi pendukung**
 
 Informasi ini adalah yang diharapkan mampu mendukung penjelasan kita di deskripsi, bisa macam-macam, diantaranya:
 
-- Nomor issue atau tiket, bila memang terkait dengan suatu issue atau tiket
-- Kondisi sebelum serta kondisi yang diharapkan setelah perubahan atau perbaikan, bisa berupa gambar atau cukup dengan kalimat saja
-- Tautan ke dokumen pendukung, misal PRD, API spesifikasi, design mockup, test report, dan lain sebagainya
+👉  Nomor issue atau tiket, bila memang terkait dengan suatu issue atau tiket
+
+👉  Kondisi sebelum serta kondisi yang diharapkan setelah perubahan atau perbaikan, bisa berupa gambar atau cukup dengan kalimat saja
+
+👉  Tautan ke dokumen pendukung, misal PRD, API spesifikasi, design mockup, test report, dan lain sebagainya
 
 **4. Tidak membawa perubahan yang tidak relevan**
 

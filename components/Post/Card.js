@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-import DateFormatter from '@/components/date-formatter'
+import DateFormatter from '@/components/Date'
 import CoverImage from '@/components/Post/Cover'
 
 export default function PostCard ({ title, date, excerpt, slug, coverImage, tags, lang }) {
@@ -21,7 +21,9 @@ export default function PostCard ({ title, date, excerpt, slug, coverImage, tags
         <div className="text-sm text-gray-500 mb-4">
           <DateFormatter dateString={date} />
         </div>
-        <p className="text-lg leading-relaxed mb-4">{excerpt}</p>
+
+        {excerpt && <p className="text-lg leading-relaxed mb-4">{excerpt}</p>}
+
         {tags && tags.length > 0 && (
           <div className="py-2">
             {tags.map((tag) => (

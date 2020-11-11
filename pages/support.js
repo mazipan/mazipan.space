@@ -1,13 +1,20 @@
 import Head from 'next/head'
-import { Fragment } from 'react'
 
-import LayoutArticle from '@/components/layout-article'
+import Meta from '@/components/Meta/Custom'
+import LayoutArticle from '@/components/Layout/Default'
+import { SITE_METADATA } from '@/lib/constants'
 
 export default function Index () {
   return (
     <>
       <LayoutArticle>
-        <Fragment>
+        <>
+          <Meta
+            lang="id"
+            title="Support | mazipan.space"
+            description="Support | mazipan.space"
+            url={`${SITE_METADATA.url}/support`}
+          />
           <Head>
             <title>Support | mazipan.space</title>
           </Head>
@@ -59,7 +66,7 @@ export default function Index () {
               </li>
             </ul>
           </div>
-        </Fragment>
+        </>
       </LayoutArticle>
     </>
   )

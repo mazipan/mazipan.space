@@ -1,7 +1,8 @@
-import Head from 'next/head'
 import { Fragment } from 'react'
 
-import LayoutArticle from '@/components/layout-article'
+import Meta from '@/components/Meta/Custom'
+import LayoutArticle from '@/components/Layout/Default'
+
 import allTalks from '@/lib/all-talks'
 import { SITE_METADATA, OG_IMAGE_TALKS } from '@/lib/constants'
 
@@ -10,24 +11,13 @@ export default function Index ({ talks }) {
     <>
       <LayoutArticle>
         <Fragment>
-          <Head>
-            <title>Talks | mazipan.space</title>
-            <meta
-              name="description"
-              content="All talks presented by mazipan"
-            />
-
-            <meta property="og:url" content={`${SITE_METADATA.url}/talks`} />
-            <meta name="twitter:title" content="Talks | mazipan.space" />
-            <meta name="twitter:description" content="All talks presented by mazipan" />
-            <meta name="twitter:image" content={`${OG_IMAGE_TALKS}`} />
-
-            <meta name="twitter:url" content={`${SITE_METADATA.url}/talks`} />
-            <meta property="og:title" content="Talks | mazipan.space" />
-            <meta property="og:description" content="All talks presented by mazipan" />
-            <meta property="og:image" content={OG_IMAGE_TALKS} />
-
-          </Head>
+          <Meta
+            lang="id"
+            title="Talks | mazipan.space"
+            description="All talks presented by mazipan"
+            url={`${SITE_METADATA.url}/talks`}
+            coverImage={`${OG_IMAGE_TALKS}`}
+          />
           <h2 className="mb-8 text-6xl md:text-7xl font-bold tracking-tighter leading-tight">
             Talks
           </h2>
@@ -45,9 +35,9 @@ export default function Index ({ talks }) {
                         return (
                           <div
                             key={item.date}
-                            className="rounded-lg p-4 mb-2 overflow-hidden shadow-lg hover:shadow-medium transition-shadow duration-200s"
+                            className="rounded-lg p-4 mb-2 overflow-hidden shadow-lg dark:bg-gray-800"
                           >
-                            <div className="text-gray-700 text-sm mb-2">
+                            <div className="text-gray-500 text-sm mb-2">
                               <span className="mr-2">🗓 </span>
                               {item.date}
                             </div>

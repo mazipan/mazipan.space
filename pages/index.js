@@ -1,11 +1,11 @@
 import Head from 'next/head'
 
-import Container from '@/components/container'
-import MoreStories from '@/components/more-stories'
+import Container from '@/components/ContainerBox'
+import MoreStories from '@/components/Post/Home'
 import HeroPost from '@/components/FeaturedPost'
 import HeaderHome from '@/components/Header/Home'
 import Pagination from '@/components/Pagination'
-import Layout from '@/components/layout'
+import Layout from '@/components/Layout/Home'
 
 import { getPagedPost, getFeaturedPost } from '@/lib/api'
 
@@ -14,7 +14,7 @@ export default function Index ({ data, featured }) {
     <>
       <Layout>
         <Head>
-          <title>Home | mazipan.space</title>
+          <title>Beranda | mazipan.space</title>
         </Head>
         <Container>
           <HeaderHome />

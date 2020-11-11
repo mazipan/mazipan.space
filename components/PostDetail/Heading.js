@@ -1,8 +1,8 @@
 import Link from 'next/link'
 import Image from 'next/image'
 
-import DateFormatter from '@/components/date-formatter'
-import PostTitle from '@/components/post-title'
+import DateFormatter from '@/components/Date'
+import PostTitle from '@/components/PostDetail/Title'
 
 export default function PostHeader ({ title, tags, coverImage, date, author }) {
   return (

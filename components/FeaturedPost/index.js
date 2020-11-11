@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 
-import DateFormatter from '@/components/date-formatter'
+import DateFormatter from '@/components/Date'
 
 export default function HeroPost ({ title, coverImage, date, excerpt, author, slug, lang }) {
   const hrefSlug = lang === 'id' ? '/[slug]' : '/en/[slug]'

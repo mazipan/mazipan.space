@@ -31,7 +31,7 @@
 
 @media (min-width: 768px) {
   .markdown img {
-    @apply max-w-lg;
+    @apply max-w-5xl;
   }
 }
 
@@ -65,8 +65,12 @@
   -webkit-text-fill-color: transparent;
 }
 
+.markdown li {
+  @apply pb-2;
+}
+
 .markdown code:not([class*="language-"]) {
-  @apply bg-indigo-100 text-indigo-700 text-sm px-2 py-1 rounded;
+  @apply bg-indigo-100 text-indigo-700 text-sm px-2 py-1 rounded break-all;
   font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
 }
 

@@ -1,10 +1,10 @@
 import Head from 'next/head'
 
-import Container from '@/components/container'
+import Container from '@/components/ContainerBox'
 import List from '@/components/Post/List'
 import Header from '@/components/Header/Default'
 import Pagination from '@/components/Pagination'
-import Layout from '@/components/layout'
+import Layout from '@/components/Layout/Home'
 
 import { getPagedPost, getAvailablePage } from '@/lib/api'
 
