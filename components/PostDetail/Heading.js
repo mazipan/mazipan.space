@@ -12,7 +12,7 @@ export default function PostHeader ({ title, tags, coverImage, date, author }) {
         src={coverImage}
         alt={`Cover ${title}`}
         width={1240}
-        height={500}
+        height={600}
         className="w-full rounded-lg object-cover"
       />
       <div className="mt-8 mb-6 text-lg">
