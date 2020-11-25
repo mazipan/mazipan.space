@@ -17,7 +17,9 @@ Ketika kalian berurusan dengan web performance, kalian tentunya akan dihadapkan 
 
 Data lab merupakan data yang didapatkan dari sebuah pengetesan di dalam lingkungan yang terkontrol dna terkendali. Contoh pengetesan yang akan mendapatkan data lab ini misalnya menggunakan Lighthouse di DevTools. Cara pengetesan seperti ini sangat bisa kita atur, misalnya kita bisa melakukan simulasi dengan jaringan internet cepat maupun lambat. Setelah menemukan konfigurasi yang cocok, kita bisa mengunci lingkungan tersebut dan melakukan pengujian secara berkala dengan lingkungan yang sama sehingga naik turunnya nilai yang di dapat sangat dimungkinkan memang karena kondisi web kita bukan karena faktor lain.
 
-Data ini tentu tidak akan menggambarkan kondisi pengguna dari web kalian yang sebenarnya karena berada pada lingkungan yang sudah disetel sedemikian rupa. Namun pengujian untuk menghasilkan data lab ini sangat membantu untuk melakukan *debugging* pada web kita. Hasil yang didapat dari data lab umumnya bisa memberikan panduan yang jelas, utamanya bagi Web Developer untuk mengetahui kondisi web dan menyusun berbagai daftar aksi yang perlu dikerjakan untuk meningkatkan hasil yang di dapat. 
+![Data lab di laporan Web.dev/measure](/thumbnail/data-lab-dan-data-lapangan/lab-data-web-dev.png)
+
+Data ini tentu tidak akan menggambarkan kondisi pengguna dari web kalian yang sebenarnya karena berada pada lingkungan yang sudah disetel sedemikian rupa. Namun pengujian untuk menghasilkan data lab ini sangat membantu untuk melakukan *debugging* pada web kita. Hasil yang didapat dari data lab umumnya bisa memberikan panduan yang jelas, utamanya bagi Web Developer untuk mengetahui kondisi web dan menyusun berbagai daftar aksi yang perlu dikerjakan untuk meningkatkan hasil yang di dapat.
 
 Data lab bisa menjadi indikator sehatnya kondisi web kita dan bisa menjadi pegangan bagi kita bila disetel dengan baik, namun begitu bisa juga menjadi menyesatkan bila disetel dengan sembrono. Jadi kuncinya adalah menyetel lingkungan yang digunakan dalam pengujian data lab dengan bijak, kalau bisa sih mendekati rataan terbanyak dari kondisi pengguna nyata kita.
 
@@ -32,6 +34,10 @@ Disinilah kita menjadi perlu menyandingkan data lab kita dengan data lapangan.
 Data lapangan adalah data yang dikumpulkan dari pengguna nyata, dengan lingkungan asli yang digunakan oleh pengguna tersebut. Kita tidak bisa mengatur bagaimana kondisi pengguna saat mengakses web kita, bisa jadi mereka menggunakan device yang bagus dan dalam jaringan internet yang cepat sehingga web kita akan cukup cepat untuk dimuat, sebaliknya bisa juga si pengguna dalam kondisi tidak ideal, jaringan internet yang lambat, maupun device dengan spesifikasi rendah. Kondisi seperti ini jelas akan berdampak web kita akan terasa lambat untuk dimuat.
 
 Contoh data lapangan adalah laporan yang dikumpulkan oleh Chrome UX Report, ini merupakan data nyata yang dikumpulkan oleh Google Chrome terhadap penggunanya. Contoh lain adalah data yang secara mandiri kita kumpulkan dari pengguna kita, misal dengan Google Analytics atau dengan alat pemantau pengguna nyata atau biasa dikenal dengan *Real User Measurement (RUM)*. Di lingkungan produk Google, data ini bisa juga kalian jumpai di Google Search Console, atau langsung query dari Chrome UX Report baik melalui Big Query maupun lewat [RESTful API dari Chrome UX](https://web.dev/chrome-ux-report-api/) yang memang juga telah disediakan untuk mempermudah mengakses datanya.
+
+![Data lapangan di laporan PageSpeed Insight](/thumbnail/data-lab-dan-data-lapangan/field-data-psi.png)
+
+![Data lapangan di laporan Search Console](/thumbnail/data-lab-dan-data-lapangan/field-data-search-console.png)
 
 Ketika kita melakukan pengujian lewat PageSpeed Insight, selain mendapatkan data lab kita juga akan diberikan cuplikan data lapangan dari Chrome UX jika memang tersedia. Enaknya data yang ditampilkan sudah di aggregasi sehingga kita tidak perlu lagi mencari formula untuk mengolah datanya lagi.
 
