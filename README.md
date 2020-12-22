@@ -13,6 +13,17 @@ A new fresh personal blog built with Next.js and Tailwind
 - Next.js
 - Tailwind
 
+## Features
+
+- Dark Mode
+- Pagination
+- Featured Article
+- Tags
+- Dual Language
+- RSS and Sitemap
+- Code Highlighting
+- Comment System using Github
+
 ## Logo
 
 Raw file in this [vectr.com link](https://vectr.com/mazipan/i7V7tBB5z.png?width=512&height=512&select=i7V7tBB5zpage0)
