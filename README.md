@@ -19,9 +19,10 @@ A new fresh personal blog built with Next.js and Tailwind
 - Pagination
 - Featured Article
 - Tags
-- Dual Language
+- Dual Language (ID and EN)
 - RSS and Sitemap
 - Code Highlighting
+- Image Optimization
 - Comment System using Github
 
 ## Logo
@@ -35,7 +36,7 @@ If you are looking for Gatsby version, please visit branch `gatsby`.
 ## Use as a template
 
 You can use this repo to bootstrap a same blog for yourself. 
-Feel free, just use a "generate from template" feature in Github.
+Feel free, just click **"Use this template"** button in this repo.
 
 ----
 
