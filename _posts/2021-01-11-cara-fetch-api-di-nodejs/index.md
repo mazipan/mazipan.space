@@ -17,29 +17,33 @@ API di lingkup pengembangan web umumnya digunakan untuk berkomunikasi antar pera
 
 **👉  Masalah CORS**
 
-Masalah klasik yang selalu saja muncul sebagai pertanyaan di setiap forum pemrograman web yang ada, ketika suatu 3rd party API kok ternyata tidak bisa di hit dari aplikasi langsung dari peramban. Padahal ya jelas karena memang origin tersebut tidak diperbolehkan untuk melakukan request secara langsung. Solusi praktisnya biasanya dengan melakukan proxy baik melalui web server maupun lewat aplikasi Backend yang ada dalam kendali kita. Memindahkan pemanggilan API dari peramban ke aplikasi backend merupakan salah satu solusi bila kita menghadapi problem ini, sehingga dari aplikasi Klien cukup memanggil ke Backend yang kita buat saja tanpa perlu ke alamat aslinya.
+Masalah klasik yang selalu saja muncul sebagai pertanyaan di setiap forum pemrograman web yang ada, ketika suatu *3rd party* API kok ternyata tidak bisa di *hit* dari aplikasi langsung dari peramban. 
+Padahal ya jelas karena memang *origin* tersebut tidak diperbolehkan untuk melakukan permintaan secara langsung. 
+Solusi praktisnya biasanya dengan melakukan *proxy* baik melalui web server maupun lewat aplikasi Backend yang ada dalam kendali kita. 
+Memindahkan pemanggilan API dari peramban ke aplikasi Backend merupakan salah satu solusi bila kita menghadapi problem ini, sehingga dari aplikasi klien cukup memanggil ke Backend yang kita buat saja tanpa perlu lagi mengarah ke alamat aslinya.
 
 **👉  Menyembunyikan Kredensial**
 
-Beberapa API memerlukan Key untuk bisa membuat suatu permintaan, masalahnya API Key tersebut bisa jadi kredensial yang seharusnya kita jaga dan tidak boleh terekspos ke publik.
+Beberapa API memerlukan API Key untuk bisa membuat suatu permintaan, masalahnya API Key tersebut bisa jadi adalah sebuah kredensial yang seharusnya kita jaga dan tidak boleh terekspos ke publik.
 
 Caranya ya pemanggilan API nya dilakukan saja di Backend yang mana akan sulit untuk orang awam mengetahui apa yang terjadi di dalamnya.
 
 **👉  Menyembunyikan Sumber Data**
 
-Hampir sama dengan alasan sebelumnya, beberapa orang tidak ingin sumber data aslinya diketahui oleh orang lain, jadi segala pemanggilan ke 3rd party akan dilakukan di aplikasi Backend.
+Hampir sama dengan alasan sebelumnya, beberapa orang tidak ingin sumber data aslinya diketahui oleh orang lain, jadi segala pemanggilan ke *3rd party* akan dilakukan di aplikasi Backend.
 
 ## Bagaimana Melakukannya di Node.js
 
-Sebagai orang yang sehari-hari mengerjakan aplikasi untuk peramban, JavaScript menjadi salah satu bahasa pemrograman yang cukup sering digunakan, itu mengapa ketika harus membuat Backend ecek-ecek, pilihan tercepat dan termudah ya menggunakan Node.js saja.
+Sebagai orang yang sehari-hari mengerjakan aplikasi untuk peramban, JavaScript menjadi salah satu bahasa pemrograman yang cukup sering digunakan, itu mengapa ketika harus membuat Backend *ecek-ecek*, pilihan tercepat dan termudah ya menggunakan Node.js saja.
 
-Pada tulisan kali ini saya akan membahas hal dasar yang sering saya lupakan sendiri, yakni beberepa opsi yang bsia dipilih untuk melakukan pemanggilan sebuah API di dalam lingkungan Node.js.
+Pada tulisan kali ini saya akan membahas hal dasar yang sering saya lupakan sendiri, yakni beberepa opsi yang bisa dipilih untuk melakukan pemanggilan sebuah API di dalam lingkungan Node.js.
 
-Sebelum saya menjelaskan, semua kode yang ada di artikel kali ini bisa dilihat selengkapnya di Github Repo: [❓ how-to-call-api-in-nodejs](https://github.com/mazipan/how-to-call-api-in-nodejs)
+Sebelum saya menjelaskan lebih lanjut, semua kode yang ada di artikel kali ini bisa kalian lihat selengkapnya di Github Repo: [❓ how-to-call-api-in-nodejs](https://github.com/mazipan/how-to-call-api-in-nodejs)
 
 ### Native Node.js
 
-Node.js secara Native sudah memiliki interface yang bisa kita gunakan untuk melakukan pemanggilan sebuah API, menggunakan `http` atau `https`. Ini bisa jadi pilihan untuk yang anti-*"3rd party club"* yang sayangnya kodenya memang masih cukup rumit karena memberikan balikan berupa stream, berikut adalah contoh kode jika kita ingin melakukan pemanggilan API dengan Native Node.js:
+Node.js secara Native sudah memiliki interface yang bisa kita gunakan untuk melakukan pemanggilan sebuah API, bisa dengan memanfaatkan modul `http` ataupun `https`. 
+Ini bisa jadi pilihan untuk yang anti-*"3rd party club"* yang sayangnya kodenya memang masih cukup rumit karena memberikan balikan berupa *stream*, berikut adalah contoh kode jika kita ingin melakukan pemanggilan API dengan Native Node.js:
 
 ```js
 const https = require('https');
@@ -56,7 +60,8 @@ https.get(CONSTANT.API_URL, (res) => {
 
 ### Node-Fetch
 
-Buat kalian (baca: saya) yang sudah kadung terlalu malas menghafal sintaks baru, [Node-Fetch](https://www.npmjs.com/package/node-fetch) bisa jadi pilihan karena menggunakan interface yang serupa dengan [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch) di peramban. Cukup belajar sekali dan gunakan berkali-kali bukan?
+Buat kalian (baca: saya) yang sudah kadung terlalu malas menghafal sintaks baru, [Node-Fetch](https://www.npmjs.com/package/node-fetch) bisa jadi pilihan karena menggunakan interface yang serupa dengan [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch) di peramban. 
+Cukup belajar sekali dan gunakan berkali-kali bukan?
 
 Berikut contoh kode memanggil API dengan Node-Fetch:
 
@@ -71,7 +76,8 @@ fetch(CONSTANT.API_URL)
 
 ### Axios
 
-[Axios](https://github.com/axios/axios) merupakan salah satu pustaka paling populer di JavaScript yang bisa digunakan baik untuk lingkungan klien maupun server. Kita bisa menggunakan Axios juga untuk melakukan pemanggilan API di Node.js dengan interface yang sama persis dengan ketika kita menggunakannya di peramban.
+[Axios](https://github.com/axios/axios) merupakan salah satu pustaka paling populer di JavaScript yang bisa digunakan baik untuk lingkungan klien maupun server. 
+Kita bisa menggunakan Axios juga untuk melakukan pemanggilan API di Node.js dengan interface yang sama persis dengan ketika kita menggunakannya di peramban.
 
 Berikut contoh kodenya:
 
@@ -93,7 +99,8 @@ axios
 
 ### Super Agent
 
-[Super Agent](https://github.com/visionmedia/superagent) juga sama bisa bekerja di lingkungan peramban dan Node.js. Saya sendiri mengenal pustaka ini karena dulu ini salah satu yang paling populer digunakan di lingkungan End-to-End testing di JavaScript.
+[Super Agent](https://github.com/visionmedia/superagent) juga sama bisa bekerja di lingkungan peramban dan Node.js. 
+Saya sendiri mengenal pustaka ini karena dulu ini salah satu yang paling populer digunakan di lingkungan End-to-End testing di JavaScript.
 
 Berikut contoh kode melakukan pemanggilan API dengan SuperAgent:
 
@@ -114,29 +121,30 @@ superagent
 
 ### Got
 
-[Got](https://github.com/sindresorhus/got) merupakan pustaka besutan dari salah satu open-sourcer terkemuka di dunia, [Sindre Sorhus](https://github.com/sindresorhus). Ciri khas dari pustaka yang dibuat Sindre umunya memiliki interface yang sederhana sehingga mudah untuk digunakan.
+[Got](https://github.com/sindresorhus/got) merupakan pustaka besutan dari salah satu open-sourcer terkemuka di dunia, [Sindre Sorhus](https://github.com/sindresorhus). 
+Ciri khas dari pustaka yang dibuat Sindre umumnya memiliki interface yang sederhana sehingga mudah untuk digunakan.
 
-Berikut contoh kode melakukan pemanggilan API dengan SuperAgent:
+Berikut contoh kode melakukan pemanggilan API dengan Got-nya Sindre:
 
 ```js
 const got = require('got');
 const CONSTANT = require('./constant');
 
 (async () => {
-	try {
-		const response = await got(CONSTANT.API_URL);
-		console.log(response.body);
-	} catch (error) {
-		console.log(error);
-	}
+  try {
+    const response = await got(CONSTANT.API_URL);
+    console.log(response.body);
+  } catch (error) {
+    console.log(error);
+  }
 })();
 ```
 
 ### cURL dengan child_process
 
-Carini memanfaatkan kemampuan [cURL](https://curl.se/) yang umumnya sudah tertanam dengan baik di perangkat Linux maupun Mac.
+Cara ini memanfaatkan kemampuan [cURL](https://curl.se/) yang umumnya sudah tertanam dengan baik di perangkat Linux maupun Mac.
 
-Pada bagian ini kita akan mengeksekusi perintah cURL dengan menggunakan `exec` yang ada di `child_process` di Node.js.
+Pada bagian ini kita akan berusaha mengeksekusi perintah cURL yang biasanya lewat terminal langsung saat ini kita mencoba dengan menggunakan `exec` yang ada di `child_process` di Node.js.
 
 Berikut contoh kodenya:
 
@@ -154,7 +162,7 @@ exec(`curl ${CONSTANT.API_URL}`, (err, stdout, stderr) => {
 ```
 ### cURL dengan shelljs
 
-Buat kalian penggandrung perintah cURL namun malas menggunakan `child_process`, bisa juga menggunakan pustaka `shelljs` untuk mengeksekusi perintah tersebut, berikut contoh kodenya:
+Buat kalian penggandrung perintah cURL seperti di atas, namun malas menggunakan `child_process`, bisa juga menggunakan pustaka `shelljs` untuk mengeksekusi perintah tersebut, berikut contoh kodenya:
 
 ```js
 const { exec } = require('shelljs');
