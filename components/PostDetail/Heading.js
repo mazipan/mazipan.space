@@ -13,6 +13,9 @@ export default function PostHeader ({ title, tags, coverImage, date, author }) {
         alt={`Cover ${title}`}
         width={1240}
         height={600}
+        layout="intrinsic"
+        sizes="100vw"
+        priority={true}
         className="w-full rounded-lg object-cover"
       />
       <div className="mt-8 mb-6 text-lg">

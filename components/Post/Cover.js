@@ -11,6 +11,8 @@ export default function CoverImage ({ title, src, slug, lang }) {
       alt={`Cover ${title}`}
       width={604}
       height={300}
+      layout='intrinsic'
+      sizes="100vw"
       className={cn('', {
         'w-full rounded-t-lg object-cover': slug
       })}
