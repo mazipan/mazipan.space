@@ -9,6 +9,7 @@ export default class MyDocument extends Document {
         <link rel="pingback" href="https://webmention.io/mazipan.space/xmlrpc" />
 
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-25065548-7"></script>
+        <script data-ad-client="ca-pub-5442972248172818" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         <script
           dangerouslySetInnerHTML={{
             __html: `
