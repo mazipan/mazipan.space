@@ -18,7 +18,12 @@ export default function PagedPost ({ data, page, next, prev }) {
         <Container>
           <Header />
 
-          {data.length > 0 && <List posts={data} lang="id" />}
+          <section>
+           <div className="grid grid-cols-1 md:grid-cols-2 md:col-gap-8 row-gap-5 md:row-gap-8 mb-16">
+             {data.length > 0 && <List posts={data} lang="id" />}
+           </div>
+          </section>
+
           <Pagination prev={prev} next={next} lang="id"/>
         </Container>
       </Layout>
