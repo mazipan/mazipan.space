@@ -17,7 +17,7 @@ API di lingkup pengembangan web umumnya digunakan untuk berkomunikasi antar pera
 
 **👉  Masalah CORS**
 
-Error klasik yang selalu muncul sebagai pertanyaan di setiap forum pemrograman web, ketika suatu 3rd party API kok tidak bisa di hit dari Aplikasi langsung dari peramban. Padahal ya jelas karena memang origin tersebut tidak diperbolehkan untuk melakukan request secara langsung. Solusi praktisnya biasanya dengan melakukan proxy baik melalui web server maupun lewat aplikasi Backend yang ada dalam kendali kita. Memindahkan pemanggilan API dari peramban ke Aplikasi backend merupakan salah satu solusi bila kita menghadapi problem ini, sehingga dari Aplikasi Klien cukup memanggil ke Backend yang kita buat saja tanpa perlu ke alamat aslinya.
+Masalah klasik yang selalu saja muncul sebagai pertanyaan di setiap forum pemrograman web yang ada, ketika suatu 3rd party API kok ternyata tidak bisa di hit dari aplikasi langsung dari peramban. Padahal ya jelas karena memang origin tersebut tidak diperbolehkan untuk melakukan request secara langsung. Solusi praktisnya biasanya dengan melakukan proxy baik melalui web server maupun lewat aplikasi Backend yang ada dalam kendali kita. Memindahkan pemanggilan API dari peramban ke aplikasi backend merupakan salah satu solusi bila kita menghadapi problem ini, sehingga dari aplikasi Klien cukup memanggil ke Backend yang kita buat saja tanpa perlu ke alamat aslinya.
 
 **👉  Menyembunyikan Kredensial**
 
@@ -31,7 +31,7 @@ Hampir sama dengan alasan sebelumnya, beberapa orang tidak ingin sumber data asl
 
 ## Bagaimana Melakukannya di Node.js
 
-Sebagai orang yang sehari-hari mengerjakan Aplikasi untuk peramban, JavaScript menjadi salah satu bahasa pemrograman yang cukup sering digunakan, itu mengapa ketika harus membuat Backend ecek-ecek, pilihan tercepat dan termudah ya menggunakan Node.js saja.
+Sebagai orang yang sehari-hari mengerjakan aplikasi untuk peramban, JavaScript menjadi salah satu bahasa pemrograman yang cukup sering digunakan, itu mengapa ketika harus membuat Backend ecek-ecek, pilihan tercepat dan termudah ya menggunakan Node.js saja.
 
 Pada tulisan kali ini saya akan membahas hal dasar yang sering saya lupakan sendiri, yakni beberepa opsi yang bsia dipilih untuk melakukan pemanggilan sebuah API di dalam lingkungan Node.js.
 
@@ -39,7 +39,7 @@ Sebelum saya menjelaskan, semua kode yang ada di artikel kali ini bisa dilihat s
 
 ### Native Node.js
 
-Node.js secara Native sudah memiliki interface yang bisa kita gunakan untuk melakukan pemanggilan sebuah API, yakni menggunakan `http` atau `https`. Ini bisa jadi pilihan untuk yang anti 3rd party club yang sayangnya kodenya memang masih cukup rumit karena memberikan balikan berupa stream, berikut adalah contoh kode jika kita ingin melakukan pemanggilan API dengan Native Node.js:
+Node.js secara Native sudah memiliki interface yang bisa kita gunakan untuk melakukan pemanggilan sebuah API, menggunakan `http` atau `https`. Ini bisa jadi pilihan untuk yang anti-*"3rd party club"* yang sayangnya kodenya memang masih cukup rumit karena memberikan balikan berupa stream, berikut adalah contoh kode jika kita ingin melakukan pemanggilan API dengan Native Node.js:
 
 ```js
 const https = require('https');
@@ -56,7 +56,7 @@ https.get(CONSTANT.API_URL, (res) => {
 
 ### Node-Fetch
 
-Buat kalian (baca: saya) yang sudah kadung terlalu malas menghafal sintaks baru, [Node-Fetch](https://www.npmjs.com/package/node-fetch) bisa jadi pilihan karena menggunakan interface yang serupa dengan Fetch API di peramban.
+Buat kalian (baca: saya) yang sudah kadung terlalu malas menghafal sintaks baru, [Node-Fetch](https://www.npmjs.com/package/node-fetch) bisa jadi pilihan karena menggunakan interface yang serupa dengan [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch) di peramban. Cukup belajar sekali dan gunakan berkali-kali bukan?
 
 Berikut contoh kode memanggil API dengan Node-Fetch:
 
