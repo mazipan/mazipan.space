@@ -58,7 +58,7 @@ export default function Post ({ post, related, preview }) {
   )
 }
 
-export async function getStaticProps({ params }) {
+export async function getStaticProps ({ params }) {
   const post = getPostBySlug(params.slug, [
     'title',
     'date',
@@ -84,7 +84,7 @@ export async function getStaticProps({ params }) {
   }
 }
 
-export async function getStaticPaths() {
+export async function getStaticPaths () {
   const posts = getAllPosts(['slug'])
 
   return {

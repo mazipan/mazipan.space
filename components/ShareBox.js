@@ -23,8 +23,8 @@ export default function ShareArticle ({ text, url }) {
   }
 
   return (
-    <div id="share-article" className="my-4 p-2 text-center border-red-500 border-dashed border-4">
-      <div className="mb-2">If you think this article is helpful</div>
+    <div id="share-article" className="mb-2 rainbow">
+      <div className="flex justify-center items-center mb-2">If you think this article is helpful</div>
       <div className="flex justify-center items-center">
         {isSupportWebShare ? (
           <a
@@ -48,7 +48,7 @@ export default function ShareArticle ({ text, url }) {
               <line x1="22" y1="2" x2="11" y2="13" />
               <polygon points="22 2 15 22 11 13 2 9 22 2" />
             </svg>
-            Share to your followers
+            Please share to your followers
           </a>
         ) : (
           <a
