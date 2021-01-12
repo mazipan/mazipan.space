@@ -144,9 +144,15 @@ const CONSTANT = require('./constant');
 
 Cara ini memanfaatkan kemampuan [cURL](https://curl.se/) yang umumnya sudah tertanam dengan baik di perangkat Linux maupun Mac.
 
-Pada bagian ini kita akan berusaha mengeksekusi perintah cURL yang biasanya lewat terminal langsung saat ini kita mencoba dengan menggunakan `exec` yang ada di `child_process` di Node.js.
+Pada bagian ini kita akan berusaha mengeksekusi perintah cURL (yang biasanya lewat terminal), dengan menggunakan `exec` yang ada di `child_process` di Node.js.
+Untuk bisa menggunakan cara ini, kalian harus memastikan terlebih dahulu bahwa mesin atau komputer kalian bisa mengeksekusi perintah cURL dari terminal.
+Caranya ya cobain saja perintah sederhananya di terminal, misalnya:
 
-Berikut contoh kodenya:
+```shell
+$ curl https://mazipan.space
+```
+
+Berikut contoh kodenya jika ingin mengeksekusi perintah melalui `child_process` di Node.js:
 
 ```js
 const { exec } = require('child_process');
@@ -162,7 +168,7 @@ exec(`curl ${CONSTANT.API_URL}`, (err, stdout, stderr) => {
 ```
 ### cURL dengan shelljs
 
-Buat kalian penggandrung perintah cURL seperti di atas, namun malas menggunakan `child_process`, bisa juga menggunakan pustaka `shelljs` untuk mengeksekusi perintah tersebut, berikut contoh kodenya:
+Buat kalian para penggandrung perintah cURL seperti di atas, namun malas menggunakan `child_process`, bisa juga menggunakan pustaka `shelljs` untuk mengeksekusi perintah tersebut, berikut contoh kodenya:
 
 ```js
 const { exec } = require('shelljs');
@@ -179,6 +185,9 @@ exec(`curl ${CONSTANT.API_URL}`, { silent: true }, (err, stdout, stderr) => {
 
 ## Penutup
 
-Ada banyak jalan menuju ke Indonesia, ada banyak cara untuk menyelesaikan hal yang sama. Artikel ini adalah catatan bagi saya pribadi agar menjadi pengingat di masa yang akan datang. kalian bisa memilih yang mana saja kalian suka.
+Ada banyak jalan menuju ke Indonesia, ada banyak cara untuk menyelesaikan hal yang sama. 
+Artikel ini adalah catatan bagi saya pribadi agar menjadi pengingat di masa yang akan datang. 
+Kalian bisa memilih yang mana saja yang kalian suka, tidak mengikuti apa yang saya biasa kerjakan, yang penting kerjaan sama-sama kelarnya.
+Mengingatkan kembali bahwa kode di atas bisa kalian lihat selengkapnya di Github Repo: [❓ how-to-call-api-in-nodejs](https://github.com/mazipan/how-to-call-api-in-nodejs)
 
 Terima Kasih.
