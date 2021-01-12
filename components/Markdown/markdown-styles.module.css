@@ -53,7 +53,7 @@
 }
 
 .markdown code:not([class*="language-"]) {
-  @apply bg-indigo-100 text-indigo-700 text-sm px-2 py-1 rounded break-all;
+  @apply bg-indigo-100 text-indigo-700 text-sm px-2 py-1 rounded break-words;
   font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
 }
 
