@@ -22,11 +22,11 @@ export default function HeroPost ({ title, coverImage, date, excerpt, author, sl
         />
       </div>
       <div className="mb-20">
-        <h3 className="mb-4 font-bold text-3xl md:text-4xl tracking-tighter leading-tight">
+        <h2 className="mb-4 font-bold text-3xl md:text-4xl tracking-tighter leading-tight">
           <Link as={`/${slug}`} href={hrefSlug}>
             <a className="hover:underline">{title}</a>
           </Link>
-        </h3>
+        </h2>
         <div className="mb-4 text-sm text-gray-500">
           <DateFormatter dateString={date} />
         </div>

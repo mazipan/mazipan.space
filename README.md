@@ -1,6 +1,6 @@
 # mazipan.space
 
-[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com) ![Website Up](https://img.shields.io/website-up-down-brightgreen-red/https/mazipan.space.svg) ![Dependencies](https://img.shields.io/david/mazipan/blog-3.0.svg)
+[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com) ![Website Up](https://img.shields.io/website-up-down-brightgreen-red/https/mazipan.space.svg)
 
 A new fresh personal blog built with Next.js and Tailwind
 
@@ -35,7 +35,7 @@ If you are looking for Gatsby version, please visit branch `gatsby`.
 
 ## Use as a template
 
-You can use this repo to bootstrap a same blog for yourself. 
+You can use this repo to bootstrap a same blog for yourself.
 Feel free, just click **"Use this template"** button in this repo.
 
 ----

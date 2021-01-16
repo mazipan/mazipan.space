@@ -25,6 +25,18 @@
   @apply font-bold text-lg mt-4 mb-4 leading-snug;
 }
 
+.markdown figure {
+  height: 500px;
+  width: 90%;
+  @apply relative;
+}
+
+@media (min-width: 768px) {
+  .markdown figure {
+    @apply max-w-4xl;
+  }
+}
+
 .markdown img {
   @apply rounded-lg mx-auto;
 }
