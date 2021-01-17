@@ -51,7 +51,7 @@ Kalau sudah bisa cara mudah, sudah kesel dan capek dengan cara mudah, mungkin su
 
 Tujuannya adalah memastikan Lighthouse bisa mengunjungi ke halaman yang membutuhkan login.
 
-Alat yang paling mugnkin digunakan ya Lighthouse yang bisa dimanipulasi alurnya, pilihannya ya ada pada Ligthouse CLI atau Lighthouse dalam versi Node.js nya.
+Alat yang paling mungkin digunakan ya Lighthouse yang bisa dimanipulasi alurnya, pilihannya ya ada pada Ligthouse CLI atau Lighthouse dalam versi Node.js nya.
 
 Untuk versi CLI nya sendiri sebenernya bisa menyematkan Cookie (jika proses login kalian hanya menyematkan Cookie), tapi ya cara ini juga masih cukup *hacky* karena berarti kalian harus bisa melakukan login dahulu ditempat lain untuk kemudian mengambil kredensial token hasil loginnya dan disematkan sebagai argumen pada CLI tersebut. Belum lagi ada issue dimana kalau kalian menyematkan extra Cookie bisa jadi akan menimpa semua Cookie lain yang seharusnya tersedia. Mengenai ini kalian bisa baca di [PR #9170](https://github.com/GoogleChrome/lighthouse/pull/9170)
 
@@ -90,20 +90,20 @@ const lighthouse = require('lighthouse');
 const PAGE_URL = 'https://mazipan.space/';
 
 (async() => {
-const browser = await puppeteer.launch({
-  // Optional, if you want to see the tests in action.
-  headless: false,
-  slowMo: 50,
-});
+  const browser = await puppeteer.launch({
+    // Sengaja di set false, biar kelihatan interaksinya
+    headless: false,
+    slowMo: 50,
+  });
 
-const { lhr } = await lighthouse(PAGE_URL, {
-  port: (new URL(browser.wsEndpoint())).port,
-  output: 'json'
-});
+  const { lhr } = await lighthouse(PAGE_URL, {
+    // menggunakan PORT dari Puppeteer
+    port: (new URL(browser.wsEndpoint())).port,
+    output: 'json'
+  });
 
-console.log(`Lighthouse scores: ${Object.values(lhr.categories).map(c => c.score).join(', ')}`);
-
-await browser.close();
+  console.log(`Lighthouse scores: ${Object.values(lhr.categories).map(c => c.score).join(', ')}`);
+  await browser.close();
 })();
 ```
 
@@ -111,6 +111,102 @@ Kode di atas hanya menjalan Lighthouse dengan memanfaatnya Puppeteer sebagai *la
 
 Kalau sudah bisa menjalankan kode di atas tanpa error, langkah selanjutnya adalah menambahkan proses login dengan menggunakan Puppeteer sebelum Lighthouse dijalankan. Kalian mungkin perlu baca-baca terlebih dahulu mengenai bagaimana menggunakan Puppeteer dalam proses otomasi sebuah peramban, silahkan coba ubek-ubek [dokumentasi Puppeteer](https://pptr.dev/) ya.
 
-## Nantikan kelanjutannya...
+## Contoh kode beserta kasus sederhana
 
-Bersambung dulu ya, nanti dilanjut lagi, sudah terlalu malam ini 😹
+Daripada banyak berandai-andai, saya buatkan saja contoh kasus sederhana agar bisa terbayang dan bisa kita praktekkan bersama kodenya nanti.
+
+Jadi, saya sudah membuat 3 halaman di blog saya ini, yakni:
+
+- [/examples/only-for-login](https://mazipan.space/examples/only-for-login)
+- [/examples/login](https://mazipan.space/examples/login)
+- [/examples/unauthorized](https://mazipan.space/examples/unauthorized)
+
+Idenya adalah, kita akan melakukan uji web performa pada halaman "/examples/only-for-login", sayangnya halaman ini tidak bisa dikunjungi secara langsung, kalian akan diarahkan ke "/examples/unauthorized" bila memaksanya. Kita diharuskan untuk datang ke halaman "/examples/login" terlebih dahulu untuk kemudian memasukkan email dan password dan melakukan proses login. Jika kalian telah melakukan proses login, maka kalian sudah bisa mengunjungi halaman "/examples/only-for-login". Paham kah? Ya, ini cuma versi sederhana dari proses login yang biasanya lebih rumit. Paling tidak kita bisa dapat konsepnya dahulu saja lah.
+
+Jadi, mari kita mulai saja membuat kodenya, saya telah membuat project Node.js dengan dependency ke `puppeteer` dan `lighthouse` sebelumnya, dan kode yang akan saya buat adalah sebagai berikut:
+
+```js
+const fs = require('fs');
+const puppeteer = require('puppeteer');
+const lighthouse = require('lighthouse');
+
+// Halaman yang mau kita test
+const PAGE_URL = 'https://mazipan.space/examples/only-for-login';
+
+// Halaman tempat kita akan melakukan proses login
+const PAGE_LOGIN_URL = 'https://mazipan.space/examples/login';
+
+const doingAuthentication = async (browser) => {
+  // -- MEMULAI proses login
+  const page = await browser.newPage();
+
+  // Kunjungi halaman login
+  await page.goto(PAGE_LOGIN_URL);
+
+  // Tunggu sampai masukan email terlihat
+  await page.waitForSelector('#email');
+
+  // Isi email
+  const emailInput = await page.$('#email');
+  await emailInput.type('me@mazipan.space');
+
+  // Isi password
+  const passwordInput = await page.$('#password');
+  await passwordInput.type('password123');
+
+  // Kirim data dengan klik submit
+  const submitBtn = await page.$('button[type="submit"]');
+  await submitBtn.click();
+
+  // menunggu redirection setelah melakukan klik submit
+  await page.waitForNavigation();
+  await page.close();
+  // -- SELESAI proses loginnya
+};
+
+(async () => {
+  const browser = await puppeteer.launch({
+    headless: false, // untuk test, saya set false saja
+    defaultViewport: null,
+	});
+
+	await doingAuthentication(browser);
+
+  // jalankan lighthouse di URL yang mau kita test
+  const { report, lhr } = await lighthouse(PAGE_URL, {
+    // Gunakan port dari Puppeteer
+    port: new URL(browser.wsEndpoint()).port,
+    output: 'html',
+    // Jaga2 aja, kalau proses login kalian memanfaatkan Browser Storage API, biar gak di reset
+    disableStorageReset: true,
+  });
+
+  // tulis hasil lighthouse ke berkas html dan json
+  fs.writeFileSync('lhreport.html', report);
+  fs.writeFileSync('lhreport.json', JSON.stringify(lhr, null, 2));
+
+  console.log(
+    `Lighthouse scores: ${Object.values(lhr.categories)
+      .map((c) => c.score)
+      .join(', ')}`
+  );
+
+  await browser.close();
+})();
+```
+
+Tinggal jalankan saja kode ini, di kasus saya karena saya letakkan kode ini di berkas `index.js` maka saya bisa menjalankan dengan `node ./index.js` saja.
+
+## Bagaimana kita yakin kalau halamannya benar
+
+Kalian bisa cek laporan yang dihasilkan, umunya akan ada screenshoot dari halaman yang di test.
+Sayangnya setelah saya cek pada laporan html, screenshootnya terlalu kecil untuk dilihat, jadi saya sendiri tidak bisa yakin apakah halamannya benar atau tidak dengan melihat laporan dalam bentuk html.
+Maka dari itu sebaiknya cek saja ke laporan dalam bentuk json nya.
+Cek dan cari kata `final-screenshoot` dan salin nilai dari properti `data` yang tersedia ke dalam peramban, ini merupakan base64 dari gambar screenshoot dari halaman yang di test oleh Lighthouse.
+
+## Repository
+
+Kode di atas tersedia juga di repository [lighthouse-behind-auth](https://github.com/mazipan/lighthouse-behind-auth) yang bisa lebih enak untuk dibaca dan dipelajari dibandingkan baca artikel blog macam ini yang terlalu banyak omong kosongnya.
+
+
+Terima kasih dan semoga bermanfaat.
