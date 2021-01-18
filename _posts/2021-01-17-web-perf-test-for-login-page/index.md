@@ -136,6 +136,7 @@ const PAGE_URL = 'https://mazipan.space/examples/only-for-login';
 // Halaman tempat kita akan melakukan proses login
 const PAGE_LOGIN_URL = 'https://mazipan.space/examples/login';
 
+// Fungsi akan dipanggil nanti, sebelum menjalankan Lighthouse
 const doingAuthentication = async (browser) => {
   // -- MEMULAI proses login
   const page = await browser.newPage();
@@ -168,11 +169,12 @@ const doingAuthentication = async (browser) => {
   const browser = await puppeteer.launch({
     headless: false, // untuk test, saya set false saja
     defaultViewport: null,
-	});
+  });
 
-	await doingAuthentication(browser);
+  // Memanggil fungsi untuk login
+  await doingAuthentication(browser);
 
-  // jalankan lighthouse di URL yang mau kita test
+  // Jalankan lighthouse di URL yang mau kita test
   const { report, lhr } = await lighthouse(PAGE_URL, {
     // Gunakan port dari Puppeteer
     port: new URL(browser.wsEndpoint()).port,
@@ -181,7 +183,7 @@ const doingAuthentication = async (browser) => {
     disableStorageReset: true,
   });
 
-  // tulis hasil lighthouse ke berkas html dan json
+  // Tulis hasil lighthouse ke berkas html dan json
   fs.writeFileSync('lhreport.html', report);
   fs.writeFileSync('lhreport.json', JSON.stringify(lhr, null, 2));
 
