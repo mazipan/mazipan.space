@@ -26,8 +26,6 @@
 }
 
 .markdown figure {
-  height: 500px;
-  width: 90%;
   @apply relative;
 }
 
@@ -48,7 +46,7 @@
 }
 
 .markdown figcaption {
-  @apply text-sm text-center mt-2 text-gray-700;
+  @apply text-sm text-center mt-2;
 }
 
 .markdown a[href] {
