@@ -1,5 +1,5 @@
 ---
-title: Pengetesan performa web untuk halaman dengan login
+title: Pengujian performa web untuk halaman dengan login
 date: '2021-01-17'
 excerpt: Berbagi hal yang saya pelajari dalam melakukan test performa web untuk halaman-halaman yang membutuhkan login terlebih dahulu
 author: mazipan
