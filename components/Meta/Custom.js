@@ -3,7 +3,7 @@ import Head from 'next/head'
 export default function Meta ({ title, description, url, coverImage, tag }) {
   return (
     <Head>
-      <title key="title">{title} | mazipan.space</title>
+      <title key="title">{title}</title>
       <meta key="description" name="description" content={description} />
 
       {tag && <meta key="article-tag" property="article:tag" content={tag} />}
