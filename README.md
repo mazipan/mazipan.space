@@ -15,15 +15,16 @@
 
 ## Features
 
-- Dark Mode
-- Pagination
-- Featured Article
-- Tags
-- Dual Language (ID and EN)
-- RSS and Sitemap
-- Code Highlighting
-- Image Optimization
-- Comment System using Github
+- Dark mode
+- Simple pagination
+- Featured article
+- Article tags
+- Dual language support (ID and EN)
+- Generate RSS feed and sitemap.xml
+- Code highlighting, support line highlighting
+- Image optimization, mostly using [Next-Image](https://nextjs.org/docs/api-reference/next/image)
+- 3rd party comment system using Github Issue
+- Auto generating web perf report using [psi-gh-action](https://github.com/mazipan/psi-gh-action)
 
 ## Logo
 
