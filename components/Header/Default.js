@@ -15,6 +15,9 @@ export default function Header () {
         <Link href="/talks">
           <a className="text-link mr-2 md:mr-4 font-bold">{'Talks'}</a>
         </Link>
+        <Link href="/speed">
+          <a className="text-link mr-2 md:mr-4 font-bold">{'Speed'}</a>
+        </Link>
         <Link href="/support">
           <a className="text-link mr-2 md:mr-4 font-bold">{'Support'}</a>
         </Link>

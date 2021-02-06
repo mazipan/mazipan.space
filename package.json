@@ -17,6 +17,7 @@
   "dependencies": {
     "@mdx-js/loader": "1.6.21",
     "@next/mdx": "10.0.3",
+    "byte-size": "^7.0.0",
     "classnames": "2.2.6",
     "date-fns": "2.16.1",
     "gray-matter": "4.0.2",

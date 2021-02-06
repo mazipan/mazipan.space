@@ -11,6 +11,9 @@ export default function Intro () {
         <Link href="/talks">
           <a className="text-link font-bold mr-2 md:mr-4">{'Talks'}</a>
         </Link>
+        <Link href="/speed">
+          <a className="text-link mr-2 md:mr-4 font-bold">{'Speed'}</a>
+        </Link>
         <Link href="/support">
           <a className="text-link font-bold mr-2 md:mr-4">{'Support'}</a>
         </Link>

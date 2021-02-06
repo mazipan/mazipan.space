@@ -9,12 +9,12 @@ export default function HeroPost ({ title, coverImage, date, excerpt, author, sl
   return (
     <section>
       <div className="mb-8 relative">
-        <div className="absolute bg-red-400 z-10 text-sm px-3 py-1 mt-2 ml-2 rounded-full">FEATURED</div>
+        <div className="absolute bg-red-400 bottom-0 z-10 text-xs px-2 py-1 mb-4 ml-2 rounded-full">FEATURED</div>
         <Image
           src={coverImage}
           alt={`Cover ${title}`}
           width={1240}
-          height={500}
+          height={600}
           layout='intrinsic'
           sizes="100vw"
           priority={true}
