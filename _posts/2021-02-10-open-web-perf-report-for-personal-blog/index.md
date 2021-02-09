@@ -1,5 +1,5 @@
 ---
-title: Laporan terbuka web performa untuk blog pribadi
+title: Laporan terbuka performa web untuk blog pribadi
 date: '2021-02-10'
 excerpt: Cara yang saya tempuh untuk membuat laporan terbuka dari performa web untuk blog pribadi saya
 author: mazipan
