@@ -2,7 +2,7 @@ import { useState } from 'react'
 
 const useTheme = () => {
   const isWindow = typeof window !== 'undefined'
-  const currentTheme = isWindow && (localStorage.getItem('theme') || 'light');
+  const currentTheme = isWindow && (localStorage.getItem('theme') || 'light')
 
   const [theme, setTheme] = useState(currentTheme)
 
