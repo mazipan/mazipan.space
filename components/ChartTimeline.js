@@ -2,28 +2,55 @@ import React from 'react'
 import Chart from 'react-apexcharts'
 import useTheme from '@/hooks/useTheme'
 
-const ChartTimeline = ({ data, title, dataKey }) => {
+const ChartTimeline = ({
+  activeDevice,
+  dataDesktop,
+  dataMobile,
+  title,
+  dataKey,
+  min = 0,
+  max = 100
+}) => {
   const { theme } = useTheme()
 
+  const seriesDesktop = {
+    name: `${title} - Desktop`,
+    data: dataDesktop.map((item) => {
+      return {
+        x: item.timestamp,
+        y: item[dataKey]
+      }
+    })
+  }
+
+  const seriesMobile = {
+    name: `${title} - Mobile`,
+    data: dataMobile.map((item) => {
+      return {
+        x: item.timestamp,
+        y: item[dataKey]
+      }
+    })
+  }
+
   const series = [
-    {
-      name: title,
-      data: data.map((item) => {
-        return {
-          x: item.timestamp,
-          y: item[dataKey]
-        }
-      })
-    }
-  ]
+    activeDevice !== 'mobile' ? seriesDesktop : null,
+    activeDevice !== 'desktop' ? seriesMobile : null
+  ].filter(Boolean)
+
+  const colors = [activeDevice !== 'mobile' ? '#D10CE8' : '', activeDevice !== 'desktop' ? '#66DA26' : ''].filter(Boolean)
 
   const options = {
     chart: {
       toolbar: {
         show: false
-      },
-      type: 'area',
-      height: 200
+      }
+    },
+    plotOptions: {
+      bar: {
+        horizontal: false,
+        columnWidth: '10%'
+      }
     },
     xaxis: {
       type: 'datetime',
@@ -39,27 +66,23 @@ const ChartTimeline = ({ data, title, dataKey }) => {
     },
     yaxis: {
       show: true,
+      tickAmount: 5,
+      min,
+      max,
       labels: {
         style: {
           colors: ['#F56565'],
-          fontSize: '12px',
+          fontSize: '1rem'
         }
       }
     },
     stroke: {
-      curve: 'smooth',
-      width: 3
+      show: true,
+      width: 3,
+      colors: ['transparent']
     },
     fill: {
-      type: 'gradient',
-      gradient: {
-        shade: theme,
-        shadeIntensity: 0.5,
-        gradientToColors: undefined,
-        opacityFrom: 1,
-        opacityTo: 1,
-        stops: [0, 50, 100],
-      }
+      type: 'solid'
     },
     markers: {
       size: 0,
@@ -75,16 +98,13 @@ const ChartTimeline = ({ data, title, dataKey }) => {
       show: false
     },
     dataLabels: {
-      enabled: false
+      enabled: false,
+      position: 'top'
     },
-    colors: ['#F56565', '#66DA26', '#546E7A', '#E91E63', '#FF9800']
+    colors
   }
 
-  return (
-    <div className="p-2">
-      <Chart type="area" options={options} series={series} width="100%" />
-    </div>
-  )
+  return <Chart type="bar" height={200} options={options} series={series} width="100%" />
 }
 
 export default ChartTimeline

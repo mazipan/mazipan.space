@@ -1,5 +1,6 @@
 import React from 'react'
 
+import TriangleIcon from '../Icons/Triangle'
 import DesktopIcon from '../Icons/Desktop'
 import PhoneIcon from '../Icons/Phone'
 
@@ -11,8 +12,20 @@ const DeviceChooser = ({ activeDevice, onChangeDevice }) => {
   return (
     <div className="my-4 flex">
       <div
-        className={`mr-2 p-2 flex bg-white overflow-hidden rounded-lg ${
-          activeDevice === 'desktop' ? 'text-green-400 border-green-400 border-2' : 'text-gray-600 border-2'
+        className={`p-2 flex cursor-pointer overflow-hidden rounded-tl-lg rounded-bl-lg border-2 border-red-500 ${
+          activeDevice === 'all' ? 'text-white bg-red-500' : 'bg-white text-red-500'
+        }`}
+        onClick={() => {
+          handleChangeDevice('all')
+        }}
+      >
+        <TriangleIcon />
+        <span className="ml-2">All</span>
+      </div>
+
+      <div
+        className={`p-2 flex cursor-pointer overflow-hidden border-t-2 border-b-2 border-red-500 ${
+          activeDevice === 'desktop' ? 'text-white bg-red-500' : 'bg-white text-red-500'
         }`}
         onClick={() => {
           handleChangeDevice('desktop')
@@ -23,8 +36,8 @@ const DeviceChooser = ({ activeDevice, onChangeDevice }) => {
       </div>
 
       <div
-        className={`p-2 flex bg-white overflow-hidden rounded-lg ${
-          activeDevice === 'mobile' ? 'text-green-400 border-green-400 border-2' : 'text-gray-600 border-2'
+        className={`p-2 flex cursor-pointer overflow-hidden rounded-tr-lg rounded-br-lg border-2 border-red-500 ${
+          activeDevice === 'mobile' ? 'text-white bg-red-500' : 'bg-white text-red-500'
         }`}
         onClick={() => {
           handleChangeDevice('mobile')

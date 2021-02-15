@@ -10,7 +10,7 @@ import { SITE_METADATA } from '@/lib/constants'
 import { getPsiReportData } from '@/lib/api'
 
 export default function Speed ({ data }) {
-  const [showDevice, setShowDevice] = useState('desktop')
+  const [showDevice, setShowDevice] = useState('all')
 
   const handleChangeDevice = (newDevice) => {
     setShowDevice(newDevice)
@@ -68,7 +68,7 @@ export default function Speed ({ data }) {
             </span>
 
             <DeviceChooser activeDevice={showDevice} onChangeDevice={handleChangeDevice} />
-            <ScoreCard report={showDevice === 'desktop' ? newestDataDesktop : newestDataMobile} allData={showDevice === 'desktop' ? allDataDesktop : allDataMobile}/>
+            <ScoreCard activeDevice={showDevice} reportDesktop={newestDataDesktop} reportMobile={newestDataMobile} allDataDesktop={allDataDesktop} allDataMobile={allDataMobile} />
           </div>
         </Fragment>
       </LayoutArticle>
