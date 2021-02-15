@@ -1,6 +1,5 @@
 import React from 'react'
-import dynamic from 'next/dynamic'
-import byteSize from 'byte-size'
+import dynamic from 'next/dynamic''
 
 import DesktopIcon from '../Icons/Desktop'
 import PhoneIcon from '../Icons/Phone'
@@ -237,10 +236,10 @@ export default function ScoreCard ({
               <PhoneIcon />
               <div>
                 <span className={'text-6xl md:text-2xl lg:text-4xl font-bold'}>
-                  {byteSize(reportMobile.size).value}
+                  {reportMobile.size}
                 </span>
                 <small className={'text-lg md:text-xl font-bold'}>
-                  {byteSize(reportMobile.size).unit}
+                  kB
                 </small>
               </div>
             </div>
