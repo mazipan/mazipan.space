@@ -223,10 +223,10 @@ export default function ScoreCard ({
               <DesktopIcon />
               <div>
                 <span className={'text-6xl md:text-2xl lg:text-4xl font-bold'}>
-                  {byteSize(reportDesktop.size).value}
+                  {reportDesktop.size}
                 </span>
                 <small className={'text-lg md:text-xl font-bold'}>
-                  {byteSize(reportDesktop.size).unit}
+                  kB
                 </small>
               </div>
             </div>
