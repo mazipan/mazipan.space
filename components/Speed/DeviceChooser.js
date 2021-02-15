@@ -13,7 +13,7 @@ const DeviceChooser = ({ activeDevice, onChangeDevice }) => {
     <div className="my-4 flex">
       <div
         className={`p-2 flex cursor-pointer overflow-hidden rounded-tl-lg rounded-bl-lg border-2 border-red-500 ${
-          activeDevice === 'all' ? 'text-white bg-red-500' : 'bg-white text-red-500'
+          activeDevice === 'all' ? 'text-white bg-red-500' : 'text-red-500'
         }`}
         onClick={() => {
           handleChangeDevice('all')
@@ -25,7 +25,7 @@ const DeviceChooser = ({ activeDevice, onChangeDevice }) => {
 
       <div
         className={`p-2 flex cursor-pointer overflow-hidden border-t-2 border-b-2 border-red-500 ${
-          activeDevice === 'desktop' ? 'text-white bg-red-500' : 'bg-white text-red-500'
+          activeDevice === 'desktop' ? 'text-white bg-red-500' : 'text-red-500'
         }`}
         onClick={() => {
           handleChangeDevice('desktop')
@@ -37,7 +37,7 @@ const DeviceChooser = ({ activeDevice, onChangeDevice }) => {
 
       <div
         className={`p-2 flex cursor-pointer overflow-hidden rounded-tr-lg rounded-br-lg border-2 border-red-500 ${
-          activeDevice === 'mobile' ? 'text-white bg-red-500' : 'bg-white text-red-500'
+          activeDevice === 'mobile' ? 'text-white bg-red-500' : 'text-red-500'
         }`}
         onClick={() => {
           handleChangeDevice('mobile')
