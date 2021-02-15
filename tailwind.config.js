@@ -2,7 +2,8 @@ module.exports = {
   purge: [
     './components/**/*.js',
     './pages/**/*.js',
-    './node_modules/tailwindcss-dark-mode/prefers-dark.js'
+    './lib/utils/**/*.js',
+    './node_modules/tailwindcss-dark-mode/prefers-dark.js',
   ],
   theme: {
     darkSelector: '.dark',
