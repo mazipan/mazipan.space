@@ -65,7 +65,7 @@ Argumennya ditangkap dengan `core.getInput('who-to-greet');`. Semudah itu.
 
 Yang tidak boleh terlewat di awal, ya Github Action membutuhkan sebuah berkas metadata `action.yml` yang isinya adalah deskripsi dari Actions yang kita buat, termasuk argumen yang dibutuhkan olehnya.
 
-```js
+```yaml
 name: 'Hello World'
 description: 'Greet someone and record the time'
 inputs:
@@ -83,7 +83,187 @@ runs:
 
 Aihh, bisa nih kayanya kalau gini (doang) nih.
 
-Maka mulailah saya mencoba menambahkan Lighthouse dan Chrome-Launcher ke dalam project Github Action nya. Terus ternyata saya belum baca bagian cara mempublikasikannya. Bahwa pilihannya adalah kita harus mempublikasikan beserta semua dependensi yang dibutuhkan, kalau kasus saya berarti bareng sama `node_modules` nya. Di dokumentasinya sendiri mengarahkan untuk menggunakan [vercel/ncc](https://github.com/vercel/ncc) untuk mem-bundle kodenya. Ya sudah kerjakan saja, dan teng... teng... teng... Gagal son... Coba lagi deh, siapa tau berhasil. Gagal lagi son... Hmmm, coba hapus `node_modules` nya dan install ulang deh. Kalau gagal juga mungkin upload aja kali ya sama `node_modules` nya ke Github. Yap, ternyata ada yang konsiten gagal. Sepertinya ada kode yang belum didukung oleh `vercel/ncc` sehingga gagal di bundle olehnya. Mulai lah mencoba cara bar-bar, keluarkan `node_modules` dari `.gitignore` dan commit ke Github. Dan ternyata ada 5K+ berkas yang harus diunggah. Pun dengan internet yang cukup mumpuni tetap saja laptop Mac bengong dalam waktu yang cukup lama hanya untuk melakukan `git add` dan `git commit`, ditambah lagi `git push`. Gak selesai-selesai...
+Maka mulailah saya mencoba menambahkan `Lighthouse` dan `Chrome-Launcher` ke dalam project Github Action nya. Terus ternyata saya belum baca bagian cara mempublikasikannya. Bahwa pilihannya adalah kita harus mempublikasikan beserta semua dependensi yang dibutuhkan, kalau kasus saya berarti bareng sama `node_modules` nya. Di dokumentasinya sendiri mengarahkan untuk menggunakan [vercel/ncc](https://github.com/vercel/ncc) untuk mem-bundle kodenya. Ya sudah kerjakan saja, dan teng... teng... teng... Gagal son... Coba lagi deh, siapa tau berhasil. Gagal lagi son... Hmmm, coba hapus `node_modules` nya dan install ulang deh. Kalau gagal juga mungkin upload aja kali ya sama `node_modules` nya ke Github. Yap, ternyata ada yang konsiten gagal. Sepertinya ada kode yang belum didukung oleh `vercel/ncc` sehingga gagal di bundle olehnya. Mulai lah mencoba cara bar-bar, keluarkan `node_modules` dari `.gitignore` dan commit ke Github. Dan ternyata ada 5K+ berkas yang harus diunggah. Pun dengan internet yang cukup mumpuni tetap saja laptop Mac bengong dalam waktu yang cukup lama hanya untuk melakukan `git add` dan `git commit`, ditambah lagi `git push`. Gak selesai-selesai...
+
+Akhirnya pilihan termudah saya adalah memindahkan sumber data yang sebelumnya memaksakan menggunakan Lighthouse menjadi menggunakan API dari PageSpeed Insight, tentu saja ini mudah, karena saya tidak perlu lagi berurusan dengan masalah bundle-membundle.
+
+## Mulai membuat projek nyata
+
+Yap saat main-main cukup, saatnya merencanakan membuat projek nyatanya.
+
+Siapkan "interface" dasar yang dibutuhkan, saya memutuskan membutuhkan paling tidak `API_KEY`, `URL` dari halaman yang akan di test serta jenis `DEVICE` yang ingin digunakan (mobile/desktop). Ini dulu saja untuk permulaan.
+
+Saya mulai dengan menambahkannya di `action.yml` kebutuhan saya:
+
+```yaml
+name: "psi-gh-action"
+inputs:
+  api_key:
+    description: "PageSpeedInsight API key"
+    required: true
+  urls:
+    description: "List of URL(s) to be analyzed"
+    required: true
+  devices:
+    description: "Device(s) used for test"
+    default: mobile
+runs:
+  using: "node12"
+  main: "dist/index.js"
+```
+
+Masalahnya saya mesti bisa baca URL yang dalam jumlah yang bisa lebih dari satu, berarti berupa *Array*, pun begitu dengan device, bisa saja kan saya membutuhkan untuk menguji performa pada device desktop dan mobile, bukan salah satunya.
+
+Untuk passing *Array sendiri* di YAML bisa dengan begini misalnya:
+
+```yaml
+devices: |
+  mobile
+  desktop
+```
+
+Sedangkan untuk mengambil nilainya mungkin jadi harus parsing manual. Hal ini karena `core.getInput(arg)` dari Github Action cuma bisa menerima masukan dalam bentuk string. saya perlu membuat *helper* yang isinya kurang lebih begini:
+
+```js
+function getInputList (arg, separator = '\n') {
+  const input = core.getInput(arg)
+  if (!input) return []
+  return input
+    .split(separator)
+    .map((url) => url.trim())
+    .filter(Boolean)
+}
+```
+
+Sehingga di file `index.js` saya bisa mendapatkan nilainya dengan begini saja:
+
+```js
+const urls = getInputList('urls')
+const devices = getInputList('devices')
+const apiKey = core.getInput('api_key')
+```
+
+Tinggal menggunakan data sederhana ini untuk memanggil API dari PageSpeed Insight ya. Kalian bisa membaca lebih detail terkait API ini di [halaman dokumentasi resmi](https://developers.google.com/speed/docs/insights/v5/get-started) PageSpeed Insight
+
+## Melakukan pengujian internal
+
+Kita bisa memanggil Action kita sendiri melalui repo internal kita, caranya kurang lebih begini:
+
+▶️ Saya buat berkas untuk Action di direktori `.github/workflows/example.yml`
+
+▶️ Saya menyetel trigger dengan `push` agar bisa dapat umpan balik yang instan
+
+```yaml
+on:
+  push:
+    paths-ignore:
+    - "psi-reports/**"
+    - "dist/**"
+```
+
+▶️ Gunakan checkout@v2 untuk mengambil repo
 
 
-**Bersambung dulu ya...**
+```yaml
+on:
+  push:
+    paths-ignore:
+    - "psi-reports/**"
+    - "dist/**"
+jobs:
+  psi_web_perf_action:
+    runs-on: ubuntu-latest
+    name: Example job
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+```
+
+▶️ Arahkan ke direktori root untuk bisa menggunakan Action internal
+
+```yaml
+on:
+  push:
+    paths-ignore:
+    - "psi-reports/**"
+    - "dist/**"
+jobs:
+  psi_web_perf_action:
+    runs-on: ubuntu-latest
+    name: Example job
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Running PSI
+        uses: ./ # Uses an action in the root directory
+        id: psi_job
+        with:
+          api_key: ${{ secrets.PSI_API_KEY }}
+          urls: |
+            https://mazipan.space/
+          devices: |
+            mobile
+```
+
+Dengan begini kita bisa melakukan pengujian di internal repo sendiri tanpa harus mempublikasikan terlebih dahulu.
+
+## Mempublikasikan ke Marketplace
+
+Beberapa hal yang say lakukan sebelum mempublikasikan ke Marketplace antara lain:
+
+➡️ Memberikan deskripsi tambahan
+
+Saya menambahkan info tambahan pada `action.yml` seperti deskripsi, nama pembuat, icon yang bisa digunakan serta memberikan deskripsi semudah mungkin pada semua `input` yang saya butuhkan.
+
+➡️ Membuatkan dokumentasi sederhana
+
+Ini paling tidak mencakup hal apa yang ingin diselesaikan dengan Action ini, bagaimana cara memasangnya, dan contoh lengkap Action yang menggunakan Action ini.
+Semuanya saya tulis dengan ringkas di `README.md`.
+Saya juga menambahkan beberapa tautan ke halaman yang saya rasa perlu dibaca untuk memahami cara memasang Action ini, dan menyematkan gambar tangkapan layar sebagai pemanis dokumentasi.
+
+➡️ Melakukan versioning
+
+Github Action akan memanfaatkan tagging di `git` dan fitur `release` di Github.
+Jadi setelah selesai pekerjaan, jangan lupa untuk melakukan `release` di Github dan menambahakan pesan perubahan apa saja yang dikerjakan pada versi terbaru tersebut.
+
+Baca selengkapnya mengenai [mempublikasikan Github Action di Marketplace](https://docs.github.com/en/actions/creating-actions/publishing-actions-in-github-marketplace).
+
+## Implementasi di repo pribadi
+
+Seperti disebutkan sebelumnya, saya menargetkan ini untuk digunakan di blog pribadi saya. Untuk kalian yang ingiun mengikuti perubahan inisial yang saya lakukan untuk implementasi Action ini ke Github saya, bisa ikuti saja commit [c865772](https://github.com/mazipan/mazipan.space/commit/c86577204951760750b56f9c30660d0189cdad07) di repo [mazipan/mazipan.space](https://github.com/mazipan/mazipan.space).
+
+Hasilnya bisa kalian jumpai saat ini di halaman [/speed](/speed)
+
+## Rencana jangka pendek
+
+Saya ingin mencoba memasarkan Github Action ini dalam beberapa waktu, kemungkinan saya akan membantu pemasangan di blog teman-teman developer Indonesia. Saat ini sendiri saya sudah membantu memasangkan di blog [jefrydco.id](https://jefrydco.id/speed/). Semoga makin banyak lagi yang sempat saya bnatu pasangkan atau syukur-syukur sih mereka bisa pasang sendiri ya ✨
+
+Kalian punya blog statis yang kodenya terbuka di Github, yuk cobain dong.
+Bisa colek-colek lah kalau pusing atau kena error.
+
+## Hal yang saya pelajari
+
+Asiknya mengerjakan hal-hal yang sebelumnya jarang atau bahkan belum pernah dikerjakan adalah kita bisa banyak mengeksplor hal baru, emskipun prosesnya jadi lebih lama, karena pastinya akan ketemu galat lucu yang seharusnya tidak perlu kita temui kalau sudah mahir.
+
+Beberapa hal yang saya pelajari dari projek kali ini antara lain:
+
+✔️ Baru tau ada yang namanya `vercel/ncc` untuk bundling kode node.js secara cepat dan mudah.
+
+✔️ Belajar membuat Github Action sederhana dan mempublikasikan ke Marketplace.
+
+✔️ Belajar mengimplementasikan Github Action ini ke projek orang lain, bukan hanya projek pribadi. Jadi harus *debug* bareng-bareng sama yang punya projek juga.
+
+✔️ Belajar menggunakan Github API lewat paket `@actions/github` untuk beberapa kebutuhan seperti membuat komentar pada suatu commit.
+
+## Tautan penting
+
+📌 Repo "psi-gh-action": [https://github.com/mazipan/psi-gh-action](https://github.com/mazipan/psi-gh-action)
+
+📌 Alamat marketplace "psi-gh-action": [https://github.com/marketplace/actions/psi-gh-action](https://github.com/marketplace/actions/psi-gh-action)
+
+📌 Halaman hasil: [/speed](/speed)
+
+Demikian tulisan kali ini.
+
+Terima kasih dan semoga bermanfaat.
