@@ -42,6 +42,10 @@ Cara umum untuk berkolaborasi dalam kondisi satu repository begini biasanya:
 ## Alur kolaborasi dalam repository hasil fork
 
 Caranya sebenarnya secara garis besar akan sama saja, hanya saja karena dalam versi fork kita tidak mempunyai akses langsung ke repository utama, melainkan hanya repository salinan dari aslinya. Ini yang menjadikan kita bisa saja langsung melakukan perubahan di branch utama, karena repository fork pada dasarnya adalah milik pribadi, kita bisa langsung menyasar ke branch utama tanpa perlu takut diteriaki oleh orang lain.
+Meskipun punya akses ke branch utama, misalnya `master`, saya sendiri tidak merekomendasikan untuk bekerja langsung di branch utama. 
+Sebaiknya tetap gunakan branch lain untuk bekerja.
+Hal ini agar lebih mudah kedepannya kalau harus sinkronisasi antara branch utama repo fork dengan repo utamanya.
+Terkecuali sejak awal memang sudah dipastikan kalau kalian tidak akan melakukan sinkronisasi dengan repo utamanya.
 
 ## Kriteria pull request yang ciamik
 
@@ -53,26 +57,35 @@ Judul pull request merupakan kesan pertama yang akan didapatkan oleh orang lain 
 judul menjadi krusial karena merupakan pembeda, penanda dan gerbang awal untuk pemrogram lain mengerti konteks umum dari perubahan yang kalian buat.
 
 Beberapa perusahaan umumnya juga memiliki konvensi atau aturan bagi pembuatan judul pull request.
-Misalnya saja konvensi yang umum mengadopsi dari standard Commitizen juga, contohnya:
+Misalnya saja konvensi yang umum mengadopsi dari standard **[Commitizen](https://github.com/commitizen/cz-cli)** juga, contohnya:
 
 👉  `feat: menambahkan fitur share ke sosial media`
 
+Awalan `feat:` digunakan untuk menandakan pull request yang dibuat berisikan fitur tambahan baru.
+
 👉  `chore: menambahkan linter`
 
+Awalan `chore:` digunakan untuk pull request yang tidak memiliki dampak langsung terhadap kode di level production, misalnya bersih-bersih kode, memperbaiki struktur direktori, dan sebagainya.
+
 👉  `fix: memperbaiki tampilan header`
+
+Awalan `fix:` digunakan untuk perbaikan terhadap fitur yang sudah ada namun berjalan tidak semestinya.
+
+👉   Serta berbagai konvensi lainnya
 
 Namun bilapun belum ada konvensinya, tetap saja membuat judul yang baik adalah salah satu ciri pull request yang baik.
 
 **2. Memberikan penjelasan yang gamblang mengenai perubahan yang dibuat**
 
-Ini merupakan bagian yang paling penting namun sering sekali ditinggalkan, bahkan di kalangan pemrogram yang sudah pro saja seringkali membuat pull request tanpa ada deskripsi sama sekali.
+Ini merupakan bagian yang paling penting namun sering sekali ditinggalkan, bahkan di kalangan pemrogram yang sudah *pro* saja seringkali membuat pull request tanpa ada deskripsi sama sekali.
 Sepertinya asal buka pull request dan berharap orang lain bisa mengerti.
-Kenapa ini penting? Ini merupakan tempat bagi kita untuk memberitahukan konteks dari perubahan yang kita buat, dampak apa yang terjadi dari perubahan tersebut, serta bagian-bagian yang kemungkinan harus dicek lebih teliti karena berpotensi menimbulkan bug.
+Kenapa ini penting? Ini merupakan tempat bagi kita untuk memberitahukan konteks dari perubahan yang kita buat, dampak apa yang terjadi dari perubahan tersebut, serta bagian-bagian yang kemungkinan harus dicek lebih teliti karena berpotensi menimbulkan galat atau mengubah alur dari kode sebelumnya.
 
 Salah satu tips dari saya pribadi, coba posisikan diri kalian sebagai orang yang melakukan review pull request tersebut.
-Pastikan mereka bisa melakukan review dengan tepat. Dengan memberikan penjelasan segamblang mungkin kita bisa mengarahkan si reviewer untuk bisa langsung tertuju ke sasaran yang seharusnya.
+Pastikan mereka bisa melakukan review dengan tepat. 
+Dengan memberikan penjelasan segamblang mungkin kita bisa mengarahkan si reviewer untuk bisa langsung tertuju ke sasaran yang seharusnya.
 
-Mereview kode dalam pull request itu bukan pekerjaan mudah, apalagi bila kita tidak paham mengenai konteks bisnis flow yang dikerjakan.
+Me-review kode dalam pull request itu bukan pekerjaan mudah, apalagi bila kita tidak paham mengenai konteks bisnis flow yang dikerjakan.
 Dengan adanya penjelasan yang baik, pekerjaan mereview biasanya akan lebih mudah dan terarah.
 
 Beberapa hal yang paling tidak mestinya ada di deskripsi pull request antara lain:
@@ -104,6 +117,7 @@ Ini mengakibatkan orang jadi tidak fokus melakukan pengujian dan review, alhasil
 **5. Memiliki riwayat commit yang mudah ditelusuri**
 
 Commit history yang acak-acakan juga bisa menimbulkan gangguan bagi si reviewer, memperbaiki history sebelum pull request dibuka bisa jadi solusi kalau kalian memang hobi bikin commit asal-asalan sebelum siap di bukakan pull request.
+Beberapa orang perlu memperhatikan alur commit juga pada saat melakukan kode review, ini kenapa memperbaiki riwayat commit bisa jadi perlu dilakukan.
 
 ## Kebiasaan yang bisa meningkatkan kualitas pull request
 
