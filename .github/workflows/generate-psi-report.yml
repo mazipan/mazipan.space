@@ -13,7 +13,7 @@ jobs:
          fetch-depth: 0
 
       - name: psi-gh-action
-        uses: mazipan/psi-gh-action@1.4.0
+        uses: mazipan/psi-gh-action@1.5.0
         with:
           api_key: ${{ secrets.PSI_API_KEY }}
           urls: |
@@ -22,6 +22,8 @@ jobs:
             mobile
             desktop
           runs: 1
+          max: 10
+          override: false
           branch: master
           push_back: true
           token: ${{ secrets.GITHUB_TOKEN }}
