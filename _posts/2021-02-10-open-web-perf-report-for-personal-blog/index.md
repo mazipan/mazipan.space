@@ -235,6 +235,8 @@ Seperti disebutkan sebelumnya, saya menargetkan ini untuk digunakan di blog prib
 
 Hasilnya bisa kalian jumpai saat ini di halaman [/speed](/speed)
 
+![Gambar tampilan dari halaman /speed di awal-awal](/thumbnail/open-web-perf-report-for-personal-blog/speed-page.png)
+
 ## Rencana jangka pendek
 
 Saya ingin mencoba memasarkan Github Action ini dalam beberapa waktu, kemungkinan saya akan membantu pemasangan di blog teman-teman developer Indonesia. Saat ini sendiri saya sudah membantu memasangkan di blog [jefrydco.id](https://jefrydco.id/speed/). Semoga makin banyak lagi yang sempat saya bnatu pasangkan atau syukur-syukur sih mereka bisa pasang sendiri ya ✨
