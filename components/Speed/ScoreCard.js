@@ -113,7 +113,7 @@ export default function ScoreCard ({
         <div className={`text-6xl md:text-2xl lg:text-4xl font-bold text-center grid ${isAll ? 'grid-cols-2' : 'grid-cols-1'}`}>
           {!isMobile && (
             <div className={`${getCLSColorClass(reportDesktop.cls)} flex justify-center`}>
-              <DesktopIcon /> {reportDesktop.perf}
+              <DesktopIcon /> {reportDesktop.cls}
             </div>
           )}
           {!isDesktop && (
