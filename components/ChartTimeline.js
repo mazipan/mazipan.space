@@ -49,7 +49,7 @@ const ChartTimeline = ({
     plotOptions: {
       bar: {
         horizontal: false,
-        columnWidth: '20%'
+        columnWidth: '10px'
       }
     },
     xaxis: {
