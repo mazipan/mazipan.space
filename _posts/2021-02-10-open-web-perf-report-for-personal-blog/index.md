@@ -264,6 +264,81 @@ Baca selengkapnya mengenai [mempublikasikan Github Action di Marketplace](https:
 ## Implementasi di repo pribadi
 
 Seperti disebutkan sebelumnya, saya menargetkan ini untuk digunakan di blog pribadi saya. 
+Jadi contoh petunjuk penerapan juga akan berfokus pada blog statis yang saya miliki, selama blog kalian berbetuk statis dan di host di Github mestinya sih tidak akan jauh berbeda, mungkin hanya membutuhkan sedikit penyesuaian.
+
+✍️ Pertama pastikan kalian telah mengaktifkan fitur Action di repo kalian (secara bawaan seharusnya sudah aktif)
+
+✍️ Buat berkas action kalian dengan membuat berkas `.github/workflows/generate-psi.yml`
+
+✍️ Isi berkas tersebut dengan contoh kode berikut:
+
+```yaml
+name: Generate PSI report
+on:
+  schedule:
+    - cron: '30 2 * * 0, 2, 4, 6'
+
+jobs:
+  run_psi:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+
+      - name: psi-gh-action
+        uses: mazipan/psi-gh-action@1.5.0
+        with:
+          api_key: ${{ secrets.PSI_API_KEY }}
+          urls: |
+            https://mazipan.space/
+          devices: |
+            mobile
+            desktop
+          runs: 1
+          max: 10
+          branch: master
+          push_back: true
+          override: false
+          token: ${{ secrets.GITHUB_TOKEN }}
+```
+
+✍️ Buat PSI API Key baru di halaman [Google Console](https://developers.google.com/speed/docs/insights/v5/get-started)
+
+✍️ Set kredensial restriction dari API Key yang kalian buat ke `None` 
+
+✍️ Tambahkan API Key tersebut ke Secret di halaman [Secret untuk Github Action](https://github.com/YOUR_USERNAME/YOUR_REPO/settings/secrets/actions)
+
+✍️ Tunggu paling tidak beberapa hari agar kalian bisa mendapatkan laporan berbentuk JSON
+
+✍️ Kalian akan mendapati laporan dengan data seperti berikut:
+
+```js
+{
+  "timestamp": "2021-02-05T16:12:02.119Z",
+  "reports": [
+    {
+      "url": "https://mazipan.space/",
+      "device": "mobile", // Device type for running Lighthouse
+      "perf": 0.78,       // Performance score by PSI
+      "fid": 16,          // First Input Delay based on Chrome UX field data
+      "lcp": 2775,        // Largest Contentful Paint
+      "cls": 0,           // Cummulative Layout Shift
+      "fcp": 2100,        // First Contentful Painy
+      "fci": 3533,        // First CPU Idle
+      "tbt": 591,         // Total Blocking Time
+      "tti": 5656.5,      // Time to Interactive
+      "si": 2100,         // Speed Index
+      "req": 42,          // Total count of all resources requested by the page
+      "size": 394708      // Total size of all resources requested by the page
+    }
+  ]
+}
+```
+
+✍️ Buat tampilan yang kalian suka untuk menyajikan data yang diperoleh
+
 Untuk kalian yang ingin mengikuti perubahan inisial yang saya lakukan untuk implementasi Action ini ke repo blog saya, bisa ikuti saja commit [c865772](https://github.com/mazipan/mazipan.space/commit/c86577204951760750b56f9c30660d0189cdad07) di repo [mazipan/mazipan.space](https://github.com/mazipan/mazipan.space).
 
 Hasilnya bisa kalian jumpai saat ini di halaman [/speed](/speed)
