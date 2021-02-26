@@ -103,7 +103,7 @@ export default function ScoreCard ({
             title="LCP"
             dataKey="lcp"
             min={0}
-            max={3000}
+            max={6000}
           />
         </div>
       </div>
@@ -157,7 +157,7 @@ export default function ScoreCard ({
             title="FCP"
             dataKey="fcp"
             min={0}
-            max={2000}
+            max={3000}
           />
         </div>
       </div>
@@ -183,7 +183,7 @@ export default function ScoreCard ({
             title="TTI"
             dataKey="tti"
             min={0}
-            max={4000}
+            max={6000}
           />
         </div>
       </div>

@@ -2,6 +2,10 @@ import React from 'react'
 import Chart from 'react-apexcharts'
 import useTheme from '@/hooks/useTheme'
 
+const ORANGE = '#F56565'
+const SERIES_M = '#D10CE8'
+const SERIES_D = '#66DA26'
+
 const ChartTimeline = ({
   activeDevice,
   dataDesktop,
@@ -15,6 +19,7 @@ const ChartTimeline = ({
 
   const seriesDesktop = {
     name: `${title} - Desktop`,
+    type: 'line',
     data: dataDesktop.map((item) => {
       return {
         x: item.timestamp,
@@ -25,6 +30,7 @@ const ChartTimeline = ({
 
   const seriesMobile = {
     name: `${title} - Mobile`,
+    type: 'line',
     data: dataMobile.map((item) => {
       return {
         x: item.timestamp,
@@ -33,35 +39,39 @@ const ChartTimeline = ({
     })
   }
 
-  const series = [
-    activeDevice !== 'mobile' ? seriesDesktop : null,
-    activeDevice !== 'desktop' ? seriesMobile : null
+  const activeSeries = [
+    activeDevice !== 'desktop' ? seriesMobile : null,
+    activeDevice !== 'mobile' ? seriesDesktop : null
   ].filter(Boolean)
 
-  const colors = [activeDevice !== 'mobile' ? '#D10CE8' : '', activeDevice !== 'desktop' ? '#66DA26' : ''].filter(Boolean)
+  const series = activeDevice === 'all' && dataKey === 'perf' ? activeSeries.reverse() : activeSeries
+
+  const colors = [
+    activeDevice !== 'mobile' ? SERIES_M : '',
+    activeDevice !== 'desktop' ? SERIES_D : ''
+  ].filter(Boolean)
 
   const options = {
     chart: {
+      type: 'area',
       toolbar: {
         show: false
       }
     },
-    plotOptions: {
-      bar: {
-        horizontal: false,
-        // columnWidth: '3em'
-      }
-    },
     xaxis: {
       type: 'datetime',
-      labels: {
-        show: false
-      },
       axisBorder: {
-        show: false
+        show: true
       },
       axisTicks: {
-        show: false
+        show: true
+      },
+      labels: {
+        show: true,
+        style: {
+          colors: [ORANGE, ORANGE, ORANGE, ORANGE, ORANGE, ORANGE, ORANGE, ORANGE, ORANGE, ORANGE],
+          fontSize: '0.9rem'
+        }
       }
     },
     yaxis: {
@@ -70,25 +80,31 @@ const ChartTimeline = ({
       min,
       max,
       labels: {
+        show: true,
         style: {
-          colors: ['#F56565'],
-          fontSize: '1rem'
+          colors: [ORANGE],
+          fontSize: '0.9rem'
         }
+      },
+      axisBorder: {
+        show: true
+      },
+      axisTicks: {
+        show: true
       }
     },
     stroke: {
       show: true,
       width: 3,
-      colors: ['transparent']
+      curve: 'smooth'
     },
     fill: {
       type: 'solid'
     },
     markers: {
-      size: 0,
-      style: 'hollow',
+      size: 3,
       hover: {
-        size: 4
+        size: 5
       }
     },
     tooltip: {
@@ -98,13 +114,16 @@ const ChartTimeline = ({
       show: false
     },
     dataLabels: {
-      enabled: false,
-      position: 'top'
+      enabled: true,
+      enabledOnSeries: [0, 1]
     },
-    colors
+    colors,
+    legend: {
+      show: false
+    }
   }
 
-  return <Chart type="bar" height={200} options={options} series={series} width="100%" />
+  return <Chart type="line" height={200} options={options} series={series} width="100%" />
 }
 
 export default ChartTimeline
