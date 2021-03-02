@@ -1,6 +1,7 @@
 {
-  "latest": "report-2021-03-01.json",
+  "latest": "report-2021-03-02.json",
   "all": [
+    "report-2021-03-02.json",
     "report-2021-03-01.json",
     "report-2021-02-28.json",
     "report-2021-02-27.json",
