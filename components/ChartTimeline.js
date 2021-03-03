@@ -44,7 +44,8 @@ const ChartTimeline = ({
     activeDevice !== 'mobile' ? seriesDesktop : null
   ].filter(Boolean)
 
-  const series = activeDevice === 'all' && dataKey === 'perf' ? activeSeries.reverse() : activeSeries
+  const series = activeDevice === 'all' && dataKey === 'perf' ? activeSeries : activeSeries
+  // const series = activeDevice === 'all' && dataKey === 'perf' ? activeSeries.reverse() : activeSeries
 
   const colors = [
     activeDevice !== 'mobile' ? SERIES_M : '',
