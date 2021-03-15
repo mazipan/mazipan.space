@@ -1,6 +1,10 @@
 {
   "redirects": [
     {
+      "source": "/s/slide-phpid-ol-63",
+      "destination": "https://speakerdeck.com/mazipan/membuat-laporan-kecepatan-web-untuk-blog"
+    },
+    {
       "source": "/s/buat-psi-api",
       "destination": "https://developers.google.com/speed/docs/insights/v5/get-started"
     },
