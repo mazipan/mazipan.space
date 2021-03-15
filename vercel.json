@@ -1,6 +1,10 @@
 {
   "redirects": [
     {
+      "source": "/s/buat-psi-api",
+      "destination": "https://developers.google.com/speed/docs/insights/v5/get-started"
+    },
+    {
       "source": "/s/belajar-js",
       "destination": "/cara-saya-belajar-teknologi-baru-di-js"
     },
