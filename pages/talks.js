@@ -54,8 +54,8 @@ export default function Index ({ talks }) {
                                     target="blank"
                                     rel="noopener noreferrer"
                                   >
-                                    <span className="mr-2">📖 </span>
-                                    <span>Event</span>
+                                    <span className="mr-2">📺 </span>
+                                    <span>Documentation</span>
                                   </a>
                                 ))}
                                 {item.slide && item.slide !== 'NOT_AVAILABLE' && (
@@ -65,7 +65,7 @@ export default function Index ({ talks }) {
                                     target="blank"
                                     rel="noopener noreferrer"
                                   >
-                                    <span className="mr-2">🖥 </span>Slide
+                                    <span className="mr-2">🖥 </span>Deck
                                   </a>
                                 )}
                               </>
