@@ -29,7 +29,7 @@ export default function Index () {
             <br/>
             <p>
               I used to build the web using various JavaScript framework, or I can say that I am not fanatic with any frameworks out there.
-              I have experience in writing many custom configuration for the build tools for the front end codebase. You just name it, webpack, rollup, or any other build tools, I can work with it (<i>or at least I can learn it easily if I don't know it yet<i/>).
+              I have experience in writing many custom configuration for the build tools for the front end codebase. You just name it, webpack, rollup, or any other build tools, I can work with it (<i>or at least I can learn it easily if I don't know it yet</i>).
             </p>
             <br/>
             <p>
