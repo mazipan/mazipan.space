@@ -1,6 +1,10 @@
 {
   "redirects": [
     {
+      "source": "/s/ngobrol-santai-reactjs",
+      "destination": "https://youtu.be/F1sbZbrILIg"
+    },
+    {
       "source": "/s/slide-phpid-ol-63",
       "destination": "https://speakerdeck.com/mazipan/membuat-laporan-kecepatan-web-untuk-blog"
     },
