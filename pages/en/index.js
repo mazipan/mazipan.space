@@ -3,9 +3,8 @@ import Head from 'next/head'
 import Container from '@/components/ContainerBox'
 import MoreStories from '@/components/Post/Home'
 import HeroPost from '@/components/FeaturedPost'
-import HeaderHome from '@/components/Header/Home'
 import Pagination from '@/components/Pagination'
-import Layout from '@/components/Layout/Home'
+import Layout from '@/components/Layout/Default'
 
 import { getPagedPost, getFeaturedPost } from '@/lib/api'
 
@@ -17,7 +16,6 @@ export default function Index ({ data, featured }) {
           <title>Home | mazipan.space</title>
         </Head>
         <Container>
-          <HeaderHome />
           {featured && (
             <HeroPost
               title={featured.title}
@@ -38,26 +36,16 @@ export default function Index ({ data, featured }) {
 }
 
 export async function getStaticProps () {
-  const { data: featured } = getFeaturedPost([
-    'title',
-    'date',
-    'slug',
-    'author',
-    'featured',
-    'coverImage',
-    'excerpt',
-    'tags'
-  ], 'en')
+  const { data: featured } = getFeaturedPost(
+    ['title', 'date', 'slug', 'author', 'featured', 'coverImage', 'excerpt', 'tags'],
+    'en'
+  )
 
-  const { data } = getPagedPost([
-    'title',
-    'date',
-    'slug',
-    'author',
-    'coverImage',
-    'excerpt',
-    'tags'
-  ], 1, 'en')
+  const { data } = getPagedPost(
+    ['title', 'date', 'slug', 'author', 'coverImage', 'excerpt', 'tags'],
+    1,
+    'en'
+  )
 
   return {
     props: { data, featured }

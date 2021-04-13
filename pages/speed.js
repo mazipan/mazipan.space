@@ -76,7 +76,7 @@ export default function Speed ({ data }) {
   )
 }
 
-export async function getStaticProps() {
+export async function getStaticProps () {
   const data = getPsiReportData()
 
   return {

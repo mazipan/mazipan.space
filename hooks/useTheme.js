@@ -1,5 +1,8 @@
 import { useState } from 'react'
 
+import MoonIcon from '@/components/icons/Moon'
+import SunIcon from '@/components/icons/Sun'
+
 const useTheme = () => {
   const isWindow = typeof window !== 'undefined'
   const currentTheme = isWindow && (localStorage.getItem('theme') || 'light')
@@ -15,7 +18,7 @@ const useTheme = () => {
   return {
     theme,
     nextTheme: theme === 'light' ? 'dark' : 'light',
-    nextThemeIcon: theme === 'light' ? '🌛' : '☀️',
+    NextThemeIcon: theme === 'light' ? <MoonIcon /> : <SunIcon />,
     onSwitchTheme
   }
 }

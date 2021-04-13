@@ -10,7 +10,7 @@
 }
 
 .light {
-  --bg-primary: #F7FAFC;
+  --bg-primary: #F3F4F6;
   --text-primary: #1A202C;
 }
 
@@ -25,9 +25,27 @@
   -webkit-text-fill-color: transparent;
 }
 
+.border-bottom-gradient:before {
+  background: none repeat scroll 0 0 transparent;
+  left: 0;
+  bottom: 0;
+  content: "";
+  height: 4px;
+  @apply absolute block w-full bg-gradient-to-r from-orange-400 via-red-500 to-pink-500;
+}
+
+.border-top-gradient:before {
+  background: none repeat scroll 0 0 transparent;
+  left: 0;
+  top: 0;
+  content: "";
+  height: 4px;
+  @apply absolute block w-full bg-gradient-to-r from-orange-400 via-red-500 to-pink-500;
+}
+
 .text-link {
   text-decoration: none;
-  @apply relative inline-block;
+  @apply relative;
 }
 
 .text-link:before {

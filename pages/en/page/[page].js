@@ -2,9 +2,8 @@ import Head from 'next/head'
 
 import Container from '@/components/ContainerBox'
 import List from '@/components/Post/List'
-import Header from '@/components/Header/Default'
 import Pagination from '@/components/Pagination'
-import Layout from '@/components/Layout/Home'
+import Layout from '@/components/Layout/Default'
 
 import { getPagedPost, getAvailablePage } from '@/lib/api'
 
@@ -16,15 +15,12 @@ export default function PagedPost ({ data, page, next, prev }) {
           <title>Page {page} | mazipan.space</title>
         </Head>
         <Container>
-          <Header />
-
           <section>
-           <div className="grid grid-cols-1 md:grid-cols-2 md:col-gap-8 row-gap-5 md:row-gap-8 mb-16">
-             {data.length > 0 && <List posts={data} lang="en" />}
-           </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 md:col-gap-8 row-gap-5 md:row-gap-8 mb-16">
+              {data.length > 0 && <List posts={data} lang="en" />}
+            </div>
           </section>
-
-          <Pagination prev={prev} next={next} lang="en"/>
+          <Pagination prev={prev} next={next} lang="en" />
         </Container>
       </Layout>
     </>

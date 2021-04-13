@@ -24,7 +24,7 @@ export default function Index () {
             <p>
               A frontend engineer, now work in Tokopedia as Principal Engineer Web Platform.
               I already start my software engineering careers since 2013.
-              Before joining Tokopedia, I work on several companies such as Bizzy Indonesia, Blibli.com and SML Technologies.  
+              Before joining Tokopedia, I work on several companies such as Bizzy Indonesia, Blibli.com and SML Technologies.
             </p>
             <br/>
             <p>
