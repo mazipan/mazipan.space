@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
-import MoonIcon from '@/components/icons/Moon'
-import SunIcon from '@/components/icons/Sun'
+import MoonIcon from '@/components/Icons/ThemeMoon'
+import SunIcon from '@/components/Icons/ThemeSun'
 
 const useTheme = () => {
   const isWindow = typeof window !== 'undefined'

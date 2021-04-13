@@ -1,7 +1,7 @@
-import LoveIcon from '@/components/Icons/Love'
-import ZapIcon from '@/components/icons/Zap'
-import MicIcon from '@/components/icons/Mic'
-import InfoIcon from '@/components/icons/Info'
+import LoveIcon from '@/components/Icons/MenuLove'
+import ZapIcon from '@/components/Icons/MenuZap'
+import MicIcon from '@/components/Icons/MenuMic'
+import InfoIcon from '@/components/Icons/MenuInfo'
 
 import ActiveLink from './ActiveLink'
 
