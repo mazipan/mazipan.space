@@ -3,7 +3,7 @@ module.exports = {
     './components/**/*.js',
     './pages/**/*.js',
     './lib/utils/**/*.js',
-    './node_modules/tailwindcss-dark-mode/prefers-dark.js',
+    './node_modules/tailwindcss-dark-mode/prefers-dark.js'
   ],
   theme: {
     darkSelector: '.dark',

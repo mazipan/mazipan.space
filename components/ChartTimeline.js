@@ -115,7 +115,7 @@ const ChartTimeline = ({
       show: false
     },
     dataLabels: {
-      enabled: false,
+      enabled: false
       // enabledOnSeries: [0, 1]
     },
     colors,

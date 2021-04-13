@@ -1,8 +1,8 @@
 import React from 'react'
 
-import TriangleIcon from '../Icons/Triangle'
-import DesktopIcon from '../Icons/Desktop'
-import PhoneIcon from '../Icons/Phone'
+import TriangleIcon from '../Icons/DevTriangle'
+import DesktopIcon from '../Icons/DevDesktop'
+import PhoneIcon from '../Icons/DevPhone'
 
 const DeviceChooser = ({ activeDevice, onChangeDevice }) => {
   const handleChangeDevice = (newDevice) => {
