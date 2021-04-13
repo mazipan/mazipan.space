@@ -23,13 +23,27 @@ Teknologi terlalu banyak, pustaka di npm registry juga terlalu bertebaran, frame
 
 ### 1. Pilih yang kemungkinan bersinggungan dengan pekerjaan utama
 
-Contoh kasus saja, misalnya saya saat ini menggunakan GraphQL di pekerjaan sehari-hari dan GraphQL Client yang digunakan di kantor adalah Apollo GraphQL. Maka saya memutuskan belajar mengenai Relay, karena ini bisa jadi solusi bagi masalah-masalah fundamental yang ditemukan di pekerjaan sehari-hari dengan Apollo.
+Contoh kasus saja, misalnya di tempat saya bekerja menggunakan webpack sebagai alat build kode frontend, 
+meskipun saat ini kondisinya konfigurasi dari webpack tersebut baik-baik saja dan tidak ada masalah (yang mana tidak menjadi mendesak untuk dipelajari) namun di waktu senggang tentu buat saya pribadi mempelajari webpack dengan berbagai konfigurasinya adalah pilihan terbaik.
+Kenapa? Karena kemungkinannya sangat tinggi kalau apa yang saya pelajari dengan webpack itu akan bersinggungan dan akan digunakan secara langsung di pekerjaan sehari-hari, meskipun tidak saat ini.
+Ini juga berlaku untuk mempelajari teknologi alternatif di sekitarnya.
+Misalnya kembali ke urusan webpack, saya mungkin juga perlu belajar Rollup, atau mungkin Parcel.js, atau yang kekinian macam Snowpack.
+Kenapa? Bisa jadi mereka punya pendekatan yang berbeda dari yang selama ini dikerjakan oleh webpack.
+Di dunia yang perkembangannya cukup kencang, sangat mungkin suatu teknologi menjadi tidak relevan seiring waktu.
+Dan kita juga mesti sudah siap juga dengan alternatif yang bisa kita ambil kalau teknologi yang digunakan sekarang lama-kelamaan menjadi tidak lagi relevan dengan kasus kita.
 
-Ini contoh kasus saja, faktanya saya bahkan sampai saat ini belum pernah mencoba Relay 😂
+Atau kita bisa ambil contoh kasus lain, yang kemungkinan juga dialami sama teman-teman. 
+Misalnya di kantor kalian belum menerapkan unit test, sedangkan kalian dan teman-teman kantor sudah menyadari mengenai pentingnya penerapan unit test ke kode kalian, 
+maka kalian bisa belajar teknologi mengenai Unit Test di JavaScript. 
+Pilihannya kan ada banyak tuh di pasaran dari Runner nya seperti Jest, Karma, AVA dan lainnya.
+Atau bahkan utility-nya macam Testing-Library, Enzyme, atau lainnya.
+Hal tersebut mungkin perlu dicek dulu satu persatu yang kemungkinan cocok, 
+Kita mungkin harus bikin projek kecil dan implementasikan teknologi unit test ke dalamnya sebagai POC (proof of concept).
+Untuk kemudian kita bisa ambil projek nyata di kantor sebagai pilot atau kelinci percobaan.
 
-Kita bisa ambil contoh kasus nyata saja lah yang kemungkinan juga dialami sama teman-teman. Misalnya di kantor kalian belum menerapkan unit test, sedangkan kalian dan teman-teman kantor sudah menyadari mengenai pentingnya penerapan unit test ke kode kalian, maka kalian bisa belajar teknologi mengenai Unit Test di JavaScript. Pilihannya kan ada banyak, bisa dicek dulu satu persatu yang kemungkinan cocok, bikin projek kecil dan implementasikan teknologi unit test ke dalamnya.
-
-Hal yang perlu digarisbawahi dari bagian ini adalah bahwa ada tujuan dari proses belajarnya, biasanya untuk memecahkan masalah yang sedang/akan ditemukan dipekerjakan sehari-hari. Enaknya dari belajar teknologi dengan alasan di bagian ini adalah karena seringnya bisa dilakukan di jam kerja. Tentu karena proses belajarnya memang diharapkan mendukung pekerjaan sehari-hari kita nantinya.
+Hal yang perlu digarisbawahi dari bagian ini adalah bahwa ada tujuan dari proses belajarnya, biasanya untuk memecahkan masalah yang sedang/akan ditemukan dipekerjakan sehari-hari. 
+Enaknya dari belajar teknologi dengan alasan di bagian ini adalah karena seringnya bisa dilakukan di jam kerja. 
+Tentu karena proses belajarnya memang diharapkan mendukung pekerjaan sehari-hari kita nantinya.
 
 ### 2. Pilih yang sesuai dengan kasus kita
 
