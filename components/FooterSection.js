@@ -1,10 +1,10 @@
 import Container from '@/components/ContainerBox'
 
-import FacebookIcon from '@/components/icons/Facebook'
-import TwitterIcon from '@/components/icons/Twitter'
-import GithubIcon from '@/components/icons/Github'
-import LinkedinIcon from '@/components/icons/Linkedin'
-import RssIcon from '@/components/icons/Rss'
+import FacebookIcon from '@/components/Icons/SocFb'
+import TwitterIcon from '@/components/Icons/SocTw'
+import GithubIcon from '@/components/Icons/SocGh'
+import LinkedinIcon from '@/components/Icons/SocLink'
+import RssIcon from '@/components/Icons/SocRss'
 
 export default function Footer () {
   return (
