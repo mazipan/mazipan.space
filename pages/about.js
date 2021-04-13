@@ -29,11 +29,14 @@ export default function Index () {
             <br/>
             <p>
               I used to build the web using various JavaScript framework, or I can say that I am not fanatic with any frameworks out there.
-              I have experience in writing many custom configuration for the build tools for the front end codebase. You just name it, webpack, rollup, or any other build tools, I can work with it (<i>or at least I can learn it easily if I don't know it yet</i>).
+              I have professional experience with the at least some of popular JavaScript frameworks like React.js, Svelte, Vue.js, AngularJS in the early version.
+              I always prefer writing unit test rather than test my code manually.
+              I have experience in writing many custom configuration for the build tools for the front end codebase. 
+              You just name it, webpack, rollup, or even the Node.js custom script, I can work with it (<i>or at least I can learn it easily if I don't know it yet</i>).
             </p>
             <br/>
             <p>
-              Outside my job as a full time employee, I also build a close connection with many programmer communities in Indonesia to give back my knowledge and experience in the web development to the other engineers.
+              Outside my daily job as a full time employee, I also build a close connection with many programmer communities in Indonesia to giving back my limited knowledge and experience in the web development topic to the community.
             </p>
           </div>
         </Fragment>
