@@ -1,6 +1,6 @@
 import React from 'react'
 
-const HeartIcon = () => {
+const LoveIcon = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -18,4 +18,4 @@ const HeartIcon = () => {
   )
 }
 
-export default HeartIcon
+export default LoveIcon

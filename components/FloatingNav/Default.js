@@ -1,4 +1,4 @@
-import HeartIcon from '@/components/icons/Heart'
+import LoveIcon from '@/components/Icons/Love'
 import ZapIcon from '@/components/icons/Zap'
 import MicIcon from '@/components/icons/Mic'
 import InfoIcon from '@/components/icons/Info'
@@ -22,7 +22,7 @@ export default function FloatingNav () {
         </ActiveLink>
         <ActiveLink href="/support">
           <>
-            <HeartIcon />
+            <LoveIcon />
             {'Support'}
           </>
         </ActiveLink>
