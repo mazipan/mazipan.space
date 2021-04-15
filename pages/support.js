@@ -11,8 +11,8 @@ export default function Index () {
         <>
           <Meta
             lang="id"
-            title="Support | mazipan.space"
-            description="Support | mazipan.space"
+            title="❤️ Support | mazipan.space"
+            description="How to support mazipan to keep the blog mazipan.space alive"
             url={`${SITE_METADATA.url}/support`}
           />
           <Head>

@@ -28,7 +28,7 @@ export default function PostCard ({ title, date, excerpt, slug, coverImage, tags
           <div className="py-2">
             {tags.map((tag) => (
               <Link key={tag} as={`${lang === 'id' ? '/tag/' : '/en/tag/'}${tag}`} href={hrefSlugTag}>
-                <a className="hover:underline inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+                <a className="hover:underline inline-block bg-red-100 text-red-600 rounded-full px-3 py-1 text-sm font-semibold mr-2 mb-2">
                   {`#${tag}`}
                 </a>
               </Link>

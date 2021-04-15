@@ -11,8 +11,8 @@ export default function Index () {
         <Fragment>
           <Meta
             lang="id"
-            title="About | mazipan.space"
-            description="About | mazipan.space"
+            title="ℹ️ About | mazipan.space"
+            description="About the Author of mazipan.space"
             url={`${SITE_METADATA.url}/about`}
             coverImage={`${OG_IMAGE_ABOUT}`}
           />
@@ -31,7 +31,7 @@ export default function Index () {
               I used to build the web using various JavaScript framework, or I can say that I am not fanatic with any frameworks out there.
               I have professional experience with the at least some of popular JavaScript frameworks like React.js, Svelte, Vue.js, AngularJS in the early version.
               I always prefer writing unit test rather than test my code manually.
-              I have experience in writing many custom configuration for the build tools for the front end codebase. 
+              I have experience in writing many custom configuration for the build tools for the front end codebase.
               You just name it, webpack, rollup, or even the Node.js custom script, I can work with it (<i>or at least I can learn it easily if I don't know it yet</i>).
             </p>
             <br/>

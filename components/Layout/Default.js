@@ -9,7 +9,7 @@ export default function Layout ({ preview, children }) {
     <>
       <Meta />
       <div className="min-h-screen">
-        <main className="mb-32">
+        <main className="mb-16">
           <Container>
             <HeaderDefault />
             <article className="mt-24">

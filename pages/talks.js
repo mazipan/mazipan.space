@@ -14,7 +14,7 @@ export default function Index ({ talks }) {
           <Meta
             lang="id"
             title="Talks | mazipan.space"
-            description="All talks presented by mazipan"
+            description="List of public tech talks presented by mazipan"
             url={`${SITE_METADATA.url}/talks`}
             coverImage={`${OG_IMAGE_TALKS}`}
           />

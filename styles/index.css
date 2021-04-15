@@ -51,7 +51,7 @@
 .text-link:before {
   background: none repeat scroll 0 0 transparent;
   left: 0;
-  bottom: 0;
+  bottom: -5px;
   content: "";
   height: 4px;
   @apply absolute block w-full bg-gradient-to-r from-orange-400 via-red-500 to-pink-500;
