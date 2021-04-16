@@ -13,7 +13,7 @@ export default function Index ({ data, featured }) {
     <>
       <Layout>
         <Head>
-          <title>Home of mazipan.space</title>
+          <title>🏠 Home of mazipan.space</title>
         </Head>
         <Container>
           {featured && (
