@@ -1,5 +1,3 @@
-import Head from 'next/head'
-
 import Meta from '@/components/Meta/Custom'
 import LayoutArticle from '@/components/Layout/Default'
 import { SITE_METADATA } from '@/lib/constants'
@@ -15,9 +13,6 @@ export default function Index () {
             description="How to support mazipan to keep the blog mazipan.space alive"
             url={`${SITE_METADATA.url}/support`}
           />
-          <Head>
-            <title>Support | mazipan.space</title>
-          </Head>
           <h2 className="mb-8 text-6xl md:text-7xl font-bold tracking-tighter leading-tight">
             ❤️  Support
           </h2>
