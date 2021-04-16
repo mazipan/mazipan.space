@@ -13,13 +13,13 @@ export default function Index ({ talks }) {
         <Fragment>
           <Meta
             lang="id"
-            title="Talks | mazipan.space"
+            title="🎙️ Talks | mazipan.space"
             description="List of public tech talks presented by mazipan"
             url={`${SITE_METADATA.url}/talks`}
             coverImage={`${OG_IMAGE_TALKS}`}
           />
           <h2 className="mb-8 text-6xl md:text-7xl font-bold tracking-tighter leading-tight">
-            Talks
+            🎙️  Talks
           </h2>
           <div className="content">
             {Object.keys(talks)
@@ -27,7 +27,7 @@ export default function Index ({ talks }) {
               .map((year, index) => {
                 return (
                   <details key={year} className="talk-year" open={index === 0}>
-                    <summary className="text-xl md:text-2xl font-bold tracking-tight md:tracking-tighter leading-tight">
+                    <summary className="text-xl md:text-2xl font-bold tracking-tight md:tracking-tighter leading-tight p-2">
                       #{year} ({talks[year].length} talks)
                     </summary>
                     <div className="py-4">
