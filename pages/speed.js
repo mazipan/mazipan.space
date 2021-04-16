@@ -48,7 +48,7 @@ export default function Speed ({ data }) {
             url={`${SITE_METADATA.url}/speed`}
           />
           <h2 className="mb-8 text-6xl md:text-7xl font-bold tracking-tighter leading-tight">
-            Speed ⚡️
+            ⚡  Speed
           </h2>
           <div className="content">
             <div>
