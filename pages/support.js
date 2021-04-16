@@ -19,10 +19,10 @@ export default function Index () {
             <title>Support | mazipan.space</title>
           </Head>
           <h2 className="mb-8 text-6xl md:text-7xl font-bold tracking-tighter leading-tight">
-            Support
+            ❤️  Support
           </h2>
           <div className="content">
-            <p className="mb-4">Dukung saya untuk terus menulis dan berbagi melalui:</p>
+            <p className="mb-4">Consider to support me to always keep this blog alive and updating the contents, you can support me via:</p>
             <ul>
               <li>
                 <span className="mr-2">👉</span>
