@@ -13,7 +13,7 @@ export default function Index ({ data, featured }) {
     <>
       <Layout>
         <Head>
-          <title>Berandanya mazipan.space</title>
+          <title>🏠 Berandanya mazipan.space</title>
         </Head>
         <Container>
           {featured && (
