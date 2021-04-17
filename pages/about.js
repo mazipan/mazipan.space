@@ -37,9 +37,9 @@ export default function Index () {
             </p>
             <br/>
             <p>
-              Outside my daily job as a full time employee, I also build a close connection with many programmer communities in Indonesia to giving back my limited knowledge and experience in the web development topic to the community.
-              I help kicking-off project for Vue.js documentation in Bahasa Indonesia with Vue.js ID community, you can check it on <a href="https://docs.vuejs.id/">https://docs.vuejs.id/</a>
-              I also help to built <a href="https://s.byphp.id/ajari-koding">https://s.byphp.id/ajari-koding</a> and <a href="https://s.byphp.id/learning">https://s.byphp.id/learning</a> for PHP ID community.
+              Outside my daily job as a full time employee, I also build a close connection with many programmer communities in Indonesia to giving back my limited knowledge and experience in the web development topic to the community. 
+              I help kicking-off project for Vue.js documentation in Bahasa Indonesia with Vue.js ID community, you can check it on <a class="text-red-500" target="_blank" rel="noopener noreferrer" href="https://docs.vuejs.id/">https://docs.vuejs.id/</a>. 
+              I also help to built <a class="text-red-500" target="_blank" rel="noopener noreferrer" href="https://s.byphp.id/ajari-koding">https://s.byphp.id/ajari-koding</a> and <a class="text-red-500" target="_blank" rel="noopener noreferrer" href="https://s.byphp.id/learning">https://s.byphp.id/learning</a> for PHP ID community.
             </p>
           </div>
         </Fragment>
