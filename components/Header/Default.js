@@ -13,7 +13,7 @@ export default function Header() {
   const { NextThemeIcon, nextTheme, onSwitchTheme } = useTheme()
 
   return (
-    <header className="fixed w-full top-0 left-0 p-4 z-10 bg-gray-100 dark:bg-gray-900 flex items-center justify-between shadow-medium border-bottom-gradient">
+    <header className="fixed w-full top-0 left-0 p-4 z-20 bg-gray-100 dark:bg-gray-900 flex items-center justify-between shadow-medium border-bottom-gradient">
       <h1 className="h2 text-gradient">
         <Link href={`${isId ? '/' : '/en'}`}>
           <a>{'<Mazipan />'}</a>
