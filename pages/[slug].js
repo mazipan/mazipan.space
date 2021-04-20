@@ -2,7 +2,7 @@ import { useRouter } from 'next/router'
 import ErrorPage from 'next/error'
 import Link from 'next/link'
 
-import MarkdownParser from '@/components/Markdown/MarkdownParser'
+import MarkdownParser from '@/components/Markdown/MarkdownContent'
 import PostHeader from '@/components/PostDetail/Heading'
 
 import Meta from '@/components/Meta/Custom'
@@ -59,7 +59,7 @@ export default function Post ({ post, related, preview }) {
 }
 
 export async function getStaticProps ({ params }) {
-  const post = getPostBySlug(params.slug, [
+  const post = await getPostBySlug(params.slug, [
     'title',
     'date',
     'excerpt',
@@ -71,7 +71,7 @@ export async function getStaticProps ({ params }) {
     'enready'
   ])
 
-  const related = getRelatedPost(post.tags[0], post.slug, 'id')
+  const related = await getRelatedPost(post.tags[0], post.slug, 'id')
 
   return {
     props: {
@@ -80,12 +80,13 @@ export async function getStaticProps ({ params }) {
         content: post.content
       },
       related
-    }
+    },
+    revalidate: 3
   }
 }
 
 export async function getStaticPaths () {
-  const posts = getAllPosts(['slug'])
+  const posts = await getAllPosts(['slug'])
 
   return {
     paths: posts.map((post) => {

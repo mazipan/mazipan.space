@@ -44,17 +44,18 @@ export default function Index ({ allPosts, tag }) {
 }
 
 export async function getStaticProps ({ params }) {
-  const allPosts = getPostsByTag(params.tag, 'id')
+  const allPosts = await getPostsByTag(params.tag, 'id')
   return {
     props: {
       allPosts,
       tag: params.tag
-    }
+    },
+    revalidate: 3
   }
 }
 
 export async function getStaticPaths () {
-  const tags = getAllTags('id')
+  const tags = await getAllTags('id')
 
   return {
     paths: tags.map((tag) => {

@@ -8,7 +8,7 @@ import InfoIcon from '@/components/Icons/MenuInfo'
 import useLang from '@/hooks/useLang'
 import useTheme from '@/hooks/useTheme'
 
-export default function Header() {
+export default function Header () {
   const { isId } = useLang()
   const { NextThemeIcon, nextTheme, onSwitchTheme } = useTheme()
 

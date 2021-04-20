@@ -28,19 +28,20 @@ export default function PagedPost ({ data, page, next, prev }) {
 }
 
 export async function getStaticProps ({ params }) {
-  const { data, next, prev } = getPagedPost(
+  const { data, next, prev } = await getPagedPost(
     ['title', 'date', 'slug', 'author', 'coverImage', 'excerpt', 'tags'],
     params.page,
     'en'
   )
 
   return {
-    props: { data, page: `${params.page}`, next, prev }
+    props: { data, page: `${params.page}`, next, prev },
+    revalidate: 3
   }
 }
 
 export async function getStaticPaths () {
-  const pages = getAvailablePage('en')
+  const pages = await getAvailablePage('en')
 
   return {
     paths: pages.map((page) => {
