@@ -62,12 +62,12 @@
   @apply pb-1;
 }
 
-.markdown code:not([class*="language-"]) {
+.markdown p > code {
   @apply bg-indigo-100 text-indigo-700 text-sm px-2 py-1 rounded break-words;
   font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
 }
 
-.markdown pre[class*="language-"] {
+.markdown pre[class="shiki"] {
   @apply p-4 rounded-lg text-sm overflow-auto;
 }
 

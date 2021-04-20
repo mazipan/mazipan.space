@@ -36,12 +36,12 @@ export default function Index ({ data, featured }) {
 }
 
 export async function getStaticProps () {
-  const { data: featured } = getFeaturedPost(
+  const { data: featured } = await getFeaturedPost(
     ['title', 'date', 'slug', 'author', 'featured', 'coverImage', 'excerpt', 'tags'],
     'id'
   )
 
-  const { data } = getPagedPost(
+  const { data } = await getPagedPost(
     ['title', 'date', 'slug', 'author', 'coverImage', 'excerpt', 'tags'],
     1,
     'id'
