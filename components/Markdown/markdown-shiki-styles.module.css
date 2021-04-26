@@ -10,19 +10,19 @@
 }
 
 .markdown h2 {
-  @apply font-bold text-3xl mt-12 mb-4 leading-snug;
+  @apply font-heading font-bold text-3xl mt-12 mb-4 leading-snug;
 }
 
 .markdown h3 {
-  @apply font-bold text-2xl mt-8 mb-4 leading-snug;
+  @apply font-heading font-bold text-2xl mt-8 mb-4 leading-snug;
 }
 
 .markdown h4 {
-  @apply font-bold text-xl mt-6 mb-4 leading-snug;
+  @apply font-heading font-bold text-xl mt-6 mb-4 leading-snug;
 }
 
 .markdown h5 {
-  @apply font-bold text-lg mt-4 mb-4 leading-snug;
+  @apply font-heading font-bold text-lg mt-4 mb-4 leading-snug;
 }
 
 @media (min-width: 768px) {
