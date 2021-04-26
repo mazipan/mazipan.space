@@ -13,7 +13,7 @@ export default function PostCard ({ title, date, excerpt, slug, coverImage, tags
         <CoverImage title={title} src={coverImage} slug={slug} lang={lang} />
       </div>
       <div className="px-6 py-4">
-        <h2 className="font-bold text-3xl mb-3 leading-snug">
+        <h2 className="font-heading font-bold text-3xl mb-3">
           <Link as={`/${slug}`} href={hrefSlug}>
             <a className="hover:underline">{title}</a>
           </Link>

@@ -22,7 +22,7 @@ export default function Index ({ allPosts, tag }) {
           </h2>
 
           {allPosts.length > 0 && (
-            <div className="grid grid-cols-1 md:grid-cols-2 md:col-gap-8 row-gap-5 md:row-gap-8 mb-16">
+            <div className="grid grid-cols-1 md:grid-cols-2 md:gap-x-8 gap-y-5 md:gap-y-8 mb-16">
               {allPosts.map((post) => (
                 <PostCard
                   key={post.slug}

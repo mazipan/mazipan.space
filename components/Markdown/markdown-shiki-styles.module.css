@@ -25,28 +25,10 @@
   @apply font-bold text-lg mt-4 mb-4 leading-snug;
 }
 
-.markdown figure {
-  @apply relative;
-}
-
-@media (min-width: 768px) {
-  .markdown figure {
-    @apply max-w-4xl;
-  }
-}
-
-.markdown img {
-  @apply rounded-lg mx-auto;
-}
-
 @media (min-width: 768px) {
   .markdown img {
     @apply max-w-5xl;
   }
-}
-
-.markdown figcaption {
-  @apply text-sm text-center mt-2;
 }
 
 .markdown a[href] {

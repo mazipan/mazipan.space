@@ -15,7 +15,7 @@ export default function HeroPost ({ title, coverImage, date, excerpt, author, sl
           alt={`Cover ${title}`}
           width={1240}
           height={600}
-          layout='intrinsic'
+          layout='responsive'
           sizes="100vw"
           priority={true}
           className="w-full rounded-lg object-cover"
