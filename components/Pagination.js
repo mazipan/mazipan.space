@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-export default function Pagination ({ prev, next, lang = 'id' }) {
+export default function Pagination ({ prev, next, page, pages, lang = 'id' }) {
   const hrefSlug = lang === 'id' ? '/page/[page]' : '/en/page/[page]'
   const asSlug = lang === 'id' ? '/page/' : '/en/page/'
 
@@ -23,6 +23,28 @@ export default function Pagination ({ prev, next, lang = 'id' }) {
           </a>
         </Link>
       )}
+
+      <div className="hidden md:flex">
+        {pages &&
+          pages.length > 0 &&
+          pages.map((p, idx) => (
+            <Link as={`${asSlug}${p}`} href={hrefSlug} key={p}>
+              <a aria-label={`Page ${p}`}>
+                <button
+                  className={`${
+                    p.toString() === page.toString()
+                      ? 'bg-red-500 hover:bg-red-700 text-white'
+                      : 'text-red-500'
+                  } border-2 border-red-500 font-bold py-2 px-4 rounded ${
+                    idx !== pages.length - 1 ? 'mr-2' : ''
+                  }`}
+                >
+                  {p}
+                </button>
+              </a>
+            </Link>
+          ))}
+      </div>
 
       {next ? (
         <Link as={`${asSlug}${next}`} href={hrefSlug}>

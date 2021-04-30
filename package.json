@@ -9,7 +9,7 @@
     "gen:talks": "node ./scripts/copy-talks.js",
     "gen:rss": "node ./scripts/rss-feed.js",
     "gen:sitemap": "node ./scripts/sitemap.js",
-    "dev": "TAILWIND_MODE=build NODE_ENV=development next",
+    "dev": "TAILWIND_MODE=watch NODE_ENV=development next",
     "build": "TAILWIND_MODE=build NODE_ENV=production yarn gen:talks && yarn gen:rss && yarn gen:sitemap && next build ",
     "start": "next start",
     "lint": "eslint . --fix"

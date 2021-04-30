@@ -8,7 +8,7 @@ import Layout from '@/components/Layout/Default'
 
 import { getPagedPost, getFeaturedPost } from '@/lib/api'
 
-export default function Index ({ data, featured }) {
+export default function Index ({ data, page, pages, featured }) {
   return (
     <>
       <Layout>
@@ -28,7 +28,7 @@ export default function Index ({ data, featured }) {
             />
           )}
           <MoreStories posts={data} lang="en" />
-          <Pagination next="2" lang="en" />
+          <Pagination next="2" pages={pages} lang="en" />
         </Container>
       </Layout>
     </>
@@ -41,13 +41,13 @@ export async function getStaticProps () {
     'en'
   )
 
-  const { data } = await getPagedPost(
+  const { data, page, pages } = await getPagedPost(
     ['title', 'date', 'slug', 'author', 'coverImage', 'excerpt', 'tags'],
     1,
     'en'
   )
 
   return {
-    props: { data, featured }
+    props: { data, featured, page, pages }
   }
 }

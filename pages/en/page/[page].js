@@ -7,7 +7,7 @@ import Layout from '@/components/Layout/Default'
 
 import { getPagedPost, getAvailablePage } from '@/lib/api'
 
-export default function PagedPost ({ data, page, next, prev }) {
+export default function PagedPost ({ data, page, pages, next, prev }) {
   return (
     <>
       <Layout>
@@ -20,7 +20,7 @@ export default function PagedPost ({ data, page, next, prev }) {
               {data.length > 0 && <List posts={data} lang="en" />}
             </div>
           </section>
-          <Pagination prev={prev} next={next} lang="en" />
+          <Pagination prev={prev} next={next} pages={pages} page={page} lang="en" />
         </Container>
       </Layout>
     </>
@@ -28,14 +28,14 @@ export default function PagedPost ({ data, page, next, prev }) {
 }
 
 export async function getStaticProps ({ params }) {
-  const { data, next, prev } = await getPagedPost(
+  const { data, next, prev, pages } = await getPagedPost(
     ['title', 'date', 'slug', 'author', 'coverImage', 'excerpt', 'tags'],
     params.page,
     'en'
   )
 
   return {
-    props: { data, page: `${params.page}`, next, prev },
+    props: { data, page: `${params.page}`, next, prev, pages },
     revalidate: 3
   }
 }
