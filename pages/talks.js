@@ -18,7 +18,7 @@ export default function Index ({ talks }) {
             url={`${SITE_METADATA.url}/talks`}
             coverImage={`${OG_IMAGE_TALKS}`}
           />
-          <h2 className="mb-8 text-6xl md:text-7xl font-bold tracking-tighter leading-tight">
+          <h2 className="mb-8 text-6xl md:text-7xl font-heading font-bold tracking-tighter leading-tight">
             🎙️  Talks
           </h2>
           <div className="content">

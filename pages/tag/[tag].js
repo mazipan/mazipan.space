@@ -17,7 +17,7 @@ export default function Index ({ allPosts, tag }) {
             url={`${SITE_METADATA.url}/tag/${tag}`}
             tag={`${tag}`}
           />
-          <h2 className="mb-8 text-6xl md:text-7xl font-bold tracking-tighter leading-tight">
+          <h2 className="mb-8 text-6xl md:text-7xl font-heading font-bold tracking-tighter leading-tight">
             🏷️  #{tag}
           </h2>
 

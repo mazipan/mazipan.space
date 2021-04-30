@@ -47,7 +47,7 @@ export default function Speed ({ data }) {
             description="Web performance report of mazipan.space"
             url={`${SITE_METADATA.url}/speed`}
           />
-          <h2 className="mb-8 text-6xl md:text-7xl font-bold tracking-tighter leading-tight">
+          <h2 className="mb-8 text-6xl md:text-7xl font-heading font-bold tracking-tighter leading-tight">
             ⚡  Speed
           </h2>
           <div className="content">

@@ -13,7 +13,7 @@ export default function Index () {
             description="How to support mazipan to keep the blog mazipan.space alive"
             url={`${SITE_METADATA.url}/support`}
           />
-          <h2 className="mb-8 text-6xl md:text-7xl font-bold tracking-tighter leading-tight">
+          <h2 className="mb-8 text-6xl md:text-7xl font-heading font-bold tracking-tighter leading-tight">
             ❤️  Support
           </h2>
           <div className="content">
