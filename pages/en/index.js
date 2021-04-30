@@ -28,7 +28,7 @@ export default function Index ({ data, page, pages, featured }) {
             />
           )}
           <MoreStories posts={data} lang="en" />
-          <Pagination next="2" pages={pages} lang="en" />
+          <Pagination next="2" pages={pages} page={page} lang="en" />
         </Container>
       </Layout>
     </>
