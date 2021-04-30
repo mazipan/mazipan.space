@@ -1,12 +1,12 @@
 import Link from 'next/link'
 
-export default function Pagination ({ prev, next, lang = 'id' }) {
+export default function Pagination ({ prev, next, page, pages, lang = 'id' }) {
   const hrefSlug = lang === 'id' ? '/page/[page]' : '/en/page/[page]'
   const asSlug = lang === 'id' ? '/page/' : '/en/page/'
 
   return (
     <div className="flex justify-between items-center mb-16">
-      {prev > 1 ? (
+      {prev ? (
         <Link as={`${asSlug}${prev}`} href={hrefSlug}>
           <a aria-label="Previous page">
             <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-l">
@@ -15,14 +15,32 @@ export default function Pagination ({ prev, next, lang = 'id' }) {
           </a>
         </Link>
       ) : (
-        <Link href="/">
-          <a aria-label="Previous page">
-            <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-l">
-              &lt; Prev
-            </button>
-          </a>
-        </Link>
+        <button className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l cursor-not-allowed">
+          &lt; Prev
+        </button>
       )}
+
+      <div className="hidden md:flex">
+        {pages &&
+          pages.length > 0 &&
+          pages.map((p, idx) => (
+            <Link as={`${asSlug}${p}`} href={hrefSlug} key={p}>
+              <a aria-label={`Page ${p}`}>
+                <button
+                  className={`${
+                    p.toString() === page.toString()
+                      ? 'bg-red-500 hover:bg-red-700 text-white'
+                      : 'text-red-500'
+                  } border-2 border-red-500 font-bold py-2 px-4 rounded ${
+                    idx !== pages.length - 1 ? 'mr-2' : ''
+                  }`}
+                >
+                  {p}
+                </button>
+              </a>
+            </Link>
+          ))}
+      </div>
 
       {next ? (
         <Link as={`${asSlug}${next}`} href={hrefSlug}>
@@ -33,7 +51,7 @@ export default function Pagination ({ prev, next, lang = 'id' }) {
           </a>
         </Link>
       ) : (
-        <button className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r  cursor-not-allowed">
+        <button className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r cursor-not-allowed">
           Next &gt;
         </button>
       )}

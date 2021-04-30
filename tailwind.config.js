@@ -1,13 +1,21 @@
 module.exports = {
+  mode: 'jit',
+  darkMode: 'class',
   purge: [
+    './styles/**/*.css',
     './components/**/*.js',
     './pages/**/*.js',
-    './lib/utils/**/*.js',
-    './node_modules/tailwindcss-dark-mode/prefers-dark.js'
+    './lib/markdown-parser-markdownit.js',
+    './lib/utils/colors.js'
   ],
   theme: {
-    darkSelector: '.dark',
     extend: {
+      fontFamily: {
+        sans: ['Poppins', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', '"Helvetica Neue"', 'Arial', '"Noto Sans"', 'sans-serif', '"Apple Color Emoji"', '"Segoe UI Emoji"', '"Segoe UI Symbol"', '"Noto Color Emoji"'],
+        serif: ['"Josefin Sans"', 'ui-serif', 'Georgia', 'Cambria', '"Times New Roman"', 'Times', 'serif'],
+        heading: ['"Josefin Sans"'],
+        body: ['Poppins']
+      },
       spacing: {
         28: '7rem'
       },
@@ -31,11 +39,5 @@ module.exports = {
         medium: '0 8px 30px rgba(0, 0, 0, 0.12)'
       }
     }
-  },
-  variants: {
-    backgroundColor: ['dark', 'dark-hover', 'dark-group-hover', 'dark-even', 'dark-odd'],
-    borderColor: ['dark', 'dark-disabled', 'dark-focus', 'dark-focus-within'],
-    textColor: ['dark', 'dark-hover', 'dark-active', 'dark-placeholder']
-  },
-  plugins: [require('tailwindcss-dark-mode')()]
+  }
 }

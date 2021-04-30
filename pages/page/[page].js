@@ -7,7 +7,7 @@ import Layout from '@/components/Layout/Default'
 
 import { getPagedPost, getAvailablePage } from '@/lib/api'
 
-export default function PagedPost ({ data, page, next, prev }) {
+export default function PagedPost ({ data, page, pages, next, prev }) {
   return (
     <>
       <Layout>
@@ -16,12 +16,12 @@ export default function PagedPost ({ data, page, next, prev }) {
         </Head>
         <Container>
           <section>
-            <div className="grid grid-cols-1 md:grid-cols-2 md:col-gap-8 row-gap-5 md:row-gap-8 mb-16">
+            <div className="grid grid-cols-1 md:grid-cols-2 md:gap-x-8 gap-y-5 md:gap-y-8 mb-16">
               {data.length > 0 && <List posts={data} lang="id" />}
             </div>
           </section>
 
-          <Pagination prev={prev} next={next} lang="id" />
+          <Pagination prev={prev} next={next} pages={pages} page={page} lang="id" />
         </Container>
       </Layout>
     </>
@@ -29,14 +29,14 @@ export default function PagedPost ({ data, page, next, prev }) {
 }
 
 export async function getStaticProps ({ params }) {
-  const { data, next, prev } = await getPagedPost(
+  const { data, next, prev, pages } = await getPagedPost(
     ['title', 'date', 'slug', 'author', 'coverImage', 'excerpt', 'tags'],
     params.page,
     'id'
   )
 
   return {
-    props: { data, page: `${params.page}`, next, prev },
+    props: { data, page: `${params.page}`, next, prev, pages },
     revalidate: 3
   }
 }

@@ -15,14 +15,14 @@ export default function HeroPost ({ title, coverImage, date, excerpt, author, sl
           alt={`Cover ${title}`}
           width={1240}
           height={600}
-          layout='intrinsic'
+          layout='responsive'
           sizes="100vw"
           priority={true}
           className="w-full rounded-lg object-cover"
         />
       </div>
       <div className="mb-20">
-        <h2 className="mb-4 font-bold text-3xl md:text-4xl tracking-tighter leading-tight">
+        <h2 className="mb-4 font-heading font-bold text-3xl md:text-4xl tracking-tighter leading-tight">
           <Link as={`/${slug}`} href={hrefSlug}>
             <a className="hover:underline">{title}</a>
           </Link>

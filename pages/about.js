@@ -4,7 +4,38 @@ import Meta from '@/components/Meta/Custom'
 import LayoutArticle from '@/components/Layout/Default'
 import { SITE_METADATA, OG_IMAGE_ABOUT } from '@/lib/constants'
 
-export default function Index () {
+const FEATURED_OSS = [
+  {
+    title: 'Baca-Quran.id',
+    desc: "Web App to read The Holy Qur'an without Ads and Analytics",
+    repo: 'https://github.com/mazipan/quran-offline',
+    url: 'https://www.baca-quran.id/',
+    stacks: ['Nuxt.js']
+  },
+  {
+    title: 'PSI Github Actions',
+    desc: 'Github Action to generate web performance report for JAMStack using PageSpeedInsight',
+    repo: 'https://github.com/mazipan/psi-gh-action',
+    url: 'https://github.com/marketplace/actions/psi-gh-action',
+    stacks: ['Github Actions', 'PageSpeedInsight']
+  },
+  {
+    title: 'GraphQL PokeApi',
+    desc: 'The GraphQL for PokeApi',
+    repo: 'https://github.com/mazipan/graphql-pokeapi',
+    url: 'https://graphql-pokeapi.vercel.app',
+    stacks: ['GraphQl', 'Vercel']
+  },
+  {
+    title: 'E-commerce Web Perf',
+    desc: 'Web Perf Comparison for E-Commerce in Indonesia ',
+    repo: 'https://github.com/mazipan/webperf-ecommerce-id',
+    url: 'https://webperf-ecommerce-id.vercel.app/',
+    stacks: ['Next.js', 'PageSpeedInsight']
+  }
+]
+
+export default function AboutPage () {
   return (
     <>
       <LayoutArticle>
@@ -16,31 +47,108 @@ export default function Index () {
             url={`${SITE_METADATA.url}/about`}
             coverImage={`${OG_IMAGE_ABOUT}`}
           />
-          <h2 className="mb-8 text-6xl md:text-7xl font-bold tracking-tighter leading-tight">
-            ℹ️  About
+          <h2 className="mb-8 text-6xl md:text-7xl font-heading font-bold tracking-tighter leading-tight">
+            ℹ️ About
           </h2>
           <div className="content">
-            <h2 className="text-3xl md:text-4xl font-bold mb-2">Hi 👋, I am Irfan Maulana.</h2>
+            <h2 className="text-2xl md:text-4xl font-bold mb-4 tracking-tighter leading-tight">
+              Hi 👋, I am Irfan Maulana.
+            </h2>
             <p>
-              A frontend engineer, now work in Tokopedia as Principal Engineer Web Platform.
-              I already start my software engineering careers since 2013.
-              Before joining Tokopedia, I work on several companies such as Bizzy Indonesia, Blibli.com and SML Technologies.
-              I spent the last 6 years to work on online commerce industry.
+              A frontend engineer, now work in Tokopedia as Principal Engineer Web Platform. I
+              already start my software engineering careers since 2013. Before joining Tokopedia, I
+              work on several companies such as Bizzy Indonesia, Blibli.com and SML Technologies. I
+              spent the last 6 years to work on online commerce industry.
             </p>
-            <br/>
+            <br />
             <p>
-              I used to build the web using various JavaScript framework, I am not fanatic with any frontend frameworks out there.
-              I have professional experience with some of popular JavaScript frameworks like React.js, Svelte, Vue.js and AngularJS in the early version.
-              I prefer to writing the unit test rather than should to test my code manually.
-              I have experience in writing many custom configuration for the build tools for the front end codebase.
-              You just name it, webpack, rollup, or even the native Node.js custom script, I can work with it (<i>or at least I can learn it if I don't know it yet</i>).
+              I used to build the web using various JavaScript framework, I am not fanatic with any
+              frontend frameworks out there. I have professional experience with some of popular
+              JavaScript frameworks like React.js, Svelte, Vue.js and AngularJS in the early
+              version. I prefer to writing the unit test rather than should to test my code
+              manually. I have experience in writing many custom configuration for the build tools
+              for the front end codebase. You just name it, webpack, rollup, or even the native
+              Node.js custom script, I can work with it (
+              <i>or at least I can learn it if I don't know it yet</i>).
             </p>
-            <br/>
+            <br />
             <p>
-              Outside my daily job as a full time employee, I also build a close connection with many programmer communities in Indonesia to giving back my limited knowledge and experience in the web development topic to the community. 
-              I help kicking-off project for Vue.js documentation in Bahasa Indonesia with Vue.js ID community, you can check it on <a class="text-red-500" target="_blank" rel="noopener noreferrer" href="https://docs.vuejs.id/">https://docs.vuejs.id/</a>. 
-              I also help to built <a class="text-red-500" target="_blank" rel="noopener noreferrer" href="https://s.byphp.id/ajari-koding">https://s.byphp.id/ajari-koding</a> and <a class="text-red-500" target="_blank" rel="noopener noreferrer" href="https://s.byphp.id/learning">https://s.byphp.id/learning</a> for PHP ID community.
+              Outside my daily job as a full time employee, I also build a close connection with
+              many programmer communities in Indonesia to giving back my limited knowledge and
+              experience in the web development topic to the community. I help kicking-off project
+              for Vue.js documentation in Bahasa Indonesia with Vue.js ID community, you can check
+              it on{' '}
+              <a
+                className="text-red-500"
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://docs.vuejs.id/"
+              >
+                docs.vuejs.id/
+              </a>
+              . I also help to built{' '}
+              <a
+                className="text-red-500"
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://s.byphp.id/ajari-koding"
+              >
+                s.byphp.id/ajari-koding
+              </a>{' '}
+              and{' '}
+              <a
+                className="text-red-500"
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://s.byphp.id/learning"
+              >
+                s.byphp.id/learning
+              </a>{' '}
+              for PHP ID community.
             </p>
+
+            <h3 className="text-2xl md:text-4xl font-bold my-4 tracking-tighter leading-tight">
+              Featured Open Projects
+            </h3>
+
+            <ul>
+              {FEATURED_OSS.map((oss) => (
+                <li
+                  key={oss.repo}
+                  className="rounded-lg p-4 mb-2 overflow-hidden shadow-lg border-2 border-red-500"
+                >
+                  <a
+                    className="text-red-500"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href={oss.url}
+                  >
+                    <h4 className="text-xl md:text-2xl font-bold mb-4 tracking-tighter leading-tight">
+                      {oss.title}
+                    </h4>
+                  </a>
+                  <p className="mb-4">{oss.desc}</p>
+                  <a
+                    className="text-red-500 text-sm"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href={oss.repo}
+                  >
+                    {oss.repo.replace('https://github.com/', '')}
+                  </a>
+                  <div className="flex mt-4">
+                    {oss.stacks.map((stack) => (
+                      <span
+                        key={stack}
+                        className="hover:underline inline-block bg-red-100 text-red-600 rounded-full px-3 py-1 text-xs font-semibold mr-2 mb-2"
+                      >
+                        {stack}
+                      </span>
+                    ))}
+                  </div>
+                </li>
+              ))}
+            </ul>
           </div>
         </Fragment>
       </LayoutArticle>
