@@ -128,6 +128,8 @@ export default function AboutPage () {
                     </h4>
                   </a>
                   <p className="mb-4">{oss.desc}</p>
+                  <div className="flex">
+                  <img src={`https://img.shields.io/github/stars/${oss.repo.replace('https://github.com/', '')}.svg?style=social`} alt={oss.repo} loading="lazy" />
                   <a
                     className="text-red-500 text-sm"
                     target="_blank"
@@ -136,6 +138,7 @@ export default function AboutPage () {
                   >
                     {oss.repo.replace('https://github.com/', '')}
                   </a>
+                  </div>
                   <div className="flex mt-4">
                     {oss.stacks.map((stack) => (
                       <span
