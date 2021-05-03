@@ -19,7 +19,7 @@ export default function PostHeader ({ title, tags, coverImage, date, author }) {
       />
       <PostTitle>{title}</PostTitle>
       <div className="mt-8 mb-6 flex justify-between text-lg">
-        <div className="hover:underline flex items-center bg-gray-300 dark:bg-gray-700 rounded-sm px-3 py-1 text-sm font-semibold">
+        <div className="flex items-center bg-gray-300 dark:bg-gray-700 rounded-sm px-3 py-1 text-sm font-semibold">
           <DateFormatter dateString={date} />
         </div>
         <div>
