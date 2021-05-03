@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .dark {
-  --bg-primary: #1A202C;
+  --bg-primary: #111827;
   --text-primary: #F7FAFC;
   background-color: var(--bg-primary);
   color: var(--text-primary);
@@ -23,6 +23,11 @@
 
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  transition: background-image 0.5s ease-in-out;
+}
+
+.text-gradient:hover {
+  @apply bg-gradient-to-r from-pink-500 via-red-500 to-yellow-400;
 }
 
 .border-bottom-gradient:before {

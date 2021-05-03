@@ -5,7 +5,7 @@ export default function Pagination ({ prev, next, page, pages, lang = 'id' }) {
   const asSlug = lang === 'id' ? '/page/' : '/en/page/'
 
   return (
-    <div className="flex justify-between items-center mb-16">
+    <div className="flex justify-between items-center mb-8">
       {prev ? (
         <Link as={`${asSlug}${prev}`} href={hrefSlug}>
           <a aria-label="Previous page">

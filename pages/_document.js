@@ -24,7 +24,7 @@ export default class MyDocument extends Document {
           }}
         />
 
-        <body className="dark:bg-gray-800">
+        <body className="dark:bg-gray-900">
           <script
             dangerouslySetInnerHTML={{
               __html: `

@@ -1,7 +1,7 @@
 ---
 title: 02 - Cerita buruh menjadi programmer
 date: '2019-11-16'
-excerpt: Cerita panjang perjalanan hidup dan karir saya sampai bisa menjadi programmer di beberapa peruasahaan teknologi besar di Indonesia
+excerpt: Cerita panjang perjalanan hidup dan karir saya sampai bisa menjadi programmer di beberapa perusahaan teknologi besar di Indonesia
 author: mazipan
 published: true
 featured: false

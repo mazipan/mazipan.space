@@ -8,18 +8,16 @@ export default function Layout ({ preview, children }) {
   return (
     <>
       <Meta />
+      <HeaderDefault />
       <div className="min-h-screen">
-        <main className="mb-16">
+        <main className="mb-16 md:mb-0">
           <Container>
-            <HeaderDefault />
-            <article className="mt-24">
-              {children}
-            </article>
-            <FloatingNav />
+            <article className="mt-24 px-4">{children}</article>
+            <Footer />
           </Container>
         </main>
       </div>
-      <Footer />
+      <FloatingNav />
     </>
   )
 }

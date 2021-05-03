@@ -22,7 +22,7 @@ export default function HeroPost ({ title, coverImage, date, excerpt, author, sl
         />
       </div>
       <div className="mb-20">
-        <h2 className="mb-4 font-heading font-bold text-3xl md:text-4xl tracking-tighter leading-tight">
+        <h2 className="mb-4 font-heading font-bold  text-gradient text-3xl md:text-4xl tracking-tighter leading-tight">
           <Link as={`/${slug}`} href={hrefSlug}>
             <a className="hover:underline">{title}</a>
           </Link>
