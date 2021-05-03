@@ -55,17 +55,15 @@ export default function AboutPage () {
               Hi 👋, I am Irfan Maulana.
             </h2>
             <p>
-              A frontend engineer, now work in Tokopedia as Principal Engineer Web Platform. I
-              already start my software engineering careers since 2013. Before joining Tokopedia, I
-              work on several companies such as Bizzy Indonesia, Blibli.com and SML Technologies. I
-              spent the last 6 years to work on online commerce industry.
+              A frontend engineer, working in Tokopedia as Principal Engineer Web Platform. Already start my career journey since 2013. 
+              Before joining Tokopedia, I also have been work on the same Industry (online commerce) for the last 6 years in Bizzy Indonesia (B2B) and Blibli.com.
             </p>
             <br />
             <p>
-              I used to build the web using various JavaScript framework, I am not fanatic with any
+              I build the web using various JavaScript framework, I am not fanatic with any
               frontend frameworks out there. I have professional experience with some of popular
               JavaScript frameworks like React.js, Svelte, Vue.js and AngularJS in the early
-              version. I prefer to writing the unit test rather than should to test my code
+              version. I prefer to writing the unit test rather than testing my code
               manually. I have experience in writing many custom configuration for the build tools
               for the front end codebase. You just name it, webpack, rollup, or even the native
               Node.js custom script, I can work with it (
@@ -73,10 +71,10 @@ export default function AboutPage () {
             </p>
             <br />
             <p>
-              Outside my daily job as a full time employee, I also build a close connection with
+              Outside my daily job as a full time employee in the company, I also build a close connection with
               many programmer communities in Indonesia to giving back my limited knowledge and
-              experience in the web development topic to the community. I help kicking-off project
-              for Vue.js documentation in Bahasa Indonesia with Vue.js ID community, you can check
+              experience in the web development topic. I help kicking-off a project
+              for Vue.js Indonesia, translating the documentation to the Bahasa Indonesia, you can check
               it on{' '}
               <a
                 className="text-red-500"
