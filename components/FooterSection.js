@@ -36,7 +36,7 @@ export default function Footer () {
           <GithubIcon />
         </a>
         <a
-          href="https://www.linkedin.com/in/mazipan"
+          href="https://ksana.in/mzp.in"
           title="Linkedin"
           target="_blank"
           rel="noopener noreferrer"
