@@ -6,9 +6,16 @@ import { SITE_METADATA, OG_IMAGE_ABOUT } from '@/lib/constants'
 
 const FEATURED_OSS = [
   {
+    title: 'Ksana.in',
+    desc: "Simple URL shortener/beautifier for free",
+    repo: 'https://github.com/mazipan/ksana.in',
+    url: 'https://ksana.in/',
+    stacks: ['Supabase', 'Next.js']
+  },
+  {
     title: 'Baca-Quran.id',
     desc: "Web App to read The Holy Qur'an without Ads and Analytics",
-    repo: 'https://github.com/mazipan/quran-offline',
+    repo: 'https://github.com/mazipan/baca-quran.id',
     url: 'https://www.baca-quran.id/',
     stacks: ['Nuxt.js']
   },
