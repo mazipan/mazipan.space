@@ -67,21 +67,16 @@ export default function AboutPage () {
             </p>
             <br />
             <p>
-              I build the web using various JavaScript framework, I am not fanatic with any
-              frontend frameworks out there. I have professional experience with some of popular
-              JavaScript frameworks like React.js, Svelte, Vue.js and AngularJS in the early
-              version. I prefer to writing the unit test rather than testing my code
-              manually. I have experience in writing many custom configuration for the build tools
-              for the front end codebase. You just name it, webpack, rollup, or even the native
-              Node.js custom script, I can work with it (
-              <i>or at least I can learn it if I don't know it yet</i>).
+              I build the web using various JavaScript framework, but I have professional experience with some of popular
+              JavaScript frameworks like React.js and Vue.js. I prefer to writing the unit test rather than testing my code
+              manually. I play around with many configurations for the frontend build tools.
             </p>
             <br />
             <p>
-              Outside my daily job as a full time employee in the company, I also build a close connection with
+              Outside my daily job as a full time employee, I also build a close connection with
               many programmer communities in Indonesia to giving back my limited knowledge and
               experience in the web development topic. I help kicking-off a project
-              for Vue.js Indonesia, translating the documentation to the Bahasa Indonesia, you can check
+              for Vue.js Indonesia, translating the documentation to the Indonesian language 🇮🇩, you can check
               it on{' '}
               <a
                 className="text-red-500"
@@ -89,7 +84,7 @@ export default function AboutPage () {
                 rel="noopener noreferrer"
                 href="https://docs.vuejs.id/"
               >
-                docs.vuejs.id/
+                docs.vuejs.id
               </a>
               . I also help to built{' '}
               <a
@@ -109,11 +104,11 @@ export default function AboutPage () {
               >
                 s.byphp.id/learning
               </a>{' '}
-              for PHP ID community.
+              for PHPID community.
             </p>
 
             <h3 className="text-2xl md:text-4xl font-bold my-4 tracking-tighter leading-tight">
-              Featured Open Projects
+              My Featured Open Projects
             </h3>
 
             <ul>
