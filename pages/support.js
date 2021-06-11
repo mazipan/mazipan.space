@@ -23,7 +23,7 @@ export default function Index () {
                 <span className="mr-2">👉</span>
                 <a
                   className="hover:underline pr-2 md:pr-4"
-                  href="https://trakteer.id/mazipan?utm_source=github"
+                  href="https://trakteer.id/mazipan/tip?utm_source=github"
                   rel="nofollow"
                 >
                   <span className="mr-2">🇮🇩</span> Trakteer
