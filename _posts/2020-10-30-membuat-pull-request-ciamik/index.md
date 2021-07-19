@@ -25,13 +25,33 @@ Pada pekerjaan privat biasanya tidak diperlukan [metode fork](https://docs.githu
 
 Cara umum untuk berkolaborasi dalam kondisi satu repository begini biasanya:
 
-👉  **Buat branch baru dari branch utama**, umumnya setiap perusahaan sudah punya konvensi atau aturan tersendiri dalam penamaan branch baru
+👉  **Buat branch baru dari branch utama**
+
+
+Umumnya setiap perusahaan sudah punya konvensi atau aturan tersendiri dalam penamaan branch baru, misal: `namaorang/nama-fitur-atau-bug`, atau `namaorang/nomor-tiket`.
+Kalau kalian sedang ada di bench utama macam `master` atau `main, berarti pastikan dulu kalian sudah mengambil kode teranyar dengan perintah:
+
+```shell
+$ git pull origin master 
+# master mungkin perlu diganti menjadi main, tergantung nama branch utama
+```
+
+Buat branch baru dengan perintah:
+
+```shell
+$ git checkout -b nama-branch-baru
+# misal nama branch barunya: mazipan/fitur-baru
+```
 
 👉  **Bekerja di dalam branch baru yang dibuat**
 
-👉  **Sinkronisasi secara berkala**, apabila pekerjaan akan memakan waktu yang cukup lama sampai berhari-hari, ada baiknya untuk mengecek secara berkala dengan branch utama
+Kita tidak akan bekerja di branch utama, hal sederhana tapi mesti dibiasakan.
+Kita tidak selalu punya akses ke branch utama, membiasakan untuk bekerja di branch selain branch utama akan mengajarkan kita cara berkontribusi dengan alur yang biasanya digunakan di open source.
 
-👉  **Setelah selesai, buat pull request ke branch utama**, ini dilakukan tentu setelah kalian selesai melakukan serangkaian pengujian, baik di lokal kalian ataupun di lingkungan development lainnya.
+👉  **Setelah selesai, buat pull request ke branch utama**
+
+Ini dilakukan tentu setelah kalian selesai melakukan serangkaian pengujian, baik di lokal kalian ataupun di lingkungan development lainnya.
+Misal ke tautan: [https://github.com/mazipan/mazipan.space/compare](https://github.com/mazipan/mazipan.space/compare)
 
 👉  **Meminta review kode kepada teman sejawat**
 
@@ -41,7 +61,8 @@ Cara umum untuk berkolaborasi dalam kondisi satu repository begini biasanya:
 
 ## Alur kolaborasi dalam repository hasil fork
 
-Caranya sebenarnya secara garis besar akan sama saja, hanya saja karena dalam versi fork kita tidak mempunyai akses langsung ke repository utama, melainkan hanya repository salinan dari aslinya. Ini yang menjadikan kita bisa saja langsung melakukan perubahan di branch utama, karena repository fork pada dasarnya adalah milik pribadi, kita bisa langsung menyasar ke branch utama tanpa perlu takut diteriaki oleh orang lain.
+Caranya sebenarnya secara garis besar akan sama saja, hanya saja karena dalam versi fork kita tidak mempunyai akses langsung ke repository utama, melainkan hanya repository salinan dari aslinya. 
+Ini yang menjadikan kita bisa saja langsung melakukan perubahan di branch utama, karena repository fork pada dasarnya adalah milik pribadi, kita bisa langsung menyasar ke branch utama tanpa perlu takut diteriaki oleh orang lain.
 Meskipun punya akses ke branch utama, misalnya `master`, saya sendiri tidak merekomendasikan untuk bekerja langsung di branch utama. 
 Sebaiknya tetap gunakan branch lain untuk bekerja.
 Hal ini agar lebih mudah kedepannya kalau harus sinkronisasi antara branch utama repo fork dengan repo utamanya.
@@ -88,7 +109,7 @@ Dengan memberikan penjelasan segamblang mungkin kita bisa mengarahkan si reviewe
 Me-review kode dalam pull request itu bukan pekerjaan mudah, apalagi bila kita tidak paham mengenai konteks bisnis flow yang dikerjakan.
 Dengan adanya penjelasan yang baik, pekerjaan mereview biasanya akan lebih mudah dan terarah.
 
-Beberapa hal yang paling tidak mestinya ada di deskripsi pull request antara lain:
+Beberapa hal yang mestinya ada di deskripsi pull request antara lain:
 
 👉  Kesimpulan atau _summary_ dari pull request
 
@@ -122,17 +143,55 @@ Beberapa orang perlu memperhatikan alur commit juga pada saat melakukan kode rev
 ## Kebiasaan yang bisa meningkatkan kualitas pull request
 
 👉  Judul pull request umumnya secara otomatis akan mengambil dari judul commit yang pertama dari suatu branch.
-Karenanya membuat judul commit yang sesuai akan mempermudah kita membuat judul pull request pula.
+
+Karenanya membuat judul commit pertama dengan baik, akan mempermudah kita membuat judul pull request pula.
 
 👉  Biasakan membuat pull request saat sudah yakin, sudah dilakukan test sana-sini, sudah dibuatkan unit test, dan lainnya.
 
 Ini untuk mengurangi terlalu banyak perubahan yang mestinya tidak diperlukan saat pull request sudah dibuka.
 Terlalu banyak menambahkan commit baru saat pull request sudah dibuka seringkali juga akan menggangu proses diskusi pada pull request tersebut.
 
-👉  Bila bekerja sendirian, kita memperbaiki commit history sebelum pull request dibuka
+👉  Bila bekerja sendirian, kita bisa memperbaiki commit history sebelum pull request dibuka, saya biasanya menggunakan perintah:
 
-👉  Biasakan menulis dokumentasi, ini akan melatih kita membuat deskripsi pull request juga
+```shell
+$ git rebase -i master
+```
 
-👉  Sempatkan untuk melakukan review pull request orang lain, agar lebih bisa merasakan kenapa pull request dengan deskripsi yang jelas itu penting
+Artinya meminta melakukan rebase dengan cara interaktifar bisa mengubah pesan commit yang sebelumnya dibuat tidak beraturan.
+
+Ubah semua `pick` menjadi `squash` atau `s` kecuali commit pertama.
+
+Dan teruskan proses rebase sampai selesai.
+
+Lakukan force push dengan perintah:
+
+```shell
+$ git push -f
+```
+
+👉  Biasakan menulis dokumentasi
+
+Kebiasaan ini akan melatih kita membuat deskripsi pull request juga
+
+👉  Sempatkan untuk melakukan review pull request orang lain
+
+Agar lebih bisa merasakan, kenapa pull request dengan deskripsi yang jelas itu penting
+
+👉 Lakukan sinkronisasi secara berkala
+
+
+## Tips melakukan sinkronisasi
+
+Ini menjadi tantangan apalagi untuk repo hasil fork.
+Makanya prinsip pertama yang harus dipegang ketika bekerja di forked repository adalah **JANGAN** bekerja di branch utama.
+Ini benar-benar akan menyulitkan proses sinkronisasi nantinya.
+
+Jika terbiasa tidak bekerja di branch utama, maka Github saat ini sudah menyediakan tombol manual untuk melakukan sinkronisasi di repo hasil fork dengan tombol `Fetch upstream`.
+Sayangnya ini hanya bisa dilakukan saat kita sedang di depan laptop dan sedang online membuka Github.
+Makanya di hampir setiap repo fork saya, saya biasanya memasang aplikasi tambahan untuk membantu melakukan sinkronisasi otomatis.
+
+Kunjungi aplikasi [Pull by Wei](https://wei.github.io/pull/), pasang di repo hasil fork dan aplikasi ini akan secara berkala melakukan sinkronisasi otomatis dari repo utama.
+
+---
 
 Demikian artikel ini, semoga bermanfaat 🙏
