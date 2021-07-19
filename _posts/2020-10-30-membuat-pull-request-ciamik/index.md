@@ -27,7 +27,6 @@ Cara umum untuk berkolaborasi dalam kondisi satu repository begini biasanya:
 
 👉  **Buat branch baru dari branch utama**
 
-
 Umumnya setiap perusahaan sudah punya konvensi atau aturan tersendiri dalam penamaan branch baru, misal: `namaorang/nama-fitur-atau-bug`, atau `namaorang/nomor-tiket`.
 Kalau kalian sedang ada di bench utama macam `master` atau `main, berarti pastikan dulu kalian sudah mengambil kode teranyar dengan perintah:
 
@@ -51,7 +50,7 @@ Kita tidak selalu punya akses ke branch utama, membiasakan untuk bekerja di bran
 👉  **Setelah selesai, buat pull request ke branch utama**
 
 Ini dilakukan tentu setelah kalian selesai melakukan serangkaian pengujian, baik di lokal kalian ataupun di lingkungan development lainnya.
-Misal ke tautan: [https://github.com/mazipan/mazipan.space/compare](https://github.com/mazipan/mazipan.space/compare)
+Misal ke tautan: [mazipan.space/compare](https://github.com/mazipan/mazipan.space/compare)
 
 👉  **Meminta review kode kepada teman sejawat**
 
