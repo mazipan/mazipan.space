@@ -67,6 +67,18 @@ Sebaiknya tetap gunakan branch lain untuk bekerja.
 Hal ini agar lebih mudah kedepannya kalau harus sinkronisasi antara branch utama repo fork dengan repo utamanya.
 Terkecuali sejak awal memang sudah dipastikan kalau kalian tidak akan melakukan sinkronisasi dengan repo utamanya.
 
+## Tips melakukan sinkronisasi pada repository hasil fork
+
+Ini menjadi tantangan apalagi untuk repo hasil fork.
+Makanya prinsip pertama yang harus dipegang ketika bekerja di forked repository adalah **JANGAN** bekerja di branch utama.
+Ini benar-benar akan menyulitkan proses sinkronisasi nantinya.
+
+Jika terbiasa tidak bekerja di branch utama, maka Github saat ini sudah menyediakan tombol manual untuk melakukan sinkronisasi di repo hasil fork dengan tombol `Fetch upstream`.
+Sayangnya ini hanya bisa dilakukan saat kita sedang di depan laptop dan sedang online membuka Github.
+Makanya di hampir setiap repo fork saya, saya biasanya memasang aplikasi tambahan untuk membantu melakukan sinkronisasi otomatis.
+
+Kunjungi aplikasi [Pull by Wei](https://wei.github.io/pull/), pasang di repo hasil fork dan aplikasi ini akan secara berkala melakukan sinkronisasi otomatis dari repo utama.
+
 ## Kriteria pull request yang ciamik
 
 Ciamik menurut saya bisa berbeda dengan ciamik yang kalian anut, dan berikut adalah pull request yang ciamik versi saya pribadi:
@@ -177,19 +189,6 @@ Kebiasaan ini akan melatih kita membuat deskripsi pull request juga
 Agar lebih bisa merasakan, kenapa pull request dengan deskripsi yang jelas itu penting
 
 👉 Lakukan sinkronisasi secara berkala
-
-
-## Tips melakukan sinkronisasi
-
-Ini menjadi tantangan apalagi untuk repo hasil fork.
-Makanya prinsip pertama yang harus dipegang ketika bekerja di forked repository adalah **JANGAN** bekerja di branch utama.
-Ini benar-benar akan menyulitkan proses sinkronisasi nantinya.
-
-Jika terbiasa tidak bekerja di branch utama, maka Github saat ini sudah menyediakan tombol manual untuk melakukan sinkronisasi di repo hasil fork dengan tombol `Fetch upstream`.
-Sayangnya ini hanya bisa dilakukan saat kita sedang di depan laptop dan sedang online membuka Github.
-Makanya di hampir setiap repo fork saya, saya biasanya memasang aplikasi tambahan untuk membantu melakukan sinkronisasi otomatis.
-
-Kunjungi aplikasi [Pull by Wei](https://wei.github.io/pull/), pasang di repo hasil fork dan aplikasi ini akan secara berkala melakukan sinkronisasi otomatis dari repo utama.
 
 ---
 
