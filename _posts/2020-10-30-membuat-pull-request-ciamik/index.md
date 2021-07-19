@@ -28,7 +28,7 @@ Cara umum untuk berkolaborasi dalam kondisi satu repository begini biasanya:
 👉  **Buat branch baru dari branch utama**
 
 Umumnya setiap perusahaan sudah punya konvensi atau aturan tersendiri dalam penamaan branch baru, misal: `namaorang/nama-fitur-atau-bug`, atau `namaorang/nomor-tiket`.
-Kalau kalian sedang ada di bench utama macam `master` atau `main, berarti pastikan dulu kalian sudah mengambil kode teranyar dengan perintah:
+Kalau kalian sedang ada di bench utama macam `master` atau `main`, berarti pastikan dulu kalian sudah mengambil kode teranyar dengan perintah:
 
 ```shell
 $ git pull origin master 
@@ -47,10 +47,21 @@ $ git checkout -b nama-branch-baru
 Kita tidak akan bekerja di branch utama, hal sederhana tapi mesti dibiasakan.
 Kita tidak selalu punya akses ke branch utama, membiasakan untuk bekerja di branch selain branch utama akan mengajarkan kita cara berkontribusi dengan alur yang biasanya digunakan di open source.
 
-👉  **Setelah selesai, buat pull request ke branch utama**
+👉  **Setelah selesai bekerja, buat pull request ke branch utama**
 
 Ini dilakukan tentu setelah kalian selesai melakukan serangkaian pengujian, baik di lokal kalian ataupun di lingkungan development lainnya.
-Misal ke tautan: [mazipan.space/compare](https://github.com/mazipan/mazipan.space/compare)
+Semua pekerjaan telah di commit dan di push ke remote branch.
+
+```shell
+$ git commit -m "feat(nama-fitur): menambahkan fitur baru"
+$ git push
+
+# atau bila belum pernah push dengan branch baru tersebut
+$ git push -u origin nama-branch-baru:remote_branch
+```
+
+Buat pull request dengan mengunjungi web, misal ke tautan: [mazipan.space/compare](https://github.com/mazipan/mazipan.space/compare).
+Pastikan branch asal dan tujuannya sudah benar, cek changes yang ada, jangan lupa berikan nama dan deskripsi.
 
 👉  **Meminta review kode kepada teman sejawat**
 
