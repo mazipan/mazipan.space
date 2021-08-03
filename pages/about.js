@@ -20,6 +20,13 @@ const FEATURED_OSS = [
     stacks: ['Nuxt.js']
   },
   {
+    title: 'Pramuka.Online',
+    desc: "Collections for material to be learn on Indonesian Scout Activity (Pramuka)",
+    repo: 'https://github.com/mazipan/pramuka.online',
+    url: 'https://pramuka.online/',
+    stacks: ['Next.js']
+  },
+  {
     title: 'PSI Github Actions',
     desc: 'Github Action to generate web performance report for JAMStack using PageSpeedInsight',
     repo: 'https://github.com/mazipan/psi-gh-action',
