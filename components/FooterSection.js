@@ -5,6 +5,8 @@ import LinkedinIcon from '@/components/Icons/SocLink'
 import RssIcon from '@/components/Icons/SocRss'
 
 export default function Footer () {
+  const copyrightYear = new Date().getFullYear()
+
   return (
     <footer className="bg-accent-1 border-t border-accent-2">
       <div className="pt-4 pb-2 flex justify-center items-center">
@@ -54,7 +56,7 @@ export default function Footer () {
           <RssIcon />
         </a>
       </div>
-      <div className="pb-8 md:pb-4 flex justify-center items-center">© 2020 All rights reserved</div>
+      <div className="pb-8 md:pb-4 flex justify-center items-center">© {copyrightYear} All rights reserved</div>
     </footer>
   )
 }
