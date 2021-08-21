@@ -50,7 +50,7 @@ export default function Login () {
                   ref={emailRef}
                   required
                   autoComplete="email"
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker"
+                  className="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker dark:bg-gray-700"
                   id="email"
                   type="text"
                 />
@@ -63,7 +63,7 @@ export default function Login () {
                   ref={passwordRef}
                   required
                   autoComplete="new-password"
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker mb-3"
+                  className="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker dark:bg-gray-700 mb-3"
                   id="password"
                   type="password"
                 />
