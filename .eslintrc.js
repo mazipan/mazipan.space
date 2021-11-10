@@ -8,7 +8,9 @@ module.exports = {
     browser: true,
     es2021: true
   },
-  extends: ['plugin:react/recommended', 'standard'],
+  extends: [
+    'plugin:@next/next/recommended'
+  ],
   parserOptions: {
     ecmaFeatures: {
       jsx: true
@@ -16,11 +18,4 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: 'module'
   },
-  plugins: ['react'],
-  rules: {
-    'react/react-in-jsx-scope': 'off',
-    'react/no-unescaped-entities': 'warn',
-    'react/prop-types': 'off',
-    'multiline-ternary': 'off'
-  }
 }
