@@ -12,7 +12,7 @@
     "dev": "TAILWIND_MODE=watch NODE_ENV=development next",
     "build": "TAILWIND_MODE=build NODE_ENV=production yarn gen:talks && yarn gen:rss && yarn gen:sitemap && next build ",
     "start": "next start",
-    "lint": "eslint . --fix"
+    "lint": "next lint"
   },
   "dependencies": {
     "apexcharts": "^3.29.0",
@@ -28,6 +28,7 @@
     "app-root-dir": "1.0.2",
     "autoprefixer": "^10.4.0",
     "eslint": "7.25.0",
+    "eslint-config-next": "^12.0.3",
     "feed": "4.2.2",
     "gray-matter": "4.0.3",
     "markdown-it": "^12.2.0",
