@@ -4,7 +4,6 @@ import DateFormatter from '@/components/Date'
 import CoverImage from '@/components/Post/Cover'
 
 export default function PostCard ({ title, date, excerpt, slug, coverImage, tags, lang }) {
-  const hrefSlug = lang === 'id' ? '/[slug]' : '/en/[slug]'
   const hrefSlugTag = lang === 'id' ? '/tag/[tag]' : '/en/tag/[tag]'
 
   return (
@@ -14,7 +13,7 @@ export default function PostCard ({ title, date, excerpt, slug, coverImage, tags
       </div>
       <div className="p-4">
         <h2 className="font-heading font-bold text-gradient text-3xl mb-3">
-          <Link as={`/${slug}`} href={hrefSlug}>
+          <Link href={slug}>
             <a className="hover:underline">{title}</a>
           </Link>
         </h2>
