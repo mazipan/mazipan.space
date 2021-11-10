@@ -9,13 +9,13 @@ export default function Pagination ({ prev, next, page, pages, lang = 'id' }) {
       {prev ? (
         <Link as={`${asSlug}${prev}`} href={hrefSlug}>
           <a aria-label="Previous page">
-            <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-l">
+            <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-l focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-offset-2">
               &lt; Prev
             </button>
           </a>
         </Link>
       ) : (
-        <button className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l cursor-not-allowed">
+          <button className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l cursor-not-allowed">
           &lt; Prev
         </button>
       )}
@@ -31,7 +31,7 @@ export default function Pagination ({ prev, next, page, pages, lang = 'id' }) {
                     p.toString() === page.toString()
                       ? 'bg-red-500 hover:bg-red-700 text-white'
                       : 'text-red-500'
-                  } border-2 border-red-500 font-bold py-2 px-4 rounded ${
+                  } border-2 border-red-500 font-bold py-2 px-4 rounded  focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-offset-2 ${
                     idx !== pages.length - 1 ? 'mr-2' : ''
                   }`}
                 >
@@ -45,7 +45,7 @@ export default function Pagination ({ prev, next, page, pages, lang = 'id' }) {
       {next ? (
         <Link as={`${asSlug}${next}`} href={hrefSlug}>
           <a aria-label="Next page">
-            <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-r">
+            <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-r focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-offset-2">
               Next &gt;
             </button>
           </a>

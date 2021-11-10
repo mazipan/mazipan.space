@@ -46,7 +46,7 @@ export default function Header () {
         </Link>
 
         <button
-          className="bg-gray-300 dark:bg-gray-700 dark:text-yellow-500 font-bold py-2 px-4 rounded-md"
+          className="bg-gray-300 dark:bg-gray-700 dark:text-yellow-500 font-bold py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2"
           onClick={onSwitchTheme}
           alt={`Switch to ${nextTheme}`}
         >

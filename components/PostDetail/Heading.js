@@ -26,7 +26,7 @@ export default function PostHeader ({ title, tags, coverImage, date, author }) {
           {tags &&
             tags.map((tag) => (
               <Link key={tag} as={`/tag/${tag}`} href="/tag/[tag]">
-                <a className="hover:underline inline-block bg-red-100 text-red-600 rounded-full px-3 py-1 text-sm font-semibold mr-2">
+                <a className="hover:underline inline-block bg-red-100 text-red-600 rounded-full px-3 py-1 text-sm font-semibold mr-2 focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-offset-2">
                   {`#${tag}`}
                 </a>
               </Link>
