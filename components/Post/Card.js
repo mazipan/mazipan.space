@@ -3,7 +3,7 @@ import Link from 'next/link'
 import DateFormatter from '@/components/Date'
 import CoverImage from '@/components/Post/Cover'
 
-export default function PostCard ({ title, date, excerpt, slug, coverImage, tags, lang }) {
+export default function PostCard({ title, date, excerpt, slug, coverImage, tags, lang = 'id' }) {
   const hrefSlug = lang === 'id' ? '/[slug]' : '/en/[slug]'
   const hrefSlugTag = lang === 'id' ? '/tag/[tag]' : '/en/tag/[tag]'
 
@@ -28,7 +28,7 @@ export default function PostCard ({ title, date, excerpt, slug, coverImage, tags
           <div className="py-2">
             {tags.map((tag) => (
               <Link key={tag} as={`${lang === 'id' ? '/tag/' : '/en/tag/'}${tag}`} href={hrefSlugTag}>
-                <a className="hover:underline inline-block bg-red-100 text-red-600 rounded-full px-3 py-1 text-sm font-semibold mr-2 mb-2">
+                <a className="hover:underline inline-block bg-red-100 text-red-600 rounded-full px-3 py-1 text-sm font-semibold mr-2 mb-2  focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-offset-2">
                   {`#${tag}`}
                 </a>
               </Link>

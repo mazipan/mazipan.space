@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 import DateFormatter from '@/components/Date'
 
-export default function HeroPost ({ title, coverImage, date, excerpt, author, slug, lang }) {
+export default function HeroPost ({ title, coverImage, date, excerpt, author, slug, lang = 'id' }) {
   const hrefSlug = lang === 'id' ? '/[slug]' : '/en/[slug]'
 
   return (

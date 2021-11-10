@@ -33,6 +33,7 @@ export default function Index ({ allPosts, tag }) {
                   slug={post.slug}
                   excerpt={post.excerpt}
                   tags={post.tags}
+                  lang="id"
                 />
               ))}
             </div>

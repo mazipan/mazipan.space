@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 
-export default function CoverImage ({ title, src, slug, lang }) {
+export default function CoverImage ({ title, src, slug, lang = 'id' }) {
   const hrefSlug = lang === 'id' ? '/[slug]' : '/en/[slug]'
 
   const image = (
