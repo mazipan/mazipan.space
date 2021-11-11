@@ -11,13 +11,13 @@ lang: id
 enready: false
 ---
 
-Tulisan terkahir di blog ini sudad dari februari yang lalu, dari awal tahun sampai ketemu akhir tahun. Setelah sekian lama vakum menulis, jangan berekspektasi tinggi pada tulisan-tulisan saya ya, saya hanya sedang berusaha mengumpulkan mood dan semangat buat menulis lagi. Artikel-artikel bdalam tahap ini mungkin tidak akan dalam secara teknis, karena biasanya saya butuh waktu lebih banyak untuk menulis artikel yang ada berbaris-baris kode di dalamnya.
+Tulisan terkahir di blog ini sudah dari februari yang lalu, dari awal tahun sampai ketemu akhir tahun. Setelah sekian lama vakum menulis, jangan berekspektasi tinggi pada tulisan-tulisan saya ya, saya hanya sedang berusaha mengumpulkan mood dan mengumpulkan semangat buat menulis lagi. Artikel-artikel saya pada tahap ini mungkin tidak akan dalam secara teknis, karena biasanya saya butuh waktu lebih banyak untuk menulis artikel yang terdapat berbaris-baris kode di dalamnya.
 
 ## Mengenai monorepo
 
 Monorepo merupakan solusi managemen repository bagi mereka yang memiliki workflow yang hampir sama di banyak package dan biasanya memang *dependent* satu sama lain.
 
-Solusi ini sangat teramat populer dan berhasil diadopsi oleh banyak open-source besar, seperti [Babel](https://github.com/babel/babel/tree/main/packages), [Next.js](https://github.com/vercel/next.js/tree/canary/packages), [Jest](https://github.com/facebook/jest/tree/main/packages) dan banyak projek besar lain juga yang mengadopsi managemen repository yang sama.
+Solusi ini sangat populer beberapa tahun belakangan dan berhasil diadopsi oleh banyak open-source besar, seperti [Babel](https://github.com/babel/babel/tree/main/packages), [Next.js](https://github.com/vercel/next.js/tree/canary/packages), [Jest](https://github.com/facebook/jest/tree/main/packages) dan banyak projek besar lain juga yang mengadopsi teknik yang sama, yakni si monorepo ini.
 
 Seperti bisa terlihat pada tautan dari beberapa contoh projek di atas, mereka punya banyak "projek/package" dalam satu repo mereka. Sebagai end-user kita taunya package-package tersebut ya berbeda-beda, misal ketika kita memasang `jest`, kita biasanya menambahkan `babel-jest` sebagai transformer file-file kita. Kita tidak tau kalau ternyata dua package ini diatur dalam satu repo.
 
@@ -25,11 +25,11 @@ Seperti bisa terlihat pada tautan dari beberapa contoh projek di atas, mereka pu
 
 ### Kesamaan workflow
 
-Yang paling umum adalah karena workflow-nya sama. Cara mereka release package atau cara mereka development mirip-mirip. Dibandingkan bikin kode berulang-ulang dan ada kemungkinan malah terjadi kustomisasi yang tidak perlu, dengan meletakkan di satu repo bisa memudahkan untuk menyatukan workflow yang sama ke dalam satu pekerjaan saja. Misal: saya bisa `lerna publish` dan semua package akan di bump ke versi terbaru dengan versi yang sama kemudian di-publish ke registry, dibuatkan changelog, dibuatkan git tag juga dalam satu perintah dan berlaku bagi semua package dalam lingkup monorepo.
+Yang paling umum adalah karena workflow-nya sama. Cara mereka release package atau cara mereka development di package-package ini biasanya mirip-mirip. Dibandingkan bikin kode berulang-ulang dan ada kemungkinan malah terjadi kustomisasi yang tidak perlu, dengan meletakkan di satu repo bisa memudahkan untuk menyatukan workflow yang sama ke dalam satu pekerjaan saja. Misal: saya bisa `lerna publish` dan semua package akan di bump ke versi terbaru dengan versi yang sama kemudian di-publish ke registry, dibuatkan changelog, dibuatkan git tag juga dalam satu perintah dan berlaku bagi semua package dalam lingkup monorepo.
 
 ### Kemudahan dependency linking
 
-Karena berada dalam satu lingkup yang sama, maka tidak perlu bingung lagi satu package akan require ke depency versi berapa ya, sudah saja disamakan semua versinya. Beberapa alat yang mendukung workspace juga punya fitur auto-link, jadi tidak perlu mengunduh dari registry kalau memang yang dimaksud adalah package internal, tapi ketika mau di-publish ya akan diganti dengan versi registry yang benar.
+Karena berada dalam satu lingkup yang sama, maka tidak perlu bingung lagi, satu package akan require ke depency versi berapa ya, sudah saja disamakan semua versinya. Beberapa alat yang mendukung workspace juga punya fitur auto-link, jadi tidak perlu mengunduh dari registry lagi kalau memang yang dimaksud adalah package internal, dan ketika mau di-publish ya akan diganti dengan versi registry yang benar.
 
 ### Lebih hemat disk
 
@@ -37,7 +37,7 @@ Seperti diketahui bersama, `node_modules` adalah musuh bagi disk kita. Kalau pun
 
 ## Mudah mengatur banyak package
 
-Bisa dibayangkan, projek Babel dengan puluhan atau bahkan ratusan package di dalamnya kalau harus di manage dengan multi repo akan jadi apa? Betapa beratnya bagi kontributor untuk checkout ratusan repo ke dalam mesin mereka, mengatur workflow di banyak package, pindah dari satu package ke package lain mungkin akan memakan waktu lebih banyak. Bandingkan dengan monorepo yang semudah tinggal pindah direktori, semua sudah ada di depan mata saat kita checkout projeknya.
+Bisa dibayangkan, projek Babel dengan puluhan atau bahkan ratusan package di dalamnya kalau harus di manage dengan multi-repo akan jadi apa? Betapa beratnya bagi kontributor untuk checkout ratusan repo ke dalam mesin mereka, mengatur workflow di banyak package, pindah dari satu package ke package lain mungkin akan memakan waktu lebih banyak. Bandingkan dengan monorepo yang semudah tinggal pindah direktori, semua sudah ada di depan mata saat kita checkout projeknya.
 
 ## Duka-duka menggunakan monorepo
 
@@ -67,7 +67,7 @@ Monorepo umumnya memang tidak berjalan mulus, pada akhirnya kamu bisa saja harus
 
 Kalau repo-nya cuma berisi satu package, gampang ya buat nebak, ini pull-request sebenernya untuk yang mana. Kalau di monorepo ya susah, pull-request bisa random kena kemana-mana, yang review bisa bingung, perlu ikut review gak sih gua? Apalagi kalau gak pada konsisten mengikuti aturan, misal dengan memberikan scope yang jelas dalam judul pull-requestnya.
 
-Belum lagi jumlahnya yang bisa meledak. Karena dalam satu repo, kalau ada 20 package aja di dalam repo tersebut, berarti akan ada pull-request yang terkait dengan 20 package tadi, kallau kontributor dari 20 package tadi semuanya aktif-aktif ya siapin bendera putih aja sih kalau pas lihat jumlah pull-request yang datang setiap harinya.
+Belum lagi jumlahnya yang bisa meledak. Karena dalam satu repo, kalau ada 20 package aja di dalam repo tersebut, berarti akan ada pull-request yang terkait dengan 20 package tadi, kalau kontributor dari 20 package tadi semuanya aktif-aktif ya siapin bendera putih aja sih kalau pas lihat jumlah pull-request yang datang setiap harinya.
 
 Limitasi akses juga jadi lebih susah, ada beberapa package yang mungkin tidak seharusnya diubah-ubah oleh sembarangan orang, tapi karena kerumitan managemen macam pull-request tadi, ya bisa jadi kesenggol oleh orang lain tanpa kamu menyadari.
 
