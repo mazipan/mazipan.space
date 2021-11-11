@@ -17,7 +17,7 @@ Tulisan terkahir di blog ini sudad dari februari yang lalu, dari awal tahun samp
 
 Monorepo merupakan solusi managemen repository bagi mereka yang memiliki workflow yang hampir sama di banyak package dan biasanya memang *dependent* satu sama lain.
 
-Solusi ini sangat teramat populer dan berhasil diadopsi oleh banyak open-source besar, seperti Babel (https://github.com/babel/babel/tree/main/packages), Next.js (https://github.com/vercel/next.js/tree/canary/packages), Jest (https://github.com/facebook/jest/tree/main/packages) dan banyak projek besar lain juga yang mengadopsi managemen repository yang sama.
+Solusi ini sangat teramat populer dan berhasil diadopsi oleh banyak open-source besar, seperti [Babel](https://github.com/babel/babel/tree/main/packages), [Next.js](https://github.com/vercel/next.js/tree/canary/packages), [Jest](https://github.com/facebook/jest/tree/main/packages) dan banyak projek besar lain juga yang mengadopsi managemen repository yang sama.
 
 Seperti bisa terlihat pada tautan dari beberapa contoh projek di atas, mereka punya banyak "projek/package" dalam satu repo mereka. Sebagai end-user kita taunya package-package tersebut ya berbeda-beda, misal ketika kita memasang `jest`, kita biasanya menambahkan `babel-jest` sebagai transformer file-file kita. Kita tidak tau kalau ternyata dua package ini diatur dalam satu repo.
 
