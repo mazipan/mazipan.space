@@ -47,11 +47,11 @@ Saya sendiri dua tahun belakangan memang banyak berkutat dengan masalah monorepo
 
 Sayangnya, bagi developer yang sangat jarang berpindah konteks, hal ini bisa jadi penghambat besar. Misal ada developer A yang kerjanya hanya di package Z, maka mau gak mau dia harus checkout semua kode dari package A-Z. Kalau ada perubahan di package A-Y ya bisa jadi dia akan terkena dampaknya pula, karena di dalam monorepo biasanya akan menggunakan linking antar sesama internal dependency, atau dalam bahasa lain ya tidak akan ada versioning di dalam monorepo. Satu berubah, semuanya harus berubah. Perubahan yang menyentuh fundamental ya artinya "big-bang". Tidak ada opsi meninggalkan satu package, karena ya mau resolve kemana lagi dia.
 
-## Dependency yang suka ngaco
+### Dependency yang suka ngaco
 
 Seperti ta bilang sebelumnya, kita bisa menaikkan sebuah dependency ke level atas. Di level package pun kita bisa mendifinisikan dependency. Kalau ada dependency yang sama, lantas punya siapa yang sebenarnya akan digunakan? Belum lagi kalau package sebelah ada juga yang pakai versi yang berbeda major dengan versi yang kita pakai dan kita tidak sadar. Apakah akan baik-baik saja? Bertambah parah kalau hal ini terjadi pada package yang dipakai banyak package lain. Walhasil kadang dirimu mesti manual menjelaskan ke alat-alatmu, sebenernya ketika ketemu dependecy A seharusnya dia nyari ke `node_modules` yang mana sih, versi mana yang valid untuk package A.
 
-## Peralatan yang kustom
+### Peralatan yang kustom
 
 Monorepo umumnya memang tidak berjalan mulus, pada akhirnya kamu bisa saja harus benting-tulang membuat peralatanmu sendiri untuk memuluskan cita-cita "otomasi".
 
