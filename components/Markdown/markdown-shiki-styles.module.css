@@ -1,5 +1,6 @@
 .markdown {
   @apply text-lg leading-relaxed;
+  /* font-size: 1.125rem; */
 }
 
 .markdown p,
@@ -10,19 +11,19 @@
 }
 
 .markdown h2 {
-  @apply font-heading font-bold text-3xl mt-12 mb-4 leading-snug;
+  @apply font-heading font-bold text-3xl mt-6 mb-6 leading-snug;
 }
 
 .markdown h3 {
-  @apply font-heading font-bold text-2xl mt-8 mb-4 leading-snug;
+  @apply font-heading font-bold text-2xl mt-4 mb-4 leading-snug;
 }
 
 .markdown h4 {
-  @apply font-heading font-bold text-xl mt-6 mb-4 leading-snug;
+  @apply font-heading font-bold text-xl mt-2 mb-2 leading-snug;
 }
 
 .markdown h5 {
-  @apply font-heading font-bold text-lg mt-4 mb-4 leading-snug;
+  @apply font-heading font-bold text-lg mt-2 mb-2 leading-snug;
 }
 
 @media (min-width: 768px) {
@@ -44,7 +45,7 @@
   @apply pb-1;
 }
 
-.markdown p > code {
+.markdown p>code {
   @apply bg-indigo-100 text-indigo-700 text-sm px-2 py-1 rounded break-words;
   font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
 }
