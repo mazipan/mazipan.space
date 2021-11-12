@@ -12,7 +12,7 @@ export default function Index ({ allPosts, tag }) {
         <>
           <Meta
             lang="id"
-            title={`🏷️ Artikel tentang ${tag} | mazipan.space`}
+            title={`🏷️ Artikel tentang ${tag} // mazipan.space`}
             description={`Semua artikel dengan tag #${tag} di mazipan.space`}
             url={`${SITE_METADATA.url}/tag/${tag}`}
             tag={`${tag}`}

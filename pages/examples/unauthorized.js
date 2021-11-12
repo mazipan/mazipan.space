@@ -11,8 +11,8 @@ export default function Unauthorized () {
         <Fragment>
           <Meta
             lang="id"
-            title="Unauthorized Example | mazipan.space"
-            description="Unauthorized Example | mazipan.space"
+            title="Unauthorized Example // mazipan.space"
+            description="Unauthorized Example // mazipan.space"
             url={`${SITE_METADATA.url}/examples/unauthorized`}
           />
           <h2 className="mb-8 text-6xl md:text-7xl font-bold tracking-tighter leading-tight">

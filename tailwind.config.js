@@ -1,5 +1,5 @@
 module.exports = {
-  mode: 'jit',
+  // mode: 'jit',
   darkMode: 'class',
   purge: [
     './styles/**/*.css',

@@ -33,8 +33,8 @@ export default function Login () {
         <Fragment>
           <Meta
             lang="id"
-            title="Login Example | mazipan.space"
-            description="Login Example | mazipan.space"
+            title="Login Example // mazipan.space"
+            description="Login Example // mazipan.space"
             url={`${SITE_METADATA.url}/examples/login`}
           />
           <h2 className="mb-8 text-6xl md:text-7xl font-bold tracking-tighter leading-tight">

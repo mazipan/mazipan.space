@@ -11,8 +11,8 @@ export default function OnlyForLogin ({ email }) {
         <Fragment>
           <Meta
             lang="id"
-            title="Only For Login Example | mazipan.space"
-            description="Only For Login Example | mazipan.space"
+            title="Only For Login Example // mazipan.space"
+            description="Only For Login Example // mazipan.space"
             url={`${SITE_METADATA.url}/examples/only-for-login`}
           />
           <h2 className="mb-8 text-6xl md:text-7xl font-bold tracking-tighter leading-tight">

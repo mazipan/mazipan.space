@@ -13,7 +13,7 @@ export default function TalksPage ({ talks }) {
         <Fragment>
           <Meta
             lang="id"
-            title="🎙️ Talks | mazipan.space"
+            title="🎙️ Talks // mazipan.space"
             description="List of public tech talks presented by mazipan"
             url={`${SITE_METADATA.url}/talks`}
             coverImage={`${OG_IMAGE_TALKS}`}

@@ -27,7 +27,7 @@ export default function Post ({ post, related, preview }) {
         <>
           <Meta
             lang="id"
-            title={`${post.title} | mazipan.space`}
+            title={`${post.title} // mazipan.space`}
             description={post.excerpt}
             url={`${SITE_METADATA.url}/${post.slug}`}
             coverImage={`${SITE_METADATA.url}${post.coverImage}`}

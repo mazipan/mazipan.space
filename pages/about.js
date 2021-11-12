@@ -2,61 +2,16 @@ import { Fragment } from 'react'
 
 import Meta from '@/components/Meta/Custom'
 import LayoutArticle from '@/components/Layout/Default'
-import { SITE_METADATA, OG_IMAGE_ABOUT } from '@/lib/constants'
+import { SITE_METADATA, OG_IMAGE_ABOUT, FEATURED_OSS, CAREERS } from '@/lib/constants'
 
-const FEATURED_OSS = [
-  {
-    title: 'Ksana.in',
-    desc: "Simple URL shortener/beautifier for free",
-    repo: 'https://github.com/mazipan/ksana.in',
-    url: 'https://ksana.in/',
-    stacks: ['Supabase', 'Next.js']
-  },
-  {
-    title: 'Baca-Quran.id',
-    desc: "Web App to read The Holy Qur'an without Ads and Analytics",
-    repo: 'https://github.com/mazipan/baca-quran.id',
-    url: 'https://www.baca-quran.id/',
-    stacks: ['Nuxt.js']
-  },
-  {
-    title: 'Pramuka.Online',
-    desc: "Collections for material to be learn on Indonesian Scout Activity (Pramuka)",
-    repo: 'https://github.com/mazipan/pramuka.online',
-    url: 'https://pramuka.online/',
-    stacks: ['Next.js']
-  },
-  {
-    title: 'PSI Github Actions',
-    desc: 'Github Action to generate web performance report for JAMStack using PageSpeedInsight',
-    repo: 'https://github.com/mazipan/psi-gh-action',
-    url: 'https://github.com/marketplace/actions/psi-gh-action',
-    stacks: ['Github Actions', 'PageSpeedInsight']
-  },
-  {
-    title: 'GraphQL PokeApi',
-    desc: 'The GraphQL for PokeApi',
-    repo: 'https://github.com/mazipan/graphql-pokeapi',
-    url: 'https://graphql-pokeapi.vercel.app',
-    stacks: ['GraphQl', 'Vercel']
-  },
-  {
-    title: 'E-commerce Web Perf',
-    desc: 'Web Perf Comparison for E-Commerce in Indonesia ',
-    repo: 'https://github.com/mazipan/webperf-ecommerce-id',
-    url: 'https://webperf-ecommerce-id.vercel.app/',
-    stacks: ['Next.js', 'PageSpeedInsight']
-  }
-]
-
-export default function AboutPage () {
+export default function AboutPage() {
   return (
     <>
       <LayoutArticle>
         <Fragment>
           <Meta
             lang="id"
-            title="ℹ️ About | mazipan.space"
+            title="ℹ️ About // mazipan.space"
             description="About the Author of mazipan.space"
             url={`${SITE_METADATA.url}/about`}
             coverImage={`${OG_IMAGE_ABOUT}`}
@@ -69,7 +24,7 @@ export default function AboutPage () {
               Hi 👋, I am Irfan Maulana.
             </h2>
             <p>
-              A frontend engineer, working in Tokopedia as Principal Engineer Web Platform. Already start my career journey since 2013. 
+              A frontend engineer, working in Tokopedia as Principal Engineer Web Platform. Already start my career journey since 2013.
               Before joining Tokopedia, I also have been work on the same Industry (online commerce) for the last 6 years in Bizzy Indonesia (B2B) and Blibli.com.
             </p>
             <br />
@@ -100,29 +55,57 @@ export default function AboutPage () {
                 rel="noopener noreferrer"
                 href="https://s.byphp.id/ajari-koding"
               >
-                s.byphp.id/ajari-koding
+                ajari-koding
               </a>{' '}
               and{' '}
               <a
                 className="text-red-500"
                 target="_blank"
                 rel="noopener noreferrer"
-                href="https://s.byphp.id/learning"
+                href="https://learning.byphp.id"
               >
-                s.byphp.id/learning
+                learning.byphp.id
               </a>{' '}
               for PHPID community.
             </p>
 
             <h3 className="text-2xl md:text-4xl font-bold my-4 tracking-tighter leading-tight">
-              My Featured Open Projects
+              Career
             </h3>
 
-            <ul>
+            <ul className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {CAREERS.map((career) => (
+                <li
+                  key={career.period}
+                  className="rounded-lg p-4 overflow-hidden shadow-lg border-2 border-red-500"
+                >
+                  <h4 className="text-lg text-red-500 font-bold mb-2">
+                    {career.title}
+                  </h4>
+                  <div className="text-sm">
+                    <a
+                      className="underline"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      href={career.link}>{career.company}</a>{` • `}<span>{career.location}</span>
+                  </div>
+                  <div className="text-gray-500">
+                    <small>{career.period}</small>{` • `}<small>{career.long}</small>
+                  </div>
+                </li>
+              ))}
+            </ul>
+
+            <h3 className="text-2xl md:text-4xl font-bold my-4 tracking-tighter leading-tight">
+              Featured OSS
+            </h3>
+
+
+            <ul className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {FEATURED_OSS.map((oss) => (
                 <li
                   key={oss.repo}
-                  className="rounded-lg p-4 mb-2 overflow-hidden shadow-lg border-2 border-red-500"
+                  className="rounded-lg p-4 overflow-hidden shadow-lg border-2 border-red-500"
                 >
                   <a
                     className="text-red-500"
@@ -130,11 +113,11 @@ export default function AboutPage () {
                     rel="noopener noreferrer"
                     href={oss.url}
                   >
-                    <h4 className="text-xl md:text-2xl font-bold mb-4 tracking-tighter leading-tight">
+                    <h4 className="text-lg font-bold mb-4">
                       {oss.title}
                     </h4>
                   </a>
-                  <p className="mb-4">{oss.desc}</p>
+                  <p className="mb-4 text-sm">{oss.desc}</p>
 
                   <div className="flex justify-between">
                     <a

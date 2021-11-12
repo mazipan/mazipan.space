@@ -9,12 +9,12 @@ export default function Index () {
         <>
           <Meta
             lang="id"
-            title="❤️ Support | mazipan.space"
+            title="❤️ Support Me // mazipan.space"
             description="How to support mazipan to keep the blog mazipan.space alive"
             url={`${SITE_METADATA.url}/support`}
           />
           <h2 className="mb-8 text-6xl md:text-7xl font-heading font-bold tracking-tighter leading-tight">
-            ❤️  Support
+            ❤️  Support Me
           </h2>
           <div className="content">
             <p className="mb-4">Consider to support me to always keep this blog alive and updating the contents, you can support me via:</p>
@@ -22,7 +22,7 @@ export default function Index () {
               <li>
                 <span className="mr-2">👉</span>
                 <a
-                  className="hover:underline pr-2 md:pr-4"
+                  className="text-red-500 hover:underline pr-2 md:pr-4"
                   href="https://trakteer.id/mazipan/tip?utm_source=github"
                   rel="nofollow"
                 >
@@ -32,7 +32,7 @@ export default function Index () {
               <li>
                 <span className="mr-2">👉</span>
                 <a
-                  className="hover:underline pr-2 md:pr-4"
+                  className="text-red-500 hover:underline pr-2 md:pr-4"
                   href="https://www.buymeacoffee.com/mazipan?utm_source=github"
                   rel="nofollow"
                 >
@@ -42,7 +42,7 @@ export default function Index () {
               <li>
                 <span className="mr-2">👉</span>
                 <a
-                  className="hover:underline pr-2 md:pr-4"
+                  className="text-red-500 hover:underline pr-2 md:pr-4"
                   href="https://ko-fi.com/mazipan"
                   rel="nofollow"
                 >
@@ -52,7 +52,7 @@ export default function Index () {
               <li>
                 <span className="mr-2">👉</span>
                 <a
-                  className="hover:underline pr-2 md:pr-4"
+                  className="text-red-500 hover:underline pr-2 md:pr-4"
                   href="https://www.paypal.me/mazipan?utm_source=github"
                   rel="nofollow"
                 >

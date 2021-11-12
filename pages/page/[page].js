@@ -12,7 +12,7 @@ export default function PagedPost ({ data, page, pages, next, prev }) {
     <>
       <Layout>
         <Head>
-          <title>Halaman {page} | mazipan.space</title>
+          <title>Halaman {`${page} // mazipan.space`}</title>
         </Head>
         <Container>
           <section>

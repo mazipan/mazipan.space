@@ -43,7 +43,7 @@ export default function Speed ({ data }) {
       <LayoutArticle>
         <Fragment>
           <Meta
-            title="⚡️ Speed | mazipan.space"
+            title="⚡️ Speed // mazipan.space"
             description="Web performance report of mazipan.space"
             url={`${SITE_METADATA.url}/speed`}
           />
