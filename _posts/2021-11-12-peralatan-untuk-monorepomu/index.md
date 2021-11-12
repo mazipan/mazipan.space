@@ -100,16 +100,16 @@ Saya pribadi belum banyak baca terkait Rush, tapi mestinya cukup menarik ya kala
 
 ### Alat lain yang menarik
 
-- 🚀  [Bit](https://bit.dev/)
-- 🚀  [Bazel](https://bazel.build/)
-- 🚀  [Bolt](https://github.com/boltpkg/bolt)
-- 🚀  [changesets](https://github.com/atlassian/changesets)
+- 🚀  [Bit](https://bit.dev/), get started nya udah disuruh register, jadi males nyobain
+- 🚀  [Bazel](https://bazel.build/), katanya sih dipake sama Google ya
+- 🚀  [Bolt](https://github.com/boltpkg/bolt), docs nya masih limited sih ini
+- 🚀  [changesets](https://github.com/atlassian/changesets), punya Atlasian
 
 ## Alat yang saya pakai
 
 Saya di kantor ada salah satu monorepo, isinya ada package dan apps di dalamnya. Ada 20+ apps, 20+ package dan 20+ shared code package lainnya. Kesemuanya di satu repositori gendut dan di maintain dengan pnpm workspace dikombinasikan dengan Lerna dan conventional-changelog untuk otomasi proses pembuatan changelog dan git tag. Proses install dan lainnya hanya memanfaatkan kemampuan pnpm.
 
-Di monorepo lain, saya tidak memilih Lerna karena tipenya yang sekali hajar semua package akan kena semua, karena saya ada kasus harus pilih-pilih, maka saya membuat beberapa custom script untuk build dan release. Jadi ada beberapa workfllow yang saya lebih pilih untuk manual saja, macam bikin changelog, bump version, dan lainnya. Tapi beberapa proses tetap otomasi, macam proses build, menentukan package mana yang harus di build ketika satu package akan di release, itu semua bikin pake script sendiri aja.
+Di monorepo lain, saya tidak memilih Lerna karena tipenya yang sekali hajar semua package akan kena semua, karena saya ada kasus harus pilih-pilih, maka saya membuat beberapa custom script untuk build dan release. Jadi ada beberapa workflow yang saya lebih pilih untuk manual saja, macam bikin changelog, bump version, dan lainnya. Tapi beberapa proses tetap otomasi, macam proses build, menentukan package mana yang harus di build ketika satu package akan di release, itu semua bikin pake script sendiri aja. Sempat nyobain beberapa peralatan buat membantu, macam [changesets](https://github.com/atlassian/changesets), [standard-version](https://github.com/conventional-changelog/standard-version), dan lainnya untuk membantu otomasi pekerjaan di monorepo ini, tapi sepertinya belum ketemu klikny. Sedangkan untuk proses install dependency dan workspace masih setia dengan pnpm, termasuk menjalankan script dengan kemampuan filter dari package-package yang ada. pnpm masih cukup powerfull untuk menangani hal ini, hanya otomasi untuk release saja yang tidak ada opsi bawaan darinya.
 
 Di repo lain, saya malah meletakkan banyak projek tapi tidak meilih menggunakan monorepo, melainkan install masing-masing aja, hanya diletakkan di satu repo, tapi proses install dan lainnya sendiri-sendiri.
 
