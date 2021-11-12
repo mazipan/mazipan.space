@@ -5,7 +5,7 @@ excerpt: Bagaimana saya memandang monorepo sebagai solusi arsitektur managemen r
 author: mazipan
 published: true
 featured: false
-tags: [architecture]
+tags: [monorepo]
 coverImage: /thumbnail/monorepo-menurut-saya/cover.png
 lang: id
 enready: false
