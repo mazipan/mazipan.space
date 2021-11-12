@@ -135,7 +135,7 @@ export default function AboutPage() {
                     {oss.stacks.map((stack) => (
                       <span
                         key={stack}
-                        className="hover:underline inline-block bg-red-100 text-red-600 rounded-full px-3 py-1 text-xs font-semibold mr-2 mb-2"
+                        className="hover:underline inline-block bg-red-100 text-red-600 rounded-full px-3 py-1 text-xs font-semibold mr-2"
                       >
                         {stack}
                       </span>
