@@ -61,9 +61,9 @@ npm login --scope=@YOUR_ORG --registry=https://npm.pkg.github.com
 
 Setelah menjalankan perintah di atas, kamu akan ditanya beberapa hal
 
-- ✅  **Username**: Isikan dengan username dari GitHub yang kamu gunakan untuk mengakses GitHub Packages
-- ✅  **Password**: Isikan dengan personal access token (PAT) yang punya scope untuk read dan write (bila diperlukan) ke Github Package
-- ✅  **Email**: Isikan dengan email yang terhubung dengan GitHub
+- ✅  `Username`: Isikan dengan username dari GitHub yang kamu gunakan untuk mengakses GitHub Packages
+- ✅  `Password`: Isikan dengan personal access token (PAT) yang punya scope untuk read dan write (bila diperlukan) ke Github Package
+- ✅  `Email`: Isikan dengan email yang terhubung dengan GitHub
 
 Seperti terlihat, kamu membutuhkan PAT untuk mengakses ke Github Packages. kamu bisa mengunjungi halaman [Setting Token](https://github.com/settings/tokens) di Github untuk membuat PAT milikmu. Pastikan punya scope yang sudah disebutkan di atas.
 
@@ -97,7 +97,7 @@ Cara ini juga biasanya dilakukan ketika harus melakukan otentikasi di sistem CI,
 
 Sedikit agak berbeda ketika menggunakan CI, disini saya hanya mencontohkan dengan Github Action
 
-#### Install
+#### Install private package
 
 Proses install bisa jadi juga akan membutuhkan otntikasi, terutama kalu kamu memang menggunakan private package di aplikasi yang akan diinstall.
 
@@ -118,7 +118,7 @@ on:
 
 jobs:
   install:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
 
     permissions:
       contents: read
@@ -141,25 +141,25 @@ jobs:
           npm set email YOUR_EMAIL
           npm set //npm.pkg.github.com/:_authToken ${{ secrets.PAT }}
 
-      - name: NPM check user
-        run: npm whoami --registry=https://npm.pkg.github.com
-
       - name: Install dependencies
         run: npm install
 ```
 
-#### Publish
+Seperti yang bisa dilihat di atas, saya menjalankan perintah untuk otentikasi sebelum menjalankan `npm install` untuk memastikan otentikasi sukses sebelum install dijalankan.
+#### Publish ke registry
 
-Mengacu pada dokuemntasi [setup-node](https://github.com/actions/setup-node/blob/main/docs/advanced-usage.md#publish-to-npmjs-and-gpr-with-npm) Actions, kita cukup passing env `NODE_AUTH_TOKEN` saja saat melakukan `npm publish`, berikut contohnya:
+Mengacu pada dokumentasi [setup-node](https://github.com/actions/setup-node/blob/main/docs/advanced-usage.md#publish-to-npmjs-and-gpr-with-npm) Actions, kita cukup passing env `NODE_AUTH_TOKEN` saja saat melakukan `npm publish`, berikut contohnya:
 
 ```yaml
 - name: Publish
   run: npm publish
   env:
-    NODE_AUTH_TOKEN: ${{ secrets.GH_PAT }}
+    NODE_AUTH_TOKEN: ${{ secrets.PAT }}
 ```
 
-#### Unpublish
+`${{ secrets.PAT }}` merupakan personal akses token yang sudah disimpan dalam secret sebelumnya.
+
+#### Unpublish dari registry
 
 Kamu bisa unpublish dari UI nya Github seharusnya, tapi karena kadang-kadang akses untuk ini dibatasi, kamu juga bisa membuat Github Action untuk melakukan unpublish dari versi yang tidak diinginkan. Ada beberapa, saya menggunakan [delete-old-packages](https://github.com/SmartsquareGmbH/delete-old-packages) dari `smartsquaregmbh`. Silahkan baca-baca sendiri ya dari dokumentasinya.
 

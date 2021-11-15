@@ -45,13 +45,36 @@
   @apply pb-1;
 }
 
-.markdown p>code {
+.markdown p>code, .markdown li>code {
   @apply bg-indigo-100 text-indigo-700 text-sm px-2 py-1 rounded break-words;
   font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
 }
 
 .markdown pre[class="shiki"] {
-  @apply p-4 rounded-lg text-sm overflow-auto;
+  @apply p-4 rounded-lg text-sm overflow-auto relative;
+
+  padding-top: 1.5rem;
+}
+
+.markdown pre[class="shiki"]::before {
+  @apply absolute top-0 left-2 rounded-b-md px-2 py-0.5 text-xs bg-indigo-300 text-black;
+  content: attr(data-lang);
+}
+
+.markdown pre[data-lang="bash"]::before, .markdown pre[data-lang="shell"]::before {
+  @apply bg-purple-300;
+}
+
+.markdown pre[data-lang="yaml"]::before, .markdown pre[data-lang="yml"]::before {
+  @apply bg-green-300;
+}
+
+.markdown pre[data-lang="bash"]::before, .markdown pre[data-lang="css"]::before {
+  @apply bg-blue-500;
+}
+
+.markdown pre[data-lang="js"]::before, .markdown pre[data-lang="javascript"]::before {
+  @apply bg-yellow-300;
 }
 
 .markdown blockquote {
