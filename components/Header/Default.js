@@ -4,6 +4,7 @@ import LoveIcon from '@/components/Icons/MenuLove'
 import ZapIcon from '@/components/Icons/MenuZap'
 import MicIcon from '@/components/Icons/MenuMic'
 import InfoIcon from '@/components/Icons/MenuInfo'
+import MenuBook from '@/components/Icons/MenuBook'
 
 import useLang from '@/hooks/useLang'
 import useTheme from '@/hooks/useTheme'
@@ -20,28 +21,34 @@ export default function Header () {
         </Link>
       </h1>
       <div className="flex items-center justify-between">
+        <Link href="/til">
+          <a className="text-link hidden items-center md:flex md:mr-4 font-bold">
+            <MenuBook />
+            <span className="pl-2">TIL</span>
+          </a>
+        </Link>
         <Link href="/talks">
           <a className="text-link hidden items-center md:flex md:mr-4 font-bold">
             <MicIcon />
-            {'  Talks'}
+            <span className="pl-2">Talks</span>
           </a>
         </Link>
         <Link href="/speed">
           <a className="text-link hidden items-center md:flex md:mr-4 font-bold">
             <ZapIcon />
-            {'  Speed'}
+            <span className="pl-2">Speed</span>
           </a>
         </Link>
         <Link href="/support">
           <a className="text-link hidden items-center md:flex md:mr-4 font-bold">
             <LoveIcon />
-            {'  Support'}
+            <span className="pl-2">Support</span>
           </a>
         </Link>
         <Link href="/about">
           <a className="text-link hidden items-center md:flex md:mr-4 font-bold">
             <InfoIcon />
-            {'  About'}
+            <span className="pl-2">About</span>
           </a>
         </Link>
 

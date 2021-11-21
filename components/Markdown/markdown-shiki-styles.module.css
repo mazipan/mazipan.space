@@ -73,6 +73,10 @@
   @apply bg-blue-500;
 }
 
+.markdown pre[data-lang="ts"]::before, .markdown pre[data-lang="typescript"]::before {
+  @apply bg-blue-300;
+}
+
 .markdown pre[data-lang="js"]::before, .markdown pre[data-lang="javascript"]::before {
   @apply bg-yellow-300;
 }

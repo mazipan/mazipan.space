@@ -38,7 +38,8 @@ export default function TilDetail({ til, preview }) {
           </Link>
 
           <PostTitle>{til.title}</PostTitle>
-          <div className="text-sm text-gray-500 flex gap-2">
+
+          <div className="text-sm text-gray-500 flex gap-2 justify-center md:justify-start">
             <DateFormatter dateString={til.date} />
 
             {til.tags && til.tags.length > 0 && (

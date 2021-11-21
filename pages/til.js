@@ -17,12 +17,24 @@ export default function TilPage({ data, next, prev }) {
           <title>🧘‍♂️ TIL // mazipan.space</title>
         </Head>
         <Container>
+
+          <h2 className="mb-8 text-6xl md:text-7xl font-heading font-bold tracking-tighter leading-tight">
+            📖 TIL
+          </h2>
+
           {data.map(til => (
             <Link key={til.slug} as={`/til/${til.slug}`} href={hrefSlug}>
-              <a className="relative rounded-lg overflow-hidden shadow-lg hover:shadow-medium transition-shadow duration-200s dark:bg-gray-800">
+              <a className="relative block rounded-lg overflow-hidden shadow-lg hover:shadow-medium transition-shadow duration-200s dark:bg-gray-800 mb-4 p-4">
                 <div className="text-sm text-gray-500 flex gap-2">
                   <DateFormatter dateString={til.date} />
+                </div>
 
+                <h3 className="text-gradient font-heading font-bold text-2xl">
+                  {til.title}
+                </h3>
+
+
+                <div className="flex gap-2">
                   {til.tags && til.tags.length > 0 && (
                     <>
                       {til.tags.map((tag) => (
@@ -33,10 +45,6 @@ export default function TilPage({ data, next, prev }) {
                     </>
                   )}
                 </div>
-
-                <h2 className="font-heading font-bold text-2xl">
-                  {til.title}
-                </h2>
               </a>
             </Link>
           ))}
@@ -45,13 +53,13 @@ export default function TilPage({ data, next, prev }) {
             {prev ? (
               <Link as={`/til/page/${prev}`} href="/til/page/[page]">
                 <a aria-label="Previous page">
-                  <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-l focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-offset-2">
+                  <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 mr-2 rounded-l focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-offset-2">
                     &lt; Prev
                   </button>
                 </a>
               </Link>
             ) : (
-              <button className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l cursor-not-allowed">
+              <button className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 mr-2 rounded-l cursor-not-allowed">
                 &lt; Prev
               </button>
             )}
