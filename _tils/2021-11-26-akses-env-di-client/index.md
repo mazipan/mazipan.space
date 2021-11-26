@@ -6,7 +6,7 @@ tags: [webpack]
 ---
 
 Kalau kalian pernah pakai Next.js, mungkin kalian pernah menggunakan fitur ini, dimana di Next.js kalian bisa mengakses `process.env` tidak peduli kode kalian sebenernya jalan di lingkungan apa, klien atau server. 
-Dua-duanya jalan seemless, tidak ada perbedaan.
+Dua-duanya jalan mulus dengan cara yang sama, tidak ada perbedaan.
 
 Buat yang belum tau `process.env` ini adalah cara di Node.js untuk mengakses environment variable yang ada di mesin maupun yang sudah di load ke env table melalui file `.env` atau file lainnya (dengan bantuan pustaka tambahan kalau gak pake nama `.env`). 
 Tentu saja, ini cuma bisa dilakukan di lingkungan server. 
