@@ -1,7 +1,6 @@
 module.exports = {
-  // mode: 'jit',
   darkMode: 'class',
-  purge: [
+  content: [
     './styles/**/*.css',
     './components/**/*.js',
     './pages/**/*.js',

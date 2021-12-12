@@ -19,7 +19,7 @@
 }
 
 .text-gradient {
-  @apply bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500;
+  @apply bg-gradient-to-r from-amber-400 via-red-500 to-pink-500;
 
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -27,7 +27,7 @@
 }
 
 .text-gradient:hover {
-  @apply bg-gradient-to-r from-pink-500 via-red-500 to-yellow-400;
+  @apply bg-gradient-to-r from-pink-500 via-red-500 to-amber-400;
 }
 
 .border-bottom-gradient:before {
@@ -36,7 +36,7 @@
   bottom: 0;
   content: "";
   height: 4px;
-  @apply absolute block w-full bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500;
+  @apply absolute block w-full bg-gradient-to-r from-amber-400 via-red-500 to-pink-500;
 }
 
 .border-top-gradient:before {
@@ -45,7 +45,7 @@
   top: 0;
   content: "";
   height: 4px;
-  @apply absolute block w-full bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500;
+  @apply absolute block w-full bg-gradient-to-r from-amber-400 via-red-500 to-pink-500;
 }
 
 .text-link {
@@ -59,7 +59,7 @@
   bottom: -5px;
   content: "";
   height: 4px;
-  @apply absolute block w-full bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500;
+  @apply absolute block w-full bg-gradient-to-r from-amber-400 via-red-500 to-pink-500;
   transition: width 0.3s ease 0s, left 0.3s ease 0s;
 }
 
@@ -68,7 +68,7 @@
 }
 
 .text-link:hover {
-  @apply bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500;
+  @apply bg-gradient-to-r from-amber-400 via-red-500 to-pink-500;
 
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
