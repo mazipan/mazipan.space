@@ -62,11 +62,11 @@
 }
 
 .markdown pre[data-lang="bash"]::before, .markdown pre[data-lang="shell"]::before {
-  @apply bg-purple-300;
+  @apply bg-violet-300;
 }
 
 .markdown pre[data-lang="yaml"]::before, .markdown pre[data-lang="yml"]::before {
-  @apply bg-green-300;
+  @apply bg-emerald-300;
 }
 
 .markdown pre[data-lang="bash"]::before, .markdown pre[data-lang="css"]::before {
@@ -78,7 +78,7 @@
 }
 
 .markdown pre[data-lang="js"]::before, .markdown pre[data-lang="javascript"]::before {
-  @apply bg-yellow-300;
+  @apply bg-amber-300;
 }
 
 .markdown blockquote {
