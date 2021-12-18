@@ -22,6 +22,13 @@ export default function TalksPage ({ talks }) {
             🎙️ Talks
           </h2>
           <div className="content">
+            <p>Do you want to invite me to talk in your event? 
+               <a href="https://github.com/mazipan/talks" 
+                  target="blank"
+                  rel="noopener noreferrer">
+                    Read the requirements here
+               </a>
+            </p>
             {Object.keys(talks)
               .reverse()
               .map((year, index) => {
