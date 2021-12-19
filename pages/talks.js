@@ -22,6 +22,7 @@ export default function TalksPage ({ talks }) {
             🎙️ Talks
           </h2>
           <div className="content">
+
             <p>Do you want to invite me to talk in your event? 
                <a href="https://github.com/mazipan/talks" 
                   target="blank"
@@ -30,6 +31,8 @@ export default function TalksPage ({ talks }) {
                     &nbsp;Read the requirements here
                </a>
             </p>
+
+            <div className="mt-6">
             {Object.keys(talks)
               .reverse()
               .map((year, index) => {
@@ -49,7 +52,7 @@ export default function TalksPage ({ talks }) {
                               <span className="mr-2">🗓 </span>
                               <span>{item.date}</span>
                             </div>
-                            <div className="mt-4 text-lg md:text-xl font-bold">{item.event}</div>
+                            <div className="mt-4 mb-4 text-lg md:text-xl font-bold">{item.event}</div>
                             <div className="mb-4 text-md md:text-lg">{item.topic}</div>
 
                             {item.link && item.link.length > 0 && (
@@ -86,6 +89,7 @@ export default function TalksPage ({ talks }) {
                   </details>
                 )
               })}
+          </div>
           </div>
         </Fragment>
       </LayoutArticle>
