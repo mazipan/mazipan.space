@@ -25,8 +25,9 @@ export default function TalksPage ({ talks }) {
             <p>Do you want to invite me to talk in your event? 
                <a href="https://github.com/mazipan/talks" 
                   target="blank"
-                  rel="noopener noreferrer">
-                    Read the requirements here
+                  rel="noopener noreferrer"
+                  className="text-red-500">
+                    &nbsp;Read the requirements here
                </a>
             </p>
             {Object.keys(talks)
