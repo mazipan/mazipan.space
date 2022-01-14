@@ -30,10 +30,6 @@
 
 https://github.com/mazipan/blog-comments/issues
 
-## Logo
-
-Raw file in this [vectr.com link](https://vectr.com/mazipan/i7V7tBB5z.png?width=512&height=512&select=i7V7tBB5zpage0)
-
 ## Previous version
 
 If you are looking for Gatsby version, please visit branch `gatsby`.
