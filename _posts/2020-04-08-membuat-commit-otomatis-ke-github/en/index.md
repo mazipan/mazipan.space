@@ -36,7 +36,7 @@ name: Auto commit
 Trigger is a common thing in CI. Basically it's define the time when the job should be triggered and which job should be triggered.
 Github Actions coming with easy syntax to define the trigger. Some of them is very similar with Github Web Hook if we already learn about before.
 Even you haven't read or play with Web Hook, it still easy to you to understand from the Documentation.
-You can read in "[Events that trigger workflows documentation)(https://help.github.com/en/actions/reference/events-that-trigger-workflows)".
+You can read in "[Events that trigger workflows](https://help.github.com/en/actions/reference/events-that-trigger-workflows)".
 
 We will create our first trigger with this code:
 
@@ -130,7 +130,7 @@ jobs:
           fetch-depth: 0
 ```
 
-We add `uses` and using Actions from [https://github.com/actions/checkout](https://github.com/actions/checkout) which is official Actions to checkout the Git repository.
+We add `uses` and using Actions from [actions/checkout](https://github.com/actions/checkout) which is official Actions to checkout the Git repository.
 I adding two arguments or parameters inside `with` block.
 This is because the Actions we used for commit back have an issue and need to adding these two param to make it work.
 
@@ -258,6 +258,6 @@ You can change your own scheduler more than one per day, just change the Cron st
 
 ## Repository
 
-[https://github.com/mazipan/auto-commit/](https://github.com/mazipan/auto-commit/)
+[mazipan/auto-commit/](https://github.com/mazipan/auto-commit/)
 
 #### Thank you, and don't abuse your power 🙏
