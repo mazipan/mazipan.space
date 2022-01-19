@@ -43,9 +43,14 @@ export default function Post ({ post, related, preview }) {
           />
           <InfoBox>
             Available in other languages: {' '}
-            <Link as={`/${post.slug}`} href="/[slug]">
-              <a className="font-bold underline">Bahasa Indonesia</a>
-            </Link>
+ 
+              <ul>
+                <li>
+                  <Link as={`/${post.slug}`} href="/[slug]">
+                    <a className="font-bold underline">🇮🇩 Bahasa Indonesia</a>
+                  </Link>
+                </li>
+              </ul>
           </InfoBox>
           <MarkdownParser content={post.content} />
           <ShareArticle text={post.title} url={`${SITE_METADATA.url}/en/${post.slug}`} />
