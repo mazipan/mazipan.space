@@ -43,9 +43,13 @@ export default function Post ({ post, related, preview }) {
           {post.enready && (
             <InfoBox>
               Available in other languages:{' '}
-              <Link as={`/en/${post.slug}`} href="/en/[slug]">
-                <a className="font-bold underline">English</a>
-              </Link>
+              <ul>
+                <li>
+                  <Link as={`/en/${post.slug}`} href="/en/[slug]">
+                    <a className="font-bold underline">🇬🇧 English</a>
+                  </Link>
+                </li>
+              </ul>
             </InfoBox>
           )}
           <MarkdownParser content={post.content} />
