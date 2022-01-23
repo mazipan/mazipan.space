@@ -3,6 +3,7 @@ const path = require('path')
 const Feed = require('feed').Feed
 
 const { getAllPosts } = require('../lib/api')
+const { getAllTils } = require('../lib/tils')
 const { SITE_METADATA } = require('../lib/constants')
 
 async function main () {
@@ -32,6 +33,7 @@ async function main () {
     'id'
   )
 
+
   for (const post of posts) {
     feed.addItem({
       id: `${SITE_METADATA.url}/${post.slug}`,
@@ -41,6 +43,18 @@ async function main () {
       content: post.excerpt,
       image: `${SITE_METADATA.url}${post.coverImage}`,
       date: new Date(post.date),
+      author: SITE_METADATA.author.name
+    })
+  }
+
+  const tils = await getAllTils()
+  for (const til of tils) {
+    feed.addItem({
+      id: `${SITE_METADATA.url}/til/${til.slug}`,
+      url: `${SITE_METADATA.url}/til/${til.slug}`,
+      title: til.title,
+      content: til.excerpt,
+      date: new Date(til.date),
       author: SITE_METADATA.author.name
     })
   }
