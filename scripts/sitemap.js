@@ -3,6 +3,7 @@ const path = require('path')
 const nanositemap = require('nanositemap')
 
 const { getAllPosts, getAllTags } = require('../lib/api')
+const { getAllTils } = require('../lib/tils')
 const { SITE_METADATA } = require('../lib/constants')
 
 async function main () {
@@ -25,8 +26,20 @@ async function main () {
     }
   }
 
+  const tils = await getAllTils()
+  for (const til of tils) {
+    sitemapObj[`/til/${til.slug}`] = {
+      lastmod: new Date(til.date).toISOString(),
+      priority: 0.7
+    }
+  }
+
   const sitemap = nanositemap(SITE_METADATA.url, {
     '/': { lastmod: new Date().toISOString(), priority: 0.8 },
+    '/talks': { lastmod: new Date().toISOString(), priority: 0.8 },
+    '/support': { lastmod: new Date().toISOString(), priority: 0.8 },
+    '/about': { lastmod: new Date().toISOString(), priority: 0.8 },
+    '/til': { lastmod: new Date().toISOString(), priority: 0.8 },
     ...sitemapObj
   })
 
