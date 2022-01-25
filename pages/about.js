@@ -24,14 +24,14 @@ export default function AboutPage() {
               Hi 👋, I am Irfan Maulana.
             </h2>
             <p>
-              A frontend engineer, working in Tokopedia as Principal Engineer Web Platform. Already start my career journey since 2013.
+              A frontend engineer, working in Tokopedia as Principal Engineer Web Platform.
               Before joining Tokopedia, I also have been work on the same Industry (online commerce) for the last 6 years in Bizzy Indonesia (B2B) and Blibli.com.
             </p>
             <br />
             <p>
-              I build the web using various JavaScript framework, but I have professional experience with some of popular
-              JavaScript frameworks like React.js and Vue.js. I prefer to writing the unit test rather than testing my code
-              manually. I play around with many configurations for the frontend build tools.
+              I build the web using various JavaScript framework, but I have professional experience with React.js and Vue.js. 
+              I prefer to writing the unit test rather than testing my codemanually. 
+              I play around with many configurations for the frontend build tools.
             </p>
             <br />
             <p>
