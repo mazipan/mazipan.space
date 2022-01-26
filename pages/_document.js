@@ -5,6 +5,7 @@ export default class MyDocument extends Document {
     return (
       <Html lang="id" className="dark">
         <Head />
+        <link href="https://github.com/mazipan" rel="me">
         <link rel="webmention" href="https://webmention.io/mazipan.space/webmention" />
         <link rel="pingback" href="https://webmention.io/mazipan.space/xmlrpc" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
