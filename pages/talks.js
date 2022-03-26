@@ -66,7 +66,7 @@ export default function TalksPage ({ talks }) {
                                     rel="noopener noreferrer"
                                   >
                                     <span className="mr-2">▶️ </span>
-                                    <span>Docs</span>
+                                    <span>Video/Photo</span>
                                   </a>
                                 ))}
 
@@ -77,7 +77,7 @@ export default function TalksPage ({ talks }) {
                                     target="blank"
                                     rel="noopener noreferrer"
                                   >
-                                    <span className="mr-2">▽ </span>Deck
+                                    <span className="mr-2">📒 </span>Slide/Deck
                                   </a>
                                 )}
                               </div>
