@@ -1,7 +1,15 @@
 import { useState } from 'react'
+import dynamic from 'next/dynamic'
 
-import MoonIcon from '@/components/Icons/ThemeMoon'
-import SunIcon from '@/components/Icons/ThemeSun'
+const MoonIcon = dynamic(
+  () => import('@/components/Icons/ThemeMoon'),
+  { ssr: false }
+);
+
+const SunIcon = dynamic(
+  () => import('@/components/Icons/ThemeSun'),
+  { ssr: false }
+);
 
 const useTheme = () => {
   const isWindow = typeof window !== 'undefined'

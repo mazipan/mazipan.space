@@ -11,7 +11,7 @@ import useTheme from '@/hooks/useTheme'
 
 export default function Header () {
   const { isId } = useLang()
-  const { NextThemeIcon, nextTheme, onSwitchTheme } = useTheme()
+  const { NextThemeIcon, onSwitchTheme } = useTheme()
 
   return (
     <header className="fixed w-full top-0 left-0 p-4 z-20 bg-gray-100 dark:bg-gray-900 flex items-center justify-between shadow-medium border-bottom-gradient">
@@ -55,7 +55,7 @@ export default function Header () {
         <button
           className="bg-gray-300 dark:bg-gray-700 dark:text-amber-500 font-bold py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2"
           onClick={onSwitchTheme}
-          alt={`Switch to ${nextTheme}`}
+          alt={`Switch theme`}
         >
           {NextThemeIcon}
         </button>
