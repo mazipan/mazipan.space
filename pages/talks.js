@@ -48,15 +48,15 @@ export default function TalksPage ({ talks }) {
                             key={item.date}
                             className="rounded-lg p-4 mb-2 overflow-hidden shadow-lg dark:bg-gray-800"
                           >
-                            <div className="inline-block bg-gray-300 dark:bg-gray-700 rounded-sm px-3 py-1 text-sm font-semibold">
+                            <div className="inline-block bg-gray-300 dark:bg-gray-700 rounded-sm px-3 py-1 text-xs font-semibold">
                               <span className="mr-2">🗓 </span>
                               <span>{item.date}</span>
                             </div>
                             <div className="mt-4 mb-4 text-lg md:text-xl font-bold">{item.event}</div>
-                            <div className="mb-4 text-md md:text-lg">{item.topic}</div>
+                            <div className="mb-4 text-sm md:text-md">{item.topic}</div>
 
                             {item.link && item.link.length > 0 && (
-                              <div className="flex">
+                              <div className="flex text-sm">
                                 {item.link.map((link) => (
                                   <a
                                     key={link}
