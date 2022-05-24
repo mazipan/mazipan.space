@@ -34,6 +34,7 @@ export default function Post ({ post, related, preview }) {
             tag={`${post.tags[0]}`}
           />
           <PostHeader
+            lang="id"
             title={post.title}
             coverImage={post.coverImage}
             date={post.date}

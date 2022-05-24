@@ -4,6 +4,7 @@ import Link from 'next/link'
 import DateFormatter from '@/components/Date'
 import Container from '@/components/ContainerBox'
 import Layout from '@/components/Layout/Default'
+import Tags from '@/components/Tags'
 
 import { getPagedTils, getAvailableTilPage } from '@/lib/tils'
 
@@ -22,21 +23,14 @@ export default function TilPage({ data, page, next, prev }) {
               <a className="relative rounded-lg overflow-hidden shadow-lg hover:shadow-medium transition-shadow duration-200s dark:bg-gray-800">
                 <div className="text-sm text-gray-500 flex gap-2">
                   <DateFormatter dateString={til.date} />
-
-                  {til.tags && til.tags.length > 0 && (
-                    <>
-                      {til.tags.map((tag) => (
-                        <span key={tag} className="inline-block bg-red-100 text-red-600 rounded-full p-1 text-xs">
-                          {`#${tag}`}
-                        </span>
-                      ))}
-                    </>
-                  )}
                 </div>
 
                 <h2 className="font-heading font-bold text-2xl">
                   {til.title}
                 </h2>
+
+                <Tags
+                  tags={til.tags} />
               </a>
             </Link>
           ))}

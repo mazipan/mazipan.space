@@ -4,6 +4,7 @@ import Link from 'next/link'
 import DateFormatter from '@/components/Date'
 import Container from '@/components/ContainerBox'
 import Layout from '@/components/Layout/Default'
+import Tags from '@/components/Tags'
 
 import { getPagedTils } from '@/lib/tils'
 
@@ -33,18 +34,8 @@ export default function TilPage({ data, next, prev }) {
                   {til.title}
                 </h3>
 
-
-                <div className="flex gap-2">
-                  {til.tags && til.tags.length > 0 && (
-                    <>
-                      {til.tags.map((tag) => (
-                        <span key={tag} className="inline-block bg-red-100 text-red-600 rounded-full p-1 text-xs">
-                          {`#${tag}`}
-                        </span>
-                      ))}
-                    </>
-                  )}
-                </div>
+                <Tags
+                  tags={til.tags} />
               </a>
             </Link>
           ))}

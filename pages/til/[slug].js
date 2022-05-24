@@ -9,6 +9,7 @@ import Meta from '@/components/Meta/Custom'
 import LayoutArticle from '@/components/Layout/Default'
 import PostTitle from '@/components/PostDetail/Title'
 import DateFormatter from '@/components/Date'
+import Tags from '@/components/Tags'
 
 import { getTilBySlug, getAllTils } from '@/lib/tils'
 import { SITE_METADATA } from '@/lib/constants'
@@ -41,17 +42,10 @@ export default function TilDetail({ til, preview }) {
 
           <div className="text-sm text-gray-500 flex gap-2 justify-center md:justify-start">
             <DateFormatter dateString={til.date} />
-
-            {til.tags && til.tags.length > 0 && (
-              <>
-                {til.tags.map((tag) => (
-                  <span key={tag} className="inline-block bg-red-100 text-red-600 rounded-full p-1 text-xs">
-                    {`#${tag}`}
-                  </span>
-                ))}
-              </>
-            )}
+            <Tags
+              tags={til.tags} />
           </div>
+
           <MarkdownParser content={til.content} />
         </>
       </LayoutArticle>

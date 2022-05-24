@@ -26,7 +26,7 @@ export default function CommentBox () {
       script.async = true
       script.src = 'https://utteranc.es/client.js'
 
-      const idParent = document.getElementById('comment-block')
+      const idParent = document.getElementById('comments')
       if (idParent) {
         insertAttribute(idParent)
         idParent.appendChild(script)
@@ -38,7 +38,7 @@ export default function CommentBox () {
   const targetRef = useIntersect(onIntersect, {}, true)
 
   return (
-    <div id="comment-block" ref={targetRef}>
+    <div id="comments" ref={targetRef}>
       <div id="comment-skeleton" className="flex justify-center">
         <div className="w-full max-w-760 rounded-lg p-4 mb-2 overflow-hidden shadow-lg dark:bg-gray-800">
           <div className="flex">
