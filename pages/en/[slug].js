@@ -35,6 +35,7 @@ export default function Post ({ post, related, preview }) {
             tag={`${post.tags[0]}`}
           />
           <PostHeader
+            lang="en"
             title={post.title}
             coverImage={post.coverImage}
             date={post.date}
@@ -43,7 +44,7 @@ export default function Post ({ post, related, preview }) {
           />
           <InfoBox>
             Available in other languages: {' '}
- 
+
               <ul>
                 <li>
                   <Link as={`/${post.slug}`} href="/[slug]">

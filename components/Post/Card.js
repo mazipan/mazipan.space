@@ -2,6 +2,7 @@ import Link from 'next/link'
 
 import DateFormatter from '@/components/Date'
 import CoverImage from '@/components/Post/Cover'
+import Tags from '@/components/Tags'
 
 export default function PostCard({ title, date, excerpt, slug, coverImage, tags, lang = 'id' }) {
   const hrefSlug = lang === 'id' ? '/[slug]' : '/en/[slug]'
@@ -26,13 +27,11 @@ export default function PostCard({ title, date, excerpt, slug, coverImage, tags,
 
         {tags && tags.length > 0 && (
           <div className="py-2">
-            {tags.map((tag) => (
-              <Link key={tag} as={`${lang === 'id' ? '/tag/' : '/en/tag/'}${tag}`} href={hrefSlugTag}>
-                <a className="hover:underline inline-block bg-red-100 text-red-600 rounded-full px-3 py-1 text-sm mr-2 mb-2 focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-offset-2">
-                  {`#${tag}`}
-                </a>
-              </Link>
-            ))}
+            <Tags
+              tags={tags}
+              useLink
+              tagBaseLink={`${lang === 'id' ? '/tag' : '/en/tag'}`}
+              tagPattern={hrefSlugTag} />
           </div>
         )}
       </div>
