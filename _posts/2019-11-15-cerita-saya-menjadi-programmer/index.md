@@ -25,13 +25,34 @@ Tulisan ini saya persembahkan bagi mereka yang sedang belajar menjadi Programmer
 
 Saya beruntung memiliki dan dekat dengan hampir semua teman kuliah, salah satunya Lukman Hakim (saat ini menjadi salah satu software engineer di Tiket.com). Sedari kuliah saya memang berusaha mengenal teman-teman kuliah saya dan berusaha mengetahui latar belakang dan pekerjaan teman-teman. Lukman ini sepertinya satu-satunya teman kuliah saya yang berprofesi sebagai Programmer pada saat itu. Mengetahui hal tersebut dan berkaca pada lemahnya saya urusan praktek komputer dan programming, saya berusaha lebih dekat dengan Lukman sedari jaman kuliah. Saya berusaha beberapa kali membantu ketika Lukman kesulitan memahami berbagai pelajaran teori dan saya sendiri bertanya padanya soal praktek dan programming.
 
-Setalah lulus dan saat itu saya masih bekerja sebagai buruh pabrik roti, Lukman mengajak saya untuk mencoba melamar pekerjaan sebagai Programmer meskipun dia tau pada saat itu saya masih sangat cupu dengan dunia tersebut. Dan lebih beruntung lagi karena yang melakukan wawancara pada saat itu (Om Rio) merupakan atasan Lukman, yang saking percayanya sama referensi Lukman cuma ngobrol-ngobrol dan tanya-tanya soal kuliah saya, tidak ada test logika, coding atau test apapun.
+Setelah lulus dan saat itu saya masih bekerja sebagai buruh pabrik roti, Lukman mengajak saya untuk mencoba melamar pekerjaan sebagai Programmer meskipun dia tau pada saat itu saya masih sangat cupu dengan dunia tersebut. Dan lebih beruntung lagi karena yang melakukan wawancara pada saat itu (Om Rio - Almarhum) merupakan atasan Lukman, yang saking percayanya karena saya adalah referensi dari Lukman, akhirnya cuma ngobrol-ngobrol dan tanya-tanya soal bagaimana kuliah saya, tidak ada test logika, koding atau test apapun.
 
 ## SML Technologies
 
-Berbagung dengan SML Technologies memberikan saya banyak pelajaran, saya bertemu banyak orang yang sampai hari ini masih seperti mentor bagi saya. Banyak orang-orang yang saya anggap luar biasa berawal dari kantor ini juga. Masa-masa awal saya di SML, saya membantu mengembangkan produk aplikasi desktop mereka yang dibuat dengan Java Swing sebagai antarmuka dan JavaEE dibelakangnya. Lalu kurang lebih setahun setelahnya dan produk tersebut berhasil di launch, akhirnya diminta membantu tim web, untuk mengerjakan beberapa web dashboard.
+Bisa bergabung dengan SML Technologies sebagai Programmer Java memberikan saya banyak sekali pelajaran, saya bertemu banyak orang yang sampai hari ini masih seperti mentor bagi saya. 
+Banyak orang-orang yang saya anggap luar biasa berawal dari kantor ini juga. 
+Masa-masa awal saya di SML, saya membantu mengembangkan produk aplikasi desktop mereka yang dibuat dengan Java Swing sebagai antarmuka dan JavaEE dibelakangnya. 
+Lalu kurang lebih setahun setelahnya dan produk tersebut berhasil di launch, akhirnya diminta membantu tim web, untuk mengerjakan beberapa web dashboard.
 
-Saya yang hampir setahun bergelut dengan Java Swing ternyata tidak tau apa-apa soal web development. Saya tidak tau bagaimana html itu dibuat, saya tidak mengerti bagaimana CSS bekerja, apalagi berbagai “sihir” JS. Saya seperti anak kambing di tengah sekumpulan serigala-serigala lapar. Saya beruntung, pada masanya SML merupakan tempat yang sangat kondusif untuk bekerja sambil belajar, saya bisa tetep bekerja, digaji dan belajar mengenai hal-hal yang mendukung pekerjaan saya. Tentunya dituntun oleh orang-orang yang lebih jago dan duluan terjun di bidangnya.
+Sebagai pekerjaan pertama saya di bidang IT, khususnya dunia pemrograman, jangan tanya: apakah berat? Bangetttt...
+Bukan karena beban pekerjaan yang berat, tapi lebih ke saya yang merasa ini adalah dunia yang sangat berbeda dari bertahun-tahun sebelumnya saya bekerja sebagai buruh kasir dan buruh pabrik.
+Begitu banyak beban di pundak ini, mengingat hal itu. Tapi tak ada jalan kembali buat saya, tidak ada opsi untuk balik badan karena ini yang saya mau, ini yang saya harapkan akan mengubah perjalanan hidup dan karir saya selanjutnya.
+
+SML Technologies untungnya adalah perusahaan yang sangat ramah bagi pemula seperti saya.
+Saya dengan terang-terangan diberikan waktu untuk belajar tanpa pressure untuk menyelesaikan apapun dengan cepat saat itu.
+Jadilah bulan-bulan pertama saya sangat struggle untuk belajar pemrograman dan koding Java agar bisa menyelesaikan tugas kecil yang diberikan ke saya.
+Saya yang tidak pernah bisa praktek koding ke kampus saat kuliah, dipaksa harus bisa menyelesaikan tugas koding yang nyata-nyata ada di depan muka, tidak bisa mengelak, tidak bisa lagi mencontek, karena orang lain punya pekerjaan berbeda.
+
+Punya lingkungan yang baik dan suportif di SML sangat membantu progres saya, saya sangat diterima ketika hari-hari saya harus banyak mengganggu teman-teman (senior) saya untuk bertanya ini itu dan segala macam yang tidak saya tau.
+Tidak jarang sampai dituntun, dibantu, dipandu, diajarkan bagaimana menyelesaikan pekerjaan dan mencari jawaban pertanyaan-pertanyaan saya.
+Tidak terasa saya menghabiskan hampir satu tahun pertama sebagai Java Programmer dengan cukup mulus dan memenuhi ekspektasi meskipun juga masih banyak sekali hal yang perlu saya pelajari saat itu.
+
+Saya yang hampir setahun bergelut dengan Java Swing ternyata saya baru sadar kalau saya tidak tau apa-apa soal web development. 
+Yap, tentu saja hal ini dimulai ketika saya mulai dapat tugas untuk membantu teman-teman lain untuk mengerjakan projek web dashboard dari klien SML.
+Saya ternyata tidak tau bagaimana sebuah HTML itu dibuat, saya tidak mengerti bagaimana CSS bekerja, apa korelasinya dengan HTML itu tadi, apalagi berbagai “sihir” JS. 
+Saya seperti anak kambing di tengah sekumpulan serigala-serigala lapar, padahal sudah setahun jadi programmer Java saat itu.
+Saya beruntung, pada masanya SML merupakan tempat yang sangat kondusif untuk bekerja sambil belajar, saya bisa tetep bekerja, digaji dan belajar mengenai hal-hal yang mendukung pekerjaan saya. 
+Tentunya dituntun oleh orang-orang yang lebih jago dan duluan terjun di bidangnya.
 
 Untungnya saya pernah kerja bertahun-tahun sebagai kuli dan buruh, buat saya sesusah-susahnya belajar programming masih mending dibandingkan kerja buruh pada masa lalu. Saya mungkin cupu dan harus belajar banyak hal dibandingkan teman-teman lain tapi ini tidak lantas membuat saya menyerah. Saya punya istri dan anak yang harus saya nafkahi, saya tetap harus memastikan bahwa saya bisa perform dengan baik di kantor agar bisa naik gaji dengan layak di tahun berikutnya 💃.
 
@@ -81,11 +102,14 @@ Sayangnya jodoh saya dengan Bizzy cuma bertahan satu tahun, karena satu dan lain
 
 Seusai dari Bizzy saya bergabung dengan Tokopedia sebagai Principal Engineer untuk Web Platform. Saya tergabung di tim Web Platform sebelumnya Mobile Web di bawah arahan Engineering Manager Dendi Sunardi.
 
-Selain menjadi Principal Engineer saya juga bergabung dengan tim Core di Web Platform, pada dasarnya tim Core ini bertugas membuat atau membenahi berbagai tools yang nantinya akan digunakan oleh teman-teman engineer sehari-hari. Kenapa ada tim Core? karena akan ada banyak tugas yang tidak akan sempat bila dikerjakan oleh teman-teman engineer yang sudah di assign tugas sehari-hari yang cukup banyak dengan jadwal yang hampir selalu mepet pula. Untuk itulah Core tim terdiri dari orang-orang yang sudah diminimalisir pekerjaan sehari-harinya sehingga bisa lebih optimal melakukan berbagai riset baru maupun enhancement terhadap tooling dan platfom web serta membantu teman-teman engineer dalam menyelesaikan masalah-masalah yang membutuhkan teknikal knowledge yang dalam.
+Selain menjadi Principal Engineer saya juga bergabung dengan tim Core di Web Platform, pada dasarnya tim Core ini bertugas membuat atau membenahi berbagai tools yang nantinya akan digunakan oleh teman-teman engineer sehari-hari. 
+Kenapa ada tim Core? karena akan ada banyak tugas yang tidak akan sempat bila dikerjakan oleh teman-teman engineer yang sudah di assign tugas sehari-hari yang cukup banyak dengan jadwal yang hampir selalu mepet pula. Untuk itulah Core tim terdiri dari orang-orang yang sudah diminimalisir pekerjaan sehari-harinya sehingga bisa lebih optimal melakukan berbagai riset baru maupun enhancement terhadap "tooling* dan platfom web serta membantu teman-teman engineer dalam menyelesaikan masalah-masalah yang membutuhkan teknikal knowledge yang dalam.
 
 ![Saya dan teman-teman di Tokopedia](/thumbnail/cerita-saya-menjadi-programmer/mazipan-tokopedia.jpeg)
 
 Belum banyak pencapaian yang bisa saya bagikan, tapi semoga akan ada hal menarik yang bisa saya bagikan nantinya.
+
+Note: Sepertinya saya sudah perlu memperbarui bagian ini ya? Tak terasa, sudah 3 tahun nih di Tokopedia 😂
 
 ## Beberapa Pelajaran Bagi Saya
 
