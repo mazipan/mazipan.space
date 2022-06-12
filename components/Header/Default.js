@@ -14,7 +14,7 @@ export default function Header () {
   const { NextThemeIcon, onSwitchTheme } = useTheme()
 
   return (
-    <header className="fixed w-full top-0 left-0 p-4 z-20 bg-gray-100 dark:bg-gray-900 flex items-center justify-between shadow-medium border-bottom-gradient">
+    <header className="fixed w-full top-0 left-0 p-4 z-30 bg-gray-100 dark:bg-gray-900 flex items-center justify-between shadow-medium border-bottom-gradient">
       <h1 className="h2 font-heading text-gradient">
         <Link href={`${isId ? '/' : '/en'}`}>
           <a>{'<Mazipan />'}</a>
@@ -53,6 +53,8 @@ export default function Header () {
         </Link>
 
         <button
+          role="button"
+          name="Switch theme"
           className="bg-gray-300 dark:bg-gray-700 dark:text-amber-500 font-bold py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2"
           onClick={onSwitchTheme}
           alt={`Switch theme`}

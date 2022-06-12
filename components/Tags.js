@@ -1,20 +1,21 @@
 import Link from 'next/link'
 
-export default function Tags({ tags, useLink, tagBaseLink = '/tag', tagPattern = '/tag/[tag]' }) {
+export default function Tags({ id = '', tags = [], useLink, tagBaseLink = '/tag', tagPattern = '/tag/[tag]' }) {
+  const uniqueTags = [...new Set(tags)];
   return (
     <div className="flex gap-4">
-      {tags &&
-        tags.map((tag) => {
+      {uniqueTags &&
+        uniqueTags.map((tag) => {
           return (
             <>
               {useLink ? (
-                <Link key={tag} as={`${tagBaseLink}/${tag}`} href={tagPattern}>
-                  <a className="hover:underline inline-block bg-red-100 text-red-600 rounded-full px-3 py-1 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-offset-2">
+                <Link key={`${id}${tag}`} as={`${tagBaseLink}/${tag}`} href={tagPattern}>
+                  <a title={tag} className="hover:underline inline-block bg-red-100 text-red-600 rounded-full px-3 py-1 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-offset-2">
                     {`#${tag}`}
                   </a>
                 </Link>
               ) : (
-                <div className="inline-block text-red-500 text-sm font-semibold">
+                <div key={`${id}${tag}`} className="inline-block text-red-500 text-sm font-semibold">
                   {`#${tag}`}
                 </div>
               )}

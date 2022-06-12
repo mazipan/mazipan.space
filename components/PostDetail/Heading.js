@@ -7,7 +7,7 @@ import Tags from '@/components/Tags'
 
 export default function PostHeader({ title, tags, coverImage, date, author, lang }) {
   return (
-    <>
+    <header className="relative">
       <Image
         src={coverImage}
         alt={`Cover ${title}`}
@@ -25,12 +25,13 @@ export default function PostHeader({ title, tags, coverImage, date, author, lang
         </div>
 
         <Tags
+          id="post-detail"
           tags={tags}
           useLink
           tagBaseLink={`${lang === 'id' ? '/tag' : '/en/tag'}`}
           tagPattern={`${lang === 'id' ? '/tag/[tag]' : '/en/tag/[tag]'}`} />
 
       </div>
-    </>
+    </header>
   )
 }

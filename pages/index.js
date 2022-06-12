@@ -1,8 +1,8 @@
 import Head from 'next/head'
 
 import Container from '@/components/ContainerBox'
-import MoreStories from '@/components/Post/Home'
-import HeroPost from '@/components/FeaturedPost'
+import Home from '@/components/Post/Home'
+import FeaturedPost from '@/components/FeaturedPost'
 import Pagination from '@/components/Pagination'
 import Layout from '@/components/Layout/Default'
 
@@ -17,7 +17,7 @@ export default function Index ({ data, page, pages, featured }) {
         </Head>
         <Container>
           {featured && (
-            <HeroPost
+            <FeaturedPost
               title={featured.title}
               coverImage={featured.coverImage}
               date={featured.date}
@@ -27,7 +27,7 @@ export default function Index ({ data, page, pages, featured }) {
               lang="id"
             />
           )}
-          <MoreStories posts={data} lang="id" />
+          <Home posts={data} lang="id" />
           <Pagination next="2" pages={pages} page={page} lang="id" />
         </Container>
       </Layout>

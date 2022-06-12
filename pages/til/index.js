@@ -26,7 +26,7 @@ export default function TilPage({ data, next, prev }) {
           {data.map(til => (
             <Link key={til.slug} as={`/til/${til.slug}`} href={hrefSlug}>
               <a className="relative block rounded-lg overflow-hidden shadow-lg hover:shadow-medium transition-shadow duration-200s dark:bg-gray-800 mb-4 p-4">
-                <div className="text-sm text-gray-500 flex gap-2">
+                <div className="text-sm text-gray-600 dark:text-gray-200 flex gap-2">
                   <DateFormatter dateString={til.date} />
                 </div>
 
@@ -35,12 +35,13 @@ export default function TilPage({ data, next, prev }) {
                 </h3>
 
                 <Tags
+                  id="til-page"
                   tags={til.tags} />
               </a>
             </Link>
           ))}
 
-          <div className="flex items-center my-8">
+          <div className="relative flex items-center my-8">
             {prev ? (
               <Link as={`/til/page/${prev}`} href="/til/page/[page]">
                 <a aria-label="Previous page">

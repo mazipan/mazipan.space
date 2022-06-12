@@ -9,7 +9,7 @@ export default function PostCard({ title, date, excerpt, slug, coverImage, tags,
   const hrefSlugTag = lang === 'id' ? '/tag/[tag]' : '/en/tag/[tag]'
 
   return (
-    <div className="rounded-lg overflow-hidden shadow-lg hover:shadow-medium transition-shadow duration-200s dark:bg-gray-800">
+    <div className="relative rounded-lg overflow-hidden shadow-lg hover:shadow-medium transition-shadow duration-200s dark:bg-gray-800">
       <div className="mb-2 md:mb-4">
         <CoverImage title={title} src={coverImage} slug={slug} lang={lang} />
       </div>
@@ -19,7 +19,7 @@ export default function PostCard({ title, date, excerpt, slug, coverImage, tags,
             <a>{title}</a>
           </Link>
         </h2>
-        <div className="text-sm text-gray-500 mb-4">
+        <div className="text-sm text-gray-600 dark:text-gray-200 mb-4">
           <DateFormatter dateString={date} />
         </div>
 
@@ -29,6 +29,7 @@ export default function PostCard({ title, date, excerpt, slug, coverImage, tags,
           <div className="py-2">
             <Tags
               tags={tags}
+              id={slug}
               useLink
               tagBaseLink={`${lang === 'id' ? '/tag' : '/en/tag'}`}
               tagPattern={hrefSlugTag} />

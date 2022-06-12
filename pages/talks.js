@@ -21,10 +21,10 @@ export default function TalksPage ({ talks }) {
           <h2 className="mb-8 text-6xl md:text-7xl font-heading font-bold tracking-tighter leading-tight">
             🎙️ Talks
           </h2>
-          <div className="content">
+          <div className="relative content">
 
-            <p>Do you want to invite me to talk in your event? 
-               <a href="https://github.com/mazipan/talks" 
+            <p>Do you want to invite me to talk in your event?
+               <a href="https://github.com/mazipan/talks"
                   target="blank"
                   rel="noopener noreferrer"
                   className="text-red-500">

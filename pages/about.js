@@ -29,8 +29,8 @@ export default function AboutPage() {
             </p>
             <br />
             <p>
-              I build the web using various JavaScript framework, but I have professional experience with React.js and Vue.js. 
-              I prefer to writing the unit test rather than testing my codemanually. 
+              I build the web using various JavaScript framework, but I have professional experience with React.js and Vue.js.
+              I prefer to writing the unit test rather than testing my codemanually.
               I play around with many configurations for the frontend build tools.
             </p>
             <br />
@@ -77,7 +77,7 @@ export default function AboutPage() {
               {CAREERS.map((career) => (
                 <li
                   key={career.period}
-                  className="rounded-lg p-4 overflow-hidden shadow-lg border-2 border-red-500"
+                  className="rounded-lg p-4 overflow-hidden shadow-lg border-2 border-red-500 dark:bg-gray-800"
                 >
                   <h4 className="text-lg text-red-500 font-bold mb-2">
                     {career.title}
@@ -89,7 +89,7 @@ export default function AboutPage() {
                       rel="noopener noreferrer"
                       href={career.link}>{career.company}</a>{` • `}<span>{career.location}</span>
                   </div>
-                  <div className="text-gray-500">
+                  <div className="text-gray-600 dark:text-gray-200">
                     <small>{career.period}</small>{` • `}<small>{career.long}</small>
                   </div>
                 </li>
@@ -105,7 +105,7 @@ export default function AboutPage() {
               {FEATURED_OSS.map((oss) => (
                 <li
                   key={oss.repo}
-                  className="rounded-lg p-4 overflow-hidden shadow-lg border-2 border-red-500"
+                  className="rounded-lg p-4 overflow-hidden shadow-lg border-2 border-red-500 dark:bg-gray-800"
                 >
                   <a
                     className="text-red-500"

@@ -32,7 +32,7 @@ export default function TilDetail({ til, preview }) {
           />
           <Link as="/til" href="/til">
             <a aria-label="Previous page">
-              <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-offset-2">
+              <button className="relative bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-offset-2">
                 &lt; Back to TIL
               </button>
             </a>
@@ -40,9 +40,12 @@ export default function TilDetail({ til, preview }) {
 
           <PostTitle>{til.title}</PostTitle>
 
-          <div className="text-sm text-gray-500 flex gap-2 justify-center md:justify-start">
-            <DateFormatter dateString={til.date} />
+          <div className="relative text-sm flex gap-2 justify-center md:justify-start">
+            <div className="text-sm text-gray-600 dark:text-gray-200">
+              <DateFormatter dateString={til.date} />
+            </div>
             <Tags
+              id="til-detail"
               tags={til.tags} />
           </div>
 
