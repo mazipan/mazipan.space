@@ -5,6 +5,7 @@ import ErrorPage from 'next/error'
 import MarkdownParser from '@/components/Markdown/MarkdownContent'
 
 import Meta from '@/components/Meta/Custom'
+import ShareArticle from '@/components/ShareBox'
 
 import LayoutArticle from '@/components/Layout/Default'
 import PostTitle from '@/components/PostDetail/Title'
@@ -50,6 +51,7 @@ export default function TilDetail({ til, preview }) {
           </div>
 
           <MarkdownParser content={til.content} />
+          <ShareArticle text={til.title} url={`${SITE_METADATA.url}/til/${til.slug}`} />
         </>
       </LayoutArticle>
     </>
