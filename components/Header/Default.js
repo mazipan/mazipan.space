@@ -1,5 +1,6 @@
 import Link from 'next/link'
 
+import ThemeMoon from '@/components/Icons/ThemeMoon'
 import LoveIcon from '@/components/Icons/MenuLove'
 import ZapIcon from '@/components/Icons/MenuZap'
 import MicIcon from '@/components/Icons/MenuMic'
@@ -54,12 +55,11 @@ export default function Header () {
 
         <button
           role="button"
-          name="Switch theme"
+          aria-label="Switch theme"
           className="bg-gray-300 dark:bg-gray-700 dark:text-amber-500 font-bold py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2"
           onClick={onSwitchTheme}
-          alt={`Switch theme`}
         >
-          {NextThemeIcon}
+          {NextThemeIcon ? NextThemeIcon : <ThemeMoon />}
         </button>
       </div>
     </header>
