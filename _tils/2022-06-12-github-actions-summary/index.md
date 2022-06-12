@@ -13,7 +13,7 @@ Sekilas melihat sih wow, sepertinya akan memudahkan untuk melihat rangkuman hasi
 
 Jadi, ada dua cara paling tidak untuk membuat Actions Summary ini:
 
-- Cukup dengan menulis ke environment variable yang telah di sediakan:
+- 1️⃣ Cukup dengan menulis ke environment variable yang telah di sediakan:
 
 ```yaml
 steps:
@@ -23,7 +23,7 @@ steps:
 
 Kita cukup menulis apapun kontennya, ke env `$GITHUB_STEP_SUMMARY`. Contoh di atas menggunakan kode shell script seperti biasa.
 
-- Menggunakan bantuan helper `@actions/core `
+- 2️⃣ Menggunakan bantuan helper `@actions/core `
 
 Seperti yang kalian mungkin sudah tau, kita bisa menggunakan berbagai bantuan dari pustaka `@actions/core` untuk berinteraksi terhadap berbagai fitur yang telah disediakan dalam GitHub Actions.
 
