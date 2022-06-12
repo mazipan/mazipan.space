@@ -67,6 +67,7 @@ exports.setActionSummary = async function setActionSummary ({ commentBody }) {
   } catch (error) {
     red(error)
   }
+}
 ```
 
 Tentu dengan catatan, saya sebelumnya harus membuat markdown string yang akan dikirimkan.
