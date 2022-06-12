@@ -35,7 +35,7 @@ export default function TilPage({ data, next, prev }) {
                 </h3>
 
                 <Tags
-                  id="til-page"
+                  id={til.slug}
                   tags={til.tags} />
               </a>
             </Link>
