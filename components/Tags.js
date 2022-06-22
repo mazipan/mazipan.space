@@ -3,7 +3,7 @@ import Link from 'next/link'
 export default function Tags({ id = '', tags = [], useLink, tagBaseLink = '/tag', tagPattern = '/tag/[tag]' }) {
   const uniqueTags = [...new Set(tags)];
   return (
-    <div className="flex gap-4">
+    <div className="flex gap-2">
       {uniqueTags &&
         uniqueTags.map((tag) => {
           return (

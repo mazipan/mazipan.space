@@ -4,6 +4,7 @@ import Link from 'next/link'
 
 import MarkdownParser from '@/components/Markdown/MarkdownContent'
 import PostHeader from '@/components/PostDetail/Heading'
+import PostFooter from '@/components/PostDetail/Footer'
 
 import Meta from '@/components/Meta/Custom'
 import InfoBox from '@/components/InfoBox'
@@ -54,6 +55,7 @@ export default function Post ({ post, related, preview }) {
             </InfoBox>
           )}
           <MarkdownParser content={post.content} />
+          <PostFooter fileLocation={post.fileLocation} />
           <ShareArticle text={post.title} url={`${SITE_METADATA.url}/${post.slug}`} />
           <CommentBox />
           <Related posts={related} lang="id" />
