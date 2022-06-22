@@ -9,13 +9,13 @@ export default function Tags({ id = '', tags = [], useLink, tagBaseLink = '/tag'
           return (
             <>
               {useLink ? (
-                <Link key={`${id}${tag}`} as={`${tagBaseLink}/${tag}`} href={tagPattern}>
-                  <a title={tag} className="hover:underline inline-block bg-red-100 text-red-600 rounded-full px-3 py-1 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-offset-2">
+                <Link key={`${id}-${tag}`} as={`${tagBaseLink}/${tag}`} href={tagPattern}>
+                  <a data-key={`${id}-${tag}`} key={`${id}-${tag}`} title={tag} className="hover:underline inline-block bg-red-100 text-red-600 rounded-full px-3 py-1 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-offset-2">
                     {`#${tag}`}
                   </a>
                 </Link>
               ) : (
-                <div key={`${id}${tag}`} className="inline-block text-red-500 text-sm font-semibold">
+                <div data-key={`${id}-${tag}`} key={`${id}-${tag}`} className="inline-block text-red-500 text-sm font-semibold">
                   {`#${tag}`}
                 </div>
               )}

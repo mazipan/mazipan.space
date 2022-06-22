@@ -1,7 +1,6 @@
 import TwitterIcon from '@/components/Icons/SocTw'
 import GithubIcon from '@/components/Icons/SocGh'
 import LinkedinIcon from '@/components/Icons/SocLink'
-import RssIcon from '@/components/Icons/SocRss'
 import YoutubeIcon from '@/components/Icons/SocYt'
 
 export default function Footer () {
@@ -15,7 +14,7 @@ export default function Footer () {
           title="Twitter"
           target="_blank"
           rel="noopener noreferrer"
-          className="p-1 mx-2 text-red-500 border-2 border-red-500 rounded"
+          className="p-2 mx-2 bg-red-500 text-white rounded"
         >
           <TwitterIcon />
         </a>
@@ -24,7 +23,7 @@ export default function Footer () {
           title="Github"
           target="_blank"
           rel="noopener noreferrer"
-          className="p-1 mx-2 text-red-500 border-2 border-red-500 rounded"
+          className="p-2 mx-2 bg-red-500 text-white rounded"
         >
           <GithubIcon />
         </a>
@@ -33,7 +32,7 @@ export default function Footer () {
           title="Linkedin"
           target="_blank"
           rel="noopener noreferrer"
-          className="p-1 mx-2 text-red-500 border-2 border-red-500 rounded"
+          className="p-2 mx-2 bg-red-500 text-white rounded"
         >
           <LinkedinIcon />
         </a>
@@ -42,21 +41,12 @@ export default function Footer () {
           title="YouTube"
           target="_blank"
           rel="noopener noreferrer"
-          className="p-1 mx-2 text-red-500 border-2 border-red-500 rounded"
+          className="p-2 mx-2 bg-red-500 text-white rounded"
         >
           <YoutubeIcon />
         </a>
-        <a
-          href="/rss.xml"
-          title="RSS"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="p-1 mx-2 text-red-500 border-2 border-red-500 rounded"
-        >
-          <RssIcon />
-        </a>
       </div>
-      <div className="pb-8 md:pb-4 flex justify-center items-center">© {copyrightYear} All rights reserved</div>
+      <div className="pb-8 md:pb-4 flex justify-center items-center">© 2019-{copyrightYear}, All rights reserved</div>
     </footer>
   )
 }

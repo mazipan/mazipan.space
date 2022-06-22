@@ -20,7 +20,7 @@ export default function CoverImage ({ title, src, slug, lang = 'id' }) {
   const hrefSlug = lang === 'id' ? '/[slug]' : '/en/[slug]'
 
   return (
-    <div className="p-2">
+    <div className="p-4">
       {slug ? (
         <Link as={`/${slug}`} href={hrefSlug}>
           <a aria-label={title} title={title}>

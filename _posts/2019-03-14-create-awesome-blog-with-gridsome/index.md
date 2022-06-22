@@ -95,7 +95,7 @@ date: '2019-03-14'
 author: mazipan
 published: true
 featured: false
-tags: ['Gridsome', 'JavaScript']
+tags: ['gridsome', 'javascript']
 cover_coverImage: ./images/logo-poster.png
 canonical_url: false
 published: true

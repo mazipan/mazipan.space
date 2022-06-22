@@ -9,7 +9,7 @@ export default function PostCard({ title, date, excerpt, slug, coverImage, tags,
   const hrefSlugTag = lang === 'id' ? '/tag/[tag]' : '/en/tag/[tag]'
 
   return (
-    <div className="relative rounded-lg overflow-hidden shadow-lg hover:shadow-medium transition-shadow duration-200s dark:bg-gray-800">
+    <div className="relative rounded-lg overflow-hidden shadow-lg hover:shadow-medium transition-shadow duration-200s bg-white dark:bg-gray-800">
       <div className="mb-2 md:mb-4">
         <CoverImage title={title} src={coverImage} slug={slug} lang={lang} />
       </div>

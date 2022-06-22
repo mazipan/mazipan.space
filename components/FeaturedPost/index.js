@@ -8,7 +8,7 @@ export default function HeroPost({ title, coverImage, date, excerpt, author, slu
 
   return (
     <section data-test-id="featured-post" className="relative">
-      <div className="flex items-start mb-8 z-10 p-4 rounded-lg overflow-hidden shadow-lg hover:shadow-medium transition-shadow duration-200s dark:bg-gray-800">
+      <div className="flex items-start mb-8 z-10 p-4 rounded-lg overflow-hidden shadow-lg hover:shadow-medium transition-shadow duration-200s bg-white dark:bg-gray-800">
         <div style={{ width: 300 }} className="mr-4 hidden md:block">
           <Image
             src={coverImage}

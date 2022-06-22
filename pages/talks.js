@@ -46,7 +46,7 @@ export default function TalksPage ({ talks }) {
                         return (
                           <div
                             key={item.date}
-                            className="rounded-lg p-4 mb-2 overflow-hidden shadow-lg dark:bg-gray-800"
+                            className="rounded-lg p-4 mb-2 overflow-hidden shadow-lg bg-white dark:bg-gray-800"
                           >
                             <div className="inline-block bg-gray-300 dark:bg-gray-700 rounded-sm px-3 py-1 text-xs font-semibold">
                               <span className="mr-2">🗓 </span>

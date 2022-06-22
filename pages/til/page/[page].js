@@ -20,7 +20,7 @@ export default function TilPage({ data, page, next, prev }) {
         <Container>
           {data.map(til => (
             <Link key={til.slug} as={`/til/${til.slug}`} href={hrefSlug}>
-              <a className="relative rounded-lg overflow-hidden shadow-lg hover:shadow-medium transition-shadow duration-200s dark:bg-gray-800">
+              <a className="relative rounded-lg overflow-hidden shadow-lg hover:shadow-medium transition-shadow duration-200s bg-white dark:bg-gray-800">
                 <div className="text-sm text-gray-600 dark:text-gray-200 flex gap-2">
                   <DateFormatter dateString={til.date} />
                 </div>
