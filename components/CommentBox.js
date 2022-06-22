@@ -38,7 +38,7 @@ export default function CommentBox () {
   const targetRef = useIntersect(onIntersect, {}, true)
 
   return (
-    <div id="comments" ref={targetRef}>
+    <div id="comments" className="relative" ref={targetRef}>
       <div id="comment-skeleton" className="flex justify-center">
         <div className="w-full max-w-760 rounded-lg p-4 mb-2 overflow-hidden shadow-lg dark:bg-gray-800">
           <div className="flex">

@@ -23,7 +23,7 @@ export default function ShareArticle ({ text, url }) {
   }
 
   return (
-    <div id="share-article" className="mb-2 rainbow">
+    <div id="share-article" className="relative mb-2 rainbow">
       <div className="flex justify-center items-center mb-2">If you think this article is helpful</div>
       <div className="flex justify-center items-center">
         {isSupportWebShare ? (

@@ -7,7 +7,7 @@ export default function Footer () {
   const copyrightYear = new Date().getFullYear()
 
   return (
-    <footer className="relative bg-accent-1 border-t border-accent-2 mt-8">
+    <footer className="relative mt-4 mb-4">
       <div className="pt-4 pb-2 flex justify-center items-center">
         <a
           href="https://twitter.com/maz_ipan"
