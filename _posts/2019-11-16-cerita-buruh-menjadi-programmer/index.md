@@ -19,40 +19,44 @@ Cerita ini saya pecah menjadi beberapa bagian dikarenakan lumayan panjang untuk 
 - [Bagian 2 - Cerita buruh menjadi programmer](/cerita-buruh-menjadi-programmer) - kamu disini
 - [Bagian 3 - Cerita saya menjadi programmer](/cerita-saya-menjadi-programmer)
 
-Tulisan ini saya persembahkan bagi mereka yang sedang belajar menjadi Programmer atau Software Engineer, bagi mereka para newbies, bagi mereka para fresh graduates yang seringkali mengeluhkan betapa susahnya belajar programming.
+Tulisan ini saya persembahkan bagi mereka yang sedang belajar menjadi Programmer atau Software Engineer, bagi mereka para *newbies*, bagi mereka para *fresh-grad* yang seringkali mengeluhkan betapa susahnya belajar mengenai *programming*.
 
 ## 👷 Menjadi Buruh
 
-Seperti sudah saya jelaskan pada bagian sebelumnya, bahwa dengan bersekolah di SMK kami disiapkan untuk langsung ke dunia kerja. 
-Namun faktanya mencari kerja dengan label lulusan SMK dan sederajat itu tidak mudah juga. 
-Pernahkah kalian bertanya ke tukang sapu yang ada di Mall-mall, atau tukang bersih-bersih di toilet-toilet di tempat pusat perbelanjaan, mereka itu sekolah lulusan apa? 
-Atau pernahkah kalian tau kalau buruh di beberapa perusahaan manufaktur yang kerjanya sebenarnya “itu-itu” aja, mereka itu lulusan apa?
+Seperti sudah saya jelaskan pada bagian sebelumnya, bahwa dengan bersekolah di SMK, kami diharapkan bisa lebih siap untuk langsung terjun ke dunia kerja. 
+Namun faktanya, mencari kerja bahkan dengan label lulusan SMK pun itu ternyata bukan hal yang mudah juga. 
 
+Pernahkah kalian bertanya ke tukang sapu yang ada di Mall-mall, atau tukang bersih-bersih di toilet-toilet di tempat pusat perbelanjaan, mereka itu lulusan apa sekolahnya? 
+Atau pernahkah kalian tau kalau buruh di beberapa perusahaan manufaktur yang kerjanya sebenarnya “itu-itu” aja, mereka itu lulusan apa?
 Jangan kaget kalau beberapa mungkin akan kalian dengar sebagai lulusan SMA dan sederajat. 
+
 Yaaa, betapa ironi 😭. 
+
 Sekolah dari SD, SMP sampai SMA 12 tahun lamanya. 
-Belajar berbagai pelajaran yang cukup susah, lalu nyatanya cuma buat kerja jadi tukang sapu atau tukang bersih-bersih. 
-Hmmmm, sedih kalau ingat hal ini 😭. 
+Belajar berbagai pelajaran yang cukup susah, lalu nyatanya cuma buat kerja jadi tukang sapu atau tukang bersih-bersih (maaf, bukan maksud untuk mengecilkan peran ini). 
+Hmmmm, sedih sih kalau ingat kenyataan ini 😭. 
 Tapi ini fakta dan tentunya masih dan makin banyak terjadi di sekitar kita juga loh.
 
-Begitupun saya, lulus dari SMK lalu pergi ke kota mencari kerja (apapun itu — selama halal) tanpa menaruh ekspektasi tinggi namun itupun tetap tidak mudah. 
+Begitupun saya, lulus dari SMK lalu pergi ke kota mencari kerja (apapun itu — selama halal) tanpa menaruh ekspektasi tinggi, namun yang terjadi, itupun tetap tidak mudah. 
 Butuh waktu berbulan-bulan dan hampir setahun bagi saya untuk bisa mendapatkan pekerjaan pertama saya setelah lulus dari SMK. 
-Dari yang awalnya bersemangat sampai hilang keyakinan, kerja apa aja ternyata juga susah nyarinya.
+Dari yang awalnya bersemangat buat cari kerja, sampai hilang keyakinan, sampai berfikir: "kerja apa aja deh udah, gak akan pilih-pilih saya", ternyata juga tetap susah nyarinya.
 
-Ada cerita lucu dengan almarhum kakek saya, pernah suatu ketika, di masa-masa nganggur mencari kerja ini, saya berbincang dengan beliau dan diminta pulang dulu ke kampung, menurut beliau saya dulu salah "hari" pas berangkat ke Jakarta.
-Jadi sebaiknya pulang aja dulu, nanti cari hari baik buat berangkat.
-Percaya gak percaya, gak lama berselang sih ya saya nurut aja, pulang kampung, istirahatkan kepala, ngobrol-ngobrol lagi sama orang tua, biar dapat semangat lagi buat nganggur dalam usaha mencari kerja.
+Ada sedikit cerita lucu dengan almarhum kakek saya...
+Pernah suatu ketika, di masa-masa nganggur dan mencari kerja ini, saya berbincang dengan beliau dan akhirnya diminta oleh beliau untuk pulang dulu ke kampung, menurut beliau, saya dulu salah "hari" pas berangkat ke Jakarta.
+Jadi sebaiknya pulang aja dulu, nanti cari hari baik lain pas mau berangkat lagi.
+Percaya gak percaya, saya sih nurut aja, pulang kampung, niatnya buat menghormati orang tua sekalian bisa istirahatkan kepala sejenak, ngobrol-ngobrol lagi sama orang tua, biar dapat semangat lagi buat nganggur dalam usaha mencari kerja.
 
 ## 💰 Menjadi Buruh Kasir Supermarket
 
 Pekerjaan pertama saya ialah sebagai kasir di sebuah supermarket di Jakarta. 
 Yap, kalau kalian pernah ke minimarket seperti BetaMart dan dilayani oleh seseorang yang akan men-_scan_ barang-barang yang sudah kalian beli, menerima pembayaran, mengembalikan kembalian uang kalian, membungkus belanjaan kalian, sampai menawarkan pulsa ke kalian, yapppp… itu namanya kasir. 
-Namun pekerjaan saya tidak seenak Mba-mba di _BetaMart_ yang bisa bercanda dan ngobrol sambil melayani pembeli, atau malah duduk ngumpet pas kita mau bayar, atau dengan juteknya melayani pembelian kita tanpa melihat mata kita sama sekali 😩.
+Namun pekerjaan saya tidak seenak Mba-mba di _BetaMart_ yang bisa bercanda dan ngobrol sambil melayani pembeli, atau malah duduk ngumpet pas kita mau bayar, atau dengan juteknya melayani pembelian kita tanpa melihat mata kita sama sekali 😩. (percayalah, ini hanya segelintir oknum aja, gak perlu digeneralisir)
+
 Kerja keras (atau dikerjain ya?) bagai kuda 🐴.
 
-Lewat pekerjaan pertama saya, saya berhasil membesarkan betis karena harus berdiri 9 jam yang porsi pembagiannya bisa diatur seenak jidat. 
+Lewat pekerjaan pertama saya ini, saya berhasil membesarkan betis karena harus berdiri 9 jam yang porsi pembagiannya bisa diatur seenak jidat. 
 Bisa jadi kami baru datang 2 jam dan sudah diminta untuk istirahat, kemudian sisanya 7 jam harus berdiri dan bekerja tanpa istirahat 🤒. 
-Gila emang sih pada masa itu, dikira bukan orang kali, kami-kami ini yang kerja sama mereka 🤡.
+Gila emang sih pada masa itu, dikira bukan orang kali, kami-kami ini yang kerja untuk mereka 🤡.
 
 Lewat pekerjaan ini pula saya berhasil membuktikan kalau iman itu memang berat untuk dipegang, apalagi dihadapkan dengan urusan kepentingan dunia.
 Saya mengalami bagaimana meminta ijin untuk sholat itu gak kalah mengerikan dibandingkan meminta ijin buat menikahi anak orang 😂.
