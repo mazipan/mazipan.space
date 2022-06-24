@@ -92,18 +92,18 @@ SMK tempat saya bersekolah memang termasuk beruntung karena memiliki lebih dari 
 Kami bisa masuk ke ruangan ini paling hanya seminggu sekali, itupun kalau beruntung saya bisa duduk di depan komputer yang bisa menyala. 
 Kalau sedang apes ya silahkan duduk dengan tenang di depan komputer dengan layar warna hitam ya.
 
-Selesai 🖐️.
+⛳ Selesai 🖐️.
 
-Belum ada kaitannya ya sama *Programmer* 😂? Tapi mudah-mudahan cerita bagian pertama bisa memberikan konteks mengenai bagaimana saya dibesarkan, bagaimana saya menempuh jalur pendidikan saya.
-Harapannya bisa sedikit perbandingan bagi teman-teman juga.
-Jangan kecil hati, terus semangat menjalani pendidikan kalian saat ini 💪
+Belum ada kaitannya ya sama dunia *Programmer* 😂? Tapi mudah-mudahan cerita di bagian pertama bisa memberikan konteks mengenai bagaimana saya dibesarkan, bagaimana saya menempuh jalur pendidikan saya.
+Harapannya bisa menjadi sedikit perbandingan bagi teman-teman juga.
+Jangan kecil hati, terus semangat menjalani pendidikan kalian saat ini 💪.
 
 Memang jalan hidup orang tidak sama, tiap orang punya jalannya masing-masing dan tidak perlu dibandingkan satu sama lain.
-Pun kalian tidak perlu malu kalau sekarang belum bisa A atau B, sementara kalian baca saya bisa melakukan A dan B, atau sebaliknya.
-Nikmati saja proses belajarnya, ambil pelajaran baiknya, tinggalkan hal-hal buruk yang ada 
-Jadikan tulisan ini cukup sebagai penambah semangat, bukan malah menjadi peluntur semangat.
+Pun kalian tidak perlu malu kalau sekarang belum bisa A atau B, sementara kalian baca di artikel ini, saya telah bisa melakukan A dan B, atau keadaan yang sebaliknya.
+Nikmati saja proses belajarnya, ambil pelajaran baiknya, tinggalkan hal-hal buruk yang ada artikel ini. 
+Jadikan tulisan ini cukup sebagai penambah semangat bagi kalian, bukan malah menjadi peluntur semangat.
 
-Semangat berjuang, para pejuang pendidikan, para pejuang masa depan 🖐️
+Semangat berjuang, para pejuang pendidikan, para pejuang masa depan 🖐️.
 
 📖 Baca juga bagian berikutnya:
 
