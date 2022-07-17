@@ -1,7 +1,7 @@
 import '@/styles/index.css'
 
 // https://nextjs.org/docs/advanced-features/measuring-performance#sending-results-to-analytics
-export function reportWebVitals ({ id, name, label, value }) {
+export function reportWebVitals({ id, name, label, value }) {
   window.gtag('event', name, {
     event_category:
       label === 'web-vital' ? 'Web Vitals' : 'Next.js custom metric',
@@ -11,6 +11,8 @@ export function reportWebVitals ({ id, name, label, value }) {
   })
 }
 
-export default function MyApp ({ Component, pageProps }) {
-  return <Component {...pageProps} />
+export default function MyApp({ Component, pageProps }) {
+  return (
+      <Component {...pageProps} />
+  )
 }

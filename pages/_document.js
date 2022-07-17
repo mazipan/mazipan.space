@@ -13,21 +13,7 @@ export default class MyDocument extends Document {
         <link rel="webmention" href="https://webmention.io/mazipan.space/webmention" />
         <link rel="pingback" href="https://webmention.io/mazipan.space/xmlrpc" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&family=Poppins:wght@400&display=swap" rel="stylesheet" />
-
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-25065548-7"></script>
-        {/* <script data-ad-client="ca-pub-5442972248172818" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-
-            gtag('config', 'UA-25065548-7');
-              `
-          }}
-        />
+        <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&family=Work+Sans&display=swap" rel="stylesheet" />
 
         <body className="dark:bg-gray-900">
           <script
@@ -68,6 +54,25 @@ export default class MyDocument extends Document {
           />
           <Main />
           <NextScript />
+
+          <script async src="https://www.googletagmanager.com/gtag/js?id=UA-25065548-7" />
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+
+                gtag('config', 'UA-25065548-7');
+                  `
+            }}
+          />
+
+          <script
+            async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5442972248172818"
+            crossOrigin="anonymous"
+          />
         </body>
       </Html>
     )
