@@ -30,7 +30,7 @@ export default function AboutPage() {
             <br />
             <p>
               I build the web using any JavaScript framework, but I have some professional experiences with React.js and Vue.js.
-              I'm quite familiar with the automated testing in the frontend.
+              I am quite familiar with the automated testing in the frontend.
             </p>
             <br />
             <p>
