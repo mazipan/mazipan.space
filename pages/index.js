@@ -8,7 +8,7 @@ import Layout from '@/components/Layout/Default'
 
 import { getPagedPost, getFeaturedPost } from '@/lib/api'
 
-export default function Index ({ data, page, pages, featured }) {
+export default function Index({ data, page, pages, featuredPosts }) {
   return (
     <>
       <Layout>
@@ -16,16 +16,14 @@ export default function Index ({ data, page, pages, featured }) {
           <title>🏠 Blog Irfan Maulana // mazipan.space</title>
         </Head>
         <Container>
-          {featured && (
-            <FeaturedPost
-              title={featured.title}
-              coverImage={featured.coverImage}
-              date={featured.date}
-              author={featured.author}
-              slug={featured.slug}
-              excerpt={featured.excerpt}
-              lang="id"
-            />
+          {featuredPosts && (
+            <>
+              <h2 className="mb-2 text-3xl md:text-4xl font-heading font-bold tracking-tighter leading-tight">PERSONAL STORIES</h2>
+              <FeaturedPost
+                posts={featuredPosts}
+                lang="id"
+              />
+            </>
           )}
           <Home posts={data} lang="id" />
           <Pagination next="2" pages={pages} page={page} lang="id" />
@@ -35,8 +33,8 @@ export default function Index ({ data, page, pages, featured }) {
   )
 }
 
-export async function getStaticProps () {
-  const { data: featured } = await getFeaturedPost(
+export async function getStaticProps() {
+  const { data: featuredPosts } = await getFeaturedPost(
     ['title', 'date', 'slug', 'author', 'featured', 'coverImage', 'excerpt', 'tags'],
     'id'
   )
@@ -48,6 +46,6 @@ export async function getStaticProps () {
   )
 
   return {
-    props: { data, page, pages, featured }
+    props: { data, page, pages, featuredPosts }
   }
 }

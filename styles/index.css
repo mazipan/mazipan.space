@@ -162,10 +162,23 @@
   @apply text-2xl font-bold tracking-tight leading-tight;
 }
 
+.featured-image {
+  min-width: 300px;
+  margin-right: 1em;
+}
 
+/* On Desktop ONLY */
 @media (min-width: 768px) {
   .h2 {
     @apply text-4xl tracking-tighter;
+  }
+}
+
+/* On Mobile ONLY */
+@media (max-width: 768px) {
+  .featured-image {
+    width: 100%;
+    margin-bottom: 1em;
   }
 }
 

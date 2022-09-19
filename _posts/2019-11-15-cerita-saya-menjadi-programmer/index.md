@@ -4,7 +4,7 @@ date: '2019-11-15'
 excerpt: Cerita panjang perjalanan hidup dan karir saya sampai bisa menjadi programmer di beberapa perusahaan teknologi besar di Indonesia
 author: mazipan
 published: true
-featured: false
+featured: true
 tags: [life-experience]
 coverImage: /thumbnail/cerita-saya-menjadi-programmer/mazipan-bizzy.jpeg
 lang: id
@@ -29,9 +29,9 @@ Setelah lulus dan saat itu saya masih bekerja sebagai buruh pabrik roti, Lukman 
 
 ## SML Technologies
 
-Bisa bergabung dengan SML Technologies sebagai Programmer Java memberikan saya banyak sekali pelajaran, saya bertemu banyak orang yang sampai hari ini masih seperti mentor bagi saya. 
-Banyak orang-orang yang saya anggap luar biasa berawal dari kantor ini juga. 
-Masa-masa awal saya di SML, saya membantu mengembangkan produk aplikasi desktop mereka yang dibuat dengan Java Swing sebagai antarmuka dan JavaEE dibelakangnya. 
+Bisa bergabung dengan SML Technologies sebagai Programmer Java memberikan saya banyak sekali pelajaran, saya bertemu banyak orang yang sampai hari ini masih seperti mentor bagi saya.
+Banyak orang-orang yang saya anggap luar biasa berawal dari kantor ini juga.
+Masa-masa awal saya di SML, saya membantu mengembangkan produk aplikasi desktop mereka yang dibuat dengan Java Swing sebagai antarmuka dan JavaEE dibelakangnya.
 Lalu kurang lebih setahun setelahnya dan produk tersebut berhasil di launch, akhirnya diminta membantu tim web, untuk mengerjakan beberapa web dashboard.
 
 Sebagai pekerjaan pertama saya di bidang IT, khususnya dunia pemrograman, jangan tanya: apakah berat? Bangetttt...
@@ -47,11 +47,11 @@ Punya lingkungan yang baik dan suportif di SML sangat membantu progres saya, say
 Tidak jarang sampai dituntun, dibantu, dipandu, diajarkan bagaimana menyelesaikan pekerjaan dan mencari jawaban pertanyaan-pertanyaan saya.
 Tidak terasa saya menghabiskan hampir satu tahun pertama sebagai Java Programmer dengan cukup mulus dan memenuhi ekspektasi meskipun juga masih banyak sekali hal yang perlu saya pelajari saat itu.
 
-Saya yang hampir setahun bergelut dengan Java Swing ternyata saya baru sadar kalau saya tidak tau apa-apa soal web development. 
+Saya yang hampir setahun bergelut dengan Java Swing ternyata saya baru sadar kalau saya tidak tau apa-apa soal web development.
 Yap, tentu saja hal ini dimulai ketika saya mulai dapat tugas untuk membantu teman-teman lain untuk mengerjakan projek web dashboard dari klien SML.
-Saya ternyata tidak tau bagaimana sebuah HTML itu dibuat, saya tidak mengerti bagaimana CSS bekerja, apa korelasinya dengan HTML itu tadi, apalagi berbagai “sihir” JS. 
+Saya ternyata tidak tau bagaimana sebuah HTML itu dibuat, saya tidak mengerti bagaimana CSS bekerja, apa korelasinya dengan HTML itu tadi, apalagi berbagai “sihir” JS.
 Saya seperti anak kambing di tengah sekumpulan serigala-serigala lapar, padahal sudah setahun jadi programmer Java saat itu.
-Saya beruntung, pada masanya SML merupakan tempat yang sangat kondusif untuk bekerja sambil belajar, saya bisa tetep bekerja, digaji dan belajar mengenai hal-hal yang mendukung pekerjaan saya. 
+Saya beruntung, pada masanya SML merupakan tempat yang sangat kondusif untuk bekerja sambil belajar, saya bisa tetep bekerja, digaji dan belajar mengenai hal-hal yang mendukung pekerjaan saya.
 Tentunya dituntun oleh orang-orang yang lebih jago dan duluan terjun di bidangnya.
 
 Untungnya saya pernah kerja bertahun-tahun sebagai kuli dan buruh, buat saya sesusah-susahnya belajar programming masih mending dibandingkan kerja buruh pada masa lalu. Saya mungkin cupu dan harus belajar banyak hal dibandingkan teman-teman lain tapi ini tidak lantas membuat saya menyerah. Saya punya istri dan anak yang harus saya nafkahi, saya tetap harus memastikan bahwa saya bisa perform dengan baik di kantor agar bisa naik gaji dengan layak di tahun berikutnya 💃.
@@ -102,7 +102,7 @@ Sayangnya jodoh saya dengan Bizzy cuma bertahan satu tahun, karena satu dan lain
 
 Seusai dari Bizzy saya bergabung dengan Tokopedia sebagai Principal Engineer untuk Web Platform. Saya tergabung di tim Web Platform sebelumnya Mobile Web di bawah arahan Engineering Manager Dendi Sunardi.
 
-Selain menjadi Principal Engineer saya juga bergabung dengan tim Core di Web Platform, pada dasarnya tim Core ini bertugas membuat atau membenahi berbagai tools yang nantinya akan digunakan oleh teman-teman engineer sehari-hari. 
+Selain menjadi Principal Engineer saya juga bergabung dengan tim Core di Web Platform, pada dasarnya tim Core ini bertugas membuat atau membenahi berbagai tools yang nantinya akan digunakan oleh teman-teman engineer sehari-hari.
 Kenapa ada tim Core? karena akan ada banyak tugas yang tidak akan sempat bila dikerjakan oleh teman-teman engineer yang sudah di assign tugas sehari-hari yang cukup banyak dengan jadwal yang hampir selalu mepet pula. Untuk itulah Core tim terdiri dari orang-orang yang sudah diminimalisir pekerjaan sehari-harinya sehingga bisa lebih optimal melakukan berbagai riset baru maupun enhancement terhadap "tooling* dan platfom web serta membantu teman-teman engineer dalam menyelesaikan masalah-masalah yang membutuhkan teknikal knowledge yang dalam.
 
 ![Saya dan teman-teman di Tokopedia](/thumbnail/cerita-saya-menjadi-programmer/mazipan-tokopedia.jpeg)

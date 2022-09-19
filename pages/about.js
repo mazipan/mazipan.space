@@ -21,21 +21,20 @@ export default function AboutPage() {
           </h2>
           <div className="content">
             <h2 className="text-2xl md:text-4xl font-bold mb-4 tracking-tighter leading-tight">
-              Hi 👋, I am Irfan Maulana.
+              👋 Hi there, I am Irfan Maulana.
             </h2>
             <p>
-              A frontend engineer, working in Tokopedia as Principal Engineer Web Platform.
-              Before joining Tokopedia, I also have been work on the same Industry (online commerce) for the last 6 years in Bizzy Indonesia (B2B) and Blibli.com.
+              An individual contributor for frontend engineer team.
+              Before joining Sayurbox, I have been work in Tokopedia, Bizzy Indonesia and Blibli.com for the last 6 years.
             </p>
             <br />
             <p>
-              I build the web using various JavaScript framework, but I have professional experience with React.js and Vue.js.
-              I prefer to writing the unit test rather than testing my codemanually.
-              I play around with many configurations for the frontend build tools.
+              I build the web using any JavaScript framework, but I have some professional experiences with React.js and Vue.js.
+              I'm quite familiar with the automated testing in the frontend.
             </p>
             <br />
             <p>
-              Outside my daily job as a full time employee, I also build a close connection with
+              Outside my daily job as a full-time employee, I also build a close connection with
               many programmer communities in Indonesia to giving back my limited knowledge and
               experience in the web development topic. I help kicking-off a project
               for Vue.js Indonesia, translating the documentation to the Indonesian language 🇮🇩, you can check
