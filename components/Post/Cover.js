@@ -11,7 +11,7 @@ function SharedImage ({ title, src }) {
       height={300}
       layout='responsive'
       sizes="100vw"
-      className={`w-full rounded-t-lg object-cover`}
+      className={`w-full rounded-t-md object-cover`}
     />
   )
 }
