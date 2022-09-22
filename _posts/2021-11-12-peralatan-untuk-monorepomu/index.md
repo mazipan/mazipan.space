@@ -100,6 +100,7 @@ Saya pribadi belum banyak baca terkait Rush, tapi mestinya cukup menarik ya kala
 
 ### Alat lain yang menarik
 
+- 🚀  [Turborepo](https://turborepo.org/), besutan Vercel. Kemungkinan mudah sekali integrasinya dengan Next.js.
 - 🚀  [Bit](https://bit.dev/), get started nya udah disuruh register, jadi males nyobain
 - 🚀  [Bazel](https://bazel.build/), katanya sih dipake sama Google ya
 - 🚀  [Bolt](https://github.com/boltpkg/bolt), docs nya masih limited sih ini
