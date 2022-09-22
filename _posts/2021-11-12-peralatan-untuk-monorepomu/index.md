@@ -102,7 +102,7 @@ Saya pribadi belum banyak baca terkait Rush, tapi mestinya cukup menarik ya kala
 
 - 🚀  [Turborepo](https://turborepo.org/), besutan Vercel. Kemungkinan mudah sekali integrasinya dengan Next.js.
 - 🚀  [Bit](https://bit.dev/), get started nya udah disuruh register, jadi males nyobain
-- 🚀  [Bazel](https://bazel.build/), katanya sih dipake sama Google ya
+- 🚀  [Bazel](https://bazel.build/), katanya sih dipake sama Google ya. Salah satu yang menarik, dia support multiple programming language.
 - 🚀  [Bolt](https://github.com/boltpkg/bolt), docs nya masih limited sih ini
 - 🚀  [changesets](https://github.com/atlassian/changesets), punya Atlasian
 
