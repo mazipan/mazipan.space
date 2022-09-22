@@ -104,7 +104,7 @@ Saya pribadi belum banyak baca terkait Rush, tapi mestinya cukup menarik ya kala
 - 🚀  [Bit](https://bit.dev/), get started nya udah disuruh register, jadi males nyobain
 - 🚀  [Bazel](https://bazel.build/), katanya sih dipake sama Google ya. Salah satu yang menarik, dia support multiple programming language.
 - 🚀  [Bolt](https://github.com/boltpkg/bolt), docs nya masih limited sih ini
-- 🚀  [changesets](https://github.com/atlassian/changesets), punya Atlasian
+- 🚀  [changesets](https://github.com/atlassian/changesets), punya Atlasian. Bukan full fitur sih, membantu untuk proses release di Monorepo. Salah satu rekomendasi official juga dari `pnpm`.
 
 ## Alat yang saya pakai
 
