@@ -16,7 +16,7 @@ export default function PagedPost ({ data, page, pages, next, prev }) {
         </Head>
         <Container>
           <section>
-            <div className="grid grid-cols-1 md:grid-cols-2 md:gap-x-8 gap-y-5 md:gap-y-8 mb-16">
+            <div className="grid grid-cols-1 md:grid-cols-3 md:gap-x-8 gap-y-5 md:gap-y-8 mb-16">
               {data.length > 0 && <List posts={data} lang="en" />}
             </div>
           </section>
