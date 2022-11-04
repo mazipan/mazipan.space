@@ -45,15 +45,27 @@
   @apply pb-1;
 }
 
-.markdown p>code, .markdown li>code {
+.markdown p>code,
+.markdown li>code {
   @apply bg-indigo-100 text-indigo-700 text-sm px-2 py-1 rounded break-words;
   font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
 }
 
 .markdown pre[class="shiki"] {
-  @apply p-4 rounded-lg text-sm overflow-auto relative;
+  @apply p-4 rounded-lg overflow-auto relative;
 
   padding-top: 1.5rem;
+  font-size: 0.875rem;
+  line-height: 1rem;
+}
+
+.markdown .shiki .line {
+  padding-left: 1em;
+}
+
+.markdown .shiki .focused {
+  border-left: 1px solid yellow;
+  background-color: rgb(141 92 255 / 30%);
 }
 
 .markdown pre[class="shiki"]::before {

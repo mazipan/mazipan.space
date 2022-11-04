@@ -1,4 +1,5 @@
 import '@/styles/index.css'
+import '@/styles/markdown-shiki-styles.css'
 
 // https://nextjs.org/docs/advanced-features/measuring-performance#sending-results-to-analytics
 export function reportWebVitals({ id, name, label, value }) {

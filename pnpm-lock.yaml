@@ -11,7 +11,10 @@ specifiers:
   eslint-config-next: ^12.2.2
   feed: 4.2.2
   gray-matter: 4.0.3
+  lodash.kebabcase: ^4.1.1
   markdown-it: ^12.3.2
+  markdown-it-anchor: ^8.6.5
+  markdown-it-header-sections: ^1.0.0
   mkdirp: 1.0.4
   nanositemap: 0.0.2
   next: 12.2.2
@@ -20,7 +23,7 @@ specifiers:
   react: 18.2.0
   react-apexcharts: ^1.4.0
   react-dom: 18.2.0
-  shiki: ^0.10.1
+  shiki: ^0.11.1
   tailwindcss: ^3.1.6
 
 dependencies:
@@ -40,12 +43,15 @@ devDependencies:
   eslint-config-next: 12.2.2_eslint@8.20.0
   feed: 4.2.2
   gray-matter: 4.0.3
+  lodash.kebabcase: 4.1.1
   markdown-it: 12.3.2
+  markdown-it-anchor: 8.6.5_markdown-it@12.3.2
+  markdown-it-header-sections: 1.0.0
   mkdirp: 1.0.4
   nanositemap: 0.0.2
   postcss: 8.4.14
   postcss-preset-env: 7.7.2_postcss@8.4.14
-  shiki: 0.10.1
+  shiki: 0.11.1
   tailwindcss: 3.1.6
 
 packages:
@@ -1679,6 +1685,10 @@ packages:
       path-exists: 3.0.0
     dev: true
 
+  /lodash.kebabcase/4.1.1:
+    resolution: {integrity: sha512-N8XRTIMMqqDgSy4VLKPnJ/+hpGZN+PHQiJnSenYqPaVV/NCqEogTnAdZLQiGKhxX+JCs8waWq2t1XHWKOmlY8g==}
+    dev: true
+
   /lodash.merge/4.6.2:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}
     dev: true
@@ -1694,6 +1704,19 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       yallist: 4.0.0
+    dev: true
+
+  /markdown-it-anchor/8.6.5_markdown-it@12.3.2:
+    resolution: {integrity: sha512-PI1qEHHkTNWT+X6Ip9w+paonfIQ+QZP9sCeMYi47oqhH+EsW8CrJ8J7CzV19QVOj6il8ATGbK2nTECj22ZHGvQ==}
+    peerDependencies:
+      '@types/markdown-it': '*'
+      markdown-it: '*'
+    dependencies:
+      markdown-it: 12.3.2
+    dev: true
+
+  /markdown-it-header-sections/1.0.0:
+    resolution: {integrity: sha512-GndZbs+iTo7NkNRf00VmT4mtFql7VoJNnSwB7hP5xkomGUTdQ78siVZIuRco4fbiWJd45JUemLxUS9vO8luPSA==}
     dev: true
 
   /markdown-it/12.3.2:
@@ -2543,12 +2566,12 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /shiki/0.10.1:
-    resolution: {integrity: sha512-VsY7QJVzU51j5o1+DguUd+6vmCmZ5v/6gYu4vyYAhzjuNQU6P/vmSy4uQaOhvje031qQMiW0d2BwgMH52vqMng==}
+  /shiki/0.11.1:
+    resolution: {integrity: sha512-EugY9VASFuDqOexOgXR18ZV+TbFrQHeCpEYaXamO+SZlsnT/2LxuLBX25GGtIrwaEVFXUAbUQ601SWE2rMwWHA==}
     dependencies:
       jsonc-parser: 3.1.0
       vscode-oniguruma: 1.6.2
-      vscode-textmate: 5.2.0
+      vscode-textmate: 6.0.0
     dev: true
 
   /side-channel/1.0.4:
@@ -2835,8 +2858,8 @@ packages:
     resolution: {integrity: sha512-KH8+KKov5eS/9WhofZR8M8dMHWN2gTxjMsG4jd04YhpbPR91fUj7rYQ2/XjeHCJWbg7X++ApRIU9NUwM2vTvLA==}
     dev: true
 
-  /vscode-textmate/5.2.0:
-    resolution: {integrity: sha512-Uw5ooOQxRASHgu6C7GVvUxisKXfSgW4oFlO+aa+PAkgmH89O3CXxEEzNRNtHSqtXFTl0nAC1uYj0GMSH27uwtQ==}
+  /vscode-textmate/6.0.0:
+    resolution: {integrity: sha512-gu73tuZfJgu+mvCSy4UZwd2JXykjK9zAZsfmDeut5dx/1a7FeTk0XwJsSuqQn+cuMCGVbIBfl+s53X4T19DnzQ==}
     dev: true
 
   /which-boxed-primitive/1.0.2:
