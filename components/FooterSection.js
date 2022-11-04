@@ -2,19 +2,20 @@ import TwitterIcon from '@/components/Icons/SocTw'
 import GithubIcon from '@/components/Icons/SocGh'
 import LinkedinIcon from '@/components/Icons/SocLink'
 import YoutubeIcon from '@/components/Icons/SocYt'
+import PhoneIcon from '@/components/Icons/SocPhone'
 
 export default function Footer () {
   const copyrightYear = new Date().getFullYear()
 
   return (
     <footer className="relative mt-4 mb-4">
-      <div className="pt-4 pb-2 flex justify-center items-center">
+      <div className="pt-4 pb-2 flex justify-center items-center gap-2">
         <a
           href="https://twitter.com/maz_ipan"
           title="Twitter"
           target="_blank"
           rel="noopener noreferrer"
-          className="p-2 mx-2 bg-red-500 text-white rounded"
+          className="p-2 bg-red-500 text-white rounded"
         >
           <TwitterIcon />
         </a>
@@ -23,7 +24,7 @@ export default function Footer () {
           title="Github"
           target="_blank"
           rel="noopener noreferrer"
-          className="p-2 mx-2 bg-red-500 text-white rounded"
+          className="p-2 bg-red-500 text-white rounded"
         >
           <GithubIcon />
         </a>
@@ -32,7 +33,7 @@ export default function Footer () {
           title="Linkedin"
           target="_blank"
           rel="noopener noreferrer"
-          className="p-2 mx-2 bg-red-500 text-white rounded"
+          className="p-2 bg-red-500 text-white rounded"
         >
           <LinkedinIcon />
         </a>
@@ -41,9 +42,18 @@ export default function Footer () {
           title="YouTube"
           target="_blank"
           rel="noopener noreferrer"
-          className="p-2 mx-2 bg-red-500 text-white rounded"
+          className="p-2 bg-red-500 text-white rounded"
         >
           <YoutubeIcon />
+        </a>
+        <a
+          href="https://ksana.in/mzp.1on1"
+          title="Meeting 1-on-1"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="p-2 bg-red-500 text-white rounded"
+        >
+          <PhoneIcon />
         </a>
       </div>
       <div className="pb-8 md:pb-4 flex justify-center items-center">© 2019-{copyrightYear}, All rights reserved</div>
