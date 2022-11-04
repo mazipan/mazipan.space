@@ -103,7 +103,20 @@ Di projek-projek pribadi lebih bervariasi, karena saya juga nyoba-nyoba pakai Ut
 
 ## 🧪 Unit testing vs Integration vs E2E
 
-🌥 Belum ditulis, tungguin ya nanti kalau sempat...
+Setelah 3 tahun belakangan menggunakan React, banyak mindset dalam hal testing yang sedikit banyak terpengaruhi oleh [Kent C. Dodds](https://kentcdodds.com/blog?q=testing) sebagai pembuat library [testing-library.com](https://testing-library.com/). Tapi memang ada beberapa hal yang setelah coba dijalani bertahun-tahun malah saya ngerasa jadi counter-productive buat flow kerja saya pribadi.
+
+Testing Library yang melakukan test seperti User melihat dan berinteraksi dengan aplikasi kita, jadi mendekati dengan E2E tapi karena biasanya masih pake Mock Data dan masih tidak bisa melakukan full user flow maka kelasnya masih masuk ke Integrasi test. Bisa juga untuk Unit Test, tapi dengan pendekatan yang tidak mau melakukan test pada detail implementasi, maka bisa jadi banyak spot yang tidak bisa kena test kalau mengadopsi Testing Library. 90% testing yang ta setup dan ta tulis selama ini memang hampir selalu di atas Testing Library.
+
+Pendekatan yang pada akhirnya hampir selalu ta ambil memang sedikit berbeda dengan Testing Library meskipun tetap menggunakan library tersebut untuk menulis test. Kalau dengan Integasi test, kamu biasanya akan mulai bikin test dari level pages/routes karena itu adalah spot terbaik untuk melihat berbagai komponen diintegrasikan. Dengan melakukan test di level pages, maka secara tidak langsung kamu akan cover sebagian besar kasus di level komponen yang diintegrasi di page tersebut. Ini approach umum ketika menggunakan Testing Library. Cara-cara menulis test nya mendekati cara menulis test di E2E.
+
+Sementara cara yang saya lakukan selama ini akan mulai dari komponen terbawah dari suatu page, akibatnya saya perlu melakukan dua-tiga-empat bahkan lima kali pengulangan test. Katakan komponen A digunakan di halaman Z, alih-alih melakukan test di halaman Z, saya akan melakukan test di komponen A kemudian melakukan test ulang di halaman Z. Dua kali kerja, tapi sampai saat ini saya masih merasa ini adalah cara yang paling cocok buat saya. Saya merasa dengan cara ini saya bisa lebih memahami komponen-komponen yang saya tulis dengan baik, pada akhirnya jadi bisa menulis test yang lebih stabil.
+
+Sementara untuk Sbox, cuma invest di E2E saja dan sedikit Unit Test di helper function, sama sekali tidak tertarik menulis banyak Unit test ataupun Integasi test.
+
+**🟢 Ringkasan:**
+
+- ● Integasi rasa UT di banyak projek sebelumnya
+- ● E2E di kantor
 
 ## 🎁 Bonus: VS Code Theme & Font
 
