@@ -16,9 +16,10 @@ export default function HeroPost({ posts, lang = 'id' }) {
               <Image
                 src={mainPost.coverImage}
                 alt={`${mainPost.title}`}
-                width={604}
-                height={320}
-                layout='responsive'
+                width="600"
+                height="320"
+                sizes="100vw"
+                style={{ width: "100%", height: "auto" }}
                 className="w-full rounded-lg object-cover"
               />
             </div>
@@ -27,8 +28,8 @@ export default function HeroPost({ posts, lang = 'id' }) {
                 <DateFormatter dateString={mainPost.date} />
               </div>
               <h2 className="font-heading font-bold text-gradient text-3xl md:text-4xl tracking-tighter leading-tight">
-                <Link as={`/${mainPost.slug}`} href={hrefSlug}>
-                  <a className="hover:underline">{mainPost.title}</a>
+                <Link as={`/${mainPost.slug}`} href={hrefSlug} className="hover:underline">
+                {mainPost.title}
                 </Link>
               </h2>
             </div>
@@ -48,9 +49,9 @@ export default function HeroPost({ posts, lang = 'id' }) {
                     <Image
                       src={coverImage}
                       alt={`${title}`}
-                      width={300}
-                      height={150}
-                      layout='responsive'
+                      width="300"
+                      height="150"
+                      style={{ width: "100%", height: "150px" }}
                       className="w-full rounded-lg object-cover"
                     />
                   </div>
@@ -59,8 +60,8 @@ export default function HeroPost({ posts, lang = 'id' }) {
                       <DateFormatter dateString={date} />
                     </div>
                     <h2 className="font-heading font-bold text-gradient text-3xl tracking-tighter leading-tight">
-                      <Link as={`/${slug}`} href={hrefSlug}>
-                        <a className="hover:underline">{title}</a>
+                      <Link as={`/${slug}`} href={hrefSlug} className="hover:underline">
+                      {title}
                       </Link>
                     </h2>
                   </div>

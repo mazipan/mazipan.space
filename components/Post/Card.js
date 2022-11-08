@@ -17,7 +17,7 @@ export default function PostCard({ title, date, excerpt, slug, coverImage, tags,
         </div>
         <h2 className="font-heading font-bold text-gradient text-3xl mb-3">
           <Link as={`/${slug}`} href={hrefSlug}>
-            <a>{title}</a>
+            {title}
           </Link>
         </h2>
 

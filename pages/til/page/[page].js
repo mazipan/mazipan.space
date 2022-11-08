@@ -19,8 +19,8 @@ export default function TilPage({ data, page, next, prev }) {
         </Head>
         <Container>
           {data.map(til => (
-            <Link key={til.slug} as={`/til/${til.slug}`} href={hrefSlug}>
-              <a className="relative rounded-lg overflow-hidden shadow-lg hover:shadow-medium transition-shadow duration-200s bg-white dark:bg-gray-800">
+            <Link key={til.slug} as={`/til/${til.slug}`} href={hrefSlug} className="relative rounded-lg overflow-hidden shadow-lg hover:shadow-medium transition-shadow duration-200s bg-white dark:bg-gray-800">
+              <>
                 <div className="text-sm text-gray-600 dark:text-gray-200 flex gap-2">
                   <DateFormatter dateString={til.date} />
                 </div>
@@ -32,18 +32,16 @@ export default function TilPage({ data, page, next, prev }) {
                 <Tags
                   id={til.slug}
                   tags={til.tags} />
-              </a>
+              </>
             </Link>
           ))}
 
           <div className="relative flex items-center my-8">
             {prev ? (
-              <Link as={`/til/page/${prev}`} href="/til/page/[page]">
-                <a aria-label="Previous page">
-                  <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-l focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-offset-2">
-                    &lt; Prev
-                  </button>
-                </a>
+              <Link as={`/til/page/${prev}`} href="/til/page/[page]" aria-label="Previous page">
+                <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-l focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-offset-2">
+                  &lt; Prev
+                </button>
               </Link>
             ) : (
               <button className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l cursor-not-allowed">
@@ -52,12 +50,10 @@ export default function TilPage({ data, page, next, prev }) {
             )}
 
             {next ? (
-              <Link as={`/til/page/${next}`} href="/til/page/[page]">
-                <a aria-label="Next page">
-                  <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-r focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-offset-2">
-                    Next &gt;
-                  </button>
-                </a>
+              <Link as={`/til/page/${next}`} href="/til/page/[page]" aria-label="Next page">
+                <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-r focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-offset-2">
+                  Next &gt;
+                </button>
               </Link>
             ) : (
               <button className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r cursor-not-allowed">

@@ -7,10 +7,8 @@ const getUniqueTags = (tags) => {
 const Tag = ({ tag, id, useLink, tagBaseLink = '/tag', tagPattern = '/tag/[tag]' }) => {
   if (useLink) {
     return (
-      <Link as={`${tagBaseLink}/${tag}`} href={tagPattern}>
-        <a data-key={`${id}-${tag}`} title={tag} className="hover:underline inline-block bg-red-100 text-red-600 rounded-full px-3 py-1 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-offset-2">
+      <Link as={`${tagBaseLink}/${tag}`} href={tagPattern} data-key={`${id}-${tag}`} title={tag} className="hover:underline inline-block bg-red-100 text-red-600 rounded-full px-3 py-1 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-offset-2">
           {`#${tag}`}
-        </a>
       </Link>
     )
   }

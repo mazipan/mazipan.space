@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import Image from 'next/image'
 
 import DateFormatter from '@/components/Date'
@@ -13,9 +12,9 @@ export default function PostHeader({ title, tags, coverImage, date, author, lang
         alt={`Cover ${title}`}
         width={1240}
         height={600}
-        layout="responsive"
         sizes="100vw"
         priority={true}
+        style={{ width: "100%", height: "auto" }}
         className="w-full rounded-lg object-cover"
       />
       <PostTitle>{title}</PostTitle>

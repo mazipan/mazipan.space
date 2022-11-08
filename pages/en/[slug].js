@@ -48,8 +48,8 @@ export default function Post ({ post, related, preview }) {
 
               <ul>
                 <li>
-                  <Link as={`/${post.slug}`} href="/[slug]">
-                    <a className="font-bold underline">🇮🇩 Bahasa Indonesia</a>
+                  <Link as={`/${post.slug}`} href="/[slug]" className="font-bold underline">
+                    🇮🇩 Bahasa Indonesia
                   </Link>
                 </li>
               </ul>

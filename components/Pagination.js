@@ -7,12 +7,10 @@ export default function Pagination ({ prev, next, page, pages, lang = 'id' }) {
   return (
     <div className="flex justify-between items-center mb-8">
       {prev ? (
-        <Link as={`${asSlug}${prev}`} href={hrefSlug}>
-          <a aria-label="Previous page">
+        <Link as={`${asSlug}${prev}`} href={hrefSlug} aria-label="Previous page">
             <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-l focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-offset-2">
               &lt; Prev
             </button>
-          </a>
         </Link>
       ) : (
           <button className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l cursor-not-allowed">
@@ -24,8 +22,7 @@ export default function Pagination ({ prev, next, page, pages, lang = 'id' }) {
         {pages &&
           pages.length > 0 &&
           pages.map((p, idx) => (
-            <Link as={`${asSlug}${p}`} href={hrefSlug} key={p}>
-              <a aria-label={`Page ${p}`}>
+            <Link as={`${asSlug}${p}`} href={hrefSlug} key={p} aria-label={`Page ${p}`}>
                 <button
                   className={`${
                     p.toString() === page.toString()
@@ -37,18 +34,15 @@ export default function Pagination ({ prev, next, page, pages, lang = 'id' }) {
                 >
                   {p}
                 </button>
-              </a>
             </Link>
           ))}
       </div>
 
       {next ? (
-        <Link as={`${asSlug}${next}`} href={hrefSlug}>
-          <a aria-label="Next page">
+        <Link as={`${asSlug}${next}`} href={hrefSlug} aria-label="Next page">
             <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-r focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-offset-2">
               Next &gt;
             </button>
-          </a>
         </Link>
       ) : (
         <button className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r cursor-not-allowed">

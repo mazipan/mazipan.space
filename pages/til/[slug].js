@@ -31,12 +31,10 @@ export default function TilDetail({ til, preview }) {
             url={`${SITE_METADATA.url}/til/${til.slug}`}
             tag={`${til.tags[0]}`}
           />
-          <Link as="/til" href="/til">
-            <a aria-label="Previous page">
+          <Link as="/til" href="/til" aria-label="Previous page">
               <button className="relative bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-offset-2">
                 &lt; Back to TIL
               </button>
-            </a>
           </Link>
 
           <PostTitle>{til.title}</PostTitle>
