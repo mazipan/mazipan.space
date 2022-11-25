@@ -78,8 +78,10 @@ Namun tentu saja, tidak ada gading yang tak retak. Saya berjudi mengadopsi Manti
 
 Mantine tentu bukan pilihan absolut, bisa saja saya pilih Ant Design atau Material UI. Tapi...
 
-- 🟥 Ant Design: buat yang familiar sama Ant Design pasti tau betapa tidak asiknya Dokumentasinya. Pilihan style UI nya terlihat kaku, meskipun terlihat lebih oke di versi 5 (tapi kan masih baru banget). Cara override Ant Design juga cukup rumit, mesti lewat pre-processor macam `less`. Hal yang powerful dari Ant Design menurut saya ya komponen Grid-nya yang superior, punya komponen yang komplit buat dipake di aplikasi yang intensif nampilin data. Punya Tree dan Cascader.
-- 🟥 Material UI: jelas UI style bukan jadi pilihan tim Designer. Meskipun begitu, secara engineering, saya pribadi suka dengan banyak hal dari MUI, salah satunya dengan [API design](https://mui.com/material-ui/guides/api/) mereka, *well engineered* 🙌.
+- 🟥 **Ant Design**: Buat yang familiar sama Ant Design pasti tau betapa tidak asiknya dokumentasinya. Pilihan style UI nya terlihat kaku, meskipun terlihat lebih oke di versi 5 (tapi kan masih baru banget). Cara override Ant Design juga cukup rumit, mesti lewat pre-processor macam `less`. Hal yang powerful dari Ant Design menurut saya ya komponen Grid-nya yang superior, punya komponen yang komplit buat dipake di aplikasi yang intensif nampilin data. Punya Tree dan Cascader.
+- 🟥 **Material UI**: Jelas UI style bukan jadi pilihan tim Designer. Meskipun begitu, secara engineering, saya pribadi suka dengan banyak hal dari MUI, salah satunya dengan [API design](https://mui.com/material-ui/guides/api/) mereka, *well engineered* 🙌.
+- 🟥 **Tailwind CSS**: Pilihan ini saya eliminasi sejak awal, meskipun saya pribadi cukup familiar (bahkan blog ini juga pakai Tailwind), tapi saya punya use case untuk *Internal Dashboard*, saya tidak punya waktu untuk membuat komponen dari awal dengan Tailwind. Kepikiran pakai macam [Daisy UI](https://daisyui.com/) tapi saya memilih yang punya integrasi di level framework. Daisy UI ini agnostik, bisa jadi akan ada edge case yang butuh effort untuk integrasi ke React.
+- 🟥 **Bootstrap**: Secara knowledge, ini pilihan paling aman karena developer di tempat saya sudah pada familiar dengan yang satu ini, sayangnya versi yang bervariasi membuat rumit. Opsi untuk upgrade juga sama berdarah-darah.
 
 ## 👣 Resiko Ditanggung Sendiri
 
