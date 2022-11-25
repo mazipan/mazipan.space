@@ -17,11 +17,11 @@ Salah satu masalah yang terlihat saat saya pertama kali bergabung di kantor saya
 
 Paling tidak ada beberapa variasi yang bisa ditemukan saat itu:
 
-🔸 Pake React, UI Kit-nya Bootstrap dan pake React Component [ReactStrap](https://reactstrap.github.io)
-🔸 Pake React, UI Kit-nya Bootstrap dan pake React Component [React-Bootstrap](https://react-bootstrap.github.io/)
-🔸 Pake React, UI Kit-nya Bootstrap tanpa tambahan React Component di atasnya
-🔸 Pake Next.js, pake AntDesign sebagai UI Kit-nya
-🔸 Pake Svelte, UI Kit-nya Bootstrap
+- 🔸 Pake React, UI Kit-nya Bootstrap dan pake React Component [ReactStrap](https://reactstrap.github.io)
+- 🔸 Pake React, UI Kit-nya Bootstrap dan pake React Component [React-Bootstrap](https://react-bootstrap.github.io/)
+- 🔸 Pake React, UI Kit-nya Bootstrap tanpa tambahan React Component di atasnya
+- 🔸 Pake Next.js, pake AntDesign sebagai UI Kit-nya
+- 🔸 Pake Svelte, UI Kit-nya Bootstrap
 
 Sebenernya setidaknya ada benang merah yang bisa dilihat, kebanyakan pakai React dan mengadopsi Bootstrap. Sayangnya pendekatan yang berbeda-beda malah membuat benang merah tadi jadi tampak kusut dan menjadi susah buat mengurainya.
 
@@ -39,23 +39,23 @@ Hal lain yang menjadi poin ampuh adalah kemampuan untuk *incremental adoption*. 
 
 Perlu diketahui, jenis aplikasi yang ingin saya terapkan adalah internal dashboard, jadi yang umumnya akan jadi pertimbangan ketika memilih UI Kit adalah:
 
-▫️ Ketersediaan beragam jenis komponen, karena style development di aplikasi semacam internal dashboard biasanya *fast pace* dan kalau bisa tidak perlu membuat komponen-komponen umum dari awal.
-▫️ Data Grid, hampir semua halaman di internal dashboard akan menampilkan table dalam berbagai macam variasi. Ketersediaan Data Grid akan menjadi pembeda yang cukup signifikan.
-▫️ Mudah di override style bawaannya, karena pada akhirnya akan ada waktu dimana proses override tidak bisa terhindarkan. Semakin rumit caranya, atau semakin tidak *maintainable* pendekatan yang digunakan dalam melakukan override, maka akan semakin kelam masa depannya.
+- 🔅 Ketersediaan beragam jenis komponen, karena style development di aplikasi semacam internal dashboard biasanya *fast pace* dan kalau bisa tidak perlu membuat komponen-komponen umum dari awal.
+- 🔅 Data Grid, hampir semua halaman di internal dashboard akan menampilkan table dalam berbagai macam variasi. Ketersediaan Data Grid akan menjadi pembeda yang cukup signifikan.
+- 🔅 Mudah di override style bawaannya, karena pada akhirnya akan ada waktu dimana proses override tidak bisa terhindarkan. Semakin rumit caranya, atau semakin tidak *maintainable* pendekatan yang digunakan dalam melakukan override, maka akan semakin kelam masa depannya.
 
 Dari beberapa poin di atas, Mantine *stand-out* dalam beberapa hal, diantaranya:
 
-🔹 Dokumentasinya *top-tier*, agak berlebihan tapi memang dokumentasinya Mantine itu sangat menyenangkan dibaca dan dijelajahi. Saya cukup paham, bahwa adopsi UI Kit baru berarti akan memaksa si developer untuk belajar lagi dan akan sangat sering membuka dokumantasi resminya. Kalau dokumentasinya menyesatkan, akan rumit ketika proses implementasi. Sejauh proses saya dalam proof of concept implementasi Mantine di projek kecil sih sangat menyenangkan prosesnya, tidak ada kendala signifikan, meskipun saya juga bolak-balik ke dokumentasinya.
-🔹 Mudah authoring theme di atasnya, sangat mudah mengubah dari warna biru ke warna brand yang kita punya, mudah juga menambahkan berbagai *design token* yang dibutuhkan ke depannya.
-🔹 Punya layout component macam `Flex`, `Grid`, `Group`, `Stack`, `Space` yang bisa mengurangi keharusan menulis CSS manual lagi. Membuat sebuah komponen, kini bisa dilakukan dalam satu file JavaScript saja.
-🔹 Komponen set tergolong banyak, meskipun jauh dari komplit kalau pembandingnya UI Kit yang telah bertahun-tahun jadi andalan macam Ant Design atau Material UI.
-🔹 Accessible by default, dukungan terhadap navigasi menggunakan keyboard terbilang cukup baik.
-🔹 Pilihan designnya buat saya pribadi sangat cantik. Saya telah berdiskusi dengan tim Designer dan mereka juga cocok dengan style dari Mantine.
+- 🔹 Dokumentasinya *top-tier*, agak berlebihan tapi memang dokumentasinya Mantine itu sangat menyenangkan dibaca dan dijelajahi. Saya cukup paham, bahwa adopsi UI Kit baru berarti akan memaksa si developer untuk belajar lagi dan akan sangat sering membuka dokumantasi resminya. Kalau dokumentasinya menyesatkan, akan rumit ketika proses implementasi. Sejauh proses saya dalam proof of concept implementasi Mantine di projek kecil sih sangat menyenangkan prosesnya, tidak ada kendala signifikan, meskipun saya juga bolak-balik ke dokumentasinya.
+- 🔹 Mudah authoring theme di atasnya, sangat mudah mengubah dari warna biru ke warna brand yang kita punya, mudah juga menambahkan berbagai *design token* yang dibutuhkan ke depannya.
+- 🔹 Punya layout component macam `Flex`, `Grid`, `Group`, `Stack`, `Space` yang bisa mengurangi keharusan menulis CSS manual lagi. Membuat sebuah komponen, kini bisa dilakukan dalam satu file JavaScript saja.
+- 🔹 Komponen set tergolong banyak, meskipun jauh dari komplit kalau pembandingnya UI Kit yang telah bertahun-tahun jadi andalan macam Ant Design atau Material UI.
+- 🔹 Accessible by default, dukungan terhadap navigasi menggunakan keyboard terbilang cukup baik.
+- 🔹 Pilihan designnya buat saya pribadi sangat cantik. Saya telah berdiskusi dengan tim Designer dan mereka juga cocok dengan style dari Mantine.
 
 Namun tentu saja, tidak ada gading yang tak retak. Saya berjudi mengadopsi Mantine meskipun juga tau beberapa kekurangan yang saya rasakan, antara lain:
 
-🔻 Tidak ada component Data Grid, Tree & Cascader yang ofisial. Tidak ada rencana dari si pembuatnya untuk membuat komponen rumit macam ini. Kemungkinan menunggu 3rd party dari komunitas atau mesti membuat sendiri kalau-kalau dibutuhkan. Untuk Grid sendiri, saya mencoba menggunakan [mantine-data-grid](https://kuechlin.github.io/mantine-data-grid/) di aplikasi kecil, tapi masih menggunakan [AG Grid](https://www.ag-grid.com/react-data-grid/) pada aplikasi rumit lainnya.
-🔻 Props nya tidak se-"ramai" Chakra-UI, tidak semua jenis CSS Rule bisa di-pass lewat props, hanya beberepa yang fundamental macam spacing, size, color, dkk. Sisanya menggunakan opsi lain macam `sx`, `createStyles`, dll.
+- 🔻 Tidak ada component Data Grid, Tree & Cascader yang ofisial. Tidak ada rencana dari si pembuatnya untuk membuat komponen rumit macam ini. Kemungkinan menunggu 3rd party dari komunitas atau mesti membuat sendiri kalau-kalau dibutuhkan. Untuk Grid sendiri, saya mencoba menggunakan [mantine-data-grid](https://kuechlin.github.io/mantine-data-grid/) di aplikasi kecil, tapi masih menggunakan [AG Grid](https://www.ag-grid.com/react-data-grid/) pada aplikasi rumit lainnya.
+- 🔻 Props nya tidak se-"ramai" Chakra-UI, tidak semua jenis CSS Rule bisa di-pass lewat props, hanya beberepa yang fundamental macam spacing, size, color, dkk. Sisanya menggunakan opsi lain macam `sx`, `createStyles`, dll.
 
 ## Jangan diikuti
 
