@@ -11,7 +11,7 @@ lang: id
 enready: false
 ---
 
-## Latar belakang masalah
+## 🤯 Masalah Saya
 
 Salah satu masalah yang terlihat saat saya pertama kali bergabung di kantor saya sekarang adalah banyaknya Internal Dashboard yang dibuat dengan berbagai macam tampilan yang berbeda-beda. Tentu saja sebenarnya ini cukup jamak ya mengingat prioritas saat develop Internal Dashboard memang sebagian besar di usability nya, bahasa kerennya sih asal jalan dan bisa dipake. Tapi kalau mau dilihat lebih dalam lagi, perbedaan tampilan secara kasat mata ini juga mencerminkan perbedaan di internal codebase mereka. Benar saja, bisa ditemukan banyak variasi yang menjadikan semakin sulit untuk berpindah konteks, padahal dengan jumlah developer yang sedikit, berpindah konteks adalah hal yang sudah biasa dan sering terjadi dalam aktifitas harian mereka.
 
@@ -25,7 +25,7 @@ Paling tidak ada beberapa variasi yang bisa ditemukan saat itu:
 
 Sebenernya setidaknya ada benang merah yang bisa dilihat, kebanyakan pakai React dan mengadopsi Bootstrap. Sayangnya pendekatan yang berbeda-beda malah membuat benang merah tadi jadi tampak kusut dan menjadi susah buat mengurainya.
 
-## Alasan Ampuh
+## ✨ Alasan Ampuh
 
 Sebagai Engineer, memang ego untuk melakukan rewrite dibandingkan patch aplikasi tidak bisa dinafikan, pun pada saya. Apalagi secara profesional, saya telah terlibat di banyak project rewrite dari satu tech-stack ke tech-stack lain, dari satu pendekatan ke pendekatan lain. Hasilnya memang selalu bisa memuaskan ego. Sayangnya saya juga mesti mengakui kalau jalannya biasanya terjal. Rewrite selalu jadi pilihan terakhir yang bisa saya pikirkan. Pilihan ini saya sadari bisa membuat waktu tidur saya berkurang tidak hanya dalam waktu sehari atau dua hari.
 
@@ -33,7 +33,7 @@ Menyadari ketidakmampuan saya menanggung beban sendiri, mulailah dengan banyak b
 
 Hal lain yang menjadi poin ampuh adalah kemampuan untuk *incremental adoption*. Dengan sifat alami dari Bootstrap yang banyak bermain dengan global CSS, opsi untuk upgrade Bootstrap ke versi teranyar jelas tidak bisa serta merta dilakukan dengan cepat, sangat besar kemungkinan (dan telah dibuktikan) akan berdampak ke berbagai halaman yang menjadikan mau tidak mau prosesnya jadi *big-bang*. Menawarkan proses big-bang di saat tim bisnis/produk punya banyak prioritas tentu saja sangat sulit untuk bisa diterima, karena kemampuan Mantine yang bisa diadopsi secara incremental adalah salah satu alasan terbaik kenapa pilihan ini pada akhirnya diambil.
 
-## Memilih Mantine.dev
+## 🛳 Memilih Mantine.dev
 
 [Mantine.dev](https://mantine.dev/) adalah UI Kit di atas React. Tentu saja ini bukan salah satu yang terdepan di lingkungan React, ada banyak opsi lain yang lebih *mature* untuk diadopsi pada aplikasi production. Beberapa yang biasanya akan masuk ke daftar pilihan bagi saya pribadi tentu saja Ant Design, MUI atau Material UI, Chakra UI dan teman saya ada yang sempat merekomendasikan Blueprint dari Palantir.
 
@@ -57,9 +57,11 @@ Namun tentu saja, tidak ada gading yang tak retak. Saya berjudi mengadopsi Manti
 - 🔻 Tidak ada component Data Grid, Tree & Cascader yang ofisial. Tidak ada rencana dari si pembuatnya untuk membuat komponen rumit macam ini. Kemungkinan menunggu 3rd party dari komunitas atau mesti membuat sendiri kalau-kalau dibutuhkan. Untuk Grid sendiri, saya mencoba menggunakan [mantine-data-grid](https://kuechlin.github.io/mantine-data-grid/) di aplikasi kecil, tapi masih menggunakan [AG Grid](https://www.ag-grid.com/react-data-grid/) pada aplikasi rumit lainnya.
 - 🔻 Props nya tidak se-"ramai" Chakra-UI, tidak semua jenis CSS Rule bisa di-pass lewat props, hanya beberepa yang fundamental macam spacing, size, color, dkk. Sisanya menggunakan opsi lain macam `sx`, `createStyles`, dll.
 
-## Jangan diikuti
+## 👣 Resiko Ditanggung Sendiri
 
-Kalian tidak perlu ikut-ikutan saya menggunakan Mantine.dev di aplikasi yang kalian buat. Saya tidak dalam posisi mencari massa biar gak sendirian pake juga 🙊. Tulisan ini bisa jadi hanyalah alasan yang saya buat-buat agar pilihan yang sebenarnya subjektif karena saya suka Mantine.dev, jadi terasa lebih objektif buat disampaikan 🔥.
+Kalian tidak perlu ikut-ikutan saya menggunakan Mantine.dev di aplikasi yang kalian buat. Saya tidak dalam posisi mencari massa biar gak sendirian pake Mantine 🙊.
+
+Tulisan ini bisa jadi hanyalah alasan yang saya buat-buat agar pilihan yang sebenarnya subjektif karena saya suka Mantine.dev, jadi terasa lebih objektif buat disampaikan 🤡.
 
 ---
 
