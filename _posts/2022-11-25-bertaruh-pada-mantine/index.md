@@ -74,6 +74,13 @@ Namun tentu saja, tidak ada gading yang tak retak. Saya berjudi mengadopsi Manti
 - 🔻 Tidak ada component Data Grid, Tree & Cascader yang ofisial. Tidak ada rencana dari si pembuatnya untuk membuat komponen rumit macam ini. Kemungkinan menunggu 3rd party dari komunitas atau mesti membuat sendiri kalau-kalau dibutuhkan. Untuk Grid sendiri, saya mencoba menggunakan [mantine-data-grid](https://kuechlin.github.io/mantine-data-grid/) di aplikasi kecil, tapi masih menggunakan [AG Grid](https://www.ag-grid.com/react-data-grid/) pada aplikasi rumit lainnya.
 - 🔻 Props nya tidak se-"ramai" Chakra-UI, tidak semua jenis CSS Rule bisa di-pass lewat props, hanya beberepa yang fundamental macam spacing, size, color, dkk. Sisanya menggunakan opsi lain macam `sx`, `createStyles`, dll.
 
+## 💥 Kenapa Gak Yang Lain?
+
+Mantine tentu bukan pilihan absolut, bisa saja saya pilih Ant Design atau Material UI. Tapi...
+
+- 🟥 Ant Design: buat yang familiar sama Ant Design pasti tau betapa tidak asiknya Dokumentasinya. Pilihan style UI nya terlihat kaku, meskipun terlihat lebih oke di versi 5 (tapi kan masih baru banget). Cara override Ant Design juga cukup rumit, mesti lewat pre-processor macam `less`. Hal yang powerful dari Ant Design menurut saya ya komponen Grid-nya yang superior, punya komponen yang komplit buat dipake di aplikasi yang intensif nampilin data. Punya Tree dan Cascader.
+- 🟥 Material UI: jelas UI style bukan jadi pilihan tim Designer. Meskipun begitu, secara engineering, saya pribadi suka dengan banyak hal dari MUI, salah satunya dengan [API design](https://mui.com/material-ui/guides/api/) mereka, *well engineered* 🙌.
+
 ## 👣 Resiko Ditanggung Sendiri
 
 Kalian tidak perlu ikut-ikutan saya menggunakan Mantine.dev di aplikasi yang kalian buat. Saya tidak dalam posisi mencari massa biar gak sendirian pake Mantine 🙊.
