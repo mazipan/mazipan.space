@@ -21,7 +21,9 @@ Artikel ini secara terbuka akan memberikan berbagai daftar pertanyaan yang umumn
 
 ## 🧑‍🏫 Proses Interview Soft. Engineer Secara Umum
 
-Sebelum saya mulai breakdown berbagai pertanyaan yang biasa saya tanyakan, ada baiknya kalian memahami dulu proses interview software engineer secara umum. Kalian bisa tonton video di YouTube nya [Gogo](https://twitter.com/lwastuargo) di [Gimana sih proses interview software engineer?](https://www.youtube.com/watch?v=gczDiFOWLOY).
+Sebelum saya mulai *breakdown* berbagai pertanyaan yang biasa saya tanyakan, ada baiknya kalian memahami dulu proses interview software engineer secara umum. 
+Kalian bisa memahaminya dengan menonton video di YouTube Channelnya [Gogo](https://twitter.com/lwastuargo) mengenai [Gimana sih proses interview software engineer?](https://www.youtube.com/watch?v=gczDiFOWLOY).
+Kalau belum sempat nonton, sempatkan buat nonton dulu, jangan lupa klik "Laik" dan "Subskreb" 👋
 
 Prosesnya bisa beda-beda, tapi secara umum akan mirip-mirip dengan skema yang berbeda-beda. Ada yang dipisah-pisah ke beberapa sesi, ada yang digabungkan semuanya jadi satu sesi.
 
@@ -82,6 +84,8 @@ Berikut adalah daftar berbagai pertanyaan umum yang kemungkinan saya tanyakan:
 - 🟩 Bagaimana caramu kerja sama dengan Tim Produk? Bagaimana memastikan dirimu paham dengan produk requirement yang diminta?
 - 🟩 Bagaimana caramu kerja sama dengan Tim Designer? Bagaimana kalau Tim Designer mengubah design mereka di tengah jalan? Bagaimana kalau design yang sudah dibuat ternyata susah diimplementasi secara teknis?
 - 🟩 Bagaimana caramu kerja sama dengan Backend? Satu sprint bareng jalan? Atau Backend selesai dulu baru Frontend?
+
+**🤺 Jadi kapan kita interview?**
 
 ---
 
