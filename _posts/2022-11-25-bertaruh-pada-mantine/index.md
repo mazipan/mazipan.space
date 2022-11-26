@@ -62,7 +62,7 @@ Perlu diketahui, jenis aplikasi yang ingin saya terapkan adalah internal dashboa
 
 Dari beberapa poin di atas, Mantine *stand-out* dalam beberapa hal, diantaranya:
 
-- 🔹 Dokumentasinya *top-tier*, agak berlebihan tapi memang dokumentasinya Mantine itu sangat menyenangkan dibaca dan dijelajahi. Saya cukup paham, bahwa adopsi UI Kit baru berarti akan memaksa si developer untuk belajar lagi dan akan sangat sering membuka dokumantasi resminya. Kalau dokumentasinya menyesatkan, akan rumit ketika proses implementasi. Sejauh proses saya dalam proof of concept implementasi Mantine di projek kecil sih sangat menyenangkan prosesnya, tidak ada kendala signifikan, meskipun saya juga bolak-balik ke dokumentasinya.
+- 🔹 Dokumentasinya *top-tier*, agak berlebihan tapi memang dokumentasinya Mantine itu sangat menyenangkan dibaca dan dijelajahi. Saya cukup paham, bahwa adopsi UI Kit baru berarti akan memaksa si developer untuk belajar lagi dan akan sangat sering membuka laman dokumentasi resminya. Kalau dokumentasinya menyesatkan untuk dijelajahi, akan rumit dan lambat ketika proses implementasi. Sejauh proses saya dalam *proof of concept* implementasi Mantine di projek kecil sih sangat menyenangkan prosesnya, tidak ada kendala signifikan, meskipun ya saya juga harus bolak-balik ke dokumentasinya.
 - 🔹 Mudah authoring theme di atasnya, sangat mudah mengubah dari warna biru ke warna brand yang kita punya, mudah juga menambahkan berbagai *design token* yang dibutuhkan ke depannya.
 - 🔹 Punya layout component macam `Flex`, `Grid`, `Group`, `Stack`, `Space` yang bisa mengurangi keharusan menulis CSS manual lagi. Membuat sebuah komponen, kini bisa dilakukan dalam satu file JavaScript saja.
 - 🔹 Komponen set tergolong banyak, meskipun jauh dari komplit kalau pembandingnya UI Kit yang telah bertahun-tahun jadi andalan macam Ant Design atau Material UI.
@@ -72,7 +72,7 @@ Dari beberapa poin di atas, Mantine *stand-out* dalam beberapa hal, diantaranya:
 Namun tentu saja, tidak ada gading yang tak retak. Saya berjudi mengadopsi Mantine meskipun juga tau beberapa kekurangan yang saya rasakan, antara lain:
 
 - 🔻 Tidak ada component Data Grid, Tree & Cascader yang ofisial. Tidak ada rencana dari si pembuatnya untuk membuat komponen rumit macam ini. Kemungkinan menunggu 3rd party dari komunitas atau mesti membuat sendiri kalau-kalau dibutuhkan. Untuk Grid sendiri, saya mencoba menggunakan [mantine-data-grid](https://kuechlin.github.io/mantine-data-grid/) di aplikasi kecil, tapi masih menggunakan [AG Grid](https://www.ag-grid.com/react-data-grid/) pada aplikasi rumit lainnya.
-- 🔻 Props nya tidak se-"ramai" Chakra-UI, tidak semua jenis CSS Rule bisa di-pass lewat props, hanya beberepa yang fundamental macam spacing, size, color, dkk. Sisanya menggunakan opsi lain macam `sx`, `createStyles`, dll.
+- 🔻 Props nya tidak se-"ramai" Chakra-UI, tidak semua jenis CSS Rule bisa di-pass lewat props, hanya beberepa yang fundamental macam `spacing`, `size`, `color`, dkk. Sisanya menggunakan opsi lain macam `sx`, `createStyles`, dll.
 
 ## 💥 Kenapa Gak Yang Lain?
 
@@ -84,7 +84,7 @@ Mantine tentu bukan pilihan absolut, bisa saja saya pilih Ant Design atau Materi
 - 🟥 **Bootstrap**: Secara knowledge, ini pilihan paling aman karena developer di tempat saya sudah pada familiar dengan yang satu ini, sayangnya versi yang bervariasi membuat rumit. Opsi untuk upgrade juga sama berdarah-darah.
 - 🟥 **Chakra-UI**: Ini salah satu pilihan terdepan sebelum Mantine dari saya pribadi, kemampuan override yang sangat tinggi memberikan semacam kelegaan kalau-kalau di masa depan perlu tweak komponen bawaannya. Sayangnya pas menunjukkan ke tim Designer, tidak mendapatkan sambutan yang oke terkait komponen yang tersedia di Chakra-UI.
 
-Mantine buat saya berada di tengah-tengah antara bagus secara engineering, **well engineered**, props nya oke, design API nya konsisten, namun tidak berlebihan. Pun bagus secara style/design, sehingga membuatnya menjadi mudah diterima oleh tim Design. Tim Designer bahkan bisa mengadopsi [Figma komponen buatan komunitas](https://www.figma.com/community/file/1067173247578645134) biar gak dari awal-awal banget bikinnya. Tapi kalaupun mau dari awal, membangun di atas Mantine juga cukup memuaskan hasilnya bagi kedua belah pihak. Tim engineering dan tim Designer. Mantine akhirnya jadi pilihan andalan buat saya adopsi 🤩
+Mantine buat saya berada di tengah-tengah antara bagus secara engineering, *well engineered*, props nya oke, design API nya konsisten, namun tidak berlebihan. Pun bagus secara style/design, sehingga membuatnya menjadi mudah diterima oleh tim Designer. Tim Designer bahkan bisa mengadopsi [Figma komponen buatan komunitas](https://www.figma.com/community/file/1067173247578645134) biar gak dari awal-awal banget bikinnya. Tapi kalaupun mau buat dari awal sendiri, membangun *Design System* di atas Mantine juga cukup memuaskan hasilnya bagi kedua belah pihak. Tim engineering dan tim Designer. Mantine akhirnya jadi pilihan terbaik saat ini buat saya adopsi 🤩
 
 ## 👣 Resiko Ditanggung Sendiri
 
