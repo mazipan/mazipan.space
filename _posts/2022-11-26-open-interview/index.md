@@ -23,7 +23,7 @@ Artikel ini secara terbuka akan memberikan berbagai daftar pertanyaan yang umumn
 
 Sebelum saya mulai *breakdown* berbagai pertanyaan yang biasa saya tanyakan, ada baiknya kalian memahami dulu proses interview software engineer secara umum. 
 Kalian bisa memahaminya dengan menonton video di YouTube Channelnya [Gogo](https://twitter.com/lwastuargo) mengenai [Gimana sih proses interview software engineer?](https://www.youtube.com/watch?v=gczDiFOWLOY).
-Kalau belum sempat nonton, sempatkan buat nonton dulu, jangan lupa klik "Laik" dan "Subskreb" 👋
+Kalau belum sempat nonton, sempatkan buat nonton dulu. Jangan lupa klik "Laik" dan "Sabskreb" 👋
 
 Prosesnya bisa beda-beda, tapi secara umum akan mirip-mirip dengan skema yang berbeda-beda. Ada yang dipisah-pisah ke beberapa sesi, ada yang digabungkan semuanya jadi satu sesi.
 
