@@ -1,5 +1,5 @@
 ---
-title: Interview Terbuka bersama mazipan
+title: Interview Terbuka Bersama mazipan
 date: '2022-11-26'
 excerpt: Berbagai contoh pertanyaan yang kemungkinan akan saya tanyakan kalau secara tidak sengaja diinterview oleh saya sebagai Frontend Engineer
 author: mazipan
@@ -42,31 +42,34 @@ Berikut adalah daftar berbagai pertanyaan umum yang kemungkinan saya tanyakan:
 - 🟩 Jelaskan mengenai attribute `noopener` dan `noreferrer` yang biasanya ditambahkan pada tag link (`<a href="..." noopener noreferrer>`)
 - 🟩 Jelaskan perbedaan antara `Cookie`, `Local Storage` dan `Session Storage`! Kapan kita mesti pakai masing-masing dari mereka? Jelaskan pula trade-off kalau pakai masing-masing dari mereka!
 - 🟩 Apa itu `prefetch`, dan apa itu `preload`? Adakah use case yang tepat kapan kita sebaiknya pakai hal tersebut? Dan kapan sebaiknya kita menghindari pakai hal tersebut?
-- 🟩 Bagaimana cara membuat Browser agar melakukan *cache* terhadap *resource* statis yang sudah pernah di request sebelumnya?
+- 🟩 Bagaimana cara membuat peramban agar melakukan *cache* terhadap *resource* statis yang sudah pernah di request sebelumnya?
 - 🟩 Apa itu `CDN`? Dan bagaimana peran `CDN` dalam penyajian sebuah website? Kenapa dan kapan kita perlu pakai `CDN`? Resource yang seperti apa yang sebaiknya disajikan melalui di `CDN`?
 - 🟩 Bagaimana cara kamu kalau diminta menyajikan sebuah layout yang sangat berbeda antara Desktop dan Mobile?
-- 🟩 Jelaskan mengenai CORS (Cross-Origin Resource Sharing)! Kapan dan kenapa dia bisa terjadi? Sebutkan beberapa alternatif solusi yang bisa dikerjakan saat ketemu maslah tersebut.
+- 🟩 Jelaskan mengenai `CORS` (Cross-Origin Resource Sharing)! Kapan dan kenapa dia bisa terjadi? Sebutkan beberapa alternatif solusi yang bisa dikerjakan saat ketemu maslah tersebut.
 
 ### JS Fundamental
 
 - 🟩 Apa bedanya antara `.forEach` dan `.map`?
 - 🟩 Apa bedanya antara `debounce` dan `throttle`? Sebutkan use case kapan kita pakai masing-masing mereka!
-- 🟩 Jelaskan mengenai Closure di JavaScript.
+- 🟩 Jelaskan mengenai *Closure* di JavaScript.
 
 ### Frameworks
 
-- 🟩 Jelaskan mengenai Server-Side Render, Client-Side Render dan Static Site Generated! Kapan kita sebaiknya pakai masing-masing diantaranya? Sebutkan pula kekurangan kalau pakai masing-masing mereka!
+- 🟩 Jelaskan *Rule of Hooks*! Kapan kita bisa pakai Hooks di React?
+- 🟩 Jelaskan fungsi *Array Dependency* pada `useEffect`, Bagaimana penggunaanya dan apa pengaruhnya kalau kita tidak tambahkan atau salah mendefinisikan dependency-nya dengan tepat? Bagaimana dengan fungsi *Cleanup* pada `useEffect`? Kapan kita menambahkannya?
+- 🟩 Jelaskan mengenai *Server-Side Render*, *Client-Side Render* dan *Static Site Generated*! Kapan kita sebaiknya pakai masing-masing diantaranya? Sebutkan pula kekurangan kalau pakai masing-masing mereka!
 - 🟩 Jelaskan perbedaan `Rest API` dengan `GraphQL`! Sebutkan kelebihan dan kekurangan mereka masing-masing!
 - 🟩 Sebutkan beberapa alternatif solusi mengatur CSS di sebuah projek yang kamu tau dan bagaimana pendapatmu mengenainya, pilihan mana yang biasanya kamu ambil, kenapa mengambil pilihan tersebut? Bagaimana caramu menghindari masalah dengan *specificity* di CSS?
-- 🟩 Bagaimana konsep membuat sebuah *lazy load* pada komponen image? Jelaskan beberapa alternatif pendekatan yang bisa dikerjakan!
+- 🟩 Bagaimana konsep membuat sebuah *lazy load* pada komponen gambar/*image*? Jelaskan beberapa alternatif pendekatan yang bisa dikerjakan!
 - 🟩 Hal teknis minimal yang akan kamu buat untuk mendukung `SEO` bahkan jika hal tersebut lupa diminta sekalipun oleh pihak terkait.
-- 🟩 Jelaskan cara testing aplikasi yang kalian lakukan sekarang! Bagaimana yang idealnya menurutmu? Testing seperti apa yang harusnya dikerjakan? Konsiderasinya apa? Siapa yang harusnya mengerjakan?
+- 🟩 Jelaskan cara testing aplikasi yang kalian lakukan sekarang! Bagaimana yang idealnya menurutmu? Testing seperti apa yang harusnya dikerjakan? Pertimbangan apa yang perlu diperhatikan? Siapa yang harusnya mengerjakan?
 
 ### Web Performance
 
-- 🟩 Jelaskan mengenai Core Web Vitals!
-- 🟩 Hal apa yang akan mempengaruhi skor CLS (Cumulative Layout Shift)! Opsi langkah yang seharusnya bisa dikerjakan untuk meningkatkan skor CLS!
-- 🟩 Hal apa yang akan mempengaruhi skor LCP (Largest Contentful Paint)! Opsi langkah yang seharusnya bisa dikerjakan untuk meningkatkan skor LCP!
+- 🟩 Jelaskan mengenai *Core Web Vitals*!
+- 🟩 Jelaskan bedanya penggunaan Data Lapangan dan Data Lab!
+- 🟩 Hal apa yang akan mempengaruhi skor `CLS` (Cumulative Layout Shift)! Opsi langkah yang seharusnya bisa dikerjakan untuk meningkatkan skor `CLS`!
+- 🟩 Hal apa yang akan mempengaruhi skor `LCP` (Largest Contentful Paint)! Opsi langkah yang seharusnya bisa dikerjakan untuk meningkatkan skor `LCP`!
 - 🟩 Bagaimana memantau metrik web performance secara berkala? Bagaimana dengan Real Time Monitoring? Apakah diperlukan?
 
 ### Design
