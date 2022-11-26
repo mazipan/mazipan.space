@@ -15,14 +15,14 @@ Artikel ini secara terbuka akan memberikan berbagai daftar pertanyaan yang umumn
 
 ## Q&A Singkat
 
-- **Apakah semua daftar tersebut akan selalu saya tanyakan**: Bisa iya bisa tidak, bisa berkembang pertanyaannya, tapi umumnya masing-masing interviewer biasanya punya set of pertanyaan andalan yang sering ditanyakan pada setiap sesi interview. Jadi sebagian besar daftar di sini adalah pertanyaan andalan dari saya pribadi, kemungkinan besar akan saya tanyakan.
+- ❔ **Apakah semua daftar tersebut akan selalu saya tanyakan**: Bisa iya bisa tidak, bisa berkembang pertanyaannya, tapi umumnya masing-masing interviewer biasanya punya set of pertanyaan andalan yang sering ditanyakan pada setiap sesi interview. Jadi sebagian besar daftar di sini adalah pertanyaan andalan dari saya pribadi, kemungkinan besar akan saya tanyakan.
 
-- **Kenapa gak disertakan jawabannya**: Ya karena jawabannya gak akan *text-book* juga. Sebaiknya memang jelaskan sesuai dengan gaya dan pengetahuan yang kalian punya saja. Beberapa pertanyaan juga merupakan *open question*, jadi antar satu dan orang lain akan berbeda hasilnya.
+- ❔ **Kenapa gak disertakan jawabannya**: Ya karena jawabannya gak akan *text-book* juga. Sebaiknya memang jelaskan sesuai dengan gaya dan pengetahuan yang kalian punya saja. Beberapa pertanyaan juga merupakan *open question*, jadi antar satu dan orang lain akan berbeda hasilnya.
 
 ## 🧑‍🏫 Proses Interview Soft. Engineer Secara Umum
 
 Sebelum saya mulai *breakdown* berbagai pertanyaan yang biasa saya tanyakan, ada baiknya kalian memahami dulu proses interview software engineer secara umum. 
-Kalian bisa memahaminya dengan menonton video di YouTube Channelnya [Gogo](https://twitter.com/lwastuargo) mengenai [Gimana sih proses interview software engineer?](https://www.youtube.com/watch?v=gczDiFOWLOY).
+Kalian bisa memahaminya dengan menonton video di YouTube Channelnya [Gogo](https://twitter.com/lwastuargo) mengenai [Gimana sih proses interview software engineer?](https://www.youtube.com/watch?v=gczDiFOWLOY)
 Kalau belum sempat nonton, sempatkan buat nonton dulu. Jangan lupa klik "Laik" dan "Sabskreb" 👋
 
 Prosesnya bisa beda-beda, tapi secara umum akan mirip-mirip dengan skema yang berbeda-beda. Ada yang dipisah-pisah ke beberapa sesi, ada yang digabungkan semuanya jadi satu sesi.
@@ -31,8 +31,10 @@ Prosesnya bisa beda-beda, tapi secara umum akan mirip-mirip dengan skema yang be
 
 Bagian ini saya akan *run* pertama, saya biasanya akan meminta Live Coding untuk 2 hal:
 
-- HTML & CSS: Biasanya hanya meminta untuk dibuatkan layout sederhana menggunakan HTML dan CSS.
-- Struktur Data: Seperti pertanyaan struktur data pada umumnya, kemungkinan akan bermain dengan berbagai tipe data.
+- ⭕️ **HTML & CSS**: Biasanya hanya meminta untuk dibuatkan layout sederhana menggunakan HTML dan CSS.
+- ⭕️ **Struktur Data**: Seperti pertanyaan struktur data pada umumnya, kemungkinan akan bermain dengan berbagai tipe data.
+
+Bisa nonton video dari Gogo tentang [interview koding algoritma dan struktur data](https://www.youtube.com/watch?v=MkQEaIZkhYQ&t=484s).
 
 ## 📝 Pertanyaan Umum
 
@@ -60,7 +62,7 @@ Berikut adalah daftar berbagai pertanyaan umum yang kemungkinan saya tanyakan:
 - 🟩 Jelaskan *Rule of Hooks*! Kapan kita bisa pakai Hooks di React?
 - 🟩 Jelaskan fungsi *Array Dependency* pada `useEffect`, Bagaimana penggunaanya dan apa pengaruhnya kalau kita tidak tambahkan atau salah mendefinisikan dependency-nya dengan tepat? Bagaimana dengan fungsi *Cleanup* pada `useEffect`? Kapan kita menambahkannya?
 - 🟩 Jelaskan mengenai *Server-Side Render*, *Client-Side Render* dan *Static Site Generated*! Kapan kita sebaiknya pakai masing-masing diantaranya? Sebutkan pula kekurangan kalau pakai masing-masing mereka!
-- 🟩 Jelaskan perbedaan `Rest API` dengan `GraphQL`! Sebutkan kelebihan dan kekurangan mereka masing-masing!
+- 🟩 Jelaskan perbedaan `Rest API` dengan `GraphQL`! Sebutkan kelebihan dan kekurangan mereka masing-masing! Kapan sebaiknya saya pakai `Rest API`? Kapan pakai `GraphQL`?
 - 🟩 Sebutkan beberapa alternatif solusi mengatur CSS di sebuah projek yang kamu tau dan bagaimana pendapatmu mengenainya, pilihan mana yang biasanya kamu ambil, kenapa mengambil pilihan tersebut? Bagaimana caramu menghindari masalah dengan *specificity* di CSS?
 - 🟩 Bagaimana konsep membuat sebuah *lazy load* pada komponen gambar/*image*? Jelaskan beberapa alternatif pendekatan yang bisa dikerjakan!
 - 🟩 Hal teknis minimal yang akan kamu buat untuk mendukung `SEO` bahkan jika hal tersebut lupa diminta sekalipun oleh pihak terkait.
@@ -69,14 +71,14 @@ Berikut adalah daftar berbagai pertanyaan umum yang kemungkinan saya tanyakan:
 ### Web Performance
 
 - 🟩 Jelaskan mengenai *Core Web Vitals*!
-- 🟩 Jelaskan bedanya penggunaan Data Lapangan dan Data Lab!
+- 🟩 Jelaskan bedanya penggunaan Data Lapangan dan Data Lab dalam konteks *web performance*!
 - 🟩 Hal apa yang akan mempengaruhi skor `CLS` (Cumulative Layout Shift)! Opsi langkah yang seharusnya bisa dikerjakan untuk meningkatkan skor `CLS`!
 - 🟩 Hal apa yang akan mempengaruhi skor `LCP` (Largest Contentful Paint)! Opsi langkah yang seharusnya bisa dikerjakan untuk meningkatkan skor `LCP`!
-- 🟩 Bagaimana memantau metrik web performance secara berkala? Bagaimana dengan Real Time Monitoring? Apakah diperlukan?
+- 🟩 Bagaimana memantau metrik web performance secara berkala? Bagaimana dengan *Realtime User Monitoring*? Apakah diperlukan?
 
 ### Design
 
-- 🟩 Bagaimana cara mempercepat waktu yang diperlukan dari mulai development sampai ke production?
+- 🟩 Bagaimana caranya kalau kamu diminta mempercepat waktu yang diperlukan oleh engineer dalam menyelesaikan task, dari mulai development sampai ke production?
 - 🟩 Bagaimana membuat aplikasi yang menampilkan *Live Comments* dari pengguna? Pendekatan seperti apa yang kamu ambil?
 
 ### Teamwork
@@ -85,7 +87,7 @@ Berikut adalah daftar berbagai pertanyaan umum yang kemungkinan saya tanyakan:
 - 🟩 Bagaimana caramu kerja sama dengan Tim Designer? Bagaimana kalau Tim Designer mengubah design mereka di tengah jalan? Bagaimana kalau design yang sudah dibuat ternyata susah diimplementasi secara teknis?
 - 🟩 Bagaimana caramu kerja sama dengan Backend? Satu sprint bareng jalan? Atau Backend selesai dulu baru Frontend?
 
-**🤺 Jadi kapan kita interview?**
+**🤺 Jadi, kapan nih kita interview?**
 
 ---
 
