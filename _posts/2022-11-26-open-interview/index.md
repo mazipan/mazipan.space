@@ -34,7 +34,7 @@ Bagian ini saya akan *run* pertama, saya biasanya akan meminta Live Coding untuk
 - ⭕️ **HTML & CSS**: Biasanya hanya meminta untuk dibuatkan layout sederhana menggunakan HTML dan CSS.
 - ⭕️ **Struktur Data**: Seperti pertanyaan struktur data pada umumnya, kemungkinan akan bermain dengan berbagai tipe data.
 
-Bisa nonton video dari Gogo tentang [interview koding algoritma dan struktur data](https://www.youtube.com/watch?v=MkQEaIZkhYQ&t=484s).
+Bisa nonton video dari Gogo tentang [Interview koding algoritma dan struktur data](https://www.youtube.com/watch?v=MkQEaIZkhYQ&t=484s) dan [Mock interview - koding algoritma dan struktur data](https://www.youtube.com/watch?v=8s1Vh_7symo).
 
 ## 📝 Pertanyaan Umum
 
