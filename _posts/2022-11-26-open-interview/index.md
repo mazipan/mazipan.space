@@ -43,7 +43,7 @@ Berikut adalah daftar berbagai pertanyaan umum yang kemungkinan saya tanyakan:
 ### Web Fundamental
 
 - 🟩 Jelaskan perbedaan kalau kita *load* sebuah berkas JavaScript dengan hanya menggunakan tag `<script>` dengan `<script async>` dan `<script defer>`
-- 🟩 Jelaskan mengenai attribute `noopener` dan `noreferrer` yang biasanya ditambahkan pada tag link (`<a href="..." noopener noreferrer>`)
+- 🟩 Jelaskan mengenai attribute `rel=noopener` dan/atau `rel=noreferrer` yang biasanya ditambahkan pada tag link (`<a href="..." rel="noopener noreferrer">`)
 - 🟩 Jelaskan perbedaan antara `Cookie`, `Local Storage` dan `Session Storage`! Kapan kita mesti pakai masing-masing dari mereka? Jelaskan pula trade-off kalau pakai masing-masing dari mereka!
 - 🟩 Apa itu `prefetch`, dan apa itu `preload`? Adakah use case yang tepat kapan kita sebaiknya pakai hal tersebut? Dan kapan sebaiknya kita menghindari pakai hal tersebut?
 - 🟩 Bagaimana cara membuat peramban agar melakukan *cache* terhadap *resource* statis yang sudah pernah di request sebelumnya?
