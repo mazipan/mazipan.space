@@ -13,7 +13,7 @@ enready: false
 
 Artikel ini secara terbuka akan memberikan berbagai daftar pertanyaan yang umumnya akan saya tanyakan, kalau secara tidak sengaja kalian ketemu saya pada satu sesi interview spesifik untuk posisi Frontend Engineer.
 
-## Q&A Singkat
+## ✍️ Q&A Singkat
 
 - ❔ **Apakah semua daftar tersebut akan selalu saya tanyakan**: Bisa iya bisa tidak, bisa berkembang pertanyaannya, tapi umumnya masing-masing interviewer biasanya punya set of pertanyaan andalan yang sering ditanyakan pada setiap sesi interview. Jadi sebagian besar daftar di sini adalah pertanyaan andalan dari saya pribadi, kemungkinan besar akan saya tanyakan.
 
@@ -40,7 +40,7 @@ Bisa nonton video dari Gogo tentang [Interview koding algoritma dan struktur dat
 
 Berikut adalah daftar berbagai pertanyaan umum yang kemungkinan saya tanyakan:
 
-### Web Fundamental
+### 🌍 Web Fundamental
 
 - 🟩 Jelaskan perbedaan kalau kita *load* sebuah berkas JavaScript dengan hanya menggunakan tag `<script>` dengan `<script async>` dan `<script defer>`
 - 🟩 Jelaskan mengenai attribute `rel=noopener` dan/atau `rel=noreferrer` yang biasanya ditambahkan pada tag link (`<a href="..." rel="noopener noreferrer">`)
@@ -52,13 +52,13 @@ Berikut adalah daftar berbagai pertanyaan umum yang kemungkinan saya tanyakan:
 - 🟩 Bagaimana cara kamu kalau diminta menyajikan sebuah *layout* yang sangat berbeda antara Desktop dan Mobile?
 - 🟩 Jelaskan mengenai `CORS` (*Cross-Origin Resource Sharing*)! Kapan dan kenapa dia bisa terjadi? Sebutkan beberapa alternatif solusi yang bisa dikerjakan saat ketemu masalah tersebut.
 
-### JS Fundamental
+### 🟡 JS Fundamental
 
 - 🟩 Apa bedanya antara `.forEach` dan `.map`?
 - 🟩 Apa bedanya antara `debounce` dan `throttle`? Sebutkan use case kapan kita pakai masing-masing mereka!
 - 🟩 Jelaskan mengenai *Closure* di JavaScript.
 
-### Frameworks
+### ⚛️ Frameworks
 
 - 🟩 Jelaskan soal *semantic versioning*!
 - 🟩 Jelaskan bedanya `dependencies`, `devDependencies` dan `peerDependencies` pada `package.json`!
@@ -71,7 +71,7 @@ Berikut adalah daftar berbagai pertanyaan umum yang kemungkinan saya tanyakan:
 - 🟩 Hal teknis minimal yang akan kamu buat untuk mendukung `SEO` bahkan jika hal tersebut lupa diminta sekalipun oleh pihak terkait.
 - 🟩 Jelaskan cara testing aplikasi yang kalian lakukan sekarang! Bagaimana yang idealnya menurutmu? Testing seperti apa yang harusnya dikerjakan? Pertimbangan apa yang perlu diperhatikan? Siapa yang harusnya mengerjakan?
 
-### Web Performance
+### 💫 Web Performance
 
 - 🟩 Jelaskan mengenai *Core Web Vitals*!
 - 🟩 Jelaskan bedanya penggunaan Data Lapangan dan Data Lab dalam konteks *web performance*!
@@ -79,16 +79,28 @@ Berikut adalah daftar berbagai pertanyaan umum yang kemungkinan saya tanyakan:
 - 🟩 Hal apa yang akan mempengaruhi skor `LCP` (Largest Contentful Paint)! Opsi langkah yang seharusnya bisa dikerjakan untuk meningkatkan skor `LCP`!
 - 🟩 Bagaimana memantau metrik web performance secara berkala? Bagaimana dengan *Realtime User Monitoring*? Apakah diperlukan?
 
-### Design
+### 💅 Design
 
 - 🟩 Bagaimana caranya kalau kamu diminta mempercepat waktu yang diperlukan oleh engineer dalam menyelesaikan task, dari mulai development sampai ke production?
 - 🟩 Bagaimana membuat aplikasi yang menampilkan *Live Comments* dari pengguna? Pendekatan seperti apa yang kamu ambil?
 
-### Teamwork
+### 🤝 Teamwork
 
 - 🟩 Bagaimana caramu kerja sama dengan Tim Produk? Bagaimana memastikan dirimu paham dengan produk requirement yang diminta?
 - 🟩 Bagaimana caramu kerja sama dengan Tim Designer? Bagaimana kalau Tim Designer mengubah design mereka di tengah jalan? Bagaimana kalau design yang sudah dibuat ternyata susah diimplementasi secara teknis?
 - 🟩 Bagaimana caramu kerja sama dengan Backend? Satu sprint bareng jalan? Atau Backend selesai dulu baru Frontend?
+
+## 💌 Saran pribadi
+
+Memang kemungkinan interviewer-mu akan menanyakan hal yang berbeda dari yang biasanya ditanyakan oleh saya. 
+Tapi setidaknya daftar di atas bisa sedikit jadi *benchmark* buat dirimu untuk mempersiapkan proses interview.
+Apakah dirimu masih merasa kesulitan menjelaskan poin-poin di atas kalau memang ditanya hal yang sama?
+
+Kalau diperlukan, tulis jawaban-jawabanmu dan atur agar penjelasanmu cukup mudah dipahami.
+Salah satu yang bisa meningkatkan kepercayaan diri dalam menjawab saat diinterview adalah karena memang sudah menguasai materi dan tau dengan baik mengenai hal yang ditanyakan oleh si interviewer.
+
+Tau pengertian secara *text-book* saja bisa jadi tidak cukup, karena pertanyaannya kemungkinan besar akan di *follow up* lebih dalam berdasarkan jawabanmu.
+Tiap teknologi biasanya punya *use case* yang berbeda yang coba diselesaikan, jadi bisa mengerti kapan kita harus pakai dan kelebihan serta kekurangan teknologi tersebut akan membantu dalam memberikan jawaban yang baik.
 
 **🤺 Jadi, kapan nih kita interview?**
 
