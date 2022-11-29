@@ -12,7 +12,7 @@ import CommentBox from '@/components/CommentBox'
 import ShareArticle from '@/components/ShareBox'
 import Related from '@/components/Post/Related'
 
-import LayoutArticle from '@/components/Layout/Default'
+import LayoutArticle from '@/components/Layout/Article'
 
 import { getPostBySlug, getAllPosts, getRelatedPost } from '@/lib/api'
 import { SITE_METADATA } from '@/lib/constants'

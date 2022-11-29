@@ -197,3 +197,8 @@
   user-select: none;
   opacity: 0.5;
 }
+
+.content-container {
+  width: 100%;
+  max-width: 768px;
+}

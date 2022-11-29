@@ -4,18 +4,18 @@ import DateFormatter from '@/components/Date'
 import CoverImage from '@/components/Post/Cover'
 import Tags from '@/components/Tags'
 
-export default function PostCard({ title, date, excerpt, slug, coverImage, tags, lang = 'id' }) {
+export default function PostCard({ title, date, excerpt, slug, coverImage, tags, lang = 'id', small = false }) {
   const hrefSlug = lang === 'id' ? '/[slug]' : '/en/[slug]'
   const hrefSlugTag = lang === 'id' ? '/tag/[tag]' : '/en/tag/[tag]'
 
   return (
     <div className="relative rounded-lg overflow-hidden bg-gray-100 dark:bg-gray-800">
       <CoverImage title={title} src={coverImage} slug={slug} lang={lang} />
-      <div className="p-4">
+      <div className="px-4 pb-4">
         <div className="text-gray-600 dark:text-gray-200">
           <DateFormatter dateString={date} />
         </div>
-        <h2 className="font-heading font-bold text-gradient text-3xl mb-3">
+        <h2 className={`font-heading tracking-tighter leading-tight font-bold text-gradient my-2 ${small ? "text-xl" : "text-3xl"}`}>
           <Link as={`/${slug}`} href={hrefSlug}>
             <a>{title}</a>
           </Link>

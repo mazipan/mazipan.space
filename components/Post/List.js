@@ -1,6 +1,6 @@
 import PostCard from '@/components/Post/Card'
 
-export default function PostList ({ posts, showExcerpt, lang = 'id' }) {
+export default function PostList ({ posts, showExcerpt, lang = 'id', small = false }) {
   return (
     <>
       {posts.map((post) => (
@@ -14,6 +14,7 @@ export default function PostList ({ posts, showExcerpt, lang = 'id' }) {
           excerpt={showExcerpt ? post.excerpt : ''}
           tags={post.tags}
           lang={lang}
+          small={small}
         />
       ))}
     </>

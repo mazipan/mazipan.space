@@ -58,7 +58,7 @@ export default function HeroPost({ posts, lang = 'id' }) {
                     <div className="text text-gray-600 dark:text-gray-200">
                       <DateFormatter dateString={date} />
                     </div>
-                    <h2 className="font-heading font-bold text-gradient text-3xl tracking-tighter leading-tight">
+                    <h2 className="font-heading font-bold text-gradient text-2xl tracking-tighter leading-tight">
                       <Link as={`/${slug}`} href={hrefSlug}>
                         <a className="hover:underline">{title}</a>
                       </Link>
