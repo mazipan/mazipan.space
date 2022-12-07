@@ -29,8 +29,7 @@ export default function AboutPage() {
             </p>
             <br />
             <p>
-              I build the web using any JavaScript framework, but I have some professional experiences with React.js and Vue.js.
-              I am quite familiar with the automated testing in the frontend.
+              Mostly working in the Infra for the frontend, setuping new project from zero, improving the developer experience, managing the build tools, reshape the application architecture. I have been working with the legacy app and evolve it incrementally for many times.
             </p>
             <br />
             <p>
