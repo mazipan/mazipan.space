@@ -6,6 +6,7 @@ import ZapIcon from '@/components/Icons/MenuZap'
 import MicIcon from '@/components/Icons/MenuMic'
 import InfoIcon from '@/components/Icons/MenuInfo'
 import MenuBook from '@/components/Icons/MenuBook'
+import MenuBookmark from '@/components/Icons/MenuBookmark'
 
 import useLang from '@/hooks/useLang'
 import useTheme from '@/hooks/useTheme'
@@ -26,6 +27,12 @@ export default function Header () {
           <a className="text-link hidden items-center md:flex md:mr-4 font-bold">
             <MenuBook />
             <span className="pl-2">TIL</span>
+          </a>
+        </Link>
+        <Link href="/bookmarks">
+          <a className="text-link hidden items-center md:flex md:mr-4 font-bold">
+            <MenuBookmark />
+            <span className="pl-2">Bookmarks</span>
           </a>
         </Link>
         <Link href="/talks">
