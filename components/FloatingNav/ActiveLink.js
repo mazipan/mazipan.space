@@ -7,7 +7,7 @@ function ActiveLink({ children, href, flex }) {
 
   return (
     <Link href={href} passHref>
-      <a className={`py-2 px-4 font-bold flex items-center ${flex ? '' : 'flex-col'} ${isActive ? 'text-red-500' : ''}`}>
+      <a className={`rounded-md p-4 font-bold flex items-center ${flex ? '' : 'flex-col'} ${isActive ? 'text-red-500' : ''}`}>
         {children}
       </a>
     </Link>

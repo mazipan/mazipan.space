@@ -6,6 +6,7 @@ import MicIcon from '@/components/Icons/MenuMic'
 import InfoIcon from '@/components/Icons/MenuInfo'
 import HomeIcon from '@/components/Icons/Home'
 import MenuBook from '@/components/Icons/MenuBook'
+import MenuBookmark from '@/components/Icons/MenuBookmark'
 import MenuVertical from '@/components/Icons/MenuVertical'
 
 import ActiveLink from './ActiveLink'
@@ -30,32 +31,38 @@ export default function FloatingNav() {
             <MenuBook /> {'TIL'}
           </>
         </ActiveLink>
-        <ActiveLink href="/talks">
+        <ActiveLink href="/bookmarks">
           <>
-            <MicIcon /> {'Talks'}
+            <MenuBookmark /> {'Bookmarks'}
           </>
         </ActiveLink>
-        <ActiveLink href="/speed">
+        <ActiveLink href="/about">
           <>
-            <ZapIcon />
-            {'Speed'}
+            <InfoIcon />
+            <span className="pl-2">About</span>
           </>
         </ActiveLink>
         <button onClick={handleClickMore} className="relative py-2 px-4 font-bold flex flex-col items-center">
           <MenuVertical />
           {'More'}
 
-          <div className={`${showMoreMenu ? 'block' : 'hidden'} absolute bottom-16 right-0 bg-gray-100 dark:bg-gray-900`}>
+          <div className={`${showMoreMenu ? 'block' : 'hidden'} absolute bottom-20 right-4 bg-gray-100 dark:bg-gray-900 shadow-lg rounded-md`}>
+            <ActiveLink href="/talks" flex>
+              <>
+                <MicIcon />
+                <span className="pl-2">Talks</span>
+              </>
+            </ActiveLink>
+            <ActiveLink href="/speed" flex>
+              <>
+                <ZapIcon />
+                <span className="pl-2">Speed</span>
+              </>
+            </ActiveLink>
             <ActiveLink href="/support" flex>
               <>
                 <LoveIcon />
                 <span className="pl-2">Support</span>
-              </>
-            </ActiveLink>
-            <ActiveLink href="/about" flex>
-              <>
-                <InfoIcon />
-                <span className="pl-2">About</span>
               </>
             </ActiveLink>
           </div>
