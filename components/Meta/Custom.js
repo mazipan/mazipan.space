@@ -3,6 +3,7 @@ import Head from 'next/head'
 export default function Meta ({ title, description, url, coverImage, tag }) {
   return (
     <Head>
+      <link rel="pingback" href={`https://webmention.io/webmention?forward=${url}`} />
       <title key="title">{title}</title>
       <meta key="description" name="description" content={description} />
 
