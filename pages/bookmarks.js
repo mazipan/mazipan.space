@@ -5,7 +5,9 @@ import BOOKMARKS from '@/lib/bookmarks'
 
 const BADGE_COLOR_MAP = {
   website: "bg-red-100 text-red-600",
-  article: "bg-blue-100 text-blue-600"
+  article: "bg-blue-100 text-blue-600",
+  newletter: "bg-green-100 text-green-600",
+  tools: "bg-violet-100 text-violet-600"
 }
 
 export default function BookamrksPage() {
