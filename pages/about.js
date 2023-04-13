@@ -29,13 +29,13 @@ export default function AboutPage() {
             </p>
             <br />
             <p>
-              Mostly working in the Infra for the frontend, setuping new project from zero, improving the developer experience, managing the build tools, reshape the application architecture. I have been working with the legacy app and evolve it incrementally for many times.
+              I mostly working in the Infra for the frontend such as setuping the new project from scratch, improving the existing developer experience, managing the build tools for the frontend projects and also reshape the application architecture completely. I have been working with the legacy app multiple times and have a real track record to evolve it incrementally.
             </p>
             <br />
             <p>
-              Outside my daily job as a full-time employee, I also build a close connection with
+              Outside my job as a full-time employee, I also build a close connection with
               many programmer communities in Indonesia to giving back my limited knowledge and
-              experience in the web development topic. I help kicking-off a project
+              experience, mainly in the web development topic. I do help kicking-off the project
               for Vue.js Indonesia, translating the documentation to the Indonesian language 🇮🇩, you can check
               it on{' '}
               <a
