@@ -23,7 +23,7 @@ export default function Index () {
                 <span className="mr-2">👉</span>
                 <a
                   className="text-red-500 hover:underline pr-2 md:pr-4"
-                  href="https://trakteer.id/mazipan/tip?utm_source=github"
+                  href="https://trakteer.id/mazipan/tip?utm_source=mazipan.space"
                   rel="nofollow"
                 >
                   <span className="mr-2">🇮🇩</span> Trakteer
@@ -33,7 +33,17 @@ export default function Index () {
                 <span className="mr-2">👉</span>
                 <a
                   className="text-red-500 hover:underline pr-2 md:pr-4"
-                  href="https://www.buymeacoffee.com/mazipan?utm_source=github"
+                  href="https://www.nihbuatjajan.com/mazipan?utm_source=mazipan.space"
+                  rel="nofollow"
+                >
+                  <span className="mr-2">🇮🇩</span> NihBuatJajan
+                </a>
+              </li>
+              <li>
+                <span className="mr-2">👉</span>
+                <a
+                  className="text-red-500 hover:underline pr-2 md:pr-4"
+                  href="https://www.buymeacoffee.com/mazipan?utm_source=mazipan.space"
                   rel="nofollow"
                 >
                   <span className="mr-2">🌍</span> BuyMeACoffe
@@ -53,24 +63,14 @@ export default function Index () {
                 <span className="mr-2">👉</span>
                 <a
                   className="text-red-500 hover:underline pr-2 md:pr-4"
-                  href="https://www.paypal.me/mazipan?utm_source=github"
+                  href="https://www.paypal.me/mazipan?utm_source=mazipan.space"
                   rel="nofollow"
                 >
                   <span className="mr-2">🌍</span> Paypal
                 </a>
               </li>
             </ul>
-            
-            <div className="flex gap-2">
-              <a href="https://www.nihbuatjajan.com/mazipan" target="_blank" rel="noreferrer noopener">
-                <img src="https://d4xyvrfd64gfm.cloudfront.net/buttons/default-cta.png" alt="Nih buat jajan" style={{height: '40px !important'}} />
-              </a>
 
-              <a href="https://trakteer.id/mazipan" target="_blank" rel="noreferrer noopener">
-                <img id="wse-buttons-preview" src="https://cdn.trakteer.id/images/embed/trbtn-red-1.png" height={40} style={{border: '0px', height: '40px'}} alt="Trakteer Saya" />
-              </a>
-            </div>
-            
           </div>
         </>
       </LayoutArticle>
