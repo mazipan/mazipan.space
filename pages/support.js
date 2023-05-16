@@ -62,11 +62,11 @@ export default function Index () {
             </ul>
             
             <div className="flex gap-2">
-              <a href="https://www.nihbuatjajan.com/mazipan" target="_blank">
+              <a href="https://www.nihbuatjajan.com/mazipan" target="_blank" rel="noreferrer noopener">
                 <img src="https://d4xyvrfd64gfm.cloudfront.net/buttons/default-cta.png" alt="Nih buat jajan" style={{height: '40px !important'}} />
               </a>
 
-              <a href="https://trakteer.id/mazipan" target="_blank">
+              <a href="https://trakteer.id/mazipan" target="_blank" rel="noreferrer noopener">
                 <img id="wse-buttons-preview" src="https://cdn.trakteer.id/images/embed/trbtn-red-1.png" height={40} style={{border: '0px', height: '40px'}} alt="Trakteer Saya" />
               </a>
             </div>
