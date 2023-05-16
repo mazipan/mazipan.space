@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-html-link-for-pages */
 import { Fragment } from 'react'
 
 import Meta from '@/components/Meta/Custom'
