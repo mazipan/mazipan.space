@@ -7,8 +7,7 @@ published: true
 featured: false
 tags: [interview, frontend]
 coverImage: /thumbnail/open-interview/pexels-tima-miroshnichenko-5336951.jpg
-lang: id
-enready: false
+lang: en
 ---
 
 This article will reveal some of my secret (*not really secret) questions I will ask to the candidate that applying for Frontend Engineer. I've been become an Inteviewer for many interview sessions when I was in a full-time job for some e-commerce companies in Indonesia.

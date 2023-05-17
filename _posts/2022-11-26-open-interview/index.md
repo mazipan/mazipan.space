@@ -8,7 +8,7 @@ featured: false
 tags: [interview, frontend]
 coverImage: /thumbnail/open-interview/pexels-tima-miroshnichenko-5336951.jpg
 lang: id
-enready: false
+enready: true
 ---
 
 Artikel ini secara terbuka akan memberikan berbagai daftar pertanyaan yang umumnya akan saya tanyakan, kalau secara tidak sengaja kalian ketemu saya pada satu sesi interview spesifik untuk posisi Frontend Engineer.
