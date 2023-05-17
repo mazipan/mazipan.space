@@ -21,7 +21,7 @@ Artikel ini secara terbuka akan memberikan berbagai daftar pertanyaan yang umumn
 
 ## 🧑‍🏫 Proses Interview Soft. Engineer Secara Umum
 
-Sebelum saya mulai *breakdown* berbagai pertanyaan yang biasa saya tanyakan, ada baiknya kalian memahami dulu proses interview software engineer secara umum. 
+Sebelum saya mulai *breakdown* berbagai pertanyaan yang biasa saya tanyakan, ada baiknya kalian memahami dulu proses interview software engineer secara umum.
 Kalian bisa memahaminya dengan menonton video di YouTube Channelnya [Gogo](https://twitter.com/lwastuargo) mengenai [Gimana sih proses interview software engineer?](https://www.youtube.com/watch?v=gczDiFOWLOY)
 Kalau belum sempat nonton, sempatkan buat nonton dulu. Jangan lupa klik "Laik" dan "Sabskreb" 👋
 
@@ -84,15 +84,9 @@ Berikut adalah daftar berbagai pertanyaan umum yang kemungkinan saya tanyakan:
 - 🟩 Bagaimana caranya kalau kamu diminta mempercepat waktu yang diperlukan oleh engineer dalam menyelesaikan task, dari mulai development sampai ke production?
 - 🟩 Bagaimana membuat aplikasi yang menampilkan *Live Comments* dari pengguna? Pendekatan seperti apa yang kamu ambil?
 
-### 🤝 Teamwork
-
-- 🟩 Bagaimana caramu kerja sama dengan Tim Produk? Bagaimana memastikan dirimu paham dengan produk requirement yang diminta?
-- 🟩 Bagaimana caramu kerja sama dengan Tim Designer? Bagaimana kalau Tim Designer mengubah design mereka di tengah jalan? Bagaimana kalau design yang sudah dibuat ternyata susah diimplementasi secara teknis?
-- 🟩 Bagaimana caramu kerja sama dengan Backend? Satu sprint bareng jalan? Atau Backend selesai dulu baru Frontend?
-
 ## 💌 Saran pribadi
 
-Memang kemungkinan interviewer-mu akan menanyakan hal yang berbeda dari yang biasanya ditanyakan oleh saya. 
+Memang kemungkinan interviewer-mu akan menanyakan hal yang berbeda dari yang biasanya ditanyakan oleh saya.
 Tapi setidaknya daftar di atas bisa sedikit jadi *benchmark* buat dirimu untuk mempersiapkan proses interview.
 Apakah dirimu masih merasa kesulitan menjelaskan poin-poin di atas kalau memang ditanya hal yang sama?
 
