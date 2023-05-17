@@ -51,10 +51,9 @@
   font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
 }
 
-.markdown pre[class="shiki"] {
-  @apply p-4 rounded-lg overflow-auto relative;
+.markdown pre.shiki {
+  @apply pt-6 rounded-lg overflow-auto relative;
 
-  padding-top: 1.5rem;
   font-size: 0.875rem;
   line-height: 1rem;
 }
@@ -68,7 +67,7 @@
   background-color: rgb(141 92 255 / 30%);
 }
 
-.markdown pre[class="shiki"]::before {
+.markdown pre.shiki::before {
   @apply absolute top-0 left-2 rounded-b-md px-2 py-0.5 text-xs bg-indigo-300 text-black;
   content: attr(data-lang);
 }
