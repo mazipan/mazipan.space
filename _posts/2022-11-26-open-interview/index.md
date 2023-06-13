@@ -82,6 +82,14 @@ console.log(memoizedAddFn(1, 2)) // => print 3, but should not call the origin f
 console.log(memoizedAddFn(1, 2)) // => print 3, but should not call the origin fn
 ```
 
+⏩ **Contains duplicate**
+
+[Baca soal ini di LeetCode](https://leetcode.com/problems/contains-duplicate/)
+
+⏩ **Intersection of two Array**
+
+[Baca soal ini di LeetCode](https://leetcode.com/explore/interview/card/top-interview-questions-easy/92/array/674/)
+
 ## 📝 Pertanyaan Umum
 
 Berikut adalah daftar berbagai pertanyaan umum yang kemungkinan saya tanyakan:
