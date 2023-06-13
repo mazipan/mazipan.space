@@ -36,6 +36,40 @@ Bagian ini saya akan *run* pertama, saya biasanya akan meminta Live Coding untuk
 
 Bisa nonton video dari Gogo tentang [Interview koding algoritma dan struktur data](https://www.youtube.com/watch?v=MkQEaIZkhYQ&t=484s) dan [Mock interview - koding algoritma dan struktur data](https://www.youtube.com/watch?v=8s1Vh_7symo).
 
+Beberapa ide Live Coding sederhana:
+
+⏩ Membuat replika library `classnames`
+
+Fungsi untuk men-generate string classname, contoh test case:
+
+```js
+
+classNames('foo', 'bar'); // => 'foo bar'
+
+classNames('foo', { bar: true }); // => 'foo bar'
+
+classNames({ 'foo-bar': true }); // => 'foo-bar'
+
+classNames({ 'foo-bar': false }); // => ''
+
+classNames({ foo: true }, { bar: true }); // => 'foo bar'
+
+classNames({ foo: true, bar: true }); // => 'foo bar'
+
+// lots of arguments of various types
+
+classNames('foo', { bar: true, duck: false }, 'baz', { quux: true }); // => 'foo bar baz quux'
+
+// other falsy values are just ignored
+
+classNames(null, false, 'bar', undefined, 0, 1, { baz: null }, ''); // => 'bar 1'
+
+var arr = ['b', { c: true, d: false }];
+
+classNames('a', arr); // => 'a b c'
+
+```
+
 ## 📝 Pertanyaan Umum
 
 Berikut adalah daftar berbagai pertanyaan umum yang kemungkinan saya tanyakan:
