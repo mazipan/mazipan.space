@@ -36,38 +36,50 @@ Bagian ini saya akan *run* pertama, saya biasanya akan meminta Live Coding untuk
 
 Bisa nonton video dari Gogo tentang [Interview koding algoritma dan struktur data](https://www.youtube.com/watch?v=MkQEaIZkhYQ&t=484s) dan [Mock interview - koding algoritma dan struktur data](https://www.youtube.com/watch?v=8s1Vh_7symo).
 
-Beberapa ide Live Coding sederhana:
+### Beberapa contoh soal Live Coding untuk Frontend
 
-⏩ Membuat replika library `classnames`
+⏩ **Membuat replika library `classnames`**
 
-Fungsi untuk men-generate string classname, contoh test case:
+Buatlah fungsi utility untuk men-generate string classname, kalian bisa melihat beberapa contoh test case untuk fungsi ini:
 
 ```js
-
 classNames('foo', 'bar'); // => 'foo bar'
-
 classNames('foo', { bar: true }); // => 'foo bar'
-
 classNames({ 'foo-bar': true }); // => 'foo-bar'
-
 classNames({ 'foo-bar': false }); // => ''
-
 classNames({ foo: true }, { bar: true }); // => 'foo bar'
-
 classNames({ foo: true, bar: true }); // => 'foo bar'
 
 // lots of arguments of various types
-
 classNames('foo', { bar: true, duck: false }, 'baz', { quux: true }); // => 'foo bar baz quux'
 
 // other falsy values are just ignored
-
 classNames(null, false, 'bar', undefined, 0, 1, { baz: null }, ''); // => 'bar 1'
 
 var arr = ['b', { c: true, d: false }];
-
 classNames('a', arr); // => 'a b c'
+```
 
+⏩ **Membuat fungsi untuk Memoize**
+
+Buatlah fungsi yang bisa melakukan Memoize/Cache terhadap suatu argumen fungsi, tujuannya agar suatu fungsi tidak perlu memanggil fungsi aslinya untuk kali ke-dua dan seterusnya.
+
+Contoh test case:
+
+```js
+// write your Memoize fn here
+function memoize () {}
+
+function add (a, b) {
+  console.log('Call origin Add function', a, b)
+  return a + b
+}
+
+const memoizedAddFn = memoize(add)
+
+console.log(memoizedAddFn(1, 2)) // => print 3, but should call the origin fn
+console.log(memoizedAddFn(1, 2)) // => print 3, but should not call the origin fn
+console.log(memoizedAddFn(1, 2)) // => print 3, but should not call the origin fn
 ```
 
 ## 📝 Pertanyaan Umum
