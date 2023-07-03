@@ -14,7 +14,58 @@ import {
 
 const ChartTimeline = dynamic(() => import('@/components/ChartTimeline'), { ssr: false })
 
-export default function ScoreCard ({
+const METRICS = [{
+  title: "PERF",
+  key: "perf",
+  min: 0,
+  max: 100,
+  classGenerator: getPerfColorClass
+}, {
+  title: "FID",
+  key: "fid",
+  min: 0,
+  max: 100,
+  classGenerator: getFIDColorClass,
+  formatter: formatThousand
+}, {
+  title: "LCP",
+  key: "lcp",
+  min: 0,
+  max: 10000,
+  classGenerator: getLCPColorClass,
+  formatter: formatThousand
+}, {
+  title: "CLS",
+  key: "cls",
+  min: 0,
+  max: 1,
+  classGenerator: getCLSColorClass,
+}, {
+  title: "FCP",
+  key: "fcp",
+  min: 0,
+  max: 3000,
+  formatter: formatThousand
+}, {
+  title: "TTI",
+  key: "tti",
+  min: 0,
+  max: 15000,
+  formatter: formatThousand
+}, {
+  title: "Total Request",
+  key: "req",
+  min: 0,
+  max: 100,
+}, {
+  title: "Total Size",
+  key: "size",
+  min: 0,
+  max: 1000,
+  unit: 'kB'
+}]
+
+export default function ScoreCard({
   activeDevice,
   reportDesktop,
   allDataDesktop,
@@ -27,236 +78,55 @@ export default function ScoreCard ({
 
   return (
     <div className="mb-4 grid grid-cols-1 md:grid-cols-4">
-      <div className="rounded text-center">
-        <div className="text-2xl font-bold">PERF</div>
-        <div className={`text-2xl lg:text-3xl font-bold text-center grid ${isAll ? 'grid-cols-2' : 'grid-cols-1'}`}>
-          {!isMobile && (
-            <div className={`${getPerfColorClass(reportDesktop.perf)} flex justify-center`}>
-              <DesktopIcon /> {reportDesktop.perf}
-            </div>
-          )}
-          {!isDesktop && (
-            <div className={`${getPerfColorClass(reportMobile.perf)} flex justify-center`}>
-              <PhoneIcon /> {reportMobile.perf}
-            </div>
-          )}
-        </div>
-        <div className="p-2" style={{ minHeight: 200 }}>
-          <ChartTimeline
-            activeDevice={activeDevice}
-            dataDesktop={allDataDesktop}
-            dataMobile={allDataMobile}
-            title="Perf"
-            dataKey="perf"
-            min={0}
-            max={100}
-          />
-        </div>
-      </div>
+      {METRICS.map(metric => (
+        <div className="rounded text-center" key={metric.key}>
+          <div className="text-2xl font-bold">{metric.title}</div>
+          <div className={`text-2xl lg:text-3xl font-bold text-center grid ${isAll ? 'grid-cols-2' : 'grid-cols-1'}`}>
+            {!isMobile && (
+              <div className={`${metric.classGenerator ? metric.classGenerator(reportDesktop[metric.key]) : 'text-gray-800 dark:text-gray-200'} flex justify-center items-center`}>
+                <DesktopIcon />
+                <div>
+                  <span>
+                    {metric.formatter ? metric.formatter(reportDesktop[metric.key]) : reportDesktop[metric.key]}</span>
 
-      <div className="rounded text-center">
-        <div className="text-2xl font-bold">FID</div>
-        <div className={`text-2xl lg:text-3xl font-bold text-center grid ${isAll ? 'grid-cols-2' : 'grid-cols-1'}`}>
-          {!isMobile && (
-            <div className={`${getFIDColorClass(reportDesktop.fid)} flex justify-center`}>
-              <DesktopIcon /> {formatThousand(reportDesktop.fid)}
-            </div>
-          )}
-          {!isDesktop && (
-            <div className={`${getFIDColorClass(reportMobile.fid)} flex justify-center`}>
-              <PhoneIcon /> {formatThousand(reportMobile.fid)}
-            </div>
-          )}
-        </div>
-        <div className="p-2" style={{ minHeight: 200 }}>
-          <ChartTimeline
-            activeDevice={activeDevice}
-            dataDesktop={allDataDesktop}
-            dataMobile={allDataMobile}
-            title="FID"
-            dataKey="fid"
-            min={0}
-            max={100}
-          />
-        </div>
-      </div>
+                  {metric.unit ? (
+                    <small className={'text-lg md:text-xl font-bold'}>
+                      {metric.unit}
+                    </small>
+                  ) : null}
 
-      <div className="rounded text-center">
-        <div className="text-2xl font-bold">LCP</div>
-        <div className={`text-2xl lg:text-3xl font-bold text-center grid ${isAll ? 'grid-cols-2' : 'grid-cols-1'}`}>
-          {!isMobile && (
-            <div className={`${getLCPColorClass(reportDesktop.lcp)} flex justify-center`}>
-              <DesktopIcon /> {formatThousand(reportDesktop.lcp)}
-            </div>
-          )}
-          {!isDesktop && (
-            <div className={`${getLCPColorClass(reportMobile.lcp)} flex justify-center`}>
-              <PhoneIcon /> {formatThousand(reportMobile.lcp)}
-            </div>
-          )}
-        </div>
-        <div className="p-2" style={{ minHeight: 200 }}>
-          <ChartTimeline
-            activeDevice={activeDevice}
-            dataDesktop={allDataDesktop}
-            dataMobile={allDataMobile}
-            title="LCP"
-            dataKey="lcp"
-            min={0}
-            max={6000}
-          />
-        </div>
-      </div>
-
-      <div className="rounded text-center">
-        <div className="text-2xl font-bold">CLS</div>
-        <div className={`text-2xl lg:text-3xl font-bold text-center grid ${isAll ? 'grid-cols-2' : 'grid-cols-1'}`}>
-          {!isMobile && (
-            <div className={`${getCLSColorClass(reportDesktop.cls)} flex justify-center`}>
-              <DesktopIcon /> {reportDesktop.cls}
-            </div>
-          )}
-          {!isDesktop && (
-            <div className={`${getCLSColorClass(reportMobile.cls)} flex justify-center`}>
-              <PhoneIcon /> {reportMobile.cls}
-            </div>
-          )}
-        </div>
-        <div className="p-2" style={{ minHeight: 200 }}>
-          <ChartTimeline
-            activeDevice={activeDevice}
-            dataDesktop={allDataDesktop}
-            dataMobile={allDataMobile}
-            title="CLS"
-            dataKey="cls"
-            min={0}
-            max={1}
-          />
-        </div>
-      </div>
-
-      <div className="rounded text-center">
-        <div className="text-2xl font-bold">FCP</div>
-        <div className={`text-2xl lg:text-3xl font-bold text-center grid ${isAll ? 'grid-cols-2' : 'grid-cols-1'}`}>
-          {!isMobile && (
-            <div className={'flex justify-center'}>
-              <DesktopIcon /> {formatThousand(reportDesktop.fcp)}
-            </div>
-          )}
-          {!isDesktop && (
-            <div className={'flex justify-center'}>
-              <PhoneIcon /> {formatThousand(reportMobile.fcp)}
-            </div>
-          )}
-        </div>
-        <div className="p-2" style={{ minHeight: 200 }}>
-          <ChartTimeline
-            activeDevice={activeDevice}
-            dataDesktop={allDataDesktop}
-            dataMobile={allDataMobile}
-            title="FCP"
-            dataKey="fcp"
-            min={0}
-            max={3000}
-          />
-        </div>
-      </div>
-      <div className="rounded text-center">
-        <div className="text-2xl font-bold">TTI</div>
-        <div className={`text-2xl lg:text-3xl font-bold text-center grid ${isAll ? 'grid-cols-2' : 'grid-cols-1'}`}>
-          {!isMobile && (
-            <div className={'flex justify-center'}>
-              <DesktopIcon /> {formatThousand(reportDesktop.tti)}
-            </div>
-          )}
-          {!isDesktop && (
-            <div className={'flex justify-center'}>
-              <PhoneIcon /> {formatThousand(reportMobile.tti)}
-            </div>
-          )}
-        </div>
-        <div className="p-2" style={{ minHeight: 200 }}>
-          <ChartTimeline
-            activeDevice={activeDevice}
-            dataDesktop={allDataDesktop}
-            dataMobile={allDataMobile}
-            title="TTI"
-            dataKey="tti"
-            min={0}
-            max={6000}
-          />
-        </div>
-      </div>
-
-      <div className="rounded text-center">
-        <div className="text-2xl font-bold">Total Request</div>
-        <div className={`text-2xl lg:text-3xl font-bold text-center grid ${isAll ? 'grid-cols-2' : 'grid-cols-1'}`}>
-          {!isMobile && (
-            <div className={'flex justify-center'}>
-              <DesktopIcon /> {reportDesktop.req}
-            </div>
-          )}
-          {!isDesktop && (
-            <div className={'flex justify-center'}>
-              <PhoneIcon /> {reportMobile.req}
-            </div>
-          )}
-        </div>
-        <div className="p-2" style={{ minHeight: 200 }}>
-          <ChartTimeline
-            activeDevice={activeDevice}
-            dataDesktop={allDataDesktop}
-            dataMobile={allDataMobile}
-            title="Request"
-            dataKey="req"
-            min={0}
-            max={100}
-          />
-        </div>
-      </div>
-
-      <div className="rounded text-center">
-        <div className="text-2xl font-bold">Total Size</div>
-        <div className={`text-2xl lg:text-3xl font-bold text-center grid ${isAll ? 'grid-cols-2' : 'grid-cols-1'}`}>
-          {!isMobile && (
-            <div className={'flex justify-center'}>
-              <DesktopIcon />
-              <div>
-                <span className={'text-6xl md:text-2xl lg:text-4xl font-bold'}>
-                  {reportDesktop.size}
-                </span>
-                <small className={'text-lg md:text-xl font-bold'}>
-                  kB
-                </small>
+                </div>
               </div>
-            </div>
-          )}
-          {!isDesktop && (
-            <div className={'flex justify-center'}>
-              <PhoneIcon />
-              <div>
-                <span className={'text-2xl lg:text-3xl font-bold'}>
-                  {reportMobile.size}
-                </span>
-                <small className={'text-lg md:text-xl font-bold'}>
-                  kB
-                </small>
+            )}
+            {!isDesktop && (
+              <div className={`${metric.classGenerator ? metric.classGenerator(reportMobile[metric.key]) : 'text-gray-800 dark:text-gray-200'} flex justify-center items-center`}>
+                <PhoneIcon />
+                <div>
+                  <span>
+                    {metric.formatter ? metric.formatter(reportMobile[metric.key]) : reportMobile[metric.key]}</span>
+
+                  {metric.unit ? (
+                    <small className={'text-lg md:text-xl font-bold'}>
+                      {metric.unit}
+                    </small>
+                  ) : null}
+                </div>
               </div>
-            </div>
-          )}
+            )}
+          </div>
+          <div className="p-2" style={{ minHeight: 200 }}>
+            <ChartTimeline
+              activeDevice={activeDevice}
+              dataDesktop={allDataDesktop}
+              dataMobile={allDataMobile}
+              title={metric.title}
+              dataKey={metric.key}
+              min={metric.min}
+              max={metric.max}
+            />
+          </div>
         </div>
-        <div className="p-2" style={{ minHeight: 200 }}>
-          <ChartTimeline
-            activeDevice={activeDevice}
-            dataDesktop={allDataDesktop}
-            dataMobile={allDataMobile}
-            title="Size"
-            dataKey="size"
-            min={0}
-            max={1000}
-          />
-        </div>
-      </div>
+      ))}
     </div>
   )
 }
