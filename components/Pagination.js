@@ -3,11 +3,12 @@ import Link from 'next/link'
 export default function Pagination ({ prev, next, page, pages, lang = 'id' }) {
   const hrefSlug = lang === 'id' ? '/page/[page]' : '/en/page/[page]'
   const asSlug = lang === 'id' ? '/page/' : '/en/page/'
+  const homeLink = lang === 'id' ? '/' : '/en/'
 
   return (
     <div className="flex justify-between items-center mb-8">
       {prev ? (
-        <Link as={`${asSlug}${prev}`} href={hrefSlug}>
+        <Link as={prev === 1 ? homeLink : `${asSlug}${prev}`} href={prev === 1 ? homeLink : hrefSlug}>
           <a aria-label="Previous page">
             <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-l focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-offset-2">
               &lt; Prev
@@ -24,7 +25,7 @@ export default function Pagination ({ prev, next, page, pages, lang = 'id' }) {
         {pages &&
           pages.length > 0 &&
           pages.map((p, idx) => (
-            <Link as={`${asSlug}${p}`} href={hrefSlug} key={p}>
+            <Link as={p === 1 ? homeLink : `${asSlug}${p}`} href={p === 1 ? homeLink : hrefSlug} key={p}>
               <a aria-label={`Page ${p}`}>
                 <button
                   className={`${
