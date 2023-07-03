@@ -20,7 +20,7 @@ export default function FloatingNav() {
 
   return (
     <nav className="md:hidden fixed w-full bottom-0 left-0 z-20 bg-gray-100 dark:bg-gray-900 flex items-center justify-between shadow-medium border-top-gradient">
-      <div className="w-full flex items-center justify-between">
+      <div className="w-full flex items-center justify-between text-sm">
         <ActiveLink href="/">
           <>
             <HomeIcon /> {'Home'}
@@ -38,28 +38,27 @@ export default function FloatingNav() {
         </ActiveLink>
         <ActiveLink href="/about">
           <>
-            <InfoIcon />
-            <span className="pl-2">About</span>
+            <InfoIcon /> {'About'}
           </>
         </ActiveLink>
         <button onClick={handleClickMore} className="relative py-2 px-4 font-bold flex flex-col items-center">
           <MenuVertical />
           {'More'}
 
-          <div className={`${showMoreMenu ? 'block' : 'hidden'} absolute bottom-20 right-4 bg-gray-100 dark:bg-gray-900 shadow-lg rounded-md`}>
-            <ActiveLink href="/talks" flex>
+          <div className={`${showMoreMenu ? 'block' : 'hidden'} absolute flex flex-col justify-start bottom-20 right-4 bg-gray-100 dark:bg-gray-900 shadow-lg rounded-md`}>
+            <ActiveLink href="/talks" left inline>
               <>
                 <MicIcon />
                 <span className="pl-2">Talks</span>
               </>
             </ActiveLink>
-            <ActiveLink href="/speed" flex>
+            <ActiveLink href="/speed" left inline>
               <>
                 <ZapIcon />
                 <span className="pl-2">Speed</span>
               </>
             </ActiveLink>
-            <ActiveLink href="/support" flex>
+            <ActiveLink href="/support" left inline>
               <>
                 <LoveIcon />
                 <span className="pl-2">Support</span>

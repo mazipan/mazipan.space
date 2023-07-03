@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 import DateFormatter from '@/components/Date'
 
-export default function HeroPost({ posts, lang = 'id' }) {
+export default function FeaturedPost({ posts, lang = 'id' }) {
   const hrefSlug = lang === 'id' ? '/[slug]' : '/en/[slug]';
   const [mainPost, ...restPosts] = posts
 

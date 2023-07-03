@@ -1,6 +1,7 @@
 import Head from 'next/head'
 
-import Container from '@/components/ContainerBox'
+import Hero from '@/components/Hero'
+import ContainerBox from '@/components/ContainerBox'
 import Home from '@/components/Post/Home'
 import FeaturedPost from '@/components/FeaturedPost'
 import Pagination from '@/components/Pagination'
@@ -11,11 +12,12 @@ import { getPagedPost, getFeaturedPost } from '@/lib/api'
 export default function Index({ data, page, pages, featuredPosts }) {
   return (
     <>
-      <Layout>
-        <Head>
-          <title>🏠 Blog Irfan Maulana // mazipan.space</title>
-        </Head>
-        <Container>
+      <Head>
+        <title>🏠 Blog Irfan Maulana // mazipan.space</title>
+      </Head>
+
+      <Layout HeroComponent={<Hero />}>
+        <ContainerBox>
           {featuredPosts && (
             <>
               <h2 className="mb-2 text-3xl md:text-4xl font-heading font-bold tracking-tighter leading-tight">PERSONAL STORIES</h2>
@@ -27,7 +29,7 @@ export default function Index({ data, page, pages, featuredPosts }) {
           )}
           <Home posts={data} lang="id" />
           <Pagination next="2" pages={pages} page={page} lang="id" />
-        </Container>
+        </ContainerBox>
       </Layout>
     </>
   )

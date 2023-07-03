@@ -1,6 +1,5 @@
 import Footer from '@/components/FooterSection'
 import Meta from '@/components/Meta/Default'
-import Container from '@/components/ContainerBox'
 import HeaderDefault from '@/components/Header/Default'
 import FloatingNav from '@/components/FloatingNav/Default'
 import Decoration from '@/components/Icons/Decoration'
