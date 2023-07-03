@@ -29,7 +29,7 @@ export default function ScoreCard ({
     <div className="mb-4 grid grid-cols-1 md:grid-cols-4">
       <div className="rounded text-center">
         <div className="text-2xl font-bold">PERF</div>
-        <div className={`text-6xl md:text-2xl lg:text-4xl font-bold text-center grid ${isAll ? 'grid-cols-2' : 'grid-cols-1'}`}>
+        <div className={`text-xl md:text-2xl lg:text-3xl font-bold text-center grid ${isAll ? 'grid-cols-2' : 'grid-cols-1'}`}>
           {!isMobile && (
             <div className={`${getPerfColorClass(reportDesktop.perf)} flex justify-center`}>
               <DesktopIcon /> {reportDesktop.perf}
@@ -56,7 +56,7 @@ export default function ScoreCard ({
 
       <div className="rounded text-center">
         <div className="text-2xl font-bold">FID</div>
-        <div className={`text-6xl md:text-2xl lg:text-4xl font-bold text-center grid ${isAll ? 'grid-cols-2' : 'grid-cols-1'}`}>
+        <div className={`text-xl md:text-2xl lg:text-3xl font-bold text-center grid ${isAll ? 'grid-cols-2' : 'grid-cols-1'}`}>
           {!isMobile && (
             <div className={`${getFIDColorClass(reportDesktop.fid)} flex justify-center`}>
               <DesktopIcon /> {formatThousand(reportDesktop.fid)}
