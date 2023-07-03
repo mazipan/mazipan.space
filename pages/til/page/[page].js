@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 
 import DateFormatter from '@/components/Date'
-import Container from '@/components/ContainerBox'
+import ContainerBox from '@/components/ContainerBox'
 import Layout from '@/components/Layout/Default'
 import Tags from '@/components/Tags'
 
@@ -17,7 +17,7 @@ export default function TilPage({ data, page, next, prev }) {
         <Head>
           <title>🧘‍♂️ TIL {`: halaman ${page} // mazipan.space`}</title>
         </Head>
-        <Container>
+        <ContainerBox>
           {data.map(til => (
             <Link key={til.slug} as={`/til/${til.slug}`} href={hrefSlug}>
               <a className="relative rounded-lg overflow-hidden shadow-lg hover:shadow-medium transition-shadow duration-200s bg-white dark:bg-gray-800">
@@ -65,7 +65,7 @@ export default function TilPage({ data, page, next, prev }) {
               </button>
             )}
           </div>
-        </Container>
+        </ContainerBox>
       </Layout>
     </>
   )

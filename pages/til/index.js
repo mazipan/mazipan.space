@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 
 import DateFormatter from '@/components/Date'
-import Container from '@/components/ContainerBox'
+import ContainerBox from '@/components/ContainerBox'
 import Layout from '@/components/Layout/Default'
 import Tags from '@/components/Tags'
 
@@ -17,7 +17,7 @@ export default function TilPage({ data, next, prev }) {
         <Head>
           <title>🧘‍♂️ TIL // mazipan.space</title>
         </Head>
-        <Container>
+        <ContainerBox>
 
           <h2 className="mb-8 text-6xl md:text-7xl font-heading font-bold tracking-tighter leading-tight">
             📖 TIL
@@ -70,7 +70,7 @@ export default function TilPage({ data, next, prev }) {
               </button>
             )}
           </div>
-        </Container>
+        </ContainerBox>
       </Layout>
     </>
   )

@@ -1,6 +1,6 @@
 import Head from 'next/head'
 
-import Container from '@/components/ContainerBox'
+import ContainerBox from '@/components/ContainerBox'
 import List from '@/components/Post/List'
 import Pagination from '@/components/Pagination'
 import Layout from '@/components/Layout/Default'
@@ -14,7 +14,7 @@ export default function PagedPost ({ data, page, pages, next, prev }) {
         <Head>
           <title>Halaman {`${page} // mazipan.space`}</title>
         </Head>
-        <Container>
+        <ContainerBox>
           <section>
             <div className="grid grid-cols-1 md:grid-cols-3 md:gap-x-8 gap-y-5 md:gap-y-8 mb-16">
               {data.length > 0 && <List posts={data} lang="id" />}
@@ -22,7 +22,7 @@ export default function PagedPost ({ data, page, pages, next, prev }) {
           </section>
 
           <Pagination prev={prev} next={next} pages={pages} page={page} lang="id" />
-        </Container>
+        </ContainerBox>
       </Layout>
     </>
   )
