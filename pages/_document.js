@@ -56,7 +56,7 @@ export default class MyDocument extends Document {
           <Main />
           <NextScript />
 
-          <Script async src="https://www.googletagmanager.com/gtag/js?id=UA-25065548-7" />
+          <Script async src="https://www.googletagmanager.com/gtag/js?id=G-YJXV2DX7V8" />
           <Script id="google-analytics" strategy="afterInteractive"
           >
             {`
@@ -64,7 +64,7 @@ export default class MyDocument extends Document {
               function gtag(){window.dataLayer.push(arguments);}
               gtag('js', new Date());
 
-              gtag('config', 'UA-25065548-7');
+              gtag('config', 'G-YJXV2DX7V8');
             `}
           </Script>
 
