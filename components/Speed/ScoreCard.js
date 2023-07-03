@@ -29,7 +29,7 @@ export default function ScoreCard ({
     <div className="mb-4 grid grid-cols-1 md:grid-cols-4">
       <div className="rounded text-center">
         <div className="text-2xl font-bold">PERF</div>
-        <div className={`text-xl md:text-2xl lg:text-3xl font-bold text-center grid ${isAll ? 'grid-cols-2' : 'grid-cols-1'}`}>
+        <div className={`text-2xl lg:text-3xl font-bold text-center grid ${isAll ? 'grid-cols-2' : 'grid-cols-1'}`}>
           {!isMobile && (
             <div className={`${getPerfColorClass(reportDesktop.perf)} flex justify-center`}>
               <DesktopIcon /> {reportDesktop.perf}
@@ -56,7 +56,7 @@ export default function ScoreCard ({
 
       <div className="rounded text-center">
         <div className="text-2xl font-bold">FID</div>
-        <div className={`text-xl md:text-2xl lg:text-3xl font-bold text-center grid ${isAll ? 'grid-cols-2' : 'grid-cols-1'}`}>
+        <div className={`text-2xl lg:text-3xl font-bold text-center grid ${isAll ? 'grid-cols-2' : 'grid-cols-1'}`}>
           {!isMobile && (
             <div className={`${getFIDColorClass(reportDesktop.fid)} flex justify-center`}>
               <DesktopIcon /> {formatThousand(reportDesktop.fid)}
@@ -83,7 +83,7 @@ export default function ScoreCard ({
 
       <div className="rounded text-center">
         <div className="text-2xl font-bold">LCP</div>
-        <div className={`text-6xl md:text-2xl lg:text-4xl font-bold text-center grid ${isAll ? 'grid-cols-2' : 'grid-cols-1'}`}>
+        <div className={`text-2xl lg:text-3xl font-bold text-center grid ${isAll ? 'grid-cols-2' : 'grid-cols-1'}`}>
           {!isMobile && (
             <div className={`${getLCPColorClass(reportDesktop.lcp)} flex justify-center`}>
               <DesktopIcon /> {formatThousand(reportDesktop.lcp)}
@@ -110,7 +110,7 @@ export default function ScoreCard ({
 
       <div className="rounded text-center">
         <div className="text-2xl font-bold">CLS</div>
-        <div className={`text-6xl md:text-2xl lg:text-4xl font-bold text-center grid ${isAll ? 'grid-cols-2' : 'grid-cols-1'}`}>
+        <div className={`text-2xl lg:text-3xl font-bold text-center grid ${isAll ? 'grid-cols-2' : 'grid-cols-1'}`}>
           {!isMobile && (
             <div className={`${getCLSColorClass(reportDesktop.cls)} flex justify-center`}>
               <DesktopIcon /> {reportDesktop.cls}
@@ -137,7 +137,7 @@ export default function ScoreCard ({
 
       <div className="rounded text-center">
         <div className="text-2xl font-bold">FCP</div>
-        <div className={`text-6xl md:text-2xl lg:text-4xl font-bold text-center grid ${isAll ? 'grid-cols-2' : 'grid-cols-1'}`}>
+        <div className={`text-2xl lg:text-3xl font-bold text-center grid ${isAll ? 'grid-cols-2' : 'grid-cols-1'}`}>
           {!isMobile && (
             <div className={'flex justify-center'}>
               <DesktopIcon /> {formatThousand(reportDesktop.fcp)}
@@ -163,7 +163,7 @@ export default function ScoreCard ({
       </div>
       <div className="rounded text-center">
         <div className="text-2xl font-bold">TTI</div>
-        <div className={`text-6xl md:text-2xl lg:text-4xl font-bold text-center grid ${isAll ? 'grid-cols-2' : 'grid-cols-1'}`}>
+        <div className={`text-2xl lg:text-3xl font-bold text-center grid ${isAll ? 'grid-cols-2' : 'grid-cols-1'}`}>
           {!isMobile && (
             <div className={'flex justify-center'}>
               <DesktopIcon /> {formatThousand(reportDesktop.tti)}
@@ -190,7 +190,7 @@ export default function ScoreCard ({
 
       <div className="rounded text-center">
         <div className="text-2xl font-bold">Total Request</div>
-        <div className={`text-6xl md:text-2xl lg:text-4xl font-bold text-center grid ${isAll ? 'grid-cols-2' : 'grid-cols-1'}`}>
+        <div className={`text-2xl lg:text-3xl font-bold text-center grid ${isAll ? 'grid-cols-2' : 'grid-cols-1'}`}>
           {!isMobile && (
             <div className={'flex justify-center'}>
               <DesktopIcon /> {reportDesktop.req}
@@ -217,7 +217,7 @@ export default function ScoreCard ({
 
       <div className="rounded text-center">
         <div className="text-2xl font-bold">Total Size</div>
-        <div className={`text-6xl md:text-2xl lg:text-4xl font-bold text-center grid ${isAll ? 'grid-cols-2' : 'grid-cols-1'}`}>
+        <div className={`text-2xl lg:text-3xl font-bold text-center grid ${isAll ? 'grid-cols-2' : 'grid-cols-1'}`}>
           {!isMobile && (
             <div className={'flex justify-center'}>
               <DesktopIcon />
@@ -235,7 +235,7 @@ export default function ScoreCard ({
             <div className={'flex justify-center'}>
               <PhoneIcon />
               <div>
-                <span className={'text-6xl md:text-2xl lg:text-4xl font-bold'}>
+                <span className={'text-2xl lg:text-3xl font-bold'}>
                   {reportMobile.size}
                 </span>
                 <small className={'text-lg md:text-xl font-bold'}>
