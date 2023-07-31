@@ -1,0 +1,35 @@
+{
+  "timestamp": "2023-07-31T02:42:35.729Z",
+  "reports": [
+    {
+      "url": "https://mazipan.space/",
+      "device": "mobile",
+      "perf": 0.76,
+      "fid": 0,
+      "lcp": 3222,
+      "cls": 0.00431,
+      "fcp": 2693.25,
+      "fci": 0,
+      "tbt": 496,
+      "tti": 5579,
+      "si": 2864.62,
+      "req": 39,
+      "size": 418079
+    },
+    {
+      "url": "https://mazipan.space/",
+      "device": "desktop",
+      "perf": 0.98,
+      "fid": 0,
+      "lcp": 811.5,
+      "cls": 0.00356,
+      "fcp": 722.75,
+      "fci": 0,
+      "tbt": 104.5,
+      "tti": 1553,
+      "si": 722.75,
+      "req": 48,
+      "size": 518853
+    }
+  ]
+}
