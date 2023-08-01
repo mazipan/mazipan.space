@@ -61,8 +61,10 @@ Tapi tenang, selian fitur yang dimutilasi di atas, saya juga menyiapkan beberapa
 
 - 🟢 Audio yang makin banyak pilihannya, menggunakan [EveryAyah](https://everyayah.com/)
 - 🟢 [Fitur tasbih](https://www.baca-quran.id/tasbih/), pengingat hitungan saat Dzikir atau Wirid
+- 🟢 Bisa menandai lebih dari 1 ayat sebagai terakhir dibaca
+- 🟢 Bisa berbagi ayat dalam tulisan arabic maupun berbagi terjemahannya saja ke sosial media ataupun Twitter bila tidak mendukung
 
-Dan pastinya, "harusnya" bisa berekspektasi kalau akan ada beberapa fitur lainnya yang bisa dikirim setelah ini.
+Dan pastinya, "harusnya" bisa berekspektasi kalau akan ada beberapa fitur lainnya yang bisa dikirim setelah ini. Beberapa diantaranya bisa dijumpai di isu nomor [#234](https://github.com/mazipan/baca-quran.id/issues/234)
 
 ## Saya x Svelte dan SvelteKit
 
@@ -81,10 +83,10 @@ Pilihan ini memang disengaja, karena projek-projek ini adalah salah satu *playgr
 
 Secara garis besar saya puas dengan apa yang diberikan SvelteKit. Namun ada beberapa hal negatif yang memang masih jadi perhatian saya, diantaranya:
 
-- 🔴 Konvensi memberikan nama file dengan awalan karakter `+` ini mimpi buruk, saya pernah menghabiskan berhari-hari debug kenapa halaman saya tidak ter-ekport jadi static file padahal sudah membubuhkan `entries`, yang ternyata cuma gara-gara salah memberikan nama file.
-- 🔴 Pendekatan [membuat Sitemap](https://kit.svelte.dev/docs/seo#manual-setup-sitemaps) di dokumentasi offisial yang menurutku gak cocok untuk halaman statis
-- 🔴 `svelte:head` yang masih suka duplikat kalau router-nya dipindah lewat SPA
-- 🔴 [Cara memasang structured data](https://kit.svelte.dev/docs/seo#manual-setup-structured-data) yang belum stabil, walhasil harus pakai [workaround untuk memasang json-ld](https://navillus.dev/blog/json-ld-in-sveltekit)
+- 🔴 Konvensi memberikan nama berkas dengan awalan karakter `+` ini buat saya adalah mimpi buruk, saya pernah menghabiskan berhari-hari debug kenapa halaman saya tidak terekspor jadi file statis padahal sudah membubuhkan `entries`, yang ternyata cuma gara-gara salah memberikan nama berkas.
+- 🔴 Pendekatan [membuat Sitemap](https://kit.svelte.dev/docs/seo#manual-setup-sitemaps) di dokumentasi offisial yang menurut saya agak gak cocok untuk kasus halaman statis
+- 🔴 `svelte:head` yang masih suka duplikat kalau router-nya dipindah lewat SPA, jadi suka punya meta tag yang duplikat.
+- 🔴 [Cara memasang *structured data*](https://kit.svelte.dev/docs/seo#manual-setup-structured-data) yang belum stabil, walhasil harus pakai [*workaround* untuk memasang json-ld](https://navillus.dev/blog/json-ld-in-sveltekit)
 - 🔴 Jadi kangen [Portal di React](https://react.dev/reference/react-dom/createPortal#rendering-a-modal-dialog-with-a-portal), di Svelte saya jadi nempelin komponennya di global dan trigger lewat store, biar DOM nya gak perlu nempel ke komponen terdekatnya.
 
 Tapi sudahlah ya 🥹, emang biar bisa tetep sambat aja kali ya 🔥. Setidaknya saya tetap bisa menikmati SvelteKit, antara lain:
