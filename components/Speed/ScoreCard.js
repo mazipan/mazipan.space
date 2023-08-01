@@ -82,6 +82,7 @@ export default function ScoreCard({
         <div className="rounded text-center" key={metric.key}>
           <div className="text-2xl font-bold">{metric.title}</div>
           <div className={`text-2xl lg:text-3xl font-bold text-center grid ${isAll ? 'grid-cols-2' : 'grid-cols-1'}`}>
+
             {!isMobile && (
               <div className={`${metric.classGenerator ? metric.classGenerator(reportDesktop[metric.key]) : 'text-gray-800 dark:text-gray-200'} flex justify-center items-center`}>
                 <DesktopIcon />
@@ -98,6 +99,7 @@ export default function ScoreCard({
                 </div>
               </div>
             )}
+
             {!isDesktop && (
               <div className={`${metric.classGenerator ? metric.classGenerator(reportMobile[metric.key]) : 'text-gray-800 dark:text-gray-200'} flex justify-center items-center`}>
                 <PhoneIcon />
@@ -113,6 +115,7 @@ export default function ScoreCard({
                 </div>
               </div>
             )}
+
           </div>
           <div className="p-2" style={{ minHeight: 200 }}>
             <ChartTimeline

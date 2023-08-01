@@ -19,8 +19,8 @@ const useTheme = () => {
 
   const onSwitchTheme = () => {
     const nTheme = theme === 'light' ? 'dark' : 'light'
-    window.__setPreferredTheme(nTheme)
     setTheme(nTheme)
+    window.__setPreferredTheme(nTheme)
   }
 
   return {
