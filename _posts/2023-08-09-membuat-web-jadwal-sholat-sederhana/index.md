@@ -13,7 +13,7 @@ enready: false
 
 Artikel ini menjelaskan proses yang saya tempuh dalam pembuatan halaman baru [Jadwal Sholat](https://www.baca-quran.id/jadwal-sholat/) di Baca-Quran.id secara sederhana tanpa menjelaskan bagian-bagian rumitnya agar lebih mudah diikuti kalau memang ingin membuat halaman serupa.
 
-## Kebutuhan dasar
+## 🧾 Kebutuhan dasar
 
 Beberapa yang saya butuhkan untuk membuat halaman ini, kurang lebih:
 
@@ -35,7 +35,7 @@ Akhirnya saya jadi bisa memutuskan beberapa hal:
 
 - 🔹 Lebih mudah saat MVP untuk mengambil lokasi terkini dengan [Geolocation API](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/getCurrentPosition). Ini akan mengurangi keharusan melakukan mapping lokasi-lokasi, kalaupun bisa juga dikerjain nantinya setelah versi awal berhasil dibuat.
 
-## Pencarian sumber data
+## 🔬 Pencarian sumber data
 
 Dengan memutuskan beberapa hal akhirnya jadi lebih terlihat kebutuhan data seperti apa yang ta mau.
 
@@ -45,11 +45,11 @@ Kalian bisa memanggil seperti contoh pada dokumentasi mereka: `https://api.aladh
 
 Mereka sudah bisa mengembalikan data dalam sebulan langsung. Ini bisa jadi opsi untuk nantinya saya cache saja data sebulan ini biar tidak terus-terusan request ke API mereka. Sayangnya, dari response tersebut kita belum bisa tau alamatnya atau paling tidak infomasi distrik atau kabupaten/kota, istilah lainnya *Reverse Geocoding*. Mau gak mau butuh 1 tambahan lagi kalau mau dapatin data ini. Paling umum tentu pakai [Reverse Geocoding, dari Geocoding API-nya Google](https://developers.google.com/maps/documentation/geocoding/requests-reverse-geocoding). Tapi untungnya pas lagi nyari-nyari, nemu [https://nominatim.org](https://nominatim.org/release-docs/develop/api/Reverse/) yang juga punya API untuk Reverse. Saya akan ngambil data district-nya aja dari sini.
 
-## Tampilan
+## 🤳 Tampilan
 
 ![Tampilan laman jadwal sholat di Baca-Quran.id](/thumbnail/membuat-web-jadwal-sholat-sederhana/tampilan-jadwal-sholat.png)
 
-## Mulai koding
+## 🪚 Mulai koding
 
 Kode di sini akan ditulis dengan Svelte, karena Baca-Quran.id memang ditulis dengan Svelte saat artikel ini ditulis.
 
@@ -374,11 +374,19 @@ Dengan `PrayerTimeCard` nya isinya:
 {/if}
 ```
 
+## 👩‍🏫 Pelajaran yang saya dapat
+
+Beberapa pelajaran baru atau hal lama yang sudah saya ketahui namun lupa dan berhasil diingatkan kembali lewat pekerjaan ini, diantaranya:
+
+- ▶️ Cara mengambil lokasi dengan Geocoding API
+- ▶️ Alternatif dari Google untuk melakukan reverse geocoding 
+- ▶️ Menggunakan `$ :`, ini fitur yang jarang sekali ta gunakan sepanjang projek Baca-Quran.id
+
 ## 🏁 Selesai
 
 Kode lengkapnya bisa dipantau langsung di repository [mazipan/baca-quran.id](https://github.com/mazipan/baca-quran.id/tree/master)
 
-Maaf-maaf aja kalau gak bermanfaat 😭
+Maaf-maaf aja kalau gak bermanfaat 🙇😭
 
 ---
 
