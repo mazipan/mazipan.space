@@ -27,7 +27,7 @@ Kebutuhan dasar ini tergantung pada "mau" seperti apa buat halamannya. Akhirnya 
 - 💠 [Tokopedia Salam](https://www.tokopedia.com/s/jadwal-sholat)
 - 💠 [IslamicFinder](https://www.islamicfinder.org/world/indonesia/?language=id)
 
-Secara data, saya suka dengan kesederhanaan NeoAdzan dan JadwalSholat.org (keduanya hampir serupa), menampilkan data untuk per kota/kabupaten, dan menampilkan data dalam waktu sebulan. Tokopedia menampilkan data sebulan juga, tapi data yang sudah lewat gak ditampilkan m, jadi lebih hemat tempat. Pun mereka deteksi lokasi jadi gak perlu milih-milih lagi mau nyari jadwal sholat mana.
+Secara data, saya suka dengan kesederhanaan NeoAdzan dan JadwalSholat.org (keduanya hampir serupa), menampilkan data untuk per kota/kabupaten, dan menampilkan data dalam waktu sebulan. Tokopedia sebenarnya menampilkan data sebulan juga, tapi data yang sudah lewat gak ditampilkan lagi, jadi terlihat lebih hemat tempat. Pun mereka deteksi lokasi kita, jadi gak perlu milih-milih lagi mau nyari jadwal sholat mana.
 
 Akhirnya saya jadi bisa memutuskan beberapa hal:
 
@@ -62,10 +62,12 @@ Cukup dengan menambah berkas `+page.svelte` baru di bawah `src/routes/`, pada ka
 Isinya bisa semudah `Halo Dunia` dulu aja, di contoh ini saya menambahkan judul halaman saja.
 
 ```html
-<div class="flex gap-2 px-4 mb-4">
+<div class="px-4 mb-4">
  <h1 class="text-3xl font-bold">⏰ Jadwal Sholat</h1>
 </div>
 ```
+
+Setelah berhasil membuat halaman awal, kita bisa mulai fokus membuat kode untuk fitur utamanya.
 
 ### 🔹 Akses dan menampilkan data lokasi
 
@@ -82,6 +84,8 @@ let getGeolocation = async () => {
   }
 };
 ```
+
+Kode di atas mengambil lokasi terkini dengan memanggil method `getCurrentPosition()`. Perlu ditambahkan pengecekan dukungan terhadap API ini karena ada kemungkinan peramban si pengguna tidak mendukung API ini.
 
 ### 🔹 Mendapatkan nama kabupaten/kota
 
@@ -107,6 +111,8 @@ async function getDistrictByLatLong({
   }
 }
 ```
+
+Kode ini cukup lugas, memanggil API publik dengan melempar parameter `lat` dan `lon` untuk kemudian dikembalikan hasilnya dalam bentuk string. Ada kemungkinan terjadi galat dan di sini saya memilih mengembalikan string kosong saja.
 
 ### 🔹 Menyimpan data lokasi dan district ke Web Storage
 
@@ -137,11 +143,15 @@ let getGeolocation = async () => {
 };
 ```
 
+Kode di atas berusaha menyimpan data yang didapatkan dengan memanggil method `localStorage.setItem(key, value)` yang merupakan bawaan dari peramban.
+
 ### 🔹 Menyimpan data ke Svelte Store
 
 Keunggulan Svelte Store, datanya bisa diakses dari mana saja. Saya punya rencana kalau data lokasi ini juga nantinya bisa diakses dari halaman setelan, jadi selain menyimpan ke web storage, datanya akan saya pass ke tengah di Svelte Store.
 
-#### 🔘 Membuat state baru di `src/store/index.ts`
+#### 🔘 Membuat state baru di Store
+
+Mengekspos kode baru di berkas `src/store/index.ts` beserta definisi tipe data yang dibutuhkan.
 
 ```typescript
 export type LocationParam = {
@@ -153,7 +163,11 @@ export type LocationParam = {
 export const settingLocation = writable<LocationParam | null>(null);
 ```
 
+`writeable` menunjukkan state tersebut bisa dibaca dan ditulis isinya nanti.
+
 #### 🔘 Memperbarui nilai ke Store saat ada data baru
+
+Kode untuk memperbarui nilai yang disimpan di Svelte Store dengan data yang didapatkan dari pihak ketiga.
 
 ```typescript {21-25}
 let getGeolocation = async () => {
@@ -187,6 +201,8 @@ let getGeolocation = async () => {
 };
 ```
 
+Semudah dengan memanggil `.set` untuk mengganti nilai state di store.
+
 #### 🔘 Mengembalikan nilai Storage ke Store saat awal load
 
 Saya menambahkan kode ini di level Layout (`src/routes/+layout.svelte`), agar bisa jalan di halaman manapun yang diakses pertama kali.
@@ -213,7 +229,11 @@ onMount(() => {
 });
 ```
 
+Kode di atas mengambil nilai dari Web Storage, di *parsing* jadi objek JavaScript, untuk kemudian di set ke Svelte Store agar bisa diakses dimanapun.
+
 #### 🔘 Menampilkan data lokasi dari data Svelte Store
+
+Menampilkan data yang telah disetel sebelumnya ke Store:
 
 ```svelte
 {#if $settingLocation === null}
@@ -237,11 +257,15 @@ onMount(() => {
 {/if}
 ```
 
+Tampilannya bisa disesuaikan dengan kemauan kalian, tapi yang jangan lupa adalah bagian pengecekannya. Karena akan ada kasus dimana datanya mungkin masih belum terisi, atau terisi sebagian saja, mengingat datanya berasal dari 2 sumber yang berbeda.
+
 ### 🔹 Mendapatkan data jadwal sholat
 
 Bagian ini bertujuan mengambil data dari pihak ketiga, memprosesnya dan menyimpan di variabel lokal dan web storage.
 
 #### 🔘 Memanggil data dari pihak ketiga
+
+Memanggil API publik dari pihak ketiga untuk mendapatkan data jadwal sholat selama sebulan dengan parameter latitude dan longitude, serta menambahkan juga parameter tahun dan bulan yang diinginkan.
 
 ```typescript
 let prayerTimes = []
@@ -264,6 +288,8 @@ async function refetchPrayerTime({
 }
 ```
 
+Kodenya cukup lugas, cuma *construct* URL untuk API yang akan dipanggil, kemudian di set ke lokal variabel `prayerTimes`. Paling ada catatan untuk menambah nilai bulan (month) yang didapat karena dimulai dari 0.
+
 #### 🔘 Menyimpan response ke Web Storage
 
 Kita cukup menambahkan kode berikut pada fungsi di atas:
@@ -281,7 +307,11 @@ async function refetchPrayerTime({
 }
 ```
 
+Seperti sebelumnya, menggunakan method `setItem` dari `localStorage`. Di kasus ini saya simpan saja mentah-mentah semua response data yang didapatkan dari pihak ketiga. Kedepannya mungkin kita bisa tingkatkan dengan hanya menyimpan data yang dibutuhkan saja.
+
 #### 🔘 Memastikan untuk mengecek cache sebelum melakukan request
+
+Mengecek ketersediaan cache di Web Storage sebelum memutuskan memanggil API pihak ketiga:
 
 ```typescript
 async function fetchPrayerTime({ latitude, longitude }: { latitude: number; longitude: number }) {
@@ -307,7 +337,11 @@ async function fetchPrayerTime({ latitude, longitude }: { latitude: number; long
 }
 ```
 
+Ditambahkan juga pengecekan kalau-kalau data yang disimpan sebelumnya sudab tidak valid dan tidak seharusnya digunakan karena kemungkinan merupakan data dari bulan sebelumnya.
+
 #### 🔘 Memanggil fungsi saat mendapatkan lokasi
+
+Menyematkan kode untuk mendapatkan data jadwal sholat ke dalam fungsi saat kita meminta akses terhadap lokasi terkini:
 
 ```typescript {5-8}
 let getGeolocation = async () => {
@@ -323,9 +357,11 @@ let getGeolocation = async () => {
 };
 ```
 
+Kodenya disematkan ke dalam fungsi `getCurrentPosition()`
+
 ### 🔹 Hanya mengambil data hari ini
 
-Seperti saya sebutkan di atas, data dari API merupakan data sebulan. Kita perlu fungsi untuk mencocokkan agar cuma data hari ini saja yang ditampilkan. Untuk melakukan ini, saya menggunakan ilmu hitamnya Svelte soal reaktivitas, yakni dengan `$ :`. Ini semacam `computed` atau `watch` di Vue, atau `useEffect` nya React. Basically dia akan memantau perubahan dari suatu variable dan mengeksekusi atau mengembalikan nilai baru.
+Seperti saya sebutkan di atas, data dari API merupakan data sebulan. Kita perlu fungsi untuk mencocokkan agar cuma data hari ini saja yang ditampilkan. Untuk melakukan ini, saya menggunakan ilmu hitamnya Svelte soal reaktivitas, yakni dengan `$ :`. Ini semacam `computed` atau `watch` di Vue, atau `useEffect` nya React. Pada dasarnya, dia akan memantau perubahan dari suatu variable dan mengeksekusi atau mengembalikan nilai baru.
 
 Berikut kodenya:
 
@@ -342,6 +378,8 @@ $: todayPrayerTime = prayerTimes.find((time) => {
 
 ### 🔹 Menampilkan data jadwal sholat
 
+Tampilannya bisa disesuaikan sesuka hati, tapi minimal ada pengecekan ketersediaan data dan menampilkan kelima jadwal sholat.
+
 ```svelte
 {#if todayPrayerTime}
   <PrayerTimeCard timings={todayPrayerTime.timings} prayerKey="Fajr" />
@@ -352,7 +390,7 @@ $: todayPrayerTime = prayerTimes.find((time) => {
 {/if}
 ```
 
-Dengan `PrayerTimeCard` nya isinya:
+Dengan `PrayerTimeCard` nya isinya sebenarnya cuma mapping data dengan UI sederhana berupa teks jenis sholat dan waktu/jam dari jadwal sholat yang didapatkan.
 
 ```svelte
 <script lang="ts">
