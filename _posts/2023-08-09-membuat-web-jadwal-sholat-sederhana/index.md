@@ -22,18 +22,20 @@ Beberapa yang saya butuhkan untuk membuat halaman ini, kurang lebih:
 
 Kebutuhan dasar ini tergantung pada "mau" seperti apa buat halamannya. Akhirnya memutuskan untuk melihat beberapa contoh aplikasi yang ada:
 
-- 💠 <https://neoadzan.cahyadsn.com/>
-- 💠 <https://www.jadwalsholat.org/>
-- 💠 <https://www.tokopedia.com/s/jadwal-sholat>
-- 💠 <https://www.islamicfinder.org/world/indonesia/?language=id>
+- 💠 [NeoAdzan](https://neoadzan.cahyadsn.com/)
+- 💠 [JadwalSholat.org](https://www.jadwalsholat.org/)
+- 💠 [Tokopedia Salam](https://www.tokopedia.com/s/jadwal-sholat)
+- 💠 [IslamicFinder](https://www.islamicfinder.org/world/indonesia/?language=id)
+
+Secara data, saya suka dengan kesederhanaan NeoAdzan dan JadwalSholat.org (keduanya hampir serupa), menampilkan data untuk per kota/kabupaten, dan menampilkan data dalam waktu sebulan. Tokopedia menampilkan data sebulan juga, tapi data yang sudah lewat gak ditampilkan m, jadi lebih hemat tempat. Pun mereka deteksi lokasi jadi gak perlu milih-milih lagi mau nyari jadwal sholat mana.
 
 Akhirnya saya jadi bisa memutuskan beberapa hal:
 
-- 🔹 Saya tidak perlu menampilkan data dalam sebulan, berkaca dari cara Google menampilkan data. Terasa *on-point*, cuma nampilin hari ini saja.
+- 🔹 Saya tidak perlu menampilkan data dalam sebulan, berkaca dari cara Tokopedia, lebih bagus lagi dengan cara Google Search saat menampilkan data jadwal sholat. Terasa *on-point*, cuma nampilin hari ini saja.
 
 ![Google menampilkan jadwal sholat](/thumbnail/membuat-web-jadwal-sholat-sederhana/jadwal-sholat-di-google.png)
 
-- 🔹 Lebih mudah saat MVP untuk mengambil lokasi terkini dengan [Geolocation API](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/getCurrentPosition). Ini akan mengurangi keharusan melakukan mapping lokasi-lokasi, kalaupun bisa juga dikerjain nantinya setelah versi awal berhasil dibuat.
+- 🔹 Lebih mudah saat MVP untuk mengambil lokasi terkini dengan [Geolocation API](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/getCurrentPosition), seperti yang dilakukan Tokopedia. Ini akan mengurangi keharusan melakukan mapping lokasi-lokasi kota/kabupaten, kalaupun bisa juga dikerjain nantinya, tapi kayanya cuma bisa dikerjain setelah versi awal berhasil dibuat.
 
 ## 🔬 Pencarian sumber data
 
