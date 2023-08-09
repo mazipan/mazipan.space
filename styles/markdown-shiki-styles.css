@@ -92,6 +92,11 @@
   @apply bg-amber-300;
 }
 
+.markdown pre[data-lang="svelte"]::before {
+  background-color: #f96743;
+  color: #fff;
+}
+
 .markdown blockquote {
   @apply bg-indigo-100 text-indigo-700 px-4 py-2 rounded-lg border-indigo-500 border-dashed border-4;
 }
