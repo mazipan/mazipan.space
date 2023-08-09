@@ -1,5 +1,5 @@
 ---
-title: Membuat Jadwal Sholat
+title: Membuat Laman Jadwal Sholat Sederhana
 date: '2023-08-09'
 excerpt: Penjelasan dengan penyederhanaan dari proses pembuatan halaman jadwal sholat pada Baca-Quran.id
 author: mazipan
@@ -372,9 +372,9 @@ Dengan `PrayerTimeCard` nya isinya:
 {/if}
 ```
 
----
+## 🏁 Selesai
 
-Selesai, kode lengkapnya bisa dipantau langsung di repository [mazipan/baca-quran.id](https://github.com/mazipan/baca-quran.id/tree/master)
+Kode lengkapnya bisa dipantau langsung di repository [mazipan/baca-quran.id](https://github.com/mazipan/baca-quran.id/tree/master)
 
 Maaf-maaf aja kalau gak bermanfaat 😭
 
