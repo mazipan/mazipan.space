@@ -26,6 +26,7 @@ Kebutuhan dasar ini tergantung pada "mau" seperti apa buat halamannya. Akhirnya 
 - 💠 [JadwalSholat.org](https://www.jadwalsholat.org/)
 - 💠 [Tokopedia Salam](https://www.tokopedia.com/s/jadwal-sholat)
 - 💠 [IslamicFinder](https://www.islamicfinder.org/world/indonesia/?language=id)
+- 💠 Google Search: Jadwal sholat
 
 Secara data, saya suka dengan kesederhanaan NeoAdzan dan JadwalSholat.org (keduanya hampir serupa), menampilkan data untuk per kota/kabupaten, dan menampilkan data dalam waktu sebulan. Tokopedia sebenarnya menampilkan data sebulan juga, tapi data yang sudah lewat gak ditampilkan lagi, jadi terlihat lebih hemat tempat. Pun mereka deteksi lokasi kita, jadi gak perlu milih-milih lagi mau nyari jadwal sholat mana.
 
