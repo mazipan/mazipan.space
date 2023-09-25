@@ -113,11 +113,11 @@ export default function AboutPage() {
                     <img src={`https://img.shields.io/github/stars/${oss.repo.replace('https://github.com/', '')}.svg?style=social`} alt={oss.repo} loading="lazy" />
                   </div>
 
-                  <div className="flex mt-4">
+                  <div className="flex mt-4 flex-wrap gap-2">
                     {oss.stacks.map((stack) => (
                       <span
                         key={stack}
-                        className="inline-block bg-red-100 text-red-600 rounded-full px-2 py-1 text-xs font-semibold mr-2"
+                        className="inline-block bg-red-100 text-red-600 rounded-full px-2 py-1 text-xs font-semibold"
                       >
                         {stack}
                       </span>
