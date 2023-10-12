@@ -16,13 +16,13 @@ export default function Header () {
   const { NextThemeIcon, onSwitchTheme } = useTheme()
 
   return (
-    <header className="fixed w-full top-0 left-0 p-4 z-30 bg-gray-100 dark:bg-gray-900 flex items-center justify-between shadow-medium border-bottom-gradient">
+    <header className="fixed w-full top-0 left-0 p-4 z-30 bg-gray-100 dark:bg-gray-900 flex md:flex-col lg:flex-row items-center justify-between shadow-medium border-bottom-gradient">
       <h1 className="h2 font-heading text-gradient">
         <Link href={`${isId ? '/' : '/en'}`}>
           <a>{'<Mazipan />'}</a>
         </Link>
       </h1>
-      <div className="flex items-center justify-between">
+      <nav className="flex items-center justify-between gap-4">
         <Link href="/til">
           <a className="text-link hidden items-center md:flex md:mr-4 font-bold">
             <MenuBook />
@@ -68,7 +68,7 @@ export default function Header () {
         >
           {NextThemeIcon ? NextThemeIcon : <ThemeMoon />}
         </button>
-      </div>
+      </nav>
     </header>
   )
 }
