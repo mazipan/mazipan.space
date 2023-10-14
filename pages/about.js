@@ -101,9 +101,9 @@ export default function AboutPage() {
                   </a>
                   <p className="mb-4 text-sm">{oss.desc}</p>
 
-                  <div className="flex justify-between">
+                  <div className="flex justify-between items-center">
                     <a
-                      className="hover:underline text-red-500 text-sm"
+                      className="hover:underline text-red-500 text-sm truncate"
                       target="_blank"
                       rel="noopener noreferrer"
                       href={oss.repo}
