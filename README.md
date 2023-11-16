@@ -2,11 +2,11 @@
 
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com) ![Website Up](https://img.shields.io/website-up-down-brightgreen-red/https/mazipan.space.svg)
 
-👿 Codebase for personal blog ([mazipan.space](https://mazipan.space/)), built with Next.js and Tailwind CSS
+👿 Codebase for personal blog ([mazipan.space](https://www.mazipan.space/)), built with Next.js and Tailwind CSS
 
 ## Live
 
-- [mazipan.space](https://mazipan.space/)
+- [mazipan.space](https://www.mazipan.space/)
 
 ## Tech Stack
 

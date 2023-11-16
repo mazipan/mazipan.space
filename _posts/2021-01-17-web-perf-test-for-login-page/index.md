@@ -87,7 +87,7 @@ const puppeteer = require('puppeteer');
 const lighthouse = require('lighthouse');
 
 // halaman non-login sebagai test
-const PAGE_URL = 'https://mazipan.space/';
+const PAGE_URL = 'https://www.mazipan.space/';
 
 (async() => {
   const browser = await puppeteer.launch({
@@ -117,9 +117,9 @@ Daripada banyak berandai-andai, saya buatkan saja contoh kasus sederhana agar bi
 
 Jadi, saya sudah membuat 3 halaman di blog saya ini, yakni:
 
-- [/examples/only-for-login](https://mazipan.space/examples/only-for-login)
-- [/examples/login](https://mazipan.space/examples/login)
-- [/examples/unauthorized](https://mazipan.space/examples/unauthorized)
+- [/examples/only-for-login](https://www.mazipan.space/examples/only-for-login)
+- [/examples/login](https://www.mazipan.space/examples/login)
+- [/examples/unauthorized](https://www.mazipan.space/examples/unauthorized)
 
 Idenya adalah, kita akan melakukan uji web performa pada halaman "/examples/only-for-login", sayangnya halaman ini tidak bisa dikunjungi secara langsung, kalian akan diarahkan ke "/examples/unauthorized" bila memaksanya. Kita diharuskan untuk datang ke halaman "/examples/login" terlebih dahulu untuk kemudian memasukkan email dan password dan melakukan proses login. Jika kalian telah melakukan proses login, maka kalian sudah bisa mengunjungi halaman "/examples/only-for-login". Paham kah? Ya, ini cuma versi sederhana dari proses login yang biasanya lebih rumit. Paling tidak kita bisa dapat konsepnya dahulu saja lah.
 
@@ -131,10 +131,10 @@ const puppeteer = require('puppeteer');
 const lighthouse = require('lighthouse');
 
 // Halaman yang mau kita test
-const PAGE_URL = 'https://mazipan.space/examples/only-for-login';
+const PAGE_URL = 'https://www.mazipan.space/examples/only-for-login';
 
 // Halaman tempat kita akan melakukan proses login
-const PAGE_LOGIN_URL = 'https://mazipan.space/examples/login';
+const PAGE_LOGIN_URL = 'https://www.mazipan.space/examples/login';
 
 // Fungsi akan dipanggil nanti, sebelum menjalankan Lighthouse
 const doingAuthentication = async (browser) => {

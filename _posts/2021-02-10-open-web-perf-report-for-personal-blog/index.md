@@ -233,7 +233,7 @@ jobs:
         with:
           api_key: ${{ secrets.PSI_API_KEY }}
           urls: |
-            https://mazipan.space/
+            https://www.mazipan.space/
           devices: |
             mobile
 ```
@@ -292,7 +292,7 @@ jobs:
         with:
           api_key: ${{ secrets.PSI_API_KEY }}
           urls: |
-            https://mazipan.space/
+            https://www.mazipan.space/
           devices: |
             mobile
             desktop
@@ -319,7 +319,7 @@ jobs:
   "timestamp": "2021-02-05T16:12:02.119Z",
   "reports": [
     {
-      "url": "https://mazipan.space/",
+      "url": "https://www.mazipan.space/",
       "device": "mobile", // Device type for running Lighthouse
       "perf": 0.78,       // Performance score by PSI
       "fid": 16,          // First Input Delay based on Chrome UX field data

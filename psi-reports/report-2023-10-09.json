@@ -2,7 +2,7 @@
   "timestamp": "2023-10-09T02:34:33.454Z",
   "reports": [
     {
-      "url": "https://mazipan.space/",
+      "url": "https://www.mazipan.space/",
       "device": "mobile",
       "perf": 0.65,
       "fid": 0,
@@ -17,7 +17,7 @@
       "size": 0
     },
     {
-      "url": "https://mazipan.space/",
+      "url": "https://www.mazipan.space/",
       "device": "desktop",
       "perf": 0.96,
       "fid": 0,

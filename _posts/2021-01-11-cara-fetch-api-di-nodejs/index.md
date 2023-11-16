@@ -17,9 +17,9 @@ API di lingkup pengembangan web umumnya digunakan untuk berkomunikasi antar pera
 
 **👉  Masalah CORS**
 
-Masalah klasik yang selalu saja muncul sebagai pertanyaan di setiap forum pemrograman web yang ada, ketika suatu *3rd party* API kok ternyata tidak bisa di *hit* dari aplikasi langsung dari peramban. 
-Padahal ya jelas karena memang *origin* tersebut tidak diperbolehkan untuk melakukan permintaan secara langsung. 
-Solusi praktisnya biasanya dengan melakukan *proxy* baik melalui web server maupun lewat aplikasi Backend yang ada dalam kendali kita. 
+Masalah klasik yang selalu saja muncul sebagai pertanyaan di setiap forum pemrograman web yang ada, ketika suatu *3rd party* API kok ternyata tidak bisa di *hit* dari aplikasi langsung dari peramban.
+Padahal ya jelas karena memang *origin* tersebut tidak diperbolehkan untuk melakukan permintaan secara langsung.
+Solusi praktisnya biasanya dengan melakukan *proxy* baik melalui web server maupun lewat aplikasi Backend yang ada dalam kendali kita.
 Memindahkan pemanggilan API dari peramban ke aplikasi Backend merupakan salah satu solusi bila kita menghadapi problem ini, sehingga dari aplikasi klien cukup memanggil ke Backend yang kita buat saja tanpa perlu lagi mengarah ke alamat aslinya.
 
 **👉  Menyembunyikan Kredensial**
@@ -42,7 +42,7 @@ Sebelum saya menjelaskan lebih lanjut, semua kode yang ada di artikel kali ini b
 
 ### Native Node.js
 
-Node.js secara Native sudah memiliki interface yang bisa kita gunakan untuk melakukan pemanggilan sebuah API, bisa dengan memanfaatkan modul `http` ataupun `https`. 
+Node.js secara Native sudah memiliki interface yang bisa kita gunakan untuk melakukan pemanggilan sebuah API, bisa dengan memanfaatkan modul `http` ataupun `https`.
 Ini bisa jadi pilihan untuk yang anti-*"3rd party club"* yang sayangnya kodenya memang masih cukup rumit karena memberikan balikan berupa *stream*, berikut adalah contoh kode jika kita ingin melakukan pemanggilan API dengan Native Node.js:
 
 ```js
@@ -60,7 +60,7 @@ https.get(CONSTANT.API_URL, (res) => {
 
 ### Node-Fetch
 
-Buat kalian (baca: saya) yang sudah kadung terlalu malas menghafal sintaks baru, [Node-Fetch](https://www.npmjs.com/package/node-fetch) bisa jadi pilihan karena menggunakan interface yang serupa dengan [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch) di peramban. 
+Buat kalian (baca: saya) yang sudah kadung terlalu malas menghafal sintaks baru, [Node-Fetch](https://www.npmjs.com/package/node-fetch) bisa jadi pilihan karena menggunakan interface yang serupa dengan [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch) di peramban.
 Cukup belajar sekali dan gunakan berkali-kali bukan?
 
 Berikut contoh kode memanggil API dengan Node-Fetch:
@@ -76,7 +76,7 @@ fetch(CONSTANT.API_URL)
 
 ### Axios
 
-[Axios](https://github.com/axios/axios) merupakan salah satu pustaka paling populer di JavaScript yang bisa digunakan baik untuk lingkungan klien maupun server. 
+[Axios](https://github.com/axios/axios) merupakan salah satu pustaka paling populer di JavaScript yang bisa digunakan baik untuk lingkungan klien maupun server.
 Kita bisa menggunakan Axios juga untuk melakukan pemanggilan API di Node.js dengan interface yang sama persis dengan ketika kita menggunakannya di peramban.
 
 Berikut contoh kodenya:
@@ -99,7 +99,7 @@ axios
 
 ### Super Agent
 
-[Super Agent](https://github.com/visionmedia/superagent) juga sama bisa bekerja di lingkungan peramban dan Node.js. 
+[Super Agent](https://github.com/visionmedia/superagent) juga sama bisa bekerja di lingkungan peramban dan Node.js.
 Saya sendiri mengenal pustaka ini karena dulu ini salah satu yang paling populer digunakan di lingkungan End-to-End testing di JavaScript.
 
 Berikut contoh kode melakukan pemanggilan API dengan SuperAgent:
@@ -121,7 +121,7 @@ superagent
 
 ### Got
 
-[Got](https://github.com/sindresorhus/got) merupakan pustaka besutan dari salah satu open-sourcer terkemuka di dunia, [Sindre Sorhus](https://github.com/sindresorhus). 
+[Got](https://github.com/sindresorhus/got) merupakan pustaka besutan dari salah satu open-sourcer terkemuka di dunia, [Sindre Sorhus](https://github.com/sindresorhus).
 Ciri khas dari pustaka yang dibuat Sindre umumnya memiliki interface yang sederhana sehingga mudah untuk digunakan.
 
 Berikut contoh kode melakukan pemanggilan API dengan Got-nya Sindre:
@@ -149,7 +149,7 @@ Untuk bisa menggunakan cara ini, kalian harus memastikan terlebih dahulu bahwa m
 Caranya ya cobain saja perintah sederhananya di terminal, misalnya:
 
 ```shell
-$ curl https://mazipan.space
+$ curl https://www.mazipan.space
 ```
 
 Berikut contoh kodenya jika ingin mengeksekusi perintah melalui `child_process` di Node.js:
@@ -185,8 +185,8 @@ exec(`curl ${CONSTANT.API_URL}`, { silent: true }, (err, stdout, stderr) => {
 
 ## Penutup
 
-Ada banyak jalan menuju ke Indonesia, ada banyak cara untuk menyelesaikan hal yang sama. 
-Artikel ini adalah catatan bagi saya pribadi agar menjadi pengingat di masa yang akan datang. 
+Ada banyak jalan menuju ke Indonesia, ada banyak cara untuk menyelesaikan hal yang sama.
+Artikel ini adalah catatan bagi saya pribadi agar menjadi pengingat di masa yang akan datang.
 Kalian bisa memilih yang mana saja yang kalian suka, tidak mengikuti apa yang saya biasa kerjakan, yang penting kerjaan sama-sama kelarnya.
 Mengingatkan kembali bahwa kode di atas bisa kalian lihat selengkapnya di Github Repo: [❓ how-to-call-api-in-nodejs](https://github.com/mazipan/how-to-call-api-in-nodejs)
 

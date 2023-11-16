@@ -54,7 +54,7 @@ Secara garis besar, sebenernya tidak ada perubahan signifikan pada fitur. Tapi k
 Beberapa fitur yang lumayan sayang karena mesti hilang antara lain:
 
 - 🔴 **Tema yang terbatas**, sekarang cuma mendukung tema terang dan gelap
-- 🔴 **Halaman AMP**, sebenarnya tidak begitu kehilangan, karena memang dari Google sendiri sudah tidak memberikan perlakuan terlalu spesial. Tapi mengingat betapa susahnya dulu [membuat fitur AMP ini](https://mazipan.space/generate-amp-pages-in-nuxtjs), jadi cukup kehilangan.
+- 🔴 **Halaman AMP**, sebenarnya tidak begitu kehilangan, karena memang dari Google sendiri sudah tidak memberikan perlakuan terlalu spesial. Tapi mengingat betapa susahnya dulu [membuat fitur AMP ini](https://www.mazipan.space/generate-amp-pages-in-nuxtjs), jadi cukup kehilangan.
 - 🔴 **Perubahan slug surah dan ayat**, ini jelas *big loss* karena akan kehilangan banyak dari sisi organik di mesin pencarian.
 
 Tapi tenang, selian fitur yang dimutilasi di atas, saya juga menyiapkan beberapa fitur baru yang memang sudah kebayang ingin dibuat sejak lama:
