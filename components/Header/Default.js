@@ -35,24 +35,6 @@ export default function Header () {
             <span className="pl-2">Bookmarks</span>
           </a>
         </Link>
-        <Link href="/talks">
-          <a className="text-link hidden items-center md:flex md:mr-4 font-bold">
-            <MicIcon />
-            <span className="pl-2">Talks</span>
-          </a>
-        </Link>
-        <Link href="/speed">
-          <a className="text-link hidden items-center md:flex md:mr-4 font-bold">
-            <ZapIcon />
-            <span className="pl-2">Speed</span>
-          </a>
-        </Link>
-        <Link href="/support">
-          <a className="text-link hidden items-center md:flex md:mr-4 font-bold">
-            <LoveIcon />
-            <span className="pl-2">Support</span>
-          </a>
-        </Link>
         <Link href="/about">
           <a className="text-link hidden items-center md:flex md:mr-4 font-bold">
             <InfoIcon />
