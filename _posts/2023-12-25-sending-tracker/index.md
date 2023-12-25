@@ -50,7 +50,7 @@ gtag('event', 'screen_view', {
 Meskipun berarti nanti isinya secara teknis mestinya bisa dinamis dan bisa diisi spesifikasi key-value apapun, beberapa kolom ini disarankan ada:
 
 - ● `timetamp`: Ada dua jenis timestamp yang berbeda, satunya adalah waktu tracker tersebut di trigger, dan waktu kapan tracker tersebut ditulis ke storage
-- ● `sessionId`: Kalau dari artikel [[GA4] About Analytics sessions](https://support.google.com/analytics/answer/9191807?hl=en), mereka akan generate sessionId dengan expiry 30 menit dan akan selalu diperpanjang saat pengguna masih aktif berinteraksi. Praktikalnya mungkin bisa menggunakan Cookie yang selalu diperpanjang tiap kali halaman/tracker-nya di hit.
+- ● `sessionId`: Kalau dari artikel [[GA4] About Analytics sessions](https://support.google.com/analytics/answer/9191807?hl=en), mereka akan generate sessionId dengan expiry 30 menit dan akan selalu diperpanjang saat pengguna masih aktif berinteraksi. Praktikalnya mungkin bisa menggunakan Cookie yang selalu diperpanjang tiap kali halaman/tracker-nya di hit. Tapi kalau web klien sudah meng-*handle* sessionId sendiri (misalnya sudah punya otentikasi yang akan generate sessionId), ya menurutku sih sebaiknya integrasi pakai sessionId yang sama aja, gak perlu bikin sessionId untuk tracker lagi.
 - ● `deviceId`: unik per device pengguna, bisa dengan menyematkan Cookie dengan expiry yang panjang, atau pakai localStorage
 - ● `eventName`: kalau digunakan oleh berbagai klien, mungkin bisa ditambahkan konvensi dengan prefix nama aplikasi klien
 - ● Lainnya adalah tambahan atribut yang berupa key-value object tadi
