@@ -158,6 +158,10 @@ document.addEventListener("visibilitychange", function logData() {
 });
 ```
 
+## 📖 Bacaan tambahan
+
+- [Why Most Analytics Efforts Fail](https://www.reforge.com/blog/why-most-analytics-efforts-fail) by Crystal Widjaja 
+
 ## 👋 Sekian dan terima kasih 
 
 Maaf-maaf aja kalau gak bermanfaat 🙇😭
