@@ -139,7 +139,26 @@ document.addEventListener("visibilitychange", function logData() {
 });
 ```
 
-## Sekian
+Kalau misalnya ragu dengan dukungan peramban soal Beacon API, bisa juga bikin fallback ke tradisional Rest API kalau `sendBeacon` tidak tersedia. Misalnya:
+
+```js
+document.addEventListener("visibilitychange", function logData() {
+  if (document.visibilityState === "hidden") {
+    if (typeof navigator.sendBeacon === 'function') {
+      // Contoh mengirim tracker ke endpoint /track
+      navigator.sendBeacon("/track", analyticsData);
+    } else {
+      // Fallback ke Fetch API
+      fetch('/track', {
+        method: 'POST',
+        body: JSON.stringify(analyticsData)
+      })
+    }
+  }
+});
+```
+
+## 👋 Sekian dan terima kasih 
 
 Maaf-maaf aja kalau gak bermanfaat 🙇😭
 
