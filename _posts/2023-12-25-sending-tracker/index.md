@@ -93,8 +93,8 @@ Dia menginisiasi Array di memori `window.dataLayer = window.dataLayer || [];` da
 
 Waktu yang tepat bisa jadi tergantung dari strategi yang diambil. Menurut saya, paling tidak ada 2 strategi yang bisa diambil sebagai alternatif:
 
-- Menggunakan timer
-- Listen event saat user pindah halaman
+- 1️⃣ Menggunakan timer
+- 2️⃣ Listen event saat user pindah halaman
 
 Cara pertama, kita perlu menambahkan timer (`setInterval`) dalam satuan waktu, saat mencapai waktu yang diinginkan, perlu melakukan cek apakah ada tracker yang tersedia di memori, kalau gak ada bisa dilewati, sedangkan kalau ada, maka dikirimkan ke server kemudian dikosongkan kembali memorinya.
 
