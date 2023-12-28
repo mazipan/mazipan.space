@@ -2,9 +2,18 @@ import React from 'react'
 import useIntersect from '@/hooks/useIntersect'
 
 const insertAttribute = (node) => {
-  node.setAttribute('issue-term', 'url')
-  node.setAttribute('repo', 'mazipan/blog-comments')
-  node.setAttribute('theme', 'github-dark-orange')
+  node.setAttribute('data-repo', 'mazipan/blog-comments')
+  node.setAttribute('data-repo-id', 'MDEwOlJlcG9zaXRvcnkyOTg3MjA2Mjk=')
+  node.setAttribute('data-category', 'Q&A')
+  node.setAttribute('data-category-id', 'DIC_kwDOEc4ddc4CcD5P')
+  node.setAttribute('data-mapping', 'pathname')
+  node.setAttribute('data-strict', '0')
+  node.setAttribute('data-reactions-enabled', '1')
+  node.setAttribute('data-emit-metadata', '0')
+  node.setAttribute('data-input-position', 'top')
+  node.setAttribute('data-theme', 'dark')
+  node.setAttribute('data-lang', 'id')
+  node.setAttribute('data-loading', 'lazy')
   node.setAttribute('crossorigin', 'anonymous')
 }
 
@@ -24,7 +33,7 @@ export default function CommentBox () {
       }
 
       script.async = true
-      script.src = 'https://utteranc.es/client.js'
+      script.src = 'https://giscus.app/client.js'
 
       const idParent = document.getElementById('comments')
       if (idParent) {
@@ -38,7 +47,7 @@ export default function CommentBox () {
   const targetRef = useIntersect(onIntersect, {}, true)
 
   return (
-    <div id="comments" className="relative" ref={targetRef}>
+    <div id="comments" className="relative mt-4" ref={targetRef}>
       <div id="comment-skeleton" className="flex justify-center">
         <div className="w-full max-w-760 rounded-lg p-4 mb-2 overflow-hidden shadow-lg dark:bg-gray-800">
           <div className="flex">
