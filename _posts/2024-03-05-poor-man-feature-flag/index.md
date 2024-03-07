@@ -236,6 +236,14 @@ Beberapa requirement-nya, antara lain:
 
 Silahkan berkreasi sendiri soal halaman ini ya! 🤡
 
+## ‼️ Resiko Tambahan
+
+Kode dengan fitur flag pada dasarnya kode yang percabangannya bisa makin banyak, mesti punya strategi yang baik untuk ngatur daftar fitur flag di dalam codebase biar gak menumpuk padahal sudah tidak dibutuhkan lagi alias sudah sepenuhnya dinyalakan dan tidak ada rencana untuk mematikan kedepannya. Saya sendiri sering menggunakan fitur flag untuk menjaga kode-kode yang belum siap rilis, yang mana setelah dirilis 100%, fiturnya biasanya sudah tidak akan dimatikan lagi.
+
+Kecuali memang ada rencana untuk suatu saat diperlukan nyalakan/matikan ulang, maka bersih-bersih fitur flag jadi kerjaan tambahan yang mesti rajin-rajin diambil.
+
+Strateginya macam-macam, bisa semudah dengan ditandain aja pake `// TODO` biar gampang di spot, kalau perlu buat dedicated tiket untuk menghapus kodenya apalagi kalau kita sudah bisa mengira-ngira kapan fitur tersebut bisa dirilis, atau strategi lain yang dirasa cocok dan tidak dirasa memberatkan. Tujuannya sih biar menjaga kodenya tidak menumpuk padahal sudah tidak pernah digunakan lagi.
+
 ## 👋 Sekian dan terima kasih
 
 Maaf-maaf aja kalau gak bermanfaat 🙇😭
