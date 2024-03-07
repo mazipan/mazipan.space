@@ -29,9 +29,9 @@ Implementasi fitur flag bisa macam-macam, bahkan bisa banget pakai saja 3rd part
 
 Ini adalah fitur flag yang proper, di projek yang udah gede dan kompleks biasanya lebih memilih model yang ini karena memang tidak perlu menyentuh codebase untuk melakukan *switch-off* maupun *switch-on*. [Posthog](https://github.com/PostHog/posthog) bisa ngasih sedikit gambaran mengenai fitur-fitur apa yang umumnya tersemat dalam sistem seperti ini. Fitur macam:
 
-- **Instant rollback**, live reload, runtime toggle atau apapun sebutannya. Memungkinkan kita untuk mengaktifkan dan deaktivasi tanpa melakukan deployment.
-- **Rollout management**, memungkinan kita untuk mengirimkan fitur ke production secara partial. Misal menggunakan strategi *percentage of users*, *percentage of traffics*, daftar pengguna, ID dari pengguna.
-- **Override**, memungkinan kita untuk memaksakan suatu hasil untuk suatu grup pengguna atau pengguna itu sendiri. Bisa digunakan untuk melakukan internal testing sebelum dilepas ke publik dengan memberikan sekelompok pengguna untuk bisa mengakses suatu fitur.
+- ⚡ **Instant rollback**, live reload, runtime toggle atau apapun sebutannya. Memungkinkan kita untuk mengaktifkan dan deaktivasi tanpa melakukan deployment.
+- 🚢 **Rollout management**, memungkinan kita untuk mengirimkan fitur ke production secara partial. Misal menggunakan strategi *percentage of users*, *percentage of traffics*, daftar pengguna, ID dari pengguna.
+- 🍔 **Override**, memungkinan kita untuk memaksakan suatu hasil untuk suatu grup pengguna atau pengguna itu sendiri. Bisa digunakan untuk melakukan internal testing sebelum dilepas ke publik dengan memberikan sekelompok pengguna untuk bisa mengakses suatu fitur.
 
 ### 👾 Feature flag tapi butuh deployment
 
