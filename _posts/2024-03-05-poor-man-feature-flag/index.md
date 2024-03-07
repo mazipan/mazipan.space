@@ -39,7 +39,7 @@ Bagian ini sebernarnya saya ingin menautkan dengan pendekatan di mana kita melet
 
 Kalau dikaitkan dengan project Next.js, jika kalian menggunakan env dengan prefix `NEXT_PUBLIC_` maka bisa dipastikan kalian memerlukan deployment ulang. Ini karena env value tersebut memang di *evaluate* dan di-*replace* pada saat *build-time* ([baca dokumentasi terkait ini](https://nextjs.org/docs/pages/building-your-application/configuring/environment-variables#bundling-environment-variables-for-the-browser)).
 
-## Membuat fitur flag pertamamu di Next.js
+## 1️⃣ Membuat fitur flag pertamamu di Next.js
 
 Di artikel ini akan mencontohkan membuat fitur flag di projek frontend dengan framework Next.js yang telah menggunakan App Router, prinsipnya sama jadi jika masih menggunakan Pages Routes harusnya sih masih bisa dipakai dengan penyesuaian di beberapa tempat yang memang diperlukan.
 
@@ -47,7 +47,7 @@ Karena ditujukan untuk pemula, kita akan menggunakan cara yang paling mudah untu
 
 Anggap saja kalian sudah punya basic Next.js projek dengan App Router-nya, saya tidak akan menjelaskan bagian tersebut. Berikut adalah langkah-langkah membuat Feature Flag ala-ala di projek Next.js:
 
-### Kode dasar feature flag dengan env var (2 menit)
+### 2️⃣ Kode dasar feature flag dengan env var (2 menit)
 
 Tambahkan env var baru, misal di dalam file `.env.development`, dengan isi:
 
@@ -222,7 +222,7 @@ export default function Home() {
 
 Fitur whitelist sudah selesai dibuat, tinggal kasih tau tim QA atau Tester soal bagaimana cara menambahkan Cookie lewat Developer Tools dan juga konvensi soal bagaimana untuk menambahkan multiple value.
 
-### Ekstra - Halaman untuk whitelist lewat UI (5 menit)
+### 3️⃣ Ekstra - Halaman untuk whitelist lewat UI (5 menit)
 
 Bagian ini hanyalah ekstra, *optional*, tidak harus kalian buat. Tapi bila tim QA atau Tester kalian tidak begitu familiar dengan Developer Tools, mungkin sebaiknya dibuatkan saja halaman terpisah untuk bisa melakukan whitelist tersebut lewat UI dibandingkan manual menambahkan Cookie lewat UI.
 
