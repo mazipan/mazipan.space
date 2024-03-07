@@ -39,7 +39,7 @@ Bagian ini sebernarnya saya ingin menautkan dengan pendekatan di mana kita melet
 
 Kalau dikaitkan dengan project Next.js, jika kalian menggunakan env dengan prefix `NEXT_PUBLIC_` maka bisa dipastikan kalian memerlukan deployment ulang. Ini karena env value tersebut memang di *evaluate* dan di-*replace* pada saat *build-time* ([baca dokumentasi terkait ini](https://nextjs.org/docs/pages/building-your-application/configuring/environment-variables#bundling-environment-variables-for-the-browser)).
 
-## 1️⃣ Membuat fitur flag pertamamu di Next.js
+## 🪂 Membuat fitur flag pertamamu di Next.js
 
 Di artikel ini akan mencontohkan membuat fitur flag di projek frontend dengan framework Next.js yang telah menggunakan App Router, prinsipnya sama jadi jika masih menggunakan Pages Routes harusnya sih masih bisa dipakai dengan penyesuaian di beberapa tempat yang memang diperlukan.
 
@@ -47,7 +47,7 @@ Karena ditujukan untuk pemula, kita akan menggunakan cara yang paling mudah untu
 
 Anggap saja kalian sudah punya basic Next.js projek dengan App Router-nya, saya tidak akan menjelaskan bagian tersebut. Berikut adalah langkah-langkah membuat Feature Flag ala-ala di projek Next.js:
 
-### 2️⃣ Kode dasar feature flag dengan env var (2 menit)
+### 1️⃣ Kode dasar feature flag dengan env var (2 menit)
 
 Tambahkan env var baru, misal di dalam file `.env.development`, dengan isi:
 
@@ -83,7 +83,7 @@ export default function Home() {
 
 Sampai sini, kode fitur flag-nya sudah jalan sebenarnya. Sederhana dan mudah di toggle karena centralized di env var. Kalau mau mengaktifkan atau mematikan sebuah fitur, cukup mengubah value di env var nya saja. Fitur selesai.
 
-### Fitur whitelist user (8 menit)
+### 2️⃣ Fitur whitelist user (8 menit)
 
 Ada tambahan permintaan dari tim QA atau Tester, bagaimana cara mereka melakukan testing sementara posisi flag masih mati. Untuk inilah biasanya fitur flag punya fitur override atau whitelist seorang user agar bisa mengakses fitur yang bahkan kondisi untuk publik itu sebenarnya masih mati. Karena ini adalah versi poor man, maka kita akan ambil pendekatan yang paling "mungkin" dikerjakan dalam waktu singkat tapi masih bisa menyelesaikan kebutuhan dari tim QA atau Tester.
 
