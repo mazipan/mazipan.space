@@ -15,7 +15,11 @@ enready: false
 
 Mengutip artikel dari [sko.dev](https://sko.dev/) - [**Apa itu feature flag: pengertian dan informasi**](https://sko.dev/wiki/feature-flag), "Feature flag adalah mekanisme yang memungkinkan developer untuk mengaktifkan atau menonaktifkan fitur tertentu dalam aplikasi secara dinamis, tanpa perlu melakukan deploy kode baru.". Silahkan baca artikelnya terlebih dahulu, cuma butuh beberapa menit saja untuk membaca keseluruhan artikelnya.
 
-Saya pribadi tidak terlalu setuju dengan tambahan catatan "tanpa perlu melakukan deploy kode baru", karena untuk mencapai fitur *live toggle*, waktu 10 menit mungkin tidak akan cukup. Mempersulit diri, kalau kamu membangun produk yang masih di tahap awal, di mana lebih membutuhkan kecepatan delivery dan kesederhanaan. Di tahap ini sebaiknya kita berusaha mengeliminasi kompleksitas yang tidak begitu diperlukan. Minimum fitur saja sudah cukup, asal bisa memecahkan problemnya.
+Saya pribadi tidak terlalu setuju dengan tambahan catatan bahwa feature flag ya harus selalu "tanpa perlu melakukan deploy kode baru", karena untuk mencapai fitur *live toggle*, waktu 10 menit mungkin tidak akan cukup. Mempersulit diri, kalau kamu membangun produk yang masih di tahap awal, di mana lebih membutuhkan kecepatan delivery dan kesederhanaan. Di tahap ini sebaiknya kita berusaha mengeliminasi kompleksitas yang tidak begitu diperlukan. Minimum fitur saja sudah cukup, asal bisa memecahkan problemnya.
+
+## 🎯 Tujuan pembuatan fitur
+
+Punya mekanisme untuk bisa deploy dari latest code tanpa perlu khawatir pengguna publik bisa dapat fitur-fitur yang memang belum siap untuk dilepas ke publik. Contoh kasus: Dalam 1 sprint ada 2 task, dimana yang satu task cukup sulit dan butuh waktu panjang development-nya, sementara satunya fitur kecil yang bisa dikerjain lebih cepat. Kebetulan fitur 1 yang sulit bisa jalan duluan, sementara fitur kedua yang mudah malahan baru bisa jalan beberapa hari setelahnya. Saya bukan tipe yang suka ngurusin rilis branch, lebih mudah rilis dari default branch aja, semua PR/MR langsung aja arahin ke default branch. Pas tiba waktunya deployment, fitur 1 yang sulit, sebagian kode sudah masuk ke defaut branch, sementara fitur 2 sudah selesai dan siap di deploy secepatnya. Saya perlu melakukan deployment fitur 2 tapi tidak mau mengekspos fitur 1. Tentu bisa saja diselesaikan dengan Cherry-Pick commit yang bersangkutan, sayangnya saya cukup malas ngurusin per-Git-an.
 
 ## 🍡 Macam-macam implementasi fitur flag
 
