@@ -11,7 +11,7 @@ export default function Footer() {
         <span>•</span>
         <a href="/speed" className='hover:underline'>🏃‍♂️ Speed</a>
         <span>•</span>
-        <a href="/speed" className='hover:underline'>🎙️ Talks</a>
+        <a href="/talks" className='hover:underline'>🎙️ Talks</a>
       </nav>
 
       <SocialIcons />
