@@ -34,11 +34,11 @@
 
 .markdown a[href] {
   text-decoration: none;
-  @apply border-dashed border-red-500 border-b-2 text-red-500;
+  @apply border-dashed border-red-500 border-b-2 text-red-500 px-1;
 }
 
 .markdown a[href]:hover {
-  @apply border-b-4 text-red-600;
+  @apply border-none bg-red-600 rounded text-white;
 }
 
 .markdown li {
@@ -47,7 +47,7 @@
 
 .markdown p>code,
 .markdown li>code {
-  @apply bg-indigo-100 text-indigo-700 text-sm px-2 py-1 rounded break-words;
+  @apply bg-indigo-100 text-indigo-700 text-sm px-1 rounded break-words;
   font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
 }
 
