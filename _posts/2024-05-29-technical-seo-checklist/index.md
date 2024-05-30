@@ -136,6 +136,7 @@ Beberapa peralatan tambahan gratis yang bisa membantu kalian dalam mengerjakan h
 - ▶️ [**Rich Results**](https://search.google.com/test/rich-results): digunakan untuk melakukan pengujian [Structured Data Markup](https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data)
 - ▶️ [**PageSpeed Insights**](https://pagespeed.web.dev/): digunakan untuk melakukan pengujian performa pemuatan dari sebuah laman website
 - ▶️ [**Metatags.io**](https://metatags.io/): untuk melakukan pengujian pada meta tag sebuah laman
+- ▶️ [**schema-dts**](https://www.npmjs.com/package/schema-dts): merupakan typing yang dibuat oleh Google, membantu saat development dan harus membuat JSON-LD menggunakan TypeScript
 
 ## 🚦 Peringatan Tambahan
 
