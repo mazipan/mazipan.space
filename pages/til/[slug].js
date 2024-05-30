@@ -14,6 +14,7 @@ import Tags from '@/components/Tags'
 
 import { getTilBySlug, getAllTils } from '@/lib/tils'
 import { SITE_METADATA } from '@/lib/constants'
+import CommentBox from '@/components/CommentBox'
 
 export default function TilDetail({ til, preview }) {
   const router = useRouter()
@@ -51,7 +52,10 @@ export default function TilDetail({ til, preview }) {
           </div>
 
           <MarkdownParser content={til.content} />
-          <ShareArticle text={til.title} url={`${SITE_METADATA.url}/til/${til.slug}`} />
+          <div className='mt-8'>
+            <ShareArticle text={til.title} url={`${SITE_METADATA.url}/til/${til.slug}`} />
+          </div>
+          <CommentBox />
         </>
       </LayoutArticle>
     </>

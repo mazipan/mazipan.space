@@ -1,5 +1,5 @@
 ---
-title: Menungunduh Berkas dari Blob
+title: Mengunduh Berkas dari Blob
 date: '2024-05-30'
 excerpt: Code snippet untuk mengunduh berkas dari tipe data Blob
 tags: [javascript]

@@ -1,7 +1,8 @@
 import React from 'react'
 import useIntersect from '@/hooks/useIntersect'
+import useTheme from '@/hooks/useTheme'
 
-const insertAttribute = (node) => {
+const insertAttribute = (node, theme) => {
   node.setAttribute('data-repo', 'mazipan/blog-comments')
   node.setAttribute('data-repo-id', 'MDEwOlJlcG9zaXRvcnkyOTg3MjA2Mjk=')
   node.setAttribute('data-category', 'Q&A')
@@ -11,17 +12,18 @@ const insertAttribute = (node) => {
   node.setAttribute('data-reactions-enabled', '1')
   node.setAttribute('data-emit-metadata', '0')
   node.setAttribute('data-input-position', 'top')
-  node.setAttribute('data-theme', 'dark')
+  node.setAttribute('data-theme', theme)
   node.setAttribute('data-lang', 'id')
   node.setAttribute('data-loading', 'lazy')
   node.setAttribute('crossorigin', 'anonymous')
 }
 
 export default function CommentBox () {
+  const { theme } = useTheme()
   const onIntersect = () => {
     try {
       const script = document.createElement('script')
-      insertAttribute(script)
+      insertAttribute(script, theme || 'dark')
 
       script.onload = () => {
         const idSkeleton = document.getElementById('comment-skeleton')
@@ -37,11 +39,11 @@ export default function CommentBox () {
 
       const idParent = document.getElementById('comments')
       if (idParent) {
-        insertAttribute(idParent)
+        insertAttribute(idParent, theme || 'dark')
         idParent.appendChild(script)
       }
     } catch (e) {
-      console.error('Failed insert utterances.es', e)
+      console.error('Failed insert giscus', e)
     }
   }
   const targetRef = useIntersect(onIntersect, {}, true)
