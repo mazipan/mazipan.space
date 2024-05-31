@@ -29,7 +29,7 @@ export default function Header () {
             <span className="pl-2">TIL</span>
           </a>
         </Link>
-        <Link href="https://bookmarks.mazipan.space/">
+        <Link href="https://bookmarks.mazipan.space/" target='_blank' rel="noopener noreferrer">
           <a className="text-link hidden items-center md:flex md:mr-4 font-bold">
             <MenuBookmark />
             <span className="pl-2">Bookmarks</span>

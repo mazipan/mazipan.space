@@ -31,7 +31,7 @@ export default function FloatingNav() {
             <MenuBook /> {'TIL'}
           </>
         </ActiveLink>
-        <ActiveLink href="https://bookmarks.mazipan.space/">
+        <ActiveLink href="https://bookmarks.mazipan.space/" target='_blank' rel="noopener noreferrer">
           <>
             <MenuBookmark /> {'Bookmarks'}
           </>
