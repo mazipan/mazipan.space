@@ -17,7 +17,7 @@ import LayoutArticle from '@/components/Layout/Article'
 import { getPostBySlug, getAllPosts, getRelatedPost } from '@/lib/api'
 import { SITE_METADATA } from '@/lib/constants'
 
-export default function Post ({ post, related, preview }) {
+export default function Post({ post, related, preview }) {
   const router = useRouter()
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />
@@ -44,15 +44,14 @@ export default function Post ({ post, related, preview }) {
             tags={post.tags}
           />
           <InfoBox>
-            Available in other languages: {' '}
-
-              <ul>
-                <li>
-                  <Link as={`/${post.slug}`} href="/[slug]">
-                    <a className="font-bold underline">🇮🇩 Bahasa Indonesia</a>
-                  </Link>
-                </li>
-              </ul>
+            Available in other languages:{' '}
+            <ul>
+              <li>
+                <Link as={`/${post.slug}`} href="/[slug]">
+                  <a className="font-bold underline">🇮🇩 Bahasa Indonesia</a>
+                </Link>
+              </li>
+            </ul>
           </InfoBox>
           <MarkdownParser content={post.content} />
           <PostFooter fileLocation={post.fileLocation} />
@@ -65,10 +64,22 @@ export default function Post ({ post, related, preview }) {
   )
 }
 
-export async function getStaticProps ({ params }) {
+export async function getStaticProps({ params }) {
   const post = await getPostBySlug(
     params.slug,
-    ['title', 'date', 'slug', 'excerpt', 'author', 'content', 'tags', 'coverImage'],
+    [
+      'title',
+      'date',
+      'excerpt',
+      'slug',
+      'author',
+      'content',
+      'tags',
+      'coverImage',
+      'enready',
+      'published',
+      'featured'
+    ],
     'en'
   )
 
@@ -86,7 +97,7 @@ export async function getStaticProps ({ params }) {
   }
 }
 
-export async function getStaticPaths () {
+export async function getStaticPaths() {
   const posts = await getAllPosts(['slug'], 'en')
 
   return {

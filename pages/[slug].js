@@ -66,17 +66,23 @@ export default function Post ({ post, related, preview }) {
 }
 
 export async function getStaticProps ({ params }) {
-  const post = await getPostBySlug(params.slug, [
-    'title',
-    'date',
-    'excerpt',
-    'slug',
-    'author',
-    'content',
-    'tags',
-    'coverImage',
-    'enready'
-  ])
+  const post = await getPostBySlug(
+    params.slug,
+    [
+      'title',
+      'date',
+      'excerpt',
+      'slug',
+      'author',
+      'content',
+      'tags',
+      'coverImage',
+      'enready',
+      'published',
+      'featured'
+    ],
+    'id'
+  )
 
   const related = await getRelatedPost(post.tags[0], post.slug, 'id')
 
