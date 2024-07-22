@@ -14,7 +14,7 @@ import Related from '@/components/Post/Related'
 
 import LayoutArticle from '@/components/Layout/Article'
 
-import { getPostBySlug, getAllPosts, getRelatedPost } from '@/lib/api'
+import { getPostBySlug, getAllPosts, getRelatedPost, DEFAULT_FIELDS } from '@/lib/api'
 import { SITE_METADATA } from '@/lib/constants'
 
 export default function Post ({ post, related, preview }) {
@@ -99,7 +99,7 @@ export async function getStaticProps ({ params }) {
 }
 
 export async function getStaticPaths () {
-  const posts = await getAllPosts(['slug'])
+  const posts = await getAllPosts(DEFAULT_FIELDS, 'id')
 
   return {
     paths: posts.map((post) => {

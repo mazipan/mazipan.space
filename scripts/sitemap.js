@@ -2,13 +2,13 @@ const fs = require('fs')
 const path = require('path')
 const nanositemap = require('nanositemap')
 
-const { getAllPosts, getAllTags } = require('../lib/api')
+const { getAllPosts, getAllTags, DEFAULT_FIELDS } = require('../lib/api')
 const { getAllTils } = require('../lib/tils')
 const { SITE_METADATA } = require('../lib/constants')
 
 async function main () {
   const sitemapObj = {}
-  const posts = await getAllPosts(['date', 'slug'], 'id')
+  const posts = await getAllPosts(DEFAULT_FIELDS, 'id')
 
   for (const post of posts) {
     sitemapObj[`/${post.slug}`] = {

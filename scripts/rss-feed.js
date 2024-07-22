@@ -2,7 +2,7 @@ const fs = require('fs')
 const path = require('path')
 const Feed = require('feed').Feed
 
-const { getAllPosts } = require('../lib/api')
+const { getAllPosts, DEFAULT_FIELDS } = require('../lib/api')
 const { getAllTils } = require('../lib/tils')
 const { SITE_METADATA } = require('../lib/constants')
 
@@ -29,7 +29,7 @@ async function main () {
   })
 
   const posts = await getAllPosts(
-    ['title', 'date', 'slug', 'author', 'coverImage', 'excerpt'],
+    DEFAULT_FIELDS,
     'id'
   )
 
