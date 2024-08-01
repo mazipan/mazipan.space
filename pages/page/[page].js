@@ -31,7 +31,7 @@ export default function PagedPost ({ data, page, pages, next, prev }) {
 export async function getStaticProps ({ params }) {
   const { data, next, prev, pages } = await getPagedPost(
     DEFAULT_FIELDS,
-    params.page,
+    params.page || 1,
     'id'
   )
 
