@@ -5,7 +5,7 @@ import List from '@/components/Post/List'
 import Pagination from '@/components/Pagination'
 import Layout from '@/components/Layout/Default'
 
-import { getPagedPost, getAvailablePage } from '@/lib/api'
+import { getPagedPost, getAvailablePage, DEFAULT_FIELDS } from '@/lib/api'
 
 export default function PagedPost ({ data, page, pages, next, prev }) {
   return (
@@ -30,7 +30,7 @@ export default function PagedPost ({ data, page, pages, next, prev }) {
 
 export async function getStaticProps ({ params }) {
   const { data, next, prev, pages } = await getPagedPost(
-    ['title', 'date', 'slug', 'author', 'coverImage', 'excerpt', 'tags'],
+    DEFAULT_FIELDS,
     params.page,
     'id'
   )

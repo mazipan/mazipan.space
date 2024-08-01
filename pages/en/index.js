@@ -6,7 +6,7 @@ import MoreStories from '@/components/Post/Home'
 import Pagination from '@/components/Pagination'
 import Layout from '@/components/Layout/Default'
 
-import { getPagedPost } from '@/lib/api'
+import { DEFAULT_FIELDS, getPagedPost } from '@/lib/api'
 
 export default function Index({ data, page, pages }) {
   return (
@@ -26,7 +26,7 @@ export default function Index({ data, page, pages }) {
 
 export async function getStaticProps() {
   const { data, page, pages } = await getPagedPost(
-    ['title', 'date', 'slug', 'author', 'coverImage', 'excerpt', 'tags'],
+    DEFAULT_FIELDS,
     1,
     'en'
   )

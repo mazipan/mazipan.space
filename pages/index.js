@@ -7,7 +7,7 @@ import FeaturedPost from '@/components/FeaturedPost'
 import Pagination from '@/components/Pagination'
 import Layout from '@/components/Layout/Default'
 
-import { getPagedPost, getFeaturedPost } from '@/lib/api'
+import { getPagedPost, getFeaturedPost, DEFAULT_FIELDS } from '@/lib/api'
 
 export default function Index({ data, page, pages, featuredPosts }) {
   return (
@@ -37,12 +37,12 @@ export default function Index({ data, page, pages, featuredPosts }) {
 
 export async function getStaticProps() {
   const { data: featuredPosts } = await getFeaturedPost(
-    ['title', 'date', 'slug', 'author', 'coverImage', 'excerpt', 'tags', 'published', 'featured'],
+    DEFAULT_FIELDS,
     'id'
   )
 
   const { data, page, pages } = await getPagedPost(
-    ['title', 'date', 'slug', 'author', 'coverImage', 'excerpt', 'tags', 'published', 'featured'],
+    DEFAULT_FIELDS,
     1,
     'id'
   )
