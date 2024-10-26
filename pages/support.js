@@ -29,16 +29,7 @@ export default function Index () {
                   <span className="mr-2">🇮🇩</span> Trakteer
                 </a>
               </li>
-              <li>
-                <span className="mr-2">👉</span>
-                <a
-                  className="text-red-500 hover:underline pr-2 md:pr-4"
-                  href="https://www.nihbuatjajan.com/mazipan?utm_source=mazipan.space"
-                  rel="nofollow"
-                >
-                  <span className="mr-2">🇮🇩</span> NihBuatJajan
-                </a>
-              </li>
+              
               <li>
                 <span className="mr-2">👉</span>
                 <a
