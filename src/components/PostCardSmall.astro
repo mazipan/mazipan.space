@@ -1,0 +1,90 @@
+---
+import { Icon } from 'astro-icon/components';
+import { Image } from 'astro:assets';
+
+import { getPublishedOrUpdatedDate } from '@/modules/common';
+import Link from '@/components/Link.astro';
+import { DRAFT_TEXT } from '@/constants/data';
+import { IMAGE_SIZES } from '@/constants/image';
+import { ROUTES } from '@/constants/routes';
+import { setTransitionSlug, TRANSITION_ELEMENT_IDS } from '@/constants/transitions';
+import { formatDate, formatDateIso } from '@/utils/datetime';
+import { cn } from '@/utils/styles';
+
+import type { Post } from '@/types/post';
+import type { HTMLAttributes } from 'astro/types';
+
+export interface Props extends HTMLAttributes<'article'> {
+  post: Post;
+  withImage?: boolean
+}
+
+const { post, class: className, withImage = false } = Astro.props;
+const { data, slug } = post;
+const { title, heroImage, heroAlt, description, publishDate, updatedDate, draft } = data;
+
+const { lastAccessDate, isUpdatedDate } = getPublishedOrUpdatedDate({
+  publishDate,
+  updatedDate,
+});
+
+const getTransitionNameFromElementId = setTransitionSlug({ pageSlug: slug });
+---
+
+<article
+  class={cn(
+    'flex flex-col xs:flex-row gap-2 md:gap-4',
+    'not-first:pt-2 not-last:pb-2 md:not-first:pt-4 md:not-last:pb-4',
+    'not-last:border-b border-base-300',
+    className
+  )}
+>
+  {withImage && (
+    <Image
+        {...IMAGE_SIZES.FIXED.POST_CARD_SMALL}
+        src={heroImage}
+        alt={heroAlt}
+        class="object-cover rounded-box hidden xs:block w-[142px] h-[80px] md:size-auto"
+        transition:name={getTransitionNameFromElementId({
+          elementId: TRANSITION_ELEMENT_IDS.POST_CARD.HERO_IMAGE,
+        })}
+      />
+  )}
+
+  <div class="flex flex-col">
+    <h4
+      class="b-h4 text-xl leading-none line-clamp-1 mb-1 md:mb-2"
+      transition:name={getTransitionNameFromElementId({
+        elementId: TRANSITION_ELEMENT_IDS.POST_CARD.TITLE,
+      })}
+    >
+      <Link variant="link-heading" href={`${ROUTES.BLOG}${slug}`}>
+        {draft && <sup class="text-sm text-red-500 mr-1">{DRAFT_TEXT}</sup>}
+        {title}
+      </Link>
+    </h4>
+    {
+      description && (
+        <p
+          class="text-base text-captions line-clamp-1 md:line-clamp-2 mb-2"
+          transition:name={getTransitionNameFromElementId({
+            elementId: TRANSITION_ELEMENT_IDS.POST_CARD.DESCRIPTION,
+          })}
+        >
+          {description}
+        </p>
+      )
+    }
+    <span
+      class="inline-flex items-center gap-1 text-sm text-captions text-nowrap mt-auto"
+      transition:name={getTransitionNameFromElementId({
+        elementId: TRANSITION_ELEMENT_IDS.POST_CARD.META,
+      })}
+    >
+      <Icon name={isUpdatedDate ? 'mdi:edit-outline' : 'mdi:access-time'} class="w-4 h-4" />
+      <time itemprop="datePublished" datetime={formatDateIso(lastAccessDate)}>
+        {formatDate(lastAccessDate)}
+      </time>
+    </span>
+  </div>
+</article>
