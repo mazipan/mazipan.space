@@ -1,0 +1,26 @@
+---
+import PostCardMore from '@/components/PostCardMore.astro';
+import { cn } from '@/utils/styles';
+
+import type { Post } from '@/types/post';
+import type { HTMLAttributes } from 'astro/types';
+
+export interface Props extends HTMLAttributes<'div'> {
+  morePosts: Post[];
+}
+
+const { morePosts, class: className } = Astro.props;
+---
+
+<div class={cn(className)}>
+  <h2 class="b-h2 mt-0">More posts</h2>
+  <ul class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
+    {
+      morePosts.map((post) => (
+        <li>
+          <PostCardMore {post} />
+        </li>
+      ))
+    }
+  </ul>
+</div>

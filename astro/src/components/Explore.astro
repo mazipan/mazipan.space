@@ -1,0 +1,49 @@
+---
+import { Icon } from 'astro-icon/components';
+
+import { getCategoryLinks, getCategoryProps } from '@/modules/post/category';
+import { getTagLinks } from '@/modules/post/tag';
+import Button from '@/components/Button.astro';
+import FilterList from '@/components/FilterList.astro';
+import Tag from '@/components/Tag.astro';
+import { cn } from '@/utils/styles';
+
+import type { FilterLink, Post } from '@/types/post';
+
+export interface Props extends astroHTML.JSX.AnchorHTMLAttributes {
+  posts: Post[];
+  filterPathname?: string;
+}
+
+const { posts, filterPathname, class: className, ...props } = Astro.props;
+
+const tagLinks = getTagLinks(posts, filterPathname);
+const categoryLinks = getCategoryLinks(posts, filterPathname);
+---
+
+<section {...props} class={cn(className)}>
+  <FilterList class="gap-4 mb-4" itemLinks={categoryLinks}>
+    {
+      ({ href, text, textWithCount, isActive }: FilterLink) => {
+        const { icon } = getCategoryProps(text);
+        const buttonProps = isActive ? ({ colors: 'primary', variant: 'solid' } as const) : {};
+
+        return (
+          <Button href={href} size="md" {...buttonProps}>
+            <Icon name={icon} slot="before-icon" />
+            {textWithCount}
+          </Button>
+        );
+      }
+    }
+  </FilterList>
+  <FilterList itemLinks={tagLinks}>
+    {
+      ({ href, textWithCount, isActive }: FilterLink) => (
+        <Tag href={href} size="md" colors={isActive ? 'primary' : 'default'}>
+          {textWithCount}
+        </Tag>
+      )
+    }
+  </FilterList>
+</section>

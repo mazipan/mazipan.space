@@ -1,0 +1,60 @@
+@layer components {
+  ol.ol-nested-decimal {
+    counter-reset: first-index;
+    padding-inline-start: 0;
+
+    li {
+      /* undo prose */
+      list-style-type: none;
+      @apply text-captions;
+
+      &:before {
+        @apply pr-1;
+      }
+    }
+
+    & > li:before {
+      counter-increment: first-index;
+      content: counter(first-index, decimal) '.';
+    }
+
+    ol {
+      /* this is important for 1.1. */
+      counter-reset: second-index;
+    }
+
+    ol li:before {
+      counter-increment: second-index;
+      content: counter(first-index, decimal) '.' counter(second-index, decimal) ' ';
+    }
+  }
+
+  ol.ol-nested-latin {
+    counter-reset: first-index;
+    padding-inline-start: 0;
+
+    li {
+      list-style-type: none;
+      @apply text-captions;
+
+      &:before {
+        @apply pr-1;
+      }
+    }
+
+    & > li:before {
+      list-style-type: decimal;
+      counter-increment: first-index;
+      content: counter(first-index, decimal) '.';
+    }
+
+    ol {
+      counter-reset: second-index;
+    }
+
+    ol li:before {
+      counter-increment: second-index;
+      content: counter(second-index, lower-latin) '.';
+    }
+  }
+}

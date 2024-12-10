@@ -1,0 +1,114 @@
+---
+import { getUniqueCategories } from '@/modules/post/category';
+import { getAllPostsWithReadingTime } from '@/modules/post/common';
+import { groupPostsByYear } from '@/modules/post/group-by-year';
+import { getUniqueTags } from '@/modules/post/tag';
+import List from '@/layouts/List.astro';
+import Explore from '@/components/Explore.astro';
+import PostCardSmall from '@/components/PostCardSmall.astro';
+import { getTransitionName, TRANSITION_ELEMENT_IDS } from '@/constants/transitions';
+import { CONFIG_CLIENT } from '@/config/client';
+import { getPageMetadata } from '@/utils/metadata';
+import { pickPaginationPropsFromPage } from '@/utils/pagination';
+import { getPathnameFromFilterParams } from '@/utils/paths';
+
+import type { FilterParams, FilterType, Post } from '@/types/post';
+import type { GetStaticPathsOptions } from 'astro';
+
+export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
+  const posts: Post[] = await getAllPostsWithReadingTime();
+  const pageSize = CONFIG_CLIENT.PAGE_SIZE_POST_CARD_SMALL;
+
+  // grouping is outside of getStaticPaths
+
+  // root pagination, '/', '/tags', '/categories'
+  const filters = [undefined, 'tags', 'categories'];
+  const rootPagination = filters.flatMap((filter) => {
+    const pagination = paginate(posts, { pageSize, params: { filter } });
+    return pagination;
+  });
+
+  rootPagination.push({ ...rootPagination[0], params: { ...rootPagination[0].params, page: '1' } });
+
+  // prerender tags
+  const uniqueTags = getUniqueTags(posts);
+
+  const tagPagination = uniqueTags.flatMap((tag) => {
+    const filteredPosts = posts.filter((post) => post.data.tags.includes(tag));
+    const options = { pageSize, params: { filter: `tags/${tag}` } };
+    const pagination = paginate(filteredPosts, options);
+    return pagination;
+  });
+
+  tagPagination.push({ ...tagPagination[0], params: { ...tagPagination[0].params, page: '1' } });
+
+  // prerender categories
+  const uniqueCategories = getUniqueCategories(posts);
+
+  const categoryPagination = uniqueCategories.flatMap((category) => {
+    const filteredPosts = posts.filter((post) => post.data.category === category);
+    const options = { pageSize, params: { filter: `categories/${category}` } };
+    const pagination = paginate(filteredPosts, options);
+    return pagination;
+  });
+
+  categoryPagination.push({
+    ...categoryPagination[0],
+    params: { ...categoryPagination[0].params, page: '1' },
+  });
+
+  const pagination = [...tagPagination, ...categoryPagination, ...rootPagination];
+
+  return pagination;
+}
+
+const { page } = Astro.props;
+const { data: paginatedPosts } = page;
+const { filter, page: pageParam } = Astro.params;
+
+// http://localhost:3000/blog/explore/tags/react/2
+// filter tags pageParam react/2 pathname /blog/explore/tags/react/2
+
+const filterParams: FilterParams = {
+  filterType: filter as FilterType,
+  filterSlug: pageParam?.split('/')[0], // will return first word without '/'
+};
+
+// for explore
+const filterPathname = getPathnameFromFilterParams(filterParams);
+const allPosts = await getAllPostsWithReadingTime();
+
+// layout
+const paginationProps = pickPaginationPropsFromPage(page);
+const metadata = getPageMetadata('lists/blog/explore');
+const layoutProps = { metadata, paginationProps };
+
+// render
+const postsByYear = groupPostsByYear(paginatedPosts);
+---
+
+<List {...layoutProps}>
+  <Explore posts={allPosts} {filterPathname} />
+  <div>
+    {
+      postsByYear.years.map((year) => (
+        <>
+          <h2
+            class="b-h2"
+            transition:name={getTransitionName({
+              elementId: TRANSITION_ELEMENT_IDS.EXPLORE.YEAR,
+              pageSlug: year,
+            })}
+          >
+            {year}
+          </h2>
+          <div>
+            {postsByYear.posts[year].map((post) => (
+              <PostCardSmall {post} class="last:mb-6" />
+            ))}
+          </div>
+        </>
+      ))
+    }
+  </div>
+</List>

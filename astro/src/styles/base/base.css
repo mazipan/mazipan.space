@@ -1,0 +1,12 @@
+@layer base {
+  body {
+    /* style base font in body, not in html so rem is unaffected */
+    /* not responsive font, will affect buttons, etc, all elements */
+    @apply text-content;
+  }
+
+  :root {
+    /* code blocks responsive font size */
+    @apply [--expressive-code-font-size:0.875rem] md:[--expressive-code-font-size:1rem];
+  }
+}

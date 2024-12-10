@@ -1,0 +1,30 @@
+/*
+  accept-ch: sec-ch-prefers-color-scheme
+  link: <https://nemanjamitic.com/>; rel=preconnect
+  permissions-policy: ch-prefers-color-scheme=("https://nemanjamitic.com")
+  x-frame-options: DENY
+  x-content-type-options: nosniff
+  referrer-policy: same-origin
+  cross-origin-resource-policy: same-origin
+  cross-origin-embedder-policy: unsafe-none
+  cross-origin-opener-policy: same-origin
+
+/assets/*
+  cache-control: public
+  cache-control: max-age=365000000
+  cache-control: immutable
+
+/img/*
+  cache-control: public
+  cache-control: max-age=365000000
+  cache-control: immutable
+
+/*.js
+  cache-control: public
+  cache-control: max-age=365000000
+  cache-control: immutable
+
+/*.json
+  cache-control: public
+  cache-control: max-age=365000000
+  cache-control: immutable

@@ -1,0 +1,22 @@
+{
+  "background_color": "#c1ddf9",
+  "display": "standalone",
+  "icons": [
+    {
+      "sizes": "192x192",
+      "src": "/images/favicons/android-chrome-192x192.png",
+      "type": "image/png"
+    },
+    {
+      "sizes": "512x512",
+      "src": "/images/favicons/android-chrome-512x512.png",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/blog",
+  "scope": "/",
+  "name": "Nemanja Mitic",
+  "short_name": "Nemanja Mitic",
+  "description": "Nemanja Mitic’s coding blog",
+  "theme_color": "#0f172a"
+}

@@ -1,0 +1,36 @@
+@layer components {
+  .link-default {
+    /* hover, focus, active, visited */
+    @apply text-links no-underline;
+  }
+
+  .link {
+    @apply hover:text-links-hover hover:underline;
+    @apply focus:text-links-hover focus:underline;
+    @apply active:text-links-hover active:underline;
+    /* @apply visited:text-links-visited; */
+  }
+
+  .link-no-underline {
+    @apply link !no-underline;
+  }
+
+  .link-heading {
+    @apply text-headings;
+    @apply hover:text-links-hover;
+    @apply focus:text-links-hover;
+    @apply active:text-links-hover;
+    /* @apply visited:text-links-visited; */
+  }
+
+  .link-nav {
+    @apply text-headings whitespace-nowrap underline-offset-4 text-lg;
+    @apply hover:text-links-hover;
+    @apply focus:text-links-hover focus:underline;
+    @apply active:text-links-hover;
+  }
+
+  .link-disabled {
+    @apply text-content hover:text-content no-underline cursor-not-allowed;
+  }
+}

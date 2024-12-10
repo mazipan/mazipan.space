@@ -1,0 +1,56 @@
+---
+import { Icon } from 'astro-icon/components';
+---
+
+<theme-toggle>
+  <button class="rounded-md p-2" type="button">
+    <Icon name="mdi:white-balance-sunny" class="inline-block dark:hidden text-primary w-6 h-6" />
+    <Icon name="mdi:moon-waning-crescent" class="hidden dark:inline-block text-primary w-6 h-6" />
+  </button>
+</theme-toggle>
+
+<script>
+  import { THEME_CONFIG } from '@/constants/theme';
+  import { getNextTheme } from '@/utils/theme';
+
+  import type { ChangeThemeCustomEvent } from '@/types/constants';
+
+  const { CHANGE_EVENT } = THEME_CONFIG;
+
+  class ThemeToggle extends HTMLElement {
+    #controller: AbortController | undefined;
+
+    connectedCallback() {
+      const button = this.querySelector('button')!;
+      // set aria role value
+      button.setAttribute('role', 'switch');
+      // button.setAttribute('aria-checked', String(isDarkMode()));
+
+      // Abort signal
+      const { signal } = (this.#controller = new AbortController());
+
+      // button event
+      button.addEventListener(
+        'click',
+        () => {
+          // shift theme
+          const nextTheme = getNextTheme();
+          const payload = { detail: { theme: nextTheme } } as ChangeThemeCustomEvent;
+          const themeChangeEvent = new CustomEvent(CHANGE_EVENT, payload);
+          // dispatch event -> ThemeProvider.astro
+          document.dispatchEvent(themeChangeEvent);
+
+          // set the aria-checked attribute
+          // button.setAttribute('aria-checked', String(isDarkMode()));
+        },
+        { signal }
+      );
+    }
+
+    disconnectedCallback() {
+      this.#controller?.abort();
+    }
+  }
+
+  customElements.define('theme-toggle', ThemeToggle);
+</script>

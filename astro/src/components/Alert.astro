@@ -1,0 +1,56 @@
+---
+import { Icon } from 'astro-icon/components';
+
+import { cva } from 'class-variance-authority';
+
+import { capitalizeFirstLetter } from '@/utils/strings';
+import { cn } from '@/utils/styles';
+
+import type { HTMLAttributes } from 'astro/types';
+import type { VariantProps } from 'class-variance-authority';
+
+const alertVariants = cva('alert', {
+  variants: {
+    variant: {
+      note: 'alert--note',
+      info: 'alert--info',
+      tip: 'alert--tip',
+      warning: 'alert--warning',
+      danger: 'alert--danger',
+    },
+  },
+});
+
+const alertTitleVariants = cva('alert__title', {
+  variants: {
+    variant: {
+      note: 'alert__title--note',
+      info: 'alert__title--info',
+      tip: 'alert__title--tip',
+      warning: 'alert__title--warning',
+      danger: 'alert__title--danger',
+    },
+  },
+});
+
+export interface Props extends HTMLAttributes<'aside'>, VariantProps<typeof alertVariants> {
+  title?: string;
+}
+
+const { title: titleProp, class: className, variant: variantProp, ...props } = Astro.props;
+
+// defailts
+const variant = variantProp ?? 'note';
+const title = titleProp ?? capitalizeFirstLetter(variant);
+---
+
+<aside class={alertVariants({ variant, className })} aria-label={title} {...props}>
+  <h4 aria-hidden="true" class={cn('b-h4', alertTitleVariants({ variant }))}>
+    <Icon name={variant} class="inline h-6 w-6" />
+    {title}
+  </h4>
+
+  <div>
+    <slot />
+  </div>
+</aside>

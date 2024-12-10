@@ -1,0 +1,34 @@
+---
+import { Image } from 'astro:assets';
+
+import Link from '@/components/Link.astro';
+import { DRAFT_TEXT } from '@/constants/data';
+import { IMAGE_SIZES } from '@/constants/image';
+import { ROUTES } from '@/constants/routes';
+
+import type { Post } from '@/types/post';
+
+export interface Props {
+  post: Post;
+}
+
+const { post } = Astro.props;
+const { data, slug } = post;
+const { title, heroImage, heroAlt, description, draft } = data;
+---
+
+<div>
+  <Image
+    {...IMAGE_SIZES.RESPONSIVE.POST_CARD}
+    src={heroImage}
+    alt={heroAlt}
+    class="max-h-40 object-cover rounded-t-box"
+  />
+  <h4 class="b-h4 break-words line-clamp-2 mt-3 mb-2">
+    <Link variant="link-heading" href={`${ROUTES.BLOG}${slug}`}>
+      {title}
+      {draft && <sup class="text-sm text-red-500 ml-1">{DRAFT_TEXT}</sup>}
+    </Link>
+  </h4>
+  {description && <p class="text-base text-captions line-clamp-2">{description}</p>}
+</div>

@@ -1,0 +1,18 @@
+---
+title: This is the second project
+description: Description of the second project
+heroImage: '../../content/project/_images/2024-03-15-example-project-2/cyco5.jpg'
+heroAlt: This is bicycle
+publishDate: 2024-03-15
+updatedDate: 2024-04-21
+---
+
+import { Image } from 'astro:assets';
+
+import { IMAGE_SIZES } from '../../constants/image';
+
+import BicycleImage from '../../content/project/_images/2024-03-15-example-project-2/cyco5.jpg';
+
+# This is the second project
+
+<Image {...IMAGE_SIZES.FIXED.MDX_LG} src={BicycleImage} alt="" />

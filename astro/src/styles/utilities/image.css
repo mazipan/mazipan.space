@@ -1,0 +1,14 @@
+@layer utilities {
+  .no-expand {
+  }
+
+  .expand-lg {
+    @apply xl:mx-[calc(50%-50vw)] xl:translate-x-[calc(50vw-50%)];
+    @apply xl:w-[80vw] max-w-7xl;
+  }
+
+  .expand-sm {
+    @apply xl:mx-[calc(50%-50vw)] xl:translate-x-[calc(50vw-50%)];
+    @apply xl:w-[70vw] max-w-5xl;
+  }
+}

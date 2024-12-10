@@ -1,0 +1,25 @@
+---
+import { cn } from '@/utils/styles';
+
+import type { FilterLink } from '@/types/post';
+
+export interface Props extends astroHTML.JSX.AnchorHTMLAttributes {
+  itemLinks: FilterLink[];
+}
+
+const { itemLinks = [], class: className, ...props } = Astro.props;
+
+// fix this, category card with icon, tag TagList, CategoryList
+---
+
+{
+  itemLinks.length > 0 && (
+    <ul {...props} class={cn('flex flex-wrap gap-2', className)}>
+      {itemLinks.map(async (itemLink) => {
+        const html = await Astro.slots.render('default', [itemLink]);
+
+        return <li class="inline-block" set:html={html} />;
+      })}
+    </ul>
+  )
+}

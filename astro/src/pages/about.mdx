@@ -1,0 +1,49 @@
+---
+layout: '../layouts/Page.astro'
+title: 'About'
+description: 'About me page'
+---
+
+import { Image } from 'astro:assets';
+
+import { CONFIG_CLIENT } from '../config/client';
+import { IMAGE_SIZES, TW_SCREENS } from '../constants/image';
+import Link from '../components/Link.astro';
+import Electronics1Image from '../assets/images/all-images/electronics1.jpg';
+
+
+export const { AUTHOR_GITHUB, AUTHOR_LINKEDIN, AUTHOR_TWITTER, AUTHOR_YOUTUBE } = CONFIG_CLIENT;
+
+{/* bellow SM image is full width of content so higher resolution image */}
+export const imageSizes = {
+  widths: [TW_SCREENS.SM, TW_SCREENS.MD, TW_SCREENS.SM],
+  sizes: `(max-width: ${TW_SCREENS.SM}px) ${TW_SCREENS.SM}px, (max-width: ${TW_SCREENS.MD}px) ${TW_SCREENS.MD}px, ${TW_SCREENS.SM}px`,
+};
+
+# About
+
+<Image {...imageSizes} src={Electronics1Image} alt="Veronica transmitter board" class="md:max-w-sm lg:max-w-md md:float-right md:mt-2 md:ml-8" /> 
+
+My name is Nemanja, I am a full-stack developer with experience in React.js, Next.js, and Node.js. In the past, I have worked with C# and ASP.NET, and lately, I have developed an interest in Python and FastAPI. I also like to experiment with DevOps and homelab self-hosting.
+
+My hobbies are fishing, lure building, bicycling, playing guitar, composing in FL Studio, and DIY electronics.
+
+If you want to contact me about coding, or if you need a companion for fishing or jamming, use the links below.
+
+<p class="my-2 flex gap-1 flex-col xs:flex-row">
+  <label class="font-bold">GitHub:</label>
+  <Link href={AUTHOR_GITHUB} target="_blank">{AUTHOR_GITHUB}</Link>
+</p>
+<p class="my-2 flex gap-1 flex-col xs:flex-row">
+  <label class="font-bold">LinkedIn:</label>
+  <Link href={AUTHOR_LINKEDIN} target="_blank">{AUTHOR_LINKEDIN}</Link>
+</p>
+<p class="my-2 flex gap-1 flex-col xs:flex-row">
+  <label class="font-bold">Twitter:</label>
+  <Link href={AUTHOR_TWITTER} target="_blank">{AUTHOR_TWITTER}</Link>
+</p>
+<p class="my-2 flex gap-1 flex-col xs:flex-row">
+  <label class="font-bold">YouTube:</label>
+  <Link href={AUTHOR_YOUTUBE} target="_blank">{AUTHOR_YOUTUBE}</Link>
+</p>
+

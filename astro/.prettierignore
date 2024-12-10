@@ -1,0 +1,15 @@
+dist
+node_modules
+.changeset
+yarn.yaml
+.turbo
+.vercel
+.astro
+
+# enable for .md
+docs
+
+
+# formatting breaks them
+# *.md
+*.mdx

@@ -1,0 +1,25 @@
+---
+import Base from '@/layouts/Base.astro';
+import { cn } from '@/utils/styles';
+
+import type { BaseProps } from '@/layouts/Base.astro';
+
+export interface Props extends BaseProps, astroHTML.JSX.HTMLAttributes {}
+
+const props = Astro.props;
+
+// targets <main /> tag
+const { class: className } = Astro.props;
+---
+
+{/* flex here to take full height for pagination, flex-row align-stretch */}
+{/* h-full dosent work without all parents h-full */}
+
+<Base {...props}>
+  <main
+    id="main"
+    class={cn('flex-grow flex flex-col centered-px max-w-4xl py-4 lg:py-8', className)}
+  >
+    <slot />
+  </main>
+</Base>

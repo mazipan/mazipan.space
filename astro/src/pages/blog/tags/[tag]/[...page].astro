@@ -1,0 +1,53 @@
+---
+import { getAllPostsWithReadingTime } from '@/modules/post/common';
+import { getUniqueTags } from '@/modules/post/tag';
+import List from '@/layouts/List.astro';
+import Link from '@/components/Link.astro';
+import PostList from '@/components/PostList.astro';
+import { ROUTES } from '@/constants/routes';
+import { CONFIG_CLIENT } from '@/config/client';
+import { getPageMetadata } from '@/utils/metadata';
+import { pickPaginationPropsFromPage } from '@/utils/pagination';
+
+import type { Metadata } from '@/types/common';
+import type { Post } from '@/types/post';
+import type { GetStaticPathsOptions } from 'astro';
+
+export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
+  const posts: Post[] = await getAllPostsWithReadingTime();
+  const pageSize = CONFIG_CLIENT.PAGE_SIZE_POST_CARD;
+
+  const uniqueTags = getUniqueTags(posts);
+
+  const pagination = uniqueTags.flatMap((tag) => {
+    const filteredPosts = posts.filter((post) => post.data.tags.includes(tag));
+    const tagPagination = paginate(filteredPosts, { pageSize, params: { tag } });
+    return tagPagination;
+  });
+
+  pagination.push({ ...pagination[0], params: { ...pagination[0].params, page: '1' } });
+  return pagination;
+}
+
+const { page } = Astro.props;
+const { tag } = Astro.params;
+
+const title = `#${tag}`;
+
+// dynamic param for metadata
+const defaultMetadata = getPageMetadata('lists/blog/tags/tag');
+const metadata: Metadata = { ...defaultMetadata, title };
+
+const paginationProps = pickPaginationPropsFromPage(page);
+const layoutProps = { metadata, paginationProps };
+---
+
+<List {...layoutProps}>
+  <Fragment slot="heading">
+    <div class="flex justify-between">
+      <h1 class="b-h1">{title}</h1>
+      <Link href={ROUTES.EXPLORE} class="mt-2 md:mt-4">all tags</Link>
+    </div>
+  </Fragment>
+  <PostList posts={page.data} />
+</List>

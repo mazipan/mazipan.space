@@ -1,0 +1,53 @@
+---
+import { getUniqueCategories } from '@/modules/post/category';
+import { getAllPostsWithReadingTime } from '@/modules/post/common';
+import List from '@/layouts/List.astro';
+import Link from '@/components/Link.astro';
+import PostList from '@/components/PostList.astro';
+import { ROUTES } from '@/constants/routes';
+import { CONFIG_CLIENT } from '@/config/client';
+import { getPageMetadata } from '@/utils/metadata';
+import { pickPaginationPropsFromPage } from '@/utils/pagination';
+import { capitalizeFirstLetter } from '@/utils/strings';
+
+import type { Metadata } from '@/types/common';
+import type { Post } from '@/types/post';
+import type { GetStaticPathsOptions } from 'astro';
+
+export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
+  const posts: Post[] = await getAllPostsWithReadingTime();
+  const pageSize = CONFIG_CLIENT.PAGE_SIZE_POST_CARD;
+
+  const uniqueCategories = getUniqueCategories(posts);
+
+  const pagination = uniqueCategories.flatMap((category) => {
+    const filteredPosts = posts.filter((post) => post.data.category === category);
+    const categoryPagination = paginate(filteredPosts, { pageSize, params: { category } });
+    return categoryPagination;
+  });
+
+  pagination.push({ ...pagination[0], params: { ...pagination[0].params, page: '1' } });
+  return pagination;
+}
+
+const { page } = Astro.props;
+const { category } = Astro.params;
+
+const defaultMetadata = getPageMetadata('lists/blog/categories/category');
+
+const title = capitalizeFirstLetter(category);
+const metadata: Metadata = { ...defaultMetadata, title };
+
+const paginationProps = pickPaginationPropsFromPage(page);
+const layoutProps = { metadata, paginationProps };
+---
+
+<List {...layoutProps}>
+  <Fragment slot="heading">
+    <div class="flex justify-between">
+      <h1 class="b-h1">{title}</h1>
+      <Link href={ROUTES.EXPLORE} class="mt-2 md:mt-4">all categories</Link>
+    </div>
+  </Fragment>
+  <PostList posts={page.data} />
+</List>

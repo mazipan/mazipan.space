@@ -1,0 +1,68 @@
+name: Deploy Nginx with bash file
+
+on:
+  push:
+    # this one is enabled
+    branches:
+      - 'main'
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+'
+  pull_request:
+    branches:
+      - 'disabled-main'
+  workflow_dispatch:
+
+env:
+  SITE_URL: 'https://nemanjamitic.com'
+  PLAUSIBLE_SCRIPT_URL: 'https://plausible.arm1.nemanjamitic.com/js/script.js'
+  SSH_ALIAS: arm1
+  # can be omitted for main domain, will default to SITE_URL
+  PLAUSIBLE_DOMAIN: 'nemanjamitic.com'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Print commit id, message and tag
+        run: |
+          git show -s --format='%h %s'
+          echo "github.ref -> {{ github.ref }}"
+
+      - name: Set up Node.js and Yarn
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22.9.0'
+          registry-url: 'https://registry.yarnpkg.com'
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Build app
+        run: yarn build
+
+      - name: Set up SSH config
+        run: |
+          # Set up SSH key
+          mkdir -p ~/.ssh
+          echo "${{ secrets.REMOTE_KEY_ED25519 }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+
+          # Set up SSH config
+          echo "Host $SSH_ALIAS" > ~/.ssh/config
+          echo "    HostName ${{ secrets.REMOTE_HOST }}" >> ~/.ssh/config
+          echo "    User ${{ secrets.REMOTE_USERNAME }}" >> ~/.ssh/config
+          echo "    IdentityFile ~/.ssh/id_ed25519" >> ~/.ssh/config
+          echo "    Port ${{ secrets.REMOTE_PORT }}" >> ~/.ssh/config
+          chmod 600 ~/.ssh/config
+
+          # Add SSH server key to known_hosts
+          ssh-keyscan -H ${{ secrets.REMOTE_HOST }} >> ~/.ssh/known_hosts
+
+      - name: Run bash file with yarn
+        run: yarn deploy:nginx

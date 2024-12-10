@@ -1,0 +1,84 @@
+name: Build and push Docker
+
+on:
+  push:
+    branches:
+      - 'main'
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+'
+  pull_request:
+    branches:
+      - 'disabled-main'
+  workflow_dispatch:
+
+env:
+  IMAGE_NAME: ${{ github.event.repository.name }}
+  SITE_URL_ARM64: 'https://nmc-docker.arm1.nemanjamitic.com'
+  SITE_URL_AMD64: 'https://nmc-docker.local.nemanjamitic.com'
+  PLAUSIBLE_SCRIPT_URL: 'https://plausible.arm1.nemanjamitic.com/js/script.js'
+  PLAUSIBLE_DOMAIN: 'nemanjamitic.com'
+
+jobs:
+  build:
+    name: Build and push docker image
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Print commit id, message and tag
+        run: |
+          git show -s --format='%h %s'
+          echo "github.ref -> {{ github.ref }}"
+
+      # for arm image
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Docker metadata
+        # disable this step
+        if: false
+        id: metadata
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.IMAGE_NAME }}
+          # tags: |
+          #   type=semver,pattern={{version}}
+          #   type=semver,pattern={{major}}.{{minor}}
+          #   type=raw,value={{sha}},enable=${{ github.ref_type != 'tag' }}
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v6
+        with:
+          # src dir
+          context: ./
+          # Dockerfile dir
+          file: ./docker/Dockerfile
+          # cant use matrix, must pass platforms like this
+          platforms: linux/amd64,linux/arm64
+          progress: plain
+          build-args: |
+            "ARG_SITE_URL_ARM64=${{ env.SITE_URL_ARM64 }}"
+            "ARG_SITE_URL_AMD64=${{ env.SITE_URL_AMD64 }}"
+            "ARG_PLAUSIBLE_SCRIPT_URL=${{ env.PLAUSIBLE_SCRIPT_URL }}"
+            "ARG_PLAUSIBLE_DOMAIN=${{ env.PLAUSIBLE_DOMAIN }}"
+          push: true
+          tags: ${{ secrets.DOCKER_USERNAME }}/${{ env.IMAGE_NAME }}:latest
+          # cache-to: type=inline
+          cache-from: type=registry,ref=${{ secrets.DOCKER_USERNAME }}/${{ env.IMAGE_NAME }}:buildcache
+          cache-to: type=registry,ref=${{ secrets.DOCKER_USERNAME }}/${{ env.IMAGE_NAME }}:buildcache,mode=max
+
+          # disabled metadata step
+          # tags: ${{ steps.metadata.outputs.tags }}
+          # labels: ${{ steps.metadata.outputs.labels }}

@@ -1,0 +1,16 @@
+---
+title: This is the third project
+description: Description of the third project
+heroImage: '../../content/project/_images/2024-05-16-example-project-3/morning1.jpg'
+publishDate: 2024-05-16
+---
+
+import { Image } from 'astro:assets';
+
+import { IMAGE_SIZES } from '../../constants/image';
+
+import MorningImage from '../../content/project/_images/2024-05-16-example-project-3/morning1.jpg';
+
+# This is the third project
+
+<Image {...IMAGE_SIZES.FIXED.MDX_LG} src={MorningImage} alt="" />

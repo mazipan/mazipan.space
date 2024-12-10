@@ -1,0 +1,77 @@
+name: Deploy Nginx
+
+on:
+  push:
+    branches:
+      - 'disabled-main'
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+'
+  pull_request:
+    branches:
+      - 'disabled-main'
+  workflow_dispatch:
+
+env:
+  SITE_URL: 'https://nemanjamitic.com'
+  PLAUSIBLE_SCRIPT_URL: 'https://plausible.arm1.nemanjamitic.com/js/script.js'
+  PLAUSIBLE_DOMAIN: 'nemanjamitic.com'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Print commit id, message and tag
+        run: |
+          git show -s --format='%h %s'
+          echo "github.ref -> {{ github.ref }}"
+
+      - name: Set up Node.js and Yarn
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22.9.0'
+          registry-url: 'https://registry.yarnpkg.com'
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      # fix this for turbo
+      - name: Build nemanjamiticcom
+        run: yarn build
+
+      - name: Clean up website dir
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.REMOTE_HOST }}
+          username: ${{ secrets.REMOTE_USERNAME }}
+          key: ${{ secrets.REMOTE_KEY_ED25519 }}
+          port: ${{ secrets.REMOTE_PORT }}
+          script_stop: true
+          script: |
+            cd /home/ubuntu/traefik-proxy/apps/nmc-nginx-with-volume/website
+            echo "Content before deletion: $(pwd)"
+            ls -la
+            rm -rf ./*
+            echo "Content after deletion: $(pwd)"
+            ls -la
+
+      - name: Copy dist folder to remote host
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.REMOTE_HOST }}
+          username: ${{ secrets.REMOTE_USERNAME }}
+          key: ${{ secrets.REMOTE_KEY_ED25519 }}
+          port: ${{ secrets.REMOTE_PORT }}
+          source: 'dist/'
+          target: '/home/ubuntu/traefik-proxy/apps/nmc-nginx-with-volume/website'
+          # remove /dist path segment
+          strip_components: 1
+
+          # remove website dir
+          # not good, must restart nginx docker every time
+          # rm: true

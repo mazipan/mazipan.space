@@ -1,0 +1,54 @@
+@layer base {
+  :root {
+    /* unique colors */
+
+    /* from prose-slate */
+    /* background */
+    --var-color-white: theme('colors.white');
+    --var-color-slate-100: theme('colors.slate.100');
+    --var-color-slate-300: theme('colors.slate.300');
+    --var-color-slate-400: theme('colors.slate.400');
+
+    /* content */
+    --var-color-slate-500: theme('colors.slate.500');
+    --var-color-slate-700: theme('colors.slate.700');
+    --var-color-slate-900: theme('colors.slate.900');
+
+    /* primary, secondary... */
+    --var-color-blue-500: theme('colors.blue.500');
+    --var-color-blue-600: theme('colors.blue.600');
+    --var-color-blue-700: theme('colors.blue.700');
+    --var-color-blue-100: theme('colors.blue.100');
+    --var-color-blue-200: theme('colors.blue.200');
+    --var-color-blue-300: theme('colors.blue.300');
+    --var-color-purple-700: theme('colors.purple.700');
+    --var-color-purple-500: theme('colors.purple.500');
+    --var-color-orange-400: theme('colors.orange.400');
+    --var-color-orange-600: theme('colors.orange.600');
+    --var-color-teal-400: theme('colors.teal.400');
+    --var-color-teal-600: theme('colors.teal.600');
+    --var-color-teal-700: theme('colors.teal.700');
+
+    /* green themes */
+    --var-color-green-100: theme('colors.green.100');
+    --var-color-green-200: theme('colors.green.200');
+    --var-color-green-300: theme('colors.green.300');
+    --var-color-green-500: theme('colors.green.500');
+    --var-color-green-600: theme('colors.green.600');
+    --var-color-green-700: theme('colors.green.700');
+    --var-color-green-800: theme('colors.green.800');
+    --var-color-green-900: theme('colors.green.900');
+
+    /* todo: fix unique colors */
+
+    /* dark */
+    /* background */
+    --var-color-dark-slate-800: theme('colors.slate.800');
+    --var-color-dark-slate-900: theme('colors.slate.900');
+    --var-color-dark-slate-950: theme('colors.slate.950');
+
+    /* content */
+    --var-color-dark-slate-300: theme('colors.slate.300');
+    --var-color-dark-slate-400: theme('colors.slate.400');
+  }
+}

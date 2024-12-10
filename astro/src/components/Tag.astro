@@ -1,0 +1,39 @@
+---
+import { cva } from 'class-variance-authority';
+
+import type { HTMLAttributes } from 'astro/types';
+import type { VariantProps } from 'class-variance-authority';
+
+const tagVariants = cva('tag', {
+  variants: {
+    variant: {
+      text: 'tag-text',
+      solid: 'tag-solid',
+    },
+    colors: {
+      default: '',
+      primary: 'tag-primary',
+    },
+    size: { sm: 'tag-sm', md: 'tag-md' },
+  },
+  compoundVariants: [
+    { variant: 'solid', size: 'sm', class: 'tag-solid-sm' },
+    { variant: 'solid', size: 'md', class: 'tag-solid-md' },
+    { variant: 'solid', colors: 'primary', class: 'tag-solid-primary' },
+  ],
+});
+
+export interface TagProps extends HTMLAttributes<'a'>, VariantProps<typeof tagVariants> {}
+
+const {
+  variant = 'solid',
+  colors = 'default',
+  size = 'sm',
+  class: className,
+  ...props
+} = Astro.props as TagProps;
+---
+
+<a {...props} class={tagVariants({ variant, colors, size, className })}>
+  <slot />
+</a>

@@ -1,0 +1,21 @@
+---
+import { CONFIG_SERVER } from '@/config/server';
+
+const isProd = CONFIG_SERVER.NODE_ENV === 'production';
+
+// component just for debuggng responsive styles
+---
+
+{
+  !isProd && (
+    <div class="fixed top-24 right-4 z-50 flex size-8 p-3 items-center justify-center rounded-full text-base-100 bg-content text-sm font-mono">
+      <div class="block xs:hidden">2xs</div>
+      <div class="hidden xs:block sm:hidden">xs</div>
+      <div class="hidden sm:block md:hidden">sm</div>
+      <div class="hidden md:block lg:hidden">md</div>
+      <div class="hidden lg:block xl:hidden">lg</div>
+      <div class="hidden xl:block 2xl:hidden">xl</div>
+      <div class="hidden 2xl:block">2xl</div>
+    </div>
+  )
+}

@@ -1,0 +1,18 @@
+---
+import { cn } from '@/utils/styles';
+
+import type { HTMLAttributes } from 'astro/types';
+
+export interface Props extends HTMLAttributes<'details'> {
+  title: string;
+}
+
+const { title, class: className, ...props } = Astro.props as Props;
+---
+
+<details {...props} class={cn('rounded-button bg-base-200 px-4 py-1', className)}>
+  <summary class="cursor-pointer">
+    <span class="font-semibold">{title}</span>
+  </summary>
+  <slot />
+</details>

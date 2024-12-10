@@ -1,0 +1,48 @@
+---
+import { cva } from 'class-variance-authority';
+
+import type { HTMLAttributes } from 'astro/types';
+import type { VariantProps } from 'class-variance-authority';
+
+const buttonVariants = cva('button', {
+  variants: {
+    variant: {
+      outline: 'button-outline',
+      solid: 'button-solid',
+    },
+    colors: {
+      primary: 'button-primary',
+      default: 'button-default',
+    },
+    size: { sm: 'button-sm', md: 'button-md' },
+    disabled: { true: 'button-disabled' },
+  },
+  compoundVariants: [
+    { variant: 'outline', colors: 'primary', class: 'button-outline-primary' },
+    { variant: 'outline', colors: 'default', class: 'button-outline-default' },
+    { variant: 'solid', colors: 'primary', class: 'button-solid-primary' },
+    { variant: 'solid', colors: 'default', class: 'button-solid-default' },
+  ],
+});
+
+export interface Props extends HTMLAttributes<'a'>, VariantProps<typeof buttonVariants> {}
+
+const {
+  class: className,
+  variant = 'outline',
+  colors = 'default',
+  size = 'md',
+  disabled,
+  ...props
+} = Astro.props;
+
+const Element = disabled ? 'span' : 'a';
+---
+
+<Element {...props} class={buttonVariants({ variant, colors, size, disabled, className })}>
+  <slot name="before-icon" />
+  <span class="inline-block">
+    <slot />
+  </span>
+  <slot name="after-icon" />
+</Element>

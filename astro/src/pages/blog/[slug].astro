@@ -1,0 +1,155 @@
+---
+import { Image } from 'astro:assets';
+
+import { getAllPostsWithReadingTime } from '@/modules/post/common';
+import { getRandomPosts } from '@/modules/post/random';
+import { getHeadingsForTableOfContents } from '@/modules/post/table-of-contents';
+import { default as PostLayout } from '@/layouts/Post.astro';
+import Giscus from '@/components/Giscus.astro';
+import PostListMore from '@/components/PostListMore.astro';
+import PostMeta from '@/components/PostMeta.astro';
+import Share from '@/components/Share.astro';
+import TableOfContents from '@/components/TableOfContents.astro';
+import TagList from '@/components/TagList.astro';
+import { DRAFT_TEXT } from '@/constants/data';
+import { IMAGE_SIZES } from '@/constants/image';
+import { ROUTES } from '@/constants/routes';
+import { setTransitionSlug, TRANSITION_ELEMENT_IDS } from '@/constants/transitions';
+import { CONFIG_CLIENT } from '@/config/client';
+import { getOpenGraphImagePath } from '@/libs/api/open-graph/image-path';
+
+import type { Metadata } from '@/types/common';
+import type { Post } from '@/types/post';
+
+const { SITE_URL } = CONFIG_CLIENT;
+
+export async function getStaticPaths() {
+  const posts: Post[] = await getAllPostsWithReadingTime();
+
+  const paths = posts.map((post) => {
+    const { slug } = post;
+    const randomPosts = getRandomPosts({ posts, excludeSlug: slug });
+
+    return {
+      params: { slug },
+      props: { ...post, randomPosts },
+    };
+  });
+
+  return paths;
+}
+
+const { data, render, readingTime, randomPosts } = Astro.props;
+const {
+  draft,
+  title,
+  publishDate,
+  updatedDate,
+  description,
+  toc,
+  heroImage,
+  heroAlt,
+  noHero,
+  category,
+  tags = [],
+} = data;
+
+const { slug } = Astro.params;
+const { pathname } = Astro.url;
+
+const { Content, headings: postHeadings } = await render();
+const headings = getHeadingsForTableOfContents(postHeadings);
+
+const postMetaProps = {
+  category,
+  publishDate,
+  readingTime,
+  updatedDate,
+};
+
+const shareProps = {
+  title,
+  description,
+  url: `${SITE_URL}${ROUTES.BLOG}${slug}`,
+};
+
+const getTransitionNameFromElementId = setTransitionSlug({ pageSlug: slug });
+
+// handle all metadata here
+const image = getOpenGraphImagePath(pathname);
+
+const metadata: Metadata = { title, description, image };
+---
+
+<PostLayout {metadata}>
+  <Fragment slot="hero-image">
+    {/* hero image 1280x720 max, 16:9 */}
+    {
+      !noHero && (
+        <Image
+          {...IMAGE_SIZES.RESPONSIVE.POST_HERO}
+          src={heroImage}
+          alt={heroAlt}
+          fetchpriority="high"
+          loading="eager"
+          itemprop="image"
+          class="block max-w-full h-auto aspect-[16/8] object-cover"
+          transition:name={getTransitionNameFromElementId({
+            elementId: TRANSITION_ELEMENT_IDS.POST_CARD.HERO_IMAGE,
+          })}
+        />
+      )
+    }
+  </Fragment>
+
+  <Fragment slot="hero-text">
+    <h1
+      class="b-h1"
+      transition:name={getTransitionNameFromElementId({
+        elementId: TRANSITION_ELEMENT_IDS.POST_CARD.TITLE,
+      })}
+    >
+      {title}
+      {draft && <sup class="text-red-500 ml-1">{DRAFT_TEXT}</sup>}
+    </h1>
+
+    {
+      description && (
+        <p
+          class="font-normal text-content text-xl md:text-2xl mb-6 md:mb-8"
+          transition:name={getTransitionNameFromElementId({
+            elementId: TRANSITION_ELEMENT_IDS.POST_CARD.DESCRIPTION,
+          })}
+        >
+          {description}
+        </p>
+      )
+    }
+
+    <PostMeta
+      {...postMetaProps}
+      transition:name={getTransitionNameFromElementId({
+        elementId: TRANSITION_ELEMENT_IDS.POST_CARD.META,
+      })}
+    />
+  </Fragment>
+
+  <Fragment slot="content">
+    {toc && <TableOfContents headings={headings} />}
+
+    <Content />
+  </Fragment>
+
+  <Fragment slot="after-content">
+    <div class="flex justify-between items-start gap-6 flex-col md:flex-row b-h2-mb">
+      <TagList tags={tags} size="md" />
+      <Share {...shareProps} />
+    </div>
+
+    <Giscus class="b-h2-mt" />
+  </Fragment>
+
+  <Fragment slot="more-posts">
+    <PostListMore morePosts={randomPosts} />
+  </Fragment>
+</PostLayout>

@@ -1,0 +1,37 @@
+---
+import { getAllProjects } from '@/modules/project';
+import List from '@/layouts/List.astro';
+import ProjectList from '@/components/ProjectList.astro';
+import { CONFIG_CLIENT } from '@/config/client';
+import { getPageMetadata } from '@/utils/metadata';
+import { pickPaginationPropsFromPage } from '@/utils/pagination';
+
+import type { ProjectCollection } from '@/types/project';
+import type { GetStaticPathsOptions, Page } from 'astro';
+
+export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
+  const sortedProjects = await getAllProjects();
+  const pageSize = CONFIG_CLIENT.PAGE_SIZE_POST_CARD;
+
+  const pagination = paginate(sortedProjects, { pageSize });
+  pagination.push({ params: { page: '1' }, props: pagination[0].props });
+  return pagination;
+}
+
+type Props = {
+  page: Page<ProjectCollection>;
+};
+
+const { page } = Astro.props;
+const { data: projects } = page;
+
+const paginationProps = pickPaginationPropsFromPage(page);
+
+const metadata = getPageMetadata('lists/projects');
+
+const layoutProps = { metadata, paginationProps };
+---
+
+<List {...layoutProps}>
+  <ProjectList {projects} />
+</List>

@@ -1,0 +1,17 @@
+---
+import Centered from '@/layouts/Centered.astro';
+
+import type { BaseProps } from '@/layouts/Base.astro';
+
+export interface Props extends BaseProps {}
+
+const props = Astro.props;
+
+// same as Page layout (except props) for now
+---
+
+<Centered {...props}>
+  <article class="my-prose">
+    <slot />
+  </article>
+</Centered>

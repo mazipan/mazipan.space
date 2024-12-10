@@ -1,0 +1,83 @@
+---
+layout: '../../layouts/Page.astro'
+title: Images, YouTube
+---
+
+import { Icon } from 'astro-icon/components';
+import { Image } from 'astro:assets';
+
+import { IMAGE_SIZES } from '../../constants/image';
+
+import Amfi1Image from '../../assets/images/all-images/amfi1.jpg';
+import Bridge1Image from '../../assets/images/all-images/bridge1.jpg';
+import Lure2Image from '../../assets/images/all-images/lure2.jpg';
+import Lure3Image from '../../assets/images/all-images/lure3.jpg';
+import Nis1Image from '../../assets/images/all-images/nis1.jpg';
+import Riverside1Image from '../../assets/images/all-images/riverside1.jpg';
+import Raft1Image from '../../assets/images/all-images/raft1.jpg';
+import Square1Image from '../../assets/images/all-images/square1.jpg';
+import Meadow1Image from '../../assets/images/all-images/meadow1.jpg';
+
+back to [Index](/design)
+
+## Icon
+
+<div class="flex gap-4">
+  <Icon name="mdi:fish" class="h-24 w-24 text-primary" />
+  <Icon name="mdi:github" class="h-24 w-24 text-secondary" />
+  <Icon name="mdi:rabbit-variant-outline" class="h-24 w-24 text-accent" />
+</div>
+
+## Image
+
+### Image width=IMAGE_SIZES.FIXED.MDX_XS.width
+
+<Image {...IMAGE_SIZES.FIXED.MDX_XS} src={Nis1Image} alt="This is city" />
+
+### Image width=MDX_SM
+
+<Image {...IMAGE_SIZES.FIXED.MDX_SM} src={Lure3Image} alt="This is lure" />
+
+### Image width=MDX_MD
+
+<Image {...IMAGE_SIZES.FIXED.MDX_MD} src={Meadow1Image} alt="This is meadow" />
+
+Dolor aliquip Lorem eiusmod reprehenderit sit. Quis eu ea quis pariatur labore consectetur culpa ex
+qui eu qui. Aliqua culpa consectetur sit ut. Quis Lorem do tempor cillum esse sit enim culpa
+deserunt.
+
+### Image widths=[...]
+
+<Image
+  {...IMAGE_SIZES.RESPONSIVE.MDX_EXPAND_LG}
+  src={Riverside1Image}
+  alt="This is river"
+/>
+
+Adipisicing anim cillum esse et qui non veniam consectetur irure mollit aute. Occaecat elit ullamco mollit dolor pariatur ipsum.
+
+### Image expand-sm
+
+<div class="expand-sm">
+  <Image
+    {...IMAGE_SIZES.RESPONSIVE.MDX_EXPAND_LG}
+    src={Lure2Image}
+    alt="This is lure"
+  />
+</div>
+
+Adipisicing exercitation enim nostrud aliquip incididunt. Non commodo ad exercitation incididunt ullamco quis nulla voluptate et aute. Labore ex labore id mollit aliquip. Eiusmod eu nisi eu ut adipisicing velit velit culpa labore aute.
+
+### Image expand-lg
+
+<div class="expand-lg">
+  <Image
+    {...IMAGE_SIZES.RESPONSIVE.MDX_EXPAND_LG}
+    src={Raft1Image}
+    alt="This is raft"
+  />
+</div>
+
+Esse laboris duis sit cupidatat minim velit est cupidatat ex nostrud in et commodo. Aute voluptate excepteur incididunt labore reprehenderit do ea fugiat deserunt do aute elit dolor. Exercitation irure ea sunt pariatur pariatur ipsum incididunt ad esse elit officia et et nulla. Lorem do qui Lorem reprehenderit aliqua ullamco veniam et elit.
+
+## Picture, todo
