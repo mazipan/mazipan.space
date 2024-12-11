@@ -1,11 +1,4 @@
-import {
-  existsSync,
-  lstatSync,
-  readdirSync,
-  readFileSync,
-  unlinkSync,
-  writeFileSync,
-} from 'node:fs';
+import { existsSync, lstatSync, readdirSync, readFileSync, unlinkSync, writeFile } from 'node:fs';
 import { join, resolve } from 'node:path';
 
 const DRAFT_DIR = resolve('./src/draft');
@@ -17,6 +10,7 @@ async function migrate() {
 
   drafts.forEach((draftItem) => {
     const itemPath = join(DRAFT_DIR, draftItem);
+
     const isDir = lstatSync(itemPath).isDirectory();
     if (isDir) {
       const enDirPath = join(DRAFT_DIR, draftItem, 'en');
@@ -26,24 +20,25 @@ async function migrate() {
         if (existsSync(indexEnMd)) {
           const fileEnContent = readFileSync(indexEnMd, { encoding: 'utf-8' });
 
-          try {
-            const targetEnPath = join(DRAFT_DIR, `${itemPath}.mdx.bak`);
-            writeFileSync(targetEnPath, fileEnContent, { encoding: 'utf-8' });
+          const targetEnPath = join(DRAFT_DIR, `${draftItem}.mdx.bak`);
+          console.error(`Writing new en file to `, targetEnPath);
+
+          writeFile(targetEnPath, fileEnContent, function (err) {
+            if (err) throw err;
+            console.log('Success write en file');
             // Remove old md
             unlinkSync(indexEnMd);
-          } catch (error) {
-            console.error(`Error writing new en file: `, error);
-          }
+          });
         }
       }
 
       const indexMd = join(itemPath, 'index.md');
       if (existsSync(indexMd)) {
-        const fileContent = readFileSync(indexMd, { encoding: 'utf-8', flag: 'w+' });
+        const fileContent = readFileSync(indexMd, { encoding: 'utf-8' });
         let newContent = fileContent;
 
         const match = fileContent.match(REGEX_HERO_IMAGE_2);
-        if (match.length > 0) {
+        if (match && match.length > 0) {
           const imagePath = match[0].replace('heroImage2: /thumbnail/', '');
 
           // Replace heroImage path
@@ -54,14 +49,14 @@ async function migrate() {
           newContent = newContent.replace(REGEX_HERO_IMAGE_2, '');
         }
 
-        try {
-          const targetPath = join(POST_DIR, `${itemPath}.mdx`);
-          writeFileSync(targetPath, newContent, { encoding: 'utf-8', flag: 'w+' });
+        const targetIdPath = join(POST_DIR, `${draftItem}.mdx`);
+        console.error(`Writing new id file to `, targetIdPath);
+        writeFile(targetIdPath, newContent, function (err) {
+          if (err) throw err;
+          console.log('Success write id file');
           // Remove old md
           unlinkSync(indexMd);
-        } catch (error) {
-          console.error(`Error writing new id file: `, error);
-        }
+        });
       }
     }
   });

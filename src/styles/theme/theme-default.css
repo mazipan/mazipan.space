@@ -51,7 +51,7 @@
 
     /* reused from tw-prose-invert-xxx */
     --th-content: var(--var-color-dark-slate-300);
-    --th-headings: var(--var-color-white);
+    --th-headings: var(--var-color-yellow-400);
     --th-captions: var(--var-color-dark-slate-400);
 
     --th-primary: var(--var-color-blue-300);
@@ -61,9 +61,9 @@
     --th-primary-base-200: var(--var-color-blue-600);
     --th-primary-base-300: var(--var-color-blue-700);
 
-    --th-links: var(--th-primary);
-    --th-links-hover: var(--th-primary-hover);
-    --th-links-visited: var(--var-color-purple-500);
+    --th-links: var(--var-color-yellow-400);
+    --th-links-hover: var(--var-color-yellow-500);
+    --th-links-visited: var(--var-color-yellow-600);
 
     --th-secondary: var(--var-color-orange-400);
     --th-secondary-hover: var(--var-color-orange-600);

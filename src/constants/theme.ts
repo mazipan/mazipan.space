@@ -13,14 +13,14 @@ export const THEMES = [
     mode: MODES.dark,
     name: 'default-dark',
   },
-  {
-    mode: MODES.light,
-    name: 'green-light',
-  },
-  {
-    mode: MODES.dark,
-    name: 'green-dark',
-  },
+  // {
+  //   mode: MODES.light,
+  //   name: 'green-light',
+  // },
+  // {
+  //   mode: MODES.dark,
+  //   name: 'green-dark',
+  // },
 ] as const;
 
 // for debugging

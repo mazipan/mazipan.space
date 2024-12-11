@@ -729,6 +729,11 @@
   resolved "https://registry.yarnpkg.com/@fontsource-variable/space-grotesk/-/space-grotesk-5.1.0.tgz#ce1c7c4576fab2619bb82b4ad1c14b35a1f1b9b2"
   integrity sha512-K2mwQYNyLook6EbtMB+Ix8srQsYZRigfxayoSGl1QsgVAk/J21s0FMZu0FWzTvONyQkYAR704rLfYSstVMi6jQ==
 
+"@fontsource/dela-gothic-one@^5.1.0":
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/@fontsource/dela-gothic-one/-/dela-gothic-one-5.1.0.tgz#b7d8c5c1f1b381b97c5bdb4e699540a30e975475"
+  integrity sha512-ZEgmKAHvB5N1oY36B2wMnQo4PonHlxkJ/bHu7qNrP9+h9VijiwbqVYww+rOglcsHxIjVhDOyp8Uj+vTFtyYUFQ==
+
 "@humanwhocodes/config-array@^0.11.14":
   version "0.11.14"
   resolved "https://registry.yarnpkg.com/@humanwhocodes/config-array/-/config-array-0.11.14.tgz#d78e481a039f7566ecc9660b4ea7fe6b1fec442b"
@@ -758,6 +763,13 @@
     "@babel/traverse" "^7.25.9"
     "@babel/types" "^7.26.0"
     semver "^7.5.2"
+
+"@iconify-json/lucide@^1.2.18":
+  version "1.2.18"
+  resolved "https://registry.yarnpkg.com/@iconify-json/lucide/-/lucide-1.2.18.tgz#7e102d525ba748ae0e2c34a7004c99d4817d9d26"
+  integrity sha512-SFBoHBSULntem84iWxGM9NzlP6QY/dwjxC5t4c1lC7+xq31Fous8JkppoJih0/ICJ3CsbppRZeb11y3iLcwwug==
+  dependencies:
+    "@iconify/types" "*"
 
 "@iconify-json/mdi@^1.2.1":
   version "1.2.1"

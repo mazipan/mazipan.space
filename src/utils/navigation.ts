@@ -18,13 +18,7 @@ export const getActiveNavItemPath = (routePathname: string): NavigationItem['pat
     case routePathname === ROUTES.GALLERY:
       activeNavItem = getNavItem(ROUTES.GALLERY);
       break;
-    case routePathname === ROUTES.LINKS:
-      activeNavItem = getNavItem(ROUTES.LINKS);
-      break;
     // unused
-    case routePathname === ROUTES.RESUME:
-      activeNavItem = getNavItem(ROUTES.RESUME);
-      break;
     case routePathname.startsWith(ROUTES.PROJECTS):
       activeNavItem = getNavItem(ROUTES.PROJECTS);
       break;

@@ -24,8 +24,12 @@ export const TAGS = [
   'seo',
   'random',
   'thought',
+  'testing',
   'community',
   'experience',
+  'ci-cd',
+  'open-source',
+  'monorepo',
 ] as const;
 
 /** adjust this later */

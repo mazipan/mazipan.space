@@ -23,23 +23,14 @@
     --var-color-blue-300: theme('colors.blue.300');
     --var-color-purple-700: theme('colors.purple.700');
     --var-color-purple-500: theme('colors.purple.500');
+    --var-color-yellow-400: theme('colors.yellow.400');
+    --var-color-yellow-500: theme('colors.yellow.500');
+    --var-color-yellow-600: theme('colors.yellow.600');
     --var-color-orange-400: theme('colors.orange.400');
     --var-color-orange-600: theme('colors.orange.600');
     --var-color-teal-400: theme('colors.teal.400');
     --var-color-teal-600: theme('colors.teal.600');
     --var-color-teal-700: theme('colors.teal.700');
-
-    /* green themes */
-    --var-color-green-100: theme('colors.green.100');
-    --var-color-green-200: theme('colors.green.200');
-    --var-color-green-300: theme('colors.green.300');
-    --var-color-green-500: theme('colors.green.500');
-    --var-color-green-600: theme('colors.green.600');
-    --var-color-green-700: theme('colors.green.700');
-    --var-color-green-800: theme('colors.green.800');
-    --var-color-green-900: theme('colors.green.900');
-
-    /* todo: fix unique colors */
 
     /* dark */
     /* background */
