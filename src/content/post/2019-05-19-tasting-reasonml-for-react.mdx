@@ -99,9 +99,9 @@ Bila pada React kita menggunakan `componentDidMount` di ReasonReact kita bisa me
 | ------------------ | :----------------: |
 | `didMount`         |        self        |
 | `willReceiveProps` |        self        |
-| `shouldUpdate`     | {oldSelf, newSelf} |
-| `willUpdate`       | {oldSelf, newSelf} |
-| `didUpdate`        | {oldSelf, newSelf} |
+| `shouldUpdate`     | oldSelf, newSelf |
+| `willUpdate`       | oldSelf, newSelf |
+| `didUpdate`        | oldSelf, newSelf |
 | `willUnmount`      |        self        |
 
 Selengkapnya baca [disini ↗️](https://github.com/reasonml/reason-react/blob/master/docs/lifecycles.md)

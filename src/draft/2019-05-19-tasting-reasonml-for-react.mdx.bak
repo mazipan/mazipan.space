@@ -103,9 +103,9 @@ If in React we use `componentDidMount` in ReasonReact we can use `didMount`. Yes
 | ------------------ | :----------------: |
 | `didMount`         |        self        |
 | `willReceiveProps` |        self        |
-| `shouldUpdate`     | {oldSelf, newSelf} |
-| `willUpdate`       | {oldSelf, newSelf} |
-| `didUpdate`        | {oldSelf, newSelf} |
+| `shouldUpdate`     | oldSelf, newSelf |
+| `willUpdate`       | oldSelf, newSelf |
+| `didUpdate`        | oldSelf, newSelf |
 | `willUnmount`      |        self        |
 
 Read more [here ↗️](https://github.com/reasonml/reason-react/blob/master/docs/lifecycles.md)
