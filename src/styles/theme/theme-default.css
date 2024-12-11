@@ -9,7 +9,7 @@
 
     /* reused from tw-prose-xxx */
     --th-content: var(--var-color-slate-700);
-    --th-headings: var(--var-color-slate-900);
+    --th-headings: var(--var-color-yellow-500);
     --th-captions: var(--var-color-slate-500);
 
     --th-primary: var(--var-color-blue-500);
@@ -20,9 +20,9 @@
     --th-primary-base-300: var(--var-color-blue-200);
 
     /* links and primary same color */
-    --th-links: var(--th-primary);
-    --th-links-hover: var(--th-primary-hover);
-    --th-links-visited: var(--var-color-purple-700);
+    --th-links: var(--var-color-yellow-500);
+    --th-links-hover: var(--var-color-yellow-600);
+    --th-links-visited: var(--var-color-yellow-700);
 
     --th-secondary: var(--var-color-orange-400);
     --th-secondary-hover: var(--var-color-orange-600);

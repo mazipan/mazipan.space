@@ -19,7 +19,11 @@ const remarkPlugins = [remarkReadingTime];
 
 export default defineConfig({
   site: SITE_URL,
-  experimental: { env: envSchema },
+  env: envSchema,
+  experimental: {
+    responsiveImages: true,
+    svg: true,
+  },
   trailingSlash: 'ignore',
   // default
   compressHTML: true,

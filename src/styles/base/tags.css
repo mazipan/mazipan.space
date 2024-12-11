@@ -1,6 +1,6 @@
 /*------------------------------------------------------------------------
- * All custom component styles myst be complete. Tag components. 
- * Should override my-prose. Doesn't repeat all from prose. 
+ * All custom component styles myst be complete. Tag components.
+ * Should override my-prose. Doesn't repeat all from prose.
  * Use not-prose to undo prose without repeating all here.
  *------------------------------------------------------------------------*/
 
@@ -13,7 +13,7 @@
   }
 
   .b-h1 {
-    @apply text-3xl sm:text-4xl md:text-5xl;
+    @apply text-3xl sm:text-4xl md:text-5xl font-serif;
     @apply font-bold;
     @apply mb-6 md:mb-8 lg:mb-10;
   }

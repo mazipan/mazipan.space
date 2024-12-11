@@ -26,6 +26,7 @@
     --var-color-yellow-400: theme('colors.yellow.400');
     --var-color-yellow-500: theme('colors.yellow.500');
     --var-color-yellow-600: theme('colors.yellow.600');
+    --var-color-yellow-700: theme('colors.yellow.700');
     --var-color-orange-400: theme('colors.orange.400');
     --var-color-orange-600: theme('colors.orange.600');
     --var-color-teal-400: theme('colors.teal.400');

@@ -9,20 +9,25 @@ const props = Astro.props;
 ---
 
 <FullWidth {...props}>
-  <article class="pb-16 pt-8">
-    <figure class="centered max-w-4xl">
+  <article class="pb-16 pt-8 relative">
+    <figure class="centered-px max-w-6xl">
       <slot name="hero-image" />
     </figure>
 
-    <section class="centered-px max-w-4xl b-h2-my">
+    <section class="centered-px max-w-6xl b-h2-my">
       <slot name="hero-text" />
     </section>
 
-    <section class="my-prose centered-px max-w-4xl b-h2-my">
-      <slot name="content" />
+    <section class="centered-px max-w-6xl">
+      <div class="relative lg:grid lg:grid-cols-[minmax(0,1fr),300px] gap-4">
+        <section class="my-prose centered-px b-h2-my post-detail [&>h2:nth-child(1)]:mt-0">
+          <slot name="content" />
+        </section>
+        {Astro.slots.has('toc') && <slot name="toc" />}
+      </div>
     </section>
 
-    <section class="centered-px max-w-4xl">
+    <section class="centered-px max-w-6xl">
       <slot name="after-content" />
     </section>
 
