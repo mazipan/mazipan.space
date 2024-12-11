@@ -3,10 +3,17 @@ title: Advance Sitemap di Projek Nuxt
 publishDate: '2020-05-03'
 description: Bagaimana membuat sitemap dengan lebih baik, lebih optimal dan tertata rapi untuk projek Nuxt
 author: mazipan
-published: true
-featured: false
-tags: [vue, web]
-heroImage: /thumbnail/advance-sitemap-di-projek-nuxt/advance-sitemap-nuxtjs.png
+
+tags:
+  - web
+  - nextjs
+category: tutorials
+toc: true
+
+heroImage: '../../content/post/_images/poor-man-feature-flag/pexels-cottonbro-studio-5870547.jpg'
+heroAlt: Poor man feature flag untuk projek Next.js dalam 15 menit
+tags2: [vue, web]
+heroImage2: /thumbnail/advance-sitemap-di-projek-nuxt/advance-sitemap-nuxtjs.png
 lang: id
 ---
 

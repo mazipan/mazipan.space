@@ -3,10 +3,17 @@ title: My Hacktoberfest 2019
 publishDate: '2019-11-07'
 description: My hacktoberfest 2019 story
 author: mazipan
-published: true
-featured: false
-tags: [experience]
-heroImage: /thumbnail/my-hacktoberfest-2019/hacktoberfest.png
+
+tags:
+  - web
+  - nextjs
+category: tutorials
+toc: true
+
+heroImage: '../../content/post/_images/poor-man-feature-flag/pexels-cottonbro-studio-5870547.jpg'
+heroAlt: Poor man feature flag untuk projek Next.js dalam 15 menit
+tags2: [experience]
+heroImage2: /thumbnail/my-hacktoberfest-2019/hacktoberfest.png
 lang: id
 enready: true
 ---

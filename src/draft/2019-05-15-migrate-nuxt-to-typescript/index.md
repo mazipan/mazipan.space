@@ -1,13 +1,20 @@
 ---
 title: Migrasi Nuxt ke TypeScript
 publishDate: '2019-05-15'
-minute2read: 10
+
 description: Menceritakan beberapa langkah yang saya kerjakan ketika melakukan migrasi project Nuxt dari menggunakan JavaScript vanilla menjadi menggunakan TypeScript
 author: mazipan
-published: true
-featured: false
-tags: [nuxt, typescript]
-heroImage: /thumbnail/migrate-nuxt-to-typescript/quran-offline.png
+
+tags:
+  - web
+  - nextjs
+category: tutorials
+toc: true
+
+heroImage: '../../content/post/_images/poor-man-feature-flag/pexels-cottonbro-studio-5870547.jpg'
+heroAlt: Poor man feature flag untuk projek Next.js dalam 15 menit
+tags2: [nuxt, typescript]
+heroImage2: /thumbnail/migrate-nuxt-to-typescript/quran-offline.png
 lang: id
 enready: true
 ---
@@ -136,9 +143,9 @@ Pada projek ini saya masih menggunakan Classic Store yang mana sebenarnya sudah 
 ```javascript
 import Vuex from 'vuex';
 
-import { state } from './state';
-import { mutations } from './mutations';
 import { actions } from './actions';
+import { mutations } from './mutations';
+import { state } from './state';
 
 const createStore = () => {
   return new Vuex.Store({

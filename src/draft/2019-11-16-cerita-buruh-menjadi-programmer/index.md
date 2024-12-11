@@ -3,12 +3,19 @@ title: 02 - Cerita buruh menjadi programmer
 publishDate: '2019-11-16'
 description: Cerita panjang perjalanan hidup dan karir saya sampai bisa menjadi programmer di beberapa perusahaan teknologi besar di Indonesia
 author: mazipan
-published: true
+
 featured: true
-tags: [life-experience]
-heroImage: /thumbnail/cerita-buruh-menjadi-programmer/mazipan-dunkin.jpeg
+tags:
+  - web
+  - nextjs
+category: tutorials
+toc: true
+
+heroImage: '../../content/post/_images/poor-man-feature-flag/pexels-cottonbro-studio-5870547.jpg'
+heroAlt: Poor man feature flag untuk projek Next.js dalam 15 menit
+tags2: [life-experience]
+heroImage2: /thumbnail/cerita-buruh-menjadi-programmer/mazipan-dunkin.jpeg
 lang: id
-enready: false
 ---
 
 Cerita panjang perjalanan hidup dan karir saya sampai bisa menjadi programmer di beberapa peruasahaan teknologi besar di Indonesia.
@@ -19,7 +26,7 @@ Cerita ini saya pecah menjadi beberapa bagian dikarenakan lumayan panjang untuk 
 - [Bagian 2 - Cerita buruh menjadi programmer](/cerita-buruh-menjadi-programmer) - kamu disini
 - [Bagian 3 - Cerita saya menjadi programmer](/cerita-saya-menjadi-programmer)
 
-Tulisan ini saya persembahkan bagi mereka yang sedang belajar menjadi Programmer atau Software Engineer, bagi mereka para *newbies*, bagi mereka para *fresh-grad* yang seringkali mengeluhkan betapa susahnya belajar mengenai *programming*.
+Tulisan ini saya persembahkan bagi mereka yang sedang belajar menjadi Programmer atau Software Engineer, bagi mereka para _newbies_, bagi mereka para _fresh-grad_ yang seringkali mengeluhkan betapa susahnya belajar mengenai _programming_.
 
 ## 👷 Menjadi Buruh
 
@@ -83,7 +90,7 @@ Tak tanggung-tanggung, saya langsung mendapuk posisi yang teramat sangat keren j
 Meskipun sebenarnya ini cuma pencitraan belaka 🤗.
 Gajinya ya buruh-buruh juga, kerjaannya ya buruh-buruh juga 😂.
 Pada dasarnya pekerjaan saya ada 2 bagian besar, pertama memastikan kualitas hasil produksi, kedua melakukan riset untuk produk baru.
-Saya sendiri masuk ke QC di bagian *bakery* atau bagian roti (karena ada bagian lain, seperti cokelat, gudang, lab, floor mixing, dll), yang artinya berkaitan dengan berbagai produk roti yang sudah masuk ke tahap produksi maupun masih dalam fase riset.
+Saya sendiri masuk ke QC di bagian _bakery_ atau bagian roti (karena ada bagian lain, seperti cokelat, gudang, lab, floor mixing, dll), yang artinya berkaitan dengan berbagai produk roti yang sudah masuk ke tahap produksi maupun masih dalam fase riset.
 
 Jadi produk yang dimaksud di sini bukan produk akhir macam donat matang, brownies, atau lainnya tapi tepung yang sudah di mix dengan bahan-bahan yang dibutuhkan ya.
 Produk ini nantinya akan di kirim ke dapur-dapur seluruh Indonesia, sehingga bisa cukup tambahkan air dan beberapa bahan tambahan sedikit, sudah bisa jadi roti yang diinginkan.
@@ -96,7 +103,6 @@ Ini dimaksudkan untuk mengontrol kualitas dari tepung mix yang selesai dari pros
 
 Terus bagaimana cara riset paling bar-bar? Ya, trial and error.
 Jadi kerjaan kedua saya ya (lagi-lagi) bikin roti dengan komposisi yang dicoba-coba dan diubah-ubah setiap saat.
-
 
 Pekerjaan ini merupakan pekerjaan paling menyenangkan di dalam karir saya sampai sekarang, bukan karena pekerjaannya, bukan pula karena gajinya, namun karena orang-orang di dalamnya.
 Berada di sekeliling orang-orang yang sudah seperti keluarga sendiri, tak ada pembatas maupun aling-aling.
@@ -128,7 +134,6 @@ Saya berusaha memahami setiap pelajaran yang diberikan di kampus. Setiap teori b
 
 Sedihnya lagi, waktu saya sudah habis untuk bekerja dari senin sampai jumat dan sabtu minggu untuk kuliah. Saya tidak pernah tau bagaimana dunia di luar kampus, apalagi perkembangan ilmu di dunia industri terkait IT. Saya cuma berharap pada ilmu yang diberikan oleh kampus.
 
-
 Selesai 🖐️.
 
 📖 Baca juga bagian berikutnya:
@@ -136,4 +141,3 @@ Selesai 🖐️.
 - [Bagian 1 - Cerita anak kampung menjadi programmer](/cerita-anak-kampung-menjadi-programmer)
 - [Bagian 2 - Cerita buruh menjadi programmer](/cerita-buruh-menjadi-programmer) - kamu di sini
 - [Bagian 3 - Cerita saya menjadi programmer](/cerita-saya-menjadi-programmer)
-

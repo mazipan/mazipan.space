@@ -1,10 +1,12 @@
 import expressiveCode from 'astro-expressive-code';
 
 import { pluginCollapsibleSections } from '@expressive-code/plugin-collapsible-sections';
+import { pluginLineNumbers } from '@expressive-code/plugin-line-numbers';
+import { pluginColorChips } from 'expressive-code-color-chips';
 
 export const expressiveCodeIntegration = () =>
   expressiveCode({
-    themes: ['light-plus', 'dark-plus'],
+    themes: ['light-plus', 'night-owl'],
     useDarkModeMediaQuery: true,
     themeCssRoot: ':root',
     themeCssSelector: (theme) => {
@@ -34,5 +36,13 @@ export const expressiveCodeIntegration = () =>
         frameBoxShadowCssValue: 'none',
       },
     },
-    plugins: [pluginCollapsibleSections()],
+    plugins: [pluginCollapsibleSections(), pluginLineNumbers(), pluginColorChips()],
+    defaultProps: {
+      showLineNumbers: true,
+      overridesByLang: {
+        'bash,shell,md,markdown': {
+          showLineNumbers: false,
+        },
+      },
+    },
   });

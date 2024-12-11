@@ -3,19 +3,25 @@ title: Peralatan untuk monorepomu
 publishDate: '2021-11-12'
 description: Beberapa peralatan yang saya ketahui untuk mempermudah hidupmu kalau sehari-hari harus mengurusi makhluk bernama monorepo
 author: mazipan
-published: true
-featured: false
-tags: [monorepo]
-heroImage: /thumbnail/peralatan-untuk-monorepomu/cover.png
+
+tags:
+  - web
+  - nextjs
+category: tutorials
+toc: true
+
+heroImage: '../../content/post/_images/poor-man-feature-flag/pexels-cottonbro-studio-5870547.jpg'
+heroAlt: Poor man feature flag untuk projek Next.js dalam 15 menit
+tags2: [monorepo]
+heroImage2: /thumbnail/peralatan-untuk-monorepomu/cover.png
 lang: id
-enready: false
 ---
 
 Setelah kemarin menullis sedikit persepsi saya mengenai monorepo, kali ini saya akan coba sebutkan beberapa peralatan yang membantu dalam mengurus monorepo, setidaknya dari yang saya alami.
 
 ## Hal yang harus diperhatikan
 
-Mengurus monorepo memang sudah menjadi *love-hate relationship* bagi saya pribadi, makanya tulisannya pun bisa jadi bias nanti ya :-D. Ya, mengurus monorepo sedikit (baca: banyak) berbeda dari mengurus repo dengan satu projek di dalamnya, ada beberapa workfow yang jadi berbeda yang nantinya juga menjadikan pemilihan alat ya jadi berbeda pula. Beberapa hal yang berbeda antara lain:
+Mengurus monorepo memang sudah menjadi _love-hate relationship_ bagi saya pribadi, makanya tulisannya pun bisa jadi bias nanti ya :-D. Ya, mengurus monorepo sedikit (baca: banyak) berbeda dari mengurus repo dengan satu projek di dalamnya, ada beberapa workfow yang jadi berbeda yang nantinya juga menjadikan pemilihan alat ya jadi berbeda pula. Beberapa hal yang berbeda antara lain:
 
 ### Cara Install
 
@@ -25,11 +31,11 @@ Di monorepo kamu harus bisa melakukan proses install secara recursive, baca ke d
 
 Saat proses release, ada beberapa hal yang umumnya dikerjakan, misalnya:
 
-- ✅  Bump versi ke versi berikutnya
-- ✅  Buat tag di git dari commit terakhir
-- ✅  Buat changelog terkait perubahan-perubahan yang terjadi
-- ✅  Build/transpile project untuk didistribusikan
-- ✅  Pubish ke registry
+- ✅ Bump versi ke versi berikutnya
+- ✅ Buat tag di git dari commit terakhir
+- ✅ Buat changelog terkait perubahan-perubahan yang terjadi
+- ✅ Build/transpile project untuk didistribusikan
+- ✅ Pubish ke registry
 
 ## Pemilihan Package Manager
 
@@ -42,15 +48,13 @@ Saat proses release, ada beberapa hal yang umumnya dikerjakan, misalnya:
   "name": "sebuah-nama",
   "description": "Apalah artinya sebuah nama",
   "version": "0.0.0",
-  "workspaces": [
-    "packages/*"
-  ]
+  "workspaces": ["packages/*"]
 }
 ```
 
 Setelahnya tinggal `yarn install` ataupun `npm install` dan secara otomatis keduanya akan mencari semua projek di bawah direktori `packages/*`.
 
-`pnpm`  mengambil jalan yang sedikit berbeda, kamu mesti membuat berkas tambahan `pnpm-workspace.yaml` dengan isi minimum seperti berikut:
+`pnpm` mengambil jalan yang sedikit berbeda, kamu mesti membuat berkas tambahan `pnpm-workspace.yaml` dengan isi minimum seperti berikut:
 
 ```yaml
 packages:
@@ -100,11 +104,11 @@ Saya pribadi belum banyak baca terkait Rush, tapi mestinya cukup menarik ya kala
 
 ### Alat lain yang menarik
 
-- 🚀  [Turborepo](https://turborepo.org/), besutan Vercel. Kemungkinan mudah sekali integrasinya dengan Next.js.
-- 🚀  [Bit](https://bit.dev/), get started nya udah disuruh register, jadi males nyobain
-- 🚀  [Bazel](https://bazel.build/), katanya sih dipake sama Google ya. Salah satu yang menarik, dia support multiple programming language.
-- 🚀  [Bolt](https://github.com/boltpkg/bolt), docs nya masih limited sih ini
-- 🚀  [changesets](https://github.com/atlassian/changesets), punya Atlasian. Bukan full fitur sih, membantu untuk proses release di Monorepo. Salah satu rekomendasi official juga dari `pnpm`.
+- 🚀 [Turborepo](https://turborepo.org/), besutan Vercel. Kemungkinan mudah sekali integrasinya dengan Next.js.
+- 🚀 [Bit](https://bit.dev/), get started nya udah disuruh register, jadi males nyobain
+- 🚀 [Bazel](https://bazel.build/), katanya sih dipake sama Google ya. Salah satu yang menarik, dia support multiple programming language.
+- 🚀 [Bolt](https://github.com/boltpkg/bolt), docs nya masih limited sih ini
+- 🚀 [changesets](https://github.com/atlassian/changesets), punya Atlasian. Bukan full fitur sih, membantu untuk proses release di Monorepo. Salah satu rekomendasi official juga dari `pnpm`.
 
 ## Alat yang saya pakai
 
@@ -116,7 +120,7 @@ Di repo lain, saya malah meletakkan banyak projek tapi tidak memilih menggunakan
 
 ## Penutup
 
-Kebanyakan peralatan custom pembantu monorepo memang sangat *opinionated*, sehingga kamu akan dipaksa untuk mengikuti cara kerjanya, cara install, cara publish, dll jadi berbeda dari yang biasa kamu kerjakan. Buruknya, ya kamu harus belajar ulang banyak hal. Tapi karena mereka di design khusus untuk menangani monorepo, alat-alat di atas kemungkinan akan berguna. Pilih dengan bijak, cari yang sesuai dengan kebutuhan, gak perlu ikut-ikutan trend, cari saja apa yang bekerja dengan kondisi yang ada. kalau gak butuh-butuh amat, gak usah lah gaya-gayaan bikin custom-custom script buat ngurusin beginian :-D.
+Kebanyakan peralatan custom pembantu monorepo memang sangat _opinionated_, sehingga kamu akan dipaksa untuk mengikuti cara kerjanya, cara install, cara publish, dll jadi berbeda dari yang biasa kamu kerjakan. Buruknya, ya kamu harus belajar ulang banyak hal. Tapi karena mereka di design khusus untuk menangani monorepo, alat-alat di atas kemungkinan akan berguna. Pilih dengan bijak, cari yang sesuai dengan kebutuhan, gak perlu ikut-ikutan trend, cari saja apa yang bekerja dengan kondisi yang ada. kalau gak butuh-butuh amat, gak usah lah gaya-gayaan bikin custom-custom script buat ngurusin beginian :-D.
 
 ---
 

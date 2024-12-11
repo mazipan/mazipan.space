@@ -3,12 +3,18 @@ title: Ajari Koding, bukan sekedar awesome list
 publishDate: '2020-07-08'
 description: Berbagai best practice yang bisa kita pelajari dan optimalkan dalam memuat halaman website
 author: mazipan
-published: true
-featured: false
-tags: [open-source]
-heroImage: /thumbnail/ajari-koding-bukan-sekedar-awesome-list/ajari-koding.png
+
+tags:
+  - web
+  - nextjs
+category: tutorials
+toc: true
+
+heroImage: '../../content/post/_images/poor-man-feature-flag/pexels-cottonbro-studio-5870547.jpg'
+heroAlt: Poor man feature flag untuk projek Next.js dalam 15 menit
+tags2: [open-source]
+heroImage2: /thumbnail/ajari-koding-bukan-sekedar-awesome-list/ajari-koding.png
 lang: id
-enready: false
 ---
 
 Beberapa waktu yang lalu saya dihubungi om [Peter Jack Kambey](https://www.facebook.com/peterjkambey).

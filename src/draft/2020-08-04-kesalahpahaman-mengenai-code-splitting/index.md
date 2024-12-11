@@ -3,12 +3,18 @@ title: Kesalahpahaman mengenai code splitting
 publishDate: '2020-08-04'
 description: Membicarakan mengenai bagaimana seharusnya code splitting itu dilakukan dalam ranah dunia frontend
 author: mazipan
-published: true
-featured: false
-tags: [javascript]
-heroImage: /thumbnail/kesalahpahaman-mengenai-code-splitting/pizza-slice.jpg
+
+tags:
+  - web
+  - nextjs
+category: tutorials
+toc: true
+
+heroImage: '../../content/post/_images/poor-man-feature-flag/pexels-cottonbro-studio-5870547.jpg'
+heroAlt: Poor man feature flag untuk projek Next.js dalam 15 menit
+tags2: [javascript]
+heroImage2: /thumbnail/kesalahpahaman-mengenai-code-splitting/pizza-slice.jpg
 lang: id
-enready: false
 ---
 
 **Code splitting** menjadi banyak diperbicangkan dikarenakan adanya pergeseran pendekatan dalam membangun website. Dari yang dulunya orang lebih senang dengan _Multi Page Application_ (MPA) sekarang bergeser pada _Single Page Application_ (SPA). Mesti diakui dulu bahwa SPA bukanlah peluru perak yang akan memecahkan semua masalah yang terjadi dalam MPA, salah-salah mengadopsi tanpa pengetahuan yang baik malah bisa mengakibatkan penurunan kualitas. SPA mendapatkan popularitasnya karena menjanjikan kecepatan berpindah antar halaman tanpa perlu memuat ulang keseluruhan bagian halaman, melainkan cukup bagian dinamis saja yang dimuat ulang dan membiarkan bagian yang sama dari halaman sebelumnya. Secara teori tanpa memikirkan faktor lain, SPA memang seharusnya secara drastis bisa meningkatkan kecepatan memuat sebuah halaman, sampai mereka menyadari ada hal yang salah.
@@ -128,11 +134,10 @@ Pada prakteknya tree-shaking lebih banyak dikaitkan dengan kode yang berasal dar
 ```javascript
 // daripada menggunakan dengan
 import _ from 'lodash';
-
-_.get(object, 'key');
-
 // lebih baik kita menggunakan dengan
 import get from 'lodash/get';
+
+_.get(object, 'key');
 
 get(object, 'key');
 ```
@@ -172,4 +177,3 @@ Code splitting seharusnya dikombinasikan dengan kemampuan _lazy load_ dan _tree-
 ### Kredit
 
 - Foto sampul dari [pexels.com](https://www.pexels.com/photo/close-up-photo-of-person-holding-pizza-1653877/)
-

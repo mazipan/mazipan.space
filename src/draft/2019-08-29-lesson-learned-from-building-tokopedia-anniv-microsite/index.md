@@ -1,13 +1,20 @@
 ---
 title: Pelajaran dari membangun microsite untuk Tokopedia Anniversary
 publishDate: '2019-08-29'
-minute2read: 15
+
 description: Berbagai pelajaran yang kami dapat saat membangun microsite untuk acara ulang tahun Tokopedia ke-10
 author: mazipan
-published: true
-featured: false
-tags: [programming, lesson-learned]
-heroImage: /thumbnail/lesson-learned-from-building-tokopedia-anniv-microsite/tokopedia-anniv.png
+
+tags:
+  - web
+  - nextjs
+category: tutorials
+toc: true
+
+heroImage: '../../content/post/_images/poor-man-feature-flag/pexels-cottonbro-studio-5870547.jpg'
+heroAlt: Poor man feature flag untuk projek Next.js dalam 15 menit
+tags2: [programming, lesson-learned]
+heroImage2: /thumbnail/lesson-learned-from-building-tokopedia-anniv-microsite/tokopedia-anniv.png
 lang: id
 enready: true
 ---

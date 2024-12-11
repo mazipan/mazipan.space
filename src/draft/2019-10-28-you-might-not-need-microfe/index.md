@@ -3,10 +3,17 @@ title: You might not need MicroFE
 publishDate: '2019-10-28'
 description: Story telling about Micro-Frontend from both sides, the benefits and the problems
 author: mazipan
-published: true
-featured: false
-tags: [web, programming]
-heroImage: /thumbnail/you-might-not-need-microfe/microfe.png
+
+tags:
+  - web
+  - nextjs
+category: tutorials
+toc: true
+
+heroImage: '../../content/post/_images/poor-man-feature-flag/pexels-cottonbro-studio-5870547.jpg'
+heroAlt: Poor man feature flag untuk projek Next.js dalam 15 menit
+tags2: [web, programming]
+heroImage2: /thumbnail/you-might-not-need-microfe/microfe.png
 lang: id
 enready: true
 ---
@@ -133,5 +140,3 @@ Learn to looking from both sides of view, the good one and the bad one.
 
 - [micro-frontends.org](https://micro-frontends.org/)
 - [martinfowler.com](https://martinfowler.com/articles/micro-frontends.html)
-
-

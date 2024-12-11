@@ -3,12 +3,18 @@ title: Menipu Lighthouse
 publishDate: '2020-11-03'
 description: Cara jahat menipu alat pengukur performa web Lighthouse
 author: mazipan
-published: true
-featured: false
-tags: [web-perf]
-heroImage: /thumbnail/menipu-lighthouse/pexels-kaique-rocha-48013.jpg
+
+tags:
+  - web
+  - nextjs
+category: tutorials
+toc: true
+
+heroImage: '../../content/post/_images/poor-man-feature-flag/pexels-cottonbro-studio-5870547.jpg'
+heroAlt: Poor man feature flag untuk projek Next.js dalam 15 menit
+tags2: [web-perf]
+heroImage2: /thumbnail/menipu-lighthouse/pexels-kaique-rocha-48013.jpg
 lang: id
-enready: false
 ---
 
 ## Mengenai Lighthouse
@@ -52,16 +58,18 @@ Untuk di Backend sendiri bisa bermacam-macam caranya tergantung dari bahasa yang
 Bagaimana dengan User Agent dari Lighthouse sendiri, kalau dari web [developers.whatismybrowser.com](https://developers.whatismybrowser.com/useragents/parse/682595-google-lighthouse) kita bisa mengetahui bahwa User Agent yang digunakan adalah:
 
 ```js
-"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36(KHTML, like Gecko) Chrome/61.0.3116.0 Safari/537.36 Chrome-Lighthouse"
+'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36(KHTML, like Gecko) Chrome/61.0.3116.0 Safari/537.36 Chrome-Lighthouse';
 ```
 
 Sayangnya ini hanya untuk device desktop, sementara untuk device mobile akan beda lagi. Okelah kita bisa jadi tidak percaya dengan website begini, mari langsung saja kita tengok ke kode Lighthouse yang memang terbuka di Github ini. Dari file [lighthouse-core/lib/emulation.js#L44](https://github.com/GoogleChrome/lighthouse/blob/master/lighthouse-core/lib/emulation.js#L44), kita mengetahui bahwa ada dua konstanta yang digunakan oleh Lighthouse yakni:
 
 ```js
 // eslint-disable-next-line max-len
-const MOTOG4_USERAGENT = 'Mozilla/5.0 (Linux; Android 7.0; Moto G (4)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4143.7 Mobile Safari/537.36 Chrome-Lighthouse';
+const MOTOG4_USERAGENT =
+  'Mozilla/5.0 (Linux; Android 7.0; Moto G (4)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4143.7 Mobile Safari/537.36 Chrome-Lighthouse';
 // eslint-disable-next-line max-len
-const DESKTOP_USERAGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4143.7 Safari/537.36 Chrome-Lighthouse';
+const DESKTOP_USERAGENT =
+  'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4143.7 Safari/537.36 Chrome-Lighthouse';
 ```
 
 Sudah kelihatan kan polanya? Selalu ada tambahan `Chrome-Lighthouse` di ujung User Agent yang digunakan oleh Lighthouse.
@@ -73,13 +81,7 @@ const Home = () => {
   // Cek string User Agent di peramban, apa memiliki kata "Chrome-Lighthouse" atau tidak
   const apakahLighthouse = /Chrome-Lighthouse/i.test(navigator.userAgent);
 
-  return (
-    <div>
-      {
-        apakahLighthouse ? <KontenBohongan /> : <KontenBeneran />
-      }
-    </div>
-  );
+  return <div>{apakahLighthouse ? <KontenBohongan /> : <KontenBeneran />}</div>;
 };
 
 export default Home;
@@ -93,10 +95,10 @@ Saya bilang ini ilmu hitam karena rentan sekali dimanfaatkan dengan sembarangan,
 
 Cara ini sesungguhnya memang memiliki contoh kasus yang sesuai untuk diaplikasikan, beberapa diantaranya:
 
-👉  **Menghilangkan gangguan**, pada projek nyata seringkali kita dihadapkan pada berbagai komponen yang seringkali muncul di kunjungan pertama, misalnya popup penawaran newsletter, atau modal dialog sebuah promo kalau di situs e-commerce.
+👉 **Menghilangkan gangguan**, pada projek nyata seringkali kita dihadapkan pada berbagai komponen yang seringkali muncul di kunjungan pertama, misalnya popup penawaran newsletter, atau modal dialog sebuah promo kalau di situs e-commerce.
 Hal-hal seperti itu seringkali mengganggu pengecekan dengan Lighthouse sehingga akan lebih baik kalau dihilangkan pada saat pengetesan dijalankan.
 
-👉  **Melangkahi suatu proses**, ada kalanya terdapat prasyarat untuk bisa mengunjungi suatu halaman, misalnya dibutuhkan proses otentikasi atau lainnya.
+👉 **Melangkahi suatu proses**, ada kalanya terdapat prasyarat untuk bisa mengunjungi suatu halaman, misalnya dibutuhkan proses otentikasi atau lainnya.
 Proses ini bisa saja kita langkahi dengan membaca User Agent si Lighthouse serta menambahkan parameter tidak lazim yang sulit tertebak sebagai tambahan.
 
 Meskipun begitu, kita mesti bijak menggunakannya, jangan karena bisa dan karena tau caranya maka semua hal dihilangkan.
@@ -106,8 +108,8 @@ Ini termasuk cara curang, namun kalau si boss terus menanyakan mengenai peningka
 
 **_Catatan tambahan:_**
 
-🏃  Saya tidak bertanggung jawab atas apa yang terjadi karena mengikuti artikel ini
+🏃 Saya tidak bertanggung jawab atas apa yang terjadi karena mengikuti artikel ini
 
-🤸  Segala kerugian yang diakibatkan karena artikel ini menjadi tanggung jawab masing-masing
+🤸 Segala kerugian yang diakibatkan karena artikel ini menjadi tanggung jawab masing-masing
 
 Photo by [Kaique Rocha](https://www.pexels.com/@kaiquestr?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels) from [Pexels](https://www.pexels.com/photo/people-canon-anonymous-levitate-48013/?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels)

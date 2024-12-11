@@ -3,12 +3,19 @@ title: 01 - Cerita anak kampung menjadi programmer
 publishDate: '2019-11-17'
 description: Cerita panjang perjalanan hidup dan karir saya sampai bisa menjadi programmer di beberapa perusahaan teknologi besar di Indonesia
 author: mazipan
-published: true
+
 featured: true
-tags: [life-experience]
-heroImage: /thumbnail/cerita-anak-kampung-menjadi-programmer/mazipan-smp.jpeg
+tags:
+  - web
+  - nextjs
+category: tutorials
+toc: true
+
+heroImage: '../../content/post/_images/poor-man-feature-flag/pexels-cottonbro-studio-5870547.jpg'
+heroAlt: Poor man feature flag untuk projek Next.js dalam 15 menit
+tags2: [life-experience]
+heroImage2: /thumbnail/cerita-anak-kampung-menjadi-programmer/mazipan-smp.jpeg
 lang: id
-enready: false
 ---
 
 Cerita panjang perjalanan hidup dan karir saya sampai bisa menjadi programmer di beberapa peruasahaan teknologi besar di Indonesia.
@@ -19,7 +26,7 @@ Cerita ini saya pecah menjadi beberapa bagian dikarenakan lumayan panjang untuk 
 - [Bagian 2 - Cerita buruh menjadi programmer](/cerita-buruh-menjadi-programmer)
 - [Bagian 3 - Cerita saya menjadi programmer](/cerita-saya-menjadi-programmer)
 
-Tulisan ini saya persembahkan bagi mereka yang sedang belajar menjadi Programmer atau Software Engineer, bagi mereka para *newbies*, bagi mereka para *fresh-grad* yang seringkali mengeluhkan betapa susahnya belajar mengenai *programming*.
+Tulisan ini saya persembahkan bagi mereka yang sedang belajar menjadi Programmer atau Software Engineer, bagi mereka para _newbies_, bagi mereka para _fresh-grad_ yang seringkali mengeluhkan betapa susahnya belajar mengenai _programming_.
 
 ## 👶 Saya Anak Kampung
 
@@ -94,7 +101,7 @@ Kalau sedang apes ya silahkan duduk dengan tenang di depan komputer dengan layar
 
 ⛳ Selesai 🖐️.
 
-Belum ada kaitannya ya sama dunia *Programmer* 😂? Tapi mudah-mudahan cerita di bagian pertama bisa memberikan konteks mengenai bagaimana saya dibesarkan, bagaimana saya menempuh jalur pendidikan saya.
+Belum ada kaitannya ya sama dunia _Programmer_ 😂? Tapi mudah-mudahan cerita di bagian pertama bisa memberikan konteks mengenai bagaimana saya dibesarkan, bagaimana saya menempuh jalur pendidikan saya.
 Harapannya bisa menjadi sedikit perbandingan bagi teman-teman juga.
 Jangan kecil hati, terus semangat menjalani pendidikan kalian saat ini 💪.
 
@@ -110,4 +117,3 @@ Semangat berjuang, para pejuang pendidikan, para pejuang masa depan 🖐️.
 - [Bagian 1 - Cerita anak kampung menjadi programmer](/cerita-anak-kampung-menjadi-programmer) - kamu disini
 - [Bagian 2 - Cerita buruh menjadi programmer](/cerita-buruh-menjadi-programmer)
 - [Bagian 3 - Cerita saya menjadi programmer](/cerita-saya-menjadi-programmer)
-

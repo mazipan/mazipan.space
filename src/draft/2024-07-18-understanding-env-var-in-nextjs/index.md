@@ -4,18 +4,25 @@ publishDate: '2024-07-18'
 description: Bagaimana seharusnya menggunakan environment variable di Next.js
 author: mazipan
 published: false
-featured: false
-tags: [web]
-heroImage: /thumbnail/understanding-env-var-in-nextjs/pexels-mumtahina-tanni-1080117-3230539.jpg
+
+tags:
+  - web
+  - nextjs
+category: tutorials
+toc: true
+
+heroImage: '../../content/post/_images/poor-man-feature-flag/pexels-cottonbro-studio-5870547.jpg'
+heroAlt: Poor man feature flag untuk projek Next.js dalam 15 menit
+tags2: [web]
+heroImage2: /thumbnail/understanding-env-var-in-nextjs/pexels-mumtahina-tanni-1080117-3230539.jpg
 lang: id
-enready: false
 ---
 
 Artikel mengenai bagaimana Next.js menangani env var sebenarnya bisa dibaca secara tuntas di laman ofisial mereke "[Environment Variables di Next.js](https://nextjs.org/docs/app/building-your-application/configuring/environment-variables)". Artikel yang saya tulis hanya pengulangan pembahasan bagi yang masih kesulitan memahami artikel tersebut, jadi kalau kalian merasa topik pembahasan ini terlalu sepele untuk kalian, saya sarankan untuk berhenti meneruskan membaca dan cukup mengabaikannya saja.
 
 ## Mengenai env var
 
-Env var atau *Environment Variable* marupakan variabel dinamis di luar dari program/aplikasi, biasanya merupakan bawaan dari sistem operasi suatu mesin, yang dapat mempengaruhi bagaimana program tersebut bekerja di sistem operasi tersebut.
+Env var atau _Environment Variable_ marupakan variabel dinamis di luar dari program/aplikasi, biasanya merupakan bawaan dari sistem operasi suatu mesin, yang dapat mempengaruhi bagaimana program tersebut bekerja di sistem operasi tersebut.
 
 Beberapa kegunaan utama dari anv var dalam pengembangan perangkat lunak adalah:
 
@@ -27,7 +34,7 @@ Beberapa kegunaan utama dari anv var dalam pengembangan perangkat lunak adalah:
 
 - **📦 Portabilitas**: Memungkinkan aplikasi untuk dengan mudah dipindahkan dan dijalankan di berbagai sistem dengan sedikit atau tanpa perubahan pada kode.
 
-Env var berisi pasangan *key-value*, dan biasanya disimpan dalam file `.env` yang dibaca secara otomatis sebagai env var tambahan yang didefinisikan untuk dibutuhkan saat aplikasi tersebut akan dijalankan.
+Env var berisi pasangan _key-value_, dan biasanya disimpan dalam file `.env` yang dibaca secara otomatis sebagai env var tambahan yang didefinisikan untuk dibutuhkan saat aplikasi tersebut akan dijalankan.
 
 Contoh isi dari sebuah `.env`:
 
@@ -41,7 +48,6 @@ DOMAIN_ASET="https://imagekit.io/sebuah-alamat"
 
 Dari artikel [How to read environment variables from Node.js](https://nodejs.org/en/learn/command-line/how-to-read-environment-variables-from-nodejs), pada dasarnya Node.js bisa otomatis membaca env var yang ada di sistem operasi semudah dengan kode `process.env.SEBUAH_ENV_VAR`. Jadi misal di sebuah sistem operasi terdapat env-var
 
-
 ```bash
 # Contoh env var
 DOMAIN_APLIKASI="https://mazipan.space"
@@ -52,7 +58,7 @@ Maka kamu bisa membaca dengan kode berikut
 
 ```ts
 process.env.DOMAIN_APLIKASI; // "https://mazipan.space"
-process.env.DOMAIN_ASET;     // "https://imagekit.io/sebuah-alamat"
+process.env.DOMAIN_ASET; // "https://imagekit.io/sebuah-alamat"
 ```
 
 Dalam kasus misalnya env var tersebut didefinisikan melalui file `.env`, kamu perlu menambahkan sedikit perintah saat menjalankan program, contohnya:
@@ -63,7 +69,7 @@ node --env-file=.env index.js
 
 ## Env var di React.js
 
-React.js dasarnya adalah javascript framework yang awalnya "hanya" jalan di peramban, maka secara natural dia tidak bisa membaca env var. Env var hanya bisa di-*supply* dari kode Node.js (server-side) ke kode React.
+React.js dasarnya adalah javascript framework yang awalnya "hanya" jalan di peramban, maka secara natural dia tidak bisa membaca env var. Env var hanya bisa di-_supply_ dari kode Node.js (server-side) ke kode React.
 
 ## Env var di Next.js
 

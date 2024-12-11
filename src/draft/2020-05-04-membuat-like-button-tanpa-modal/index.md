@@ -3,10 +3,17 @@ title: Membuat Like Button Tanpa Modal
 publishDate: '2020-05-04'
 description: Bagaimana saya membuat like button untuk blog ini tanpa perlu modal server
 author: mazipan
-published: true
-featured: false
-tags: [now, javascript]
-heroImage: /thumbnail/membuat-like-button-tanpa-modal/membuat-tombol-like.jpg
+
+tags:
+  - web
+  - nextjs
+category: tutorials
+toc: true
+
+heroImage: '../../content/post/_images/poor-man-feature-flag/pexels-cottonbro-studio-5870547.jpg'
+heroAlt: Poor man feature flag untuk projek Next.js dalam 15 menit
+tags2: [now, javascript]
+heroImage2: /thumbnail/membuat-like-button-tanpa-modal/membuat-tombol-like.jpg
 lang: id
 enready: true
 ---
@@ -198,4 +205,3 @@ Karena Github memiliki rate limiter seperti sudah kita bahas bersama pada bagian
 ## Bagaimana Hasilnya?
 
 Kalian bisa scroll ke bagian akhir dari artikel ini, terdapat tombol like cupu yang bisa kalian klik. Bagain tersebut memanfaatkan API yang saya buat dengan paltform Now seperti yang sudah kita perbincangkan di artikel ini.
-

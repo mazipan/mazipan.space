@@ -3,10 +3,17 @@ title: Membuat commit otomatis ke Github
 publishDate: '2020-04-08'
 description: Bagaimana saya membuat commit otomatis menggunakan Github Actions
 author: mazipan
-published: true
-featured: false
-tags: [programming]
-heroImage: /thumbnail/membuat-commit-otomatis-ke-github/membuat-commit-otomatis.jpg
+
+tags:
+  - web
+  - nextjs
+category: tutorials
+toc: true
+
+heroImage: '../../content/post/_images/poor-man-feature-flag/pexels-cottonbro-studio-5870547.jpg'
+heroAlt: Poor man feature flag untuk projek Next.js dalam 15 menit
+tags2: [programming]
+heroImage2: /thumbnail/membuat-commit-otomatis-ke-github/membuat-commit-otomatis.jpg
 imageCaption: Gambar dibuat dengan Pixlr
 lang: id
 enready: true

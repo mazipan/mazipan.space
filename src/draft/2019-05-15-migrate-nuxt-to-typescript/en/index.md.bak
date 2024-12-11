@@ -1,13 +1,21 @@
 ---
 title: Migrate Nuxt to TypeScript
 publishDate: '2019-05-15'
-minute2read: 10
+
 description: Story telling about the steps that I worked on when migrating the Nuxt project from using vanilla JavaScript to using TypeScript
 author: mazipan
-published: true
+
 featured: true
-tags: [nuxt, typescript]
-heroImage: /thumbnail/migrate-nuxt-to-typescript/quran-offline.png
+tags:
+  - web
+  - nextjs
+category: tutorials
+toc: true
+
+heroImage: '../../content/post/_images/poor-man-feature-flag/pexels-cottonbro-studio-5870547.jpg'
+heroAlt: Poor man feature flag untuk projek Next.js dalam 15 menit
+tags2: [nuxt, typescript]
+heroImage2: /thumbnail/migrate-nuxt-to-typescript/quran-offline.png
 lang: en
 ---
 

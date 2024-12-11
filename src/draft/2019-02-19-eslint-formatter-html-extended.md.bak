@@ -3,10 +3,18 @@ title: Extend an official ESLint's HTML Formatter
 publishDate: '2019-02-19'
 description: Why we decide to extend an official ESLint's HTML formatter
 author: mazipan
-published: true
-featured: false
-tags: [javascript, eslint]
-heroImage: /thumbnail/eslint-formatter-html-extended/eslint-html.png
+
+
+tags:
+  - web
+  - nextjs
+category: tutorials
+toc: true
+
+heroImage: '../../content/post/_images/poor-man-feature-flag/pexels-cottonbro-studio-5870547.jpg'
+heroAlt: Poor man feature flag untuk projek Next.js dalam 15 menit
+tags2: [javascript, eslint]
+heroImage2: /thumbnail/eslint-formatter-html-extended/eslint-html.png
 lang: en
 ---
 

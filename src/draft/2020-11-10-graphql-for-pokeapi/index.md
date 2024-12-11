@@ -3,12 +3,18 @@ title: GraphQL untuk PokeApi
 publishDate: '2020-11-10'
 description: Memperkenalkan versi GraphQL sederhana dari PokeApi.co yang di deploy ke Vercel
 author: mazipan
-published: true
-featured: false
-tags: [open-source]
-heroImage: /thumbnail/graphql-for-pokeapi/graphgql-pokeapi.png
+
+tags:
+  - web
+  - nextjs
+category: tutorials
+toc: true
+
+heroImage: '../../content/post/_images/poor-man-feature-flag/pexels-cottonbro-studio-5870547.jpg'
+heroAlt: Poor man feature flag untuk projek Next.js dalam 15 menit
+tags2: [open-source]
+heroImage2: /thumbnail/graphql-for-pokeapi/graphgql-pokeapi.png
 lang: id
-enready: false
 ---
 
 [PokeApi](https://github.com/PokeAPI/pokeapi) adalah salah satu kode sumber terbuka yang menyediakan RESTful-API gratis untuk mendapatkan data Pokémon mulai dari daftar pokemon, pergerakan yang dimiliki, dan info lainnya.

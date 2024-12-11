@@ -3,12 +3,14 @@ title: Membuat laman jadwal sholat sederhana
 publishDate: '2023-08-09'
 description: Penjelasan dengan penyederhanaan dari proses pembuatan halaman jadwal sholat pada Baca-Quran.id
 author: mazipan
-published: true
-featured: false
-tags: [svelte, web]
-heroImage: /thumbnail/membuat-web-jadwal-sholat-sederhana/pexels-mohammad-ramezani-12772601.jpg
+tags:
+  - web
+  - svelte
+category: tutorials
+toc: true
+heroImage: '../../content/post/_images/membuat-web-jadwal-sholat-sederhana/pexels-mohammad-ramezani-12772601.jpg'
+heroAlt: Membuat laman jadwal sholat sederhana
 lang: id
-enready: false
 ---
 
 Artikel ini menjelaskan proses yang saya tempuh dalam pembuatan halaman baru [Jadwal Sholat](https://www.baca-quran.id/jadwal-sholat/) di Baca-Quran.id secara sederhana tanpa menjelaskan bagian-bagian rumitnya agar lebih mudah diikuti kalau memang ingin membuat halaman serupa.
@@ -32,7 +34,7 @@ Secara data, saya suka dengan kesederhanaan NeoAdzan dan JadwalSholat.org (kedua
 
 Akhirnya saya jadi bisa memutuskan beberapa hal:
 
-- 🔹 Saya tidak perlu menampilkan data dalam sebulan, berkaca dari cara Tokopedia, lebih bagus lagi dengan cara Google Search saat menampilkan data jadwal sholat. Terasa *on-point*, cuma nampilin hari ini saja.
+- 🔹 Saya tidak perlu menampilkan data dalam sebulan, berkaca dari cara Tokopedia, lebih bagus lagi dengan cara Google Search saat menampilkan data jadwal sholat. Terasa _on-point_, cuma nampilin hari ini saja.
 
 ![Google menampilkan jadwal sholat](/thumbnail/membuat-web-jadwal-sholat-sederhana/jadwal-sholat-di-google.png)
 
@@ -42,11 +44,11 @@ Akhirnya saya jadi bisa memutuskan beberapa hal:
 
 Dengan memutuskan beberapa hal akhirnya jadi lebih terlihat kebutuhan data seperti apa yang ta mau.
 
-Untuk data jadwal sholat, saya memilih yang mendukung permintaan dengan lokasi terkini atau menggunakan nilai dari garis lintang *(latitude)* dan garis bujur *(longitude)*. Setelah mencari-cari, saya menemukan [aladhan.com](https://aladhan.com/prayer-times-api) menyediakan public API yang sesuai dengan yang saya butuhkan.
+Untuk data jadwal sholat, saya memilih yang mendukung permintaan dengan lokasi terkini atau menggunakan nilai dari garis lintang _(latitude)_ dan garis bujur _(longitude)_. Setelah mencari-cari, saya menemukan [aladhan.com](https://aladhan.com/prayer-times-api) menyediakan public API yang sesuai dengan yang saya butuhkan.
 
 Kalian bisa memanggil seperti contoh pada dokumentasi mereka: `https://api.aladhan.com/v1/calendar/2017/4?latitude=51.508515&longitude=-0.1254872&method=2`.
 
-Mereka sudah bisa mengembalikan data dalam sebulan langsung. Ini bisa jadi opsi untuk nantinya saya cache saja data sebulan ini biar tidak terus-terusan request ke API mereka. Sayangnya, dari response tersebut kita belum bisa tau alamatnya atau paling tidak infomasi distrik atau kabupaten/kota, istilah lainnya *Reverse Geocoding*. Mau gak mau butuh 1 tambahan lagi kalau mau dapatin data ini. Paling umum tentu pakai [Reverse Geocoding, dari Geocoding API-nya Google](https://developers.google.com/maps/documentation/geocoding/requests-reverse-geocoding). Tapi untungnya pas lagi nyari-nyari, nemu [https://nominatim.org](https://nominatim.org/release-docs/develop/api/Reverse/) yang juga punya API untuk Reverse. Saya akan ngambil data district-nya aja dari sini.
+Mereka sudah bisa mengembalikan data dalam sebulan langsung. Ini bisa jadi opsi untuk nantinya saya cache saja data sebulan ini biar tidak terus-terusan request ke API mereka. Sayangnya, dari response tersebut kita belum bisa tau alamatnya atau paling tidak infomasi distrik atau kabupaten/kota, istilah lainnya _Reverse Geocoding_. Mau gak mau butuh 1 tambahan lagi kalau mau dapatin data ini. Paling umum tentu pakai [Reverse Geocoding, dari Geocoding API-nya Google](https://developers.google.com/maps/documentation/geocoding/requests-reverse-geocoding). Tapi untungnya pas lagi nyari-nyari, nemu [https://nominatim.org](https://nominatim.org/release-docs/develop/api/Reverse/) yang juga punya API untuk Reverse. Saya akan ngambil data district-nya aja dari sini.
 
 ## 🤳 Tampilan
 
@@ -64,7 +66,7 @@ Isinya bisa semudah `Halo Dunia` dulu aja, di contoh ini saya menambahkan judul 
 
 ```html
 <div class="px-4 mb-4">
- <h1 class="text-3xl font-bold">⏰ Jadwal Sholat</h1>
+  <h1 class="text-3xl font-bold">⏰ Jadwal Sholat</h1>
 </div>
 ```
 
@@ -79,9 +81,11 @@ Kode dasarnya bisa begini:
 ```typescript
 let getGeolocation = async () => {
   if (navigator.geolocation) {
-   navigator.geolocation.getCurrentPosition(async (position) => {
-    console.log(`Ini dia si latitude: ${position.coords.latitude} dan longitude: ${position.coords.longitude}`)
-   });
+    navigator.geolocation.getCurrentPosition(async (position) => {
+      console.log(
+        `Ini dia si latitude: ${position.coords.latitude} dan longitude: ${position.coords.longitude}`
+      );
+    });
   }
 };
 ```
@@ -95,14 +99,14 @@ Bagian ini kita akan memanfaatkan API pihak ketiga `nominatim`. Kodenya semudah 
 ```typescript
 async function getDistrictByLatLong({
   latitude,
-  longitude
+  longitude,
 }: {
   latitude: number;
   longitude: number;
 }) {
   try {
     const resRaw = await fetch(
-    `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${latitude}&lon=${longitude}`
+      `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${latitude}&lon=${longitude}`
     );
     const res = await resRaw.json();
     return res?.address?.city_district || '';
@@ -122,24 +126,23 @@ Biar gak bolak-balik minta akses lokasi dan request ke nominatim.openstreetmap.o
 ```typescript {11-18}
 let getGeolocation = async () => {
   if (navigator.geolocation) {
-   navigator.geolocation.getCurrentPosition(async (position) => {
-    // Mendapatkan kabupaten/kota
-    const district = await getDistrictByLatLong({
-     latitude: position.coords.latitude || 0,
-     longitude: position.coords.longitude || 0
+    navigator.geolocation.getCurrentPosition(async (position) => {
+      // Mendapatkan kabupaten/kota
+      const district = await getDistrictByLatLong({
+        latitude: position.coords.latitude || 0,
+        longitude: position.coords.longitude || 0,
+      });
+
+      // Menyimpan ke storage
+      localStorage.setItem(
+        'dataLokasi',
+        JSON.stringify({
+          lt: position.coords.latitude || 0,
+          lg: position.coords.longitude || 0,
+          district,
+        })
+      );
     });
-
-    // Menyimpan ke storage
-    localStorage.setItem(
-     "dataLokasi",
-     JSON.stringify({
-      lt: position.coords.latitude || 0,
-      lg: position.coords.longitude || 0,
-      district
-     })
-    );
-
-   });
   }
 };
 ```
@@ -156,10 +159,10 @@ Mengekspos kode baru di berkas `src/store/index.ts` beserta definisi tipe data y
 
 ```typescript
 export type LocationParam = {
-  lt: number
-  lg: number
-  district: string
-}
+  lt: number;
+  lg: number;
+  district: string;
+};
 
 export const settingLocation = writable<LocationParam | null>(null);
 ```
@@ -173,31 +176,30 @@ Kode untuk memperbarui nilai yang disimpan di Svelte Store dengan data yang dida
 ```typescript {21-25}
 let getGeolocation = async () => {
   if (navigator.geolocation) {
-   navigator.geolocation.getCurrentPosition(async (position) => {
-    // Mendapatkan kabupaten/kota
-    const district = await getDistrictByLatLong({
-     latitude: position.coords.latitude || 0,
-     longitude: position.coords.longitude || 0
+    navigator.geolocation.getCurrentPosition(async (position) => {
+      // Mendapatkan kabupaten/kota
+      const district = await getDistrictByLatLong({
+        latitude: position.coords.latitude || 0,
+        longitude: position.coords.longitude || 0,
+      });
+
+      // Menyimpan ke storage
+      localStorage.setItem(
+        'dataLokasi',
+        JSON.stringify({
+          lt: position.coords.latitude || 0,
+          lg: position.coords.longitude || 0,
+          district,
+        })
+      );
+
+      // Memperbarui nilai store
+      settingLocation.set({
+        lt: position.coords.latitude || 0,
+        lg: position.coords.longitude || 0,
+        district,
+      });
     });
-
-    // Menyimpan ke storage
-    localStorage.setItem(
-     "dataLokasi",
-     JSON.stringify({
-      lt: position.coords.latitude || 0,
-      lg: position.coords.longitude || 0,
-      district
-     })
-    );
-
-    // Memperbarui nilai store
-    settingLocation.set({
-     lt: position.coords.latitude || 0,
-     lg: position.coords.longitude || 0,
-     district
-    });
-
-   });
   }
 };
 ```
@@ -211,26 +213,26 @@ Saya menambahkan kode ini di level Layout (`src/routes/+layout.svelte`), agar bi
 ```typescript {9-13}
 onMount(() => {
   if (typeof window !== 'undefined') {
-   if (typeof localStorage !== 'undefined') {
-    const storageLocation = localStorage.getItem("dataLokasi");
+    if (typeof localStorage !== 'undefined') {
+      const storageLocation = localStorage.getItem('dataLokasi');
 
-    if (storageLocation) {
-     const parsedValue = JSON.parse(storageLocation);
+      if (storageLocation) {
+        const parsedValue = JSON.parse(storageLocation);
 
-     settingLocation.set({
-      lt: parsedValue?.lt || 0,
-      lg: parsedValue?.lg || 0,
-      district: parsedValue?.district || ''
-     });
-    } else {
-     settingLocation.set(null);
+        settingLocation.set({
+          lt: parsedValue?.lt || 0,
+          lg: parsedValue?.lg || 0,
+          district: parsedValue?.district || '',
+        });
+      } else {
+        settingLocation.set(null);
+      }
     }
-   }
   }
 });
 ```
 
-Kode di atas mengambil nilai dari Web Storage, di *parsing* jadi objek JavaScript, untuk kemudian di set ke Svelte Store agar bisa diakses dimanapun.
+Kode di atas mengambil nilai dari Web Storage, di _parsing_ jadi objek JavaScript, untuk kemudian di set ke Svelte Store agar bisa diakses dimanapun.
 
 #### 🔘 Menampilkan data lokasi dari data Svelte Store
 
@@ -269,14 +271,8 @@ Bagian ini bertujuan mengambil data dari pihak ketiga, memprosesnya dan menyimpa
 Memanggil API publik dari pihak ketiga untuk mendapatkan data jadwal sholat selama sebulan dengan parameter latitude dan longitude, serta menambahkan juga parameter tahun dan bulan yang diinginkan.
 
 ```typescript
-let prayerTimes = []
-async function refetchPrayerTime({
-  latitude,
-  longitude
-}: {
-  latitude: number;
-  longitude: number;
-}) {
+let prayerTimes = [];
+async function refetchPrayerTime({ latitude, longitude }: { latitude: number; longitude: number }) {
   const year = new Date().getFullYear();
   const month = new Date().getMonth() + 1;
 
@@ -289,22 +285,16 @@ async function refetchPrayerTime({
 }
 ```
 
-Kodenya cukup lugas, cuma *construct* URL untuk API yang akan dipanggil, kemudian di set ke lokal variabel `prayerTimes`. Paling ada catatan untuk menambah nilai bulan (month) yang didapat karena dimulai dari 0.
+Kodenya cukup lugas, cuma _construct_ URL untuk API yang akan dipanggil, kemudian di set ke lokal variabel `prayerTimes`. Paling ada catatan untuk menambah nilai bulan (month) yang didapat karena dimulai dari 0.
 
 #### 🔘 Menyimpan response ke Web Storage
 
 Kita cukup menambahkan kode berikut pada fungsi di atas:
 
 ```typescript
-async function refetchPrayerTime({
-  latitude,
-  longitude
-}: {
-  latitude: number;
-  longitude: number;
-}) {
+async function refetchPrayerTime({ latitude, longitude }: { latitude: number; longitude: number }) {
   // ...kode2 lainnya
-  localStorage.setItem("dataJadwalSholat", JSON.stringify(response));
+  localStorage.setItem('dataJadwalSholat', JSON.stringify(response));
 }
 ```
 
@@ -316,7 +306,7 @@ Mengecek ketersediaan cache di Web Storage sebelum memutuskan memanggil API piha
 
 ```typescript
 async function fetchPrayerTime({ latitude, longitude }: { latitude: number; longitude: number }) {
-  const fromStorage = localStorage.getItem("dataJadwalSholat");
+  const fromStorage = localStorage.getItem('dataJadwalSholat');
   if (fromStorage) {
     const parsedValue = JSON.parse(fromStorage);
     // check current month is still the same
@@ -351,7 +341,7 @@ let getGeolocation = async () => {
       // ...kode2 lainnya
       await fetchPrayerTime({
         latitude: position.coords.latitude,
-        longitude: position.coords.longitude
+        longitude: position.coords.longitude,
       });
     });
   }

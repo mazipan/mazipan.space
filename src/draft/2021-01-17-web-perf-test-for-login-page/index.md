@@ -3,12 +3,18 @@ title: Pengujian performa web untuk halaman dengan login
 publishDate: '2021-01-17'
 description: Berbagi hal yang saya pelajari dalam melakukan test performa web untuk halaman-halaman yang membutuhkan login terlebih dahulu
 author: mazipan
-published: true
-featured: false
-tags: [web-perf]
-heroImage: /thumbnail/web-perf-test-for-login-page/uji-performa-halaman-login.jpg
+
+tags:
+  - web
+  - nextjs
+category: tutorials
+toc: true
+
+heroImage: '../../content/post/_images/poor-man-feature-flag/pexels-cottonbro-studio-5870547.jpg'
+heroAlt: Poor man feature flag untuk projek Next.js dalam 15 menit
+tags2: [web-perf]
+heroImage2: /thumbnail/web-perf-test-for-login-page/uji-performa-halaman-login.jpg
 lang: id
-enready: false
 ---
 
 Performa web sudah bukan lagi barang baru, perhatian terhadap topiknya dari banyak pemrogram web juga sudah mulai membaik. Seiring dengan semakin banyaknya perhatian yang mengarah kesana, maka semakin banyak pula perkembangan yang terjadi di sekitaran topik tersebut. Hampir di setiap helatan Chrome Dev Summit selalu tersemat materi mengenai performa web. Menarik? Yah, terlalu banyak dijejali topik yang sama bisa jadi juga akan membuat orang-orang bosan, tapi semoga ada hal baik yang bisa dipelajari dari artikel kali ini. Sebenarnya hal yang saya bagikan sudah tersedia di dokumentasi resmi Lighthouse sendiri, tapi saya akan coba jelaskan ulang agar saya sendiri bisa lebih paham dan tidak lupa-lupa lagi.
@@ -37,7 +43,7 @@ Sebelum membahas opsi sulit, kita akan bahas beberapa opsi mudah yang mungkin bi
 
 **👉 Manual saja dengan DevTools**
 
-Cara paling mudah ya, kalian login saja dulu di peramban kemudian pastikan kalian sudah bisa mengunjungi halaman tersebut. Setelahnya tinggal buka DevTools dan cari tab Lighthouse dan lakukan pengujian di halaman tersebut. Kalau proses login kalian membutuhkan *Browser Storage* macam LocalStorage maka pastikan saja kalian tidan mencentang pilihan "Clear Storage" saat akan melakukan pengujian. Tidak perlu malu melakukan pengujian manual, lagian ini kan memang cara tercepat untuk kita melakukan pengujian. Kalau kalian membutuhkan data historikal, maka kalian mungkin perlu menyimpan hasil pengujian di lokal ini dalam bentuk JSON sehingga bisa diambil dan dianalisa  lagi datanya besok-besok.
+Cara paling mudah ya, kalian login saja dulu di peramban kemudian pastikan kalian sudah bisa mengunjungi halaman tersebut. Setelahnya tinggal buka DevTools dan cari tab Lighthouse dan lakukan pengujian di halaman tersebut. Kalau proses login kalian membutuhkan _Browser Storage_ macam LocalStorage maka pastikan saja kalian tidan mencentang pilihan "Clear Storage" saat akan melakukan pengujian. Tidak perlu malu melakukan pengujian manual, lagian ini kan memang cara tercepat untuk kita melakukan pengujian. Kalau kalian membutuhkan data historikal, maka kalian mungkin perlu menyimpan hasil pengujian di lokal ini dalam bentuk JSON sehingga bisa diambil dan dianalisa lagi datanya besok-besok.
 
 ![Gambar hasil uji dengan DevTools](/thumbnail/web-perf-test-for-login-page/manual-devtools.png)
 
@@ -53,7 +59,7 @@ Tujuannya adalah memastikan Lighthouse bisa mengunjungi ke halaman yang membutuh
 
 Alat yang paling mungkin digunakan ya Lighthouse yang bisa dimanipulasi alurnya, pilihannya ya ada pada Ligthouse CLI atau Lighthouse dalam versi Node.js nya.
 
-Untuk versi CLI nya sendiri sebenernya bisa menyematkan Cookie (jika proses login kalian hanya menyematkan Cookie), tapi ya cara ini juga masih cukup *hacky* karena berarti kalian harus bisa melakukan login dahulu ditempat lain untuk kemudian mengambil kredensial token hasil loginnya dan disematkan sebagai argumen pada CLI tersebut. Belum lagi ada issue dimana kalau kalian menyematkan extra Cookie bisa jadi akan menimpa semua Cookie lain yang seharusnya tersedia. Mengenai ini kalian bisa baca di [PR #9170](https://github.com/GoogleChrome/lighthouse/pull/9170)
+Untuk versi CLI nya sendiri sebenernya bisa menyematkan Cookie (jika proses login kalian hanya menyematkan Cookie), tapi ya cara ini juga masih cukup _hacky_ karena berarti kalian harus bisa melakukan login dahulu ditempat lain untuk kemudian mengambil kredensial token hasil loginnya dan disematkan sebagai argumen pada CLI tersebut. Belum lagi ada issue dimana kalau kalian menyematkan extra Cookie bisa jadi akan menimpa semua Cookie lain yang seharusnya tersedia. Mengenai ini kalian bisa baca di [PR #9170](https://github.com/GoogleChrome/lighthouse/pull/9170)
 
 Berikut contoh potongan kode kalau kalian ingin menyematkan tambahan argumen:
 
@@ -89,7 +95,7 @@ const lighthouse = require('lighthouse');
 // halaman non-login sebagai test
 const PAGE_URL = 'https://www.mazipan.space/';
 
-(async() => {
+(async () => {
   const browser = await puppeteer.launch({
     // Sengaja di set false, biar kelihatan interaksinya
     headless: false,
@@ -98,11 +104,15 @@ const PAGE_URL = 'https://www.mazipan.space/';
 
   const { lhr } = await lighthouse(PAGE_URL, {
     // menggunakan PORT dari Puppeteer
-    port: (new URL(browser.wsEndpoint())).port,
-    output: 'json'
+    port: new URL(browser.wsEndpoint()).port,
+    output: 'json',
   });
 
-  console.log(`Lighthouse scores: ${Object.values(lhr.categories).map(c => c.score).join(', ')}`);
+  console.log(
+    `Lighthouse scores: ${Object.values(lhr.categories)
+      .map((c) => c.score)
+      .join(', ')}`
+  );
   await browser.close();
 })();
 ```
@@ -209,6 +219,5 @@ Cek dan cari kata `final-screenshoot` dan salin nilai dari properti `data` yang 
 ## Repository
 
 Kode di atas tersedia juga di repository [lighthouse-behind-auth](https://github.com/mazipan/lighthouse-behind-auth) yang bisa lebih enak untuk dibaca dan dipelajari dibandingkan baca artikel blog macam ini yang terlalu banyak omong kosongnya.
-
 
 Terima kasih dan semoga bermanfaat.

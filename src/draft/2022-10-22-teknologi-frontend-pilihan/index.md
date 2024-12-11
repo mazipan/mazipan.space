@@ -3,12 +3,18 @@ title: Teknologi frontend pilihan di akhir 2022
 publishDate: '2022-10-22'
 description: Beberapa pilihan teknologi yang menjadi dambaan dan andalan saya pribadi di akhir 2022
 author: mazipan
-published: true
-featured: false
-tags: [web, frontend]
-heroImage: /thumbnail/teknologi-frontend-pilihan/pexels-pixabay-68525.jpeg
+
+tags:
+  - web
+  - nextjs
+category: tutorials
+toc: true
+
+heroImage: '../../content/post/_images/poor-man-feature-flag/pexels-cottonbro-studio-5870547.jpg'
+heroAlt: Poor man feature flag untuk projek Next.js dalam 15 menit
+tags2: [web, frontend]
+heroImage2: /thumbnail/teknologi-frontend-pilihan/pexels-pixabay-68525.jpeg
 lang: id
-enready: false
 ---
 
 Setiap programmer punya alat idaman dan andalan masing-masing yang bisa jadi berbeda antara satu orang dengan orang lainnya. Pilihannya bisa berdasarkan alasan yang objektif bisa pula subjektif. Artikel ini ditulis pada Oktober 2022 yang mana sudah masuk ke Q4 di tahun 2022 dan tentu saja kalau kalian membaca di masa depan, bisa saja pilihan saya sudah berubah karena memang perubahan teknologi khususnya di ranah frontend tergolong cepat.
@@ -41,7 +47,7 @@ Di kantor tempat saya bekerja saat ini, ada 2 pendekatan yang digunakan:
 - ⦿ SSR untuk Consumer App
 - ⦿ Semi CSR untuk semua Internal App
 
-SSR untuk Consumer App, salah satu alasannya adalah karena selain di *build* menjadi aplikasi native, codebase React Native-nya juga di deploy sebagai web yang mana untuk kasusnya Consumer App tentu saja tidak ingin melewatkan kesempatan berupaya memperbaiki hasil pencarian organik para pengguna/calon pengguna melalui mesin pencari. Salah satu upayanya ya dengan menambahkan kemampuan SSR pada kode React Native.
+SSR untuk Consumer App, salah satu alasannya adalah karena selain di _build_ menjadi aplikasi native, codebase React Native-nya juga di deploy sebagai web yang mana untuk kasusnya Consumer App tentu saja tidak ingin melewatkan kesempatan berupaya memperbaiki hasil pencarian organik para pengguna/calon pengguna melalui mesin pencari. Salah satu upayanya ya dengan menambahkan kemampuan SSR pada kode React Native.
 
 Sedangkan untuk Internal App tentu keinginan untuk mengurasi kompleksitas dan biaya operasional adalah alasan masuk akal untuk tidak mengadopsi SSR secara penuh. Pada dasarnya aplikasinya CSR, hanya saja kita tetap menambahkan server untuk melayani request, sehingga `index.html`-nya tidak static melainkan selalu fresh tiap kali request. Tapi tidak seheboh aplikasi SSR, tidak ada request yang dilakukan di sisi server, server hanya membuatkan html kosongan yang ditambahkan dengan Runtime Config di dalamnya. Oh ya, untuk Internal Appnya juga belum menggunakan CDN 🙊, jadi masih melayani request berbagai asset seperti file JS, CSS, Font dan Image dengan `express.static` dengan cache header yang di set sangat panjang.
 
@@ -57,7 +63,7 @@ Untuk projek pribadi, saya selalu mengupayakan menggunakan SSG sebisa mungkin ag
 
 Untuk yang mengikuti perjalanan saya dan berbagai projek yang saya buat selama ini, harusnya tau kalau saya pernah mencoba ketiga pilihan di atas, saya mungkin masih bisa bekerja secara penuh dengan salah satu atau ketiganya dari pilihan tersebut. [ksana.in](https://github.com/mazipan/ksana.in) dibuat dengan Next.js yang berarti ada React dibaliknya, [learning.byphp.id](https://github.com/phpid-jakarta/phpid-learning) dibuat dengan Svelte di atas SvelteKit, dan [baca-quran.id](https://github.com/mazipan/baca-quran.id) dibuat dengan Nuxt versi 2 yang mana ya pake Vue 2. Saya cukup flexibel untuk pemilihan framework yang akan saya gunakan pada projek-projek saya, dan beberapa kali alasannya sesederhana karena "belum nyobain sendiri" aja. Tapi untuk beberapa waktu ke depan, untuk projek-projek yang mungkin akan saya buat, saya mungkin akan mengesampingkan kemungkinan untuk kembali menggunakan Vue 🙊. Saya bahkan terfikir untuk mencoba hal lain yang belum kesampaian macam: [Solid](https://www.solidjs.com/), [Astro](https://astro.build/), [Remix](https://remix.run/) atau bahkan pilihan yang lebih pragmatis seperti [11ty](https://www.11ty.dev/). Tentunya pilihan saya akan bergantung pada jenis aplikasi apa yang akan dibuat dan akan di-deploy dengan model seperti apa nantinya. Pastinya saya masih mengharapkan adanya "kesenangan" (maksudnya sebenernya "kebingungan") untuk mempelajari hal baru ketika mengerjakan projek-projek pribadi tersebut.
 
-Sedangkan untuk pekerjaan harian di kantor tempat saya bekerja saat ini, menggunakan React Native untuk Consumer App dengan tambahan kemampuan SSR untuk web yang dibuat dengan manual dengan bongkar pasang berbagai pustaka. Dan untuk Internal App sendiri masih sangat bervariasi karena belum ada standard yang cukup baik pada masa dibuat pertama kali, jadi ada yang pake React, ada yang pake Svelte ada juga yang pake React tapi di atas Next.js. Kalau ada kesempatan dan keberuntungan sih, pengennya di-*React*-in aja semuanya. Tapi No Next.js-Next.js-an yak 🙊.
+Sedangkan untuk pekerjaan harian di kantor tempat saya bekerja saat ini, menggunakan React Native untuk Consumer App dengan tambahan kemampuan SSR untuk web yang dibuat dengan manual dengan bongkar pasang berbagai pustaka. Dan untuk Internal App sendiri masih sangat bervariasi karena belum ada standard yang cukup baik pada masa dibuat pertama kali, jadi ada yang pake React, ada yang pake Svelte ada juga yang pake React tapi di atas Next.js. Kalau ada kesempatan dan keberuntungan sih, pengennya di-_React_-in aja semuanya. Tapi No Next.js-Next.js-an yak 🙊.
 
 **🟢 Ringkasan:**
 
@@ -71,7 +77,7 @@ Alat build & transpiler terpopuler tentunya masih dipegang oleh [Webpack](https:
 
 Dengan pilihan saya akhir-akhir ini yang condong ke [Next.js](https://nextjs.org/), tentu SWC jadi pilihan yang "tidak disadari" mulai teradopsi dalam projek-projek saya. Sedangkan Svelte dengan SvelteKit-nya yang menggunakan Vite, tentu ESBuild jadi pilihan tanpa sadar yang terambil.
 
-Sedangkan untuk pilihan Bundler, karena Next.js masih menggunakan Webpack, jadi mau nggak mau ya masih harus berusaha familiar dengan berbagai kompleksitas pada Webpack. Dan SvelteKit yang memilih Vite setidaknya meringankan beban dan tentu mengatasi dahaga untuk mempelajari dan mencoba Bundler yang naik daun dengan sangat cepat ini. Rasanya ingin di *Vite*-in aja semua nih.
+Sedangkan untuk pilihan Bundler, karena Next.js masih menggunakan Webpack, jadi mau nggak mau ya masih harus berusaha familiar dengan berbagai kompleksitas pada Webpack. Dan SvelteKit yang memilih Vite setidaknya meringankan beban dan tentu mengatasi dahaga untuk mempelajari dan mencoba Bundler yang naik daun dengan sangat cepat ini. Rasanya ingin di _Vite_-in aja semua nih.
 
 Untuk pekerjaan di kantor, menggunakan SWC untuk transpile file TS dan JS sementara untuk Consumer App-nya malah masih terjebak dengan Babel. Alat build nya tentu saja tidak lain dan tidak bukan, The One and Only, si "Webpack" lah.
 
@@ -184,7 +190,7 @@ Tema kesayangan yang saya gunakan di VSCode saya saat ini ialah [Night Owl](http
         }
       }
     ]
-  },
+  }
 }
 ```
 
@@ -193,7 +199,7 @@ Sedangkan untuk Font, saya menggunakan [Cascadia Code](https://github.com/micros
 ```json
 {
   "editor.fontFamily": "Cascadia Code, JetBrains Mono, Consolas, 'Courier New', monospace",
-  "editor.fontLigatures": "'calt', 'ss01'",
+  "editor.fontLigatures": "'calt', 'ss01'"
 }
 ```
 

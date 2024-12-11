@@ -3,19 +3,25 @@ title: Monorepo, menurut saya...
 publishDate: '2021-11-11'
 description: Bagaimana saya memandang monorepo sebagai solusi arsitektur managemen repository yang akan berpengaruh pada banyak kegiatan operasional
 author: mazipan
-published: true
-featured: false
-tags: [monorepo]
-heroImage: /thumbnail/monorepo-menurut-saya/cover.png
+
+tags:
+  - web
+  - nextjs
+category: tutorials
+toc: true
+
+heroImage: '../../content/post/_images/poor-man-feature-flag/pexels-cottonbro-studio-5870547.jpg'
+heroAlt: Poor man feature flag untuk projek Next.js dalam 15 menit
+tags2: [monorepo]
+heroImage2: /thumbnail/monorepo-menurut-saya/cover.png
 lang: id
-enready: false
 ---
 
 Tulisan terkahir di blog ini sudah dari februari yang lalu, dari awal tahun sampai ketemu akhir tahun. Setelah sekian lama vakum menulis, jangan berekspektasi tinggi pada tulisan-tulisan saya ya, saya hanya sedang berusaha mengumpulkan mood dan mengumpulkan semangat buat menulis lagi. Artikel-artikel saya pada tahap ini mungkin tidak akan dalam secara teknis, karena biasanya saya butuh waktu lebih banyak untuk menulis artikel yang terdapat berbaris-baris kode di dalamnya.
 
 ## Mengenai monorepo
 
-Monorepo merupakan solusi managemen repository bagi mereka yang memiliki workflow yang hampir sama di banyak package dan biasanya memang *dependent* satu sama lain.
+Monorepo merupakan solusi managemen repository bagi mereka yang memiliki workflow yang hampir sama di banyak package dan biasanya memang _dependent_ satu sama lain.
 
 Solusi ini sangat populer beberapa tahun belakangan dan berhasil diadopsi oleh banyak open-source besar, seperti [Babel](https://github.com/babel/babel/tree/main/packages), [Next.js](https://github.com/vercel/next.js/tree/canary/packages), [Jest](https://github.com/facebook/jest/tree/main/packages) dan banyak projek besar lain juga yang mengadopsi teknik yang sama, yakni si monorepo ini.
 
@@ -33,7 +39,7 @@ Karena berada dalam satu lingkup yang sama, maka tidak perlu bingung lagi, satu 
 
 ### Lebih hemat disk
 
-Seperti diketahui bersama, `node_modules` adalah musuh bagi disk kita. Kalau punya projek banyak, kecil-kecil maka di banyak projek itu kita diharuskan mengunduh dependency yang bisa jadi sama berulang-ulang kali. Dengan monorepo, dependency yang sama bisa dinaikan ke *parent*-nya, misalnya di setiap projek biasanya kita akan membutuhkan ESLint untuk melakukan static analisis pada kode kita. Dibandingkan harus install ESLint di masing-masing projek, pindahkan saja ke level atas , dan semua package tetap bisa merasakan manfaatnya.
+Seperti diketahui bersama, `node_modules` adalah musuh bagi disk kita. Kalau punya projek banyak, kecil-kecil maka di banyak projek itu kita diharuskan mengunduh dependency yang bisa jadi sama berulang-ulang kali. Dengan monorepo, dependency yang sama bisa dinaikan ke _parent_-nya, misalnya di setiap projek biasanya kita akan membutuhkan ESLint untuk melakukan static analisis pada kode kita. Dibandingkan harus install ESLint di masing-masing projek, pindahkan saja ke level atas , dan semua package tetap bisa merasakan manfaatnya.
 
 ## Mudah mengatur banyak package
 

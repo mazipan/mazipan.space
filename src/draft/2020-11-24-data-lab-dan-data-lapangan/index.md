@@ -3,12 +3,18 @@ title: Data Lab dan Data Lapangan
 publishDate: '2020-11-24'
 description: Bercerita mengenai apa yang saya tau soal Data Lab dan Data Lapangan dalam kaitannya dengan pemantauan Performa Web
 author: mazipan
-published: true
-featured: false
-tags: [web-perf]
-heroImage: /thumbnail/data-lab-dan-data-lapangan/lab-data-vs-field-data.png
+
+tags:
+  - web
+  - nextjs
+category: tutorials
+toc: true
+
+heroImage: '../../content/post/_images/poor-man-feature-flag/pexels-cottonbro-studio-5870547.jpg'
+heroAlt: Poor man feature flag untuk projek Next.js dalam 15 menit
+tags2: [web-perf]
+heroImage2: /thumbnail/data-lab-dan-data-lapangan/lab-data-vs-field-data.png
 lang: id
-enready: false
 ---
 
 Ketika kalian berurusan dengan web performance, kalian tentunya akan dihadapkan pada dua macam data yang mesti kalian pantau. Keduanya adalah Data Lab dan Data Lapangan. Kita akan membahas mengenai kedua jenis data ini, agar lebih melek dengan perbedaannya dan bisa menentukan data mana yang bisa digunakan untuk masing-masing kebutuhan kalian.
@@ -19,7 +25,7 @@ Data lab merupakan data yang didapatkan dari sebuah pengetesan di dalam lingkung
 
 ![Data lab di laporan Web.dev/measure](/thumbnail/data-lab-dan-data-lapangan/lab-data-web-dev.png)
 
-Data ini tentu tidak akan menggambarkan kondisi pengguna dari web kalian yang sebenarnya karena berada pada lingkungan yang sudah disetel sedemikian rupa. Namun pengujian untuk menghasilkan data lab ini sangat membantu untuk melakukan *debugging* pada web kita. Hasil yang didapat dari data lab umumnya bisa memberikan panduan yang jelas, utamanya bagi Web Developer untuk mengetahui kondisi web dan menyusun berbagai daftar aksi yang perlu dikerjakan untuk meningkatkan hasil yang di dapat.
+Data ini tentu tidak akan menggambarkan kondisi pengguna dari web kalian yang sebenarnya karena berada pada lingkungan yang sudah disetel sedemikian rupa. Namun pengujian untuk menghasilkan data lab ini sangat membantu untuk melakukan _debugging_ pada web kita. Hasil yang didapat dari data lab umumnya bisa memberikan panduan yang jelas, utamanya bagi Web Developer untuk mengetahui kondisi web dan menyusun berbagai daftar aksi yang perlu dikerjakan untuk meningkatkan hasil yang di dapat.
 
 Data lab bisa menjadi indikator sehatnya kondisi web kita dan bisa menjadi pegangan bagi kita bila disetel dengan baik, namun begitu bisa juga menjadi menyesatkan bila disetel dengan sembrono. Jadi kuncinya adalah menyetel lingkungan yang digunakan dalam pengujian data lab dengan bijak, kalau bisa sih mendekati rataan terbanyak dari kondisi pengguna nyata kita.
 
@@ -33,7 +39,7 @@ Disinilah kita menjadi perlu menyandingkan data lab kita dengan data lapangan.
 
 Data lapangan adalah data yang dikumpulkan dari pengguna nyata, dengan lingkungan asli yang digunakan oleh pengguna tersebut. Kita tidak bisa mengatur bagaimana kondisi pengguna saat mengakses web kita, bisa jadi mereka menggunakan device yang bagus dan dalam jaringan internet yang cepat sehingga web kita akan cukup cepat untuk dimuat, sebaliknya bisa juga si pengguna dalam kondisi tidak ideal, jaringan internet yang lambat, maupun device dengan spesifikasi rendah. Kondisi seperti ini jelas akan berdampak web kita akan terasa lambat untuk dimuat.
 
-Contoh data lapangan adalah laporan yang dikumpulkan oleh Chrome UX Report, ini merupakan data nyata yang dikumpulkan oleh Google Chrome terhadap penggunanya. Contoh lain adalah data yang secara mandiri kita kumpulkan dari pengguna kita, misal dengan Google Analytics atau dengan alat pemantau pengguna nyata atau biasa dikenal dengan *Real User Measurement (RUM)*. Di lingkungan produk Google, data ini bisa juga kalian jumpai di Google Search Console, atau langsung query dari Chrome UX Report baik melalui Big Query maupun lewat [RESTful API dari Chrome UX](https://web.dev/chrome-ux-report-api/) yang memang juga telah disediakan untuk mempermudah mengakses datanya.
+Contoh data lapangan adalah laporan yang dikumpulkan oleh Chrome UX Report, ini merupakan data nyata yang dikumpulkan oleh Google Chrome terhadap penggunanya. Contoh lain adalah data yang secara mandiri kita kumpulkan dari pengguna kita, misal dengan Google Analytics atau dengan alat pemantau pengguna nyata atau biasa dikenal dengan _Real User Measurement (RUM)_. Di lingkungan produk Google, data ini bisa juga kalian jumpai di Google Search Console, atau langsung query dari Chrome UX Report baik melalui Big Query maupun lewat [RESTful API dari Chrome UX](https://web.dev/chrome-ux-report-api/) yang memang juga telah disediakan untuk mempermudah mengakses datanya.
 
 ![Data lapangan di laporan PageSpeed Insight](/thumbnail/data-lab-dan-data-lapangan/field-data-psi.png)
 
@@ -47,6 +53,6 @@ Seperti disebutkan sebelumnya bahwa data ini berasal dari pengguna nyata, sehing
 
 Dua-duanya bukan pilihan melainkan pelengkap satu sama lain, data lab cocok untuk memberikan masukan secara langsung ke web developer, data lapangan cocok untuk mengetahui kondisi asli yang dirasakan pengguna.
 Pun ada data yang tidak bisa kalian dapatkan kalau misalnya hanya berpatokan pada data lab saja.
-Metric macam FID (*First Input Delay*) hanya tersedia pada data lapangan dan tidak bisa didapatkan di data lab karena sifatnya yang memang menunggu aksi dari pengguna.
+Metric macam FID (_First Input Delay_) hanya tersedia pada data lapangan dan tidak bisa didapatkan di data lab karena sifatnya yang memang menunggu aksi dari pengguna.
 
 Jadi, daripada pusing pilih yang mana? Kenapa gak dua-duanya saja 🤣

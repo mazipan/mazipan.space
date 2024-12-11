@@ -1,13 +1,20 @@
 ---
 title: Membuat AMP Pages dengan Nuxt.js
 publishDate: '2019-06-02'
-minute2read: 20
+
 description: Menceritakan bagaimana cara membuat AMP Pages untuk blog kalian dengan framework Nuxt.js
 author: mazipan
-published: true
-featured: false
-tags: [nuxt, amp]
-heroImage: /thumbnail/generate-amp-pages-in-nuxtjs/amp.jpg
+
+tags:
+  - web
+  - nextjs
+category: tutorials
+toc: true
+
+heroImage: '../../content/post/_images/poor-man-feature-flag/pexels-cottonbro-studio-5870547.jpg'
+heroAlt: Poor man feature flag untuk projek Next.js dalam 15 menit
+tags2: [nuxt, amp]
+heroImage2: /thumbnail/generate-amp-pages-in-nuxtjs/amp.jpg
 lang: id
 enready: true
 ---
@@ -384,7 +391,7 @@ html = html.replace(
       }
     </script>
   </amp-analytics>
-</body>`,
+</body>`
 );
 ```
 

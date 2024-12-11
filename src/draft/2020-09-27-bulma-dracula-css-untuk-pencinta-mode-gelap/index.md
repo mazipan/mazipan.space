@@ -3,12 +3,18 @@ title: Bulma Dracula, CSS untuk pencinta mode gelap
 publishDate: '2020-09-27'
 description: Menceritakan bagaimana Bulma Dracula dibangun
 author: mazipan
-published: true
-featured: false
-tags: [web]
-heroImage: /thumbnail/bulma-dracula-css-untuk-pencinta-mode-gelap/bulma-dracula.png
+
+tags:
+  - web
+  - nextjs
+category: tutorials
+toc: true
+
+heroImage: '../../content/post/_images/poor-man-feature-flag/pexels-cottonbro-studio-5870547.jpg'
+heroAlt: Poor man feature flag untuk projek Next.js dalam 15 menit
+tags2: [web]
+heroImage2: /thumbnail/bulma-dracula-css-untuk-pencinta-mode-gelap/bulma-dracula.png
 lang: id
-enready: false
 ---
 
 Berawal ketika saya masih coding Java sedikit-sedikit sehingga IDE yang sehari-hari saya gunakan adalah IntelIJ IDEA dari Jetbrains, dari sanalah saya mulai jatuh cinta pada tema Darcula yang merupakan tema bawaan saat memilih mode gelap pada IDE tersebut. Saya entah mengapa sangat cocok dengan pilihan warna yang ada di tema ini. Sedari itu saya hampir selalu memilih corak warna ini untuk berbagai _text editor_ yang saya gunakan.
@@ -112,7 +118,7 @@ Selain dari berkas CSS, saya juga mengunggah berkas sumbernya yakni dalam format
     "src/bulma-dracula-vars.scss",
     "LICENSE",
     "README.md"
-  ],
+  ]
 }
 ```
 

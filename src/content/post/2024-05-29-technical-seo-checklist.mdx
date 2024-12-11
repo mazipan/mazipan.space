@@ -3,12 +3,14 @@ title: Daftar periksa teknikal SEO
 publishDate: '2024-05-29'
 description: Daftar periksa yang bisa kamu gunakan sebagai panduan terkait teknikal SEO
 author: mazipan
-published: true
-featured: false
-tags: [web]
-heroImage: /thumbnail/technical-seo-checklist/pexels-thatguycraig000-1526857.jpg
+tags:
+  - web
+  - seo
+category: tutorials
+toc: true
+heroImage: '../../content/post/_images/technical-seo-checklist/pexels-thatguycraig000-1526857.jpg'
+heroAlt: Daftar periksa teknikal SEO
 lang: id
-enready: false
 ---
 
 ## Apa itu teknikal SEO dan kenapa penting
@@ -27,12 +29,12 @@ Berikut ilustrasi dari kelebihan dan kekurangan masing-masing cara render sebuah
 
 ![Berbagai macam proses rendering beserta kelebihan dan kekurangannya](/thumbnail/technical-seo-checklist/rendering-tradeoff.png)
 
-Meskipun sudah ada artikel yang menyebutkan bahwa [Crawler bisa menjalankan JavaScript di client](https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics), sehingga opsi menggunakan *full client side rendering (CSR)* bisa saja diambil. Namun sebaiknya ini menjadi pilihan terakhir saja. Pun kalau Crawler dari mesin pencari bisa menjalankan JavaScript namun bisa jadi beberapa peralatan pengujian belum tentu bisa menjalankannya dengan baik sebaik yang Crawler lakukan. Akan ada kesenjangan yang bisa membingunkan untuk pengambilan keputusan di masa mendatang. Opsi terbaik tentu saja SSR atau opsi serupa yang tujuannya mengembalikan markup html langsung beserta konten yang dibutuhkan oleh Crawler.
+Meskipun sudah ada artikel yang menyebutkan bahwa [Crawler bisa menjalankan JavaScript di client](https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics), sehingga opsi menggunakan _full client side rendering (CSR)_ bisa saja diambil. Namun sebaiknya ini menjadi pilihan terakhir saja. Pun kalau Crawler dari mesin pencari bisa menjalankan JavaScript namun bisa jadi beberapa peralatan pengujian belum tentu bisa menjalankannya dengan baik sebaik yang Crawler lakukan. Akan ada kesenjangan yang bisa membingunkan untuk pengambilan keputusan di masa mendatang. Opsi terbaik tentu saja SSR atau opsi serupa yang tujuannya mengembalikan markup html langsung beserta konten yang dibutuhkan oleh Crawler.
 
 ### 🔖 Daftar Periksa: Rendering Halaman
 
 - ✅ Memastikan halaman di render dengan benar
-- ✅ Memastikan informasi penting telah di-*render* bersamaan dengan HTML
+- ✅ Memastikan informasi penting telah di-_render_ bersamaan dengan HTML
 
 ## Meta Tags
 
@@ -40,10 +42,10 @@ Meta tag merupakan tag HTML kritis yang dibutuhkan oleh Crawler untuk mengidenti
 
 ### 🔖 Daftar Periksa: Meta Tags
 
-- ✅ Memastikan semua meta tag di-*render* dari server
+- ✅ Memastikan semua meta tag di-_render_ dari server
 - ✅ Memastikan sudah ada tag `<meta name="viewport"/>` yang tepat agar laman bisa responsive dengan perubahan lebar layar
-- ✅ Memastikan sudah ada meta tag `<meta name="robots" />` yang memberikan akses pada crawler untuk meng-*index* sebuah laman
-- ✅ Memastikan hanya website dengan lingkungan production yang dibolehkan untuk di *index*
+- ✅ Memastikan sudah ada meta tag `<meta name="robots" />` yang memberikan akses pada crawler untuk meng-_index_ sebuah laman
+- ✅ Memastikan hanya website dengan lingkungan production yang dibolehkan untuk di _index_
 - ✅ Terdapat meta tag `title` dan `description` yang unik untuk setiap laman yang berbeda
 - ✅ Mengecek maksimum panjang karakter dari meta tag `description` agar tidak melebihi dari 155 karaker atau beberapa referensi lain menyebutkan 160 karaker
 - ✅ Terdapat meta tag OpenGraph dan Twitter Card yang sesuai. Minimal ada tag untuk title, description, dan image
@@ -55,7 +57,7 @@ Crawler pada dasarnya kesulitan untuk memahami isi dari sebuah laman website, un
 
 ### 🔖 Daftar Periksa: Structured Data
 
-- ✅ Memastikan Structured Data di-*render* bersamaan dengan HTML
+- ✅ Memastikan Structured Data di-_render_ bersamaan dengan HTML
 - ✅ Minimal ada Structured Data [Breadcrumb](https://developers.google.com/search/docs/appearance/structured-data/breadcrumb) yang menunjukkan hierarki dari suatu laman
 - ✅ Ada Structured Data [Article](https://developers.google.com/search/docs/appearance/structured-data/article) bila bentuk laman dibisa diatur serupa seperti artikel sebuah blog yang memiliki konten dengan banyak penjelasan informatif di dalamnya
 - ✅ Ada Structured Data [SearchBox](https://developers.google.com/search/docs/appearance/structured-data/sitelinks-searchbox) bila website tersebut memiliki universal search
@@ -66,10 +68,10 @@ Sama seperti Structured Data, penggunaan semantic HTML ditujukan untuk membantu 
 
 ### 🔖 Daftar Periksa: Semantic HTML
 
-- ✅ Memastikan telah me-*render* semua Link dengan benar menggunakan tag `<a>` agar mudah dibaca oleh Crawler
+- ✅ Memastikan telah me-_render_ semua Link dengan benar menggunakan tag `<a>` agar mudah dibaca oleh Crawler
 - ✅ Memastikan hanya terdapat 1 tag `h1` yang menjadi judul dari sebuah halaman
 - ✅ Memilih tag-tag yang memberikan penekanan lebih, seperti `<strong>` danx `<em>` bila kata-kata tersebut penting untuk diperhatikan oleh Crawler. Namun tetap gunakan tag biasa bila memang tidak dibutuhkan.
-- ✅ Me-*render* gambar dengan tepat beserta `alt` atau caption yang dekriptif
+- ✅ Me-_render_ gambar dengan tepat beserta `alt` atau caption yang dekriptif
 
 ## Tampilan
 
@@ -77,14 +79,14 @@ Beberapa keputusan teknis terkait SEO akan mempengaruhi penampilan website kalia
 
 ### 🔖 Daftar Periksa: Tampilan
 
-- ✅ Bisakah menyematkan komponen Breadcrumb sebagai alat navigasi yang di-*render* dengan tag `<a>`?
+- ✅ Bisakah menyematkan komponen Breadcrumb sebagai alat navigasi yang di-_render_ dengan tag `<a>`?
 - ✅ Memastikan bisa ditampilkan di layar kecil dan tidak terdapat konten yang melebihi layar sehingga muncul horizontal scroll yang tidak pada tempatnya
 
 ## Robots dan Sitemaps
 
 Robots.txt bisa digunakan untuk memberikan akses dan memblokir akses dari suatu Crawler ke halaman tertentu, bisa juga untuk mengaitkan sitemap dari website.
 
-Sementara sitemaps.xml merupakan dokumen XML yang berisi daftar dari alamat laman yang tersedia dan boleh diakses oleh Crawler. File ini bisa saja disajikan secara statik dan tidak harus *real-time* (sebaiknya memang tidak *real-time*) namun tetap perlu mencantumkan daftar dari semua alamat laman bahkan yang dinamis. Untuk daftar alamat dari laman dinamis, kalian mungkin perlu memanggil API dari Backend atau langsung query ke Database untuk bisa mengetahui semua alamat yang ada.
+Sementara sitemaps.xml merupakan dokumen XML yang berisi daftar dari alamat laman yang tersedia dan boleh diakses oleh Crawler. File ini bisa saja disajikan secara statik dan tidak harus _real-time_ (sebaiknya memang tidak _real-time_) namun tetap perlu mencantumkan daftar dari semua alamat laman bahkan yang dinamis. Untuk daftar alamat dari laman dinamis, kalian mungkin perlu memanggil API dari Backend atau langsung query ke Database untuk bisa mengetahui semua alamat yang ada.
 
 ### 🔖 Daftar Periksa: Robots dan Sitemaps
 

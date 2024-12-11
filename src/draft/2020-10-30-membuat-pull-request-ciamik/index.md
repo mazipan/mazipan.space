@@ -3,12 +3,18 @@ title: Membuat pull request yang ciamik
 publishDate: '2020-10-31'
 description: Bagaimana sih cara-cara membuat pull request yang sedap dipandang mata?
 author: mazipan
-published: true
-featured: false
-tags: [open-source]
-heroImage: /thumbnail/membuat-pull-request-ciamik/you-shall-not-merge.png
+
+tags:
+  - web
+  - nextjs
+category: tutorials
+toc: true
+
+heroImage: '../../content/post/_images/poor-man-feature-flag/pexels-cottonbro-studio-5870547.jpg'
+heroAlt: Poor man feature flag untuk projek Next.js dalam 15 menit
+tags2: [open-source]
+heroImage2: /thumbnail/membuat-pull-request-ciamik/you-shall-not-merge.png
 lang: id
-enready: false
 ---
 
 Membuat pull request seharusnya menjadi pengetahuan dasar ketika kita bekerja dengan berkolaborasi bersama pengembang lain. Sayangnya bahkan buat pengembang yang sudah malang melintang pun tidak jarang membuat pull request seadanya, termasuk juga saya yang menjadi pelakunya. Jadi mari kita belajar bersama-sama mengenai bagaimana membuat pull request yang ciamik.
@@ -25,7 +31,7 @@ Pada pekerjaan privat biasanya tidak diperlukan [metode fork](https://docs.githu
 
 Cara umum untuk berkolaborasi dalam kondisi satu repository begini biasanya:
 
-👉  **Buat branch baru dari branch utama**
+👉 **Buat branch baru dari branch utama**
 
 Umumnya setiap perusahaan sudah punya konvensi atau aturan tersendiri dalam penamaan branch baru, misal: `namaorang/nama-fitur-atau-bug`, atau `namaorang/nomor-tiket`.
 Kalau kalian sedang ada di bench utama macam `master` atau `main`, berarti pastikan dulu kalian sudah mengambil kode teranyar dengan perintah:
@@ -42,12 +48,12 @@ $ git checkout -b nama-branch-baru
 # misal nama branch barunya: mazipan/fitur-baru
 ```
 
-👉  **Bekerja di dalam branch baru yang dibuat**
+👉 **Bekerja di dalam branch baru yang dibuat**
 
 Kita tidak akan bekerja di branch utama, hal sederhana tapi mesti dibiasakan.
 Kita tidak selalu punya akses ke branch utama, membiasakan untuk bekerja di branch selain branch utama akan mengajarkan kita cara berkontribusi dengan alur yang biasanya digunakan di open source.
 
-👉  **Setelah selesai bekerja, buat pull request ke branch utama**
+👉 **Setelah selesai bekerja, buat pull request ke branch utama**
 
 Ini dilakukan tentu setelah kalian selesai melakukan serangkaian pengujian, baik di lokal kalian ataupun di lingkungan development lainnya.
 Semua pekerjaan telah di commit dan di push ke remote branch.
@@ -63,11 +69,11 @@ $ git push -u origin nama-branch-baru:remote_branch
 Buat pull request dengan mengunjungi web, misal ke tautan: [mazipan.space/compare](https://github.com/mazipan/mazipan.space/compare).
 Pastikan branch asal dan tujuannya sudah benar, cek changes yang ada, jangan lupa berikan nama dan deskripsi.
 
-👉  **Meminta review kode kepada teman sejawat**
+👉 **Meminta review kode kepada teman sejawat**
 
-👉  **Memperbaiki kode berdasarkan review yang ada**
+👉 **Memperbaiki kode berdasarkan review yang ada**
 
-👉  **Diterima atau ditolak untuk masuk ke branch utama**
+👉 **Diterima atau ditolak untuk masuk ke branch utama**
 
 ## Alur kolaborasi dalam repository hasil fork
 
@@ -102,25 +108,25 @@ judul menjadi krusial karena merupakan pembeda, penanda dan gerbang awal untuk p
 Beberapa perusahaan umumnya juga memiliki konvensi atau aturan bagi pembuatan judul pull request.
 Misalnya saja konvensi yang umum mengadopsi dari standard **[Commitizen](https://github.com/commitizen/cz-cli)** juga, contohnya:
 
-👉  `feat: menambahkan fitur share ke sosial media`
+👉 `feat: menambahkan fitur share ke sosial media`
 
 Awalan `feat:` digunakan untuk menandakan pull request yang dibuat berisikan fitur tambahan baru.
 
-👉  `chore: menambahkan linter`
+👉 `chore: menambahkan linter`
 
 Awalan `chore:` digunakan untuk pull request yang tidak memiliki dampak langsung terhadap kode di level production, misalnya bersih-bersih kode, memperbaiki struktur direktori, dan sebagainya.
 
-👉  `fix: memperbaiki tampilan header`
+👉 `fix: memperbaiki tampilan header`
 
 Awalan `fix:` digunakan untuk perbaikan terhadap fitur yang sudah ada namun berjalan tidak semestinya.
 
-👉   Serta berbagai konvensi lainnya
+👉 Serta berbagai konvensi lainnya
 
 Namun bilapun belum ada konvensinya, tetap saja membuat judul yang baik adalah salah satu ciri pull request yang baik.
 
 **2. Memberikan penjelasan yang gamblang mengenai perubahan yang dibuat**
 
-Ini merupakan bagian yang paling penting namun sering sekali ditinggalkan, bahkan di kalangan pemrogram yang sudah *pro* saja seringkali membuat pull request tanpa ada deskripsi sama sekali.
+Ini merupakan bagian yang paling penting namun sering sekali ditinggalkan, bahkan di kalangan pemrogram yang sudah _pro_ saja seringkali membuat pull request tanpa ada deskripsi sama sekali.
 Sepertinya asal buka pull request dan berharap orang lain bisa mengerti.
 Kenapa ini penting? Ini merupakan tempat bagi kita untuk memberitahukan konteks dari perubahan yang kita buat, dampak apa yang terjadi dari perubahan tersebut, serta bagian-bagian yang kemungkinan harus dicek lebih teliti karena berpotensi menimbulkan galat atau mengubah alur dari kode sebelumnya.
 
@@ -133,21 +139,21 @@ Dengan adanya penjelasan yang baik, pekerjaan mereview biasanya akan lebih mudah
 
 Beberapa hal yang mestinya ada di deskripsi pull request antara lain:
 
-👉  Kesimpulan atau _summary_ dari pull request
+👉 Kesimpulan atau _summary_ dari pull request
 
-👉  Perubahan-perubahan penting yang perlu diperhatikan, misal saja menambahkan kalimat: saya mengubah kode di file A menjadi begini dengan tujuan begitu.
+👉 Perubahan-perubahan penting yang perlu diperhatikan, misal saja menambahkan kalimat: saya mengubah kode di file A menjadi begini dengan tujuan begitu.
 
-👉  Cara atau langkah melakukan pengujian, bisa berupa langkah detail ataupun cukup alamat dimana orang lain bisa melihat dan mengecek perubahannya.
+👉 Cara atau langkah melakukan pengujian, bisa berupa langkah detail ataupun cukup alamat dimana orang lain bisa melihat dan mengecek perubahannya.
 
 **3. Menyertakan informasi pendukung**
 
 Informasi ini adalah yang diharapkan mampu mendukung penjelasan kita di deskripsi, bisa macam-macam, diantaranya:
 
-👉  Nomor issue atau tiket, bila memang terkait dengan suatu issue atau tiket
+👉 Nomor issue atau tiket, bila memang terkait dengan suatu issue atau tiket
 
-👉  Kondisi sebelum serta kondisi yang diharapkan setelah perubahan atau perbaikan, bisa berupa gambar atau cukup dengan kalimat saja
+👉 Kondisi sebelum serta kondisi yang diharapkan setelah perubahan atau perbaikan, bisa berupa gambar atau cukup dengan kalimat saja
 
-👉  Tautan ke dokumen pendukung, misal PRD, API spesifikasi, design mockup, test report, dan lain sebagainya
+👉 Tautan ke dokumen pendukung, misal PRD, API spesifikasi, design mockup, test report, dan lain sebagainya
 
 **4. Tidak membawa perubahan yang tidak relevan**
 
@@ -164,16 +170,16 @@ Beberapa orang perlu memperhatikan alur commit juga pada saat melakukan kode rev
 
 ## Kebiasaan yang bisa meningkatkan kualitas pull request
 
-👉  Judul pull request umumnya secara otomatis akan mengambil dari judul commit yang pertama dari suatu branch.
+👉 Judul pull request umumnya secara otomatis akan mengambil dari judul commit yang pertama dari suatu branch.
 
 Karenanya membuat judul commit pertama dengan baik, akan mempermudah kita membuat judul pull request pula.
 
-👉  Biasakan membuat pull request saat sudah yakin, sudah dilakukan test sana-sini, sudah dibuatkan unit test, dan lainnya.
+👉 Biasakan membuat pull request saat sudah yakin, sudah dilakukan test sana-sini, sudah dibuatkan unit test, dan lainnya.
 
 Ini untuk mengurangi terlalu banyak perubahan yang mestinya tidak diperlukan saat pull request sudah dibuka.
 Terlalu banyak menambahkan commit baru saat pull request sudah dibuka seringkali juga akan menggangu proses diskusi pada pull request tersebut.
 
-👉  Bila bekerja sendirian, kita bisa memperbaiki commit history sebelum pull request dibuka, saya biasanya menggunakan perintah:
+👉 Bila bekerja sendirian, kita bisa memperbaiki commit history sebelum pull request dibuka, saya biasanya menggunakan perintah:
 
 ```shell
 $ git rebase -i master
@@ -191,11 +197,11 @@ Lakukan force push dengan perintah:
 $ git push -f
 ```
 
-👉  Biasakan menulis dokumentasi
+👉 Biasakan menulis dokumentasi
 
 Kebiasaan ini akan melatih kita membuat deskripsi pull request juga
 
-👉  Sempatkan untuk melakukan review pull request orang lain
+👉 Sempatkan untuk melakukan review pull request orang lain
 
 Agar lebih bisa merasakan, kenapa pull request dengan deskripsi yang jelas itu penting
 

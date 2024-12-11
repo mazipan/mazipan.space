@@ -3,12 +3,18 @@ title: GitHub Packages - Private Registry Alternatif
 publishDate: '2021-11-15'
 description: Berbagi pengalaman selama menggunakan GitHub Packages sebagai solusi private registry
 author: mazipan
-published: true
-featured: false
-tags: [tools]
-heroImage: /thumbnail/github-packages-private-registry-alternatif/cover.png
+
+tags:
+  - web
+  - nextjs
+category: tutorials
+toc: true
+
+heroImage: '../../content/post/_images/poor-man-feature-flag/pexels-cottonbro-studio-5870547.jpg'
+heroAlt: Poor man feature flag untuk projek Next.js dalam 15 menit
+tags2: [tools]
+heroImage2: /thumbnail/github-packages-private-registry-alternatif/cover.png
 lang: id
-enready: false
 ---
 
 Jadi, ceritanya beberapa bulan yang lalu saya dan teman-teman di kantor dihadapkan dengan kasus dimana kami harus mempublikasikan kode kami ke registry. Sebelumnya kami tidak memerlukannya, karena kami menerapkan monorepo, semua dependency diletakkan di repository yang sama dan cukup di resolve secara internal oleh package manager saja. Tidak ada kebutuhan untuk publish kode ke registry.
@@ -22,8 +28,7 @@ Tentu sebelumnya beberapa alternatif sudah disajikan sampai pada keputusan untuk
 - **[Verdaccio](https://verdaccio.org/)**, ini pilihan terbaik untuk self-hosted private registry. Kamipun telah menggunakannya di masa lalu.
 - NPM Enterprise, yang ternyata sudah di sunset dan dialihkan secara penuh ke GitHub Enterprise, ([baca pengumuman sunset](https://docs.npmjs.com/enterprise))
 - **[Artifact Registry](https://cloud.google.com/artifact-registry/docs/nodejs/manage-packages)** dari Google Cloud, ini cukup menarik dan teman-teman di kantor pada propose ini karena faktor security, dimana diharapkan artifact yang diunggah bisa dilindungi di bawah naungan otentikasi milik Google Cloud yang diurus oleh tim lain yang memang kompeten.
-- **[GitHub Packages](https://github.com/features/packages)**, ini sih solusi terbaik kalau mau ngomongin *seemless integration*. Ya mau gimana lagi, `npm` udah dibeli GitHub, tentu saja berada di bawah payung yang sama akan sangat memudahkan mereka melakukan integrasi.
-
+- **[GitHub Packages](https://github.com/features/packages)**, ini sih solusi terbaik kalau mau ngomongin _seemless integration_. Ya mau gimana lagi, `npm` udah dibeli GitHub, tentu saja berada di bawah payung yang sama akan sangat memudahkan mereka melakukan integrasi.
 
 ## Beberapa concern
 
@@ -37,9 +42,9 @@ GitHub Package menutupi concern yang ditemukan, gak perlu ngurusin reliability s
 
 ### Beberapa rule awal
 
-- ✅  **Mengenai package scope**, kalau di npm kamu akan membuat organization kemudian publish ke organisasi yang telah kamu buat sebagai scope. Tidak jauh beda, cuma karena organisasinya akan nempel dengan GitHub, jadi kamu cuma bisa pakai satu scope dalam satu organisasi. Jadi kalau dalam satu organisasi ternyata yang akan menggunakan GitHub package itu bukan hanya timmu, sebaiknya sih tambahkan juga prefix tambahan di nama package nya, biar gak pusing nyari tim yang punya package.
+- ✅ **Mengenai package scope**, kalau di npm kamu akan membuat organization kemudian publish ke organisasi yang telah kamu buat sebagai scope. Tidak jauh beda, cuma karena organisasinya akan nempel dengan GitHub, jadi kamu cuma bisa pakai satu scope dalam satu organisasi. Jadi kalau dalam satu organisasi ternyata yang akan menggunakan GitHub package itu bukan hanya timmu, sebaiknya sih tambahkan juga prefix tambahan di nama package nya, biar gak pusing nyari tim yang punya package.
 
-- ✅  **Setting package.json**, ada beberapa setting yang jadinya required pas mau develop package yang akan di publish ke GitHub Package. Yang pertama `repository`, pastikan punya vallue yang tepat, nantinya kan package-nya akan nempel di sidebar dan bisa dilihat di masing-masing repo. Yang kedua `publishConfig` harus punya field `registry` yang diarahkan ke `https://npm.pkg.github.com`. Yang ketiga ya seperti maintain third-party package biasanya saja ya, seperti: setting `private: true` nya dihilangkan, setting `files` dengan benar, setting `main` ke file yang tepat, dan lainnya.
+- ✅ **Setting package.json**, ada beberapa setting yang jadinya required pas mau develop package yang akan di publish ke GitHub Package. Yang pertama `repository`, pastikan punya vallue yang tepat, nantinya kan package-nya akan nempel di sidebar dan bisa dilihat di masing-masing repo. Yang kedua `publishConfig` harus punya field `registry` yang diarahkan ke `https://npm.pkg.github.com`. Yang ketiga ya seperti maintain third-party package biasanya saja ya, seperti: setting `private: true` nya dihilangkan, setting `files` dengan benar, setting `main` ke file yang tepat, dan lainnya.
 
 ```json
 "repository": {
@@ -61,9 +66,9 @@ npm login --scope=@YOUR_ORG --registry=https://npm.pkg.github.com
 
 Setelah menjalankan perintah di atas, kamu akan ditanya beberapa hal
 
-- ✅  `Username`: Isikan dengan username dari GitHub yang kamu gunakan untuk mengakses GitHub Packages
-- ✅  `Password`: Isikan dengan personal access token (PAT) yang punya scope untuk read dan write (bila diperlukan) ke Github Package
-- ✅  `Email`: Isikan dengan email yang terhubung dengan GitHub
+- ✅ `Username`: Isikan dengan username dari GitHub yang kamu gunakan untuk mengakses GitHub Packages
+- ✅ `Password`: Isikan dengan personal access token (PAT) yang punya scope untuk read dan write (bila diperlukan) ke Github Package
+- ✅ `Email`: Isikan dengan email yang terhubung dengan GitHub
 
 Seperti terlihat, kamu membutuhkan PAT untuk mengakses ke Github Packages. kamu bisa mengunjungi halaman [Setting Token](https://github.com/settings/tokens) di Github untuk membuat PAT milikmu. Pastikan punya scope yang sudah disebutkan di atas.
 
@@ -146,6 +151,7 @@ jobs:
 ```
 
 Seperti yang bisa dilihat di atas, saya menjalankan perintah untuk otentikasi sebelum menjalankan `npm install` untuk memastikan otentikasi sukses sebelum install dijalankan.
+
 #### Publish ke registry
 
 Mengacu pada dokumentasi [setup-node](https://github.com/actions/setup-node/blob/main/docs/advanced-usage.md#publish-to-npmjs-and-gpr-with-npm) Actions, kita cukup passing env `NODE_AUTH_TOKEN` saja saat melakukan `npm publish`, berikut contohnya:

@@ -3,38 +3,44 @@ title: Cara fetch API di Node.js
 publishDate: '2021-01-11'
 description: Panduan bagaimana cara untuk melakukan Fetch sebuah API di lingkungan Node.js
 author: mazipan
-published: true
-featured: false
-tags: [javascript]
-heroImage: /thumbnail/cara-fetch-api-di-nodejs/fetch-api-nodejs.jpg
+
+tags:
+  - web
+  - nextjs
+category: tutorials
+toc: true
+
+heroImage: '../../content/post/_images/poor-man-feature-flag/pexels-cottonbro-studio-5870547.jpg'
+heroAlt: Poor man feature flag untuk projek Next.js dalam 15 menit
+tags2: [javascript]
+heroImage2: /thumbnail/cara-fetch-api-di-nodejs/fetch-api-nodejs.jpg
 lang: id
-enready: false
 ---
 
 [RESTFull API](https://www.smashingmagazine.com/2018/01/understanding-using-rest-api/) atau seringkali kita hanya menyebutnya sebagai API adalah antarmuka yang disediakan untuk berkomunikasi antar server maupun server dengan klien. API memiliki anatomi yang terstandard sehingga mudah dipahami dan mudah dikonsumsi oleh pengguna yang bersangkutan. Gampangnya, asal tau endpoint, jenis metode dan parameter yang dibutuhkan maka kita sudah bisa membuat permintaan kepada suatu API.
 
 API di lingkup pengembangan web umumnya digunakan untuk berkomunikasi antar peramban dengan server. Para pengembang web pastinya sudah terbiasa melakukan request ke sebuah API melalui aplikasi klien yang mereka buat atau bahkan langsung dari DevTools si peramban. Meski begitu, ada banyak kasus juga yang membuat kita tidak boleh atau sebaiknya tidak melakukan pemanggilan API ini di level aplikasi klien, beberapa diantaranya biasanya penyebabnya adalah:
 
-**👉  Masalah CORS**
+**👉 Masalah CORS**
 
-Masalah klasik yang selalu saja muncul sebagai pertanyaan di setiap forum pemrograman web yang ada, ketika suatu *3rd party* API kok ternyata tidak bisa di *hit* dari aplikasi langsung dari peramban.
-Padahal ya jelas karena memang *origin* tersebut tidak diperbolehkan untuk melakukan permintaan secara langsung.
-Solusi praktisnya biasanya dengan melakukan *proxy* baik melalui web server maupun lewat aplikasi Backend yang ada dalam kendali kita.
+Masalah klasik yang selalu saja muncul sebagai pertanyaan di setiap forum pemrograman web yang ada, ketika suatu _3rd party_ API kok ternyata tidak bisa di _hit_ dari aplikasi langsung dari peramban.
+Padahal ya jelas karena memang _origin_ tersebut tidak diperbolehkan untuk melakukan permintaan secara langsung.
+Solusi praktisnya biasanya dengan melakukan _proxy_ baik melalui web server maupun lewat aplikasi Backend yang ada dalam kendali kita.
 Memindahkan pemanggilan API dari peramban ke aplikasi Backend merupakan salah satu solusi bila kita menghadapi problem ini, sehingga dari aplikasi klien cukup memanggil ke Backend yang kita buat saja tanpa perlu lagi mengarah ke alamat aslinya.
 
-**👉  Menyembunyikan Kredensial**
+**👉 Menyembunyikan Kredensial**
 
 Beberapa API memerlukan API Key untuk bisa membuat suatu permintaan, masalahnya API Key tersebut bisa jadi adalah sebuah kredensial yang seharusnya kita jaga dan tidak boleh terekspos ke publik.
 
 Caranya ya pemanggilan API nya dilakukan saja di Backend yang mana akan sulit untuk orang awam mengetahui apa yang terjadi di dalamnya.
 
-**👉  Menyembunyikan Sumber Data**
+**👉 Menyembunyikan Sumber Data**
 
-Hampir sama dengan alasan sebelumnya, beberapa orang tidak ingin sumber data aslinya diketahui oleh orang lain, jadi segala pemanggilan ke *3rd party* akan dilakukan di aplikasi Backend.
+Hampir sama dengan alasan sebelumnya, beberapa orang tidak ingin sumber data aslinya diketahui oleh orang lain, jadi segala pemanggilan ke _3rd party_ akan dilakukan di aplikasi Backend.
 
 ## Bagaimana Melakukannya di Node.js
 
-Sebagai orang yang sehari-hari mengerjakan aplikasi untuk peramban, JavaScript menjadi salah satu bahasa pemrograman yang cukup sering digunakan, itu mengapa ketika harus membuat Backend *ecek-ecek*, pilihan tercepat dan termudah ya menggunakan Node.js saja.
+Sebagai orang yang sehari-hari mengerjakan aplikasi untuk peramban, JavaScript menjadi salah satu bahasa pemrograman yang cukup sering digunakan, itu mengapa ketika harus membuat Backend _ecek-ecek_, pilihan tercepat dan termudah ya menggunakan Node.js saja.
 
 Pada tulisan kali ini saya akan membahas hal dasar yang sering saya lupakan sendiri, yakni beberepa opsi yang bisa dipilih untuk melakukan pemanggilan sebuah API di dalam lingkungan Node.js.
 
@@ -43,19 +49,21 @@ Sebelum saya menjelaskan lebih lanjut, semua kode yang ada di artikel kali ini b
 ### Native Node.js
 
 Node.js secara Native sudah memiliki interface yang bisa kita gunakan untuk melakukan pemanggilan sebuah API, bisa dengan memanfaatkan modul `http` ataupun `https`.
-Ini bisa jadi pilihan untuk yang anti-*"3rd party club"* yang sayangnya kodenya memang masih cukup rumit karena memberikan balikan berupa *stream*, berikut adalah contoh kode jika kita ingin melakukan pemanggilan API dengan Native Node.js:
+Ini bisa jadi pilihan untuk yang anti-_"3rd party club"_ yang sayangnya kodenya memang masih cukup rumit karena memberikan balikan berupa _stream_, berikut adalah contoh kode jika kita ingin melakukan pemanggilan API dengan Native Node.js:
 
 ```js
 const https = require('https');
 const CONSTANT = require('./constant');
 
-https.get(CONSTANT.API_URL, (res) => {
-  res.on('data', (d) => {
-    process.stdout.write(d);
+https
+  .get(CONSTANT.API_URL, (res) => {
+    res.on('data', (d) => {
+      process.stdout.write(d);
+    });
+  })
+  .on('error', (e) => {
+    console.error(e);
   });
-}).on('error', (e) => {
-  console.error(e);
-});
 ```
 
 ### Node-Fetch
@@ -166,6 +174,7 @@ exec(`curl ${CONSTANT.API_URL}`, (err, stdout, stderr) => {
   console.log(stdout);
 });
 ```
+
 ### cURL dengan shelljs
 
 Buat kalian para penggandrung perintah cURL seperti di atas, namun malas menggunakan `child_process`, bisa juga menggunakan pustaka `shelljs` untuk mengeksekusi perintah tersebut, berikut contoh kodenya:

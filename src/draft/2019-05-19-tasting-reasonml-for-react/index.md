@@ -1,13 +1,20 @@
 ---
 title: Mencicipi ReasonML untuk React
 publishDate: '2019-05-19'
-minute2read: 10
+
 description: Menceritakan bagaimana rasanya mencicipi sintaksis ReasonML untuk membangun antarmuka sebuah website
 author: mazipan
-published: true
-featured: false
-tags: [javascript, react, reasonml]
-heroImage: /thumbnail/tasting-reasonml-for-react/reasonml-users.png
+
+tags:
+  - web
+  - nextjs
+category: tutorials
+toc: true
+
+heroImage: '../../content/post/_images/poor-man-feature-flag/pexels-cottonbro-studio-5870547.jpg'
+heroAlt: Poor man feature flag untuk projek Next.js dalam 15 menit
+tags2: [javascript, react, reasonml]
+heroImage2: /thumbnail/tasting-reasonml-for-react/reasonml-users.png
 lang: id
 enready: true
 ---

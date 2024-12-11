@@ -3,12 +3,18 @@ title: Laporan terbuka performa web untuk blog pribadi
 publishDate: '2021-02-10'
 description: Cara yang saya tempuh untuk membuat laporan terbuka dari performa web untuk blog pribadi saya
 author: mazipan
-published: true
-featured: false
-tags: [web-perf]
-heroImage: /thumbnail/open-web-perf-report-for-personal-blog/open-web-perf-report.jpg
+
+tags:
+  - web
+  - nextjs
+category: tutorials
+toc: true
+
+heroImage: '../../content/post/_images/poor-man-feature-flag/pexels-cottonbro-studio-5870547.jpg'
+heroAlt: Poor man feature flag untuk projek Next.js dalam 15 menit
+tags2: [web-perf]
+heroImage2: /thumbnail/open-web-perf-report-for-personal-blog/open-web-perf-report.jpg
 lang: id
-enready: false
 ---
 
 Dalam misi pribadi saya untuk membuat laporan terbuka untuk blog pribadi saya sendiri, saya telah menempuh dan menyelesaikan beberapa langkah yang sepertinya akan menarik untuk dituliskan menjadi artikel tersendiri sebagai dokumentasi, paling tidak untuk diri sendiri di masa depan.
@@ -24,7 +30,7 @@ Tapi ya sebagai seorang Engineer yang sudah berangan-angan sejak lama terus seka
 Jadi buat catatan kalian yang baca ini, misi ini hanya untuk memuaskan hasrat pribadi saja, faedahnya mungkin gak banyak buat kalian.
 
 Seperti sudah saya sebut di atas, secara alur Speedlify ini sudah mirip dengan apa yang saya mau.
-Dia memanfaatkan *scheduler* dan akan secara terjadwal menjalankan pengujian berkala untuk menghasilkan laporan performa web kalian.
+Dia memanfaatkan _scheduler_ dan akan secara terjadwal menjalankan pengujian berkala untuk menghasilkan laporan performa web kalian.
 Speedlify memanfaatkan Github Action dan Netlify untuk kebutuhan mereka.
 Bagian kerennya dari Speedlify ya mereka sudah membuatkan tampilan HTML matang sebagai hasil dari laporan mereka.
 Kalian bisa lihat contoh laporan mereka di halaman [11ty.dev/speedlify/](https://www.11ty.dev/speedlify/).
@@ -69,10 +75,10 @@ try {
   // `who-to-greet` input defined in action metadata file
   const nameToGreet = core.getInput('who-to-greet');
   console.log(`Hello ${nameToGreet}!`);
-  const time = (new Date()).toTimeString();
-  core.setOutput("time", time);
+  const time = new Date().toTimeString();
+  core.setOutput('time', time);
   // Get the JSON webhook payload for the event that triggered the workflow
-  const payload = JSON.stringify(github.context.payload, undefined, 2)
+  const payload = JSON.stringify(github.context.payload, undefined, 2);
   console.log(`The event payload: ${payload}`);
 } catch (error) {
   core.setFailed(error.message);
@@ -87,7 +93,7 @@ Yang tidak boleh terlewat di awal, ya Github Action membutuhkan sebuah berkas me
 name: 'Hello World'
 description: 'Greet someone and record the time'
 inputs:
-  who-to-greet:  # id of input
+  who-to-greet: # id of input
     description: 'Who to greet'
     required: true
     default: 'World'
@@ -128,25 +134,25 @@ Siapkan "interface" dasar yang dibutuhkan, saya memutuskan membutuhkan paling ti
 Saya mulai dengan menambahkannya di `action.yml` kebutuhan saya:
 
 ```yaml
-name: "psi-gh-action"
+name: 'psi-gh-action'
 inputs:
   api_key:
-    description: "PageSpeedInsight API key"
+    description: 'PageSpeedInsight API key'
     required: true
   urls:
-    description: "List of URL(s) to be analyzed"
+    description: 'List of URL(s) to be analyzed'
     required: true
   devices:
-    description: "Device(s) used for test"
+    description: 'Device(s) used for test'
     default: mobile
 runs:
-  using: "node12"
-  main: "dist/index.js"
+  using: 'node12'
+  main: 'dist/index.js'
 ```
 
-Masalahnya saya mesti bisa baca URL yang dalam jumlah yang bisa lebih dari satu, berarti berupa *Array*, pun begitu dengan device, bisa saja kan saya membutuhkan untuk menguji performa pada device desktop dan mobile, bukan salah satunya.
+Masalahnya saya mesti bisa baca URL yang dalam jumlah yang bisa lebih dari satu, berarti berupa _Array_, pun begitu dengan device, bisa saja kan saya membutuhkan untuk menguji performa pada device desktop dan mobile, bukan salah satunya.
 
-Untuk passing *Array sendiri* di YAML bisa dengan begini misalnya:
+Untuk passing _Array sendiri_ di YAML bisa dengan begini misalnya:
 
 ```yaml
 devices: |
@@ -154,25 +160,25 @@ devices: |
   desktop
 ```
 
-Sedangkan untuk mengambil nilainya mungkin jadi harus parsing manual. Hal ini karena `core.getInput(arg)` dari Github Action cuma bisa menerima masukan dalam bentuk string. saya perlu membuat *helper* yang isinya kurang lebih begini:
+Sedangkan untuk mengambil nilainya mungkin jadi harus parsing manual. Hal ini karena `core.getInput(arg)` dari Github Action cuma bisa menerima masukan dalam bentuk string. saya perlu membuat _helper_ yang isinya kurang lebih begini:
 
 ```js
-function getInputList (arg, separator = '\n') {
-  const input = core.getInput(arg)
-  if (!input) return []
+function getInputList(arg, separator = '\n') {
+  const input = core.getInput(arg);
+  if (!input) return [];
   return input
     .split(separator)
     .map((url) => url.trim())
-    .filter(Boolean)
+    .filter(Boolean);
 }
 ```
 
 Sehingga di file `index.js` saya bisa mendapatkan nilainya dengan begini saja:
 
 ```js
-const urls = getInputList('urls')
-const devices = getInputList('devices')
-const apiKey = core.getInput('api_key')
+const urls = getInputList('urls');
+const devices = getInputList('devices');
+const apiKey = core.getInput('api_key');
 ```
 
 Tinggal menggunakan data sederhana ini untuk memanggil API dari PageSpeed Insight ya. Kalian bisa membaca lebih detail terkait API ini di [halaman dokumentasi resmi](https://developers.google.com/speed/docs/insights/v5/get-started) PageSpeed Insight
@@ -189,19 +195,18 @@ Kita bisa memanggil Action kita sendiri melalui repo internal kita, caranya kura
 on:
   push:
     paths-ignore:
-    - "psi-reports/**"
-    - "dist/**"
+      - 'psi-reports/**'
+      - 'dist/**'
 ```
 
 ▶️ Gunakan checkout@v2 untuk mengambil repo
-
 
 ```yaml
 on:
   push:
     paths-ignore:
-    - "psi-reports/**"
-    - "dist/**"
+      - 'psi-reports/**'
+      - 'dist/**'
 jobs:
   psi_web_perf_action:
     runs-on: ubuntu-latest
@@ -217,8 +222,8 @@ jobs:
 on:
   push:
     paths-ignore:
-    - "psi-reports/**"
-    - "dist/**"
+      - 'psi-reports/**'
+      - 'dist/**'
 jobs:
   psi_web_perf_action:
     runs-on: ubuntu-latest
@@ -365,7 +370,7 @@ Beberapa hal yang saya pelajari dari projek kali ini antara lain:
 
 ✔️ Belajar membuat Github Action sederhana dan mempublikasikan ke Marketplace.
 
-✔️ Belajar mengimplementasikan Github Action ini ke projek orang lain, bukan hanya projek pribadi. Jadi harus *debug* bareng-bareng sama yang punya projek juga.
+✔️ Belajar mengimplementasikan Github Action ini ke projek orang lain, bukan hanya projek pribadi. Jadi harus _debug_ bareng-bareng sama yang punya projek juga.
 
 ✔️ Belajar menggunakan Github API lewat paket `@actions/github` untuk beberapa kebutuhan seperti membuat komentar pada suatu commit.
 

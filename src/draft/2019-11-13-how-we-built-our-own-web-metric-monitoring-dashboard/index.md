@@ -3,10 +3,17 @@ title: Bagaimana kami membangun dashboard pemantau metrik web
 publishDate: '2019-11-13'
 description: Cerita kami di Tokopedia dalam membangun dashboard pemantau metrik web dalam rangka membudayakan kepedulian mengenai performa web
 author: mazipan
-published: true
-featured: false
-tags: [lesson-learned, web-perf]
-heroImage: /thumbnail/how-we-built-our-own-web-metric-monitoring-dashboard/luke-chesser-JKUTrJ4vK00-unsplash.jpg
+
+tags:
+  - web
+  - nextjs
+category: tutorials
+toc: true
+
+heroImage: '../../content/post/_images/poor-man-feature-flag/pexels-cottonbro-studio-5870547.jpg'
+heroAlt: Poor man feature flag untuk projek Next.js dalam 15 menit
+tags2: [lesson-learned, web-perf]
+heroImage2: /thumbnail/how-we-built-our-own-web-metric-monitoring-dashboard/luke-chesser-JKUTrJ4vK00-unsplash.jpg
 imageCaption: Image by Luke Chesser on Unsplash
 lang: id
 enready: true
@@ -157,7 +164,6 @@ Salah satu masalah yang timbul adalah, JSON yang dihasilkan oleh Lighthouse cuku
 
 Tapi bisa kalian menghilangkan sebagian data yang ada, laporan kalian bisa jadi menjadi tidak vbalid ketika hendak ditampilkan menggunakan alat yang tersedia di pasaran, misalnya saja alat [lighthouse previewer](https://googlechrome.github.io/lighthouse/viewer/).
 
-
 [Contoh dari laporan yang dihasilkan Lighthouse dalam bentuk JSON](https://gist.github.com/paulirish/a207a43c8164a7ab728481b496aa8a27#file-localhost_2018-03-12_17-55-45-lighthouse-report-json).
 
 Berikut adalah beberapa data yang mungkin saja penting untuk kalian simpan:
@@ -201,7 +207,7 @@ Dengan Docker kita tidak perlu lagi memberitahu si pengembang untuk memasang pro
 Kemudahan memindahkan projek ke level produksi juga jadi alasan kami memilih membangun di atas Docker.
 
 Web kami sebenanya sesimpel aplikasi cliet-server saja, menggunakan MongoDB sebagai penyimpanan.
-Aplikasi servernya dibuat  diatas [Express.js](https://expressjs.com/) dan [Apollo GraphQL](https://www.apollographql.com/) sebagai pintu bagi komukasi dengan aplikasi Client. Kami memilih menggunakan sebagian besar komunikasi dengan GraphQL dijalankan di atas Web Socket dibandingkan HTTP Request secara langsung, hal ini cukup mudah dicapai dengan Apollo.
+Aplikasi servernya dibuat diatas [Express.js](https://expressjs.com/) dan [Apollo GraphQL](https://www.apollographql.com/) sebagai pintu bagi komukasi dengan aplikasi Client. Kami memilih menggunakan sebagian besar komunikasi dengan GraphQL dijalankan di atas Web Socket dibandingkan HTTP Request secara langsung, hal ini cukup mudah dicapai dengan Apollo.
 
 Kami menggunakan [Mongoose.js](https://mongoosejs.com/) sebagai Object Document Modelling (ODM) untuk jembatan dalam mengakses MongoDB kami sehingga mendapatkan intereface yang lebih mudah.
 
@@ -243,7 +249,7 @@ const report = {};
 const IMAGE_REGEX = /\.(jpe?g|png|gif|tiff|bmp|webp|svg)$/i;
 
 const allImagesFromLighthouse = report.audits['network-requests'].details.items.filter(
-  (i) => i.resourceType === 'Image' && IMAGE_REGEX.test(i.url),
+  (i) => i.resourceType === 'Image' && IMAGE_REGEX.test(i.url)
 );
 ```
 

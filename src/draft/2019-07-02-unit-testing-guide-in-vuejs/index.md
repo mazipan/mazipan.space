@@ -1,15 +1,21 @@
 ---
 title: Panduan Unit Testing di Vue.js
 publishDate: '2019-03-19'
-minute2read: 20
+
 description: Langkah-langkah memasang dan melakukan testing pada kode Vue.js dan Nuxt.js dengan belajar dari berbagai kasus yang terjadi pada proyek nyata
 author: mazipan
-published: true
-featured: false
-tags: [javascript, testing]
-heroImage: /thumbnail/unit-testing-guide-in-vuejs/commitstrip.jpg
+
+tags:
+  - web
+  - nextjs
+category: tutorials
+toc: true
+
+heroImage: '../../content/post/_images/poor-man-feature-flag/pexels-cottonbro-studio-5870547.jpg'
+heroAlt: Poor man feature flag untuk projek Next.js dalam 15 menit
+tags2: [javascript, testing]
+heroImage2: /thumbnail/unit-testing-guide-in-vuejs/commitstrip.jpg
 lang: id
-enready: false
 ---
 
 Langkah-langkah memasang dan melakukan testing pada kode Vue.js dan Nuxt.js dengan belajar dari berbagai kasus yang terjadi pada proyek nyata
@@ -273,7 +279,7 @@ export function decrement(a) {
 Maka kita bisa membuatkan berkas untuk unit test dengan nama `math-util.spec.js` seperti berikut contohnya:
 
 ```javascript
-import { add, min, increment, decrement } from '@/helpers/math-util';
+import { add, decrement, increment, min } from '@/helpers/math-util';
 
 describe('math-util.js', () => {
   it('`add` harus mengembalikan nilai yang benar', () => {
@@ -347,6 +353,7 @@ Maka pada berkas `hello-world.spec.js` kita bisa membuat unit test sebagai berik
 
 ```javascript
 import { shallowMount } from '@vue/test-utils';
+
 import HelloWorld from '@/components/HelloWorld.vue';
 
 describe('HelloWorld.vue', () => {
@@ -399,6 +406,7 @@ Dari kode diatas, kita bisa membuatkan unit test seperti berikut:
 
 ```javascript
 import { shallowMount } from '@vue/test-utils';
+
 import HelloWorld from '@/components/HelloWorld.vue';
 
 describe('HelloWorld.vue', () => {
@@ -466,6 +474,7 @@ Dari kode diatas, kita bisa membuatkan unit test seperti berikut:
 
 ```javascript
 import { shallowMount } from '@vue/test-utils';
+
 import HelloWorld from '@/components/HelloWorld.vue';
 
 describe('HelloWorld.vue', () => {
@@ -537,6 +546,7 @@ Maka kita bisa membuat unit test dari kode diatas sebagai berikut:
 
 ```javascript
 import { shallowMount } from '@vue/test-utils';
+
 import HelloWorld from '@/components/HelloWorld.vue';
 
 describe('HelloWorld.vue', () => {
@@ -638,6 +648,7 @@ Dari kode tersebut kita membuat unit test berikut:
 
 ```javascript
 import { shallowMount } from '@vue/test-utils';
+
 import HelloWorld from '@/components/HelloWorld.vue';
 
 describe('HelloWorld.vue', () => {
@@ -689,6 +700,7 @@ Dari kode tersebut kita membuat unit test berikut:
 
 ```javascript
 import { shallowMount } from '@vue/test-utils';
+
 import HelloWorld from '@/components/HelloWorld.vue';
 
 describe('HelloWorld.vue', () => {
@@ -728,6 +740,7 @@ Maka kita bisa membuatkan unit test sebagai berikut:
 
 ```javascript
 import { shallowMount } from '@vue/test-utils';
+
 import HelloWorld from '@/components/HelloWorld.vue';
 
 describe('HelloWorld.vue', () => {
@@ -775,8 +788,9 @@ export default {
 Dari kode diatas kita bisa membuat beberapa alternatif untuk unit test kita, antara lain sebagai berikut:
 
 ```javascript
-import { shallowMount, createLocalVue } from '@vue/test-utils';
+import { createLocalVue, shallowMount } from '@vue/test-utils';
 import VueRouter from 'vue-router';
+
 import HelloWorld from '@/components/HelloWorld.vue';
 
 const localVue = createLocalVue();
@@ -1026,8 +1040,8 @@ describe('Vuex Store: Messages', () => {
 Kita bisa juga melakukan test dengan menggunakan _instance_ Vuex Store untuk mengakses _mutations_ seperti berikut:
 
 ```javascript
-import Vuex from 'vuex';
 import store from '@/store/messages';
+import Vuex from 'vuex';
 
 const $storeInstance = new Vuex.Store(store);
 
@@ -1091,8 +1105,8 @@ export default {
 Dari kode diatas kita bisa membuatkan unit test sebagai berikut:
 
 ```javascript
-import axios from 'axios';
 import store from '@/store/messages';
+import axios from 'axios';
 
 const messages = [
   {
@@ -1129,9 +1143,9 @@ describe('Vuex Store: Messages', () => {
 Dengan cara diatas, kita tidak bisa mengecek perubahan _state_ karena fungsi `commit` sudah di-_mock_ sehingga tidak lagi memanggil fungsi yang sesungguhnya. Untuk mengatasi kekurangan diatas kita bisa meng-_instance_ Vuex Store agar fungsi commit yang sesungguhnya bisa dipakai di unit test. Berikut contoh kodenya:
 
 ```javascript
-import Vuex from 'vuex';
-import axios from 'axios';
 import store from '@/store/messages';
+import axios from 'axios';
+import Vuex from 'vuex';
 
 const $storeInstance = new Vuex.Store(store);
 
@@ -1214,7 +1228,7 @@ Dan akan digunakan di komponen `HelloWorld.vue` pada bagian templat seperti beri
 Sedangkan pada bagian `script` berisi kode berikut:
 
 ```javascript
-import { mapState, mapActions } from 'vuex';
+import { mapActions, mapState } from 'vuex';
 
 export default {
   data() {
@@ -1433,6 +1447,7 @@ Cara paling gampang melakukan test ketika melakukan test dengan Vue-i18n adalah 
 
 ```javascript
 import { shallowMount } from '@vue/test-utils';
+
 import HelloWorld from '@/components/HelloWorld.vue';
 
 describe('HelloWorld', () => {
@@ -1457,8 +1472,8 @@ setupFilesAfterEnv: ['<rootDir>/test/setup-test.js'],
 Pada file `setup-test.js`, kita bisa menambahkan `config` seperti kode berikut:
 
 ```javascript
-import { config } from '@vue/test-utils';
 import langEN from '@/locales/en';
+import { config } from '@vue/test-utils';
 
 const defaultLocale = 'en';
 
@@ -1468,9 +1483,10 @@ config.mocks['$t'] = (msg) => langEN[defaultLocale][msg];
 Kedua cara ini sebenarnya bukanlah cara yang sering saya gunakan, saya lebih senang memanfaastkan `localVue` untuk memasang i18n ke dalam unit test. Berikut contoh kodenya:
 
 ```javascript
-import { shallowMount, localVue } from '@vue/test-utils';
-import VueI18n from 'vue-i18n';
 import langEN from '@/locales/en';
+import { localVue, shallowMount } from '@vue/test-utils';
+import VueI18n from 'vue-i18n';
+
 import HelloWorld from '@/components/HelloWorld.vue';
 
 localVue.use(VueI18n);
@@ -1537,6 +1553,7 @@ Dari kode diatas, kita bisa membuatkan unit test seperti berikut:
 
 ```javascript
 import { shallowMount } from '@vue/test-utils';
+
 import HelloWorld from '@/components/HelloWorld.vue';
 
 describe('HelloWorld.vue', () => {
@@ -1571,6 +1588,7 @@ Sedangkan kode berikut ini adalah contoh kode untuk melakukan pemanggilan Rest A
 
 ```javascript
 import axios from 'axios';
+
 const URL = 'https://ghibliapi.herokuapp.com/films/';
 
 export default {
@@ -1597,6 +1615,7 @@ Dengan kode diatas kita bisa membuatkan unit test sebagai berikut:
 ```javascript
 import { shallowMount } from '@vue/test-utils';
 import axios from 'axios';
+
 import HelloWorld from '@/components/HelloWorld.vue';
 
 describe('HelloWorld.vue', () => {

@@ -3,12 +3,18 @@ title: JavaScript Module dan keribetannya
 publishDate: '2020-07-31'
 description: Mencoba memahami keribetan dari module system di JavaScript
 author: mazipan
-published: true
-featured: false
-tags: [javascript]
-heroImage: /thumbnail/javascript-module-dan-keribetannya/javascript-module.png
+
+tags:
+  - web
+  - nextjs
+category: tutorials
+toc: true
+
+heroImage: '../../content/post/_images/poor-man-feature-flag/pexels-cottonbro-studio-5870547.jpg'
+heroAlt: Poor man feature flag untuk projek Next.js dalam 15 menit
+tags2: [javascript]
+heroImage2: /thumbnail/javascript-module-dan-keribetannya/javascript-module.png
 lang: id
-enready: false
 ---
 
 Hal yang lucu ketika sebuah bahasa pemrograman sebesar JavaScript ternyata memiliki variasi dalam penerapan _module system_. Sebelum membaca lebih jauh, mari kita bahas bersama dahulu apa itu _module system_ dan bagaimana seluk-beluknya di JavaScript hingga hari ini.
@@ -345,4 +351,3 @@ Di JavaScript saat ini _module system_ standar yang digunakan adalah ES Module.
 Kendati demikian, masih banyak kode yang menggunakan baik CommonJS, AMD bahkan manual menggunakan IIFE.
 
 Kita sebagai developer JavaScript mestinya mengetahui perbedaan _module system_ yang kadung sudah terjadi ini, sehingga kedepannya kita bisa mengambil keputusan ketika harus memilih _module system_ mana yang ingin didukung.
-

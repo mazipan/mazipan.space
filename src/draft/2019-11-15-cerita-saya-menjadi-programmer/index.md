@@ -3,12 +3,19 @@ title: 03 - Cerita saya menjadi programmer
 publishDate: '2019-11-15'
 description: Cerita panjang perjalanan hidup dan karir saya sampai bisa menjadi programmer di beberapa perusahaan teknologi besar di Indonesia
 author: mazipan
-published: true
+
 featured: true
-tags: [life-experience]
-heroImage: /thumbnail/cerita-saya-menjadi-programmer/mazipan-bizzy.jpeg
+tags:
+  - web
+  - nextjs
+category: tutorials
+toc: true
+
+heroImage: '../../content/post/_images/poor-man-feature-flag/pexels-cottonbro-studio-5870547.jpg'
+heroAlt: Poor man feature flag untuk projek Next.js dalam 15 menit
+tags2: [life-experience]
+heroImage2: /thumbnail/cerita-saya-menjadi-programmer/mazipan-bizzy.jpeg
 lang: id
-enready: false
 ---
 
 Cerita panjang perjalanan hidup dan karir saya sampai bisa menjadi programmer di beberapa peruasahaan teknologi besar di Indonesia.
@@ -103,7 +110,7 @@ Sayangnya jodoh saya dengan Bizzy cuma bertahan satu tahun, karena satu dan lain
 Seusai dari Bizzy saya bergabung dengan Tokopedia sebagai Principal Engineer untuk Web Platform. Saya tergabung di tim Web Platform sebelumnya Mobile Web di bawah arahan Engineering Manager Dendi Sunardi.
 
 Selain menjadi Principal Engineer saya juga bergabung dengan tim Core di Web Platform, pada dasarnya tim Core ini bertugas membuat atau membenahi berbagai tools yang nantinya akan digunakan oleh teman-teman engineer sehari-hari.
-Kenapa ada tim Core? karena akan ada banyak tugas yang tidak akan sempat bila dikerjakan oleh teman-teman engineer yang sudah di assign tugas sehari-hari yang cukup banyak dengan jadwal yang hampir selalu mepet pula. Untuk itulah Core tim terdiri dari orang-orang yang sudah diminimalisir pekerjaan sehari-harinya sehingga bisa lebih optimal melakukan berbagai riset baru maupun enhancement terhadap "tooling* dan platfom web serta membantu teman-teman engineer dalam menyelesaikan masalah-masalah yang membutuhkan teknikal knowledge yang dalam.
+Kenapa ada tim Core? karena akan ada banyak tugas yang tidak akan sempat bila dikerjakan oleh teman-teman engineer yang sudah di assign tugas sehari-hari yang cukup banyak dengan jadwal yang hampir selalu mepet pula. Untuk itulah Core tim terdiri dari orang-orang yang sudah diminimalisir pekerjaan sehari-harinya sehingga bisa lebih optimal melakukan berbagai riset baru maupun enhancement terhadap "tooling\* dan platfom web serta membantu teman-teman engineer dalam menyelesaikan masalah-masalah yang membutuhkan teknikal knowledge yang dalam.
 
 ![Saya dan teman-teman di Tokopedia](/thumbnail/cerita-saya-menjadi-programmer/mazipan-tokopedia.jpeg)
 

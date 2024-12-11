@@ -3,12 +3,13 @@ title: Mengirim tracker dengan percaya diri
 publishDate: '2023-12-25'
 description: Strategi untuk mengirimkan web tracker atau analitik dengan lebih baik dan percaya diri
 author: mazipan
-published: true
-featured: false
-tags: [web]
-heroImage: /thumbnail/sending-tracker/pexels-francesco-ungaro-998633.jpg
+tags:
+  - web
+category: tutorials
+toc: true
+heroImage: '../../content/post/_images/sending-tracker/pexels-francesco-ungaro-998633.jpg'
+heroAlt: Mengirim tracker dengan percaya diri
 lang: id
-enready: false
 ---
 
 ## 🔦 Pengenalan
@@ -42,22 +43,22 @@ gtag('event', '<event_name>', {
 
 // Sample tracker
 gtag('event', 'screen_view', {
-  'app_name': 'myAppName',
-  'screen_name': 'Home'
+  app_name: 'myAppName',
+  screen_name: 'Home',
 });
 ```
 
 Meskipun berarti nanti isinya secara teknis mestinya bisa dinamis dan bisa diisi spesifikasi key-value apapun, beberapa kolom ini disarankan ada:
 
 - ● `timetamp`: Ada dua jenis timestamp yang berbeda, satunya adalah waktu tracker tersebut di trigger, dan waktu kapan tracker tersebut ditulis ke storage
-- ● `sessionId`: Kalau dari artikel [[GA4] About Analytics sessions](https://support.google.com/analytics/answer/9191807?hl=en), mereka akan generate sessionId dengan expiry 30 menit dan akan selalu diperpanjang saat pengguna masih aktif berinteraksi. Praktikalnya mungkin bisa menggunakan Cookie yang selalu diperpanjang tiap kali halaman/tracker-nya di hit. Tapi kalau web klien sudah meng-*handle* sessionId sendiri (misalnya sudah punya otentikasi yang akan generate sessionId), ya menurutku sih sebaiknya integrasi pakai sessionId yang sama aja, gak perlu bikin sessionId untuk tracker lagi.
+- ● `sessionId`: Kalau dari artikel [[GA4] About Analytics sessions](https://support.google.com/analytics/answer/9191807?hl=en), mereka akan generate sessionId dengan expiry 30 menit dan akan selalu diperpanjang saat pengguna masih aktif berinteraksi. Praktikalnya mungkin bisa menggunakan Cookie yang selalu diperpanjang tiap kali halaman/tracker-nya di hit. Tapi kalau web klien sudah meng-_handle_ sessionId sendiri (misalnya sudah punya otentikasi yang akan generate sessionId), ya menurutku sih sebaiknya integrasi pakai sessionId yang sama aja, gak perlu bikin sessionId untuk tracker lagi.
 - ● `deviceId`: unik per device pengguna, bisa dengan menyematkan Cookie dengan expiry yang panjang, atau pakai localStorage
 - ● `eventName`: kalau digunakan oleh berbagai klien, mungkin bisa ditambahkan konvensi dengan prefix nama aplikasi klien
 - ● Lainnya adalah tambahan atribut yang berupa key-value object tadi
 
-### -- 🔥 Mekanisme *fire forget*
+### -- 🔥 Mekanisme _fire forget_
 
-Rest API untuk tracker sebaiknya dibuat dengan menganut prinsip *fire and forget*, artinya klien tidak perlu tau apakah berhasil atau gagal proses di belakang layarnya, pun tidak perlu menunggu proses tersebut selesai. Jadi apapun yang terjadi, secepatnya kembalikan saja response bahwa tracker yang dimaksud sedang atau akan diproses.
+Rest API untuk tracker sebaiknya dibuat dengan menganut prinsip _fire and forget_, artinya klien tidak perlu tau apakah berhasil atau gagal proses di belakang layarnya, pun tidak perlu menunggu proses tersebut selesai. Jadi apapun yang terjadi, secepatnya kembalikan saja response bahwa tracker yang dimaksud sedang atau akan diproses.
 
 ### -- 🍡 Batching request
 
@@ -79,11 +80,13 @@ Belajar dari cara Google Analytics dalam melakukan inisiasi tracker mereka (bisa
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=TAG_ID"></script>
 <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag('js', new Date());
 
-    gtag('config', 'TAG_ID');
+  gtag('config', 'TAG_ID');
 </script>
 ```
 
@@ -103,7 +106,7 @@ Sayangnya cara pertama tetap bisa menimbulkan ada tracker yang tertinggal belum 
 Cara kedua, di lain sisi adalah dengan mendengarkan (listen) ke event saat pengguna melakukan perpindahan halaman atau istilahnya unload. Kita bisa mendengarkan event ini dengan cara:
 
 ```js
-addEventListener("beforeunload", (event) => {
+addEventListener('beforeunload', (event) => {
   // Kirim tracker di sini
 });
 ```
@@ -116,7 +119,7 @@ Disarankan saat ini sebaiknya menggunakan [Page Visibility API](https://develope
 
 ```js
 document.onvisibilitychange = () => {
-  if (document.visibilityState === "hidden") {
+  if (document.visibilityState === 'hidden') {
     // Kirim tracker di sini
   }
 };
@@ -131,10 +134,10 @@ Karena tracker dikirimkan saat halaman beralih, ada kemungkinan sebuah HTTP requ
 Contoh kode mengirimkan tracker dengan Beacon API:
 
 ```js
-document.addEventListener("visibilitychange", function logData() {
-  if (document.visibilityState === "hidden") {
+document.addEventListener('visibilitychange', function logData() {
+  if (document.visibilityState === 'hidden') {
     // Contoh mengirim tracker ke endpoint /track
-    navigator.sendBeacon("/track", analyticsData);
+    navigator.sendBeacon('/track', analyticsData);
   }
 });
 ```
@@ -142,17 +145,17 @@ document.addEventListener("visibilitychange", function logData() {
 Kalau misalnya ragu dengan dukungan peramban soal Beacon API, bisa juga bikin fallback ke tradisional Rest API kalau `sendBeacon` tidak tersedia. Misalnya:
 
 ```js
-document.addEventListener("visibilitychange", function logData() {
-  if (document.visibilityState === "hidden") {
+document.addEventListener('visibilitychange', function logData() {
+  if (document.visibilityState === 'hidden') {
     if (typeof navigator.sendBeacon === 'function') {
       // Contoh mengirim tracker ke endpoint /track
-      navigator.sendBeacon("/track", analyticsData);
+      navigator.sendBeacon('/track', analyticsData);
     } else {
       // Fallback ke Fetch API
       fetch('/track', {
         method: 'POST',
-        body: JSON.stringify(analyticsData)
-      })
+        body: JSON.stringify(analyticsData),
+      });
     }
   }
 });
@@ -164,7 +167,7 @@ Meskipun artikel ini ditujukan untuk mengirimkan tracker yang biasanya diperuntu
 
 ## 😵‍💫 PR tambahan
 
-- ▶️ Proses *retry* atau percobaan mengirimkan ulang, saat proses pengiriman pertama terjadi kesalahan, semisal tiba-tiba service tracker-nya sedang mengalami kendala, atau internet networknya tiba-tiba melambat signifikan sehingga timeout, dan alasan lainnya.
+- ▶️ Proses _retry_ atau percobaan mengirimkan ulang, saat proses pengiriman pertama terjadi kesalahan, semisal tiba-tiba service tracker-nya sedang mengalami kendala, atau internet networknya tiba-tiba melambat signifikan sehingga timeout, dan alasan lainnya.
 
 ## 📖 Bacaan tambahan
 

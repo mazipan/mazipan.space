@@ -3,12 +3,18 @@ title: Ingin menjadi pembicara di tech talk, mulai dari mana?
 publishDate: '2019-12-06'
 description: Beberapa saran dan tips mengenai memulai untuk mengisi tech talk berdasarkan pengalaman yang saya dapatkan selama ini
 author: mazipan
-published: true
-featured: false
-tags: [tips]
-heroImage: /thumbnail/ingin-menjadi-pembicara-di-tech-talk-mulai-dari-mana/tech-talk-mazipan.png
+
+tags:
+  - web
+  - nextjs
+category: tutorials
+toc: true
+
+heroImage: '../../content/post/_images/poor-man-feature-flag/pexels-cottonbro-studio-5870547.jpg'
+heroAlt: Poor man feature flag untuk projek Next.js dalam 15 menit
+tags2: [tips]
+heroImage2: /thumbnail/ingin-menjadi-pembicara-di-tech-talk-mulai-dari-mana/tech-talk-mazipan.png
 lang: id
-enready: false
 ---
 
 Saya selama beberapa tahun belakangan mendapatkan kesempatan untuk mengisi beberapa acara tech talk, meskipun skalanya masih tergolong kecil tapi bagi saya pribadi hal tersebut sudah merupakan sebuah pencapaian yang teramat luar biasa mengingat saya sebenarnya tidak begitu pandai dalam menyampaikan berbagai hal kepada orang lain.

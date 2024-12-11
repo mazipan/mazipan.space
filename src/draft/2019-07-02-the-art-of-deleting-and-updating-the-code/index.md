@@ -1,13 +1,20 @@
 ---
 title: Seni menghapus dan memperbarui sebuah kode
 publishDate: '2019-07-02'
-minute2read: 10
+
 description: Menceritakan bagaimana pekerjaan saya sehari-hari yang seringkali berhadapan dengan keharusan untuk menghapus kode orang lain
 author: mazipan
-published: true
-featured: false
-tags: [programming]
-heroImage: /thumbnail/the-art-of-deleting-and-updating-the-code/quadran.png
+
+tags:
+  - web
+  - nextjs
+category: tutorials
+toc: true
+
+heroImage: '../../content/post/_images/poor-man-feature-flag/pexels-cottonbro-studio-5870547.jpg'
+heroAlt: Poor man feature flag untuk projek Next.js dalam 15 menit
+tags2: [programming]
+heroImage2: /thumbnail/the-art-of-deleting-and-updating-the-code/quadran.png
 lang: id
 enready: true
 ---

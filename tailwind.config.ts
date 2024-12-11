@@ -29,7 +29,9 @@ const config: Config = {
     },
     extend: {
       fontFamily: {
-        sans: ['Inter Variable', 'Inter', ...defaultTheme.fontFamily.sans],
+        sans: ['Space Grotesk Variable', ...defaultTheme.fontFamily.sans],
+        mono: ['JetBrains Mono Variable', ...defaultTheme.fontFamily.mono],
+        serif: [...defaultTheme.fontFamily.serif],
       },
       colors: {
         // background

@@ -3,12 +3,18 @@ title: Cara saya belajar teknologi baru di JavaScript
 publishDate: '2020-10-26'
 description: Berbagi cerita mengenai bagaimana saya belajar teknologi baru di JavaScript agar tetap relevan
 author: mazipan
-published: true
-featured: false
-tags: [javascript]
-heroImage: /thumbnail/cara-saya-belajar-teknologi-baru-di-js/pexels-andrea-piacquadio-3768129.jpg
+
+tags:
+  - web
+  - nextjs
+category: tutorials
+toc: true
+
+heroImage: '../../content/post/_images/poor-man-feature-flag/pexels-cottonbro-studio-5870547.jpg'
+heroAlt: Poor man feature flag untuk projek Next.js dalam 15 menit
+tags2: [javascript]
+heroImage2: /thumbnail/cara-saya-belajar-teknologi-baru-di-js/pexels-andrea-piacquadio-3768129.jpg
 lang: id
-enready: false
 ---
 
 Dunia per-JS-an memang semakin kesini semakin liar saja, bisa sebulan sekali kita dengar ada framework baru yang diluncurkan. Artikel ini mencoba mengupas bagaimana usaha saya berusaha tetap relevan di dunia yang semakin cepat bergerak.

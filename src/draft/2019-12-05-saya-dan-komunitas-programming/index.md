@@ -3,12 +3,19 @@ title: Saya dan komunitas programming
 publishDate: '2019-12-05'
 description: Cerita bagaimana saya bergumul dengan berbagai komunitas teknologi di Indonesia
 author: mazipan
-published: true
+
 featured: true
-tags: [life-experience]
-heroImage: /thumbnail/saya-dan-komunitas-programming/meetup-jakartajs.jpg
+tags:
+  - web
+  - nextjs
+category: tutorials
+toc: true
+
+heroImage: '../../content/post/_images/poor-man-feature-flag/pexels-cottonbro-studio-5870547.jpg'
+heroAlt: Poor man feature flag untuk projek Next.js dalam 15 menit
+tags2: [life-experience]
+heroImage2: /thumbnail/saya-dan-komunitas-programming/meetup-jakartajs.jpg
 lang: id
-enready: false
 ---
 
 Saya yang hari ini sedikit banyak adalah berkat bantuan komunitas programming di Indonesia karenanya saya akan deskripsikan bagaimana perjalanan saya sampai hari ini bersama berbagai komunitas programming di Indonesia.

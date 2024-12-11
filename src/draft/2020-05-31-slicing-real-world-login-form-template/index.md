@@ -3,12 +3,18 @@ title: Slicing real world login form template
 publishDate: '2020-05-31'
 description: Projek untuk slicing berbagai login form dari website populer dari 0 tanpa framework CSS
 author: mazipan
-published: true
-featured: false
-tags: [programming]
-heroImage: /thumbnail/slicing-real-world-login-form-template/login-css-screenshoot.png
+
+tags:
+  - web
+  - nextjs
+category: tutorials
+toc: true
+
+heroImage: '../../content/post/_images/poor-man-feature-flag/pexels-cottonbro-studio-5870547.jpg'
+heroAlt: Poor man feature flag untuk projek Next.js dalam 15 menit
+tags2: [programming]
+heroImage2: /thumbnail/slicing-real-world-login-form-template/login-css-screenshoot.png
 lang: id
-enready: false
 ---
 
 Salah satu HTML atau CSS template paling umum ditemukan adalah login page, hal ini mungkin karena ini juga kebutuhan umum yang hampir selalu dibutuhkan oleh semua aplikasi.
@@ -76,4 +82,3 @@ Saya yang buatkan template nya, kalian yang ingin mengimplementasikan bisa menye
 ## Repository
 
 Kalian bisa menemukan katalog login template yang saya dan teman-teman kontributor lain buat di tautan [https://mazipan.github.io/login-page-css/](https://mazipan.github.io/login-page-css/)
-

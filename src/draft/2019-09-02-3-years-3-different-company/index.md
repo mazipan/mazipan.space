@@ -3,10 +3,17 @@ title: 3 Tahun, 3 Perusahaan Berbeda
 publishDate: '2019-09-02'
 description: Cerita mengenai pengalaman saya 3 tahun terakhir, terutama bagaimana saya berpindah dari satu perusahaan ke perusahaan lain
 author: mazipan
-published: true
-featured: false
-tags: [non-technical, lesson-learned]
-heroImage: /thumbnail/3-years-3-different-company/lion-nTfGYGPURFA.jpg
+
+tags:
+  - web
+  - nextjs
+category: tutorials
+toc: true
+
+heroImage: '../../content/post/_images/poor-man-feature-flag/pexels-cottonbro-studio-5870547.jpg'
+heroAlt: Poor man feature flag untuk projek Next.js dalam 15 menit
+tags2: [non-technical, lesson-learned]
+heroImage2: /thumbnail/3-years-3-different-company/lion-nTfGYGPURFA.jpg
 lang: id
 enready: true
 ---

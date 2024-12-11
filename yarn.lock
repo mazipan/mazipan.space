@@ -697,6 +697,13 @@
   dependencies:
     "@expressive-code/core" "^0.38.3"
 
+"@expressive-code/plugin-line-numbers@^0.38.3":
+  version "0.38.3"
+  resolved "https://registry.yarnpkg.com/@expressive-code/plugin-line-numbers/-/plugin-line-numbers-0.38.3.tgz#4cdec6c1199b0f13a2fe01daf123d0fca40ac584"
+  integrity sha512-QbK9NL44ST9w5ANVEu0a7fkjlq+fXgxyPqiSyFC4Nw/sAXd0MUwT1C8V0qlve4pZYLz53CR9tn4JQQbR0Z1tOg==
+  dependencies:
+    "@expressive-code/core" "^0.38.3"
+
 "@expressive-code/plugin-shiki@^0.38.3":
   version "0.38.3"
   resolved "https://registry.yarnpkg.com/@expressive-code/plugin-shiki/-/plugin-shiki-0.38.3.tgz#07186d1f76fccf9fcd288ee64990fc065586a382"
@@ -712,10 +719,15 @@
   dependencies:
     "@expressive-code/core" "^0.38.3"
 
-"@fontsource-variable/inter@^5.1.0":
+"@fontsource-variable/jetbrains-mono@^5.1.1":
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/@fontsource-variable/jetbrains-mono/-/jetbrains-mono-5.1.1.tgz#d45ecec375900a89b64b8c3e260b51ad848ef11c"
+  integrity sha512-V+1aRFRvuZ66PpO30s8l/2aADKzpV9VRsO3kSZE+rTMvi4vab3cUcPHMN2z+wAvjkYJO71Yf+g3/Y6pSMmQpVQ==
+
+"@fontsource-variable/space-grotesk@^5.1.0":
   version "5.1.0"
-  resolved "https://registry.yarnpkg.com/@fontsource-variable/inter/-/inter-5.1.0.tgz#8174c56d3a24ef20a7dd4ae3bb0c3df2ea1f5f70"
-  integrity sha512-Wj2dUGP0vUpxRGQTXQTCNJO+aLcFcQm+gUPXfj/aS877bQkEPBPv9JvZJpwdm2vzelt8NTZ+ausKlBCJjh2XIg==
+  resolved "https://registry.yarnpkg.com/@fontsource-variable/space-grotesk/-/space-grotesk-5.1.0.tgz#ce1c7c4576fab2619bb82b4ad1c14b35a1f1b9b2"
+  integrity sha512-K2mwQYNyLook6EbtMB+Ix8srQsYZRigfxayoSGl1QsgVAk/J21s0FMZu0FWzTvONyQkYAR704rLfYSstVMi6jQ==
 
 "@humanwhocodes/config-array@^0.11.14":
   version "0.11.14"
@@ -3005,6 +3017,11 @@ expand-template@^2.0.3:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/expand-template/-/expand-template-2.0.3.tgz#6e14b3fcee0f3a6340ecb57d2e8918692052a47c"
   integrity sha512-XYfuKMvj4O35f/pOXLObndIRvyQ+/+6AhODh+OKWj9S9498pHHn/IMszH+gt0fBCRWMNfk1ZSp5x3AifmnI2vg==
+
+expressive-code-color-chips@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/expressive-code-color-chips/-/expressive-code-color-chips-0.1.2.tgz#06c4c0b35b3947963f05154807d652391fffb4e2"
+  integrity sha512-6vGCN1KjZQhHAd4U5kxvoBgBRB8kjcdY5bjJgzzJ29mlGpSp4tt5eI8zvLzSUIxwHmu65fATdGW82tNQM2befw==
 
 expressive-code@^0.38.3:
   version "0.38.3"

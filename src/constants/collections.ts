@@ -9,17 +9,23 @@ export const COLLECTIONS = {
 } as const;
 
 export const TAGS = [
-  'next.js',
+  'nextjs',
+  'nuxtjs',
   'react',
+  'vue',
   'astro',
-  'node.js',
+  'svelte',
   'javascript',
+  'typescript',
   'css',
-  'python',
-  'devops',
-  'self-hosting',
   'web',
-  'web-perf'
+  'web-perf',
+  'web-tools',
+  'seo',
+  'random',
+  'thought',
+  'community',
+  'experience',
 ] as const;
 
 /** adjust this later */
@@ -52,6 +58,10 @@ export const CATEGORIES = [
   },
   {
     name: 'resources',
+    icon: 'mdi:book-open-variant-outline',
+  },
+  {
+    name: 'experience',
     icon: 'mdi:book-open-variant-outline',
   },
 ] as const;

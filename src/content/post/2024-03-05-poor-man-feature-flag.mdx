@@ -3,19 +3,21 @@ title: Poor man feature flag untuk projek Next.js dalam 15 menit
 publishDate: '2024-03-05'
 description: Bagaimana caranya menerapkan fitur flag di projek Next.js dengan cepat dan tanpa ribet
 author: mazipan
-published: true
-featured: false
-tags: [web]
-heroImage: /thumbnail/poor-man-feature-flag/pexels-cottonbro-studio-5870547.jpg
+tags:
+  - web
+  - nextjs
+category: tutorials
+toc: true
+heroImage: '../../content/post/_images/poor-man-feature-flag/pexels-cottonbro-studio-5870547.jpg'
+heroAlt: Poor man feature flag untuk projek Next.js dalam 15 menit
 lang: id
-enready: false
 ---
 
 ## 🚩 Mengenai fitur flag
 
 Mengutip artikel dari [sko.dev](https://sko.dev/) - [**Apa itu feature flag: pengertian dan informasi**](https://sko.dev/wiki/feature-flag), "Feature flag adalah mekanisme yang memungkinkan developer untuk mengaktifkan atau menonaktifkan fitur tertentu dalam aplikasi secara dinamis, tanpa perlu melakukan deploy kode baru.". Silahkan baca artikelnya terlebih dahulu, cuma butuh beberapa menit saja untuk membaca keseluruhan artikelnya.
 
-Saya pribadi tidak terlalu setuju dengan tambahan catatan bahwa feature flag ya harus selalu "tanpa perlu melakukan deploy kode baru", karena untuk mencapai fitur *live toggle*, waktu 10 menit mungkin tidak akan cukup. Mempersulit diri, kalau kamu membangun produk yang masih di tahap awal, di mana lebih membutuhkan kecepatan delivery dan kesederhanaan. Di tahap ini sebaiknya kita berusaha mengeliminasi kompleksitas yang tidak begitu diperlukan. Minimum fitur saja sudah cukup, asal bisa memecahkan problemnya.
+Saya pribadi tidak terlalu setuju dengan tambahan catatan bahwa feature flag ya harus selalu "tanpa perlu melakukan deploy kode baru", karena untuk mencapai fitur _live toggle_, waktu 10 menit mungkin tidak akan cukup. Mempersulit diri, kalau kamu membangun produk yang masih di tahap awal, di mana lebih membutuhkan kecepatan delivery dan kesederhanaan. Di tahap ini sebaiknya kita berusaha mengeliminasi kompleksitas yang tidak begitu diperlukan. Minimum fitur saja sudah cukup, asal bisa memecahkan problemnya.
 
 ## 🎯 Tujuan pembuatan fitur
 
@@ -27,23 +29,23 @@ Implementasi fitur flag bisa macam-macam, bahkan bisa banget pakai saja 3rd part
 
 ### 🔥 Feature flag tanpa deployment
 
-Ini adalah fitur flag yang proper, di projek yang udah gede dan kompleks biasanya lebih memilih model yang ini karena memang tidak perlu menyentuh codebase untuk melakukan *switch-off* maupun *switch-on*. [Posthog](https://github.com/PostHog/posthog) bisa ngasih sedikit gambaran mengenai fitur-fitur apa yang umumnya tersemat dalam sistem seperti ini. Fitur macam:
+Ini adalah fitur flag yang proper, di projek yang udah gede dan kompleks biasanya lebih memilih model yang ini karena memang tidak perlu menyentuh codebase untuk melakukan _switch-off_ maupun _switch-on_. [Posthog](https://github.com/PostHog/posthog) bisa ngasih sedikit gambaran mengenai fitur-fitur apa yang umumnya tersemat dalam sistem seperti ini. Fitur macam:
 
 - ⚡ **Instant rollback**, live reload, runtime toggle atau apapun sebutannya. Memungkinkan kita untuk mengaktifkan dan deaktivasi tanpa melakukan deployment.
-- 🚢 **Rollout management**, memungkinan kita untuk mengirimkan fitur ke production secara partial. Misal menggunakan strategi *percentage of users*, *percentage of traffics*, daftar pengguna, ID dari pengguna.
+- 🚢 **Rollout management**, memungkinan kita untuk mengirimkan fitur ke production secara partial. Misal menggunakan strategi _percentage of users_, _percentage of traffics_, daftar pengguna, ID dari pengguna.
 - 🍔 **Override**, memungkinan kita untuk memaksakan suatu hasil untuk suatu grup pengguna atau pengguna itu sendiri. Bisa digunakan untuk melakukan internal testing sebelum dilepas ke publik dengan memberikan sekelompok pengguna untuk bisa mengakses suatu fitur.
 
 ### 👾 Feature flag tapi butuh deployment
 
-Bagian ini sebernarnya saya ingin menautkan dengan pendekatan di mana kita meletakkan sebuah *flag* di dalam *environtment variable*, tapi kondisi memerlukan deployment juga pada dasarnya tergantung dari proses deployment kalian. Kalau mengacu pada ["The twelve-factor" di bagian Config](https://12factor.net/config), memang sebaiknya *environment variable* atau konfig aplikasi berada di luar codebase, agar satu kali *build* bisa di deploy ke berbagai environment yang berbeda. Artinya meskipun di sini saya menyebutkan membutuhkan deployment, tapi bisa saja tidak diperlukan. Sayangnya saya akan mencontohkan cara yang paling bar-bar, di mana perubahannya membutuhkan deployment karena memerlukan proses *build* codebase ulang.
+Bagian ini sebernarnya saya ingin menautkan dengan pendekatan di mana kita meletakkan sebuah _flag_ di dalam _environtment variable_, tapi kondisi memerlukan deployment juga pada dasarnya tergantung dari proses deployment kalian. Kalau mengacu pada ["The twelve-factor" di bagian Config](https://12factor.net/config), memang sebaiknya _environment variable_ atau konfig aplikasi berada di luar codebase, agar satu kali _build_ bisa di deploy ke berbagai environment yang berbeda. Artinya meskipun di sini saya menyebutkan membutuhkan deployment, tapi bisa saja tidak diperlukan. Sayangnya saya akan mencontohkan cara yang paling bar-bar, di mana perubahannya membutuhkan deployment karena memerlukan proses _build_ codebase ulang.
 
-Kalau dikaitkan dengan project Next.js, jika kalian menggunakan env dengan prefix `NEXT_PUBLIC_` maka bisa dipastikan kalian memerlukan deployment ulang. Ini karena env value tersebut memang di *evaluate* dan di-*replace* pada saat *build-time* ([baca dokumentasi terkait ini](https://nextjs.org/docs/pages/building-your-application/configuring/environment-variables#bundling-environment-variables-for-the-browser)).
+Kalau dikaitkan dengan project Next.js, jika kalian menggunakan env dengan prefix `NEXT_PUBLIC_` maka bisa dipastikan kalian memerlukan deployment ulang. Ini karena env value tersebut memang di _evaluate_ dan di-_replace_ pada saat _build-time_ ([baca dokumentasi terkait ini](https://nextjs.org/docs/pages/building-your-application/configuring/environment-variables#bundling-environment-variables-for-the-browser)).
 
 ## 🪂 Membuat fitur flag pertamamu di Next.js
 
 Di artikel ini akan mencontohkan membuat fitur flag di projek frontend dengan framework Next.js yang telah menggunakan App Router, prinsipnya sama jadi jika masih menggunakan Pages Routes harusnya sih masih bisa dipakai dengan penyesuaian di beberapa tempat yang memang diperlukan.
 
-Karena ditujukan untuk pemula, kita akan menggunakan cara yang paling mudah untuk dikerjakan. Kita akan menggunakan *build-time* env seperti dijelaskan pada bagian sebelumnya, Meskipun Next.js mendukung *runtime* env ataupun *runtime config* untuk mengeliminasi keharusan melakukan *build* ulang saat mengganti value, kita tidak akan menggunakannya karena saya pribadi berpendapat masih cukup sulit untuk pemula membedakan *build-time* dan *runtime* env, sehingga menggunakan cara yang paling jamak dan paling primitif diharapkan mengurangi keharusan memahami hal-hal tersebut, setidaknya pada kali ini.
+Karena ditujukan untuk pemula, kita akan menggunakan cara yang paling mudah untuk dikerjakan. Kita akan menggunakan _build-time_ env seperti dijelaskan pada bagian sebelumnya, Meskipun Next.js mendukung _runtime_ env ataupun _runtime config_ untuk mengeliminasi keharusan melakukan _build_ ulang saat mengganti value, kita tidak akan menggunakannya karena saya pribadi berpendapat masih cukup sulit untuk pemula membedakan _build-time_ dan _runtime_ env, sehingga menggunakan cara yang paling jamak dan paling primitif diharapkan mengurangi keharusan memahami hal-hal tersebut, setidaknya pada kali ini.
 
 Anggap saja kalian sudah punya basic Next.js projek dengan App Router-nya, saya tidak akan menjelaskan bagian tersebut. Berikut adalah langkah-langkah membuat Feature Flag ala-ala di projek Next.js:
 
@@ -58,7 +60,7 @@ NEXT_PUBLIC_FEATURE_1=y
 Dengan kode ini, kita bisa menggunakannya baik di kode server maupun client dengan cara:
 
 ```typescript
-if(process.env.NEXT_PUBLIC_FEATURE_1 === 'y') {
+if (process.env.NEXT_PUBLIC_FEATURE_1 === 'y') {
   // Fitur aktif
 } else {
   // Fitur tidak aktif
@@ -71,11 +73,15 @@ Sehingga misalnya kita akan membuat sebuah fitur tombol yang hanya muncul saat `
 export default function Home() {
   return (
     <main>
-      <p>Status flag FEATURE_1: {process.env.NEXT_PUBLIC_FEATURE_1 === 'y' ? 'Aktif' : 'Non-Aktif'}</p>
+      <p>
+        Status flag FEATURE_1: {process.env.NEXT_PUBLIC_FEATURE_1 === 'y' ? 'Aktif' : 'Non-Aktif'}
+      </p>
 
       {process.env.NEXT_PUBLIC_FEATURE_1 === 'y' ? (
         <button role="button">Button Feature 1</button>
-      ) : <p>Tombol tidak muncul karena feature tidak aktif</p>}
+      ) : (
+        <p>Tombol tidak muncul karena feature tidak aktif</p>
+      )}
     </main>
   );
 }
@@ -87,7 +93,7 @@ Sampai sini, kode fitur flag-nya sudah jalan sebenarnya. Sederhana dan mudah di 
 
 Ada tambahan permintaan dari tim QA atau Tester, bagaimana cara mereka melakukan testing sementara posisi flag masih mati. Untuk inilah biasanya fitur flag punya fitur override atau whitelist seorang user agar bisa mengakses fitur yang bahkan kondisi untuk publik itu sebenarnya masih mati. Karena ini adalah versi poor man, maka kita akan ambil pendekatan yang paling "mungkin" dikerjakan dalam waktu singkat tapi masih bisa menyelesaikan kebutuhan dari tim QA atau Tester.
 
-Cara paling mudah yang kepikiran adalah dengan memberikan penanda ke user tersebut, bahwa dia harus diberikan akses ke suatu fitur. Karena kita tidak melibatkan basis data, maka kita gunakan saja penyimpanan lokal bawaan yang ada di peramban. Bisa saja kita menggunakan [Web Storage API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API) macam `LocalStorage` atau `SessionStorage`, sayangnya keduanya tidak mendukung kalau aplikasi kalian perlu di-*render* di sisi server. Karenanya kita akan mencontohkan dengan [Cookie](https://developer.mozilla.org/en-US/docs/Web/API/Document/cookie) saja yang bisa jalan di server dan di client.
+Cara paling mudah yang kepikiran adalah dengan memberikan penanda ke user tersebut, bahwa dia harus diberikan akses ke suatu fitur. Karena kita tidak melibatkan basis data, maka kita gunakan saja penyimpanan lokal bawaan yang ada di peramban. Bisa saja kita menggunakan [Web Storage API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API) macam `LocalStorage` atau `SessionStorage`, sayangnya keduanya tidak mendukung kalau aplikasi kalian perlu di-_render_ di sisi server. Karenanya kita akan mencontohkan dengan [Cookie](https://developer.mozilla.org/en-US/docs/Web/API/Document/cookie) saja yang bisa jalan di server dan di client.
 
 Alurnya bisa digambarkan seperti ini:
 
@@ -107,37 +113,31 @@ Salah satu yang mesti kita design selanjutnya adalah bagaimana value yang mau di
 Next.js sudah memiliki built-in function untuk membaca Cookie yang hanya jalan di server, kita akan memanfaatkan fungsi tersebut biar lebih mudah dalam membaca Cookie. Baca lebih lanjut mengenai [function cookies](https://nextjs.org/docs/app/api-reference/functions/cookies). Contoh kodenya seperti berikut:
 
 ```js
-import { cookies } from 'next/headers'
+import { cookies } from 'next/headers';
 
 export default function Page() {
-  const cookieStore = cookies()
-  const featureFlags = cookieStore.get('feature-flag')
+  const cookieStore = cookies();
+  const featureFlags = cookieStore.get('feature-flag');
 
-  return '...'
+  return '...';
 }
 ```
 
 Karena ada kemungkinan fungsi whitelist fitur flag ini akan digunakan di semua komponen di aplikasi kita, maka sebaiknya proses membaca Cookie diletakkan di level tertinggi saja, kita akan meletakkan di berkas `layout.ts` yang mana merupakan root dari semua halaman di projek Next.js. Sedangkan agar mudah digunakan di komponen manapun nantinya, kita akan memanfaatkan React Context untuk menyampaikan value tersebut. Berikut contoh kode di file `layout.ts`:
 
 ```tsx
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  const cookieStore = cookies()
-  const featureFlagsString = cookieStore.get("feature-flag")
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const cookieStore = cookies();
+  const featureFlagsString = cookieStore.get('feature-flag');
   // Asumsi kita menyimpan cookie sebagai string dengan separator comma
   // Perlu di split terlebih dahulu agar jadi Array
-  const featureFlags: string[] = (featureFlagsString?.value || '')?.split(",")
+  const featureFlags: string[] = (featureFlagsString?.value || '')?.split(',');
 
   return (
     <html lang="en">
       <body>
-        <FeatureFlagProvider flags={featureFlags}>
-          {children}
-        </FeatureFlagProvider>
-        </body>
+        <FeatureFlagProvider flags={featureFlags}>{children}</FeatureFlagProvider>
+      </body>
     </html>
   );
 }
@@ -146,37 +146,33 @@ export default function RootLayout({
 Sedangkan contoh React Context dari kode di atas adalah:
 
 ```tsx
-'use client'
+'use client';
 
-import {
-  createContext,
-  type PropsWithChildren,
-  useCallback,
-  useContext,
-} from 'react'
+import { createContext, useCallback, useContext } from 'react';
+
+import type { PropsWithChildren } from 'react';
 
 export const FeatureFlagContext = createContext<{
-  flags: string[]
-  isEnabled: (key: string) => boolean
+  flags: string[];
+  isEnabled: (key: string) => boolean;
 }>({
   flags: [],
   isEnabled: (_key: string) => false,
-})
+});
 
 export const FeatureFlagProvider = ({
   flags,
   children,
 }: PropsWithChildren<{ flags: string[] }>) => {
-
   const isEnabled = useCallback(
     (key: string) => {
       if (Array.isArray(flags)) {
-        return flags.includes(key)
+        return flags.includes(key);
       }
-      return false
+      return false;
     },
     [flags]
-  )
+  );
 
   return (
     <FeatureFlagContext.Provider
@@ -187,26 +183,23 @@ export const FeatureFlagProvider = ({
     >
       {children}
     </FeatureFlagContext.Provider>
-  )
-}
+  );
+};
 
 export const useFeatureFlagContext = () => {
-  return useContext(FeatureFlagContext)
-}
+  return useContext(FeatureFlagContext);
+};
 ```
 
 Contoh penggunaan whitelist ini di level komponen, misalnya:
 
 ```tsx
 export default function Home() {
-  const { isEnabled } = useFeatureFlagContext()
+  const { isEnabled } = useFeatureFlagContext();
 
   const isFeature1Active = useMemo(() => {
-    return (
-      isEnabled('feature_1') ||
-      process.env.NEXT_PUBLIC_FEATURE_1 === 'y'
-    )
-  }, [isEnabled])
+    return isEnabled('feature_1') || process.env.NEXT_PUBLIC_FEATURE_1 === 'y';
+  }, [isEnabled]);
 
   return (
     <main>
@@ -214,7 +207,9 @@ export default function Home() {
 
       {isFeature1Active ? (
         <button role="button">Button Feature 1</button>
-      ) : <p>Tombol tidak muncul karena feature tidak aktif</p>}
+      ) : (
+        <p>Tombol tidak muncul karena feature tidak aktif</p>
+      )}
     </main>
   );
 }
@@ -224,7 +219,7 @@ Fitur whitelist sudah selesai dibuat, tinggal kasih tau tim QA atau Tester soal 
 
 ### 3️⃣ Ekstra - Halaman untuk whitelist lewat UI (5 menit)
 
-Bagian ini hanyalah ekstra, *optional*, tidak harus kalian buat. Tapi bila tim QA atau Tester kalian tidak begitu familiar dengan Developer Tools, mungkin sebaiknya dibuatkan saja halaman terpisah untuk bisa melakukan whitelist tersebut lewat UI dibandingkan manual menambahkan Cookie lewat UI.
+Bagian ini hanyalah ekstra, _optional_, tidak harus kalian buat. Tapi bila tim QA atau Tester kalian tidak begitu familiar dengan Developer Tools, mungkin sebaiknya dibuatkan saja halaman terpisah untuk bisa melakukan whitelist tersebut lewat UI dibandingkan manual menambahkan Cookie lewat UI.
 
 Beberapa requirement-nya, antara lain:
 

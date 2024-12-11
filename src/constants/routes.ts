@@ -23,7 +23,7 @@ export const ROUTES = {
   _500: '/500/',
   STATIC: {
     IMAGES: '/images/',
-    FAVICONS: '/images/favicons/',
+    FAVICONS: '/favicon/',
     /** generated at build-time only */
     SITEMAP: '/sitemap-index.xml',
   },

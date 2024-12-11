@@ -3,12 +3,18 @@ title: Otomasi pengoptimalan gambar menggunakan Bot
 publishDate: '2020-04-13'
 description: Hal mudah yang saya lakukan pada blog pribadi agar gambar yang dikirimkan sudah teroptimalkan dengan baik dengan cara yang mudah
 author: mazipan
-published: true
-featured: false
-tags: [image-opt, open-source]
-heroImage: /thumbnail/otomasi-pengoptimalan-gambar-menggunakan-bot/optimize-image.jpg
+
+tags:
+  - web
+  - nextjs
+category: tutorials
+toc: true
+
+heroImage: '../../content/post/_images/poor-man-feature-flag/pexels-cottonbro-studio-5870547.jpg'
+heroAlt: Poor man feature flag untuk projek Next.js dalam 15 menit
+tags2: [image-opt, open-source]
+heroImage2: /thumbnail/otomasi-pengoptimalan-gambar-menggunakan-bot/optimize-image.jpg
 lang: id
-enready: false
 ---
 
 Seperti kita sama-sama ketahui bahwa selain dari kode yang kita tulis baik HTML, CSS dan JavaScript, sebuah web juga diperkaya dengan berbagai media untuk mendukung penyampaian informasi lebih mudah salah satunya adalah media gambar. Gambar merupakan bagian penting dari sebuah website bahkan tidak sedikit website yang memuat banyak sekali gambar seperti beberapa pasar online (marketplace) yang kita ketahui saat ini. Saking banyaknya memang gambar yang digunakan, pada akhirnya bukan lagi kode yang ditulis si pemrogram yang menjadi beban terbesar bagi web tersebut, melainkan gambar yang dimuatnya.
@@ -44,4 +50,3 @@ Berikut tampilan salah satu pull request yang dibuat secara otomatis oleh ImgBot
 ![Pull request otomatis oleh ImgBot](/thumbnail/otomasi-pengoptimalan-gambar-menggunakan-bot/pull-request-imgbot.png)
 
 Terakhir, bola ada ditangan kalian. Kapanpun kalian mau dan sempat, kalian bisa melakukan merge pull request tersebut ke projek kalian.
-
