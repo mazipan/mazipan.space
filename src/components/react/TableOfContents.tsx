@@ -32,34 +32,51 @@ const TableOfContents = ({
         }}
       >
         {children}
-        <span> Table of contents </span>
       </div>
 
       <aside
         className={cn(
-          'my-prose centered-px',
+          'my-prose centered-px bg-base-100',
           className,
-          isLg ? 'sticky top-14' : 'absolute p-10 left-10'
+          isLg ? '' : 'fixed bottom-24 left-4 w-[80%] z-50'
         )}
       >
         <div
           className={cn(
-            'toc rounded-lg border-2 border-base-300 border-dashed p-4 mx-auto overflow-y-auto max-h-[calc(100vh-80px)]',
-            showContents ? '' : 'hidden'
+            'toc rounded-lg border-2 border-base-300 border-dashed p-4 mx-auto overflow-y-auto',
+            showContents ? '' : 'hidden',
+            isLg ? 'sticky top-14 max-h-[calc(100vh-80px)]' : 'max-h-[calc(80vh)]'
           )}
         >
-          <ol className={cn('ol-nested-decimal my-0')}>
+          <b className="font-semibold">On This Page</b>
+          <ol className={cn('ol-nested-decimal my-0 mt-2 text-sm space-y-1.5')}>
             {headings.map(({ slug, text, headings: subHeadings }) => (
               <li className="my-0">
-                <a href={`#${slug}`} className="no-underline">
+                <a
+                  href={`#${slug}`}
+                  className="no-underline font-normal"
+                  onClick={() => {
+                    if (!isLg) {
+                      setShowContents(false);
+                    }
+                  }}
+                >
                   {text}
                 </a>
 
                 {subHeadings.length > 0 && (
-                  <ol className="mt-0 mb-2">
+                  <ol className="mt-0 mb-2 -ml-[20px] space-y-1.5">
                     {subHeadings.map(({ slug, text }) => (
                       <li className="my-0">
-                        <a href={`#${slug}`} className="no-underline">
+                        <a
+                          href={`#${slug}`}
+                          className="no-underline font-normal"
+                          onClick={() => {
+                            if (!isLg) {
+                              setShowContents(false);
+                            }
+                          }}
+                        >
                           {text}
                         </a>
                       </li>
