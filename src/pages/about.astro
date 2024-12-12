@@ -1,0 +1,88 @@
+---
+import { Image } from 'astro:assets';
+
+import Centered from '@/layouts/Centered.astro';
+import { TW_SCREENS } from '@/constants/image';
+import { PROFILE } from '@/constants/profile';
+import { ROUTES } from '@/constants/routes';
+import { CONFIG_CLIENT } from '@/config/client';
+
+import MeInBlackSrc from '@/assets/images/mazipan-in-black.jpg';
+
+export const { AUTHOR_GITHUB, AUTHOR_LINKEDIN, AUTHOR_TWITTER, AUTHOR_YOUTUBE, AUTHOR_EMAIL } =
+  CONFIG_CLIENT;
+
+{
+  /* bellow SM image is full width of content so higher resolution image */
+}
+export const imageSizes = {
+  widths: [TW_SCREENS.SM, TW_SCREENS.MD, TW_SCREENS.SM],
+  sizes: `(max-width: ${TW_SCREENS.SM}px) ${TW_SCREENS.SM}px, (max-width: ${TW_SCREENS.MD}px) ${TW_SCREENS.MD}px, ${TW_SCREENS.SM}px`,
+};
+---
+
+<Centered
+  metadata={{
+    title: 'About',
+  }}
+>
+  <article class="flex flex-col">
+    <h1 class="b-h1">I'm Irfan Maulana.</h1>
+    <b>You can call me "mas ipan"</b>
+    <div class="my-8 flex flex-col-reverse md:flex-row md:justify-between md:items-center gap-16">
+      <div class="space-y-4">
+        <p>
+          {PROFILE.TAGLINE}
+        </p>
+        <h3 class="b-h1">I write some stuffs</h3>
+        <p>
+          I don’t write all that often, but you’re welcome to explore my public writings. I mostly
+          share personal experiences on technical topics and occasionally throw in some
+          beginner-friendly advice from my perspective. <a
+            href={ROUTES.BLOG}
+            class="bg-primary hover:bg-primary-hover px-2 hover:underline"
+          >
+            Visit my blog
+          </a>
+        </p>
+        <h3 class="b-h1">#Build in public</h3>
+        <p>
+          I'm enjoy to share my project to the public. I do build some projects for fun and for the
+          shake of learning something new. I'm contributor and maintainer for community projects in
+          PHPID, React.js ID, & KawalCovid19. With my 11 years of experience in coding around
+          frontend technology, I want to start to "giving back" my expertize to the public
+          community.
+          <a
+            href={AUTHOR_GITHUB}
+            target="_blank"
+            rel="me noreferrer noopener"
+            title="GitHub"
+            class="bg-primary hover:bg-primary-hover px-2 hover:underline"
+          >
+            Check my public code</a
+          >
+        </p>
+        <h3 class="b-h1">Want to work together?</h3>
+        <div class="flex mt-2">
+          <a
+            href={`mailto:${AUTHOR_EMAIL}`}
+            target="_blank"
+            rel="me noreferrer noopener"
+            title="Email"
+            class="bg-primary hover:bg-primary-hover p-4 rounded-full"
+          >
+            Send me an email
+          </a>
+        </div>
+      </div>
+      <div class="flex justify-center items-center md:min-w-[300px]">
+        <Image
+          width={300}
+          src={MeInBlackSrc}
+          alt="MZP In Black"
+          class="rounded-3xl md:rounded-none md:rounded-l-3xl p-4 ring-2 ring-offset-8 ring-offset-white dark:ring-offset-transparent ring-black dark:ring-white border-2 border-black dark:border-0"
+        />
+      </div>
+    </div>
+  </article>
+</Centered>

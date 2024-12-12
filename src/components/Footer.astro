@@ -1,24 +1,14 @@
 ---
-import { Icon } from 'astro-icon/components';
-
 import Link from '@/components/Link.astro';
 import { ROUTES } from '@/constants/routes';
 import { CONFIG_CLIENT } from '@/config/client';
 import { getLatestCommitInfo } from '@/libs/git';
 import { shortDate } from '@/utils/datetime';
 import { limitString, trimHttpProtocol } from '@/utils/strings';
+import SocialLinks from './SocialLinks.astro';
 
-const {
-  SITE_URL,
-  AUTHOR_LINKEDIN,
-  AUTHOR_GITHUB,
-  REPO_URL,
-  AUTHOR_TWITTER,
-  AUTHOR_YOUTUBE,
-  AUTHOR_ADPLIST,
-  AUTHOR_DECK,
-  AUTHOR_EMAIL,
-} = CONFIG_CLIENT;
+const { SITE_URL, REPO_URL, AUTHOR_ADPLIST, AUTHOR_DECK } = CONFIG_CLIENT;
+
 const domain = trimHttpProtocol(SITE_URL);
 const messageLength = 20 as const;
 
@@ -38,52 +28,7 @@ const copyrightYear = new Date().getFullYear();
     <div class="flex gap-8 flex-col-reverse md:flex-row w-full">
       <div class="text-content whitespace-nowrap space-y-4">
         <h3 class="font-semibold">Irfan Maulana / MZP</h3>
-        <ul class="flex gap-2 flex-wrap xs:flex-nowrap lg:items-center">
-          <li>
-            <Link
-              href={AUTHOR_GITHUB}
-              target="_blank"
-              rel="me noreferrer noopener"
-              title="GitHub"
-              class="flex items-center gap-2 text-base xs:text-lg"
-            >
-              <Icon name="tabler:brand-github" class="h-6 w-6 fill-current" />
-            </Link>
-          </li>
-          <li>
-            <Link
-              href={AUTHOR_TWITTER}
-              target="_blank"
-              rel="me noreferrer noopener"
-              title="Twitter/X"
-              class="flex items-center gap-2 text-base xs:text-lg"
-            >
-              <Icon name="tabler:brand-x" class="h-6 w-6 fill-current" />
-            </Link>
-          </li>
-          <li>
-            <Link
-              href={AUTHOR_LINKEDIN}
-              target="_blank"
-              rel="me noreferrer noopener"
-              title="LinkedIn"
-              class="flex items-center gap-2 text-base xs:text-lg"
-            >
-              <Icon name="tabler:brand-linkedin" class="h-6 w-6 fill-current" />
-            </Link>
-          </li>
-          <li>
-            <Link
-              href={AUTHOR_YOUTUBE}
-              target="_blank"
-              rel="me noreferrer noopener"
-              title="YouTube"
-              class="flex items-center gap-2 text-base xs:text-lg"
-            >
-              <Icon name="tabler:brand-youtube" class="h-6 w-6 fill-current" />
-            </Link>
-          </li>
-        </ul>
+        <SocialLinks />
       </div>
 
       <div class="text-content whitespace-nowrap space-y-4">

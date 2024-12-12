@@ -55,8 +55,6 @@
     "@astrojs/check": "^0.9.4",
     "@expressive-code/plugin-collapsible-sections": "^0.38.3",
     "@ianvs/prettier-plugin-sort-imports": "^4.4.0",
-    "@iconify-json/lucide": "^1.2.18",
-    "@iconify-json/mdi": "^1.2.1",
     "@iconify-json/tabler": "^1.2.10",
     "@tailwindcss/typography": "^0.5.15",
     "@types/mdast": "^4.0.4",
