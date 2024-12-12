@@ -1,4 +1,4 @@
-import { PLAUSIBLE_DOMAIN, PLAUSIBLE_SCRIPT_URL, SITE_URL } from 'astro:env/client';
+import { SITE_URL, UMAMI_PUBLIC_URL, UMAMI_SCRIPT_URL, UMAMI_WEBSITE_ID } from 'astro:env/client';
 
 import { configClientSchema } from '@/schemas/config';
 import { validateData } from '@/utils/validation';
@@ -10,8 +10,9 @@ const configClientData: ConfigClientType = {
   SITE_URL,
   SITE_TITLE: 'Mazipan.Space',
   SITE_DESCRIPTION: 'A seasoned web developer from Indonesia with 10+ years of experience.',
-  PLAUSIBLE_SCRIPT_URL,
-  PLAUSIBLE_DOMAIN,
+  UMAMI_SCRIPT_URL,
+  UMAMI_WEBSITE_ID,
+  UMAMI_PUBLIC_URL,
   PAGE_SIZE_POST_CARD: 10,
   PAGE_SIZE_POST_CARD_SMALL: 20,
   MORE_POSTS_COUNT: 3,

@@ -20,8 +20,9 @@ permissions:
 # set env vars in Github settings here
 env:
   SITE_URL: 'https://mazipan.space'
-  PLAUSIBLE_SCRIPT_URL: 'https://plausible.arm1.mazipan.space/js/script.js'
-  PLAUSIBLE_DOMAIN: 'mazipan.space'
+  UMAMI_SCRIPT_URL: https://umami.mazipan.space/script.js
+  UMAMI_WEBSITE_ID: 9e6c4ae6-f1ea-465c-ac75-00015dc21058
+  UMAMI_PUBLIC_URL: https://umami.mazipan.space/share/O3odIJMu00TRHGhb/www.mazipan.space
 
 jobs:
   build-manual:

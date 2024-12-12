@@ -18,7 +18,7 @@ import { filterUndefined } from '@/utils/objects';
 
 import type { Metadata } from '@/types/common';
 
-const { AUTHOR_NAME, PLAUSIBLE_SCRIPT_URL, PLAUSIBLE_DOMAIN } = CONFIG_CLIENT;
+const { AUTHOR_NAME, UMAMI_SCRIPT_URL, UMAMI_WEBSITE_ID } = CONFIG_CLIENT;
 
 export interface BaseHeadProps {
   metadata: Metadata;
@@ -109,15 +109,15 @@ const ogImageUrl = new URL(image, url);
 
   {/* Analytics */}
   {
-    PLAUSIBLE_SCRIPT_URL && (
+    UMAMI_SCRIPT_URL && (
       <>
-        <link rel="preconnect" href={PLAUSIBLE_SCRIPT_URL} />
-        {/* PLAUSIBLE_DOMAIN must be the same for all mirrors */}
+        <link rel="preconnect" href={UMAMI_SCRIPT_URL} />
+        {/* UMAMI_WEBSITE_ID must be the same for all mirrors */}
         <script
           defer
           type="text/partytown"
-          src={PLAUSIBLE_SCRIPT_URL}
-          data-domain={PLAUSIBLE_DOMAIN}
+          src={UMAMI_SCRIPT_URL}
+          data-website-id={UMAMI_WEBSITE_ID}
         />
       </>
     )

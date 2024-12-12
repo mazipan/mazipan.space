@@ -33,8 +33,8 @@ const processEnvData: ProcessEnvType = {
   NODE_ENV: process.env.NODE_ENV,
   PREVIEW_MODE: process.env.PREVIEW_MODE,
   SITE_URL: process.env.SITE_URL,
-  PLAUSIBLE_SCRIPT_URL: process.env.PLAUSIBLE_SCRIPT_URL,
-  PLAUSIBLE_DOMAIN: process.env.PLAUSIBLE_DOMAIN,
+  UMAMI_SCRIPT_URL: process.env.UMAMI_SCRIPT_URL,
+  UMAMI_WEBSITE_ID: process.env.UMAMI_WEBSITE_ID,
 };
 
 prettyPrintObject(processEnvData, 'received PROCESS_ENV');
@@ -62,16 +62,20 @@ export const envSchema = {
       access: 'public',
       // default: omit to have explicit validation
     }),
-    PLAUSIBLE_SCRIPT_URL: envField.string({
+    UMAMI_SCRIPT_URL: envField.string({
       context: 'client',
       access: 'public',
       optional: true,
     }),
-    PLAUSIBLE_DOMAIN: envField.string({
+    UMAMI_WEBSITE_ID: envField.string({
       context: 'client',
       access: 'public',
       optional: true,
-      default: getHostnameFromUrl(PROCESS_ENV.SITE_URL),
+    }),
+    UMAMI_PUBLIC_URL: envField.string({
+      context: 'client',
+      access: 'public',
+      optional: true,
     }),
   },
 };
