@@ -1,0 +1,83 @@
+---
+import Centered from '@/layouts/Centered.astro';
+import talks from '@/constants/talks';
+import { getPageMetadata } from '@/utils/metadata';
+
+const sortedTalksKeys = Object.keys(talks).reverse();
+const metadata = getPageMetadata('lists/talks');
+---
+
+<Centered {metadata}>
+  <article class="flex flex-col">
+    <slot name="heading">
+      <h1 class="b-h1">🎙️ {metadata.title}</h1>
+    </slot>
+    <section class="flex-grow flex flex-col">
+      <p>
+        Do you want to invite me to talk in your event?
+        <a
+          href="https://github.com/mazipan/talks"
+          target="blank"
+          rel="noopener noreferrer"
+          class="text-red-500"
+        >
+          &nbsp;Read this document.
+        </a>
+      </p>
+      <br />
+      {
+        sortedTalksKeys.map((year, index) => (
+          <details class="talk-year" open={index === 0}>
+            <summary class="text-xl md:text-2xl font-bold tracking-tight md:tracking-tighter leading-tight p-2 cursor-pointer">
+              {/*
+                @ts-ignore */}
+              {year} ({talks[year].length} talks)
+            </summary>
+            <div class="py-4">
+              {/* @ts-ignore */}
+              {talks[year].map((item) => {
+                return (
+                  <div class="rounded-lg p-4 mb-2 overflow-hidden bg-white dark:bg-base-100 border-2 border-base-300">
+                    <div class="inline-block bg-gray-300 dark:bg-gray-700 rounded-sm px-3 py-1 text-xs font-semibold">
+                      <span class="mr-2">🗓 </span>
+                      <span>{item.date}</span>
+                    </div>
+                    <div class="mt-4 mb-4 text-lg md:text-xl font-bold">{item.event}</div>
+                    <div class="mb-4 text-sm md:text-md">{item.topic}</div>
+
+                    {item.link && item.link.length > 0 && (
+                      <div class="flex text-sm">
+                        {item.link.map((link: string) => (
+                          <a
+                            class="border-2 border-yellow-400 bg-yellow-400 text-black font-bold py-1 px-2 rounded mr-4"
+                            href={link}
+                            target="blank"
+                            rel="noopener noreferrer"
+                          >
+                            <span class="mr-2">▶️ </span>
+                            <span>Watch Video</span>
+                          </a>
+                        ))}
+
+                        {item.slide && item.slide !== 'NOT_AVAILABLE' && (
+                          <a
+                            class="border-2 border-yellow-400 text-yellow-400 font-bold py-1 px-2 rounded"
+                            href={item.slide}
+                            target="blank"
+                            rel="noopener noreferrer"
+                          >
+                            <span class="mr-2">🖥️ </span>View Slides
+                          </a>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </details>
+        ))
+      }
+    </section>
+  </article>
+</Centered>

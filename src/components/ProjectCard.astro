@@ -41,7 +41,7 @@ const { lastAccessDate, isUpdatedDate } = getPublishedOrUpdatedDate({
   {description && <p class="text-sm text-captions mb-2">{description}</p>}
 
   <p class="flex items-center gap-1 text-xs text-captions">
-    <Icon name={isUpdatedDate ? 'mdi:edit-outline' : 'mdi:access-time'} class="w-4 h-4" />
+    <Icon name={isUpdatedDate ? 'tabler:pencil' : 'tabler:clock'} class="w-4 h-4" />
     <time itemprop="datePublished" datetime={formatDateIso(lastAccessDate)}>
       {formatDate(lastAccessDate)}
     </time>

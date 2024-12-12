@@ -12,9 +12,9 @@
     --th-headings: var(--var-color-yellow-500);
     --th-captions: var(--var-color-slate-500);
 
-    --th-primary: var(--var-color-blue-500);
-    --th-primary-hover: var(--var-color-blue-700);
-    --th-primary-content: var(--var-color-white);
+    --th-primary: var(--var-color-yellow-500);
+    --th-primary-hover: var(--var-color-yellow-600);
+    --th-primary-content: var(--var-color-slate-900);
 
     --th-primary-base-200: var(--var-color-blue-100);
     --th-primary-base-300: var(--var-color-blue-200);
@@ -54,9 +54,9 @@
     --th-headings: var(--var-color-yellow-400);
     --th-captions: var(--var-color-dark-slate-400);
 
-    --th-primary: var(--var-color-blue-300);
-    --th-primary-hover: var(--var-color-blue-500);
-    --th-primary-content: var(--var-color-white);
+    --th-primary: var(--var-color-yellow-400);
+    --th-primary-hover: var(--var-color-yellow-500);
+    --th-primary-content: var(--var-color-slate-900);
 
     --th-primary-base-200: var(--var-color-blue-600);
     --th-primary-base-300: var(--var-color-blue-700);

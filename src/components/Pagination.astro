@@ -73,11 +73,11 @@ const threePageNumbers = (currentPage: number, lastPage: number): number[] => {
 
       <nav aria-label="pages" class="flex items-center justify-end gap-4 text-xl">
         <Link href={firstUrl} disabled={!prevUrl}>
-          <Icon name="mdi:chevron-double-left" />
+          <Icon name="tabler:chevrons-left" />
         </Link>
 
         <Link href={prevUrl} disabled={!prevUrl}>
-          <Icon name="mdi:chevron-left" />
+          <Icon name="tabler:chevron-left" />
         </Link>
 
         {threePageNumbers(currentPage, lastPage).map((pageNumber) => {
@@ -97,11 +97,11 @@ const threePageNumbers = (currentPage: number, lastPage: number): number[] => {
         })}
 
         <Link href={nextUrl} disabled={!nextUrl}>
-          <Icon name="mdi:chevron-right" />
+          <Icon name="tabler:chevron-right" />
         </Link>
 
         <Link href={lastUrl} disabled={!nextUrl}>
-          <Icon name="mdi:chevron-double-right" />
+          <Icon name="tabler:chevrons-right" />
         </Link>
       </nav>
     </div>

@@ -25,28 +25,28 @@ const shouldDisplay = [category, publishDate, updatedDate, readingTime].some(Boo
 {
   shouldDisplay && (
     <p aria-label="Post meta" class={cn('b-p text-captions flex flex-row flex-wrap items-center gap-2', className)}>
-        {publishDate && (      
-          <Icon name="mdi:access-time" />
+        {publishDate && (
+          <Icon name="tabler:clock" />
           <time itemprop="datePublished" datetime={formatDateIso(publishDate)}>
             {formatDate(publishDate)}
-          </time>        
+          </time>
         )}
-        {category && (  
-          <span>·</span>     
+        {category && (
+          <span>·</span>
           <Icon name={getCategoryProps(category).icon} />
-          <Link href={`${ROUTES.CATEGORIES}${category}`}>{category}</Link>       
+          <Link href={`${ROUTES.CATEGORIES}${category}`}>{category}</Link>
         )}
-        {readingTime && (    
-          <span>·</span>     
-          <Icon name="mdi:book-open-blank-variant-outline" />
-          <span>{`${Math.round(readingTime)} minutes`}</span>     
+        {readingTime && (
+          <span>·</span>
+          <Icon name="tabler:book" />
+          <span>{`${Math.round(readingTime)} minutes`}</span>
         )}
-        {updatedDate && (    
-          <span>·</span>     
-          <Icon name="mdi:edit-outline" />
+        {updatedDate && (
+          <span>·</span>
+          <Icon name="tabler:pencil" />
           <time itemprop="dateUpdated" datetime={formatDateIso(updatedDate)}>
             {formatDate(updatedDate)}
-          </time>         
+          </time>
         )}
     </p>
   )

@@ -1,3 +1,4 @@
+import typography from '@tailwindcss/typography';
 import defaultTheme from 'tailwindcss/defaultTheme';
 import plugin from 'tailwindcss/plugin';
 
@@ -9,7 +10,7 @@ const config: Config = {
   // activates only dark: modifier, not color theme
   darkMode: ['selector'],
   plugins: [
-    require('@tailwindcss/typography'),
+    typography,
     plugin(({ addVariant }) => {
       addVariant('not-first', '&:not(:first-child)');
       addVariant('not-last', '&:not(:last-child)');

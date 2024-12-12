@@ -72,29 +72,6 @@ const getTransitionNameFromElementId = setTransitionSlug({ pageSlug: slug });
   {/* right column */}
   <div class={cn('flex flex-col', { 'md:basis-2/3': !noHero })}>
     {/* category and publishDate row*/}
-    <div
-      class="flex items-start justify-between mb-4 text-sm leading-none"
-      transition:name={getTransitionNameFromElementId({
-        elementId: TRANSITION_ELEMENT_IDS.POST_CARD.META,
-      })}
-    >
-      <Link
-        href={`${ROUTES.CATEGORIES}${category}`}
-        class="inline-flex items-center gap-2 font-medium px-2 py-0.5 rounded-button"
-      >
-        <Icon name={categoryIcon} class="w-4 h-4" />
-        <span class="pb-0.5">
-          {category}
-        </span>
-      </Link>
-
-      <span class="inline-flex items-center gap-2 text-captions">
-        <Icon name={isUpdatedDate ? 'mdi:edit-outline' : 'mdi:access-time'} class="w-4 h-4" />
-        <time itemprop="datePublished" datetime={formatDateIso(lastAccessDate)}>
-          {formatDate(lastAccessDate)}
-        </time>
-      </span>
-    </div>
 
     {/* title */}
     <h2
@@ -122,11 +99,32 @@ const getTransitionNameFromElementId = setTransitionSlug({ pageSlug: slug });
       )
     }
 
+    {/* published date and category link */}
+    <div
+      class="flex items-center gap-2 mb-4 text-sm leading-none"
+      transition:name={getTransitionNameFromElementId({
+        elementId: TRANSITION_ELEMENT_IDS.POST_CARD.META,
+      })}
+    >
+      <span class="inline-flex items-center gap-2 text-captions">
+        <Icon name={isUpdatedDate ? 'tabler:pencil' : 'tabler:clock'} class="w-4 h-4" />
+        <time itemprop="datePublished" datetime={formatDateIso(lastAccessDate)}>
+          {formatDate(lastAccessDate)}
+        </time>
+      </span>
+
+      <span>
+        In category <Link href={`${ROUTES.CATEGORIES}${category}`}>
+          {category}
+        </Link>
+      </span>
+    </div>
+
     {/* reading time and read more link */}
     <div class="flex items-center xs:items-end justify-between">
       <div class="flex items-center gap-4">
         <span class="inline-flex items-center gap-2 text-sm text-captions">
-          <Icon name="mdi:book-open-blank-variant-outline" class="w-4 h-4" />
+          <Icon name="tabler:book" class="w-4 h-4" />
           <span class="text-nowrap">{`${Math.round(readingTime)} minutes`}</span>
         </span>
         <TagList tags={tags.slice(0, 2)} size="sm" variant="text" class="hidden xs:inline-flex" />
@@ -137,7 +135,7 @@ const getTransitionNameFromElementId = setTransitionSlug({ pageSlug: slug });
         class="inline-flex items-center gap-1 text-base font-medium"
       >
         <span class="text-nowrap">Read more</span>
-        <Icon name="mdi:arrow-right" class="w-4 h-4" />
+        <Icon name="tabler:arrow-right" class="w-4 h-4" />
       </Link>
     </div>
   </div>

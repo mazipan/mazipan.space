@@ -12,7 +12,7 @@ const configClientData: ConfigClientType = {
   SITE_DESCRIPTION: 'A seasoned web developer from Indonesia with 10+ years of experience.',
   PLAUSIBLE_SCRIPT_URL,
   PLAUSIBLE_DOMAIN,
-  PAGE_SIZE_POST_CARD: 3,
+  PAGE_SIZE_POST_CARD: 10,
   PAGE_SIZE_POST_CARD_SMALL: 6,
   MORE_POSTS_COUNT: 3,
   DEFAULT_MODE: 'light',
@@ -23,6 +23,8 @@ const configClientData: ConfigClientType = {
   AUTHOR_LINKEDIN: 'https://dub.sh/mzp.in',
   AUTHOR_TWITTER: 'https://dub.sh/mzp.x',
   AUTHOR_YOUTUBE: 'https://dub.sh/mzp.yt',
+  AUTHOR_DECK: 'https://dub.sh/mzp.deck',
+  AUTHOR_ADPLIST: 'https://dub.sh/mzp.adp',
   REPO_URL: 'https://github.com/mazipan/mazipan.space',
 };
 

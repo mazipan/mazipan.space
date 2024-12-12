@@ -30,8 +30,6 @@ export const PAGE_METADATA = {
   // must have 'list' prefix to omit type arg
   'lists/blog': {
     title: 'Blog',
-    description:
-      'Est aliquip reprehenderit eu esse duis laboris cillum adipisicing reprehenderitvoluptate ex aute voluptate.',
   },
   'lists/blog/tags': {
     title: 'Tags',
@@ -52,10 +50,9 @@ export const PAGE_METADATA = {
   // src/pages/blog/categories/[category]/[...page].astro
   'lists/projects': {
     title: 'Projects',
-    description: 'Ad duis incididunt reprehenderit elit in enim amet dolor.',
   },
-  'lists/links': {
-    title: 'Links',
+  'lists/talks': {
+    title: 'Talks',
   },
 } as const;
 

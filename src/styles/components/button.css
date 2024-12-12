@@ -9,7 +9,7 @@
   }
 
   .button-solid {
-    /* empry for now */
+    @apply border;
   }
 
   /* compound variants */
@@ -24,12 +24,14 @@
   }
 
   .button-solid-primary {
-    @apply bg-primary text-primary-content;
+    @apply bg-primary text-primary-content border-primary;
+    @apply hover:bg-primary-hover hover:border-primary-hover;
     /* no primary-hover yet */
   }
 
   .button-solid-default {
-    @apply bg-base-200 text-content;
+    @apply bg-base-200 text-content border-base-200;
+    @apply hover:bg-base-300  hover:border-base-300;
   }
 
   .button-sm {

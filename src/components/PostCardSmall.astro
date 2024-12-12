@@ -16,7 +16,7 @@ import type { HTMLAttributes } from 'astro/types';
 
 export interface Props extends HTMLAttributes<'article'> {
   post: Post;
-  withImage?: boolean
+  withImage?: boolean;
 }
 
 const { post, class: className, withImage = false } = Astro.props;
@@ -39,8 +39,9 @@ const getTransitionNameFromElementId = setTransitionSlug({ pageSlug: slug });
     className
   )}
 >
-  {withImage && (
-    <Image
+  {
+    withImage && (
+      <Image
         {...IMAGE_SIZES.FIXED.POST_CARD_SMALL}
         src={heroImage}
         alt={heroAlt}
@@ -49,7 +50,8 @@ const getTransitionNameFromElementId = setTransitionSlug({ pageSlug: slug });
           elementId: TRANSITION_ELEMENT_IDS.POST_CARD.HERO_IMAGE,
         })}
       />
-  )}
+    )
+  }
 
   <div class="flex flex-col">
     <h4
@@ -81,7 +83,7 @@ const getTransitionNameFromElementId = setTransitionSlug({ pageSlug: slug });
         elementId: TRANSITION_ELEMENT_IDS.POST_CARD.META,
       })}
     >
-      <Icon name={isUpdatedDate ? 'mdi:edit-outline' : 'mdi:access-time'} class="w-4 h-4" />
+      <Icon name={isUpdatedDate ? 'tabler:pencil' : 'tabler:clock'} class="w-4 h-4" />
       <time itemprop="datePublished" datetime={formatDateIso(lastAccessDate)}>
         {formatDate(lastAccessDate)}
       </time>

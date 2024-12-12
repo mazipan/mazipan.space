@@ -8,7 +8,17 @@ import { getLatestCommitInfo } from '@/libs/git';
 import { shortDate } from '@/utils/datetime';
 import { limitString, trimHttpProtocol } from '@/utils/strings';
 
-const { SITE_URL, AUTHOR_LINKEDIN, AUTHOR_GITHUB, REPO_URL } = CONFIG_CLIENT;
+const {
+  SITE_URL,
+  AUTHOR_LINKEDIN,
+  AUTHOR_GITHUB,
+  REPO_URL,
+  AUTHOR_TWITTER,
+  AUTHOR_YOUTUBE,
+  AUTHOR_ADPLIST,
+  AUTHOR_DECK,
+  AUTHOR_EMAIL,
+} = CONFIG_CLIENT;
 const domain = trimHttpProtocol(SITE_URL);
 const messageLength = 20 as const;
 
@@ -18,60 +28,133 @@ const commitUrl = `${REPO_URL}/commit/${fullHash}`;
 
 const shortDateStr = shortDate(new Date(time));
 const trimmedMessage = limitString(message, messageLength);
+const copyrightYear = new Date().getFullYear();
 
 // footer is full width for border, div has max-w
 ---
 
 <footer class="border-t border-base-300 py-8 px-4">
   <div class="max-w-6xl md:mx-auto">
-    <div class="flex justify-between gap-4 flex-col-reverse md:flex-row md:w-full">
-      <!-- left column -->
-      <div class="flex items-center gap-2 flex-wrap text-sm text-content whitespace-nowrap">
-        <div class="flex items-center gap-2">
-          <label class="font-bold">Latest commit:</label>
-          <Link href={commitUrl} title={shortDateStr} target="_blank">
-            {trimmedMessage}
-          </Link>
-        </div>
+    <div class="flex gap-8 flex-col-reverse md:flex-row w-full">
+      <div class="text-content whitespace-nowrap space-y-4">
+        <h3 class="font-semibold">Irfan Maulana / MZP</h3>
+        <ul class="flex gap-2 flex-wrap xs:flex-nowrap lg:items-center">
+          <li>
+            <Link
+              href={AUTHOR_GITHUB}
+              target="_blank"
+              rel="me noreferrer noopener"
+              title="GitHub"
+              class="flex items-center gap-2 text-base xs:text-lg"
+            >
+              <Icon name="tabler:brand-github" class="h-6 w-6 fill-current" />
+            </Link>
+          </li>
+          <li>
+            <Link
+              href={AUTHOR_TWITTER}
+              target="_blank"
+              rel="me noreferrer noopener"
+              title="Twitter/X"
+              class="flex items-center gap-2 text-base xs:text-lg"
+            >
+              <Icon name="tabler:brand-x" class="h-6 w-6 fill-current" />
+            </Link>
+          </li>
+          <li>
+            <Link
+              href={AUTHOR_LINKEDIN}
+              target="_blank"
+              rel="me noreferrer noopener"
+              title="LinkedIn"
+              class="flex items-center gap-2 text-base xs:text-lg"
+            >
+              <Icon name="tabler:brand-linkedin" class="h-6 w-6 fill-current" />
+            </Link>
+          </li>
+          <li>
+            <Link
+              href={AUTHOR_YOUTUBE}
+              target="_blank"
+              rel="me noreferrer noopener"
+              title="YouTube"
+              class="flex items-center gap-2 text-base xs:text-lg"
+            >
+              <Icon name="tabler:brand-youtube" class="h-6 w-6 fill-current" />
+            </Link>
+          </li>
+        </ul>
       </div>
 
-      <!-- right column -->
-      <ul class="flex gap-2 flex-wrap xs:flex-nowrap lg:items-center">
-        <li>
-          <Link
-            href={AUTHOR_GITHUB}
-            target="_blank"
-            rel="me noreferrer noopener"
-            title="GitHub"
-            class="flex items-center gap-2 text-base xs:text-lg"
-            variant="link-nav"
-          >
-            <Icon name="mdi:github" class="h-6 w-6 fill-current" />
-          </Link>
-        </li>
-        <li>
-          <Link
-            href={AUTHOR_LINKEDIN}
-            target="_blank"
-            rel="me noreferrer noopener"
-            title="LinkedIn"
-            class="flex items-center gap-2 text-base xs:text-lg"
-            variant="link-nav"
-          >
-            <Icon name="mdi:linkedin" class="h-6 w-6 fill-current" />
-          </Link>
-        </li>
-        <li>
-          <Link
-            href={ROUTES.API.FEED_RSS}
-            title={`RSS feed for ${domain}`}
-            class="flex items-center gap-2 text-base xs:text-lg"
-            variant="link-nav"
-          >
-            <Icon name="mdi:rss" class="h-6 w-6 fill-current" />
-          </Link>
-        </li>
-      </ul>
+      <div class="text-content whitespace-nowrap space-y-4">
+        <h3 class="font-semibold">Navigations</h3>
+        <ul class="space-y-2 text-sm">
+          <li>
+            <Link href={ROUTES.BLOG}>Blog</Link>
+          </li>
+          <li>
+            <Link href={ROUTES.EXPLORE}>Explore</Link>
+          </li>
+          <li>
+            <Link href={ROUTES.TALKS}>Talks</Link>
+          </li>
+          <li>
+            <Link href={ROUTES.SUPPORT}>Support</Link>
+          </li>
+          <li>
+            <Link href={ROUTES.ABOUT}>About</Link>
+          </li>
+        </ul>
+      </div>
+
+      <div class="text-content whitespace-nowrap space-y-4">
+        <h3 class="font-semibold">Resources</h3>
+        <ul class="space-y-2 text-sm">
+          <li>
+            <Link
+              href="https://bookmarks.mazipan.space/"
+              target="_blank"
+              rel="me noreferrer noopener"
+              title="Bookmark collections"
+            >
+              Bookmarks
+            </Link>
+          </li>
+          <li>
+            <Link
+              href={AUTHOR_ADPLIST}
+              title="Meet me at ADPList"
+              target="_blank"
+              rel="me noreferrer noopener"
+            >
+              One on one
+            </Link>
+          </li>
+          <li>
+            <Link
+              href={AUTHOR_DECK}
+              title="Presentation Decks"
+              target="_blank"
+              rel="me noreferrer noopener"
+            >
+              Decks
+            </Link>
+          </li>
+          <li>
+            <Link href={ROUTES.API.FEED_RSS} title={`RSS feed for ${domain}`}> RSS </Link>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="text-sm mt-8 py-8 md:py-4 text-center border-t border-base-300 space-y-2">
+      <p>© 2019-{copyrightYear}, All rights reserved</p>
+
+      <div class="flex items-center justify-center gap-2">
+        <label class="font-bold">Latest commit:</label>
+        <Link href={commitUrl} title={shortDateStr} target="_blank">
+          {trimmedMessage}
+        </Link>
+      </div>
     </div>
   </div>
 </footer>

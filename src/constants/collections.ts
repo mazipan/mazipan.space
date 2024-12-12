@@ -38,35 +38,27 @@ export const CATEGORIES = [
   // extract find function
   {
     name: 'tutorials',
-    icon: 'mdi:teach',
+    icon: 'tabler:align-box-right-top',
   },
   {
     name: 'tips-and-tricks',
-    icon: 'mdi:lightbulb-outline',
-  },
-  {
-    name: 'news',
-    icon: 'mdi:announcement-outline',
+    icon: 'tabler:bulb',
   },
   {
     name: 'showcases',
-    icon: 'mdi:presentation',
-  },
-  {
-    name: 'video',
-    icon: 'mdi:video-outline',
+    icon: 'tabler:device-tv',
   },
   {
     name: 'tools',
-    icon: 'mdi:tools',
+    icon: 'tabler:settings-cog',
   },
   {
     name: 'resources',
-    icon: 'mdi:book-open-variant-outline',
+    icon: 'tabler:book',
   },
   {
     name: 'experience',
-    icon: 'mdi:book-open-variant-outline',
+    icon: 'tabler:award',
   },
 ] as const;
 
