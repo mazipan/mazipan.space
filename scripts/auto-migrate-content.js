@@ -62,6 +62,35 @@ async function migrate() {
   });
 }
 
+// eslint-disable-next-line no-useless-escape
+const REGEX_IMAGE = /\!\[.*]\(.*\)/gi;
+async function migrateImage() {
+  const postDirs = readdirSync(POST_DIR);
+
+  postDirs.forEach((post) => {
+    const postPath = join(POST_DIR, post);
+    const isDir = lstatSync(postPath).isDirectory();
+    if (!isDir) {
+      if (existsSync(postPath)) {
+        const fileContent = readFileSync(postPath, { encoding: 'utf-8' });
+        let newContent = fileContent;
+
+        const match = fileContent.match(REGEX_IMAGE);
+        if (match && match.length > 0) {
+          const newSrc = match[0].replace(/\/thumbnail\//gi, '../../content/post/_images/');
+
+          newContent = newContent.replace(REGEX_IMAGE, newSrc);
+
+          writeFile(postPath, newContent, function (err) {
+            if (err) throw err;
+            console.log('>>> ', postPath);
+          });
+        }
+      }
+    }
+  });
+}
+
 (async () => {
-  await migrate();
+  await migrateImage();
 })();

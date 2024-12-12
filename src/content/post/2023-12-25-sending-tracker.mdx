@@ -36,7 +36,7 @@ Kalau berkaca pada Google Analytics pada artikel [Event Parameter](https://devel
 
 Contoh kodenya:
 
-```js
+```js title=app.js
 gtag('event', '<event_name>', {
   // <event_parameters>
 });
@@ -76,7 +76,7 @@ Seperti disebutkan di atas pada bagian spesifikasi di mana sebaiknya kita membua
 
 Belajar dari cara Google Analytics dalam melakukan inisiasi tracker mereka (bisa dibaca di tautan [memasang gtag.js](https://developers.google.com/tag-platform/gtagjs/install?hl=en))
 
-```html
+```html title=app.html
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=TAG_ID"></script>
 <script>
@@ -105,7 +105,7 @@ Sayangnya cara pertama tetap bisa menimbulkan ada tracker yang tertinggal belum 
 
 Cara kedua, di lain sisi adalah dengan mendengarkan (listen) ke event saat pengguna melakukan perpindahan halaman atau istilahnya unload. Kita bisa mendengarkan event ini dengan cara:
 
-```js
+```js title=app.js
 addEventListener('beforeunload', (event) => {
   // Kirim tracker di sini
 });
@@ -117,7 +117,7 @@ Sayangnya event `beforeunload` ini sudah tidak lagi direkomendasikan untuk digun
 
 Disarankan saat ini sebaiknya menggunakan [Page Visibility API](https://developer.mozilla.org/en-US/docs/Web/API/Document/visibilitychange_event)
 
-```js
+```js title=app.js
 document.onvisibilitychange = () => {
   if (document.visibilityState === 'hidden') {
     // Kirim tracker di sini
@@ -133,7 +133,7 @@ Karena tracker dikirimkan saat halaman beralih, ada kemungkinan sebuah HTTP requ
 
 Contoh kode mengirimkan tracker dengan Beacon API:
 
-```js
+```js title=app.js
 document.addEventListener('visibilitychange', function logData() {
   if (document.visibilityState === 'hidden') {
     // Contoh mengirim tracker ke endpoint /track
@@ -144,7 +144,7 @@ document.addEventListener('visibilitychange', function logData() {
 
 Kalau misalnya ragu dengan dukungan peramban soal Beacon API, bisa juga bikin fallback ke tradisional Rest API kalau `sendBeacon` tidak tersedia. Misalnya:
 
-```js
+```js title=app.js
 document.addEventListener('visibilitychange', function logData() {
   if (document.visibilityState === 'hidden') {
     if (typeof navigator.sendBeacon === 'function') {

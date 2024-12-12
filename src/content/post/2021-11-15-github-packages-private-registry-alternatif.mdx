@@ -41,7 +41,7 @@ GitHub Package menutupi concern yang ditemukan, gak perlu ngurusin reliability s
 
 - ✅ **Setting package.json**, ada beberapa setting yang jadinya required pas mau develop package yang akan di publish ke GitHub Package. Yang pertama `repository`, pastikan punya vallue yang tepat, nantinya kan package-nya akan nempel di sidebar dan bisa dilihat di masing-masing repo. Yang kedua `publishConfig` harus punya field `registry` yang diarahkan ke `https://npm.pkg.github.com`. Yang ketiga ya seperti maintain third-party package biasanya saja ya, seperti: setting `private: true` nya dihilangkan, setting `files` dengan benar, setting `main` ke file yang tepat, dan lainnya.
 
-```json
+```json title=package.json
 "repository": {
   "type": "git",
   "url": "https://github.com/YOUR_ORG/YOUR_REPO.git"
@@ -55,7 +55,7 @@ GitHub Package menutupi concern yang ditemukan, gak perlu ngurusin reliability s
 
 Karena saya akan mempublikasikan ke organisasi, jadi saya perlu login ke scope-nya organisasi yang dimaksud. Kamu bisa mengikuti perintah berikut:
 
-```bash
+```bash title=terminal
 npm login --scope=@YOUR_ORG --registry=https://npm.pkg.github.com
 ```
 
@@ -67,25 +67,25 @@ Setelah menjalankan perintah di atas, kamu akan ditanya beberapa hal
 
 Seperti terlihat, kamu membutuhkan PAT untuk mengakses ke Github Packages. kamu bisa mengunjungi halaman [Setting Token](https://github.com/settings/tokens) di Github untuk membuat PAT milikmu. Pastikan punya scope yang sudah disebutkan di atas.
 
-![Scope PAT yang dibutuhkan](/thumbnail/github-packages-private-registry-alternatif/pat-scope.png)
+![Scope PAT yang dibutuhkan](../../content/post/_images/github-packages-private-registry-alternatif/pat-scope.png)
 
 ### Validasi Akses Lokal
 
 Perintah `npm login`, setelah sukses dikerjakan sebenarnya akan menyetel nilai baru ke `~/.npmrc` kalian. Jadi untuk validasi, tinggal coba buka saja file ini, misal dengan vi:
 
-```bash
+```bash title=terminal
 vi ~/.npmrc
 ```
 
 Berikutnya, kamu bisa cek user yang saat ini login dengan perintah:
 
-```bash
+```bash title=terminal
 npm whoami --registry=https://npm.pkg.github.com
 ```
 
 Kalau-kalau kamu masih dianggap tidak login dengan benar, coba saja cara manual dengan langsung set ke config-nya npm, dengan perintah:
 
-```bash
+```bash title=terminal
 npm set email YOUR_GITHUB_EMAIL
 npm set YOUR_ORG:registry https://npm.pkg.github.com
 npm set //npm.pkg.github.com/:_authToken YOUR_GITHUB_TOKEN
@@ -103,7 +103,7 @@ Proses install bisa jadi juga akan membutuhkan otntikasi, terutama kalu kamu mem
 
 Dasarnya, sebenernya hampir sama dengan yang kita jelaskan sebelumnya, dimana kita mesti menyetel konfigurasi `~/.npmrc` dengan perintah yang sama dengan di atas
 
-```bash
+```bash title=terminal
 npm set email YOUR_GITHUB_EMAIL
 npm set YOUR_ORG:registry https://npm.pkg.github.com
 npm set //npm.pkg.github.com/:_authToken YOUR_GITHUB_TOKEN
@@ -111,7 +111,7 @@ npm set //npm.pkg.github.com/:_authToken YOUR_GITHUB_TOKEN
 
 Di Github Action sendiri, akan seperti ini kurang lebih:
 
-```yaml
+```yaml title=action.yml
 name: Install Private Packages
 on:
   push:
@@ -151,7 +151,7 @@ Seperti yang bisa dilihat di atas, saya menjalankan perintah untuk otentikasi se
 
 Mengacu pada dokumentasi [setup-node](https://github.com/actions/setup-node/blob/main/docs/advanced-usage.md#publish-to-npmjs-and-gpr-with-npm) Actions, kita cukup passing env `NODE_AUTH_TOKEN` saja saat melakukan `npm publish`, berikut contohnya:
 
-```yaml
+```yaml title=action.yml
 - name: Publish
   run: npm publish
   env:

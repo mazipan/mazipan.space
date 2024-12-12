@@ -28,7 +28,7 @@ Akhirnya, kami memutuskan untuk membuat formatter kami sendiri yang menggabungka
 
 Kami menyebutnya `eslint-formatter-html-extended`!
 
-![ESLint formatter HTML Extended](/thumbnail/eslint-formatter-html-extended/eslint-html.png)
+![ESLint formatter HTML Extended](../../content/post/_images/eslint-formatter-html-extended/eslint-html.png)
 
 ## Unboxing 📦
 
@@ -38,7 +38,7 @@ Pada dasarnya, kami tidak ingin mengerjakan hal-hal yang sudah dikerjakan orang 
 
 Install dependensi lewat perintah:
 
-```bash
+```bash title=terminal
 $ yarn add eslint-formatter-html-extended -D
 # OR
 $ npm i eslint-formatter-html-extended --dev
@@ -46,7 +46,7 @@ $ npm i eslint-formatter-html-extended --dev
 
 Mengacu pada [docs ↗️](https://eslint.org/docs/user-guide/formatters/), kita hanya diharuskan menambahkan argumen `-f nameFormatter -o nameFile` pada ESLint skript, seperti:
 
-```bash
+```bash title=terminal
 $ eslint --ext .js . -f html-extended -o eslint-report.html
 ```
 

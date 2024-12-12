@@ -32,7 +32,7 @@ _Origin_ di sini mengarah pada _Origin_ pada spesifikasi [API URL](https://devel
 
 Jadi kita mencari tau dengan memanfaat URL API ini, misal kita ingin tau Origin dari sebuah URL `https://foo.com`, kita bisa mencoba kode berikut di console peramban.
 
-```js
+```js title=url.js
 new URL("https://foo.com")
 // Kode ini akan menghasilkan output berikut:
 URL {
@@ -69,7 +69,7 @@ Kalau aplikasi web-mu di spin-up pake Webpack, di lokal ada configurasi di Webpa
 
 Contoh kodenya:
 
-```js
+```js title=webpack.config.js
 module.exports = {
   //...
   devServer: {

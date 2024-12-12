@@ -24,7 +24,7 @@ Melakukan pengujian pada halaman biasa yang tanpa membutuhkan login, sudah biasa
 
 Saya akan coba sematkan terlebih dahulu hasil gambar dari pengujian halaman yang saya buat untuk artikel ini. Kalian bisa juga mengunjunginya langsung di tautan [contoh pengujian halaman login](https://developers.google.com/speed/pagespeed/insights/?url=http%3A%2F%2Fmazipan.space%2Fexamples%2Fonly-for-login&tab=mobile), atau silahkan lihat gambar di bawah ini:
 
-![Gambar hasil uji PageSpeedInsight pada halaman yang membutuhkan login](/thumbnail/web-perf-test-for-login-page/test-login-page.png)
+![Gambar hasil uji PageSpeedInsight pada halaman yang membutuhkan login](../../content/post/_images/web-perf-test-for-login-page/test-login-page.png)
 
 Bisa terlihat bahwa PSI malah melakukan pengujian pada halaman yang tidak seharusnya (halaman /unauthorized), ini karena si Aplikasi mendeteksi bahwa si pengunjung (dalam hal ini PSI) belum melakukan proses login.
 
@@ -40,7 +40,7 @@ Sebelum membahas opsi sulit, kita akan bahas beberapa opsi mudah yang mungkin bi
 
 Cara paling mudah ya, kalian login saja dulu di peramban kemudian pastikan kalian sudah bisa mengunjungi halaman tersebut. Setelahnya tinggal buka DevTools dan cari tab Lighthouse dan lakukan pengujian di halaman tersebut. Kalau proses login kalian membutuhkan _Browser Storage_ macam LocalStorage maka pastikan saja kalian tidan mencentang pilihan "Clear Storage" saat akan melakukan pengujian. Tidak perlu malu melakukan pengujian manual, lagian ini kan memang cara tercepat untuk kita melakukan pengujian. Kalau kalian membutuhkan data historikal, maka kalian mungkin perlu menyimpan hasil pengujian di lokal ini dalam bentuk JSON sehingga bisa diambil dan dianalisa lagi datanya besok-besok.
 
-![Gambar hasil uji dengan DevTools](/thumbnail/web-perf-test-for-login-page/manual-devtools.png)
+![Gambar hasil uji PageSpeedInsight pada halaman yang membutuhkan login](../../content/post/_images/web-perf-test-for-login-page/test-login-page.png)
 
 **👉 Buat Pintu Belakang**
 
@@ -58,13 +58,13 @@ Untuk versi CLI nya sendiri sebenernya bisa menyematkan Cookie (jika proses logi
 
 Berikut contoh potongan kode kalau kalian ingin menyematkan tambahan argumen:
 
-```shell
+```bash title=terminal
 $ lighthouse http://www.example.com --view --extra-headers="{\"Cookie\":\"is-login=1\"}"
 ```
 
 Atau dalam versi Node.js bisa melakukan hal yang sama dengan cara:
 
-```js
+```js title=sample.js
 const result = await lighthouse('http://www.example.com', {
   extraHeaders: {
     Cookie: 'is-login=1',
@@ -76,14 +76,14 @@ Kalau cara ini masih tidak berhasil juga, maka perlu mencoba kombinasi Puppeteer
 
 Pastikan kalian memasang dependency puppeteer dan lighthouse di projek kalian terlebih dahulu:
 
-```shell
+```bash title=terminal
 $ npm i lighthouse puppeteer
 $ yarn add lighthouse puppeteer
 ```
 
 Selanjutnya coba jalankan lighthouse dengan Puppeteer seperti pada dokumentasi [menjalankan Lighthouse dengan Puppeteer](https://github.com/GoogleChrome/lighthouse/blob/master/docs/puppeteer.md), berikut contoh kode yang sudah disederhanakan:
 
-```js
+```js title=sample.js
 const puppeteer = require('puppeteer');
 const lighthouse = require('lighthouse');
 
@@ -130,7 +130,7 @@ Idenya adalah, kita akan melakukan uji web performa pada halaman "/examples/only
 
 Jadi, mari kita mulai saja membuat kodenya, saya telah membuat project Node.js dengan dependency ke `puppeteer` dan `lighthouse` sebelumnya, dan kode yang akan saya buat adalah sebagai berikut:
 
-```js
+```js title=sample.js
 const fs = require('fs');
 const puppeteer = require('puppeteer');
 const lighthouse = require('lighthouse');

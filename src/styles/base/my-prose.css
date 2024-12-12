@@ -12,6 +12,8 @@
     /* limit just h1 */
     @apply prose-h1:text-3xl md:prose-h1:text-4xl lg:prose-h1:text-5xl;
     @apply prose-h1:font-bold;
+    @apply prose-h1:font-serif;
+    @apply prose-h1:text-links;
 
     /* a */
     @apply prose-a:link;

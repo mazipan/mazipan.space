@@ -36,7 +36,7 @@ Akhirnya saya jadi bisa memutuskan beberapa hal:
 
 - 🔹 Saya tidak perlu menampilkan data dalam sebulan, berkaca dari cara Tokopedia, lebih bagus lagi dengan cara Google Search saat menampilkan data jadwal sholat. Terasa _on-point_, cuma nampilin hari ini saja.
 
-![Google menampilkan jadwal sholat](/thumbnail/membuat-web-jadwal-sholat-sederhana/jadwal-sholat-di-google.png)
+![Google menampilkan jadwal sholat](../../content/post/_images/membuat-web-jadwal-sholat-sederhana/jadwal-sholat-di-google.png)
 
 - 🔹 Lebih mudah saat MVP untuk mengambil lokasi terkini dengan [Geolocation API](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/getCurrentPosition), seperti yang dilakukan Tokopedia. Ini akan mengurangi keharusan melakukan mapping lokasi-lokasi kota/kabupaten, kalaupun bisa juga dikerjain nantinya, tapi kayanya cuma bisa dikerjain setelah versi awal berhasil dibuat.
 
@@ -52,7 +52,7 @@ Mereka sudah bisa mengembalikan data dalam sebulan langsung. Ini bisa jadi opsi 
 
 ## 🤳 Tampilan
 
-![Tampilan laman jadwal sholat di Baca-Quran.id](/thumbnail/membuat-web-jadwal-sholat-sederhana/tampilan-jadwal-sholat.png)
+![Google menampilkan jadwal sholat](../../content/post/_images/membuat-web-jadwal-sholat-sederhana/jadwal-sholat-di-google.png)
 
 ## 🪚 Mulai koding
 
@@ -64,7 +64,7 @@ Cukup dengan menambah berkas `+page.svelte` baru di bawah `src/routes/`, pada ka
 
 Isinya bisa semudah `Halo Dunia` dulu aja, di contoh ini saya menambahkan judul halaman saja.
 
-```html
+```html title=src/routes/jadwal-sholat/+page.svelte
 <div class="px-4 mb-4">
   <h1 class="text-3xl font-bold">⏰ Jadwal Sholat</h1>
 </div>
@@ -78,7 +78,7 @@ Salah satu syarat utama dari halaman ini adalah mengetahui lokasi terkini dari p
 
 Kode dasarnya bisa begini:
 
-```typescript
+```typescript  title=src/routes/jadwal-sholat/+page.svelte
 let getGeolocation = async () => {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(async (position) => {
@@ -96,7 +96,7 @@ Kode di atas mengambil lokasi terkini dengan memanggil method `getCurrentPositio
 
 Bagian ini kita akan memanfaatkan API pihak ketiga `nominatim`. Kodenya semudah fetch dari publik API mereka saja, contohnya seperti berikut:
 
-```typescript
+```typescript  title=src/routes/jadwal-sholat/+page.svelte
 async function getDistrictByLatLong({
   latitude,
   longitude,
@@ -123,7 +123,7 @@ Kode ini cukup lugas, memanggil API publik dengan melempar parameter `lat` dan `
 
 Biar gak bolak-balik minta akses lokasi dan request ke nominatim.openstreetmap.org, maka simpan saja data-data ini ke web storage. Baca-Quran.id banyak menggunakan `localStorage` untuk menyimpan data, jadi gunakan hal yang sama saja.
 
-```typescript {11-18}
+```typescript {11-18}  title=src/routes/jadwal-sholat/+page.svelte
 let getGeolocation = async () => {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(async (position) => {
@@ -157,7 +157,7 @@ Keunggulan Svelte Store, datanya bisa diakses dari mana saja. Saya punya rencana
 
 Mengekspos kode baru di berkas `src/store/index.ts` beserta definisi tipe data yang dibutuhkan.
 
-```typescript
+```typescript  title=src/routes/jadwal-sholat/+page.svelte
 export type LocationParam = {
   lt: number;
   lg: number;
@@ -173,7 +173,7 @@ export const settingLocation = writable<LocationParam | null>(null);
 
 Kode untuk memperbarui nilai yang disimpan di Svelte Store dengan data yang didapatkan dari pihak ketiga.
 
-```typescript {21-25}
+```typescript {21-25}  title=src/routes/jadwal-sholat/+page.svelte
 let getGeolocation = async () => {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(async (position) => {
@@ -210,7 +210,7 @@ Semudah dengan memanggil `.set` untuk mengganti nilai state di store.
 
 Saya menambahkan kode ini di level Layout (`src/routes/+layout.svelte`), agar bisa jalan di halaman manapun yang diakses pertama kali.
 
-```typescript {9-13}
+```typescript {9-13}  title=src/routes/jadwal-sholat/+page.svelte
 onMount(() => {
   if (typeof window !== 'undefined') {
     if (typeof localStorage !== 'undefined') {
@@ -238,7 +238,7 @@ Kode di atas mengambil nilai dari Web Storage, di _parsing_ jadi objek JavaScrip
 
 Menampilkan data yang telah disetel sebelumnya ke Store:
 
-```svelte
+```svelte  title=src/routes/jadwal-sholat/+page.svelte
 {#if $settingLocation === null}
   <Button onClick={getGeolocation}>
     Beri akses lokasi?
@@ -270,7 +270,7 @@ Bagian ini bertujuan mengambil data dari pihak ketiga, memprosesnya dan menyimpa
 
 Memanggil API publik dari pihak ketiga untuk mendapatkan data jadwal sholat selama sebulan dengan parameter latitude dan longitude, serta menambahkan juga parameter tahun dan bulan yang diinginkan.
 
-```typescript
+```typescript  title=src/routes/jadwal-sholat/+page.svelte
 let prayerTimes = [];
 async function refetchPrayerTime({ latitude, longitude }: { latitude: number; longitude: number }) {
   const year = new Date().getFullYear();
@@ -291,7 +291,7 @@ Kodenya cukup lugas, cuma _construct_ URL untuk API yang akan dipanggil, kemudia
 
 Kita cukup menambahkan kode berikut pada fungsi di atas:
 
-```typescript
+```typescript  title=src/routes/jadwal-sholat/+page.svelte
 async function refetchPrayerTime({ latitude, longitude }: { latitude: number; longitude: number }) {
   // ...kode2 lainnya
   localStorage.setItem('dataJadwalSholat', JSON.stringify(response));
@@ -304,7 +304,7 @@ Seperti sebelumnya, menggunakan method `setItem` dari `localStorage`. Di kasus i
 
 Mengecek ketersediaan cache di Web Storage sebelum memutuskan memanggil API pihak ketiga:
 
-```typescript
+```typescript  title=src/routes/jadwal-sholat/+page.svelte
 async function fetchPrayerTime({ latitude, longitude }: { latitude: number; longitude: number }) {
   const fromStorage = localStorage.getItem('dataJadwalSholat');
   if (fromStorage) {
@@ -334,7 +334,7 @@ Ditambahkan juga pengecekan kalau-kalau data yang disimpan sebelumnya sudab tida
 
 Menyematkan kode untuk mendapatkan data jadwal sholat ke dalam fungsi saat kita meminta akses terhadap lokasi terkini:
 
-```typescript {5-8}
+```typescript {5-8}  title=src/routes/jadwal-sholat/+page.svelte
 let getGeolocation = async () => {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(async (position) => {
@@ -356,7 +356,7 @@ Seperti saya sebutkan di atas, data dari API merupakan data sebulan. Kita perlu 
 
 Berikut kodenya:
 
-```svelte
+```svelte  title=src/routes/jadwal-sholat/+page.svelte
 $: todayPrayerTime = prayerTimes.find((time) => {
   return (
     time.date.gregorian.date ===
@@ -371,7 +371,7 @@ $: todayPrayerTime = prayerTimes.find((time) => {
 
 Tampilannya bisa disesuaikan sesuka hati, tapi minimal ada pengecekan ketersediaan data dan menampilkan kelima jadwal sholat.
 
-```svelte
+```svelte  title=src/routes/jadwal-sholat/+page.svelte
 {#if todayPrayerTime}
   <PrayerTimeCard timings={todayPrayerTime.timings} prayerKey="Fajr" />
   <PrayerTimeCard timings={todayPrayerTime.timings} prayerKey="Dhuhr" />
@@ -383,7 +383,7 @@ Tampilannya bisa disesuaikan sesuka hati, tapi minimal ada pengecekan ketersedia
 
 Dengan `PrayerTimeCard` nya isinya sebenarnya cuma mapping data dengan UI sederhana berupa teks jenis sholat dan waktu/jam dari jadwal sholat yang didapatkan.
 
-```svelte
+```svelte  title=src/routes/jadwal-sholat/+page.svelte
 <script lang="ts">
   const TITLE_MAP = {
     Fajr: 'Subuh',

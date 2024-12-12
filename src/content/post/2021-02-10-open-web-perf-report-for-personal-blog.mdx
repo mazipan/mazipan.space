@@ -54,7 +54,7 @@ Dari contoh di dokumentasi awal saja, kita sudah bisa tau bagaimana cara "melemp
 
 Macam kode ini:
 
-```yaml
+```yaml title=ci.yml
 uses: actions/hello-world-javascript-action@v1.1
 with:
   who-to-greet: 'Mona the Octocat'
@@ -64,7 +64,7 @@ Ini kode sudah ngasih tau kalau dia mau melempar masukkan `who-to-great` yang is
 
 Terus, kode internal nya begini:
 
-```js
+```js title=ci.js
 const core = require('@actions/core');
 const github = require('@actions/github');
 
@@ -86,7 +86,7 @@ Argumennya ditangkap dengan `core.getInput('who-to-greet');`. Semudah itu.
 
 Yang tidak boleh terlewat di awal, ya Github Action membutuhkan sebuah berkas metadata `action.yml` yang isinya adalah deskripsi dari Actions yang kita buat, termasuk argumen yang dibutuhkan olehnya.
 
-```yaml
+```yaml title=ci.yml
 name: 'Hello World'
 description: 'Greet someone and record the time'
 inputs:
@@ -130,7 +130,7 @@ Siapkan "interface" dasar yang dibutuhkan, saya memutuskan membutuhkan paling ti
 
 Saya mulai dengan menambahkannya di `action.yml` kebutuhan saya:
 
-```yaml
+```yaml title=action.yml
 name: 'psi-gh-action'
 inputs:
   api_key:
@@ -151,7 +151,7 @@ Masalahnya saya mesti bisa baca URL yang dalam jumlah yang bisa lebih dari satu,
 
 Untuk passing _Array sendiri_ di YAML bisa dengan begini misalnya:
 
-```yaml
+```yaml action.yml
 devices: |
   mobile
   desktop
@@ -159,7 +159,7 @@ devices: |
 
 Sedangkan untuk mengambil nilainya mungkin jadi harus parsing manual. Hal ini karena `core.getInput(arg)` dari Github Action cuma bisa menerima masukan dalam bentuk string. saya perlu membuat _helper_ yang isinya kurang lebih begini:
 
-```js
+```js title=ci.js
 function getInputList(arg, separator = '\n') {
   const input = core.getInput(arg);
   if (!input) return [];
@@ -172,7 +172,7 @@ function getInputList(arg, separator = '\n') {
 
 Sehingga di file `index.js` saya bisa mendapatkan nilainya dengan begini saja:
 
-```js
+```js  title=index.js
 const urls = getInputList('urls');
 const devices = getInputList('devices');
 const apiKey = core.getInput('api_key');
@@ -188,7 +188,7 @@ Kita bisa memanggil Action kita sendiri melalui repo internal kita, caranya kura
 
 ▶️ Saya menyetel trigger dengan `push` agar bisa dapat umpan balik yang instan
 
-```yaml
+```yaml title=example.yml
 on:
   push:
     paths-ignore:
@@ -198,7 +198,7 @@ on:
 
 ▶️ Gunakan checkout@v2 untuk mengambil repo
 
-```yaml
+```yaml title=example.yml
 on:
   push:
     paths-ignore:
@@ -215,7 +215,7 @@ jobs:
 
 ▶️ Arahkan ke direktori root untuk bisa menggunakan Action internal
 
-```yaml
+```yaml title=example.yml
 on:
   push:
     paths-ignore:
@@ -274,7 +274,7 @@ Jadi contoh petunjuk penerapan juga akan berfokus pada blog statis yang saya mil
 
 ✍️ Isi berkas tersebut dengan contoh kode berikut:
 
-```yaml
+```yaml title=generate-psi.yml
 name: Generate PSI report
 on:
   schedule:
@@ -316,7 +316,7 @@ jobs:
 
 ✍️ Kalian akan mendapati laporan dengan data seperti berikut:
 
-```js
+```json title=report.json
 {
   "timestamp": "2021-02-05T16:12:02.119Z",
   "reports": [
@@ -345,7 +345,7 @@ Untuk kalian yang ingin mengikuti perubahan inisial yang saya lakukan untuk impl
 
 Hasilnya bisa kalian jumpai saat ini di halaman [/speed](/speed)
 
-![Gambar tampilan dari halaman /speed di awal-awal](/thumbnail/open-web-perf-report-for-personal-blog/speed-page.png)
+![Gambar tampilan dari halaman /speed di awal-awal](../../content/post/_images/open-web-perf-report-for-personal-blog/speed-page.png)
 
 ## Rencana jangka pendek
 

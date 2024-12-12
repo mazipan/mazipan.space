@@ -50,7 +50,7 @@ Langkah-langkah memasang dan melakukan testing pada kode Vue.js dan Nuxt.js deng
 
 Unit testing (UT) merupakan bagian terkecil dari proses pengetesan sebuah aplikasi perangkat lunak. UT berfokus untuk mengetest bagian terkecil sebuah aplikasi yakni potongan-potongan kode yang dibuat oleh pengembangnya, itu mengapa UT paling ideal dibuat oleh pengembang itu sendiri. Dengan mengetest kode-kode kecil di dalam sebuah aplikasi diharapkan kita bisa menghasilkan aplikasi perangkat lunak dengan kualitas yang lebih bisa dijamin.
 
-![Unit Test Meme by commitstrip](/thumbnail/unit-testing-guide-in-vuejs/commitstrip.jpg)
+![Unit Test Meme by commitstrip](../../content/post/_images/unit-testing-guide-in-vuejs/commitstrip.jpg)
 
 [🔼 Kembali ke navigasi](#navigasi)
 
@@ -87,7 +87,7 @@ Untuk Jest sendiri berikut cara memasang Unit Test pada beberapa projek:
 
 - Pasang Vue-CLI 3 dengan perintah
 
-```bash
+```bash title=terminal
 $ yarn add @vue/cli
 #atau
 $ npm i -g @vue/cli
@@ -103,7 +103,7 @@ $ npm i -g @vue/cli
 
 Pasang beberapa dependency untuk menjalankan unit test dengan jest berikut:
 
-```bash
+```bash title=terminal
 $ yarn add jest babel-jest vue-jest @vue/test-utils -D
 # atau
 $ npm i jest babel-jest vue-jest @vue/test-utils --dev
@@ -162,7 +162,7 @@ Secara bawaan, Jest akan menganggap semua berkas yang berekstensi `.spec.js` ata
 
 Untuk memasang Jest pada Nuxt, bisa melalui `create-nuxt-app` yang bisa dilakukan dengan perintah:
 
-```bash
+```bash title=terminal
 $ yarn create nuxt-app my-project-name
 # atau
 $ npm init nuxt-app my-project-name

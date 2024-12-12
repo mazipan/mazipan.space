@@ -37,7 +37,7 @@ Karena saya sudah memiliki kode dari versi sebelumnya jadi mudah saja untuk memi
 
 GraphQL Playground bisa dijumpai di [GraphQL-PokeAPI](https://graphql-pokeapi.vercel.app/api/graphql), dengan mengunjungi Playground kalian bisa mencoba berbagai query yang tersedia serta melihat dokumentasi untuk memahami struktur data yang ada.
 
-![Contoh penggunaan GraphQL Playground](/thumbnail/graphql-for-pokeapi/query-graphql-pokeapi.png)
+![Contoh penggunaan GraphQL Playground](../../content/post/_images/graphql-for-pokeapi/query-graphql-pokeapi.png)
 
 Beberapa contoh query dan penggunaannya antara lain:
 
@@ -45,7 +45,7 @@ Beberapa contoh query dan penggunaannya antara lain:
 
 Contoh query:
 
-```js
+```js title=sample.js
 query pokemons($limit: Int, $offset: Int) {
   pokemons(limit: $limit, offset: $offset) {
     count
@@ -64,7 +64,7 @@ query pokemons($limit: Int, $offset: Int) {
 
 Dengan variabel yang dibutuhkan contohnya sebagai berikut:
 
-```js
+```js title=sample.js
 {
   "limit": 2,
   "offset": 1
@@ -73,7 +73,7 @@ Dengan variabel yang dibutuhkan contohnya sebagai berikut:
 
 Query tersebut akan menghasilkan balikan sebagai berikut:
 
-```js
+```js  title=sample.js
 {
   "data": {
     "pokemons": {
@@ -108,7 +108,7 @@ Query tersebut akan menghasilkan balikan sebagai berikut:
 
 Contoh query:
 
-```js
+```js  title=sample.js
 query pokemon($name: String!) {
   pokemon(name: $name) {
     id
@@ -136,7 +136,7 @@ query pokemon($name: String!) {
 
 Dengan variabel yang dibutuhkan contohnya sebagai berikut:
 
-```js
+```js  title=sample.js
 {
   "name": "ditto"
 }
@@ -144,7 +144,7 @@ Dengan variabel yang dibutuhkan contohnya sebagai berikut:
 
 Query tersebut akan menghasilkan balikan sebagai berikut:
 
-```js
+```js  title=sample.js
 {
   "data": {
     "pokemon": {

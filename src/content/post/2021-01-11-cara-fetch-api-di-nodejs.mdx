@@ -47,7 +47,7 @@ Sebelum saya menjelaskan lebih lanjut, semua kode yang ada di artikel kali ini b
 Node.js secara Native sudah memiliki interface yang bisa kita gunakan untuk melakukan pemanggilan sebuah API, bisa dengan memanfaatkan modul `http` ataupun `https`.
 Ini bisa jadi pilihan untuk yang anti-_"3rd party club"_ yang sayangnya kodenya memang masih cukup rumit karena memberikan balikan berupa _stream_, berikut adalah contoh kode jika kita ingin melakukan pemanggilan API dengan Native Node.js:
 
-```js
+```js title=sample.js
 const https = require('https');
 const CONSTANT = require('./constant');
 
@@ -69,7 +69,7 @@ Cukup belajar sekali dan gunakan berkali-kali bukan?
 
 Berikut contoh kode memanggil API dengan Node-Fetch:
 
-```js
+```js title=sample.js
 const fetch = require('node-fetch');
 const CONSTANT = require('./constant');
 
@@ -85,7 +85,7 @@ Kita bisa menggunakan Axios juga untuk melakukan pemanggilan API di Node.js deng
 
 Berikut contoh kodenya:
 
-```js
+```js title=sample.js
 const axios = require('axios');
 const CONSTANT = require('./constant');
 
@@ -108,7 +108,7 @@ Saya sendiri mengenal pustaka ini karena dulu ini salah satu yang paling populer
 
 Berikut contoh kode melakukan pemanggilan API dengan SuperAgent:
 
-```js
+```js title=sample.js
 const superagent = require('superagent');
 const CONSTANT = require('./constant');
 
@@ -130,7 +130,7 @@ Ciri khas dari pustaka yang dibuat Sindre umumnya memiliki interface yang sederh
 
 Berikut contoh kode melakukan pemanggilan API dengan Got-nya Sindre:
 
-```js
+```js title=sample.js
 const got = require('got');
 const CONSTANT = require('./constant');
 
@@ -152,13 +152,13 @@ Pada bagian ini kita akan berusaha mengeksekusi perintah cURL (yang biasanya lew
 Untuk bisa menggunakan cara ini, kalian harus memastikan terlebih dahulu bahwa mesin atau komputer kalian bisa mengeksekusi perintah cURL dari terminal.
 Caranya ya cobain saja perintah sederhananya di terminal, misalnya:
 
-```shell
+```bash title=terminal
 $ curl https://www.mazipan.space
 ```
 
 Berikut contoh kodenya jika ingin mengeksekusi perintah melalui `child_process` di Node.js:
 
-```js
+```js title=sample.js
 const { exec } = require('child_process');
 const CONSTANT = require('./constant');
 
@@ -175,7 +175,7 @@ exec(`curl ${CONSTANT.API_URL}`, (err, stdout, stderr) => {
 
 Buat kalian para penggandrung perintah cURL seperti di atas, namun malas menggunakan `child_process`, bisa juga menggunakan pustaka `shelljs` untuk mengeksekusi perintah tersebut, berikut contoh kodenya:
 
-```js
+```js title=sample.js
 const { exec } = require('shelljs');
 const CONSTANT = require('./constant');
 

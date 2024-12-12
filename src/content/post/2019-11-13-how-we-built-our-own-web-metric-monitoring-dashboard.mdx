@@ -39,7 +39,7 @@ Di industri, ada beberapa alternatif umum yang biasa digunakan oleh para pengemb
 
 ### Pagespeed Insight
 
-![Laporan Pagespeed Insight](/thumbnail/how-we-built-our-own-web-metric-monitoring-dashboard/pagespeed-result.png)
+![Laporan Pagespeed Insight](../../content/post/_images/how-we-built-our-own-web-metric-monitoring-dashboard/pagespeed-result.png)
 
 Ketika saya bilang, kalian harus memantau metrik web tersebut hari demi hari, sehingga kalian bisa mengetahui dampak dari kode yang kalian kirim ke produksi terhadap berbagai metrik yang terlah disiapkan, deployment mana yang menyebabkan penurunan pada metrik, atau apakah inisiatif yang kalian kerjakan memang bisa meningkatkan skor performa kalian.
 Dalam skenario ini, kita tidak bisa menggunakan Pagespeed Insight sebab tidak bisa merekam hasil pengetesan hari demi hari.
@@ -55,7 +55,7 @@ Tonton video mengenai [Menggunakan laporan Chrome UX untuk mengevaluasi pengguna
 
 ### Web.dev
 
-![Web.dev report](/thumbnail/how-we-built-our-own-web-metric-monitoring-dashboard/webdev-result.png)
+![Laporan Pagespeed Insight](../../content/post/_images/how-we-built-our-own-web-metric-monitoring-dashboard/pagespeed-result.png)
 
 Berpindah ke **[web.dev/measure](https://web.dev/measure/)**, pada dasarnya menjalankan Lighthouse dibelakangnya.
 Ya, Lighthouse adalah satau alat paling populer yabg dikembangkan oleh tim Chrome untuk melakukan pengujian terhadap web dan mendapatkan laporan yang cukup komprehensif dari umu sampai ke bagian detail.
@@ -71,7 +71,7 @@ Serta bagaimana kalau kita membutuhkan untuk menganalisa datanya, bukan hanya re
 
 ### Webpagetest
 
-![Webpagetest.org](/thumbnail/how-we-built-our-own-web-metric-monitoring-dashboard/wpt.png)
+![Laporan Pagespeed Insight](../../content/post/_images/how-we-built-our-own-web-metric-monitoring-dashboard/pagespeed-result.png)
 
 Alat terakhir yang umum digunakan adalah Webpagetest.org, salah satu situs yang sangat dasyat untuk digunakan dalam memantau web metrik.
 Sudah mendukung Lighthouse juga ketika dibutuhkan.
@@ -97,7 +97,7 @@ Pengembang membutuhkan alat untuk mengukur seberapa baik implementasi PWA mereka
 
 Fenomena dan kepopuleran Lighthouse ini yang semakin mengarahkkan kami untuk melihat ini sebagai salah satu kandidat terbaik bagi pembuatan dashboard pemantau web metrik kami di versi selanjutnya.
 
-![Lighthouse Logo](/thumbnail/how-we-built-our-own-web-metric-monitoring-dashboard/lighthouse.png)
+![Laporan Pagespeed Insight](../../content/post/_images/how-we-built-our-own-web-metric-monitoring-dashboard/pagespeed-result.png)
 
 Lighthouse sendiri tersedia dalam berbagai alternatif untuk bisa digunakan, secara bawaan Lighthouse sudah tertanam di Chrome Dev Tools pada tab "Lighthouse".
 
@@ -146,7 +146,7 @@ launchChromeAndRunLighthouse('https://example.com', opts).then((results) => {
 
 Kalian perlu menambahkan dependensi yang dibutuhkan terlebih dahulu, seperti `chrome-launcher` dan `lighthouse` dengan cara:
 
-```bash
+```bash title=terminal
 $ yarn add --dev lighthouse chrome-launcher
 ```
 
@@ -219,15 +219,15 @@ Kami juga menyetel ambang batas bagi sebagian metrik seperti TTI, skor performa,
 Ketika sebuah halaman tidak dapat mencapai ambang batas yang sudah ditentukan maka dashboard akan mengirim notifikasi ke Slack baik ke channel maupun direct ke pengelola dari halaman tersebut.
 Alerting diharapkan meningkatkan kepedulian semua orang yang terlibat dengan halaman tersebut, karena banyak orang yang terlalu repot untuk mengecek dashboard berulang-ulang.
 
-![Contoh halaman konfigurasi untuk menambah halaman baru](/thumbnail/how-we-built-our-own-web-metric-monitoring-dashboard/screen-config.png)
+![Laporan Pagespeed Insight](../../content/post/_images/how-we-built-our-own-web-metric-monitoring-dashboard/pagespeed-result.png)
 
 Setelah data berhasil disimpan di tempat kita, kita bisa melakukan analisa dan aggregasi data sesuai kebutuhan. Kita bisa menyajikan hasilnya baik melalui tabel atau chart sesuai apa yang dimau. Datanya sudah ada disana, tinggal kita mau mengolahnya bagaimana.
 
-![Contoh laporan dalam bentuk chart](/thumbnail/how-we-built-our-own-web-metric-monitoring-dashboard/screen-chart.png)
+![Laporan Pagespeed Insight](../../content/post/_images/how-we-built-our-own-web-metric-monitoring-dashboard/pagespeed-result.png)
 
-![Contoh laporan dalam bentuk tabel](/thumbnail/how-we-built-our-own-web-metric-monitoring-dashboard/screen-table.png)
+![Laporan Pagespeed Insight](../../content/post/_images/how-we-built-our-own-web-metric-monitoring-dashboard/pagespeed-result.png)
 
-![Contoh detail laporan](/thumbnail/how-we-built-our-own-web-metric-monitoring-dashboard/screen-detail.png)
+![Laporan Pagespeed Insight](../../content/post/_images/how-we-built-our-own-web-metric-monitoring-dashboard/pagespeed-result.png)
 
 ## Image Analyzer
 
@@ -249,7 +249,7 @@ const allImagesFromLighthouse = report.audits['network-requests'].details.items.
 
 Sayangnya, dari Lighthouse kita hanya mendapatkan data mengenai `resourceSize` (ukuran asli) dan `transferSize` (ukuran yang disampaikan melalui network). Ini bisa jadi bias, karena ukuran sebuah gambar juga ditentukandari berapa width, height dan kedalaman pixelnya. Untuk bisa menganalisa lebih lanjut kami memanfaatkan pustaka [image-size](https://www.npmjs.com/package/image-size) berdasarkan data yang sebelumnya dikumpulkan oleh Lighthouse.
 
-![Contoh chart scatter dari sebaran gambar](/thumbnail/how-we-built-our-own-web-metric-monitoring-dashboard/screen-image.png)
+![Laporan Pagespeed Insight](../../content/post/_images/how-we-built-our-own-web-metric-monitoring-dashboard/pagespeed-result.png)
 
 ## Alternatif
 

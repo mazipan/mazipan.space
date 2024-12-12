@@ -4,6 +4,8 @@ import { pluginCollapsibleSections } from '@expressive-code/plugin-collapsible-s
 import { pluginLineNumbers } from '@expressive-code/plugin-line-numbers';
 import { pluginColorChips } from 'expressive-code-color-chips';
 
+import { pluginLanguageBadge } from './expressive-lang-badge';
+
 export const expressiveCodeIntegration = () =>
   expressiveCode({
     themes: ['light-plus', 'night-owl'],
@@ -36,8 +38,14 @@ export const expressiveCodeIntegration = () =>
         frameBoxShadowCssValue: 'none',
       },
     },
-    plugins: [pluginCollapsibleSections(), pluginLineNumbers(), pluginColorChips()],
+    plugins: [
+      pluginCollapsibleSections(),
+      pluginLineNumbers(),
+      pluginColorChips(),
+      pluginLanguageBadge(),
+    ],
     defaultProps: {
+      frame: 'code',
       showLineNumbers: true,
       overridesByLang: {
         'bash,shell,md,markdown': {

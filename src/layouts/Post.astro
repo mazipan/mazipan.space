@@ -18,9 +18,9 @@ const props = Astro.props;
       <slot name="hero-text" />
     </section>
 
-    <section class="centered-px max-w-6xl">
+    <section class="centered md:centered-px max-w-6xl">
       <div class="relative lg:grid lg:grid-cols-[minmax(0,1fr),300px] gap-4">
-        <section class="my-prose centered-px b-h2-my post-detail [&>h2:nth-child(1)]:mt-0">
+        <section class="my-prose centered-px post-detail [&>h2:nth-child(1)]:mt-0">
           <slot name="content" />
         </section>
         {Astro.slots.has('toc') && <slot name="toc" />}

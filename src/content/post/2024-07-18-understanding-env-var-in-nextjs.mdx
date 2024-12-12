@@ -37,7 +37,7 @@ Env var berisi pasangan _key-value_, dan biasanya disimpan dalam file `.env` yan
 
 Contoh isi dari sebuah `.env`:
 
-```bash
+```bash title=terminal
 # Contoh env var
 DOMAIN_APLIKASI="https://mazipan.space"
 DOMAIN_ASET="https://imagekit.io/sebuah-alamat"
@@ -47,7 +47,7 @@ DOMAIN_ASET="https://imagekit.io/sebuah-alamat"
 
 Dari artikel [How to read environment variables from Node.js](https://nodejs.org/en/learn/command-line/how-to-read-environment-variables-from-nodejs), pada dasarnya Node.js bisa otomatis membaca env var yang ada di sistem operasi semudah dengan kode `process.env.SEBUAH_ENV_VAR`. Jadi misal di sebuah sistem operasi terdapat env-var
 
-```bash
+```bash title=terminal
 # Contoh env var
 DOMAIN_APLIKASI="https://mazipan.space"
 DOMAIN_ASET="https://imagekit.io/sebuah-alamat"
@@ -55,14 +55,14 @@ DOMAIN_ASET="https://imagekit.io/sebuah-alamat"
 
 Maka kamu bisa membaca dengan kode berikut
 
-```ts
+```ts title=.env
 process.env.DOMAIN_APLIKASI; // "https://mazipan.space"
 process.env.DOMAIN_ASET; // "https://imagekit.io/sebuah-alamat"
 ```
 
 Dalam kasus misalnya env var tersebut didefinisikan melalui file `.env`, kamu perlu menambahkan sedikit perintah saat menjalankan program, contohnya:
 
-```bash
+```bash title=terminal
 node --env-file=.env index.js
 ```
 

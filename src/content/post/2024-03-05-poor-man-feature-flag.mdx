@@ -53,13 +53,13 @@ Anggap saja kalian sudah punya basic Next.js projek dengan App Router-nya, saya 
 
 Tambahkan env var baru, misal di dalam file `.env.development`, dengan isi:
 
-```bash
+```bash title=.env
 NEXT_PUBLIC_FEATURE_1=y
 ```
 
 Dengan kode ini, kita bisa menggunakannya baik di kode server maupun client dengan cara:
 
-```typescript
+```typescript title=app.ts
 if (process.env.NEXT_PUBLIC_FEATURE_1 === 'y') {
   // Fitur aktif
 } else {
@@ -69,7 +69,7 @@ if (process.env.NEXT_PUBLIC_FEATURE_1 === 'y') {
 
 Sehingga misalnya kita akan membuat sebuah fitur tombol yang hanya muncul saat `FEATURE_1` diaktifkan, kita bisa membuatnya dengan cara:
 
-```tsx
+```tsx title=Home.tsx
 export default function Home() {
   return (
     <main>
@@ -97,7 +97,7 @@ Cara paling mudah yang kepikiran adalah dengan memberikan penanda ke user terseb
 
 Alurnya bisa digambarkan seperti ini:
 
-```mermaid
+```mermaid title=feature-flag.mermaid
 flowchart TD
     A[Pengguna] --> | Akses fitur 1 | B{Apakah di-whitelist lewat cookie?}
     B --> | Iya   | C[Fitur AKTIF]
@@ -112,7 +112,7 @@ Salah satu yang mesti kita design selanjutnya adalah bagaimana value yang mau di
 
 Next.js sudah memiliki built-in function untuk membaca Cookie yang hanya jalan di server, kita akan memanfaatkan fungsi tersebut biar lebih mudah dalam membaca Cookie. Baca lebih lanjut mengenai [function cookies](https://nextjs.org/docs/app/api-reference/functions/cookies). Contoh kodenya seperti berikut:
 
-```js
+```js title=app/home/page.js
 import { cookies } from 'next/headers';
 
 export default function Page() {
@@ -125,7 +125,7 @@ export default function Page() {
 
 Karena ada kemungkinan fungsi whitelist fitur flag ini akan digunakan di semua komponen di aplikasi kita, maka sebaiknya proses membaca Cookie diletakkan di level tertinggi saja, kita akan meletakkan di berkas `layout.ts` yang mana merupakan root dari semua halaman di projek Next.js. Sedangkan agar mudah digunakan di komponen manapun nantinya, kita akan memanfaatkan React Context untuk menyampaikan value tersebut. Berikut contoh kode di file `layout.ts`:
 
-```tsx
+```tsx title=layout.ts
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const cookieStore = cookies();
   const featureFlagsString = cookieStore.get('feature-flag');
@@ -145,7 +145,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
 Sedangkan contoh React Context dari kode di atas adalah:
 
-```tsx
+```tsx title=feature-flag-context.tsx
 'use client';
 
 import { createContext, useCallback, useContext } from 'react';
@@ -193,7 +193,7 @@ export const useFeatureFlagContext = () => {
 
 Contoh penggunaan whitelist ini di level komponen, misalnya:
 
-```tsx
+```tsx title=home.tsx
 export default function Home() {
   const { isEnabled } = useFeatureFlagContext();
 

@@ -19,13 +19,13 @@ Menceritakan beberapa langkah yang saya kerjakan ketika melakukan migrasi projec
 
 Seperti kita tau bersama bahwa bawaan dari project Nuxt akan membuat kode dengan basis JavaScript Vanilla. Sedangkan dengan makin maraknya penggunaan TypeScript di kalangan para pengembang JavaScript membuat saya pribadi ikut kepincut untuk mengimplementasikan penggunaan TypeScript pada projek kode sumber terbuka saya.
 
-![Quran Offline](/thumbnail/migrate-nuxt-to-typescript/quran-offline.png)
+![Quran Offline](../../content/post/_images/migrate-nuxt-to-typescript/quran-offline.png)
 
 Berikut hal-hal yang saya kerjakan dalam proses migrasi tersebut:
 
 ## Menambahkan tsconfig.json
 
-```javascript
+```json title=tsconfig.json
 {
   "compilerOptions": {
     "target": "es5",
@@ -60,7 +60,7 @@ Berikut hal-hal yang saya kerjakan dalam proses migrasi tersebut:
 
 Untuk menambahkan berkas ini, saya juga perlu menambahkan beberapa dependencies berikut:
 
-```javascript
+```json title=package.json
 {
   "@nuxt/typescript": "2.7.1",
   "@types/jest": "24.0.13",
@@ -71,7 +71,7 @@ Untuk menambahkan berkas ini, saya juga perlu menambahkan beberapa dependencies 
 
 ## Perbarui eslintrc.js
 
-```javascript
+```javascript title=eslintrc.js
 module.exports = {
   plugins: ['@typescript-eslint'],
   parserOptions: {
@@ -102,7 +102,7 @@ module.exports = {
 
 Dan menambahkan beberapa dependencies berikut:
 
-```javascript
+```json title=package.json
 {
   "@nuxtjs/eslint-config": "0.0.1",
   "@typescript-eslint/eslint-plugin": "1.9.0"
@@ -113,7 +113,7 @@ Dan menambahkan beberapa dependencies berikut:
 
 Ubah ekstensi file dan buat sedikit perubahan menjadi seperti berikut:
 
-```javascript
+```javascript title=nuxt.config.js
 import NuxtConfiguration from '@nuxt/config';
 import { Configuration as WebpackConfiguration } from 'webpack';
 
@@ -136,7 +136,7 @@ Karena hampir semua komponen dalam projek saya telah menggunakan Vuex Store maka
 
 Pada projek ini saya masih menggunakan Classic Store yang mana sebenarnya sudah deprecated dan akan di remove pada Nuxt v3 kedepannya, berikut classic store yang saya buat dalam berkas `store/index.ts`:
 
-```javascript
+```typescript title=store/index.ts
 import Vuex from 'vuex';
 
 import { actions } from './actions';
@@ -158,7 +158,7 @@ export default createStore;
 
 Pada berkas `state.ts` saya membuat interface yang menjadi type definitions dari state yang akan dibuat dan membuat state dengan berbagai initial state yang sudah dibuat seperti contoh berikut:
 
-```javascript
+```typescript title=state.ts
 export interface StateType {
   isShowSidebar: boolean;
 }
@@ -173,7 +173,7 @@ export const state = (): StateType => ({
 
 Vuex sendiri sudah menyediakan dukungan untuk TypeScript dengan memberikan tipe data pada balikan untuk Mutations dengan cukup meng-import `MutationTree` dari Vuex, berikut contoh kodenya:
 
-```javascript
+```typescript title=mutations.ts
 import { MutationTree } from 'vuex';
 import { StateType } from './state';
 import { Types } from './types';
@@ -189,7 +189,7 @@ export const mutations: MutationTree<StateType> = {
 
 Untuk actions sendiri hampir mirip dengan mutations yang mana sudah disediakan tipe data dari Vuex, seperti contoh kode berikut:
 
-```javascript
+```typescript title=actions.ts
 import { ActionTree } from 'vuex';
 import { StateType } from './state';
 import { Types } from './types';
@@ -207,7 +207,7 @@ Setelah berhasi melakukan refactor pada Vuex Store, selanjutnya kita akan melaku
 
 Untuk mendukung TypeScript, kita perlu menambahkan beberapa dependencies baru seperti berikut:
 
-```javascript
+```json title=package.json
 {
   "vue-class-component": "7.1.0",
   "vue-property-decorator": "8.1.1",
@@ -217,7 +217,7 @@ Untuk mendukung TypeScript, kita perlu menambahkan beberapa dependencies baru se
 
 Yang paling utama, tentu kita harus mengubah kode dalam single file komponen Vue yang sebelumnya hanya `<script></script>` menjadi `<script lang="ts"></script>` agar kita bisa mendukung kode TypeScript pada bagian script. Dan berikut contoh layout `default.vue` yang sudah saya refactor menggunakan TypeScript:
 
-```javascript
+```javascript title=default.vue
 import { Component, Vue } from 'vue-property-decorator';
 import { State, Mutation, Action } from 'vuex-class';
 
@@ -269,7 +269,7 @@ Seperti bisa kalian lihat dari contoh kode diatas, saya menggunakan [vue-propert
 
 Unit test hampir tidak diperlukan perubahan sama sekali selain dari path dan nama file yang kemungkinan besar kita ubah nama dan letaknya. Kita hanya perlu mencocokan konfigurasi Jest agar mendukung TypeScript seperti pada contoh kode berikut:
 
-```javascript
+```javascript title=jest.config.js
 module.exports = {
   moduleNameMapper: {
     '^~/(.*)$': '<rootDir>/$1',

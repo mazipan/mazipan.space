@@ -35,17 +35,18 @@ const TableOfContents = ({
       </div>
 
       <aside
+        data-show={showContents}
         className={cn(
           'my-prose centered-px bg-base-100',
           className,
-          isLg ? '' : 'fixed bottom-24 left-4 w-[80%] z-50'
+          !isLg &&
+            'fixed bottom-24 left-4 w-[80%] z-50 rounded-lg transition-all duration-500 transform shadow-lg border border-base-200 data-[show=true]:translate-x-0 data-[show=false]:-translate-x-[110%]'
         )}
       >
         <div
           className={cn(
             'toc rounded-lg border-2 border-base-300 border-dashed p-4 mx-auto overflow-y-auto',
-            showContents ? '' : 'hidden',
-            isLg ? 'sticky top-14 max-h-[calc(100vh-80px)]' : 'max-h-[calc(80vh)]'
+            'max-h-[calc(80vh)] lg:sticky lg:top-14 lg:max-h-[calc(100vh-80px)]'
           )}
         >
           <b className="font-semibold">On This Page</b>

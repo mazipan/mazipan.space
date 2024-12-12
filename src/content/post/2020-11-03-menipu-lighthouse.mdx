@@ -42,7 +42,7 @@ Hal tersebut yakni dengan mendeteksi apakah web kita sedang dikunjungi oleh Ligh
 
 Di peramban kita bisa mengecek User Agent dengan cara:
 
-```js
+```js title=sample.js
 window.navigator.userAgent;
 // Contoh output:
 // Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1
@@ -52,13 +52,13 @@ Untuk di Backend sendiri bisa bermacam-macam caranya tergantung dari bahasa yang
 
 Bagaimana dengan User Agent dari Lighthouse sendiri, kalau dari web [developers.whatismybrowser.com](https://developers.whatismybrowser.com/useragents/parse/682595-google-lighthouse) kita bisa mengetahui bahwa User Agent yang digunakan adalah:
 
-```js
+```js title=sample.js
 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36(KHTML, like Gecko) Chrome/61.0.3116.0 Safari/537.36 Chrome-Lighthouse';
 ```
 
 Sayangnya ini hanya untuk device desktop, sementara untuk device mobile akan beda lagi. Okelah kita bisa jadi tidak percaya dengan website begini, mari langsung saja kita tengok ke kode Lighthouse yang memang terbuka di Github ini. Dari file [lighthouse-core/lib/emulation.js#L44](https://github.com/GoogleChrome/lighthouse/blob/master/lighthouse-core/lib/emulation.js#L44), kita mengetahui bahwa ada dua konstanta yang digunakan oleh Lighthouse yakni:
 
-```js
+```js title=sample.js
 // eslint-disable-next-line max-len
 const MOTOG4_USERAGENT =
   'Mozilla/5.0 (Linux; Android 7.0; Moto G (4)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4143.7 Mobile Safari/537.36 Chrome-Lighthouse';
@@ -71,7 +71,7 @@ Sudah kelihatan kan polanya? Selalu ada tambahan `Chrome-Lighthouse` di ujung Us
 
 Jadi, mari kita santet si Lighthouse ini, lihat kode berikut:
 
-```js
+```js title=sample.js
 const Home = () => {
   // Cek string User Agent di peramban, apa memiliki kata "Chrome-Lighthouse" atau tidak
   const apakahLighthouse = /Chrome-Lighthouse/i.test(navigator.userAgent);
