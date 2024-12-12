@@ -25,7 +25,7 @@ export const getFeed = async (): Promise<Feed> => {
     id: SITE_URL,
     link: SITE_URL,
     language: 'en',
-    image: `${SITE_URL}/images/favicons/favicon-32x32.png`,
+    image: `${SITE_URL}/favicon/favicon-32x32.png`,
     favicon: `${SITE_URL}/favicon.ico`,
     copyright: copyright(new Date()),
     updated: new Date(),
