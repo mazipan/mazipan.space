@@ -14,7 +14,7 @@ import { trimHttpProtocol } from '@/utils/strings';
 import type { APIContext, APIRoute } from 'astro';
 
 const { SITE_URL } = CONFIG_CLIENT;
-const { FONTS_FOLDER, OG_FOLDER, IMAGE_404, AVATAR } = FILE_PATHS;
+const { FONTS_FOLDER, OG_DEFAULT, IMAGE_404, AVATAR } = FILE_PATHS;
 
 export const getStaticPaths = async () => {
   const pages = await getPages();
@@ -48,10 +48,9 @@ export const GET: APIRoute = async ({ props }: APIContext) => {
     case pageId === 'page404':
       heroImagePath = IMAGE_404;
       break;
-
     // fallback to random default image
     default:
-      heroImagePath = await getRandomImage(OG_FOLDER);
+      heroImagePath = OG_DEFAULT;
       break;
   }
 
