@@ -1,6 +1,6 @@
 import { html } from 'satori-html';
 
-import { getRandomGradient } from '@/utils/gradients';
+import { getRandomGradientStyle } from '@/utils/gradients';
 import { limitString } from '@/utils/strings';
 
 export interface TemplateProps {
@@ -18,10 +18,11 @@ const templateHtml = ({ title, heroImageUrl, avatarImageUrl, siteUrl }: Template
   // max 6 rows x 10-15 chars
   const limitedTitle = limitString(title, 70);
 
-  const randomGradient = getRandomGradient();
-
   return html`
-    <div class="flex p-8 h-full" style="${randomGradient}" style="font-family:'Space Grotesk';">
+    <div
+      class="flex p-8 h-full w-full"
+      style="font-family:'Space Grotesk';background-image:${getRandomGradientStyle()};"
+    >
       <div class="flex w-full flex-row justify-between text-slate-900">
         <!-- left column -->
         <div class="w-[550px] flex flex-col justify-between mr-6">
@@ -32,9 +33,10 @@ const templateHtml = ({ title, heroImageUrl, avatarImageUrl, siteUrl }: Template
           <div class="flex items-center ${isLongSiteUrl ? 'flex-col justify-end items-start' : ''}">
             <img
               src=${avatarImageUrl}
-              width="120"
-              height="120"
-              class="rounded-full mr-8 border-2 border-gray-300"
+              alt=${limitedTitle}
+              width="80"
+              height="80"
+              class="rounded-full mr-8"
             />
             <div class="flex items-center ${isLongSiteUrl ? 'mt-4 text-3xl' : 'text-4xl'}">
               <div>${siteUrl}</div>
@@ -44,7 +46,7 @@ const templateHtml = ({ title, heroImageUrl, avatarImageUrl, siteUrl }: Template
 
         <!-- right column -->
         <div class="w-[550px] flex items-center">
-          <img src="${heroImageUrl}" class="h-full w-full rounded-md" style="object-fit: cover" />
+          <img src="${heroImageUrl}" class="h-full w-full rounded-2xl" style="object-fit: cover" />
         </div>
       </div>
     </div>
