@@ -10,7 +10,7 @@ const metadata = getPageMetadata('lists/talks');
 <Centered {metadata}>
   <article class="flex flex-col">
     <slot name="heading">
-      <h1 class="b-h1">🎙️ {metadata.title}</h1>
+      <h1 class="b-h1">{metadata.title}</h1>
     </slot>
     <section class="flex-grow flex flex-col">
       <p>

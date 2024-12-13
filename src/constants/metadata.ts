@@ -29,30 +29,30 @@ export const PAGE_METADATA = {
   // list pages
   // must have 'list' prefix to omit type arg
   'lists/blog': {
-    title: 'Blog',
+    title: '📚 Blog',
   },
   'lists/blog/tags': {
-    title: 'Tags',
+    title: '🎟️ Tags',
   },
   'lists/blog/tags/tag': {
-    title: 'Tag',
+    title: '🎟️ Tag',
   },
   // 'src/pages/blog/tags/[tag]/[...page].astro' // dynamic tag param
   'lists/blog/explore': {
-    title: 'Explore',
+    title: '🧗 Explore',
   },
   'lists/blog/categories': {
-    title: 'Categories',
+    title: '🧩 Categories',
   },
   'lists/blog/categories/category': {
-    title: 'Category',
+    title: '🧩 Category',
   },
   // src/pages/blog/categories/[category]/[...page].astro
   'lists/projects': {
-    title: 'Projects',
+    title: '🖥️ Projects',
   },
   'lists/talks': {
-    title: 'Talks',
+    title: '🎙️ Talks',
   },
 } as const;
 

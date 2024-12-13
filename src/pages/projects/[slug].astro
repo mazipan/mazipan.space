@@ -3,6 +3,7 @@ import { Image } from 'astro:assets';
 
 import { getAllProjects } from '@/modules/project';
 import Centered from '@/layouts/Centered.astro';
+import RainbowTag from '@/components/RainbowTag.astro';
 import Share from '@/components/Share.astro';
 import { IMAGE_SIZES } from '@/constants/image';
 import { ROUTES } from '@/constants/routes';
@@ -45,9 +46,12 @@ const { Content } = await render();
 ---
 
 <Centered {metadata}>
-  <article class="my-prose">
+  <article class="my-prose relative">
+    <div class="relative mb-2">
+      <RainbowTag emoji="🖥️" text="Projects" class="h-8" />
+    </div>
     <h1
-      class="b-h1 font-serif"
+      class="b-h1 font-serif mb-2"
       transition:name={getTransitionNameFromElementId({
         elementId: TRANSITION_ELEMENT_IDS.POST_CARD.TITLE,
       })}
@@ -57,7 +61,7 @@ const { Content } = await render();
     {
       description && (
         <p
-          class="font-normal text-content text-xl md:text-2xl mb-6 md:mb-8"
+          class="font-normal text-content text-xl my-4"
           transition:name={getTransitionNameFromElementId({
             elementId: TRANSITION_ELEMENT_IDS.POST_CARD.DESCRIPTION,
           })}
