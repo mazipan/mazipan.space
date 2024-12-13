@@ -103,8 +103,9 @@ async function migrateRedirect() {
     if (!isDir) {
       if (existsSync(postPath)) {
         const slug = post.replace('.mdx', '');
+        const [year, month, date, ...rest] = slug.split('-');
         res.push({
-          source: `/${slug}`,
+          source: `/${rest.join('-')}`,
           destination: `/blog/${slug}`,
         });
       }
