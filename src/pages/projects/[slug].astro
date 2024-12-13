@@ -1,8 +1,12 @@
 ---
+import { Image } from 'astro:assets';
+
 import { getAllProjects } from '@/modules/project';
-import Project from '@/layouts/Project.astro';
+import Centered from '@/layouts/Centered.astro';
 import Share from '@/components/Share.astro';
+import { IMAGE_SIZES } from '@/constants/image';
 import { ROUTES } from '@/constants/routes';
+import { setTransitionSlug, TRANSITION_ELEMENT_IDS } from '@/constants/transitions';
 import { CONFIG_CLIENT } from '@/config/client';
 import { getOpenGraphImagePath } from '@/libs/api/open-graph/image-path';
 
@@ -26,7 +30,7 @@ const { pathname } = Astro.url;
 const { slug } = Astro.params;
 
 const image = getOpenGraphImagePath(pathname);
-const { title, description } = data;
+const { title, description, heroImage, heroAlt } = data;
 
 const metadata: Metadata = { title, description, image };
 
@@ -35,11 +39,50 @@ const shareProps = {
   description,
   url: `${SITE_URL}${ROUTES.PROJECTS}${slug}`,
 };
+const getTransitionNameFromElementId = setTransitionSlug({ pageSlug: slug });
 
 const { Content } = await render();
 ---
 
-<Project {metadata}>
-  <Content />
-  <Share {...shareProps} />
-</Project>
+<Centered {metadata}>
+  <article class="my-prose">
+    <h1
+      class="b-h1 font-serif"
+      transition:name={getTransitionNameFromElementId({
+        elementId: TRANSITION_ELEMENT_IDS.POST_CARD.TITLE,
+      })}
+    >
+      {title}
+    </h1>
+    {
+      description && (
+        <p
+          class="font-normal text-content text-xl md:text-2xl mb-6 md:mb-8"
+          transition:name={getTransitionNameFromElementId({
+            elementId: TRANSITION_ELEMENT_IDS.POST_CARD.DESCRIPTION,
+          })}
+        >
+          {description}
+        </p>
+      )
+    }
+    {
+      heroImage && (
+        <Image
+          {...IMAGE_SIZES.RESPONSIVE.POST_HERO}
+          src={heroImage}
+          alt={heroAlt}
+          fetchpriority="high"
+          loading="eager"
+          itemprop="image"
+          class="block rounded-2xl"
+          transition:name={getTransitionNameFromElementId({
+            elementId: TRANSITION_ELEMENT_IDS.POST_CARD.HERO_IMAGE,
+          })}
+        />
+      )
+    }
+    <Content />
+    <Share {...shareProps} />
+  </article>
+</Centered>

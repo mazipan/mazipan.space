@@ -22,7 +22,7 @@ const categoryLinks = getCategoryLinks(posts, filterPathname);
 ---
 
 <section {...props} class={cn(className)}>
-  <FilterList class="gap-4 mb-4" itemLinks={categoryLinks}>
+  <FilterList class="gap-1 mb-4" itemLinks={categoryLinks}>
     {
       ({ href, text, isActive, count }: FilterLink) => {
         const { icon } = getCategoryProps(text);
@@ -36,7 +36,7 @@ const categoryLinks = getCategoryLinks(posts, filterPathname);
       }
     }
   </FilterList>
-  <FilterList itemLinks={tagLinks}>
+  <FilterList class="gap-1 mb-8" itemLinks={tagLinks}>
     {
       ({ href, text, count, isActive }: FilterLink) => (
         <Tag href={href} size="md" colors={isActive ? 'primary' : 'default'}>

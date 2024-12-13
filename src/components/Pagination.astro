@@ -60,7 +60,12 @@ const threePageNumbers = (currentPage: number, lastPage: number): number[] => {
 
 {
   hasMoreThanOnePage() || showIfOnePage ? (
-    <div class={cn('flex items-center justify-end xs:justify-between gap-4', className)}>
+    <div
+      class={cn(
+        'flex flex-col-reverse md:flex-row items-center justify-center md:justify-between gap-4',
+        className
+      )}
+    >
       <p class="b-p hidden xs:inline-block text-base">
         Showing
         <span class="font-bold">{start + 1}</span>
@@ -71,12 +76,20 @@ const threePageNumbers = (currentPage: number, lastPage: number): number[] => {
         results
       </p>
 
-      <nav aria-label="pages" class="flex items-center justify-end gap-4 text-xl">
-        <Link href={firstUrl} disabled={!prevUrl}>
+      <nav aria-label="pages" class="flex items-center justify-end gap-2 text-xl">
+        <Link
+          href={firstUrl}
+          disabled={!prevUrl}
+          class="rounded h-8 w-8 flex items-center justify-center hover:bg-primary-hover hover:text-black"
+        >
           <Icon name="tabler:chevrons-left" />
         </Link>
 
-        <Link href={prevUrl} disabled={!prevUrl}>
+        <Link
+          href={prevUrl}
+          disabled={!prevUrl}
+          class="rounded h-8 w-8 flex items-center justify-center hover:bg-primary-hover hover:text-black"
+        >
           <Icon name="tabler:chevron-left" />
         </Link>
 
@@ -89,18 +102,29 @@ const threePageNumbers = (currentPage: number, lastPage: number): number[] => {
             <Link
               href={getPageUrl(pageNumber)}
               disabled={isCurrentPage}
-              class={cn({ 'underline font-semibold': isCurrentPage })}
+              class={cn(
+                'rounded min-h-8 min-w-8 flex items-center justify-center hover:bg-primary-hover hover:text-black hover:no-underline',
+                isCurrentPage ? 'font-semibold' : ''
+              )}
             >
               {pageNumber}
             </Link>
           );
         })}
 
-        <Link href={nextUrl} disabled={!nextUrl}>
+        <Link
+          href={nextUrl}
+          disabled={!nextUrl}
+          class="rounded h-8 w-8 flex items-center justify-center hover:bg-primary-hover hover:text-black"
+        >
           <Icon name="tabler:chevron-right" />
         </Link>
 
-        <Link href={lastUrl} disabled={!nextUrl}>
+        <Link
+          href={lastUrl}
+          disabled={!nextUrl}
+          class="rounded h-8 w-8 flex items-center justify-center hover:bg-primary-hover hover:text-black"
+        >
           <Icon name="tabler:chevrons-right" />
         </Link>
       </nav>

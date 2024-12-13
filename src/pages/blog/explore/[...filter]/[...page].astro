@@ -88,27 +88,33 @@ const postsByYear = groupPostsByYear(paginatedPosts);
 ---
 
 <List {...layoutProps}>
-  <Explore posts={allPosts} {filterPathname} />
-  <div>
-    {
-      postsByYear.years.map((year) => (
-        <>
-          <h2
-            class="b-h2"
-            transition:name={getTransitionName({
-              elementId: TRANSITION_ELEMENT_IDS.EXPLORE.YEAR,
-              pageSlug: year,
-            })}
-          >
-            {year}
-          </h2>
-          <div>
-            {postsByYear.posts[year].map((post) => (
-              <PostCardSmall {post} class="last:mb-6" withImage={false} />
-            ))}
-          </div>
-        </>
-      ))
-    }
-  </div>
+  <article class="pb-16 pt-8 relative">
+    <section class="centered md:centered-px max-w-6xl">
+      <div class="relative lg:grid lg:grid-cols-[300px,minmax(0,1fr)] gap-4">
+        <Explore posts={allPosts} {filterPathname} />
+        <div>
+          {
+            postsByYear.years.map((year) => (
+              <>
+                <h2
+                  class="b-h2 mt-0 font-serif"
+                  transition:name={getTransitionName({
+                    elementId: TRANSITION_ELEMENT_IDS.EXPLORE.YEAR,
+                    pageSlug: year,
+                  })}
+                >
+                  # {year}
+                </h2>
+                <div>
+                  {postsByYear.posts[year].map((post) => (
+                    <PostCardSmall {post} class="last:mb-6" withImage={false} />
+                  ))}
+                </div>
+              </>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+  </article>
 </List>
