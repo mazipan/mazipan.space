@@ -54,6 +54,10 @@ export const PAGE_METADATA = {
   'lists/talks': {
     title: '🎙️ Talks',
   },
+  // 'pages/guest-book': {
+  //   title: '📝 Guest Book',
+  //   description: '',
+  // },
 } as const;
 
 export type PageMetadataKey = keyof typeof PAGE_METADATA;
