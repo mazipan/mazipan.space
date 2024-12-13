@@ -1,0 +1,77 @@
+---
+import { Icon } from 'astro-icon/components';
+
+import Link from '@/components/Link.astro';
+import { CONFIG_CLIENT } from '@/config/client';
+
+const {
+  AUTHOR_LINKEDIN,
+  AUTHOR_GITHUB,
+  AUTHOR_TWITTER,
+  AUTHOR_YOUTUBE,
+  // eslint-disable-next-line no-unused-vars
+  AUTHOR_ADPLIST,
+  // eslint-disable-next-line no-unused-vars
+  AUTHOR_DECK,
+  // eslint-disable-next-line no-unused-vars
+  AUTHOR_EMAIL,
+} = CONFIG_CLIENT;
+---
+
+<ul class="flex gap-2 flex-wrap xs:flex-nowrap lg:items-center">
+  <li>
+    <Link
+      href={`mailto:${AUTHOR_EMAIL}`}
+      target="_blank"
+      rel="me noreferrer noopener"
+      title="Email"
+      class="flex items-center gap-2 text-base xs:text-lg"
+    >
+      <Icon name="tabler:mail" class="h-6 w-6 fill-current" />
+    </Link>
+  </li>
+  <li>
+    <Link
+      href={AUTHOR_GITHUB}
+      target="_blank"
+      rel="me noreferrer noopener"
+      title="GitHub"
+      class="flex items-center gap-2 text-base xs:text-lg"
+    >
+      <Icon name="tabler:brand-github" class="h-6 w-6 fill-current" />
+    </Link>
+  </li>
+  <li>
+    <Link
+      href={AUTHOR_TWITTER}
+      target="_blank"
+      rel="me noreferrer noopener"
+      title="Twitter/X"
+      class="flex items-center gap-2 text-base xs:text-lg"
+    >
+      <Icon name="tabler:brand-x" class="h-6 w-6 fill-current" />
+    </Link>
+  </li>
+  <li>
+    <Link
+      href={AUTHOR_LINKEDIN}
+      target="_blank"
+      rel="me noreferrer noopener"
+      title="LinkedIn"
+      class="flex items-center gap-2 text-base xs:text-lg"
+    >
+      <Icon name="tabler:brand-linkedin" class="h-6 w-6 fill-current" />
+    </Link>
+  </li>
+  <li>
+    <Link
+      href={AUTHOR_YOUTUBE}
+      target="_blank"
+      rel="me noreferrer noopener"
+      title="YouTube"
+      class="flex items-center gap-2 text-base xs:text-lg"
+    >
+      <Icon name="tabler:brand-youtube" class="h-6 w-6 fill-current" />
+    </Link>
+  </li>
+</ul>

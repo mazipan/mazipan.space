@@ -1,0 +1,72 @@
+---
+import { Icon } from 'astro-icon/components';
+import { Image } from 'astro:assets';
+
+import { getPublishedOrUpdatedDate } from '@/modules/common';
+import Link from '@/components/Link.astro';
+import { IMAGE_SIZES } from '@/constants/image';
+import { ROUTES } from '@/constants/routes';
+import { setTransitionSlug, TRANSITION_ELEMENT_IDS } from '@/constants/transitions';
+import { formatDate, formatDateIso } from '@/utils/datetime';
+
+import type { Project } from '@/types/project';
+
+export interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+
+const { slug, data } = project;
+const { title, description, heroImage, heroAlt, publishDate, updatedDate } = data;
+
+const { lastAccessDate, isUpdatedDate } = getPublishedOrUpdatedDate({
+  publishDate,
+  updatedDate,
+});
+
+const getTransitionNameFromElementId = setTransitionSlug({ pageSlug: slug });
+---
+
+<article>
+  <Image
+    {...IMAGE_SIZES.RESPONSIVE.PROJECT_CARD}
+    src={heroImage}
+    alt={heroAlt}
+    class="rounded-t-2xl mb-2"
+    transition:name={getTransitionNameFromElementId({
+      elementId: TRANSITION_ELEMENT_IDS.POST_CARD.HERO_IMAGE,
+    })}
+  />
+
+  <h4 class="b-h4 break-words line-clamp-2 mb-0">
+    <Link
+      href={`${ROUTES.PROJECTS}${slug}`}
+      variant="link-heading"
+      transition:name={getTransitionNameFromElementId({
+        elementId: TRANSITION_ELEMENT_IDS.POST_CARD.TITLE,
+      })}
+    >
+      {title}
+    </Link>
+  </h4>
+  {
+    description && (
+      <p
+        class="text-sm text-captions mb-2"
+        transition:name={getTransitionNameFromElementId({
+          elementId: TRANSITION_ELEMENT_IDS.POST_CARD.DESCRIPTION,
+        })}
+      >
+        {description}
+      </p>
+    )
+  }
+
+  <p class="flex items-center gap-1 text-xs text-captions">
+    <Icon name={isUpdatedDate ? 'tabler:pencil' : 'tabler:clock'} class="w-4 h-4" />
+    <time itemprop="datePublished" datetime={formatDateIso(lastAccessDate)}>
+      {formatDate(lastAccessDate)}
+    </time>
+  </p>
+</article>

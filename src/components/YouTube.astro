@@ -1,0 +1,49 @@
+---
+import { YouTube as YouTubeAstroEmbed } from 'astro-embed';
+
+import { cva } from 'class-variance-authority';
+
+import type { ComponentProps } from 'astro/types';
+import type { VariantProps } from 'class-variance-authority';
+
+type YouTubeAstroEmbedProps = ComponentProps<typeof YouTubeAstroEmbed>;
+
+const youtubeVariants = cva('', {
+  variants: {
+    // all cva components name it size, not width
+    size: { sm: 'max-w-3xl', full: '', 'expand-sm': 'expand-sm', 'expand-lg': 'expand-lg' },
+  },
+});
+
+export interface Props extends YouTubeAstroEmbedProps, VariantProps<typeof youtubeVariants> {
+  class?: string;
+}
+
+const { size = 'sm', class: className, ...props } = Astro.props;
+
+let posterQuality: YouTubeAstroEmbedProps['posterQuality'] = undefined;
+
+switch (size) {
+  case 'full':
+    posterQuality = 'high';
+    break;
+  case 'expand-sm':
+  case 'expand-lg':
+    posterQuality = 'max';
+    break;
+
+  default:
+    posterQuality = 'default';
+    break;
+}
+---
+
+<div class={youtubeVariants({ size, className })}>
+  <YouTubeAstroEmbed {...props} {posterQuality} />
+</div>
+
+<style is:global>
+  lite-youtube {
+    @apply max-w-none rounded-button;
+  }
+</style>

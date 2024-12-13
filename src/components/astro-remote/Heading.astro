@@ -1,0 +1,25 @@
+---
+import { Icon } from 'astro-icon/components';
+
+import GithubSlugger from 'github-slugger';
+
+const slugger = new GithubSlugger();
+
+const { as: Component, text } = Astro.props;
+
+// id is without #
+const slug = slugger.slug(text);
+const href = `#${slug}`;
+---
+
+<div class="flex gap-2 items-center group">
+  <a id={slug} {href} class="flex target:!outline-none">
+    <Icon
+      name="tabler:link"
+      class="inline-block h-5 w-5 text-transparent group-hover:text-captions"
+    />
+  </a>
+  <Component>
+    <slot />
+  </Component>
+</div>

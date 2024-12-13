@@ -1,0 +1,133 @@
+---
+import { Icon } from 'astro-icon/components';
+
+import Link from '@/components/Link.astro';
+import { cn } from '@/utils/styles';
+
+import type { PaginationProps } from '@/types/common';
+
+export interface Props extends PaginationProps, astroHTML.JSX.HTMLAttributes {
+  showIfOnePage?: boolean;
+}
+
+// page - numbers
+const {
+  showIfOnePage = false,
+  url,
+  currentPage,
+  lastPage,
+  start,
+  end,
+  total,
+  class: className,
+} = Astro.props;
+// all links in Astro are relative /blog/2
+const { prev: prevUrl, current: currentUrl, next: nextUrl } = url;
+
+const getFirstUrl = (url: string) => url.replace(/\/\d+$/, '/');
+
+const firstUrl = getFirstUrl(currentUrl);
+const getPageUrl = (pageNumber: number) =>
+  pageNumber === 1 ? firstUrl : `${firstUrl}/${pageNumber}`;
+
+const lastUrl = getPageUrl(lastPage);
+const hasMoreThanOnePage = () => lastPage > 1;
+
+const pageNumbers = (length: number) => Array.from({ length }, (_, i) => i + 1);
+
+const threePageNumbers = (currentPage: number, lastPage: number): number[] => {
+  let pages: number[] = [];
+
+  if (lastPage <= 3) {
+    // if total pages are 3 or less, show all pages
+    pages = pageNumbers(lastPage);
+  } else {
+    if (currentPage === 1) {
+      // if beginning
+      pages = [1, 2, 3];
+    } else if (currentPage === lastPage) {
+      // if end
+      pages = [lastPage - 2, lastPage - 1, lastPage];
+    } else {
+      // if middle
+      pages = [currentPage - 1, currentPage, currentPage + 1];
+    }
+  }
+
+  return pages;
+};
+---
+
+{
+  hasMoreThanOnePage() || showIfOnePage ? (
+    <div
+      class={cn(
+        'flex flex-col-reverse md:flex-row items-center justify-center md:justify-between gap-4',
+        className
+      )}
+    >
+      <p class="b-p hidden xs:inline-block text-base">
+        Showing
+        <span class="font-bold">{start + 1}</span>
+        to
+        <span class="font-bold">{end + 1}</span>
+        of
+        <span class="font-bold">{total}</span>
+        results
+      </p>
+
+      <nav aria-label="pages" class="flex items-center justify-end gap-2 text-xl">
+        <Link
+          href={firstUrl}
+          disabled={!prevUrl}
+          class="rounded h-8 w-8 flex items-center justify-center hover:bg-primary-hover hover:text-black"
+        >
+          <Icon name="tabler:chevrons-left" />
+        </Link>
+
+        <Link
+          href={prevUrl}
+          disabled={!prevUrl}
+          class="rounded h-8 w-8 flex items-center justify-center hover:bg-primary-hover hover:text-black"
+        >
+          <Icon name="tabler:chevron-left" />
+        </Link>
+
+        {threePageNumbers(currentPage, lastPage).map((pageNumber) => {
+          const isCurrentPage = pageNumber === currentPage;
+
+          // trimm long pagination with (...)
+
+          return (
+            <Link
+              href={getPageUrl(pageNumber)}
+              disabled={isCurrentPage}
+              class={cn(
+                'rounded min-h-8 min-w-8 flex items-center justify-center hover:bg-primary-hover hover:text-black hover:no-underline',
+                isCurrentPage ? 'font-semibold' : ''
+              )}
+            >
+              {pageNumber}
+            </Link>
+          );
+        })}
+
+        <Link
+          href={nextUrl}
+          disabled={!nextUrl}
+          class="rounded h-8 w-8 flex items-center justify-center hover:bg-primary-hover hover:text-black"
+        >
+          <Icon name="tabler:chevron-right" />
+        </Link>
+
+        <Link
+          href={lastUrl}
+          disabled={!nextUrl}
+          class="rounded h-8 w-8 flex items-center justify-center hover:bg-primary-hover hover:text-black"
+        >
+          <Icon name="tabler:chevrons-right" />
+        </Link>
+      </nav>
+    </div>
+  ) : null
+}

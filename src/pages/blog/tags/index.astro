@@ -1,0 +1,30 @@
+---
+import { getAllPosts } from '@/modules/post/common';
+import { getTagLinks } from '@/modules/post/tag';
+import List from '@/layouts/List.astro';
+import FilterList from '@/components/FilterList.astro';
+import Tag from '@/components/Tag.astro';
+import { getPageMetadata } from '@/utils/metadata';
+
+import type { FilterLink } from '@/types/post';
+
+const allPosts = await getAllPosts();
+
+const tagLinks = getTagLinks(allPosts);
+
+const metadata = getPageMetadata('lists/blog/tags');
+---
+
+<List {metadata}>
+  <section>
+    <FilterList class="mb-4" itemLinks={tagLinks}>
+      {
+        ({ href, textWithCount, isActive }: FilterLink) => (
+          <Tag href={href} size="md" colors={isActive ? 'primary' : 'default'}>
+            {textWithCount}
+          </Tag>
+        )
+      }
+    </FilterList>
+  </section>
+</List>

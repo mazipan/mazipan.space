@@ -1,0 +1,22 @@
+---
+layout: '../layouts/Page.astro'
+title: 'Page not found'
+description: 'That page doesn’t exist'
+
+# id for og image
+pageId: 'page404' 
+---
+
+import { Image } from 'astro:assets';
+
+import image404 from '../assets/images/pages/image404.jpg';
+import Button from '../components/Button.astro';
+import { IMAGE_SIZES } from '../constants/image';
+
+<section class="flex flex-col items-center justify-start text-center">
+  <Image {...IMAGE_SIZES.FIXED._404} src={image404} alt="City square at night." class="mt-0 mb-4" />
+  <h1 class="text-xl md:text-2xl font-bold text-primary mb-4">404 Not Found</h1>
+  <h2 class="font-bold mt-0">That page doesn’t exist.</h2>
+  <p class="text-captions mt-0 mb-4">Sorry, we can't find that page. You'll find lots to explore on the home page.</p>
+  <Button href="/" variant="outline" colors="primary" size="md" class="not-prose">Back to Homepage</Button>
+</section>

@@ -1,0 +1,142 @@
+---
+import { Icon } from 'astro-icon/components';
+import { Image } from 'astro:assets';
+
+import { getPublishedOrUpdatedDate } from '@/modules/common';
+import { getCategoryProps } from '@/modules/post/category';
+import Link from '@/components/Link.astro';
+import TagList from '@/components/TagList.astro';
+import { DRAFT_TEXT } from '@/constants/data';
+import { IMAGE_SIZES } from '@/constants/image';
+import { ROUTES } from '@/constants/routes';
+import { setTransitionSlug, TRANSITION_ELEMENT_IDS } from '@/constants/transitions';
+import { formatDate, formatDateIso } from '@/utils/datetime';
+import { cn } from '@/utils/styles';
+
+import type { Post } from '@/types/post';
+
+export interface Props {
+  post: Post;
+}
+
+const { post } = Astro.props;
+const { data, slug, readingTime } = post;
+
+const {
+  draft,
+  publishDate,
+  updatedDate,
+  title,
+  heroImage,
+  heroAlt,
+  noHero,
+  category,
+  tags = [],
+  description,
+} = data;
+
+const { icon: categoryIcon } = getCategoryProps(category);
+const { lastAccessDate, isUpdatedDate } = getPublishedOrUpdatedDate({
+  publishDate,
+  updatedDate,
+});
+
+const getTransitionNameFromElementId = setTransitionSlug({ pageSlug: slug });
+---
+
+<article
+  class={cn(
+    'w-full flex flex-col md:flex-row gap-4 lg:gap-6',
+    'not-first:pt-4 not-last:pb-4 md:not-first:pt-6 md:not-last:pb-6',
+    'not-last:border-b border-base-300'
+  )}
+>
+  {/* left column */}
+  {
+    !noHero && (
+      <div class="md:basis-1/3 md:shrink-0">
+        <Image
+          {...IMAGE_SIZES.RESPONSIVE.POST_CARD}
+          src={heroImage}
+          alt={heroAlt}
+          itemprop="image"
+          class="w-full h-[168px] xs:h-[250px] md:h-[168px] md:max-w-[298px] object-cover rounded-box"
+          transition:name={getTransitionNameFromElementId({
+            elementId: TRANSITION_ELEMENT_IDS.POST_CARD.HERO_IMAGE,
+          })}
+        />
+      </div>
+    )
+  }
+
+  {/* right column */}
+  <div class={cn('flex flex-col', { 'md:basis-2/3': !noHero })}>
+    {/* category and publishDate row*/}
+
+    {/* title */}
+    <h2
+      class="text-2xl font-bold break-words md:line-clamp-2 mt-0 mb-2"
+      transition:name={getTransitionNameFromElementId({
+        elementId: TRANSITION_ELEMENT_IDS.POST_CARD.TITLE,
+      })}
+    >
+      <Link href={`${ROUTES.BLOG}${slug}`} variant="link-heading" class="animated-text-link">
+        {title}
+      </Link>
+      {draft && <sup class="text-sm text-red-500 ml-1">{DRAFT_TEXT}</sup>}
+    </h2>
+
+    {
+      description && (
+        <p
+          class="text-base mb-4 line-clamp-2"
+          transition:name={getTransitionNameFromElementId({
+            elementId: TRANSITION_ELEMENT_IDS.POST_CARD.DESCRIPTION,
+          })}
+        >
+          {description}
+        </p>
+      )
+    }
+
+    {/* published date and category link */}
+    <div
+      class="flex items-center gap-2 mb-4 text-sm leading-none"
+      transition:name={getTransitionNameFromElementId({
+        elementId: TRANSITION_ELEMENT_IDS.POST_CARD.META,
+      })}
+    >
+      <span class="inline-flex items-center gap-2 text-captions">
+        <Icon name={isUpdatedDate ? 'tabler:pencil' : 'tabler:clock'} class="w-4 h-4" />
+        <time itemprop="datePublished" datetime={formatDateIso(lastAccessDate)}>
+          {formatDate(lastAccessDate)}
+        </time>
+      </span>
+
+      <span>
+        In category <Link href={`${ROUTES.CATEGORIES}${category}`}>
+          {category}
+        </Link>
+      </span>
+    </div>
+
+    {/* reading time and read more link */}
+    <div class="flex items-center xs:items-end justify-between">
+      <div class="flex items-center gap-4">
+        <span class="inline-flex items-center gap-2 text-sm text-captions">
+          <Icon name="tabler:book" class="w-4 h-4" />
+          <span class="text-nowrap">{`${Math.round(readingTime)} minutes`}</span>
+        </span>
+        <TagList tags={tags.slice(0, 2)} size="sm" variant="text" class="hidden xs:inline-flex" />
+      </div>
+
+      <Link
+        href={`${ROUTES.BLOG}${slug}`}
+        class="inline-flex items-center gap-1 text-base font-medium"
+      >
+        <span class="text-nowrap">Read more</span>
+        <Icon name="tabler:arrow-right" class="w-4 h-4" />
+      </Link>
+    </div>
+  </div>
+</article>

@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "astro/tsconfigs/strict",
+  "display": "Default",
+  "esModuleInterop": true,
+  "compilerOptions": {
+    "allowJs": true,
+    "jsx": "react-jsx",
+    "jsxImportSource": "react",
+    "noEmit": true,
+    "skipLibCheck": true,
+    "baseUrl": "src",
+    "paths": {
+      "@/assets/*": ["assets/*"],
+      "@/components/*": ["components/*"],
+      "@/constants/*": ["constants/*"],
+      "@/content/*": ["content/*"],
+      "@/layouts/*": ["layouts/*"],
+      "@/modules/*": ["modules/*"],
+      "@/libs/*": ["libs/*"],
+      "@/pages/*": ["pages/*"],
+      "@/schemas/*": ["schemas/*"],
+      "@/styles/*": ["styles/*"],
+      "@/types/*": ["types/*"],
+      "@/utils/*": ["utils/*"],
+      "@/config/*": ["config/*"]
+    }
+  },
+  "include": ["**/*.ts", "**/*.tsx", "**/*.astro"],
+  "exclude": ["dist", "docs", "node_modules"]
+}

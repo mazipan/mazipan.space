@@ -1,0 +1,68 @@
+---
+layout: '../../layouts/Page.astro'
+title: Embeds
+---
+
+import { Tweet, Vimeo, LinkPreview } from 'astro-embed';
+import YouTube from '../../components/YouTube.astro';
+import Share from '../../components/Share.astro';
+
+import { ROUTES } from '../../constants/routes'; 
+import { CONFIG_CLIENT } from '../../config/client';
+
+
+
+{/* for Twitter iframe */}
+<script async src="https://platform.twitter.com/widgets.js" />
+
+back to [Index](/design)
+
+## Embeds
+
+### Social share
+
+export const shareProps = {
+  title: 'Embed page',
+  description: 'Embed page description',
+  url: `${CONFIG_CLIENT.SITE_URL}${ROUTES.DESIGN}embeds`,
+};
+
+<Share {...shareProps} />
+---
+
+### astro-embed
+
+#### Tweet
+
+<Tweet id="https://x.com/iximiuz/status/1803840469165642189" />
+
+---
+
+#### YouTube default 768px
+
+<YouTube id="XlnmN4BfCxw" title="My custom title" />
+
+#### YouTube size=full, params="start=557&end=575"
+
+<YouTube id="eZXXa7ujoks" size="full" title="My custom title" params="start=557&end=575"/>
+
+#### YouTube size=expand-sm
+
+<YouTube id="dvyeoDBUtsU" size="expand-sm" title="My custom title"/>
+
+#### YouTube size=expand-lg
+
+<YouTube id="dvyeoDBUtsU" size="expand-lg" title="My custom title"/>
+
+---
+
+#### Vimeo
+
+<Vimeo id="https://vimeo.com/32001208" />
+
+---
+
+#### Open graph link preview
+
+<LinkPreview id="https://astro.build/blog/welcome-world/" />
+

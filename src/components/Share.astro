@@ -1,0 +1,60 @@
+---
+import {
+  FacebookShareButton,
+  HackerNewsShareButton,
+  LinkedInShareButton,
+  RedditShareButton,
+  SocialShare,
+  TwitterShareButton,
+} from 'astro-social-share';
+
+import { DEFAULT_METADATA } from '@/constants/metadata';
+import { CONFIG_CLIENT } from '@/config/client';
+import { cn } from '@/utils/styles';
+
+import type { ComponentProps } from 'astro/types';
+
+type SocialShareProps = Omit<ComponentProps<typeof SocialShare>, 'buttons'>;
+export interface Props extends SocialShareProps {
+  class?: string;
+}
+const { class: className, ...shareProps } = Astro.props;
+
+const { title, description } = DEFAULT_METADATA;
+const { AUTHOR_TWITTER } = CONFIG_CLIENT;
+
+// via is only for twitter
+const defaultProps = { description, title, via: AUTHOR_TWITTER };
+
+// dont change order because of colors
+const buttons = [
+  TwitterShareButton,
+  FacebookShareButton,
+  RedditShareButton,
+  LinkedInShareButton,
+  HackerNewsShareButton,
+];
+
+const props = { ...defaultProps, ...shareProps };
+
+// todo: change package
+---
+
+<div class={cn('inline-flex items-center gap-2', className)}>
+  <span class="font-bold text-base">Share:</span>
+  <SocialShare {...props} {buttons} />
+</div>
+
+{/* his slot is broken */}
+<style is:global slot="astro-social-share-css">
+  .astro-social-share {
+    @apply my-0;
+  }
+
+  .social-share-btn {
+    @apply inline-block w-6 h-6 !mr-4;
+    svg {
+      @apply w-full h-full fill-captions;
+    }
+  }
+</style>

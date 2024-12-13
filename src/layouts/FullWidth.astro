@@ -1,0 +1,14 @@
+---
+import Base from '@/layouts/Base.astro';
+
+import type { BaseProps } from '@/layouts/Base.astro';
+
+export interface Props extends BaseProps {}
+const props = Astro.props;
+---
+
+<Base {...props}>
+  <main id="main" class="flex-grow flex flex-col relative">
+    <slot />
+  </main>
+</Base>

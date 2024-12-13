@@ -1,0 +1,38 @@
+---
+import Centered from '@/layouts/Centered.astro';
+import { getOpenGraphImagePath } from '@/libs/api/open-graph/image-path';
+import { cn } from '@/utils/styles';
+
+export interface Content {
+  title: string;
+  description: string;
+  readingTime: number;
+  file: string;
+  url: string;
+  /** set max-w-xxx */
+  class: string;
+}
+
+export interface Props {
+  content: Content;
+}
+
+// metadata from frontmatter
+const { content } = Astro.props;
+const { title, description, class: className } = content;
+
+// available in Layouts
+const { pathname } = Astro.url;
+
+// og image for metadata, only call in layouts
+const path = `/pages${pathname}`;
+const image = getOpenGraphImagePath(path);
+
+const metadata = { title, description, image };
+---
+
+<Centered {metadata} class={cn(className)}>
+  <article class="my-prose">
+    <slot />
+  </article>
+</Centered>

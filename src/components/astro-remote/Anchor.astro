@@ -1,0 +1,14 @@
+---
+const { href } = Astro.props;
+
+// exists and external
+const isExternalLink = Boolean(href) && !href.startsWith('#');
+
+const linkProps = {
+  ...(isExternalLink ? { target: '_blank' } : {}),
+};
+---
+
+<a {href} {...linkProps}>
+  <slot />
+</a>

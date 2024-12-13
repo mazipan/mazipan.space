@@ -1,0 +1,38 @@
+---
+import FullWidth from '@/layouts/FullWidth.astro';
+
+import type { BaseProps } from '@/layouts/Base.astro';
+
+export interface Props extends BaseProps {}
+
+const props = Astro.props;
+---
+
+<FullWidth {...props}>
+  <article class="pb-16 pt-8 relative">
+    <figure class="centered-px max-w-6xl">
+      <slot name="hero-image" />
+    </figure>
+
+    <section class="centered-px max-w-6xl b-h2-my">
+      <slot name="hero-text" />
+    </section>
+
+    <section class="centered md:centered-px max-w-6xl">
+      <div class="relative lg:grid lg:grid-cols-[minmax(0,1fr),300px] gap-4">
+        <section class="my-prose centered-px post-detail [&>h2:nth-child(1)]:mt-0">
+          <slot name="content" />
+        </section>
+        {Astro.slots.has('toc') && <slot name="toc" />}
+      </div>
+    </section>
+
+    <section class="centered-px max-w-6xl">
+      <slot name="after-content" />
+    </section>
+
+    <section class="centered-px max-w-6xl b-h2-mt">
+      <slot name="more-posts" />
+    </section>
+  </article>
+</FullWidth>

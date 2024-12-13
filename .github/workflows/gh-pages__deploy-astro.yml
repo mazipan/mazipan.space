@@ -1,0 +1,55 @@
+name: Deploy to GitHub Pages with Astro action
+
+# https://docs.astro.build/en/guides/deploy/github/
+# https://github.com/withastro/action
+
+on:
+  push:
+    branches:
+      - 'disabled-main'
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+'
+  pull_request:
+    branches:
+      - 'disabled-main'
+  workflow_dispatch:
+
+# Allow this job to clone the repo and create a page deployment
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# set env vars in Github settings here
+env:
+  SITE_URL: 'https://mazipan.space'
+  UMAMI_SCRIPT_URL: https://umami.mazipan.space/script.js
+  UMAMI_WEBSITE_ID: 9e6c4ae6-f1ea-465c-ac75-00015dc21058
+  UMAMI_PUBLIC_URL: https://umami.mazipan.space/share/O3odIJMu00TRHGhb/www.mazipan.space
+
+jobs:
+  # build with astro action, unusable for monorepo
+  build-astro:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout your repository using git
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - name: Install, build, and upload your site output
+        uses: withastro/action@v2
+        with:
+          path: ./
+          node-version: 22.9.0
+          # package-manager: yarn@1.22.22
+
+  deploy:
+    needs: build-astro
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

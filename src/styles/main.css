@@ -1,0 +1,10 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* first, so base, components, utilities can use it */
+@import './theme/index.css';
+
+@import './base/index.css';
+@import './components/index.css';
+@import './utilities/index.css';

@@ -1,0 +1,147 @@
+---
+// Mono
+import '@fontsource-variable/jetbrains-mono';
+// Sans
+import '@fontsource-variable/space-grotesk';
+// Display -- serif
+import '@fontsource/dela-gothic-one';
+import '@/styles/main.css';
+
+import { ViewTransitions } from 'astro:transitions';
+
+import ThemeScript from '@/components/ThemeScript.astro';
+import { DEFAULT_METADATA } from '@/constants/metadata';
+import { ROUTES } from '@/constants/routes';
+import { CONFIG_CLIENT } from '@/config/client';
+import { handleTitle } from '@/utils/metadata';
+import { filterUndefined } from '@/utils/objects';
+
+import type { Metadata } from '@/types/common';
+
+const { AUTHOR_NAME, UMAMI_SCRIPT_URL, UMAMI_WEBSITE_ID } = CONFIG_CLIENT;
+
+export interface BaseHeadProps {
+  metadata: Metadata;
+}
+
+// set defualt metadata in this component
+const { metadata } = Astro.props as BaseHeadProps;
+
+// site: SITE_URL var + '/'
+// url: full page url, cannonical url, per page
+const { url } = Astro; // objects
+const { host } = url; // host
+
+const handledMetadata = handleTitle(metadata);
+
+const filteredMetadata = filterUndefined(handledMetadata);
+const mergedMetadata: Required<Metadata> = { ...DEFAULT_METADATA, ...filteredMetadata };
+
+const { title, description, image } = mergedMetadata;
+
+const ogImageUrl = new URL(image, url);
+---
+
+<head>
+  {/* Global Metadata */}
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+  <link rel="authorization_endpoint" href="https://indieauth.com/auth" />
+
+  <link href="https://github.com/mazipan" rel="me" />
+  <link href="https://twitter.com/maz_ipan" rel="me" />
+
+  <link rel="webmention" href="https://webmention.io/mazipan.space/webmention" />
+  <link rel="pingback" href="https://webmention.io/mazipan.space/xmlrpc" />
+
+  {/* wrong, set from theme toggle */}
+  <meta name="theme-color" content="" />
+
+  {/* Links */}
+  {/* Root-Relative URL (Starts with /): */}
+  <link rel="canonical" href={url} />
+  <link
+    rel="apple-touch-icon"
+    sizes="180x180"
+    href={`${ROUTES.STATIC.FAVICONS}favicon-192x192.png`}
+  />
+  <link
+    rel="icon"
+    type="image/png"
+    sizes="32x32"
+    href={`${ROUTES.STATIC.FAVICONS}favicon-32x32.png`}
+  />
+  <link
+    rel="icon"
+    type="image/png"
+    sizes="16x16"
+    href={`${ROUTES.STATIC.FAVICONS}favicon-16x16.png`}
+  />
+  <link rel="manifest" href="/manifest.json" />
+
+  {/* Primary Meta Tags */}
+  <title>{title}</title>
+  <meta name="title" content={title} />
+  <meta name="description" content={description} />
+  <meta name="author" content={AUTHOR_NAME} />
+
+  {/* Feeds */}
+  <link
+    rel="alternate"
+    type="application/rss+xml"
+    title={`RSS feed for ${host}`}
+    href={`${ROUTES.API.FEED_RSS}`}
+  />
+  <link
+    rel="alternate"
+    type="application/json"
+    title={`JSON feed for ${host}`}
+    href={`${ROUTES.API.FEED_JSON}`}
+  />
+  <link rel="sitemap" type="application/xml" title="Sitemap" href={`${ROUTES.STATIC.SITEMAP}`} />
+
+  {/* Open Graph / Facebook */}
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={url} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={ogImageUrl} />
+
+  {/* Twitter */}
+  <meta property="twitter:card" content="summary" />
+  <meta property="twitter:url" content={url} />
+  <meta property="twitter:title" content={title} />
+  <meta property="twitter:description" content={description} />
+  <meta property="twitter:image" content={ogImageUrl} />
+
+  {/* Analytics */}
+  {
+    UMAMI_SCRIPT_URL && (
+      <>
+        <link rel="preconnect" href={UMAMI_SCRIPT_URL} />
+        {/* UMAMI_WEBSITE_ID must be the same for all mirrors */}
+        <script
+          defer
+          type="text/partytown"
+          src={UMAMI_SCRIPT_URL}
+          data-website-id={UMAMI_WEBSITE_ID}
+        />
+      </>
+    )
+  }
+
+  {/* Theme */}
+  {/* MUST be inside <head /> to avoid white flash, IMPORTANT */}
+  <ThemeScript />
+
+  <ViewTransitions fallback="none" />
+
+  <!--
+    <style>
+      @view-transition {
+        navigation: auto; /* enabled! */
+      }
+    </style>
+  -->
+</head>

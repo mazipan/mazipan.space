@@ -1,0 +1,52 @@
+@layer components {
+  .button {
+    @apply inline-flex items-center gap-2 no-underline;
+    @apply rounded-button text-base;
+  }
+
+  .button-outline {
+    @apply border;
+  }
+
+  .button-solid {
+    @apply border;
+  }
+
+  /* compound variants */
+  .button-outline-primary {
+    @apply text-primary border-primary;
+    @apply hover:bg-primary hover:text-primary-content;
+  }
+
+  .button-outline-default {
+    @apply text-content border-content;
+    @apply hover:bg-base-200;
+  }
+
+  .button-solid-primary {
+    @apply bg-primary text-primary-content border-primary;
+    @apply hover:bg-primary-hover hover:border-primary-hover;
+    /* no primary-hover yet */
+  }
+
+  .button-solid-default {
+    @apply bg-base-200 text-content border-base-200;
+    @apply hover:bg-base-300  hover:border-base-300;
+  }
+
+  .button-sm {
+    @apply px-3 py-0.5;
+
+    [data-icon] {
+      @apply w-6 h-6;
+    }
+  }
+
+  .button-md {
+    @apply text-lg px-5 py-1.5;
+
+    [data-icon] {
+      @apply w-8 h-8;
+    }
+  }
+}

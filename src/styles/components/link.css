@@ -1,0 +1,67 @@
+@layer components {
+  .link-default {
+    /* hover, focus, active, visited */
+    @apply text-links no-underline;
+  }
+
+  .link {
+    @apply hover:text-links-hover hover:underline;
+    @apply focus:text-links-hover focus:underline;
+    @apply active:text-links-hover active:underline;
+    /* @apply visited:text-links-visited; */
+  }
+
+  .link-no-underline {
+    @apply link !no-underline;
+  }
+
+  .link-heading {
+    @apply text-headings;
+    @apply hover:text-links-hover;
+    @apply focus:text-links-hover;
+    @apply active:text-links-hover;
+    /* @apply visited:text-links-visited; */
+  }
+
+  .link-nav {
+    @apply text-headings whitespace-nowrap underline-offset-4 text-lg;
+    @apply hover:text-links-hover;
+    @apply focus:text-links-hover focus:underline;
+    @apply active:text-links-hover;
+  }
+
+  .link-disabled {
+    @apply text-content hover:text-content no-underline cursor-not-allowed;
+  }
+
+  .animated-text-link {
+    text-decoration: none;
+    z-index: 2;
+    @apply relative;
+  }
+
+  .animated-text-link:after {
+    background: none repeat scroll 0 0 transparent;
+    left: 0;
+    bottom: 0px;
+    content: '';
+    height: 30px;
+    z-index: -1;
+    @apply absolute block bg-yellow-400 w-0;
+    transition:
+      width 0.5s ease 0s,
+      left 0.5s ease 0s;
+  }
+
+  .animated-text-link:hover:after,
+  .animated-text-link:focus:after,
+  .animated-text-link:active:after {
+    @apply w-full;
+  }
+
+  .animated-text-link:hover,
+  .animated-text-link:focus,
+  .animated-text-link:active {
+    @apply text-black;
+  }
+}

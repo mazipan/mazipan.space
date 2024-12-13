@@ -1,0 +1,8 @@
+dist
+node_modules
+.github
+.changeset
+.turbo
+.vscode
+docs
+2024

@@ -1,0 +1,62 @@
+---
+import { Icon } from 'astro-icon/components';
+---
+
+<theme-toggle>
+  <button class="rounded-md p-2 relative flex items-center justify-center" type="button">
+    <Icon
+      name="tabler:sun"
+      class="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0"
+    />
+    <Icon
+      name="tabler:moon-stars"
+      class="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100 text-yellow-400 hover:text-yellow-500"
+    />
+  </button>
+</theme-toggle>
+
+<script>
+  import { THEME_CONFIG } from '@/constants/theme';
+  import { getNextTheme } from '@/utils/theme';
+
+  import type { ChangeThemeCustomEvent } from '@/types/constants';
+
+  const { CHANGE_EVENT } = THEME_CONFIG;
+
+  class ThemeToggle extends HTMLElement {
+    #controller: AbortController | undefined;
+
+    connectedCallback() {
+      const button = this.querySelector('button')!;
+      // set aria role value
+      button.setAttribute('role', 'switch');
+      // button.setAttribute('aria-checked', String(isDarkMode()));
+
+      // Abort signal
+      const { signal } = (this.#controller = new AbortController());
+
+      // button event
+      button.addEventListener(
+        'click',
+        () => {
+          // shift theme
+          const nextTheme = getNextTheme();
+          const payload = { detail: { theme: nextTheme } } as ChangeThemeCustomEvent;
+          const themeChangeEvent = new CustomEvent(CHANGE_EVENT, payload);
+          // dispatch event -> ThemeProvider.astro
+          document.dispatchEvent(themeChangeEvent);
+
+          // set the aria-checked attribute
+          // button.setAttribute('aria-checked', String(isDarkMode()));
+        },
+        { signal }
+      );
+    }
+
+    disconnectedCallback() {
+      this.#controller?.abort();
+    }
+  }
+
+  customElements.define('theme-toggle', ThemeToggle);
+</script>

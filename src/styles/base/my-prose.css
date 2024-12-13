@@ -1,0 +1,33 @@
+/* Post content, entire Page, entire Project */
+
+/* prose override */
+@layer base {
+  .my-prose:not(:where([class~='not-prose'], [class~='not-prose'] *)) {
+    @apply prose prose-slate max-w-none dark:prose-invert;
+
+    /* responsive styling */
+    /* all tags */
+    @apply md:prose-lg;
+
+    /* limit just h1 */
+    @apply prose-h1:text-3xl md:prose-h1:text-4xl lg:prose-h1:text-5xl;
+    @apply prose-h1:font-bold;
+    @apply prose-h1:font-serif;
+    @apply prose-h1:text-links;
+
+    /* a */
+    @apply prose-a:link;
+
+    /* image */
+    @apply prose-img:rounded-button;
+
+    /* my custom components bellow */
+
+    /* vertical margins */
+    .toc,
+    .expressive-code,
+    .alert {
+      @apply b-p-my;
+    }
+  }
+}

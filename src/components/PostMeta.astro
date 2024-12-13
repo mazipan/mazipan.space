@@ -1,0 +1,53 @@
+---
+import { Icon } from 'astro-icon/components';
+
+import Link from '@/components/Link.astro';
+import { ROUTES } from '@/constants/routes';
+import { formatDate, formatDateIso } from '@/utils/datetime';
+import { cn } from '@/utils/styles';
+import { getCategoryProps } from '@/modules/post/category';
+import type { HTMLAttributes } from 'astro/types';
+
+
+
+export interface Props extends HTMLAttributes<'p'> {
+  publishDate: Date;
+  category?: string;
+  readingTime?: number;
+  updatedDate?: Date;
+}
+
+const { category, publishDate, updatedDate, readingTime, class: className } = Astro.props;
+
+const shouldDisplay = [category, publishDate, updatedDate, readingTime].some(Boolean);
+---
+
+{
+  shouldDisplay && (
+    <p aria-label="Post meta" class={cn('b-p text-captions flex flex-row flex-wrap items-center gap-2', className)}>
+        {publishDate && (
+          <Icon name="tabler:clock" />
+          <time itemprop="datePublished" datetime={formatDateIso(publishDate)}>
+            {formatDate(publishDate)}
+          </time>
+        )}
+        {category && (
+          <span>·</span>
+          <Icon name={getCategoryProps(category).icon} />
+          <Link href={`${ROUTES.CATEGORIES}${category}`}>{category}</Link>
+        )}
+        {readingTime && (
+          <span>·</span>
+          <Icon name="tabler:book" />
+          <span>{`${Math.round(readingTime)} minutes`}</span>
+        )}
+        {updatedDate && (
+          <span>·</span>
+          <Icon name="tabler:pencil" />
+          <time itemprop="dateUpdated" datetime={formatDateIso(updatedDate)}>
+            {formatDate(updatedDate)}
+          </time>
+        )}
+    </p>
+  )
+}

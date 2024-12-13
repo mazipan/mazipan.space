@@ -1,0 +1,129 @@
+---
+import Link from '@/components/Link.astro';
+import { ROUTES } from '@/constants/routes';
+import { CONFIG_CLIENT } from '@/config/client';
+import { getLatestCommitInfo } from '@/libs/git';
+import { shortDate } from '@/utils/datetime';
+import { limitString, trimHttpProtocol } from '@/utils/strings';
+import SocialLinks from './SocialLinks.astro';
+
+const { SITE_URL, REPO_URL, AUTHOR_ADPLIST, AUTHOR_DECK } = CONFIG_CLIENT;
+
+const domain = trimHttpProtocol(SITE_URL);
+const messageLength = 20 as const;
+
+const { time, fullHash, message } = getLatestCommitInfo();
+
+const commitUrl = `${REPO_URL}/commit/${fullHash}`;
+
+const shortDateStr = shortDate(new Date(time));
+const trimmedMessage = limitString(message, messageLength);
+const copyrightYear = new Date().getFullYear();
+
+// footer is full width for border, div has max-w
+---
+
+<footer class="border-t border-base-300 py-8 px-4">
+  <div class="max-w-6xl md:mx-auto">
+    <div class="flex gap-8 flex-col-reverse md:flex-row w-full">
+      <div class="text-content whitespace-nowrap space-y-4">
+        <h3 class="font-semibold">Irfan Maulana / MZP</h3>
+        <SocialLinks />
+      </div>
+
+      <div class="text-content whitespace-nowrap space-y-4">
+        <h3 class="font-semibold">Navigations</h3>
+        <ul class="space-y-2 text-sm">
+          <li>
+            <Link href={ROUTES.BLOG}>Blog</Link>
+          </li>
+          <li>
+            <Link href={ROUTES.EXPLORE}>Explore</Link>
+          </li>
+          <li>
+            <Link href={ROUTES.TALKS}>Talks</Link>
+          </li>
+          <li>
+            <Link href={ROUTES.SUPPORT}>Support</Link>
+          </li>
+          <li>
+            <Link href={ROUTES.ABOUT}>About</Link>
+          </li>
+        </ul>
+      </div>
+
+      <div class="text-content whitespace-nowrap space-y-4">
+        <h3 class="font-semibold">Resources</h3>
+        <ul class="space-y-2 text-sm">
+          <li>
+            <Link
+              href="https://bookmarks.mazipan.space/"
+              target="_blank"
+              rel="me noreferrer noopener"
+              title="Bookmark collections"
+            >
+              Bookmarks
+            </Link>
+          </li>
+          <li>
+            <Link
+              href={AUTHOR_ADPLIST}
+              title="Meet me at ADPList"
+              target="_blank"
+              rel="me noreferrer noopener"
+            >
+              One on one
+            </Link>
+          </li>
+          <li>
+            <Link
+              href={AUTHOR_DECK}
+              title="Presentation Decks"
+              target="_blank"
+              rel="me noreferrer noopener"
+            >
+              Decks
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="https://umami.mazipan.space/share/O3odIJMu00TRHGhb/www.mazipan.space"
+              title="Analytics"
+            >
+              Analytics
+            </Link>
+          </li>
+          <li>
+            <Link href={ROUTES.API.FEED_RSS} title={`RSS feed for ${domain}`}> RSS </Link>
+          </li>
+        </ul>
+      </div>
+
+      <div class="text-content whitespace-nowrap space-y-4">
+        <h3 class="font-semibold">Previous Version</h3>
+        <ul class="space-y-2 text-sm">
+          <li>
+            <Link
+              href="https://2024.mazipan.space/"
+              target="_blank"
+              rel="me noreferrer noopener"
+              title="2024 Version"
+            >
+              2024
+            </Link>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="text-sm mt-8 py-8 md:py-4 text-center border-t border-base-300 space-y-2">
+      <p>© 2019-{copyrightYear}, All rights reserved</p>
+
+      <div class="flex items-center justify-center gap-2">
+        <label class="font-bold">Latest commit:</label>
+        <Link href={commitUrl} title={shortDateStr} target="_blank">
+          {trimmedMessage}
+        </Link>
+      </div>
+    </div>
+  </div>
+</footer>

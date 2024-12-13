@@ -1,0 +1,57 @@
+---
+layout: '../../layouts/Page.astro'
+title: Colors
+---
+
+import { capitalizeFirstLetter } from '../../utils/strings';
+import { cn } from '../../utils/styles';
+
+back to [Index](/design)
+
+export const colors = {
+  'background and borders': [
+    { name: 'base-100', value: 'bg-base-100' },
+    { name: 'base-200', value: 'bg-base-200' },
+    { name: 'base-300', value: 'bg-base-300' },
+    { name: 'base-code', value: 'bg-base-code' },
+  ],
+  text: [
+    { name: 'content', value: 'text-content' },
+    { name: 'headings', value: 'text-headings' },
+    { name: 'captions', value: 'text-captions' },
+  ],
+  links: [
+    { name: 'links', value: 'text-links' },
+    { name: 'links-hover', value: 'text-links-hover' },
+    { name: 'links-visited', value: 'text-links-visited' },
+  ],
+  brand: [
+    { name: 'primary', value: 'bg-primary text-primary-content' },
+    { name: 'primary-hover', value: 'bg-primary-hover text-primary-content' },
+    { name: 'primary-base-200', value: 'bg-primary-base-200' },
+    { name: 'primary-base-300', value: 'bg-primary-base-300' },
+
+    { name: 'secondary', value: 'bg-secondary text-secondary-content' },
+    { name: 'secondary-hover', value: 'bg-secondary-hover text-secondary-content' },
+
+    { name: 'accent', value: 'bg-accent text-accent-content' },
+    { name: 'accent-hover', value: 'bg-accent-hover text-accent-content' },
+  ],
+};
+
+## Color palette
+
+{Object.entries(colors).map(([key, values]) => (
+<>
+  <h4>{capitalizeFirstLetter(key)}</h4>
+  {values.map((color) => {
+    const { name, value } = color;
+
+    return (
+      <div class={cn('px-4 py-2 text-center text-content border border-base-300 my-2', value)}>
+        {name}
+      </div>
+    );
+  })}
+</>
+))}

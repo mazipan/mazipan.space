@@ -1,0 +1,76 @@
+@layer base {
+  /* default-light */
+  :root {
+    /* background */
+    --th-base-100: var(--var-color-white);
+    --th-base-200: var(--var-color-slate-100);
+    --th-base-300: var(--var-color-slate-300);
+    --th-base-code: var(--var-color-slate-400);
+
+    /* reused from tw-prose-xxx */
+    --th-content: var(--var-color-slate-700);
+    --th-headings: var(--var-color-yellow-500);
+    --th-captions: var(--var-color-slate-500);
+
+    --th-primary: var(--var-color-yellow-500);
+    --th-primary-hover: var(--var-color-yellow-600);
+    --th-primary-content: var(--var-color-slate-900);
+
+    --th-primary-base-200: var(--var-color-blue-100);
+    --th-primary-base-300: var(--var-color-blue-200);
+
+    /* links and primary same color */
+    --th-links: var(--var-color-yellow-500);
+    --th-links-hover: var(--var-color-yellow-600);
+    --th-links-visited: var(--var-color-yellow-700);
+
+    --th-secondary: var(--var-color-orange-400);
+    --th-secondary-hover: var(--var-color-orange-600);
+    --th-secondary-content: var(--var-color-white);
+
+    --th-accent: var(--var-color-teal-400);
+    --th-accent-hover: var(--var-color-teal-600);
+    --th-accent-content: var(--var-color-slate-700);
+
+    /* border radius, default for all themes */
+    /* rounded-md, rounded-lg, rounded-full */
+    --th-rounded-box: 0.175rem;
+    --th-rounded-button: 0.25rem;
+    --th-rounded-tag: 9999px;
+
+    /* change fonts in theme too */
+  }
+
+  /* default-dark */
+  :root.dark {
+    /* background */
+    --th-base-100: var(--var-color-dark-slate-800);
+    --th-base-200: var(--var-color-dark-slate-900);
+    --th-base-300: var(--var-color-dark-slate-950);
+    --th-base-code: var(--var-color-slate-700);
+
+    /* reused from tw-prose-invert-xxx */
+    --th-content: var(--var-color-dark-slate-300);
+    --th-headings: var(--var-color-yellow-400);
+    --th-captions: var(--var-color-dark-slate-400);
+
+    --th-primary: var(--var-color-yellow-400);
+    --th-primary-hover: var(--var-color-yellow-500);
+    --th-primary-content: var(--var-color-slate-900);
+
+    --th-primary-base-200: var(--var-color-blue-600);
+    --th-primary-base-300: var(--var-color-blue-700);
+
+    --th-links: var(--var-color-yellow-400);
+    --th-links-hover: var(--var-color-yellow-500);
+    --th-links-visited: var(--var-color-yellow-600);
+
+    --th-secondary: var(--var-color-orange-400);
+    --th-secondary-hover: var(--var-color-orange-600);
+    --th-secondary-content: var(--var-color-white);
+
+    --th-accent: var(--var-color-teal-400);
+    --th-accent-hover: var(--var-color-teal-600);
+    --th-accent-content: var(--var-color-slate-300);
+  }
+}
