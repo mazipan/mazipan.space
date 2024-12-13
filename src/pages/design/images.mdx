@@ -8,7 +8,7 @@ import { Image } from 'astro:assets';
 
 import { IMAGE_SIZES } from '../../constants/image';
 
-import Amfi1Image from '../../assets/images/default/default-post-hero-image.png';
+import ImgSrc from '../../assets/images/meta.png';
 
 back to [Index](/design)
 
@@ -24,15 +24,15 @@ back to [Index](/design)
 
 ### Image width=IMAGE_SIZES.FIXED.MDX_XS.width
 
-<Image {...IMAGE_SIZES.FIXED.MDX_XS} src={Amfi1Image} alt="This is city" />
+<Image {...IMAGE_SIZES.FIXED.MDX_XS} src={ImgSrc} alt="This is city" />
 
 ### Image width=MDX_SM
 
-<Image {...IMAGE_SIZES.FIXED.MDX_SM} src={Amfi1Image} alt="This is lure" />
+<Image {...IMAGE_SIZES.FIXED.MDX_SM} src={ImgSrc} alt="This is lure" />
 
 ### Image width=MDX_MD
 
-<Image {...IMAGE_SIZES.FIXED.MDX_MD} src={Amfi1Image} alt="This is meadow" />
+<Image {...IMAGE_SIZES.FIXED.MDX_MD} src={ImgSrc} alt="This is meadow" />
 
 Dolor aliquip Lorem eiusmod reprehenderit sit. Quis eu ea quis pariatur labore consectetur culpa ex
 qui eu qui. Aliqua culpa consectetur sit ut. Quis Lorem do tempor cillum esse sit enim culpa
@@ -42,7 +42,7 @@ deserunt.
 
 <Image
   {...IMAGE_SIZES.RESPONSIVE.MDX_EXPAND_LG}
-  src={Amfi1Image}
+  src={ImgSrc}
   alt="This is river"
 />
 
@@ -53,7 +53,7 @@ Adipisicing anim cillum esse et qui non veniam consectetur irure mollit aute. Oc
 <div class="expand-sm">
   <Image
     {...IMAGE_SIZES.RESPONSIVE.MDX_EXPAND_LG}
-    src={Amfi1Image}
+    src={ImgSrc}
     alt="This is lure"
   />
 </div>
@@ -65,7 +65,7 @@ Adipisicing exercitation enim nostrud aliquip incididunt. Non commodo ad exercit
 <div class="expand-lg">
   <Image
     {...IMAGE_SIZES.RESPONSIVE.MDX_EXPAND_LG}
-    src={Amfi1Image}
+    src={ImgSrc}
     alt="This is raft"
   />
 </div>

@@ -1,1 +1,0 @@
-mostly don't use public folder for images but imports from '@/assets'

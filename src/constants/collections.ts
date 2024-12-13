@@ -1,7 +1,6 @@
 import { DEFAULT_METADATA } from '@/constants/metadata';
 
-import DefaultPostHeroImage from '@/assets/images/default/default-post-hero-image.png';
-import DefaultProjectHeroImage from '@/assets/images/default/default-project-hero-image.png';
+import DefaultMetaImage from '@/assets/images/meta.png';
 
 export const COLLECTIONS = {
   POST: 'post',
@@ -67,7 +66,7 @@ export const DEFAULTS_POST = {
   TITLE: DEFAULT_METADATA.title,
   DESCRIPTION: DEFAULT_METADATA.description,
   NO_HERO: false,
-  HERO_IMAGE: DefaultPostHeroImage,
+  HERO_IMAGE: DefaultMetaImage,
   HERO_ALT: 'Hero image',
   DRAFT: false,
   CATEGORY: CATEGORIES[0].name,
@@ -78,7 +77,7 @@ export const DEFAULTS_PROJECT = {
   TITLE: DEFAULT_METADATA.title,
   DESCRIPTION: DEFAULT_METADATA.description,
   NO_HERO: false,
-  HERO_IMAGE: DefaultProjectHeroImage,
+  HERO_IMAGE: DefaultMetaImage,
   HERO_ALT: 'Hero image',
   DRAFT: false,
   CATEGORY: CATEGORIES[0].name,
