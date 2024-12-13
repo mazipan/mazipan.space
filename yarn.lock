@@ -866,10 +866,10 @@
     "@babel/types" "^7.26.0"
     semver "^7.5.2"
 
-"@iconify-json/tabler@^1.2.10":
-  version "1.2.10"
-  resolved "https://registry.yarnpkg.com/@iconify-json/tabler/-/tabler-1.2.10.tgz#bd0e96251e6577e47da363a77ea3951c9c6dd1f7"
-  integrity sha512-P58U/e0rZNYptzMjnExcFOtSt712xJnqwJI7KoF4iaUJ7EeFQNJawjUXT8X1rvbLMUk/O/fgrzAfhD163XuckA==
+"@iconify-json/tabler@^1.2.11":
+  version "1.2.11"
+  resolved "https://registry.yarnpkg.com/@iconify-json/tabler/-/tabler-1.2.11.tgz#8b646ba152bb3fc1901e51c6bf7999f1ecfff718"
+  integrity sha512-sOZRVC+QaGmagdogWlz/cTmgXyo5OfRMaac28fAv0+CgESO/eQRBbnjgP4boKG+eKWxjQvRACDOI1HZ1J6Jh7Q==
   dependencies:
     "@iconify/types" "*"
 
@@ -1954,10 +1954,10 @@ astro-social-share@^2.1.0:
   resolved "https://registry.yarnpkg.com/astro-social-share/-/astro-social-share-2.1.0.tgz#7c0da29b24e8c900d46164cdc306e2509e1b4403"
   integrity sha512-t5DykR+T7gGNLTnrFXASCyufCpXcWhLdXFLSRYRKvMOFSUaaPIWMPu1ncIhxdFD7hm7SWHboAb33nJUUZxJH2Q==
 
-astro@^5.0.4:
-  version "5.0.4"
-  resolved "https://registry.yarnpkg.com/astro/-/astro-5.0.4.tgz#900bb8233a7385d40b37350f2f24db4e4c8e2b9e"
-  integrity sha512-L8ttsBv6Pu1ZlmSUlbdnQbh9AkkQx8LIfP0psP/wdefJ/dgWOCiHzMw/8jbln3pCi8tAq+EGPvhA1b2bi+B0DQ==
+astro@^5.0.5:
+  version "5.0.5"
+  resolved "https://registry.yarnpkg.com/astro/-/astro-5.0.5.tgz#eda165b948bb4fbe3c231e184f69ff81d7241249"
+  integrity sha512-xfptdmurDsQcj/Anc7mU+eKlcyV7ppJIlmaSwhX3ZWwK5N/0rGKVmUqnuILgR6MB0XVJiIfublNzDGoyj4Q6BQ==
   dependencies:
     "@astrojs/compiler" "^2.10.3"
     "@astrojs/internal-helpers" "0.4.2"

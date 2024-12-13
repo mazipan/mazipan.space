@@ -64,16 +64,23 @@ export const GET: APIRoute = async ({ props }: APIContext) => {
     siteUrl: trimHttpProtocol(SITE_URL),
   };
 
-  const fontData = await fs.readFile(`${FONTS_FOLDER}inter-regular.woff`);
+  const fontRegular = await fs.readFile(`${FONTS_FOLDER}SpaceGrotesk-Regular.otf`);
+  const fontBold = await fs.readFile(`${FONTS_FOLDER}SpaceGrotesk-Bold.otf`);
 
   const svg = await satori(templateHtml(templateProps) as React.ReactNode, {
     width: 1200,
     height: 630,
     fonts: [
       {
-        name: 'Inter',
-        data: fontData,
+        name: 'Space Grotesk',
+        data: fontRegular,
         weight: 400,
+        style: 'normal',
+      },
+      {
+        name: 'Space Grotesk',
+        data: fontBold,
+        weight: 600,
         style: 'normal',
       },
     ],

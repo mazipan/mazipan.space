@@ -21,7 +21,7 @@ const templateHtml = ({ title, heroImageUrl, avatarImageUrl, siteUrl }: Template
   const randomGradient = getRandomGradient();
 
   return html`
-    <div class="flex p-8 h-full" style="${randomGradient}">
+    <div class="flex p-8 h-full" style="${randomGradient}" style="font-family:'Space Grotesk';">
       <div class="flex w-full flex-row justify-between text-slate-900">
         <!-- left column -->
         <div class="w-[550px] flex flex-col justify-between mr-6">
