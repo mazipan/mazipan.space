@@ -10,6 +10,7 @@ export const ROUTES = {
   ABOUT: '/about/',
   TALKS: '/talks/',
   SUPPORT: '/support/',
+  GUEST_BOOK: '/guest-book/',
   TAGS: '/blog/tags/',
   CATEGORIES: '/blog/categories/',
   EXPLORE: '/blog/explore/',
