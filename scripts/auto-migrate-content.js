@@ -5,6 +5,7 @@ const DRAFT_DIR = resolve('./src/draft');
 const POST_DIR = resolve('./src/content/post');
 const REGEX_HERO_IMAGE_2 = /heroImage2: \/thumbnail\/(.*)/gi;
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 async function migrate() {
   const drafts = readdirSync(DRAFT_DIR);
 
@@ -64,6 +65,7 @@ async function migrate() {
 
 // eslint-disable-next-line no-useless-escape
 const REGEX_IMAGE = /\!\[.*]\(.*\)/gi;
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 async function migrateImage() {
   const postDirs = readdirSync(POST_DIR);
 
@@ -91,6 +93,29 @@ async function migrateImage() {
   });
 }
 
+async function migrateRedirect() {
+  const postDirs = readdirSync(POST_DIR);
+
+  let res = [];
+  postDirs.forEach((post) => {
+    const postPath = join(POST_DIR, post);
+    const isDir = lstatSync(postPath).isDirectory();
+    if (!isDir) {
+      if (existsSync(postPath)) {
+        const slug = post.replace('.mdx', '');
+        res.push({
+          source: `/${slug}`,
+          destination: `/blog/${slug}`,
+        });
+      }
+    }
+  });
+
+  writeFile(resolve('./redirect-new.json'), JSON.stringify(res, null, 2), function (err) {
+    if (err) throw err;
+  });
+}
+
 (async () => {
-  await migrateImage();
+  await migrateRedirect();
 })();
