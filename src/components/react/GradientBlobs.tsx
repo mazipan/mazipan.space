@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { useInterval } from 'usehooks-ts';
 
 import { randomizeBlobs } from '@/utils/blobs';
+import { getRandomGradientStyle } from '@/utils/gradients';
 import { cn } from '@/utils/styles';
 
 import type { CSSProperties } from 'react';
@@ -10,21 +11,47 @@ import type { CSSProperties } from 'react';
 export const GradientBlobs = ({
   className = '',
   style = {},
+  swapGradient = false,
 }: {
   className?: string;
   style?: CSSProperties;
+  swapGradient?: boolean;
 }) => {
   const [randomRadius, setRandomRadius] = useState<string>(randomizeBlobs());
+  const [randomGradient, setRandomGradient] = useState<string>(getRandomGradientStyle());
 
   useInterval(() => {
     setRandomRadius(randomizeBlobs());
-  }, 500);
+  }, 1100);
+
+  useInterval(() => {
+    if (swapGradient) {
+      setRandomGradient(getRandomGradientStyle());
+    }
+  }, 1200);
+
+  useEffect(() => {
+    // @ts-ignore
+    const eventHandler = (e) => {
+      if (e?.data === 'swap_gradient') {
+        setRandomGradient(getRandomGradientStyle());
+      }
+    };
+
+    window.addEventListener('message', eventHandler);
+
+    return () => {
+      window?.removeEventListener('message', eventHandler);
+    };
+  }, []);
 
   return (
     <div
-      className={cn('transition-all duration-700 ease-linear', className)}
+      id="gradient-blob"
+      className={cn('transition-all duration-1000 ease-linear', className)}
       style={{
         borderRadius: randomRadius,
+        backgroundImage: randomGradient,
         ...style,
       }}
     ></div>
