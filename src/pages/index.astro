@@ -6,8 +6,11 @@ import RainbowTag from '@/components/RainbowTag.astro';
 import { GradientBlobs } from '@/components/react/GradientBlobs';
 import SocialLinks from '@/components/SocialLinks.astro';
 import { PROFILE } from '@/constants/profile';
+import { getRandomGradientStyle } from '@/utils/gradients';
 
 import AvatarSrc from '@/assets/images/avatar.png';
+
+const randomGradient = getRandomGradientStyle();
 ---
 
 <Centered
@@ -32,7 +35,10 @@ import AvatarSrc from '@/assets/images/avatar.png';
           style="border-radius: 77% 23% 70% 30% / 48% 36% 64% 52%;"
         />
         <GradientBlobs
-          className="z-0 w-[250px] h-[250px] absolute top-0 opacity-90 bg-gradient-to-r from-indigo-200 via-red-200 to-yellow-100"
+          className="z-0 w-[250px] h-[250px] absolute top-0 opacity-90"
+          style={{
+            backgroundImage: randomGradient,
+          }}
           client:only="react"
         />
       </div>

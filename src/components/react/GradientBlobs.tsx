@@ -5,7 +5,15 @@ import { useInterval } from 'usehooks-ts';
 import { randomizeBlobs } from '@/utils/blobs';
 import { cn } from '@/utils/styles';
 
-export const GradientBlobs = ({ className = '' }) => {
+import type { CSSProperties } from 'react';
+
+export const GradientBlobs = ({
+  className = '',
+  style = {},
+}: {
+  className?: string;
+  style?: CSSProperties;
+}) => {
   const [randomRadius, setRandomRadius] = useState<string>(randomizeBlobs());
 
   useInterval(() => {
@@ -17,6 +25,7 @@ export const GradientBlobs = ({ className = '' }) => {
       className={cn('transition-all duration-700 ease-linear', className)}
       style={{
         borderRadius: randomRadius,
+        ...style,
       }}
     ></div>
   );
