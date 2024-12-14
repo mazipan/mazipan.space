@@ -36,7 +36,9 @@
 
   .animated-text-link {
     text-decoration: none;
+    text-underline-offset: 2px;
     z-index: 2;
+    line-height: 1.5;
     @apply relative;
   }
 
@@ -45,23 +47,19 @@
     left: 0;
     bottom: 0px;
     content: '';
-    height: 30px;
+    height: 0px;
     z-index: -1;
-    @apply absolute block bg-yellow-400 w-0;
+    @apply absolute block bg-yellow-400 w-full;
     transition:
-      width 0.5s ease 0s,
-      left 0.5s ease 0s;
+      height 0.5s ease 0s,
+      color 0.5s ease 0s;
   }
 
-  .animated-text-link:hover:after,
-  .animated-text-link:focus:after,
-  .animated-text-link:active:after {
-    @apply w-full;
+  .animated-text-link:hover:after {
+    height: 30px;
   }
 
-  .animated-text-link:hover,
-  .animated-text-link:focus,
-  .animated-text-link:active {
+  .animated-text-link:hover {
     @apply text-black;
   }
 }

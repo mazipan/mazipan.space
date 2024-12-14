@@ -1,7 +1,9 @@
 ---
 import { getAllPostsWithReadingTime } from '@/modules/post/common';
 import List from '@/layouts/List.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
 import PostList from '@/components/PostList.astro';
+import { BreadcrumbItemHome } from '@/constants/breadcrumb';
 import { CONFIG_CLIENT } from '@/config/client';
 import { getPageMetadata } from '@/utils/metadata';
 import { pickPaginationPropsFromPage } from '@/utils/pagination';
@@ -28,8 +30,13 @@ const paginationProps = pickPaginationPropsFromPage(page);
 const metadata = getPageMetadata('lists/blog');
 
 const layoutProps = { metadata, paginationProps };
+const breadcrumbs = [BreadcrumbItemHome];
 ---
 
 <List {...layoutProps}>
+  <section slot="heading">
+    <Breadcrumbs items={breadcrumbs} />
+    <h1 class="b-h1">{metadata.title}</h1>
+  </section>
   <PostList posts={posts} />
 </List>

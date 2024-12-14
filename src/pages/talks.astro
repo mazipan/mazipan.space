@@ -1,14 +1,18 @@
 ---
 import Centered from '@/layouts/Centered.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import { BreadcrumbItemHome } from '@/constants/breadcrumb';
 import talks from '@/constants/talks';
 import { getPageMetadata } from '@/utils/metadata';
 
 const sortedTalksKeys = Object.keys(talks).reverse();
 const metadata = getPageMetadata('lists/talks');
+const breadcrumbs = [BreadcrumbItemHome];
 ---
 
 <Centered {metadata}>
   <article class="flex flex-col">
+    <Breadcrumbs items={breadcrumbs} />
     <slot name="heading">
       <h1 class="b-h1">{metadata.title}</h1>
     </slot>

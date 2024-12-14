@@ -3,8 +3,9 @@ import { Image } from 'astro:assets';
 
 import { getAllProjects } from '@/modules/project';
 import Centered from '@/layouts/Centered.astro';
-import RainbowTag from '@/components/RainbowTag.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
 import Share from '@/components/Share.astro';
+import { BreadcrumbItemHome, BreadcrumbItemProject } from '@/constants/breadcrumb';
 import { IMAGE_SIZES } from '@/constants/image';
 import { ROUTES } from '@/constants/routes';
 import { setTransitionSlug, TRANSITION_ELEMENT_IDS } from '@/constants/transitions';
@@ -43,13 +44,12 @@ const shareProps = {
 const getTransitionNameFromElementId = setTransitionSlug({ pageSlug: slug });
 
 const { Content } = await render();
+const breadcrumbs = [BreadcrumbItemHome, BreadcrumbItemProject];
 ---
 
 <Centered {metadata}>
   <article class="my-prose relative">
-    <div class="relative mb-2">
-      <RainbowTag emoji="🖥️" text="Projects" class="h-8" />
-    </div>
+    <Breadcrumbs items={breadcrumbs} />
     <h1
       class="b-h1 font-serif mb-2"
       transition:name={getTransitionNameFromElementId({

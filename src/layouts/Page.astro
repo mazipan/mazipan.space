@@ -1,5 +1,7 @@
 ---
 import Centered from '@/layouts/Centered.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import { BreadcrumbItemHome } from '@/constants/breadcrumb';
 import { getOpenGraphImagePath } from '@/libs/api/open-graph/image-path';
 import { cn } from '@/utils/styles';
 
@@ -29,9 +31,11 @@ const path = `/pages${pathname}`;
 const image = getOpenGraphImagePath(path);
 
 const metadata = { title, description, image };
+const breadcrumbs = [BreadcrumbItemHome];
 ---
 
 <Centered {metadata} class={cn(className)}>
+  <Breadcrumbs items={breadcrumbs} />
   <article class="my-prose">
     <slot />
   </article>
