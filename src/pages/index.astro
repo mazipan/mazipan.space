@@ -3,10 +3,14 @@ import { Image } from 'astro:assets';
 
 import Centered from '@/layouts/Centered.astro';
 import RainbowTag from '@/components/RainbowTag.astro';
+import { GradientBlobs } from '@/components/react/GradientBlobs';
 import SocialLinks from '@/components/SocialLinks.astro';
 import { PROFILE } from '@/constants/profile';
+import { getRandomGradientStyle } from '@/utils/gradients';
 
 import AvatarSrc from '@/assets/images/avatar.png';
+
+const randomGradient = getRandomGradientStyle();
 ---
 
 <Centered
@@ -27,14 +31,16 @@ import AvatarSrc from '@/assets/images/avatar.png';
           width={250}
           src={AvatarSrc}
           alt="MZP Avatar"
-          class="z-10 relative"
+          class="z-10 relative transition-all duration-500"
           style="border-radius: 77% 23% 70% 30% / 48% 36% 64% 52%;"
         />
-        <div
-          class="z-0 w-[250px] h-[250px] bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 absolute top-0"
-          style="border-radius: 35% 65% 47% 53% / 28% 60% 40% 72%;"
-        >
-        </div>
+        <GradientBlobs
+          className="z-0 w-[250px] h-[250px] absolute top-0 opacity-90"
+          style={{
+            backgroundImage: randomGradient,
+          }}
+          client:only="react"
+        />
       </div>
       <div class="border-b-4 border-dashed p-8 border-yellow-400">
         <SocialLinks />
@@ -44,7 +50,7 @@ import AvatarSrc from '@/assets/images/avatar.png';
 
       <svg
         aria-hidden="true"
-        class="pointer-events-none absolute top-0 inset-0 h-full w-full fill-neutral-400/80 [mask-image:radial-gradient(500px_circle_at_center,white,transparent)]"
+        class="-z-[1] pointer-events-none absolute top-0 inset-0 h-full w-full fill-neutral-400/80 [mask-image:radial-gradient(500px_circle_at_center,white,transparent)]"
       >
         <defs>
           <pattern
