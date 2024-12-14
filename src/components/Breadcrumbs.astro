@@ -1,0 +1,32 @@
+---
+import { cn } from '@/utils/styles';
+
+import type { HTMLAttributes } from 'astro/types';
+
+export interface BreadcrumbItem {
+  href: string;
+  text: string;
+}
+
+export interface Props extends HTMLAttributes<'nav'> {
+  items: BreadcrumbItem[];
+}
+
+const { items, ...props } = Astro.props;
+---
+
+<nav class={cn('my-2')} aria-label="breadcrumb" {...props}>
+  <div class="flex gap-2 items-center">
+    {
+      items.map((item) => (
+        <a
+          href={item.href}
+          title={item.text}
+          class="no-underline bg-yellow-50 text-black p-1 px-2 rounded-full text-sm hover:bg-yellow-200 hover:no-underline hover:text-black"
+        >
+          {item.text}
+        </a>
+      ))
+    }
+  </div>
+</nav>

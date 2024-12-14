@@ -4,8 +4,10 @@ import { getAllPostsWithReadingTime } from '@/modules/post/common';
 import { groupPostsByYear } from '@/modules/post/group-by-year';
 import { getUniqueTags } from '@/modules/post/tag';
 import List from '@/layouts/List.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
 import Explore from '@/components/Explore.astro';
 import PostCardSmall from '@/components/PostCardSmall.astro';
+import { BreadcrumbItemBlog, BreadcrumbItemHome } from '@/constants/breadcrumb';
 import { getTransitionName, TRANSITION_ELEMENT_IDS } from '@/constants/transitions';
 import { CONFIG_CLIENT } from '@/config/client';
 import { getPageMetadata } from '@/utils/metadata';
@@ -85,9 +87,14 @@ const layoutProps = { metadata, paginationProps };
 
 // render
 const postsByYear = groupPostsByYear(paginatedPosts);
+const breadcrumbs = [BreadcrumbItemHome, BreadcrumbItemBlog];
 ---
 
 <List {...layoutProps}>
+  <section slot="heading">
+    <Breadcrumbs items={breadcrumbs} />
+    <h1 class="b-h1">{metadata.title}</h1>
+  </section>
   <article class="pb-16 pt-8 relative">
     <section class="centered md:centered-px max-w-6xl">
       <div class="relative lg:grid lg:grid-cols-[300px,minmax(0,1fr)] gap-4">

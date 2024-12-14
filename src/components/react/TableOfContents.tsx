@@ -46,7 +46,7 @@ const TableOfContents = ({
         <div
           className={cn(
             'toc rounded-lg border-2 border-base-300 border-dashed p-4 mx-auto overflow-y-auto',
-            'max-h-[calc(80vh)] lg:sticky lg:top-14 lg:max-h-[calc(100vh-80px)]'
+            'max-h-[calc(70vh)] lg:sticky lg:top-14 lg:max-h-[calc(100vh-80px)]'
           )}
         >
           <b className="font-semibold">On This Page</b>

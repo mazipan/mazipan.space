@@ -2,6 +2,8 @@
 import { Image } from 'astro:assets';
 
 import Centered from '@/layouts/Centered.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import { BreadcrumbItemHome } from '@/constants/breadcrumb';
 import { TW_SCREENS } from '@/constants/image';
 import { PROFILE } from '@/constants/profile';
 import { ROUTES } from '@/constants/routes';
@@ -19,6 +21,7 @@ export const imageSizes = {
   widths: [TW_SCREENS.SM, TW_SCREENS.MD, TW_SCREENS.SM],
   sizes: `(max-width: ${TW_SCREENS.SM}px) ${TW_SCREENS.SM}px, (max-width: ${TW_SCREENS.MD}px) ${TW_SCREENS.MD}px, ${TW_SCREENS.SM}px`,
 };
+const breadcrumbs = [BreadcrumbItemHome];
 ---
 
 <Centered
@@ -27,6 +30,7 @@ export const imageSizes = {
   }}
 >
   <article class="flex flex-col">
+    <Breadcrumbs items={breadcrumbs} />
     <h1 class="b-h1">I'm Irfan Maulana.</h1>
     <b>You can call me "mas ipan"</b>
     <div class="my-8 flex gap-16 flex-col-reverse md:flex-row md:justify-between md:items-start">
