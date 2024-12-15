@@ -11,6 +11,7 @@ const { SITE_URL } = PROCESS_ENV;
 /** generated at build-time only */
 export const sitemapIntegration = () =>
   sitemap({
+    filter: (page) => !page.includes('/design/'),
     serialize: (item) => {
       if (item.url.endsWith(SITE_URL)) {
         item.priority = 1.0;

@@ -12,11 +12,11 @@ export const BreadcrumbItemBlog = {
 };
 
 export const BreadcrumbItemExplore = {
-  href: ROUTES.BLOG,
+  href: ROUTES.EXPLORE,
   text: PAGE_METADATA['lists/blog/explore'].title,
 };
 
 export const BreadcrumbItemProject = {
-  href: ROUTES.BLOG,
+  href: ROUTES.PROJECTS,
   text: PAGE_METADATA['lists/projects'].title,
 };

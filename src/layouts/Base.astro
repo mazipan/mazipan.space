@@ -20,7 +20,9 @@ const { metadata } = Astro.props as BaseProps;
     class="relative flex flex-col min-h-screen min-w-80 bg-base-100 transition-colors duration-500 scroll-smooth"
   >
     <Header />
-    <slot />
+    <div id="app-body" class="app-body relative mt-[65px]">
+      <slot />
+    </div>
     <Footer />
 
     <ScrollToTop client:only="react">

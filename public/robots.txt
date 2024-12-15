@@ -1,6 +1,3 @@
-User-agent: *
-Disallow:
-
 #
 # Disallow decidedly bad actors…
 #
@@ -12,5 +9,9 @@ User-agent: Google-Extended
 User-agent: Omgilibot
 User-Agent: FacebookBot
 Disallow: /
+
+User-agent: *
+Disallow: /design
+Allow: /
 
 Sitemap: https://mazipan.space/sitemap-index.xml

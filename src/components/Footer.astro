@@ -41,6 +41,9 @@ const copyrightYear = new Date().getFullYear();
             <Link href={ROUTES.EXPLORE}>Explore</Link>
           </li>
           <li>
+            <Link href={ROUTES.PROJECTS}>Projects</Link>
+          </li>
+          <li>
             <Link href={ROUTES.TALKS}>Talks</Link>
           </li>
           <li>
@@ -60,7 +63,7 @@ const copyrightYear = new Date().getFullYear();
         <ul class="space-y-2 text-sm">
           <li>
             <Link
-              href="https://bookmarks.mazipan.space/"
+              href={ROUTES.BOOKMARKS}
               target="_blank"
               rel="me noreferrer noopener"
               title="Bookmark collections"
@@ -90,12 +93,22 @@ const copyrightYear = new Date().getFullYear();
           </li>
           <li>
             <Link
-              href="https://umami.mazipan.space/share/O3odIJMu00TRHGhb/www.mazipan.space"
+              href={ROUTES.UMAMI_PUBLIC_URL}
               title="Analytics"
               target="_blank"
               rel="me noreferrer noopener"
             >
               Analytics
+            </Link>
+          </li>
+          <li>
+            <Link
+              href={ROUTES.GH_NEW_ISSUE}
+              target="_blank"
+              rel="me noreferrer noopener"
+              title={`Submit issue`}
+            >
+              Submit issue
             </Link>
           </li>
           <li>
