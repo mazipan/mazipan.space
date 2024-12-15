@@ -98,13 +98,13 @@ const metadata: Metadata = { title, description, image };
     {
       !noHero && (
         <Image
-          {...IMAGE_SIZES.RESPONSIVE.POST_HERO}
+          {...IMAGE_SIZES.RESPONSIVE.MDX_EXPAND_LG}
           src={heroImage}
           alt={heroAlt}
           fetchpriority="high"
           loading="eager"
           itemprop="image"
-          class="block max-w-full h-auto aspect-[16/8] object-cover rounded-lg"
+          class="block w-full max-h-[400px] h-auto aspect-[16/8] object-center object-cover rounded-lg mt-4"
           transition:name={getTransitionNameFromElementId({
             elementId: TRANSITION_ELEMENT_IDS.POST_CARD.HERO_IMAGE,
           })}

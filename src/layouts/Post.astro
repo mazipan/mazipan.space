@@ -1,15 +1,22 @@
 ---
 import FullWidth from '@/layouts/FullWidth.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import { BreadcrumbItemBlog, BreadcrumbItemHome } from '@/constants/breadcrumb';
 
 import type { BaseProps } from '@/layouts/Base.astro';
 
 export interface Props extends BaseProps {}
 
 const props = Astro.props;
+const breadcrumbs = [BreadcrumbItemHome, BreadcrumbItemBlog];
 ---
 
 <FullWidth {...props}>
   <article class="pb-16 pt-8 relative">
+    <section class="centered-px max-w-6xl">
+      <Breadcrumbs items={breadcrumbs} />
+    </section>
+
     <figure class="centered-px max-w-6xl">
       <slot name="hero-image" />
     </figure>
