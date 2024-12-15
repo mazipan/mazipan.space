@@ -33,9 +33,9 @@ const getTransitionNameFromElementId = setTransitionSlug({ pageSlug: slug });
 
 <article
   class={cn(
-    'flex flex-col xs:flex-row gap-2 md:gap-4',
+    'flex flex-col gap-2 xs:flex-row md:gap-4',
     'not-first:pt-2 not-last:pb-2 md:not-first:pt-4 md:not-last:pb-4',
-    'not-last:border-b border-base-300',
+    'border-base-300 not-last:border-b',
     className
   )}
 >
@@ -45,7 +45,7 @@ const getTransitionNameFromElementId = setTransitionSlug({ pageSlug: slug });
         {...IMAGE_SIZES.FIXED.POST_CARD_SMALL}
         src={heroImage}
         alt={heroAlt}
-        class="object-cover rounded-box hidden xs:block w-[142px] h-[80px] md:size-auto"
+        class="hidden h-[80px] w-[142px] rounded-box object-cover xs:block md:size-auto"
         transition:name={getTransitionNameFromElementId({
           elementId: TRANSITION_ELEMENT_IDS.POST_CARD.HERO_IMAGE,
         })}
@@ -55,7 +55,7 @@ const getTransitionNameFromElementId = setTransitionSlug({ pageSlug: slug });
 
   <div class="flex flex-col">
     <h4
-      class="b-h4 text-xl leading-none line-clamp-1 mb-1 md:mb-2"
+      class="b-h4 mb-1 line-clamp-1 text-xl leading-none md:mb-2"
       transition:name={getTransitionNameFromElementId({
         elementId: TRANSITION_ELEMENT_IDS.POST_CARD.TITLE,
       })}
@@ -63,12 +63,12 @@ const getTransitionNameFromElementId = setTransitionSlug({ pageSlug: slug });
       <Link variant="link-heading" href={`${ROUTES.BLOG}${slug}`} class="animated-text-link">
         {title}
       </Link>
-      {draft && <sup class="text-sm text-red-500 mr-1">{DRAFT_TEXT}</sup>}
+      {draft && <sup class="mr-1 text-sm text-red-500">{DRAFT_TEXT}</sup>}
     </h4>
     {
       description && (
         <p
-          class="text-base line-clamp-1 md:line-clamp-2 mb-2"
+          class="mb-2 line-clamp-1 text-base md:line-clamp-2"
           transition:name={getTransitionNameFromElementId({
             elementId: TRANSITION_ELEMENT_IDS.POST_CARD.DESCRIPTION,
           })}
@@ -78,12 +78,12 @@ const getTransitionNameFromElementId = setTransitionSlug({ pageSlug: slug });
       )
     }
     <span
-      class="inline-flex items-center gap-1 text-sm text-captions text-nowrap mt-auto"
+      class="mt-auto inline-flex items-center gap-1 text-nowrap text-sm text-captions"
       transition:name={getTransitionNameFromElementId({
         elementId: TRANSITION_ELEMENT_IDS.POST_CARD.META,
       })}
     >
-      <Icon name={isUpdatedDate ? 'tabler:pencil' : 'tabler:clock'} class="w-4 h-4" />
+      <Icon name={isUpdatedDate ? 'tabler:pencil' : 'tabler:clock'} class="h-4 w-4" />
       <time itemprop="datePublished" datetime={formatDateIso(lastAccessDate)}>
         {formatDate(lastAccessDate)}
       </time>

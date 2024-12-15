@@ -51,7 +51,7 @@ const breadcrumbs = [BreadcrumbItemHome, BreadcrumbItemProject];
   <article class="my-prose relative">
     <Breadcrumbs items={breadcrumbs} />
     <h1
-      class="b-h1 font-serif mb-2"
+      class="b-h1 mb-2 font-serif"
       transition:name={getTransitionNameFromElementId({
         elementId: TRANSITION_ELEMENT_IDS.POST_CARD.TITLE,
       })}
@@ -61,7 +61,7 @@ const breadcrumbs = [BreadcrumbItemHome, BreadcrumbItemProject];
     {
       description && (
         <p
-          class="font-normal text-content text-xl my-4"
+          class="my-4 text-xl font-normal text-content"
           transition:name={getTransitionNameFromElementId({
             elementId: TRANSITION_ELEMENT_IDS.POST_CARD.DESCRIPTION,
           })}

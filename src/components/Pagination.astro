@@ -62,11 +62,11 @@ const threePageNumbers = (currentPage: number, lastPage: number): number[] => {
   hasMoreThanOnePage() || showIfOnePage ? (
     <div
       class={cn(
-        'flex flex-col-reverse md:flex-row items-center justify-center md:justify-between gap-4',
+        'flex flex-col-reverse items-center justify-center gap-4 md:flex-row md:justify-between',
         className
       )}
     >
-      <p class="b-p hidden xs:inline-block text-base">
+      <p class="b-p hidden text-base xs:inline-block">
         Showing
         <span class="font-bold">{start + 1}</span>
         to
@@ -80,7 +80,7 @@ const threePageNumbers = (currentPage: number, lastPage: number): number[] => {
         <Link
           href={firstUrl}
           disabled={!prevUrl}
-          class="rounded h-8 w-8 flex items-center justify-center hover:bg-primary-hover hover:text-black"
+          class="flex h-8 w-8 items-center justify-center rounded hover:bg-primary-hover hover:text-black"
         >
           <Icon name="tabler:chevrons-left" />
         </Link>
@@ -88,7 +88,7 @@ const threePageNumbers = (currentPage: number, lastPage: number): number[] => {
         <Link
           href={prevUrl}
           disabled={!prevUrl}
-          class="rounded h-8 w-8 flex items-center justify-center hover:bg-primary-hover hover:text-black"
+          class="flex h-8 w-8 items-center justify-center rounded hover:bg-primary-hover hover:text-black"
         >
           <Icon name="tabler:chevron-left" />
         </Link>
@@ -103,7 +103,7 @@ const threePageNumbers = (currentPage: number, lastPage: number): number[] => {
               href={getPageUrl(pageNumber)}
               disabled={isCurrentPage}
               class={cn(
-                'rounded min-h-8 min-w-8 flex items-center justify-center hover:bg-primary-hover hover:text-black hover:no-underline',
+                'flex min-h-8 min-w-8 items-center justify-center rounded hover:bg-primary-hover hover:text-black hover:no-underline',
                 isCurrentPage ? 'font-semibold' : ''
               )}
             >
@@ -115,7 +115,7 @@ const threePageNumbers = (currentPage: number, lastPage: number): number[] => {
         <Link
           href={nextUrl}
           disabled={!nextUrl}
-          class="rounded h-8 w-8 flex items-center justify-center hover:bg-primary-hover hover:text-black"
+          class="flex h-8 w-8 items-center justify-center rounded hover:bg-primary-hover hover:text-black"
         >
           <Icon name="tabler:chevron-right" />
         </Link>
@@ -123,7 +123,7 @@ const threePageNumbers = (currentPage: number, lastPage: number): number[] => {
         <Link
           href={lastUrl}
           disabled={!nextUrl}
-          class="rounded h-8 w-8 flex items-center justify-center hover:bg-primary-hover hover:text-black"
+          class="flex h-8 w-8 items-center justify-center rounded hover:bg-primary-hover hover:text-black"
         >
           <Icon name="tabler:chevrons-right" />
         </Link>

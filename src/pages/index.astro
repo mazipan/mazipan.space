@@ -27,28 +27,28 @@ import AvatarSrc from '@/assets/images/avatar.png';
 >
   <article class="flex flex-col">
     <div
-      class="min-h-[calc(100vh-100px)] flex flex-col-reverse md:flex-row justify-center items-center gap-8 py-8 relative overflow-hidden"
+      class="relative flex min-h-[calc(100vh-100px)] flex-col-reverse items-center justify-center gap-8 overflow-hidden py-8 md:flex-row"
     >
-      <div class="max-w-[300px] flex flex-col gap-2">
+      <div class="flex max-w-[300px] flex-col gap-2">
         <RainbowTag emoji="💅" text="Frontend Web Developer" />
         <p>{PROFILE.TAGLINE}</p>
       </div>
-      <div class="relative w-[250px] h-[250px]">
+      <div class="relative h-[250px] w-[250px]">
         <Image
           width={250}
           src={AvatarSrc}
           alt="MZP Avatar"
-          class="z-10 relative transition-all duration-500"
+          class="relative z-10 transition-all duration-500"
           style="border-radius: 77% 23% 70% 30% / 48% 36% 64% 52%;"
         />
         <GradientBlobs
-          className="z-0 w-[250px] h-[250px] absolute top-0 opacity-90"
+          className="absolute top-0 z-0 h-[250px] w-[250px] opacity-90"
           client:only="react"
         />
         <button
           role="button"
           type="button"
-          class="absolute z-5 top-[165px] right-0 rounded-lg p-1 bg-yellow-400 text-black focus:bg-yellow-500 focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2"
+          class="z-5 absolute right-0 top-[165px] rounded bg-yellow-400 p-1 text-black focus:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2 dark:focus:bg-base-200"
           id="btn-swap-gradient"
           title="Shuffle gradient"
           aria-label="Shuffle gradient"
@@ -56,7 +56,7 @@ import AvatarSrc from '@/assets/images/avatar.png';
           <Icon name="tabler:refresh" class="h-4 w-4" />
         </button>
       </div>
-      <div class="border-b-4 border-dashed p-8 border-yellow-400">
+      <div class="border-b-4 border-dashed border-yellow-400 p-8">
         <SocialLinks />
         <h1 class="mb-2 mt-4 font-serif text-5xl text-yellow-400">Irfan Maulana</h1>
         <p class="text-lg font-semibold">Call me "mas ipan"</p>
@@ -64,7 +64,7 @@ import AvatarSrc from '@/assets/images/avatar.png';
 
       <svg
         aria-hidden="true"
-        class="-z-[1] pointer-events-none absolute top-0 inset-0 h-full w-full fill-neutral-400/80 [mask-image:radial-gradient(500px_circle_at_center,white,transparent)]"
+        class="pointer-events-none absolute inset-0 top-0 -z-[1] h-full w-full fill-neutral-400/80 [mask-image:radial-gradient(500px_circle_at_center,white,transparent)]"
       >
         <defs>
           <pattern

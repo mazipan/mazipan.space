@@ -4,11 +4,11 @@
 
   .expand-lg {
     @apply xl:mx-[calc(50%-50vw)] xl:translate-x-[calc(50vw-50%)];
-    @apply xl:w-[80vw] max-w-7xl;
+    @apply max-w-7xl xl:w-[80vw];
   }
 
   .expand-sm {
     @apply xl:mx-[calc(50%-50vw)] xl:translate-x-[calc(50vw-50%)];
-    @apply xl:w-[70vw] max-w-5xl;
+    @apply max-w-5xl xl:w-[70vw];
   }
 }

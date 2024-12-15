@@ -9,7 +9,8 @@ yarn.yaml
 # enable for .md
 docs
 2024
-
+psi-reports
+public
 
 # formatting breaks them
 # *.md

@@ -16,13 +16,13 @@ const { items, ...props } = Astro.props;
 ---
 
 <nav class={cn('my-2')} aria-label="breadcrumb" {...props}>
-  <div class="flex gap-2 items-center">
+  <div class="flex items-center gap-2">
     {
       items.map((item) => (
         <a
           href={item.href}
           title={item.text}
-          class="no-underline bg-yellow-50 text-black p-1 px-2 rounded-full text-sm hover:bg-yellow-200 hover:no-underline hover:text-black"
+          class="rounded-full bg-yellow-50 p-1 px-2 text-sm text-black no-underline hover:bg-yellow-200 hover:text-black hover:no-underline"
         >
           {item.text}
         </a>

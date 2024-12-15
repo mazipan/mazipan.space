@@ -13,7 +13,11 @@ const { slot, isActive = false, class: className, ...props } = Astro.props as Pr
 <Link
   {...props}
   variant="link-nav"
-  class={cn('no-underline hover:no-underline', { 'text-links': isActive }, className)}
+  class={cn(
+    'no-underline hover:no-underline focus:no-underline active:no-underline',
+    { 'text-links': isActive },
+    className
+  )}
 >
   <slot />
 </Link>

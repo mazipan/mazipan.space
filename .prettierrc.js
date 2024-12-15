@@ -2,7 +2,11 @@
  * @type {import('prettier').Options}
  */
 module.exports = {
-  plugins: ['prettier-plugin-astro', '@ianvs/prettier-plugin-sort-imports'],
+  plugins: [
+    'prettier-plugin-astro',
+    '@ianvs/prettier-plugin-sort-imports',
+    'prettier-plugin-tailwindcss',
+  ],
   printWidth: 100,
   semi: true,
   singleQuote: true,
@@ -47,4 +51,5 @@ module.exports = {
     '^@/assets',
     '^@/styles',
   ],
+  tailwindFunctions: ['clsx', 'cn', 'cva'],
 };

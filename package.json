@@ -3,16 +3,16 @@
   "version": "1.0.2025",
   "private": true,
   "scripts": {
-    "dev": "astro dev",
-    "start": "serve ./dist",
-    "preview": "astro preview",
-    "build": "astro build",
     "astro": "astro",
-    "sync": "astro sync",
-    "lint": "eslint --ext .astro,.tsx,.ts,.js,.mdx src",
-    "format": "prettier --write .",
+    "build": "astro build",
+    "check-types": "tsc --noEmit --pretty",
     "clean": "rm -rf node_modules yarn.lock",
-    "check-types": "tsc --noEmit --pretty"
+    "dev": "astro dev",
+    "format": "prettier --write .",
+    "lint": "eslint --ext .astro,.tsx,.ts,.js,.mdx src",
+    "preview": "astro preview",
+    "start": "serve ./dist",
+    "sync": "astro sync"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.0.2",
@@ -70,14 +70,12 @@
     "eslint-plugin-tailwindcss": "^3.17.5",
     "prettier": "^3.4.2",
     "prettier-plugin-astro": "^0.14.1",
+    "prettier-plugin-tailwindcss": "^0.6.9",
     "satori": "^0.12.0",
     "satori-html": "^0.3.2",
     "serve": "^14.2.4",
     "tailwindcss": "^3.4.16",
     "typescript": "^5.7.2"
-  },
-  "resolutions": {
-    "sharp": "0.32.6"
   },
   "packageManager": "yarn@1.22.22",
   "engines": {

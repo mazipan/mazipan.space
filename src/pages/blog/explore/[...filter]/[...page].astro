@@ -95,9 +95,9 @@ const breadcrumbs = [BreadcrumbItemHome, BreadcrumbItemBlog];
     <Breadcrumbs items={breadcrumbs} />
     <h1 class="b-h1">{metadata.title}</h1>
   </section>
-  <article class="pb-16 pt-8 relative">
+  <article class="relative pb-16 pt-8">
     <section class="centered md:centered-px max-w-6xl">
-      <div class="relative lg:grid lg:grid-cols-[300px,minmax(0,1fr)] gap-4">
+      <div class="relative gap-4 lg:grid lg:grid-cols-[300px,minmax(0,1fr)]">
         <Explore posts={allPosts} {filterPathname} />
         <div>
           {

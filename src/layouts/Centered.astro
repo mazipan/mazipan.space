@@ -18,7 +18,7 @@ const { class: className } = Astro.props;
 <Base {...props}>
   <main
     id="main"
-    class={cn('flex-grow flex flex-col centered-px max-w-6xl py-4 lg:py-8', className)}
+    class={cn('centered-px flex max-w-6xl flex-grow flex-col py-4 lg:py-8', className)}
   >
     <slot />
   </main>
