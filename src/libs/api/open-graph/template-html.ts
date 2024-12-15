@@ -20,32 +20,32 @@ const templateHtml = ({ title, heroImageUrl, avatarImageUrl, siteUrl }: Template
 
   return html`
     <div
-      class="flex p-8 h-full w-full"
+      class="flex h-full w-full p-8"
       style="font-family:'Space Grotesk';background-image:${getRandomGradientStyle()};"
     >
       <div class="flex w-full flex-row justify-between text-slate-900">
         <!-- left column -->
-        <div class="w-[550px] flex flex-col justify-between mr-6">
+        <div class="mr-6 flex w-[550px] flex-col justify-between">
           <!-- title -->
-          <div class="flex flex-grow text-6xl font-semibold mb-4">${limitedTitle}</div>
+          <div class="mb-4 flex flex-grow text-6xl font-semibold">${limitedTitle}</div>
 
           <!-- avatar and site -->
-          <div class="flex items-center ${isLongSiteUrl ? 'flex-col justify-end items-start' : ''}">
+          <div class="${isLongSiteUrl ? 'flex-col justify-end items-start' : ''} flex items-center">
             <img
               src=${avatarImageUrl}
               alt=${limitedTitle}
               width="80"
               height="80"
-              class="rounded-full mr-8"
+              class="mr-8 rounded-full"
             />
-            <div class="flex items-center ${isLongSiteUrl ? 'mt-4 text-3xl' : 'text-4xl'}">
+            <div class="${isLongSiteUrl ? 'mt-4 text-3xl' : 'text-4xl'} flex items-center">
               <div>${siteUrl}</div>
             </div>
           </div>
         </div>
 
         <!-- right column -->
-        <div class="w-[550px] flex items-center">
+        <div class="flex w-[550px] items-center">
           <img src="${heroImageUrl}" class="h-full w-full rounded-2xl" style="object-fit: cover" />
         </div>
       </div>

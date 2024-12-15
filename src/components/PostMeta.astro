@@ -1,14 +1,13 @@
 ---
 import { Icon } from 'astro-icon/components';
 
+import { getCategoryProps } from '@/modules/post/category';
 import Link from '@/components/Link.astro';
 import { ROUTES } from '@/constants/routes';
 import { formatDate, formatDateIso } from '@/utils/datetime';
 import { cn } from '@/utils/styles';
-import { getCategoryProps } from '@/modules/post/category';
+
 import type { HTMLAttributes } from 'astro/types';
-
-
 
 export interface Props extends HTMLAttributes<'p'> {
   publishDate: Date;
@@ -24,30 +23,44 @@ const shouldDisplay = [category, publishDate, updatedDate, readingTime].some(Boo
 
 {
   shouldDisplay && (
-    <p aria-label="Post meta" class={cn('b-p text-captions flex flex-row flex-wrap items-center gap-2', className)}>
-        {publishDate && (
+    <p
+      aria-label="Post meta"
+      class={cn('b-p flex flex-row flex-wrap items-center gap-2 text-captions', className)}
+    >
+      {publishDate && (
+        <Fragment>
           <Icon name="tabler:clock" />
           <time itemprop="datePublished" datetime={formatDateIso(publishDate)}>
             {formatDate(publishDate)}
           </time>
-        )}
-        {category && (
+        </Fragment>
+      )}
+
+      {category && (
+        <Fragment>
           <span>·</span>
           <Icon name={getCategoryProps(category).icon} />
           <Link href={`${ROUTES.CATEGORIES}${category}`}>{category}</Link>
-        )}
-        {readingTime && (
+        </Fragment>
+      )}
+
+      {readingTime && (
+        <Fragment>
           <span>·</span>
           <Icon name="tabler:book" />
           <span>{`${Math.round(readingTime)} minutes`}</span>
-        )}
-        {updatedDate && (
+        </Fragment>
+      )}
+
+      {updatedDate && (
+        <Fragment>
           <span>·</span>
           <Icon name="tabler:pencil" />
           <time itemprop="dateUpdated" datetime={formatDateIso(updatedDate)}>
             {formatDate(updatedDate)}
           </time>
-        )}
+        </Fragment>
+      )}
     </p>
   )
 }

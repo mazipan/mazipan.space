@@ -46,21 +46,21 @@ const getTransitionNameFromElementId = setTransitionSlug({ pageSlug: slug });
 
 <article
   class={cn(
-    'w-full flex flex-col md:flex-row gap-4 lg:gap-6',
+    'flex w-full flex-col gap-4 md:flex-row lg:gap-6',
     'not-first:pt-4 not-last:pb-4 md:not-first:pt-6 md:not-last:pb-6',
-    'not-last:border-b border-base-300'
+    'border-base-300 not-last:border-b'
   )}
 >
   {/* left column */}
   {
     !noHero && (
-      <div class="md:basis-1/3 md:shrink-0">
+      <div class="md:shrink-0 md:basis-1/3">
         <Image
           {...IMAGE_SIZES.RESPONSIVE.POST_CARD}
           src={heroImage}
           alt={heroAlt}
           itemprop="image"
-          class="w-full h-[168px] xs:h-[250px] md:h-[168px] md:max-w-[298px] object-cover rounded-box"
+          class="h-[168px] w-full rounded-box object-cover xs:h-[250px] md:h-[168px] md:max-w-[298px]"
           transition:name={getTransitionNameFromElementId({
             elementId: TRANSITION_ELEMENT_IDS.POST_CARD.HERO_IMAGE,
           })}
@@ -75,7 +75,7 @@ const getTransitionNameFromElementId = setTransitionSlug({ pageSlug: slug });
 
     {/* title */}
     <h2
-      class="text-2xl font-bold break-words md:line-clamp-2 mt-0 mb-2"
+      class="mb-2 mt-0 break-words text-2xl font-bold md:line-clamp-2"
       transition:name={getTransitionNameFromElementId({
         elementId: TRANSITION_ELEMENT_IDS.POST_CARD.TITLE,
       })}
@@ -83,13 +83,13 @@ const getTransitionNameFromElementId = setTransitionSlug({ pageSlug: slug });
       <Link href={`${ROUTES.BLOG}${slug}`} variant="link-heading" class="animated-text-link">
         {title}
       </Link>
-      {draft && <sup class="text-sm text-red-500 ml-1">{DRAFT_TEXT}</sup>}
+      {draft && <sup class="ml-1 text-sm text-red-500">{DRAFT_TEXT}</sup>}
     </h2>
 
     {
       description && (
         <p
-          class="text-base mb-4 line-clamp-2"
+          class="mb-4 line-clamp-2 text-base"
           transition:name={getTransitionNameFromElementId({
             elementId: TRANSITION_ELEMENT_IDS.POST_CARD.DESCRIPTION,
           })}
@@ -101,13 +101,13 @@ const getTransitionNameFromElementId = setTransitionSlug({ pageSlug: slug });
 
     {/* published date and category link */}
     <div
-      class="flex items-center gap-2 mb-4 text-sm leading-none"
+      class="mb-4 flex items-center gap-2 text-sm leading-none"
       transition:name={getTransitionNameFromElementId({
         elementId: TRANSITION_ELEMENT_IDS.POST_CARD.META,
       })}
     >
       <span class="inline-flex items-center gap-2 text-captions">
-        <Icon name={isUpdatedDate ? 'tabler:pencil' : 'tabler:clock'} class="w-4 h-4" />
+        <Icon name={isUpdatedDate ? 'tabler:pencil' : 'tabler:clock'} class="h-4 w-4" />
         <time itemprop="datePublished" datetime={formatDateIso(lastAccessDate)}>
           {formatDate(lastAccessDate)}
         </time>
@@ -121,10 +121,10 @@ const getTransitionNameFromElementId = setTransitionSlug({ pageSlug: slug });
     </div>
 
     {/* reading time and read more link */}
-    <div class="flex items-center xs:items-end justify-between">
+    <div class="flex items-center justify-between xs:items-end">
       <div class="flex items-center gap-4">
         <span class="inline-flex items-center gap-2 text-sm text-captions">
-          <Icon name="tabler:book" class="w-4 h-4" />
+          <Icon name="tabler:book" class="h-4 w-4" />
           <span class="text-nowrap">{`${Math.round(readingTime)} minutes`}</span>
         </span>
         <TagList tags={tags.slice(0, 2)} size="sm" variant="text" class="hidden xs:inline-flex" />
@@ -135,7 +135,7 @@ const getTransitionNameFromElementId = setTransitionSlug({ pageSlug: slug });
         class="inline-flex items-center gap-1 text-base font-medium"
       >
         <span class="text-nowrap">Read more</span>
-        <Icon name="tabler:arrow-right" class="w-4 h-4" />
+        <Icon name="tabler:arrow-right" class="h-4 w-4" />
       </Link>
     </div>
   </div>

@@ -22,13 +22,13 @@ const { title, heroImage, heroAlt, description, draft } = data;
     {...IMAGE_SIZES.RESPONSIVE.POST_CARD}
     src={heroImage}
     alt={heroAlt}
-    class="max-h-40 object-cover rounded-t-box"
+    class="max-h-40 rounded-t-box object-cover"
   />
-  <h4 class="b-h4 break-words line-clamp-2 mt-3 mb-2">
+  <h4 class="b-h4 mb-2 mt-3 line-clamp-2 break-words">
     <Link variant="link-heading" href={`${ROUTES.BLOG}${slug}`}>
       {title}
-      {draft && <sup class="text-sm text-red-500 ml-1">{DRAFT_TEXT}</sup>}
+      {draft && <sup class="ml-1 text-sm text-red-500">{DRAFT_TEXT}</sup>}
     </Link>
   </h4>
-  {description && <p class="text-base line-clamp-2">{description}</p>}
+  {description && <p class="line-clamp-2 text-base">{description}</p>}
 </div>

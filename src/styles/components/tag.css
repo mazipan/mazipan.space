@@ -1,7 +1,7 @@
 @layer components {
   .tag {
     @apply text-content;
-    @apply inline-block lowercase no-underline rounded-tag;
+    @apply inline-block rounded-tag lowercase no-underline;
   }
 
   .tag-default {

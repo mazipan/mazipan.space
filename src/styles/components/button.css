@@ -14,39 +14,39 @@
 
   /* compound variants */
   .button-outline-primary {
-    @apply text-primary border-primary;
+    @apply border-primary text-primary;
     @apply hover:bg-primary hover:text-primary-content;
   }
 
   .button-outline-default {
-    @apply text-content border-content;
+    @apply border-content text-content;
     @apply hover:bg-base-200;
   }
 
   .button-solid-primary {
-    @apply bg-primary text-primary-content border-primary;
-    @apply hover:bg-primary-hover hover:border-primary-hover;
+    @apply border-primary bg-primary text-primary-content;
+    @apply hover:border-primary-hover hover:bg-primary-hover;
     /* no primary-hover yet */
   }
 
   .button-solid-default {
-    @apply bg-base-200 text-content border-base-200;
-    @apply hover:bg-base-300  hover:border-base-300;
+    @apply border-base-200 bg-base-200 text-content;
+    @apply hover:border-base-300 hover:bg-base-300;
   }
 
   .button-sm {
     @apply px-3 py-0.5;
 
     [data-icon] {
-      @apply w-6 h-6;
+      @apply h-6 w-6;
     }
   }
 
   .button-md {
-    @apply text-lg px-5 py-1.5;
+    @apply px-5 py-1.5 text-lg;
 
     [data-icon] {
-      @apply w-8 h-8;
+      @apply h-8 w-8;
     }
   }
 }

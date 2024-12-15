@@ -33,13 +33,13 @@ const getTransitionNameFromElementId = setTransitionSlug({ pageSlug: slug });
     {...IMAGE_SIZES.RESPONSIVE.PROJECT_CARD}
     src={heroImage}
     alt={heroAlt}
-    class="rounded-t-2xl mb-2"
+    class="mb-2 rounded-t-2xl"
     transition:name={getTransitionNameFromElementId({
       elementId: TRANSITION_ELEMENT_IDS.POST_CARD.HERO_IMAGE,
     })}
   />
 
-  <h4 class="b-h4 break-words line-clamp-2 mb-0">
+  <h4 class="b-h4 mb-0 line-clamp-2 break-words">
     <Link
       href={`${ROUTES.PROJECTS}${slug}`}
       variant="link-heading"
@@ -53,7 +53,7 @@ const getTransitionNameFromElementId = setTransitionSlug({ pageSlug: slug });
   {
     description && (
       <p
-        class="text-sm text-captions mb-2"
+        class="mb-2 text-sm text-captions"
         transition:name={getTransitionNameFromElementId({
           elementId: TRANSITION_ELEMENT_IDS.POST_CARD.DESCRIPTION,
         })}
@@ -64,7 +64,7 @@ const getTransitionNameFromElementId = setTransitionSlug({ pageSlug: slug });
   }
 
   <p class="flex items-center gap-1 text-xs text-captions">
-    <Icon name={isUpdatedDate ? 'tabler:pencil' : 'tabler:clock'} class="w-4 h-4" />
+    <Icon name={isUpdatedDate ? 'tabler:pencil' : 'tabler:clock'} class="h-4 w-4" />
     <time itemprop="datePublished" datetime={formatDateIso(lastAccessDate)}>
       {formatDate(lastAccessDate)}
     </time>

@@ -13,49 +13,50 @@ const { SCROLL_TO_TOP_ID } = SELECTORS;
 
 const { pathname: routePathname } = Astro.url;
 const activeNavItemPath = getActiveNavItemPath(routePathname);
-
-// group-[.menu-open]: increases specificity everywhere
-// group-[.menu-open]:flex-col md:!flex-row, both on flex-direction
 ---
 
-<header id={SCROLL_TO_TOP_ID} class="group w-full py-2 fixed top-2 z-50 px-4 lg:px-0">
+<header
+  id={SCROLL_TO_TOP_ID}
+  data-menu="close"
+  class="group fixed top-2 z-50 w-full px-4 py-2 lg:px-0"
+>
   <div
     class={cn(
-      'flex gap-2',
-      'group-[.menu-open]:flex-col md:!flex-row md:justify-between md:items-center',
-      'max-w-6xl py-2 px-4 md:mx-auto',
+      'relative flex gap-2',
+      'md:!flex-row md:items-center md:justify-between',
+      'max-w-6xl px-4 py-2 md:mx-auto',
       'rounded-2xl border border-yellow-400',
-      'bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60'
+      'bg-background/95 supports-[backdrop-filter]:bg-background/60 backdrop-blur'
     )}
   >
     {/* mobile nav */}
-    <div class="w-full md:w-auto flex justify-between items-center">
+    <div class="flex w-full items-center justify-between md:w-auto">
       <HeaderLink
         href={ROUTES.HOME}
-        class="flex flex-row items-center gap-2 text-xl xs:text-2xl font-serif"
+        class="flex flex-row items-center gap-2 font-serif text-xl xs:text-2xl"
       >
         <span> MZP </span>
       </HeaderLink>
-      <mobile-button class="md:hidden">
+
+      <mobile-button class="flex items-center gap-2 md:hidden">
+        <ThemeToggle />
         <button
+          id="menu-toggle"
           aria-expanded="false"
           aria-haspopup="menu"
           aria-label="Open main menu"
           type="button"
-          class="group"
+          class="group rounded p-1 text-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2 dark:focus:bg-base-200"
         >
           <Icon name="tabler:menu-3" class="h-6 w-6 group-aria-expanded:hidden" />
-          <Icon name="tabler:menu-deep" class="h-6 w-6 hidden group-aria-expanded:block" />
+          <Icon name="tabler:menu-deep" class="hidden h-6 w-6 group-aria-expanded:block" />
         </button>
       </mobile-button>
     </div>
 
-    {/* nav items */}
-    <nav
-      class="select-none hidden md:block group-[.menu-open]:block mt-0 group-[.menu-open]:mt-2"
-      aria-label="Site navigation"
-    >
-      <ul class="flex gap-4 group-[.menu-open]:flex-col md:!flex-row md:items-center">
+    {/* Desktop nav items */}
+    <nav class="mt-0 hidden select-none md:block" aria-label="Site navigation">
+      <ul class="flex gap-4 md:!flex-row md:items-center">
         {
           NAVIGATION_ITEMS.map(({ title, path }) => (
             <li>
@@ -73,14 +74,45 @@ const activeNavItemPath = getActiveNavItemPath(routePathname);
   </div>
 </header>
 
+<aside class="group relative md:hidden" data-menu="close" id="menu-mobile">
+  {/* Mobile nav items */}
+  <nav
+    class="fixed right-4 top-16 z-20 mt-0 min-w-[200px] transform select-none rounded-lg border border-gray-100 bg-base-100 p-2 shadow-xl transition-all duration-500 group-[[data-menu=open]]:mt-2 group-[[data-menu=close]]:translate-x-[110%] group-[[data-menu=open]]:translate-x-0 md:hidden"
+    aria-label="Site navigation"
+  >
+    <ul class="flex flex-col gap-2">
+      {
+        NAVIGATION_ITEMS.map(({ title, path }) => (
+          <li class="relative">
+            <HeaderLink
+              href={path}
+              isActive={path === activeNavItemPath}
+              class="block w-full rounded p-2 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2 dark:hover:bg-base-200"
+            >
+              {title}
+            </HeaderLink>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</aside>
+
 <script>
   class MobileNavBtn extends HTMLElement {
     private headerEl: HTMLElement;
+    private mobileNav: HTMLElement;
     private menuOpen: boolean;
     private mobileButtonEl: HTMLButtonElement;
 
     toggleMobileMenu = () => {
-      this.headerEl.classList.toggle('menu-open');
+      // SCROLL_TO_TOP_ID
+      let prevState = this.mobileNav.getAttribute('data-menu');
+      let nextState = prevState === 'open' ? 'close' : 'open';
+
+      this.mobileNav.setAttribute('data-menu', nextState);
+      this.headerEl.setAttribute('data-menu', nextState);
+
       this.menuOpen = !this.menuOpen;
       this.mobileButtonEl.setAttribute('aria-expanded', this.menuOpen.toString());
     };
@@ -88,7 +120,8 @@ const activeNavItemPath = getActiveNavItemPath(routePathname);
     constructor() {
       super();
       this.headerEl = document.getElementById('main-header')!;
-      this.mobileButtonEl = this.querySelector('button') as HTMLButtonElement;
+      this.mobileNav = document.getElementById('menu-mobile')!;
+      this.mobileButtonEl = this.querySelector('#menu-toggle') as HTMLButtonElement;
       this.menuOpen = false;
 
       this.mobileButtonEl.addEventListener('click', this.toggleMobileMenu);

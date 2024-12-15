@@ -104,7 +104,7 @@ const metadata: Metadata = { title, description, image };
           fetchpriority="high"
           loading="eager"
           itemprop="image"
-          class="block w-full max-h-[400px] h-auto aspect-[16/8] object-center object-cover rounded-lg mt-4"
+          class="mt-4 block aspect-[16/8] h-auto max-h-[400px] w-full rounded-lg object-cover object-center"
           transition:name={getTransitionNameFromElementId({
             elementId: TRANSITION_ELEMENT_IDS.POST_CARD.HERO_IMAGE,
           })}
@@ -121,13 +121,13 @@ const metadata: Metadata = { title, description, image };
       })}
     >
       {title}
-      {draft && <sup class="text-red-500 ml-1">{DRAFT_TEXT}</sup>}
+      {draft && <sup class="ml-1 text-red-500">{DRAFT_TEXT}</sup>}
     </h1>
 
     {
       description && (
         <p
-          class="font-normal text-content text-xl md:text-2xl mb-6 md:mb-8"
+          class="mb-6 text-xl font-normal text-content md:mb-8 md:text-2xl"
           transition:name={getTransitionNameFromElementId({
             elementId: TRANSITION_ELEMENT_IDS.POST_CARD.DESCRIPTION,
           })}
@@ -150,7 +150,7 @@ const metadata: Metadata = { title, description, image };
   </Fragment>
 
   <Fragment slot="after-content">
-    <div class="flex items-start gap-6 flex-col md:flex-row md:items-center b-h2-mb">
+    <div class="b-h2-mb flex flex-col items-start gap-6 md:flex-row md:items-center">
       <TagList tags={tags} size="md" />
       <Share {...shareProps} />
     </div>

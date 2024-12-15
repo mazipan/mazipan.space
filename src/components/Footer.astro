@@ -23,15 +23,15 @@ const copyrightYear = new Date().getFullYear();
 // footer is full width for border, div has max-w
 ---
 
-<footer class="border-t border-base-300 py-8 px-4">
+<footer class="border-t border-base-300 px-4 py-8">
   <div class="max-w-6xl md:mx-auto">
-    <div class="flex gap-8 flex-col-reverse md:flex-row w-full">
-      <div class="text-content whitespace-nowrap space-y-4">
+    <div class="flex w-full flex-col-reverse gap-8 md:flex-row">
+      <div class="space-y-4 whitespace-nowrap text-content">
         <h3 class="font-semibold">Irfan Maulana / MZP</h3>
         <SocialLinks />
       </div>
 
-      <div class="text-content whitespace-nowrap space-y-4">
+      <div class="space-y-4 whitespace-nowrap text-content">
         <h3 class="font-semibold">Navigations</h3>
         <ul class="space-y-2 text-sm">
           <li>
@@ -58,7 +58,7 @@ const copyrightYear = new Date().getFullYear();
         </ul>
       </div>
 
-      <div class="text-content whitespace-nowrap space-y-4">
+      <div class="space-y-4 whitespace-nowrap text-content">
         <h3 class="font-semibold">Resources</h3>
         <ul class="space-y-2 text-sm">
           <li>
@@ -124,7 +124,7 @@ const copyrightYear = new Date().getFullYear();
         </ul>
       </div>
 
-      <div class="text-content whitespace-nowrap space-y-4">
+      <div class="space-y-4 whitespace-nowrap text-content">
         <h3 class="font-semibold">Previous Version</h3>
         <ul class="space-y-2 text-sm">
           <li>
@@ -140,7 +140,7 @@ const copyrightYear = new Date().getFullYear();
         </ul>
       </div>
     </div>
-    <div class="text-sm mt-8 py-8 md:py-4 text-center border-t border-base-300 space-y-2">
+    <div class="mt-8 space-y-2 border-t border-base-300 py-8 text-center text-sm md:py-4">
       <p>© 2019-{copyrightYear}, All rights reserved</p>
 
       <div class="flex items-center justify-center gap-2">

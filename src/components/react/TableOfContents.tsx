@@ -26,7 +26,7 @@ const TableOfContents = ({
   return (
     <>
       <div
-        className="fixed bottom-8 right-4 z-50 flex p-3 items-center justify-center text-sm font-mono border-2 rounded-lg lg:hidden border-yellow-400 bg-base-100 gap-2"
+        className="fixed bottom-8 right-4 z-50 flex items-center justify-center gap-2 rounded-lg border-2 border-yellow-400 bg-base-100 p-3 font-mono text-sm lg:hidden"
         onClick={() => {
           setShowContents((prev) => !prev);
         }}
@@ -40,22 +40,22 @@ const TableOfContents = ({
           'my-prose centered-px bg-base-100',
           className,
           !isLg &&
-            'fixed bottom-24 left-4 w-[80%] z-50 rounded-lg transition-all duration-500 transform shadow-lg border border-base-200 data-[show=true]:translate-x-0 data-[show=false]:-translate-x-[110%]'
+            'fixed bottom-24 left-4 z-50 w-[80%] transform rounded-lg border border-base-200 shadow-lg transition-all duration-500 data-[show=false]:-translate-x-[110%] data-[show=true]:translate-x-0'
         )}
       >
         <div
           className={cn(
-            'toc rounded-lg border-2 border-base-300 border-dashed p-4 mx-auto overflow-y-auto',
+            'toc mx-auto overflow-y-auto rounded-lg border-2 border-dashed border-base-300 p-4',
             'max-h-[calc(70vh)] lg:sticky lg:top-20 lg:max-h-[calc(100vh-100px)]'
           )}
         >
           <b className="font-semibold">On This Page</b>
-          <ol className={cn('ol-nested-decimal my-0 mt-2 text-sm space-y-1.5')}>
+          <ol className={cn('ol-nested-decimal my-0 mt-2 space-y-1.5 text-sm')}>
             {headings.map(({ slug, text, headings: subHeadings }) => (
               <li className="my-0">
                 <a
                   href={`#${slug}`}
-                  className="no-underline font-normal"
+                  className="font-normal no-underline"
                   onClick={() => {
                     if (!isLg) {
                       setShowContents(false);
@@ -66,12 +66,12 @@ const TableOfContents = ({
                 </a>
 
                 {subHeadings.length > 0 && (
-                  <ol className="mt-0 mb-2 -ml-[20px] space-y-1.5">
+                  <ol className="-ml-[20px] mb-2 mt-0 space-y-1.5">
                     {subHeadings.map(({ slug, text }) => (
                       <li className="my-0">
                         <a
                           href={`#${slug}`}
-                          className="no-underline font-normal"
+                          className="font-normal no-underline"
                           onClick={() => {
                             if (!isLg) {
                               setShowContents(false);
