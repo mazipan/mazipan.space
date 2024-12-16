@@ -1,6 +1,6 @@
 ---
 title: Memahami enviroment variable di Next.js
-publishDate: '2024-07-18'
+publishDate: '2024-12-16'
 description: Bagaimana seharusnya menggunakan environment variable di Next.js
 author: mazipan
 tags:
@@ -8,13 +8,9 @@ tags:
   - nextjs
 category: tutorials
 toc: true
-
 heroImage: '../../content/post/_images/understanding-env-var-in-nextjs/pexels-mumtahina-tanni-1080117-3230539.jpg'
-heroAlt: Poor man feature flag untuk projek Next.js dalam 15 menit
-tags2: [web]
-
+heroAlt: Bagaimana seharusnya menggunakan environment variable di Next.js
 lang: id
-draft: true
 ---
 
 Artikel mengenai bagaimana Next.js menangani env var sebenarnya bisa dibaca secara tuntas di laman ofisial mereke "[Environment Variables di Next.js](https://nextjs.org/docs/app/building-your-application/configuring/environment-variables)". Artikel yang saya tulis hanya pengulangan pembahasan bagi yang masih kesulitan memahami artikel tersebut, jadi kalau kalian merasa topik pembahasan ini terlalu sepele untuk kalian, saya sarankan untuk berhenti meneruskan membaca dan cukup mengabaikannya saja.
@@ -37,7 +33,7 @@ Env var berisi pasangan _key-value_, dan biasanya disimpan dalam file `.env` yan
 
 Contoh isi dari sebuah `.env`:
 
-```bash title=terminal
+```bash title=.env frame=terminal
 # Contoh env var
 DOMAIN_APLIKASI="https://mazipan.space"
 DOMAIN_ASET="https://imagekit.io/sebuah-alamat"
@@ -47,7 +43,7 @@ DOMAIN_ASET="https://imagekit.io/sebuah-alamat"
 
 Dari artikel [How to read environment variables from Node.js](https://nodejs.org/en/learn/command-line/how-to-read-environment-variables-from-nodejs), pada dasarnya Node.js bisa otomatis membaca env var yang ada di sistem operasi semudah dengan kode `process.env.SEBUAH_ENV_VAR`. Jadi misal di sebuah sistem operasi terdapat env-var
 
-```bash title=terminal
+```bash title=.env frame=terminal
 # Contoh env var
 DOMAIN_APLIKASI="https://mazipan.space"
 DOMAIN_ASET="https://imagekit.io/sebuah-alamat"
@@ -55,22 +51,128 @@ DOMAIN_ASET="https://imagekit.io/sebuah-alamat"
 
 Maka kamu bisa membaca dengan kode berikut
 
-```ts title=.env
-process.env.DOMAIN_APLIKASI; // "https://mazipan.space"
-process.env.DOMAIN_ASET; // "https://imagekit.io/sebuah-alamat"
+```js title=index.js
+console.log(process.env.DOMAIN_APLIKASI); // "https://mazipan.space"
+console.log(process.env.DOMAIN_ASET);     // "https://imagekit.io/sebuah-alamat"
 ```
 
 Dalam kasus misalnya env var tersebut didefinisikan melalui file `.env`, kamu perlu menambahkan sedikit perintah saat menjalankan program, contohnya:
 
-```bash title=terminal
+```bash title=zsh frame=terminal
 node --env-file=.env index.js
 ```
 
 ## Env var di React.js
 
-React.js dasarnya adalah javascript framework yang awalnya "hanya" jalan di peramban, maka secara natural dia tidak bisa membaca env var. Env var hanya bisa di-_supply_ dari kode Node.js (server-side) ke kode React.
+React.js dasarnya adalah javascript framework yang awalnya "hanya" jalan di peramban, maka secara natural dia tidak bisa membaca env var. Env var hanya bisa di-_supply_ dari kode Node.js (server-side) ke kode React melalui cara-cara yang dimungkinkan. Salah satunya adalah melalui proses *replacement* saat build production asset melalui build tool seperti Webpack atau Vite. Saat proses build tersebut berlangsung, kita bisa menambahakan proses untuk me-*replace* kata-kata `process.env.SOMETHING` dengan sesuatu yang statik sehingga bisa dijalankan di peramban dengan aman.
 
 ## Env var di Next.js
+
+Memasuki era SSR di mana kode client dan server yang digunakan sama persis (sama-sama JavaScript), memberikan kemungkinan kita untuk menulis kode yang sama yang bisa jalan di dua lingkungan yang berbeda. Menggunakan Node.js (atau runtime lainnya) saat di server dan melalui renderer bawaan peramban seperti biasa ketika sampai di client. Jadinya, kode React (atau framework lainnya) yang sama, bisa saja di render di lingkungan Node.js ataupun bisa di render di peramban.
+
+Kemampuan ini mengaburkan beberapa pengetahuan sebelumnya karena jadi semakin rancu, apakah kode yang ditulis ini akan jalan di server atau di klien? Seperti dijelaskan sebelumnya `process.env.SOMETHING` hanya tersedia di lingkungan server, sehingga kita bisa tau bahwa menuliskan `process.env.SOMETHING` di kode React sebenarnya sangat mungkin, tapi hanya jika kita yakin kode React tersebut akan hanya dijalankan di lingkungan server. Sementara jika kode tersebut bisa berjalan di lingkungan klien, maka diperlukan workaround tambahan untuk "seolah-olah" bisa menggunakan `process.env.SOMETHING`.
+
+Ketika bekerja dengan meta framework semacam Next.js ini yang perlu diperhatikan adalah, si software developer/programmer sebaiknya bisa membedakan mana kode yang cuma jalan di server, mana yang cuma jalan di klien atau peramban, dan mana yang bisa saja jalan di server dan di klien.
+
+### Static env var di Next.js
+
+Tipe env var ini adalah tipe env var yang harus di-*supply* saat proses build. Kenapa? Karena nantinya diperlukan proses replacement menjadi value statik, sehingga tipe ini pada dasarnya aman digunakan di semua kode baik yang berjalan di server maupun di klien.
+
+Menggunakan statik env var di Next.js bisa dengan menambahkan prefix `NEXT_PUBLIC_`. Ini adalah konvensi dari Next.js untuk menandai bahwa si env var akan digantikan dengan nilai statik pada saat proses build.
+
+Dengan contoh kita memiliki kode env var seperti berikut:
+
+```bash title=.env frame=terminal
+NEXT_PUBLIC_SAMPLE='statik env var'
+```
+
+Maka kita bisa memberikan contoh penggunaan pada kode React sebagai berikut:
+
+```tsx title="app/home/page.tsx"
+// 'NEXT_PUBLIC_SAMPLE' can be used here as it's prefixed by 'NEXT_PUBLIC_'.
+// It will be transformed at build time to "Hello statik env statik env var"`.
+
+function HomePage() {
+  return <h1>Hello from {process.env.NEXT_PUBLIC_SAMPLE}</h1>
+}
+
+export default HomePage
+```
+
+### Runtime env var di Next.js
+
+Ini adalah tipe yang hanya akan di-supply di saat aplikasi tersebut berjalan, artinya kembali ke naturalnya env var, hanya akan tersedia bila kamu melakukan deployment Next.js ke server dan menggunakan fitur-fitur server side rendernya. Bila kamu menggunakan SSG, maka kamu tidak bisa menggunakan tipe env var ini.
+
+Untuk tipe aplikasi SSR di mana aplikasi dijalankan di server dan melakukan proses render initial halamannya di server, Next.js tidak menambahkan konvensi apapun. Artinya semua env var selain yang memiliki prefix `NEXT_PUBLIC_` akan dianggap sebagai runtime env var dan hanya akan aman untuk digunakan pada lingkungan server. Yang sering jadi kebingungan adalah apakah berarti env var dengan prefix `NEXT_PUBLIC_` tidak bisa digunakan di sisi server? Kembali ke penjelasan pada bagian sebelumnya, sangat bisa. Hanya saja nilainya akan statik karena di evaluate saat proses build berlangsung. Jika kalian punya satu env var statik yang nilainya berbeda antara proses build dan runtime, maka Next.js akan mengambil nilai saat proses build dan tidak akan mengindahkan nilai yang diberikan saat runtime.
+
+## Menggunakan runtime env var di kode klien
+
+Telah disebutkan di atas, kode klien tidak dapat membaca env var. Maka untuk tipe runtime env var, dimana ini adalah tipe env var yang sesungguhnya (bukan cosplay -- seperti sering disebut oleh sebuah akun X). Maka secara natural, harusnya kode klien memang tidak bisa menggunakan nilai-nilai yang ada pada env var ini.
+
+Namun karena kita juga tau, bahwa yang di-render di server oleh Next.js ini adalah juga kode React, maka sebenarnya kita bisa juga menggunakan fitur React.js ataupun fitur native peramban pada umumnya.
+
+Berikut beberapa workaround yang bisa dilakukan, tidak diurutkan berdasarkan preferensi, jadi suka-suka saya aja mana yang mau saya bahas duluan dan belakangan, semoga tidak jadi dasar pengambilan keputusan untuk kalian, berikut diantaranya:
+
+### Lemparkan melalui React.Props
+
+Seperti bisa ketikan ingin mengalirkan data dari sebuah parent ke child di React, kamu bisa menggunakan Props. Sama ketika kita ingin mengalirkan data dari kode yang di render di server ke klien. Bahkan jika nantinya di klien akan dimuat dinamis (dengan `next/dynamic`) dan hanya akan dijalankan di klien, Props tersebut tetap bisa digunakan.
+
+```tsx title=app/layout.tsx
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  const exposedEnvVar = {
+    name: process.env.APP_NAME,
+    version: process.env.APP_VERSION
+  }
+
+  return (
+    <body className="app-body">
+      <App envVar={exposedEnvVar}>
+        {children}
+      </App>
+    </body>
+  )
+}
+```
+
+Bila terlalu dalam, maka gunakan `React.Context` untuk mengalirkan data ke semua aplikasi.
+
+### Selipkan ke object window
+
+Kode Next.js di server akan menghasilkan paling tidak sebuah html yang akan di hydrate di sisi klien agar bisa mengembalikan fitur interaktif di kode React. Karena kita tau akan menghasilkan HTML, maka kita bisa saja menambahkan kode untuk menyelipkan env var yang tadinya hanya tersedia di server agar juga tersedia di object global window di sisi klien. Contoh kodenya:
+
+```tsx title=app/layout.tsx
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <body className="app-body">
+      <Script id="app-env">
+        {`
+            window.__AppEnv={APP_NAME:"${process.env.APP_NAME}",APP_VERSION:"${process.env.APP_VERSION}"};
+        `}
+      </Script>
+      {children}
+    </body>
+  )
+}
+```
+
+Kelemahan `window` object memang karena bukan native fitur React jadinya tidak reaktiv dan perlu effort tambahan untuk bisa mengggunakan di berbagai fitur React, tapi mudah digunakan di fitur lain di luar React, misal digunakan di `helper` atau `utility` function lainnya.
+
+### Cara lainnya
+
+Kamu tau cara lain? Silahkan tambahkan cara lain untuk mengakses runtime env var melalui kolom komentar di bagian bawah artikel ini.
+
+## ↗️ Bahan bacaan
+
+- [Environment Variables untuk Pages Router](https://nextjs.org/docs/pages/building-your-application/configuring/environment-variables)
+- [Environment Variables untuk App Router](https://nextjs.org/docs/app/building-your-application/configuring/environment-variables)
 
 ## 👋 Sekian dan terima kasih
 
