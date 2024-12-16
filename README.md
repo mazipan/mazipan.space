@@ -29,6 +29,7 @@ Feel free, just click **"Use this template"** button in this repo.
 ## Recognitions
 
 - Project template from [nemanjam/nemanjam.github.io](https://github.com/nemanjam/nemanjam.github.io)
+- Landing page copy from [www.iamtamara.design](https://www.iamtamara.design/)
 
 ---
 

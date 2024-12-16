@@ -2,9 +2,6 @@
  * Folders - all urls with both leading and trailing '/'.
  * Files - without trailing '/'.
  */
-
-import { BOOKMARKS } from './data';
-
 export const ROUTES = {
   HOME: '/',
   BLOG: '/blog/',
@@ -13,6 +10,7 @@ export const ROUTES = {
   TALKS: '/talks/',
   SUPPORT: '/support/',
   GUEST_BOOK: '/guest-book/',
+  CREDITS: '/credits/',
   TAGS: '/blog/tags/',
   CATEGORIES: '/blog/categories/',
   EXPLORE: '/blog/explore/',
