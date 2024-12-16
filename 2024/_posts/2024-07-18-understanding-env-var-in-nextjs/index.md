@@ -67,7 +67,9 @@ React.js dasarnya adalah javascript framework yang awalnya "hanya" jalan di pera
 
 ## Env var di Next.js
 
-## 👋 Sekian dan terima kasih
+---
+
+**👋 Sekian dan terima kasih**
 
 Semoga bermanfaat 🙇
 

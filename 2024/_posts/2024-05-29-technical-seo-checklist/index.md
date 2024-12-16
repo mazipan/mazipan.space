@@ -142,9 +142,11 @@ Beberapa peralatan tambahan gratis yang bisa membantu kalian dalam mengerjakan h
 
 Memberikan akses ke Crawler dan mesin pencari bisa menaikkan juga peluang halaman website kalian untuk di crawl oleh Bot yang tidak diinginkan. Hal ini akan menjadikan traffic ke dalam website bisa naik secara signifikan namuim belum tentu berbuah baik. Karenanya kalian mungkin perlu secara berkala mengecek traffic yang datang dan melakukan bloking bisa memang diperlukan terutama pada Bot yang tidak diinginkan.
 
-## 👋 Sekian dan terima kasih
+---
 
-Semoga bermanfaat 🙇
+**👋 Sekian dan terima kasih**
+
+Maaf-maaf aja kalau gak bermanfaat 🙇😭
 
 ---
 
