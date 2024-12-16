@@ -5,7 +5,6 @@ import dotenv from 'dotenv';
 
 import { nodeEnvValues, processEnvSchema } from '../schemas/config';
 import { prettyPrintObject } from '../utils/log';
-import { getHostnameFromUrl } from '../utils/urls';
 import { validateData } from '../utils/validation';
 
 import type { ProcessEnvType } from '../types/config';

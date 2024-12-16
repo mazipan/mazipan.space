@@ -121,7 +121,7 @@ const getImageType = (imagePath: string) => {
   return imageType;
 };
 
-const getRandomImage = async (folderPath: string): Promise<string> => {
+const _getRandomImage = async (folderPath: string): Promise<string> => {
   const trimmedFolderPath = removeTrailingSlash(folderPath);
 
   const files = await fs.readdir(trimmedFolderPath);

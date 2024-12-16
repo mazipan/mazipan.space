@@ -24,7 +24,7 @@ const metadata = getPageMetadata('lists/blog/categories');
           const { icon } = getCategoryProps(text);
 
           return (
-            <Button href={href} size="md">
+            <Button href={href} size="md" element="a">
               <Icon name={icon} slot="before-icon" />
               {textWithCount}
             </Button>

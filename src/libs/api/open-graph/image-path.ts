@@ -35,6 +35,7 @@ export const getPagePrefix = (path: string): OgImagePrefixType => {
 
   if (!prefixes.includes(prefix)) {
     const message = `Unknown path prefix requested: ${prefix}`;
+    // eslint-disable-next-line no-console
     console.error(message);
     throw new Error(message);
   }

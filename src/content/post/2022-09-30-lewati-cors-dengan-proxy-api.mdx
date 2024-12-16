@@ -33,21 +33,21 @@ _Origin_ di sini mengarah pada _Origin_ pada spesifikasi [API URL](https://devel
 Jadi kita mencari tau dengan memanfaat URL API ini, misal kita ingin tau Origin dari sebuah URL `https://foo.com`, kita bisa mencoba kode berikut di console peramban.
 
 ```js title=url.js
-new URL("https://foo.com")
+new URL("https://foo.com");
 // Kode ini akan menghasilkan output berikut:
-URL {
-  hash: ""
-  host: "foo.com"
-  hostname: "foo.com"
-  href: "https://foo.com/"
-  origin: "https://foo.com"
-  password: ""
-  pathname: "/"
-  port: ""
-  protocol: "https:"
-  search: ""
-  searchParams: URLSearchParams {}
-  username: ""
+URL{
+  hash: "",
+  host: "foo.com",
+  hostname: "foo.com",
+  href: "https://foo.com/",
+  origin: "https://foo.com",
+  password: "",
+  pathname: "/",
+  port: "",
+  protocol: "https:",
+  search: "",
+  searchParams: URLSearchParams {},
+  username: "",
 }
 ```
 

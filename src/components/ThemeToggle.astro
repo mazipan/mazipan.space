@@ -1,11 +1,19 @@
 ---
 import { Icon } from 'astro-icon/components';
+
+import Button from './Button.astro';
 ---
 
 <theme-toggle>
-  <button
-    class="relative flex items-center justify-center rounded-md p-2 text-yellow-400 hover:text-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2"
+  <Button
+    variant="ghost"
+    colors="primary"
+    size="sm"
+    element="button"
+    role="switch"
     type="button"
+    id="theme-switcher"
+    class="relative flex items-center justify-center rounded p-1"
   >
     <Icon
       name="tabler:sun"
@@ -15,7 +23,7 @@ import { Icon } from 'astro-icon/components';
       name="tabler:moon-stars"
       class="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100"
     />
-  </button>
+  </Button>
 </theme-toggle>
 
 <script>
@@ -30,7 +38,7 @@ import { Icon } from 'astro-icon/components';
     #controller: AbortController | undefined;
 
     connectedCallback() {
-      const button = this.querySelector('button')!;
+      const button = this.querySelector('#theme-switcher')!;
       // set aria role value
       button.setAttribute('role', 'switch');
       // button.setAttribute('aria-checked', String(isDarkMode()));
