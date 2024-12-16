@@ -866,10 +866,10 @@
     "@babel/types" "^7.26.0"
     semver "^7.5.2"
 
-"@iconify-json/tabler@^1.2.11":
-  version "1.2.11"
-  resolved "https://registry.yarnpkg.com/@iconify-json/tabler/-/tabler-1.2.11.tgz#8b646ba152bb3fc1901e51c6bf7999f1ecfff718"
-  integrity sha512-sOZRVC+QaGmagdogWlz/cTmgXyo5OfRMaac28fAv0+CgESO/eQRBbnjgP4boKG+eKWxjQvRACDOI1HZ1J6Jh7Q==
+"@iconify-json/tabler@^1.2.12":
+  version "1.2.12"
+  resolved "https://registry.yarnpkg.com/@iconify-json/tabler/-/tabler-1.2.12.tgz#8955bef72b7f8070bc78318501abf2e9ef452990"
+  integrity sha512-g9uhcq8o+BZyHqn+NPLumDuFv3m+28KFQLw1/ZCB2FVQ5i7UCMgmXbgk2vZ9gBFEx1YmYEK7gqUN6NnuvivOCQ==
   dependencies:
     "@iconify/types" "*"
 
