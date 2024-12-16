@@ -59,6 +59,10 @@ export const CATEGORIES = [
     name: 'experience',
     icon: 'tabler:award',
   },
+  {
+    name: 'career',
+    icon: 'tabler:arrow-bear-right-2',
+  },
 ] as const;
 
 // use imported images here

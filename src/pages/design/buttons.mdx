@@ -14,8 +14,10 @@ export const buttons = {
   variant: [
     { variant: 'outline', colors: 'primary' },
     { variant: 'solid', colors: 'primary' },
+    { variant: 'ghost', colors: 'primary' },
     { variant: 'outline', colors: 'default' },
     { variant: 'solid', colors: 'default' },
+    { variant: 'ghost', colors: 'default' },
   ],
   colors: [{ colors: 'primary' }, { colors: 'default' }],
   size: [{ size: 'md' }, { size: 'sm' }],
@@ -30,8 +32,7 @@ export const buttons = {
   <div class="not-prose flex items-center gap-4 flex-wrap">
     {values.map((props) => {
       const text = `${Object.values(props)[0]}`;
-
-      return <Button {...props}>{text}</Button>;
+      return <Button {...props} role="button" type="button" element="button">{text}</Button>;
     })}
   </div>
 </>
@@ -40,7 +41,7 @@ export const buttons = {
 #### slot="before-icon"
 
 <div class="not-prose">
-  <Button colors="primary" size="sm">
+  <Button colors="primary" size="sm" role="button" type="button">
     <Icon name="tabler:device-floppy" slot="before-icon" />
     My Button
   </Button>
@@ -49,7 +50,7 @@ export const buttons = {
 #### slot="after-icon"
 
 <div class="not-prose">
-  <Button colors="primary">
+  <Button colors="primary" role="button" type="button">
     <Icon name="tabler:device-floppy" slot="after-icon" />
     My Button
   </Button>
@@ -110,7 +111,7 @@ export const tags = {
       const item = Object.entries(props)[0];
       const text = `${item[0]} ${item[1]}`;
 
-      return <Tag {...props}>{text}</Tag>;
+      return <Tag {...props} role="button" type="button">{text}</Tag>;
     })}
 
   </div>

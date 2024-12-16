@@ -2,6 +2,7 @@
   .button {
     @apply inline-flex items-center gap-2 no-underline;
     @apply rounded-button text-base;
+    @apply focus:outline-none focus:ring-2 focus:ring-offset-2;
   }
 
   .button-outline {
@@ -12,26 +13,44 @@
     @apply border;
   }
 
+  .button-ghost {
+  }
+
   /* compound variants */
   .button-outline-primary {
     @apply border-primary text-primary;
     @apply hover:bg-primary hover:text-primary-content;
+    @apply focus:ring-primary;
   }
 
   .button-outline-default {
     @apply border-content text-content;
     @apply hover:bg-base-200;
+    @apply focus:ring-base-200;
   }
 
   .button-solid-primary {
     @apply border-primary bg-primary text-primary-content;
     @apply hover:border-primary-hover hover:bg-primary-hover;
-    /* no primary-hover yet */
+    @apply focus:ring-primary;
   }
 
   .button-solid-default {
     @apply border-base-200 bg-base-200 text-content;
     @apply hover:border-base-300 hover:bg-base-300;
+    @apply focus:ring-base-200;
+  }
+
+  .button-ghost-primary {
+    @apply text-primary;
+    @apply hover:border-primary hover:bg-primary hover:text-primary-content;
+    @apply focus:ring-primary;
+  }
+
+  .button-ghost-default {
+    @apply text-content;
+    @apply hover:bg-base-300 hover:text-primary-content;
+    @apply focus:ring-base-200;
   }
 
   .button-sm {

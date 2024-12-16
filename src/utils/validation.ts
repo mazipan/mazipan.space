@@ -13,6 +13,7 @@ export const validateData = <T extends ZodSchema>(config: z.infer<T>, schema: T)
     const zodErrors = zodErrorToString(parsedConfig.error);
     const errorMessage = `Zod validation failed: , ${zodErrors}`;
 
+    // eslint-disable-next-line no-console
     console.error(errorMessage);
     throw new Error(errorMessage);
   }

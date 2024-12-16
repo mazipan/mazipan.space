@@ -9,6 +9,7 @@ const buttonVariants = cva('button', {
     variant: {
       outline: 'button-outline',
       solid: 'button-solid',
+      ghost: 'button-ghost',
     },
     colors: {
       primary: 'button-primary',
@@ -22,10 +23,14 @@ const buttonVariants = cva('button', {
     { variant: 'outline', colors: 'default', class: 'button-outline-default' },
     { variant: 'solid', colors: 'primary', class: 'button-solid-primary' },
     { variant: 'solid', colors: 'default', class: 'button-solid-default' },
+    { variant: 'ghost', colors: 'primary', class: 'button-ghost-primary' },
+    { variant: 'ghost', colors: 'default', class: 'button-ghost-default' },
   ],
 });
 
-export interface Props extends HTMLAttributes<'a'>, VariantProps<typeof buttonVariants> {}
+export interface Props extends HTMLAttributes<'a'>, VariantProps<typeof buttonVariants> {
+  element?: 'a' | 'button' | 'span';
+}
 
 const {
   class: className,
@@ -33,16 +38,15 @@ const {
   colors = 'default',
   size = 'md',
   disabled,
+  element = 'a',
   ...props
 } = Astro.props;
 
-const Element = disabled ? 'span' : 'a';
+const Element = disabled ? 'span' : element;
 ---
 
 <Element {...props} class={buttonVariants({ variant, colors, size, disabled, className })}>
   <slot name="before-icon" />
-  <span class="inline-block">
-    <slot />
-  </span>
+  <slot />
   <slot name="after-icon" />
 </Element>

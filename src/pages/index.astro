@@ -3,6 +3,7 @@ import { Icon } from 'astro-icon/components';
 import { Image } from 'astro:assets';
 
 import Centered from '@/layouts/Centered.astro';
+import Button from '@/components/Button.astro';
 import RainbowTag from '@/components/RainbowTag.astro';
 import { GradientBlobs } from '@/components/react/GradientBlobs';
 import SocialLinks from '@/components/SocialLinks.astro';
@@ -45,16 +46,20 @@ import AvatarSrc from '@/assets/images/avatar.png';
           className="absolute top-0 z-0 h-[250px] w-[250px] opacity-90"
           client:only="react"
         />
-        <button
+        <Button
+          variant="solid"
+          colors="primary"
+          element="button"
           role="button"
           type="button"
-          class="z-5 absolute right-0 top-[165px] rounded bg-yellow-400 p-1 text-black focus:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2 dark:focus:bg-base-200"
+          size="sm"
+          class="z-5 absolute right-0 top-[165px] h-8 w-8 p-1"
           id="btn-swap-gradient"
           title="Shuffle gradient"
           aria-label="Shuffle gradient"
         >
           <Icon name="tabler:refresh" class="h-4 w-4" />
-        </button>
+        </Button>
       </div>
       <div class="border-b-4 border-dashed border-yellow-400 p-8">
         <SocialLinks />

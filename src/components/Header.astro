@@ -8,6 +8,7 @@ import { NAVIGATION_ITEMS } from '@/constants/navigation';
 import { ROUTES } from '@/constants/routes';
 import { getActiveNavItemPath } from '@/utils/navigation';
 import { cn } from '@/utils/styles';
+import Button from './Button.astro';
 
 const { SCROLL_TO_TOP_ID } = SELECTORS;
 
@@ -40,17 +41,21 @@ const activeNavItemPath = getActiveNavItemPath(routePathname);
 
       <mobile-button class="flex items-center gap-2 md:hidden">
         <ThemeToggle />
-        <button
+        <Button
           id="menu-toggle"
+          variant="ghost"
+          colors="primary"
+          size="sm"
+          element="button"
+          type="button"
           aria-expanded="false"
           aria-haspopup="menu"
           aria-label="Open main menu"
-          type="button"
-          class="group rounded p-1 text-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2 dark:focus:bg-base-200"
+          class="group rounded p-1"
         >
           <Icon name="tabler:menu-3" class="h-6 w-6 group-aria-expanded:hidden" />
           <Icon name="tabler:menu-deep" class="hidden h-6 w-6 group-aria-expanded:block" />
-        </button>
+        </Button>
       </mobile-button>
     </div>
 
