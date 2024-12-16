@@ -117,6 +117,8 @@ Berikut beberapa workaround yang bisa dilakukan, tidak diurutkan berdasarkan pre
 
 Seperti bisa ketikan ingin mengalirkan data dari sebuah parent ke child di React, kamu bisa menggunakan Props. Sama ketika kita ingin mengalirkan data dari kode yang di render di server ke klien. Bahkan jika nantinya di klien akan dimuat dinamis (dengan `next/dynamic`) dan hanya akan dijalankan di klien, Props tersebut tetap bisa digunakan.
 
+Dengan asumsi kalian sudah menggunakan App Router, kalian bisa menggunakan `process.env.SOMETHING` langsung di kode React, tanpa perlu menambahkan `getServerSideProps`. Contoh kodenya:
+
 ```tsx title=app/layout.tsx
 export default function RootLayout({
   children,
@@ -167,16 +169,39 @@ Kelemahan `window` object memang karena bukan native fitur React jadinya tidak r
 
 ### Cara lainnya
 
-Kamu tau cara lain? Silahkan tambahkan cara lain untuk mengakses runtime env var melalui kolom komentar di bagian bawah artikel ini.
+Kamu tau cara lain? Silahkan tambahkan cara lain untuk mengakses runtime env var melalui kolom komentar di bagian bawah artikel ini. <a href="#giscus-comments">Scroll langsung ke bagian komentar.</a>
 
-## ↗️ Bahan bacaan
+## Kasus kesalahan umum
+
+Mampu membedakan statik env var dan runtime env var penting untuk menghindarkan dari tebak-tebak buah manggis. Tidak perlu rancu lagi, apakah ini bisa dipakai di kode bagian sini atau tidak.
+
+Contoh kasus umum yang seringkali dialami gara-gara kesalahan menggunakan env var ini, misalnya kalian membangun aplikasi SSR dengan Next.js, dan melakukan deployment dengan menggunakan Docker Image, sedangkan kalian memiliki lingkungan deployment lebih dari satu (misalnya: `staging` dan `production`). Mengingat sifat Docker Image yang sebaiknya immutable, tidak lagi diubah isinya saat sudah dibuat. Maka seharusnya Docker Image yang telah di-*build* sebelumnya, bisa di deploy dimanapun, baik `staging` ataupun `production`. Hal-hal yang membedakan antara `staging` dan `production` seharusnya di-*supply* lewat konfigurasi env var di masing-masing lingkungannya. Sayangnya ini jadi tidak bisa dicapai bila di dalam kode Next.js nya ternyata menggunakan statik env var. Misalnya untuk mendefinisikan sebuah domain projek, mereka menambahkan env var untuk staging sebagai berikut:
+
+```bash title=.env.test frame=terminal
+NEXT_PUBLIC_SITE_URL='https://www.staging-app.com'
+```
+
+Sedangkan untuk production, mereka membuat env berbeda:
+
+```bash title=.env.production frame=terminal
+NEXT_PUBLIC_SITE_URL='https://www.production-app.com'
+```
+
+Hal ini menjadikan kalian tidak bisa menggunakan 1 Docker Image yang sama untuk `staging` dan `production`. Karena katakanlah kalian sudah melakukan build untuk staging terlebih dahulu, maka nilai `process.env.NEXT_PUBLIC_SITE_URL` sudah keburu menjadi statik di dalam Docker Image tersebut dengan nilai staging `https://www.staging-app.com`.
+
+Untuk jenis aplikasi yang SSR, sebaiknya memang full sekalian pakai runtime env var. Berbeda cerita kalau jenis aplikasi yang dibuat tidak memerlukan server dan hanya di deploy statik.
+
+## Bahan bacaan lanjutan
 
 - [Environment Variables untuk Pages Router](https://nextjs.org/docs/pages/building-your-application/configuring/environment-variables)
 - [Environment Variables untuk App Router](https://nextjs.org/docs/app/building-your-application/configuring/environment-variables)
+- [Container Image Immutability and the Power of Metadata](https://www.cloudbees.com/blog/container-image-immutability-power-metadata)
 
-## 👋 Sekian dan terima kasih
+---
 
-Semoga bermanfaat 🙇
+**👋 Sekian dan terima kasih**
+
+Maaf-maaf aja kalau gak bermanfaat 🙇😭
 
 ---
 

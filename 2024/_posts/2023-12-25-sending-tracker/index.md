@@ -162,7 +162,7 @@ document.addEventListener("visibilitychange", function logData() {
 
 Meskipun artikel ini ditujukan untuk mengirimkan tracker yang biasanya diperuntukkan untuk melakukan track pada interaksi pengguna, tapi pendekatannya bisa juga diaplikasikan pada kasus lain yang memiliki perilaku hampir serupa. Misalnya mengirimkan log dari klien, semacam Sentry.
 
-## 😵‍💫 PR tambahan 
+## 😵‍💫 PR tambahan
 
 - ▶️ Proses *retry* atau percobaan mengirimkan ulang, saat proses pengiriman pertama terjadi kesalahan, semisal tiba-tiba service tracker-nya sedang mengalami kendala, atau internet networknya tiba-tiba melambat signifikan sehingga timeout, dan alasan lainnya.
 
@@ -170,7 +170,9 @@ Meskipun artikel ini ditujukan untuk mengirimkan tracker yang biasanya diperuntu
 
 - ▶️ [Why Most Analytics Efforts Fail](https://www.reforge.com/blog/why-most-analytics-efforts-fail) by Crystal Widjaja, ada poin yang ngasih petunjuk bagaimana sebaiknya membuat event name pada tracker, tidak terlalu generic tapi juga tidak terlalu spesifik. Ada contohnya pula, mantap buat dibaca.
 
-## 👋 Sekian dan terima kasih 
+---
+
+**👋 Sekian dan terima kasih**
 
 Maaf-maaf aja kalau gak bermanfaat 🙇😭
 
