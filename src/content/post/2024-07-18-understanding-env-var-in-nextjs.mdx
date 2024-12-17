@@ -13,6 +13,8 @@ heroAlt: Bagaimana seharusnya menggunakan environment variable di Next.js
 lang: id
 ---
 
+import Alert from '@/components/Alert.astro';
+
 Artikel mengenai bagaimana Next.js menangani env var sebenarnya bisa dibaca secara tuntas di laman ofisial mereke "[Environment Variables di Next.js](https://nextjs.org/docs/app/building-your-application/configuring/environment-variables)". Artikel yang saya tulis hanya pengulangan pembahasan bagi yang masih kesulitan memahami artikel tersebut, jadi kalau kalian merasa topik pembahasan ini terlalu sepele untuk kalian, saya sarankan untuk berhenti meneruskan membaca dan cukup mengabaikannya saja.
 
 ## Mengenai env var
@@ -72,7 +74,10 @@ Memasuki era SSR di mana kode client dan server yang digunakan sama persis (sama
 
 Kemampuan ini mengaburkan beberapa pengetahuan sebelumnya karena jadi semakin rancu, apakah kode yang ditulis ini akan jalan di server atau di klien? Seperti dijelaskan sebelumnya `process.env.SOMETHING` hanya tersedia di lingkungan server, sehingga kita bisa tau bahwa menuliskan `process.env.SOMETHING` di kode React sebenarnya sangat mungkin, tapi hanya jika kita yakin kode React tersebut akan hanya dijalankan di lingkungan server. Sementara jika kode tersebut bisa berjalan di lingkungan klien, maka diperlukan workaround tambahan untuk "seolah-olah" bisa menggunakan `process.env.SOMETHING`.
 
+<Alert variant="info">
 Ketika bekerja dengan meta framework semacam Next.js ini yang perlu diperhatikan adalah, si software developer/programmer sebaiknya bisa membedakan mana kode yang cuma jalan di server, mana yang cuma jalan di klien atau peramban, dan mana yang bisa saja jalan di server dan di klien.
+</Alert>
+
 
 ### Static env var di Next.js
 
@@ -110,6 +115,10 @@ Untuk tipe aplikasi SSR di mana aplikasi dijalankan di server dan melakukan pros
 Telah disebutkan di atas, kode klien tidak dapat membaca env var. Maka untuk tipe runtime env var, dimana ini adalah tipe env var yang sesungguhnya (bukan cosplay -- seperti sering disebut oleh sebuah akun X). Maka secara natural, harusnya kode klien memang tidak bisa menggunakan nilai-nilai yang ada pada env var ini.
 
 Namun karena kita juga tau, bahwa yang di-render di server oleh Next.js ini adalah juga kode React, maka sebenarnya kita bisa juga menggunakan fitur React.js ataupun fitur native peramban pada umumnya.
+
+<Alert variant="danger">
+Hati-hati ketika ingin melempar nilai env var server ke klien, pastikan bukan sebuah *"secret"*. Pilih env var yang memang aman untuk di expose ke klien saja. Tanya ke yang lebih senior, kalau belum bisa membedakan antara *"secret"* dan bukan. Kuncinya ketika bingung: Anggap aja semua yang di server itu *"secret"*.
+</Alert>
 
 Berikut beberapa workaround yang bisa dilakukan, tidak diurutkan berdasarkan preferensi, jadi suka-suka saya aja mana yang mau saya bahas duluan dan belakangan, semoga tidak jadi dasar pengambilan keputusan untuk kalian, berikut diantaranya:
 
