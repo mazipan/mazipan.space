@@ -24,11 +24,12 @@ export const GradientBlobs = ({
     setRandomRadius(randomizeBlobs());
   }, 1100);
 
-  useInterval(() => {
-    if (swapGradient) {
+  useInterval(
+    () => {
       setRandomGradient(getRandomGradientStyle());
-    }
-  }, 1200);
+    },
+    swapGradient ? 1200 : null
+  );
 
   useEffect(() => {
     // @ts-ignore
