@@ -121,6 +121,7 @@ const getImageType = (imagePath: string) => {
   return imageType;
 };
 
+// eslint-disable-next-line no-unused-vars
 const _getRandomImage = async (folderPath: string): Promise<string> => {
   const trimmedFolderPath = removeTrailingSlash(folderPath);
 

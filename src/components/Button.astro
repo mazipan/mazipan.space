@@ -42,10 +42,11 @@ const {
   ...props
 } = Astro.props;
 
+const classes = buttonVariants({ variant, colors, size, disabled, className });
 const Element = disabled ? 'span' : element;
 ---
 
-<Element {...props} class={buttonVariants({ variant, colors, size, disabled, className })}>
+<Element {...props} class={classes}>
   <slot name="before-icon" />
   <slot />
   <slot name="after-icon" />

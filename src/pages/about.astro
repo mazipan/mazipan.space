@@ -3,6 +3,7 @@ import { Image } from 'astro:assets';
 
 import Centered from '@/layouts/Centered.astro';
 import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import Button from '@/components/Button.astro';
 import { BreadcrumbItemHome } from '@/constants/breadcrumb';
 import { TW_SCREENS } from '@/constants/image';
 import { PROFILE } from '@/constants/profile';
@@ -14,13 +15,11 @@ import MeInBlackSrc from '@/assets/images/mazipan-in-black.jpg';
 export const { AUTHOR_GITHUB, AUTHOR_LINKEDIN, AUTHOR_TWITTER, AUTHOR_YOUTUBE, AUTHOR_EMAIL } =
   CONFIG_CLIENT;
 
-{
-  /* bellow SM image is full width of content so higher resolution image */
-}
 export const imageSizes = {
   widths: [TW_SCREENS.SM, TW_SCREENS.MD, TW_SCREENS.SM],
   sizes: `(max-width: ${TW_SCREENS.SM}px) ${TW_SCREENS.SM}px, (max-width: ${TW_SCREENS.MD}px) ${TW_SCREENS.MD}px, ${TW_SCREENS.SM}px`,
 };
+
 const breadcrumbs = [BreadcrumbItemHome];
 ---
 
@@ -49,13 +48,50 @@ const breadcrumbs = [BreadcrumbItemHome];
             Visit my blog
           </a>
         </p>
+
+        <h3 class="b-h1">Randomly speaking</h3>
+        <p>
+          I speak on a variety of topics, including JavaScript, React.js, Next.js, and web
+          technologies in general. I also cover areas like contributing to open source, exploring
+          architectural approaches in frontend development, and choosing the right tech stack to
+          align with your team’s needs. Additionally, I enjoy sharing insights on how to advance
+          your skills as an engineer and providing career advice based on my personal experiences,
+          all with the goal of empowering others to grow and succeed in their professional journeys.
+          Would you like to invite me to speak at your event?
+          <a
+            href={ROUTES.TALKS}
+            title="Talks"
+            class="bg-primary px-2 text-black hover:bg-primary-hover hover:underline"
+          >
+            Check my latest talks.
+          </a>
+        </p>
+
+        <h3 class="b-h1">One on one discussion</h3>
+        <p>
+          I provide one-on-one mentorship through ADPList, which I like to describe as more of a
+          two-way discussion than a traditional mentorship. I understand that I may not always be
+          better or more experienced than the person I’m mentoring, but I aim to share my
+          perspectives and insights. I particularly enjoy discussing non-technical topics related to
+          professional careers and productivity as a software engineer, though I’m also open to
+          technical discussions about web technologies and related areas.
+          <a
+            href="https://dub.sh/mzp.adp"
+            target="_blank"
+            rel="me noreferrer noopener"
+            title="ADPList"
+            class="bg-primary px-2 text-black hover:bg-primary-hover hover:underline"
+          >
+            Check my ADPList profile.
+          </a>
+        </p>
         <h3 class="b-h1">#Build in public</h3>
         <p>
-          I'm enjoy to share my project to the public. I do build some projects for fun and for the
-          shake of learning something new. I'm contributor and maintainer for community projects in
-          PHPID, React.js ID, & KawalCovid19. With my 11 years of experience in coding around
-          frontend technology, I want to start to "giving back" my expertize to the public
-          community.
+          I enjoy sharing my projects with the public, as I often build them for fun and to explore
+          new concepts or technologies. I actively contribute to and maintain community projects,
+          including PHPID, React.js ID, and KawalCovid19. With over 11 years of experience in
+          frontend development, I’m passionate about “giving back” by sharing my expertise with the
+          broader community and supporting others in their learning journeys.
           <a
             href={AUTHOR_GITHUB}
             target="_blank"
@@ -66,17 +102,20 @@ const breadcrumbs = [BreadcrumbItemHome];
             Check my public code</a
           >
         </p>
+
         <h3 class="b-h1">Want to work together?</h3>
         <div class="mt-2 flex flex-col items-start gap-2">
-          <a
+          <Button
+            element="a"
+            colors="primary"
+            variant="solid"
             href={`mailto:${AUTHOR_EMAIL}`}
             target="_blank"
             rel="me noreferrer noopener"
             title="Email"
-            class="rounded-full bg-primary p-4 text-black hover:bg-primary-hover"
           >
             Send me an email
-          </a>
+          </Button>
           <small>Or copy this email manually: <code class="font-mono">{AUTHOR_EMAIL}</code></small>
         </div>
       </div>
