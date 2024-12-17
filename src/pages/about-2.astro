@@ -3,7 +3,6 @@ import { Image } from 'astro:assets';
 
 import Centered from '@/layouts/Centered.astro';
 import Breadcrumbs from '@/components/Breadcrumbs.astro';
-import Button from '@/components/Button.astro';
 import { BreadcrumbItemHome } from '@/constants/breadcrumb';
 import { TW_SCREENS } from '@/constants/image';
 import { PROFILE } from '@/constants/profile';
@@ -12,8 +11,14 @@ import { CONFIG_CLIENT } from '@/config/client';
 
 import MeInBlackSrc from '@/assets/images/mazipan-in-black.jpg';
 
-export const { AUTHOR_GITHUB, AUTHOR_LINKEDIN, AUTHOR_TWITTER, AUTHOR_YOUTUBE, AUTHOR_EMAIL } =
-  CONFIG_CLIENT;
+export const {
+  AUTHOR_GITHUB,
+  AUTHOR_LINKEDIN,
+  AUTHOR_TWITTER,
+  AUTHOR_YOUTUBE,
+  AUTHOR_EMAIL,
+  AUTHOR_ADPLIST,
+} = CONFIG_CLIENT;
 
 export const imageSizes = {
   widths: [TW_SCREENS.SM, TW_SCREENS.MD, TW_SCREENS.SM],
@@ -21,13 +26,10 @@ export const imageSizes = {
 };
 
 const breadcrumbs = [BreadcrumbItemHome];
+const metadata = { title: 'About' };
 ---
 
-<Centered
-  metadata={{
-    title: 'About',
-  }}
->
+<Centered metadata={metadata}>
   <article class="flex flex-col">
     <Breadcrumbs items={breadcrumbs} />
     <h1 class="b-h1">I'm Irfan Maulana.</h1>
@@ -41,14 +43,14 @@ const breadcrumbs = [BreadcrumbItemHome];
         <p>
           I don’t write all that often, but you’re welcome to explore my public writings. I mostly
           share personal experiences on technical topics and occasionally throw in some
-          beginner-friendly advice from my perspective. <a
+          beginner-friendly advice from my perspective.
+          <a
             href={ROUTES.BLOG}
             class="bg-primary px-2 text-black hover:bg-primary-hover hover:underline"
           >
-            Visit my blog
+            Read my articles.
           </a>
         </p>
-
         <h3 class="b-h1">Randomly speaking</h3>
         <p>
           I speak on a variety of topics, including JavaScript, React.js, Next.js, and web
@@ -66,7 +68,6 @@ const breadcrumbs = [BreadcrumbItemHome];
             Check my latest talks.
           </a>
         </p>
-
         <h3 class="b-h1">One on one discussion</h3>
         <p>
           I provide one-on-one mentorship through ADPList, which I like to describe as more of a
@@ -76,7 +77,7 @@ const breadcrumbs = [BreadcrumbItemHome];
           professional careers and productivity as a software engineer, though I’m also open to
           technical discussions about web technologies and related areas.
           <a
-            href="https://dub.sh/mzp.adp"
+            href={AUTHOR_ADPLIST}
             target="_blank"
             rel="me noreferrer noopener"
             title="ADPList"
@@ -85,7 +86,7 @@ const breadcrumbs = [BreadcrumbItemHome];
             Check my ADPList profile.
           </a>
         </p>
-        <h3 class="b-h1">#Build in public</h3>
+        <h3 class="b-h1">Coding for the community</h3>
         <p>
           I enjoy sharing my projects with the public, as I often build them for fun and to explore
           new concepts or technologies. I actively contribute to and maintain community projects,
@@ -99,23 +100,20 @@ const breadcrumbs = [BreadcrumbItemHome];
             title="GitHub"
             class="bg-primary px-2 text-black hover:bg-primary-hover hover:underline"
           >
-            Check my public code</a
+            Check my GitHub account.</a
           >
         </p>
-
         <h3 class="b-h1">Want to work together?</h3>
         <div class="mt-2 flex flex-col items-start gap-2">
-          <Button
-            element="a"
-            colors="primary"
-            variant="solid"
+          <a
             href={`mailto:${AUTHOR_EMAIL}`}
             target="_blank"
             rel="me noreferrer noopener"
             title="Email"
+            class="rounded-full bg-primary p-4 text-black hover:bg-primary-hover"
           >
             Send me an email
-          </Button>
+          </a>
           <small>Or copy this email manually: <code class="font-mono">{AUTHOR_EMAIL}</code></small>
         </div>
       </div>
