@@ -15,7 +15,7 @@ lang: id
 
 import Alert from '@/components/Alert.astro';
 
-Artikel mengenai bagaimana Next.js menangani env var sebenarnya bisa dibaca secara tuntas di laman ofisial mereke "[Environment Variables di Next.js](https://nextjs.org/docs/app/building-your-application/configuring/environment-variables)". Artikel yang saya tulis hanya pengulangan pembahasan bagi yang masih kesulitan memahami artikel tersebut, jadi kalau kalian merasa topik pembahasan ini terlalu sepele untuk kalian, saya sarankan untuk berhenti meneruskan membaca dan cukup mengabaikannya saja.
+Artikel mengenai bagaimana Next.js menangani env var sebenarnya bisa dibaca secara tuntas di dokumentasi resmi mereke "[Environment Variables di Next.js](https://nextjs.org/docs/app/building-your-application/configuring/environment-variables)". Artikel yang saya tulis hanya pengulangan pembahasan bagi yang masih kesulitan memahami artikel tersebut, jadi kalau kalian merasa topik pembahasan ini terlalu sepele untuk kalian, saya sarankan untuk berhenti meneruskan membaca dan cukup mengabaikannya saja.
 
 ## Mengenai env var
 
@@ -31,7 +31,7 @@ Beberapa kegunaan utama dari env var dalam pengembangan perangkat lunak adalah:
 
 - **📦 Portabilitas**: Memungkinkan aplikasi untuk dengan mudah dipindahkan dan dijalankan di berbagai sistem dengan sedikit atau tanpa perubahan pada kode.
 
-Env var berisi pasangan _key-value_, dan biasanya disimpan dalam file `.env` yang dibaca secara otomatis sebagai env var tambahan yang didefinisikan untuk dibutuhkan saat aplikasi tersebut akan dijalankan.
+Env var berisi pasangan "_key-value_", dan biasanya disimpan dalam file `.env` yang dibaca secara otomatis sebagai env var tambahan yang didefinisikan untuk dibutuhkan saat aplikasi tersebut akan dijalankan.
 
 Contoh isi dari sebuah `.env`:
 
@@ -43,7 +43,7 @@ DOMAIN_ASET="https://imagekit.io/sebuah-alamat"
 
 ## Env var di Node.js
 
-Dari artikel [How to read environment variables from Node.js](https://nodejs.org/en/learn/command-line/how-to-read-environment-variables-from-nodejs), pada dasarnya Node.js bisa otomatis membaca env var yang ada di sistem operasi semudah dengan kode `process.env.SEBUAH_ENV_VAR`. Jadi misal di sebuah sistem operasi terdapat env-var
+Dari artikel [How to read environment variables from Node.js](https://nodejs.org/en/learn/command-line/how-to-read-environment-variables-from-nodejs), pada dasarnya Node.js bisa otomatis membaca env var yang ada di sistem operasi semudah dengan kode `process.env.SEBUAH_ENV_VAR`. Jadi misal di sebuah sistem operasi terdapat env var seperti berikut:
 
 ```bash title=.env frame=terminal
 # Contoh env var
@@ -51,7 +51,7 @@ DOMAIN_APLIKASI="https://mazipan.space"
 DOMAIN_ASET="https://imagekit.io/sebuah-alamat"
 ```
 
-Maka kamu bisa membaca dengan kode berikut
+Maka kamu bisa membaca di Node.js dengan kode berikut:
 
 ```js title=index.js
 console.log(process.env.DOMAIN_APLIKASI); // "https://mazipan.space"
@@ -64,15 +64,17 @@ Dalam kasus misalnya env var tersebut didefinisikan melalui file `.env`, kamu pe
 node --env-file=.env index.js
 ```
 
+📝 **Catatan**: argumen `--env-file` baru didukung di Node versi 20 ke atas.
+
 ## Env var di React.js
 
-React.js dasarnya adalah javascript framework yang awalnya "hanya" jalan di peramban, maka secara natural dia tidak bisa membaca env var. Env var hanya bisa di-_supply_ dari kode Node.js (server-side) ke kode React melalui cara-cara yang dimungkinkan. Salah satunya adalah melalui proses *replacement* saat build production asset melalui build tool seperti Webpack atau Vite. Saat proses build tersebut berlangsung, kita bisa menambahakan proses untuk me-*replace* kata-kata `process.env.SOMETHING` dengan sesuatu yang statik sehingga bisa dijalankan di peramban dengan aman.
+React.js dasarnya adalah javascript framework yang awalnya "hanya" jalan di peramban, maka secara natural dia sebenarnya memang **tidak bisa membaca env var**. Env var hanya bisa di-_supply_ dari kode Node.js (server-side) ke kode React melalui cara-cara yang dimungkinkan. Salah satunya adalah melalui proses *replacement* saat build production asset melalui build tool seperti Webpack atau Vite. Saat proses build tersebut berlangsung, kita bisa menambahkan proses untuk me-*replace* kata-kata `process.env.SOMETHING` dengan sesuatu yang statik sehingga nantinya bisa dijalankan di peramban dengan aman.
 
 ## Env var di Next.js
 
-Memasuki era SSR di mana kode client dan server yang digunakan sama persis (sama-sama JavaScript), memberikan kemungkinan kita untuk menulis kode yang sama yang bisa jalan di dua lingkungan yang berbeda. Menggunakan Node.js (atau runtime lainnya) saat di server dan melalui renderer bawaan peramban seperti biasa ketika sampai di client. Jadinya, kode React (atau framework lainnya) yang sama, bisa saja di render di lingkungan Node.js ataupun bisa di render di peramban.
+Memasuki era SSR di mana kode client dan server yang digunakan sama persis (sama-sama JavaScript), memberikan kemungkinan kita untuk menulis kode yang sama yang bisa jalan di dua lingkungan yang berbeda. Menggunakan Node.js (atau runtime lainnya) saat di server dan melalui renderer bawaan peramban seperti biasa ketika sampai di client. Jadinya, kode React yang sama, bisa saja di-render di lingkungan Node.js ataupun bisa di-render di peramban.
 
-Kemampuan ini mengaburkan beberapa pengetahuan sebelumnya karena jadi semakin rancu, apakah kode yang ditulis ini akan jalan di server atau di klien? Seperti dijelaskan sebelumnya `process.env.SOMETHING` hanya tersedia di lingkungan server, sehingga kita bisa tau bahwa menuliskan `process.env.SOMETHING` di kode React sebenarnya sangat mungkin, tapi hanya jika kita yakin kode React tersebut akan hanya dijalankan di lingkungan server. Sementara jika kode tersebut bisa berjalan di lingkungan klien, maka diperlukan workaround tambahan untuk "seolah-olah" bisa menggunakan `process.env.SOMETHING`.
+Kemampuan ini mengaburkan beberapa pengetahuan sebelumnya karena jadi semakin rancu, apakah kode yang ditulis ini akan jalan di server atau di klien? Seperti dijelaskan sebelumnya `process.env.SOMETHING` hanya tersedia di lingkungan server, sehingga kita bisa tau bahwa menuliskan `process.env.SOMETHING` di kode React sebenarnya sangat mungkin, **tapi** hanya jika kita yakin kode React tersebut akan hanya dijalankan di lingkungan server. Sementara jika kode tersebut bisa berjalan di lingkungan klien, maka diperlukan *workaround* tambahan untuk "seolah-olah" bisa menggunakan `process.env.SOMETHING`.
 
 <Alert variant="info">
 Ketika bekerja dengan meta framework semacam Next.js ini yang perlu diperhatikan adalah, si software developer/programmer sebaiknya bisa membedakan mana kode yang cuma jalan di server, mana yang cuma jalan di klien atau peramban, dan mana yang bisa saja jalan di server dan di klien.
@@ -88,14 +90,14 @@ Menggunakan statik env var di Next.js bisa dengan menambahkan prefix `NEXT_PUBLI
 Dengan contoh kita memiliki kode env var seperti berikut:
 
 ```bash title=.env frame=terminal
-NEXT_PUBLIC_SAMPLE='statik env var'
+NEXT_PUBLIC_SAMPLE='statik'
 ```
 
 Maka kita bisa memberikan contoh penggunaan pada kode React sebagai berikut:
 
 ```tsx title="app/home/page.tsx"
 // 'NEXT_PUBLIC_SAMPLE' can be used here as it's prefixed by 'NEXT_PUBLIC_'.
-// It will be transformed at build time to "Hello statik env statik env var"`.
+// It will be transformed at build time to "Hello from statik"`.
 
 function HomePage() {
   return <h1>Hello from {process.env.NEXT_PUBLIC_SAMPLE}</h1>
@@ -151,6 +153,79 @@ export default function RootLayout({
 
 Bila terlalu dalam, maka gunakan `React.Context` untuk mengalirkan data ke semua aplikasi.
 
+Untuk kalian yang masih berkutat dengan Pages Router, maka kalian bisa menggunakan [`getServerSideProps`](https://nextjs.org/docs/pages/building-your-application/data-fetching/get-server-side-props), contohnya:
+
+```tsx title=pages/home.tsx
+import type { InferGetServerSidePropsType, GetServerSideProps } from 'next'
+
+type PageProps = {
+  appEnv: Record<string, string>
+}
+
+export const getServerSideProps = (async () => {
+  const exposedEnvVar = {
+    name: process.env.APP_NAME,
+    version: process.env.APP_VERSION
+  }
+
+  // Pass data to the page via props
+  return {
+    props: {
+      appEnv: exposedEnvVar
+    }
+  }
+}) satisfies GetServerSideProps<{ appEnv: PageProps }>
+
+export default function Page({
+  appEnv,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) {
+  return (
+    <main>
+      <p>Env name: {appEnv?.name}</p>
+      <p>Env version: {appEnv?.version}</p>
+    </main>
+  )
+}
+```
+
+Kalau di rasa merepotkan untuk menambahkan di setiap halaman, bisa juga gunakan [`CustomApp`](https://nextjs.org/docs/pages/building-your-application/routing/custom-app) yang menggunakan konvensi nama file `_app.tsx`, contohnya:
+
+```tsx title=pages/_app.tsx
+import App, { AppContext, AppInitialProps, AppProps } from 'next/app'
+
+type AppOwnProps = {
+  appEnv: Record<string, string>
+}
+
+export default function MyApp({
+  Component,
+  pageProps,
+  appEnv,
+}: AppProps & AppOwnProps) {
+  return (
+    <>
+      <p>Env name: {appEnv?.name}</p>
+      <p>Env version: {appEnv?.version}</p>
+      <Component {...pageProps} />
+    </>
+  )
+}
+
+MyApp.getInitialProps = async (
+  context: AppContext
+): Promise<AppOwnProps & AppInitialProps> => {
+  const ctx = await App.getInitialProps(context)
+
+  const exposedEnvVar = {
+    name: process.env.APP_NAME,
+    version: process.env.APP_VERSION
+  }
+
+  return { ...ctx, appEnv: exposedEnvVar }
+}
+```
+
+
 ### Selipkan ke object window
 
 Kode Next.js di server akan menghasilkan paling tidak sebuah html yang akan di hydrate di sisi klien agar bisa mengembalikan fitur interaktif di kode React. Karena kita tau akan menghasilkan HTML, maka kita bisa saja menambahkan kode untuk menyelipkan env var yang tadinya hanya tersedia di server agar juga tersedia di object global window di sisi klien. Contoh kodenya:
@@ -180,9 +255,15 @@ Kelemahan `window` object memang karena bukan native fitur React jadinya tidak r
 
 Kamu tau cara lain? Silahkan tambahkan cara lain untuk mengakses runtime env var melalui kolom komentar di bagian bawah artikel ini. <a href="#giscus-comments">Scroll langsung ke bagian komentar.</a>
 
-## Kasus kesalahan umum
+## Contoh kasus umum
 
 Mampu membedakan statik env var dan runtime env var penting untuk menghindarkan dari tebak-tebak buah manggis. Tidak perlu rancu lagi, apakah ini bisa dipakai di kode bagian sini atau tidak.
+
+Gambar di bawah adalah sketsa alur deployment yang disederhanakan dari sebuah proses `build-deploy` yang umumnya dilakukan saat memilih cara metode containerization.
+
+![Common deployment diagram in containerized](../../content/post/_images/understanding-env-var-in-nextjs/common-deployment-model-in-containerized.png)
+
+Proses antara build dan deploy terpisah di 2 lingkungan yang berbeda. Proses build biasanya saja terjadi di lingkup CI, di mana berarti semua env var yang dibutuhkan akan diletakkan pada platform CI tersebut. Sementara saat proses deploy dan menyalakan aplikasinya kita juga akan menyediakan env var runtime yang dibutuhkan si aplikasi agar bisa berjalan sesuai dengan lingkungan tujuannya, misal untuk lingkungan `staging` ataupun `production`.
 
 Contoh kasus umum yang seringkali dialami gara-gara kesalahan menggunakan env var ini, misalnya kalian membangun aplikasi SSR dengan Next.js, dan melakukan deployment dengan menggunakan Docker Image, sedangkan kalian memiliki lingkungan deployment lebih dari satu (misalnya: `staging` dan `production`). Mengingat sifat Docker Image yang sebaiknya immutable, tidak lagi diubah isinya saat sudah dibuat. Maka seharusnya Docker Image yang telah di-*build* sebelumnya, bisa di deploy dimanapun, baik `staging` ataupun `production`. Hal-hal yang membedakan antara `staging` dan `production` seharusnya di-*supply* lewat konfigurasi env var di masing-masing lingkungannya. Sayangnya ini jadi tidak bisa dicapai bila di dalam kode Next.js nya ternyata menggunakan statik env var. Misalnya untuk mendefinisikan sebuah domain projek, mereka menambahkan env var untuk staging sebagai berikut:
 
