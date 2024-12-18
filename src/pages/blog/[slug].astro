@@ -22,7 +22,8 @@ import { getOpenGraphImagePath } from '@/libs/api/open-graph/image-path';
 import type { Metadata } from '@/types/common';
 import type { Post } from '@/types/post';
 
-const { SITE_URL } = CONFIG_CLIENT;
+const { SITE_URL, AUTHOR_NAME, AUTHOR_EMAIL, AUTHOR_LINKEDIN, AUTHOR_TWITTER, AUTHOR_YOUTUBE } =
+  CONFIG_CLIENT;
 
 export async function getStaticPaths() {
   const posts: Post[] = await getAllPostsWithReadingTime();
@@ -55,8 +56,9 @@ const {
   tags = [],
 } = data;
 
-const { slug } = Astro.params;
-const { pathname } = Astro.url;
+const { url, params } = Astro;
+const { slug } = params;
+const { pathname } = url;
 
 const { Content, headings: postHeadings } = await render();
 const headings = getHeadingsForTableOfContents(postHeadings);
@@ -80,6 +82,25 @@ const getTransitionNameFromElementId = setTransitionSlug({ pageSlug: slug });
 const image = getOpenGraphImagePath(pathname);
 
 const metadata: Metadata = { title, description, image };
+
+const fullImageUrl = new URL(image, url);
+const schema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'NewsArticle',
+  headline: title,
+  image: [fullImageUrl],
+  datePublished: publishDate,
+  dateModified: updatedDate || publishDate,
+  author: [
+    {
+      '@type': 'Person',
+      name: AUTHOR_NAME,
+      url: SITE_URL + ROUTES.ABOUT,
+      email: AUTHOR_EMAIL,
+      sameAs: [AUTHOR_LINKEDIN, AUTHOR_TWITTER, AUTHOR_YOUTUBE],
+    },
+  ],
+});
 ---
 
 <PostLayout {metadata}>
@@ -162,3 +183,4 @@ const metadata: Metadata = { title, description, image };
     <PostListMore morePosts={randomPosts} />
   </Fragment>
 </PostLayout>
+<script type="application/ld+json" set:html={schema} />

@@ -12,8 +12,15 @@ import { CONFIG_CLIENT } from '@/config/client';
 
 import MeInBlackSrc from '@/assets/images/mazipan-in-black.jpg';
 
-export const { AUTHOR_GITHUB, AUTHOR_LINKEDIN, AUTHOR_TWITTER, AUTHOR_YOUTUBE, AUTHOR_EMAIL } =
-  CONFIG_CLIENT;
+export const {
+  SITE_URL,
+  AUTHOR_NAME,
+  AUTHOR_GITHUB,
+  AUTHOR_LINKEDIN,
+  AUTHOR_TWITTER,
+  AUTHOR_YOUTUBE,
+  AUTHOR_EMAIL,
+} = CONFIG_CLIENT;
 
 export const imageSizes = {
   widths: [TW_SCREENS.SM, TW_SCREENS.MD, TW_SCREENS.SM],
@@ -21,6 +28,21 @@ export const imageSizes = {
 };
 
 const breadcrumbs = [BreadcrumbItemHome];
+const schema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'ProfilePage',
+  dateCreated: '2019-12-19T12:34:00-05:00',
+  dateModified: '2024-12-18T14:53:00-05:00',
+  mainEntity: {
+    '@type': 'Person',
+    name: AUTHOR_NAME,
+    url: SITE_URL + ROUTES.ABOUT,
+    email: AUTHOR_EMAIL,
+    sameAs: [AUTHOR_LINKEDIN, AUTHOR_TWITTER, AUTHOR_YOUTUBE],
+    alternateName: 'mazipan',
+    image: SITE_URL + '/avatars/avatar-mazipan.png',
+  },
+});
 ---
 
 <Centered
@@ -130,3 +152,4 @@ const breadcrumbs = [BreadcrumbItemHome];
     </div>
   </article>
 </Centered>
+<script type="application/ld+json" set:html={schema} />
