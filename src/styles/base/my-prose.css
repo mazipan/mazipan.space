@@ -16,12 +16,25 @@
     @apply prose-h1:text-links;
 
     /* a */
-    @apply prose-a:link;
+    a {
+      @apply rounded decoration-dashed underline-offset-2;
+
+      &:hover {
+        @apply text-yellow-500 decoration-yellow-500 decoration-wavy dark:text-yellow-400 dark:decoration-yellow-400;
+      }
+
+      &:focus {
+        @apply text-yellow-500 no-underline outline-none ring-2 ring-primary ring-offset-2 dark:text-yellow-400;
+      }
+    }
 
     /* image */
-    @apply prose-img:rounded-button;
+    @apply prose-img:rounded-2xl;
 
-    /* my custom components bellow */
+    /* code */
+    code {
+      @apply rounded bg-yellow-100 px-1 font-normal dark:bg-orange-700;
+    }
 
     /* vertical margins */
     .toc,

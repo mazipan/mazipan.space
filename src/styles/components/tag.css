@@ -2,6 +2,7 @@
   .tag {
     @apply text-content;
     @apply inline-block rounded-tag lowercase no-underline;
+    @apply focus:outline-none focus:ring-2 focus:ring-offset-2;
   }
 
   .tag-default {
@@ -34,5 +35,6 @@
 
   .tag-solid-primary {
     @apply bg-primary text-primary-content hover:bg-primary-hover;
+    @apply focus:ring-primary;
   }
 }

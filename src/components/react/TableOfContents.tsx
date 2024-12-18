@@ -25,14 +25,17 @@ const TableOfContents = ({
 
   return (
     <>
-      <div
-        className="fixed bottom-8 right-4 z-50 flex items-center justify-center gap-2 rounded-lg border-2 border-yellow-400 bg-base-100 p-3 font-mono text-sm lg:hidden"
+      <button
+        data-show={showContents}
+        role="button"
+        type="button"
+        className="fixed bottom-8 right-4 z-50 flex cursor-pointer items-center justify-center gap-2 rounded-lg border-2 border-yellow-400 bg-base-100 p-3 font-mono text-sm transition-all duration-500 data-[show=true]:rotate-180 lg:hidden"
         onClick={() => {
           setShowContents((prev) => !prev);
         }}
       >
         {children}
-      </div>
+      </button>
 
       <aside
         data-show={showContents}

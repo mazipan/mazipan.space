@@ -83,10 +83,12 @@ const ScrollToTop: React.FC<Props> = ({ children }) => {
   const handleScrollToTop = (event: MouseEvent<HTMLAnchorElement>) => {
     event.preventDefault();
 
-    const anchorElement = document.querySelector(SCROLL_TO_TOP_SELECTOR);
-    if (!anchorElement) return;
-
-    anchorElement.scrollIntoView({ block: 'start', behavior: 'smooth' });
+    requestAnimationFrame(() => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
+    });
   };
 
   return (

@@ -52,7 +52,7 @@
     @apply absolute block w-full bg-yellow-400;
     transition:
       height 0.5s ease 0s,
-      color 0.5s ease 0s;
+      color 0.7s ease 0s;
   }
 
   .animated-text-link:hover:after {
@@ -61,5 +61,9 @@
 
   .animated-text-link:hover {
     @apply text-black;
+  }
+
+  .animated-text-link:focus {
+    @apply rounded border-2 border-yellow-400 bg-yellow-100 outline-none;
   }
 }
