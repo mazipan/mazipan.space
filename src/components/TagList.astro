@@ -29,7 +29,10 @@ const {
   ...props
 } = Astro.props;
 
-const tagLinks = tags.map((tagItem) => ({ href: `${ROUTES.TAGS}${tagItem}`, text: `#${tagItem}` }));
+const tagLinks = tags.map((tagItem) => ({
+  href: `${ROUTES.TAGS}/${tagItem}`,
+  text: `#${tagItem}`,
+}));
 ---
 
 {

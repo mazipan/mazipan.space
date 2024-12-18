@@ -60,7 +60,7 @@ const getTransitionNameFromElementId = setTransitionSlug({ pageSlug: slug });
         elementId: TRANSITION_ELEMENT_IDS.POST_CARD.TITLE,
       })}
     >
-      <Link variant="link-heading" href={`${ROUTES.BLOG}${slug}`} class="animated-text-link">
+      <Link variant="link-heading" href={`${ROUTES.BLOG}/${slug}`} class="animated-text-link">
         {title}
       </Link>
       {draft && <sup class="mr-1 text-sm text-red-500">{DRAFT_TEXT}</sup>}

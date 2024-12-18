@@ -25,7 +25,7 @@ const { title, heroImage, heroAlt, description, draft } = data;
     class="max-h-40 rounded-t-box object-cover"
   />
   <h4 class="b-h4 mb-2 mt-3 line-clamp-2 break-words">
-    <Link variant="link-heading" href={`${ROUTES.BLOG}${slug}`}>
+    <Link variant="link-heading" href={`${ROUTES.BLOG}/${slug}`}>
       {title}
       {draft && <sup class="ml-1 text-sm text-red-500">{DRAFT_TEXT}</sup>}
     </Link>
