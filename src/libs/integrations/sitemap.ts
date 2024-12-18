@@ -11,10 +11,12 @@ const { SITE_URL } = PROCESS_ENV;
 /** generated at build-time only */
 export const sitemapIntegration = () =>
   sitemap({
+    entryLimit: 1000,
     filter: (page) => !page.includes('/design/'),
     serialize: (item) => {
       if (item.url.endsWith(SITE_URL)) {
         item.priority = 1.0;
+        item.lastmod = new Date().toISOString();
         // google can access it with '/'
       } else if (item.url.endsWith(`${SITE_URL}${ROUTES.BLOG}`)) {
         item.changefreq = 'daily' as ChangeFreqEnum;
