@@ -1,6 +1,6 @@
 {
   "name": "mazipan.space",
-  "version": "1.0.2025",
+  "version": "1.0.2026",
   "private": true,
   "scripts": {
     "astro": "astro",
