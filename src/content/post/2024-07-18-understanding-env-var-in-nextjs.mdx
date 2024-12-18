@@ -154,7 +154,7 @@ export default function RootLayout({
 
 Bila terlalu dalam, maka gunakan `React.Context` untuk mengalirkan data ke semua aplikasi.
 
-Untuk kalian yang masih berkutat dengan Pages Router, maka kalian bisa menggunakan [`getServerSideProps`](https://nextjs.org/docs/pages/building-your-application/data-fetching/get-server-side-props), contohnya:
+Untuk kalian yang masih berkutat dengan Pages Router, maka kalian bisa menggunakan [getServerSideProps](https://nextjs.org/docs/pages/building-your-application/data-fetching/get-server-side-props), contohnya:
 
 ```tsx title=pages/home.tsx
 import type { InferGetServerSidePropsType, GetServerSideProps } from 'next'
@@ -189,7 +189,7 @@ export default function Page({
 }
 ```
 
-Kalau di rasa merepotkan untuk menambahkan di setiap halaman, bisa juga gunakan [`CustomApp`](https://nextjs.org/docs/pages/building-your-application/routing/custom-app) yang menggunakan konvensi nama file `_app.tsx`, contohnya:
+Kalau di rasa merepotkan untuk menambahkan di setiap halaman, bisa juga gunakan [CustomApp](https://nextjs.org/docs/pages/building-your-application/routing/custom-app) yang menggunakan konvensi nama file `_app.tsx`, contohnya:
 
 ```tsx title=pages/_app.tsx
 import App, { AppContext, AppInitialProps, AppProps } from 'next/app'

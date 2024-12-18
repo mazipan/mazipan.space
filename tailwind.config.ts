@@ -31,7 +31,7 @@ const config: Config = {
     extend: {
       fontFamily: {
         sans: ['Space Grotesk Variable', ...defaultTheme.fontFamily.sans],
-        mono: ['JetBrains Mono Variable', ...defaultTheme.fontFamily.mono],
+        mono: [...defaultTheme.fontFamily.mono],
         serif: ['Dela Gothic One', ...defaultTheme.fontFamily.serif],
       },
       colors: {

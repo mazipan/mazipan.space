@@ -34,7 +34,7 @@ const activeNavItemPath = getActiveNavItemPath(routePathname);
     <div class="flex w-full items-center justify-between md:w-auto">
       <HeaderLink
         href={ROUTES.HOME}
-        class="flex flex-row items-center gap-2 font-serif text-xl xs:text-2xl"
+        class="flex flex-row items-center gap-2 rounded-lg px-2 py-1 font-serif text-xl hover:bg-yellow-100 hover:text-yellow-600 focus:bg-yellow-100 focus:text-yellow-600 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 xs:text-2xl"
       >
         <span> MZP </span>
       </HeaderLink>
@@ -61,11 +61,15 @@ const activeNavItemPath = getActiveNavItemPath(routePathname);
 
     {/* Desktop nav items */}
     <nav class="mt-0 hidden select-none md:block" aria-label="Site navigation">
-      <ul class="flex gap-4 md:!flex-row md:items-center">
+      <ul class="flex gap-2 md:!flex-row md:items-center">
         {
           NAVIGATION_ITEMS.map(({ title, path }) => (
-            <li>
-              <HeaderLink href={path} isActive={path === activeNavItemPath}>
+            <li class="relative">
+              <HeaderLink
+                href={path}
+                isActive={path === activeNavItemPath}
+                class="rounded-lg px-2 py-1 hover:bg-yellow-100 hover:text-yellow-600 focus:bg-yellow-100 focus:text-yellow-600 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+              >
                 {title}
               </HeaderLink>
             </li>

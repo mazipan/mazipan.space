@@ -821,11 +821,6 @@
   dependencies:
     "@expressive-code/core" "^0.38.3"
 
-"@fontsource-variable/jetbrains-mono@^5.1.1":
-  version "5.1.1"
-  resolved "https://registry.yarnpkg.com/@fontsource-variable/jetbrains-mono/-/jetbrains-mono-5.1.1.tgz#d45ecec375900a89b64b8c3e260b51ad848ef11c"
-  integrity sha512-V+1aRFRvuZ66PpO30s8l/2aADKzpV9VRsO3kSZE+rTMvi4vab3cUcPHMN2z+wAvjkYJO71Yf+g3/Y6pSMmQpVQ==
-
 "@fontsource-variable/space-grotesk@^5.1.0":
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/@fontsource-variable/space-grotesk/-/space-grotesk-5.1.0.tgz#ce1c7c4576fab2619bb82b4ad1c14b35a1f1b9b2"

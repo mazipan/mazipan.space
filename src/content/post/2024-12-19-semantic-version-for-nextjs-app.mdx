@@ -46,7 +46,7 @@ Untuk kasus suatu library, dengan adanya version, memungkinkan pengguna untuk me
 
 Semantic version membuat perubahan bisa lebih diprediksi, bila pengguna melihat ada suatu `patch` version baru, si pengguna bisa berasumsi kalau aplikasi yang menggunakan library tersebut harusnya aman juga untuk menaikkan versi yang digunakan ke versi yang lebih baru.
 
-Banyak peralatan yang bisa digunakan untuk membantu mengatur versi dependency agar bisa otomatis rilis dengan versi yang tepat berdasarkan perubahan yang terjadi, salah satu yang populer adalah [`🦋 changesets`](https://github.com/changesets/changesets) yang dikombinasikan dengan konvensi commit yang tepat seperti [`conventionalcommits.org`](https://www.conventionalcommits.org/en/v1.0.0/).
+Banyak peralatan yang bisa digunakan untuk membantu mengatur versi dependency agar bisa otomatis rilis dengan versi yang tepat berdasarkan perubahan yang terjadi, salah satu yang populer adalah [🦋 changesets](https://github.com/changesets/changesets) yang dikombinasikan dengan konvensi commit yang tepat seperti [conventionalcommits.org](https://www.conventionalcommits.org/en/v1.0.0/).
 
 ## Semantic version di Aplikasi Mobile
 
@@ -98,13 +98,13 @@ Semantic version dibuat agar lebih mudah dibaca sebagai manusia. Sebagai sistem,
 
 **🟢 Permasalahan pertama** yang muncul adalah di mana kita akan meletakkan versi aplikasi kita? Secara bawaan, setiap aplikasi JavaScript sudah memiliki tempat untuk meletakkan versi aplikasi yakni di file `package.json` yang juga berisi daftar dependency yang dibutuhkan. Jadi kalau tidak mau ambil pusing dengan berbagai peralatan baru yang perlu diintegrasikan ke project kalian, pakai saja cara manual dengan menaikkan versi di `package.json` setiap kali akan melakukan deployment baru.
 
-Sedikit kembali mengingatkan, sudah ada cara mudah yang disediakan package manager untuk menaikkan versi ke versi berikutnya. Contohnya untuk `npm` bisa menggunakan perintah [`npm version`](https://docs.npmjs.com/cli/v11/commands/npm-version), contohnya:
+Sedikit kembali mengingatkan, sudah ada cara mudah yang disediakan package manager untuk menaikkan versi ke versi berikutnya. Contohnya untuk `npm` bisa menggunakan perintah [npm version](https://docs.npmjs.com/cli/v11/commands/npm-version), contohnya:
 
 ```bash title=zsh frame=terminal
 npm version [<newversion> | major | minor | patch | premajor | preminor | prepatch | prerelease | from-git]
 ```
 
-Tentu saja cara yang saya sebutkan adalah cara termudah untuk memulai, kalau kalian sudah cukup advance dan familiar dengan berbagai peralatan di JavaScript sebaiknya langsung saja memulai dengan [`🦋 changesets`](https://github.com/changesets/changesets) agar tidak perlu manual mendeteksi patch, minor atau major lagi.
+Tentu saja cara yang saya sebutkan adalah cara termudah untuk memulai, kalau kalian sudah cukup advance dan familiar dengan berbagai peralatan di JavaScript sebaiknya langsung saja memulai dengan [🦋 changesets](https://github.com/changesets/changesets) agar tidak perlu manual mendeteksi patch, minor atau major lagi.
 
 **🟢 Permasalahan kedua**, bagaimana cara Next.js tau versi yang ada di `package.json` kita? Cara yang saya kepikiran sih dengan *inject* versi yang ada di `package.json` ke dalam env var yang ada di Next.js. Untuk kasus ini, aman untuk menggunakan statik env var karena versi ini tidak akan berubah bahkan bila di deploy ke environment yang berbeda. Kita akan inject env var berikut saat build time `NEXT_PUBLIC_SEMANTIC_VERSION=[versi dari package.json]`, seperti kalian baca pada artikel sebelumnya "[Memahami environment variable di Next.js](/blog/2024-07-18-understanding-env-var-in-nextjs)" bahwa env var statik itu di-*supply* saat proses build bukan saat proses run aplikasi.
 
