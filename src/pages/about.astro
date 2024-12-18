@@ -5,14 +5,13 @@ import Centered from '@/layouts/Centered.astro';
 import Breadcrumbs from '@/components/Breadcrumbs.astro';
 import Button from '@/components/Button.astro';
 import { BreadcrumbItemHome } from '@/constants/breadcrumb';
-import { TW_SCREENS } from '@/constants/image';
 import { PROFILE } from '@/constants/profile';
 import { ROUTES } from '@/constants/routes';
 import { CONFIG_CLIENT } from '@/config/client';
 
 import MeInBlackSrc from '@/assets/images/mazipan-in-black.jpg';
 
-export const {
+const {
   SITE_URL,
   AUTHOR_NAME,
   AUTHOR_GITHUB,
@@ -21,11 +20,6 @@ export const {
   AUTHOR_YOUTUBE,
   AUTHOR_EMAIL,
 } = CONFIG_CLIENT;
-
-export const imageSizes = {
-  widths: [TW_SCREENS.SM, TW_SCREENS.MD, TW_SCREENS.SM],
-  sizes: `(max-width: ${TW_SCREENS.SM}px) ${TW_SCREENS.SM}px, (max-width: ${TW_SCREENS.MD}px) ${TW_SCREENS.MD}px, ${TW_SCREENS.SM}px`,
-};
 
 const breadcrumbs = [BreadcrumbItemHome];
 const schema = JSON.stringify({
