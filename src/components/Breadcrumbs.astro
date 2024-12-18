@@ -1,7 +1,10 @@
 ---
+import { CONFIG_CLIENT } from '@/config/client';
 import { cn } from '@/utils/styles';
 
 import type { HTMLAttributes } from 'astro/types';
+
+const { SITE_URL } = CONFIG_CLIENT;
 
 export interface BreadcrumbItem {
   href: string;
@@ -13,6 +16,19 @@ export interface Props extends HTMLAttributes<'nav'> {
 }
 
 const { items, ...props } = Astro.props;
+
+const schema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: items.map((item, index) => {
+    return {
+      '@type': 'ListItem',
+      position: index + 1,
+      name: item.text,
+      item: SITE_URL + item.href,
+    };
+  }),
+});
 ---
 
 <nav class={cn('my-2')} aria-label="breadcrumb" {...props}>
@@ -30,3 +46,4 @@ const { items, ...props } = Astro.props;
     }
   </div>
 </nav>
+<script type="application/ld+json" set:html={schema} />
