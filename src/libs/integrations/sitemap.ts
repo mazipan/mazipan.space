@@ -19,6 +19,9 @@ export const sitemapIntegration = () =>
       } else if (item.url.endsWith(`${SITE_URL}${ROUTES.BLOG}`)) {
         item.changefreq = 'daily' as ChangeFreqEnum;
         item.priority = 0.9;
+      } else {
+        item.changefreq = 'daily' as ChangeFreqEnum;
+        item.priority = 0.8;
       }
       return item;
     },

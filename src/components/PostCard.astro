@@ -78,7 +78,7 @@ const getTransitionNameFromElementId = setTransitionSlug({ pageSlug: slug });
         elementId: TRANSITION_ELEMENT_IDS.POST_CARD.TITLE,
       })}
     >
-      <Link href={`${ROUTES.BLOG}${slug}`} variant="link-heading" class="animated-text-link">
+      <Link href={`${ROUTES.BLOG}/${slug}`} variant="link-heading" class="animated-text-link">
         {title}
       </Link>
       {draft && <sup class="ml-1 text-sm text-red-500">{DRAFT_TEXT}</sup>}
@@ -112,7 +112,7 @@ const getTransitionNameFromElementId = setTransitionSlug({ pageSlug: slug });
       </span>
 
       <span>
-        In category <Link href={`${ROUTES.CATEGORIES}${category}`}>
+        In category <Link href={`${ROUTES.CATEGORIES}/${category}`}>
           {category}
         </Link>
       </span>
@@ -129,7 +129,7 @@ const getTransitionNameFromElementId = setTransitionSlug({ pageSlug: slug });
       </div>
 
       <Link
-        href={`${ROUTES.BLOG}${slug}`}
+        href={`${ROUTES.BLOG}/${slug}`}
         class="inline-flex items-center gap-1 text-base font-medium"
       >
         <span class="text-nowrap">Read more</span>

@@ -43,7 +43,7 @@ export const getFeed = async (): Promise<Feed> => {
     const { data, body, slug } = post;
     const { title, description, publishDate, heroImage, noHero } = data;
 
-    const url = `${SITE_URL}${ROUTES.BLOG}${slug}/`;
+    const url = `${SITE_URL}${ROUTES.BLOG}/${slug}`;
     const { code: content } = await renderMarkdown(body);
 
     const item: Item = {

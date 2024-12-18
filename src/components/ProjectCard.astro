@@ -41,7 +41,7 @@ const getTransitionNameFromElementId = setTransitionSlug({ pageSlug: slug });
 
   <h4 class="b-h4 mb-0 line-clamp-2 break-words">
     <Link
-      href={`${ROUTES.PROJECTS}${slug}`}
+      href={`${ROUTES.PROJECTS}/${slug}`}
       variant="link-heading"
       transition:name={getTransitionNameFromElementId({
         elementId: TRANSITION_ELEMENT_IDS.POST_CARD.TITLE,
