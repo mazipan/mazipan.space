@@ -33,7 +33,7 @@
 
     /* code */
     code {
-      @apply rounded bg-yellow-100 px-1 font-normal dark:bg-orange-700;
+      @apply me-2 rounded bg-purple-100 px-1 py-0.5 font-mono text-sm font-medium text-purple-800 dark:bg-purple-900 dark:text-purple-300;
     }
 
     /* vertical margins */
