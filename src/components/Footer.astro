@@ -145,10 +145,14 @@ const copyrightYear = new Date().getFullYear();
     </div>
     <div class="mt-8 space-y-2 border-t border-base-300 py-8 text-center text-sm md:py-4">
       <p>© 2019-{copyrightYear}, All rights reserved</p>
-
+      <p>
+        <span class="text-primary">v{process.env.APP_VERSION}</span>, deployed at {
+          process.env.APP_DEPLOY_AT
+        }
+      </p>
       <div class="flex items-center justify-center gap-2">
-        <label class="font-bold">Latest commit:</label>
-        <Link href={commitUrl} title={shortDateStr} target="_blank">
+        <span>Latest commit:</span>
+        <Link href={commitUrl} title={shortDateStr} target="_blank" rel="noreferrer noopener">
           {trimmedMessage}
         </Link>
       </div>

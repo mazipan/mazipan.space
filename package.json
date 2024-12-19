@@ -4,10 +4,10 @@
   "private": true,
   "scripts": {
     "astro": "astro",
-    "build": "astro build",
+    "build": "APP_VERSION=$(npm pkg get version | xargs) APP_DEPLOY_AT=$(date +'%Y-%m-%d %H:%M:%S') astro build",
     "check-types": "tsc --noEmit --pretty",
     "clean": "rm -rf node_modules yarn.lock",
-    "dev": "astro dev",
+    "dev": "APP_VERSION=$(npm pkg get version | xargs) APP_DEPLOY_AT=$(date +'%Y-%m-%d %H:%M:%S') astro dev",
     "format": "prettier --write .",
     "lint": "eslint --ext .astro,.tsx,.ts,.js,.mdx src",
     "preview": "astro preview",
