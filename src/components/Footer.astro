@@ -1,10 +1,13 @@
 ---
+import { Icon } from 'astro-icon/components';
+
 import Link from '@/components/Link.astro';
 import { ROUTES } from '@/constants/routes';
 import { CONFIG_CLIENT } from '@/config/client';
 import { getLatestCommitInfo } from '@/libs/git';
 import { shortDate } from '@/utils/datetime';
 import { limitString, trimHttpProtocol } from '@/utils/strings';
+import Button from './Button.astro';
 import SocialLinks from './SocialLinks.astro';
 
 const { SITE_URL, REPO_URL, AUTHOR_ADPLIST, AUTHOR_DECK } = CONFIG_CLIENT;
@@ -24,8 +27,8 @@ const copyrightYear = new Date().getFullYear();
 ---
 
 <footer class="border-t border-base-300 px-4 py-8">
-  <div class="max-w-6xl md:mx-auto">
-    <div class="flex w-full flex-col-reverse gap-8 md:flex-row">
+  <div class="relative max-w-6xl md:mx-auto">
+    <div class="relative flex w-full flex-col-reverse gap-8 md:flex-row">
       <div class="space-y-4 whitespace-nowrap text-content">
         <h3 class="font-semibold">Irfan Maulana / MZP</h3>
         <SocialLinks />
@@ -142,6 +145,16 @@ const copyrightYear = new Date().getFullYear();
           </li>
         </ul>
       </div>
+
+      <Button
+        class="absolute right-4 top-0 z-10 h-8 w-8 cursor-pointer rounded-full p-1"
+        element="button"
+        variant="outline"
+        colors="primary"
+        id="btn-scroll-to-top"
+      >
+        <Icon name="tabler:arrow-up" class="h-4 w-4" />
+      </Button>
     </div>
     <div class="mt-8 space-y-2 border-t border-base-300 py-8 text-center text-sm md:py-4">
       <p>© 2019-{copyrightYear}, All rights reserved</p>
@@ -159,3 +172,18 @@ const copyrightYear = new Date().getFullYear();
     </div>
   </div>
 </footer>
+
+<script>
+  const btnScrollToTop = document.querySelector('#btn-scroll-to-top');
+
+  if (btnScrollToTop) {
+    btnScrollToTop.addEventListener('click', () => {
+      requestAnimationFrame(() => {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth',
+        });
+      });
+    });
+  }
+</script>
