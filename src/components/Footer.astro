@@ -147,11 +147,10 @@ const copyrightYear = new Date().getFullYear();
       </div>
 
       <Button
-        class="absolute right-4 top-0 z-10 h-8 w-8 cursor-pointer rounded-full p-1"
+        class="absolute right-4 top-0 z-10 h-8 w-8 cursor-pointer rounded-full p-1 js-btn-scroll-to-top"
         element="button"
         variant="outline"
         colors="primary"
-        id="btn-scroll-to-top"
       >
         <Icon name="tabler:arrow-up" class="h-4 w-4" />
       </Button>
@@ -174,7 +173,7 @@ const copyrightYear = new Date().getFullYear();
 </footer>
 
 <script>
-  const btnScrollToTop = document.querySelector('#btn-scroll-to-top');
+  const btnScrollToTop = document.querySelector('.js-btn-scroll-to-top');
 
   if (btnScrollToTop) {
     btnScrollToTop.addEventListener('click', () => {
