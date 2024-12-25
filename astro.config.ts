@@ -21,10 +21,14 @@ export default defineConfig({
   site: SITE_URL,
   env: envSchema,
   experimental: {
+    // https://docs.astro.build/en/reference/experimental-flags/responsive-images/
     responsiveImages: true,
+    // https://docs.astro.build/en/reference/experimental-flags/svg/
     svg: true,
+    // https://docs.astro.build/en/reference/experimental-flags/content-intellisense/
+    contentIntellisense: true,
   },
-  trailingSlash: 'ignore',
+  trailingSlash: 'never',
   // default
   compressHTML: true,
   server: { port: 3000 },

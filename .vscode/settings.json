@@ -26,6 +26,7 @@
     ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
     ["cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
   ],
+  "astro.content-intellisense": true,
   // "gitlens.currentLine.enabled": false,
   "cSpell.words": ["astro", "giscus"]
 }

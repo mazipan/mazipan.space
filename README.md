@@ -4,6 +4,8 @@
 
 👿 Codebase for personal blog ([mazipan.space](https://www.mazipan.space/))
 
+![Homepage](./screenshot.png)
+
 ## Live
 
 - [mazipan.space](https://www.mazipan.space/)

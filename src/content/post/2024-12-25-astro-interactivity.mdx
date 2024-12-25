@@ -1,0 +1,290 @@
+---
+title: Interaktivitas di Astro
+publishDate: '2024-12-25'
+updatedDate: '2024-12-25'
+description: Cara menambahkan interaktivitas pada framework Astro
+author: mazipan
+tags:
+  - web
+  - astro
+category: tutorials
+toc: true
+heroImage: '../../content/post/_images/astro-interactivity/pexels-d-c-phuc-71756896-29914989.jpg'
+heroAlt: Cara menambahkan interaktivitas pada framework Astro
+lang: id
+---
+
+import Alert from '@/components/Alert.astro';
+
+## Sekilas mengenai Astro
+
+Astro merupakan web framework untuk membuat website yang *content-driven* semacam blog atau marketing. Astro mengambil jalan sebagai UI-agnostik, yang artinya bisa dikombinasikan dengan berbagai UI framework kesukaan kalian macam React, Vue, Svelte dan lainnya. Astro juga terkenal karena menjadi pelopor bagi arsitektur terbaru di dunia persilatan web framework, yakni [Island Arsitektur](https://docs.astro.build/en/concepts/islands/) yang di framework lain mungkin lebih dikenal dengan *partial/selective hydration*.
+
+## Menambahkan UI framework ke Astro
+
+Astro menjadi jembatan bagi yang ingin mulai mengurangi kode-kode JavaScript tapi masih galau. Kamu bisa menulis kode Astro dalam satu projek atau mengkombinasikannya dengan framework lain kalau memang dibutuhkan. Sebagian besar framework populer sudah tersedia official integrasinya dengan Astro, sehingga mudah dan aman untuk menambahkan ke projek kita.
+
+Misalnya kalau ingin menambahkan React ke dalam projek Astro, bisa semudah dengan command:
+
+```bash title=zsh frame=terminal
+npx astro add react
+```
+
+Atau install manual dengan cara:
+
+
+```bash title=zsh frame=terminal
+npm install @astrojs/react react react-dom
+```
+
+Kemudian tambahkan konfigurasi di `astro.config.*`
+
+```ts title=astro.config.ts
+import { defineConfig } from 'astro/config';
+import react from '@astrojs/react';
+
+export default defineConfig({
+  // ...
+  integrations: [react()],
+});
+```
+
+Untuk menambahkan kode dari framework lain ke dalam komponen Astro sendiri bisa semudah import seperti komponen lainnya:
+
+```astro title=src/pages/sample.astro
+---
+import MyReactComponent from '../components/MyReactComponent.jsx';
+---
+
+<html>
+  <body>
+    <h1>Use React components directly in Astro!</h1>
+    <MyReactComponent />
+  </body>
+</html>
+```
+
+Masalahnya secara bawaan, kode ini akan di render di server baik runtime maupun build-time dan di serve sebagai statik HTML sehingga akan kehilangan reaktivitasnya.
+
+Astro telah menyediakan ekstra *directive*, jika membutuhkan kode framework yang interaktiv.
+
+```astro title=src/pages/sample.astro
+---
+// Example: hydrating framework components in the browser.
+import InteractiveButton from '../components/InteractiveButton.jsx';
+import InteractiveCounter from '../components/InteractiveCounter.jsx';
+import InteractiveModal from '../components/InteractiveModal.svelte';
+---
+
+<!-- This component's JS will begin importing when the page loads -->
+<InteractiveButton client:load />
+
+<!-- This component's JS will not be sent to the client until
+the user scrolls down and the component is visible on the page -->
+<InteractiveCounter client:visible />
+
+<!-- This component won't render on the server, but will render on the client when the page loads -->
+<InteractiveModal client:only="svelte" />
+```
+
+Selengkapnya bisa dibaca mengenai [Client Directives](https://docs.astro.build/en/reference/directives-reference/#client-directives) yang tersedia di Astro.
+
+## Menambah Interaktifitas di Astro
+
+Untuk menambahkan interaktivitas, kamu sebenarnya bisa dengan mudah menggunakan UI framework seperti yang telah dijelaskan singkat pada bagian sebelumnya. Namun yang mau kita bahas adalah menambahkan interaktivitas langsung pada komponen Astro.
+
+Contoh kasusnya misalnya kamu hanya membutuhkan interaktivitas sederhana yang sepertinya terasa overkill untuk menambahkan UI framework tambahan ke dalam projek kalian. Misalnya "cuma" untuk membuka-tutup *(toggle)* suatu menu sidebar, melakukan DOM manipulasi sederhana, atau sekedar menyampaikan suatu state sederhana ke tempat lain.
+
+Astro seperti halnya HTML, bisa menambahkan kode client-side JavaScript pada markup mereka, contohnya:
+
+```astro title=src/components/sample.astro
+<h1>Welcom to Astro!</h1>
+
+<script>
+  console.log('[Client Log]: Hello from Astro!')
+</script>
+```
+
+Mengetahui hal ini kita bisa punya beberapa pilihan alternatif API dari web platform yang memang memungkinkan kita dengan mudah menambahkan interaktivitas langsung dari kode Astro komponen.
+
+### Menyelipkan event handler
+
+Event di sini maksudnya event-event yang memang sudah tersedia *by-default* di berbagai komponen bawaan HTML, misalnya kita ingin menambahkan click event pada suatu tombol, maka kita bisa menambahkan *event listener* seperti biasa contohnya:
+
+```astro title=src/components/AlertButton.astro
+<button id="alert">Click me!</button>
+
+<script>
+  const alertBtn = document.querySelector('#alert');
+
+  alertBtn.addEventListener('click', () => {
+    alert('Button was clicked!');
+  });
+</script>
+```
+
+Dari kode contoh di atas kita bisa menambahkan akrobat sedikit dengan Vanilla JavaScript yang mungkin sudah mulai jarang digunakan setelah kebanyakan tenggelam dengan UI framework kekinian.
+
+Untuk kasus lain, misalnya toggle menu, kita bisa memanfaatkan DOM manipulation sederhana juga, misal:
+
+
+```astro title=src/components/MenuToggle.astro
+<nav id="menu" data-state="close">
+  <ul>
+    <li>Home</li>
+    <li>Blog</li>
+    <li>About</li>
+  </ul>
+</nav>
+<button id="menu-toggle">Toggle menu!</button>
+
+<script>
+  const toggleBtn = document.querySelector('#menu-toggle');
+
+  toggleBtn.addEventListener('click', () => {
+    const menu = document.querySelector('#menu');
+    const prevState = menu.getAttribute('data-state');
+    const nextState = prevState === 'open' ? 'close' : 'open';
+
+    menu.setAttribute('data-menu', nextState);
+  });
+</script>
+```
+
+Liar ya 😂? Tapi jadi bernostalgia dengan masa lalu kan?
+
+### Menggunakan Custom Element dari Web Component
+
+Salah satu fitur utama pada web component adalah kita bisa membuat custom element. Custom element merupakan custom tag HTML yang behavior-nya sudah didefinisikan oleh si web developer, biasanya berupa perpanjangan dari dari berbagai element yang tersedia di peramban.
+
+Misal pada contoh kode berikut kita akan menambakan custom element pada Astro komponen berupa tombol hati yang akan mendeteksi sudah berapa kali tombol tersebut ditekan. Perhatikan contoh kode di bawah:
+
+```astro title=src/components/AstroHeart.astro
+<!-- Wrap the component elements in our custom element “astro-heart”. -->
+<astro-heart>
+  <button aria-label="Heart">💜</button> × <span>0</span>
+</astro-heart>
+
+<script>
+  // Define the behaviour for our new type of HTML element.
+  class AstroHeart extends HTMLElement {
+    connectedCallback() {
+      let count = 0;
+
+      const heartButton = this.querySelector('button');
+      const countSpan = this.querySelector('span');
+
+      // Each time the button is clicked, update the count.
+      heartButton.addEventListener('click', () => {
+        count++;
+        countSpan.textContent = count.toString();
+      });
+    }
+  }
+
+  // Tell the browser to use our AstroHeart class for <astro-heart> elements.
+  customElements.define('astro-heart', AstroHeart);
+</script>
+```
+
+Dengan memanfaatkan custom element, kalian bisa menambahkan interaktivitas yang lebih kaya dengan kode yang lebih oke tapi masih pakai Vanilla JavaScript sehingga tidak diperlukan library tambahan.
+
+## Berbagi state antar komponen
+
+Selain untuk menambahkan interaktivitas sederhana, script tambahan biasanya juga dibutuhkan untuk saling berbagi state antar satu komponen dengan komponen lain, maupun dengan UI framework yang digunakan di dalam projek tersebut. Ini contoh kasus umum ketika menggunakan Astro karena biasanya memang kita akan gonta-ganti antara kode Astro dengan kode UI framework dalam satu projek.
+
+Berdasarkan dokumentasi resmi ["Share state between islands"](https://docs.astro.build/en/recipes/sharing-state/), mereka merekomendasikan untuk menggunakan [Nano Stores](https://github.com/nanostores/nanostores), ataupun alternative serupa yang sudah ada bawaan di masing-masing UI framework, seperti:
+
+- [Svelte stores](https://svelte.dev/docs/svelte/svelte-store)
+- [Solid signals](https://docs.solidjs.com/concepts/signals)
+- [Vue reactivity API](https://vuejs.org/guide/scaling-up/state-management.html#simple-state-management-with-reactivity-api)
+
+Namun yang akan kita bahas lebih lanjut adalah cara alternatif lain memanfaatkan web platform API.
+
+### Membagikan custom event
+
+Event pada dasarnya adalah **pub-sub** *(publish-subscribe)* konsep dimana ada yang mempublikasikan sesuatu dan ada yang akan berlangganan terhadap suatu event. Kamu bisa membaca selengkapnya mengenai cara mengirim dan berlangganan suatu event di "[Creating and triggering events](https://developer.mozilla.org/en-US/docs/Web/Events/Creating_and_triggering_events)".
+
+Mengambil contoh kasus yang sama dengan sebelumnya, kita akan membuat tombol hati sederhana dengan text yang menampilkan jumlah klik. Namun kali ini kita akan memisah keduanya menjadi 2 komponen terpisah. Satu untuk menampilkan tombolnya, kita akan buat berkas `HeartBtn.astro` dan untuk text-nya kita akan membuat `CounterText.astro` dan dijadikan 1 pada `index.astro`. Berikut contoh kode `index.astro`:
+
+```astro title=src/pages/index.astro
+---
+import HeartBtn from '../components/HeartBtn.astro'
+import CounterText from '../components/CounterText.astro'
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>Astro</title>
+	</head>
+	<body>
+		<h1>Astro: Send & Subscribe Custom Event</h1>
+		<div style="display:inline-block;">
+			<HeartBtn />
+			<CounterText />
+		</div>
+	</body>
+</html>
+```
+
+Pada komponen `HeartBtn.astro`, kita akan membuat tombol dan akan mengirimkan Custom Event saat ditekan. Berikut contoh kode implementasinya:
+
+```astro title=src/components/HeartBtn.astro
+<button id="btn">💜</button>
+
+<script>
+  const btn = document.querySelector('#btn');
+  let state = 0
+  btn.addEventListener('click', () => {
+    state += 1
+
+    // Sending custom event with the detail state
+    btn.dispatchEvent(new CustomEvent("increment", { detail: state }))
+  });
+</script>
+```
+
+Sedangkan pada `CounterText.astro`, kita akan berlanganan state yang dikirimkan oleh tombol tersebut, contoh kodenya:
+
+```astro title=src/components/CounterText.astro
+<span>x <span id="text">0</span></span>
+
+<script>
+  const btn = document.querySelector('#btn');
+  const p = document.querySelector('#text');
+
+  btn.addEventListener('increment', (e) => {
+    p.innerText = e.detail
+  });
+</script>
+```
+
+Terlihat overkill ya? Mungkin karena sebenarnya bisa juga langsung manipulasi dengan `innerText` pada `HeartBtn.astro` ke komponen sebelahnya.  Seperti yang sering kita lakukan di jaman jQuery merajalela. Yang bikin repot karena Custom Event ini menempel pada element sumber. Jadi untuk bisa subcribe, kita mesti select dulu komponen sumbernya. Tapi ini penyederhanaan kasus saja, siapa tau nanti kalian ketemu kasus dimana perlu menggunakan Custom Event.
+
+Lihat kode selengkapnya pada [Codesandbox mengirim dan berlangganan Custom Event](https://codesandbox.io/p/devbox/rough-fast-j1qiqf)
+
+### Menggunakan postMessage
+
+Pada dasarnya ini mirip dengan Custom Event, hanya saja event-nya akan ditempelkan langsung ke objek global `window`, jadinya kita tidak perlu select ke component sumber.
+
+Silahkan berkreasi sendiri untuk contoh kodenya.
+
+## Bahan bacaan tambahan
+
+- [Scripts and event handling](https://docs.astro.build/en/guides/client-side-scripts/)
+- [Share state between Astro components](https://docs.astro.build/en/recipes/sharing-state/)
+- [Front-end frameworks integrations](https://docs.astro.build/en/guides/framework-components/)
+- [Creating and triggering events](https://developer.mozilla.org/en-US/docs/Web/Events/Creating_and_triggering_events)
+- [Window: postMessage() method](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage)
+
+---
+
+**👋 Sekian dan terima kasih**
+
+Maaf-maaf aja kalau gak bermanfaat 🙇😭
+
+---
+
+Foto cover diambil dari laman [Pexel](https://www.pexels.com/id-id/foto/suasana-pasar-jalanan-dengan-penjual-lokal-di-dalam-ruangan-29914989/), Foto oleh [Đức Phúc](https://www.pexels.com/id-id/@d-c-phuc-71756896/)

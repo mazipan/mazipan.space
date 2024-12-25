@@ -1,10 +1,7 @@
 ---
-import { Icon } from 'astro-icon/components';
-
 import BaseHead from '@/components/BaseHead.astro';
 import Footer from '@/components/Footer.astro';
 import Header from '@/components/Header.astro';
-import ScrollToTop from '@/components/react/ScrollToTop';
 import Breakpoints from '@/components/utils/breakpoints.astro';
 
 import type { BaseHeadProps } from '@/components/BaseHead.astro';
@@ -24,10 +21,6 @@ const { metadata } = Astro.props as BaseProps;
       <slot />
     </div>
     <Footer />
-
-    <ScrollToTop client:only="react">
-      <Icon name="tabler:arrow-up" class="h-6 w-6 text-content hover:text-links-hover" />
-    </ScrollToTop>
 
     <Breakpoints />
   </body>
