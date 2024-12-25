@@ -14,8 +14,6 @@ heroAlt: Cara menambahkan interaktivitas pada framework Astro
 lang: id
 ---
 
-import Alert from '@/components/Alert.astro';
-
 ## Sekilas mengenai Astro
 
 Astro merupakan web framework untuk membuat website yang *content-driven* semacam blog atau marketing. Astro mengambil jalan sebagai UI-agnostik, yang artinya bisa dikombinasikan dengan berbagai UI framework kesukaan kalian macam React, Vue, Svelte dan lainnya. Astro juga terkenal karena menjadi pelopor bagi arsitektur terbaru di dunia persilatan web framework, yakni [Island Arsitektur](https://docs.astro.build/en/concepts/islands/) yang di framework lain mungkin lebih dikenal dengan *partial/selective hydration*.
@@ -66,7 +64,7 @@ import MyReactComponent from '../components/MyReactComponent.jsx';
 
 Masalahnya secara bawaan, kode ini akan di render di server baik runtime maupun build-time dan di serve sebagai statik HTML sehingga akan kehilangan reaktivitasnya.
 
-Astro telah menyediakan ekstra *directive*, jika membutuhkan kode framework yang interaktiv.
+Astro telah menyediakan ekstra *directive*, jika membutuhkan kode framework yang interaktif.
 
 ```astro title=src/pages/sample.astro
 ---
@@ -129,29 +127,33 @@ Untuk kasus lain, misalnya toggle menu, kita bisa memanfaatkan DOM manipulation 
 
 
 ```astro title=src/components/MenuToggle.astro
-<nav id="menu" data-state="close">
-  <ul>
-    <li>Home</li>
-    <li>Blog</li>
-    <li>About</li>
-  </ul>
-</nav>
-<button id="menu-toggle">Toggle menu!</button>
+<header id="header" data-state="close" class="group">
+  <nav class="fixed right-4 top-16 z-20 min-w-[200px] transform transition-all duration-500 group-[[data-menu=close]]:translate-x-[110%] group-[[data-menu=open]]:translate-x-0">
+    <ul>
+      <li>Home</li>
+      <li>Blog</li>
+      <li>About</li>
+    </ul>
+  </nav>
+
+  <button id="menu-toggle">Toggle menu!</button>
+</header>
 
 <script>
   const toggleBtn = document.querySelector('#menu-toggle');
 
   toggleBtn.addEventListener('click', () => {
-    const menu = document.querySelector('#menu');
-    const prevState = menu.getAttribute('data-state');
+    const header = document.querySelector('#header');
+
+    const prevState = header.getAttribute('data-state');
     const nextState = prevState === 'open' ? 'close' : 'open';
 
-    menu.setAttribute('data-menu', nextState);
+    header.setAttribute('data-state', nextState);
   });
 </script>
 ```
 
-Liar ya 😂? Tapi jadi bernostalgia dengan masa lalu kan?
+Sedikit trik, kalau dengan Tailwind kita bisa [menambahkan style berdasarkan parent-nya](https://tailwindcss.com/docs/hover-focus-and-other-states#styling-based-on-parent-state), sehingga untuk kasus sederhana seperti open/close state ini kita bisa langsung menyimpannya di atribut `data-*` seperti pada contoh kode di atas dan menggunakan selector class `group-[[data-menu=open]]` atau `group-[[data-menu=close]]` untuk mendeteksi kondisi state dalam keadaan terbuka atau tertutup.
 
 ### Menggunakan Custom Element dari Web Component
 
@@ -263,13 +265,87 @@ Sedangkan pada `CounterText.astro`, kita akan berlanganan state yang dikirimkan 
 
 Terlihat overkill ya? Mungkin karena sebenarnya bisa juga langsung manipulasi dengan `innerText` pada `HeartBtn.astro` ke komponen sebelahnya.  Seperti yang sering kita lakukan di jaman jQuery merajalela. Yang bikin repot karena Custom Event ini menempel pada element sumber. Jadi untuk bisa subcribe, kita mesti select dulu komponen sumbernya. Tapi ini penyederhanaan kasus saja, siapa tau nanti kalian ketemu kasus dimana perlu menggunakan Custom Event.
 
-Lihat kode selengkapnya pada [Codesandbox mengirim dan berlangganan Custom Event](https://codesandbox.io/p/devbox/rough-fast-j1qiqf)
+Lihat kode selengkapnya pada [Codesandbox contoh mengirim dan berlangganan Custom Event](https://codesandbox.io/p/devbox/astro-custom-event-f5z7d3)
 
 ### Menggunakan postMessage
 
 Pada dasarnya ini mirip dengan Custom Event, hanya saja event-nya akan ditempelkan langsung ke objek global `window`, jadinya kita tidak perlu select ke component sumber.
 
-Silahkan berkreasi sendiri untuk contoh kodenya.
+Berikut contoh kode melempar state dari Astro ke React dengan memanfaatkan `postMessage`, dengan contoh kasus membuat fitur yang sama, berikut kode `index.astro`:
+
+
+```astro title=src/pages/index.astro
+---
+import HeartBtn from "../components/HeartBtn.astro";
+import CounterText from "../components/CounterText.jsx";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Astro</title>
+  </head>
+  <body>
+    <h1>Astro: window.postMessage</h1>
+    <div style="display:inline-block;">
+      <HeartBtn />
+      <CounterText client:only="react" />
+    </div>
+  </body>
+</html>
+```
+
+Pada komponen `HeartBtn.astro`, kita akan mengubah sedikit dari yang sebelumnya melempar Custom Event, di sini kita akan melempar `postMessage`, lihat kode berikut:
+
+```astro title=src/components/HeartBtn.astro
+<button id="btn">💜</button>
+
+<script>
+  const btn = document.querySelector('#btn');
+  let state = 0
+  if (btn) {
+    btn.addEventListener("click", () => {
+      state += 1;
+      window.postMessage({ type: "increment", state });
+    });
+  }
+</script>
+```
+
+Dan kode komponen `CounterText` akan kita ubah dari komponen Astro menjadi komponen React yang subscribe event dari postMessage tersebut, berikut contoh kodenya:
+
+```tsx title=src/components/CounterText.jsx
+import { useEffect, useState } from "react";
+
+const CounterText = () => {
+  const [count, setCount] = useState(0);
+
+  const eventHandler = (e) => {
+    if (e?.data?.type === "increment") {
+      setCount(e?.data?.state);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("message", eventHandler);
+
+    return () => {
+      window?.removeEventListener("message", eventHandler);
+    };
+  }, []);
+
+  return (
+    <span>
+      x <span id="text">{count}</span>
+    </span>
+  );
+};
+
+export default CounterText;
+```
+
+Lihat kode selengkapnya pada [Codesandbox contoh menggunakan postMessage](https://codesandbox.io/p/devbox/astro-post-message-hlt48q)
 
 ## Bahan bacaan tambahan
 
