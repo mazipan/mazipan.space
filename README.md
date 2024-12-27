@@ -28,6 +28,8 @@ https://github.com/mazipan/blog-comments/issues
 You can use this repo to bootstrap a same blog for yourself.
 Feel free, just click **"Use this template"** button in this repo.
 
+![Stats](https://repobeats.axiom.co/api/embed/670a5552b94292f8e9b5acc6ee868457c58eaa0c.svg "Repobeats analytics image")
+
 ## Recognitions
 
 - Project template from [nemanjam/nemanjam.github.io](https://github.com/nemanjam/nemanjam.github.io)
