@@ -55,7 +55,7 @@ const TableOfContents = ({
           <b className="font-semibold">On This Page</b>
           <ol className={cn('ol-nested-decimal my-0 mt-2 space-y-1.5 text-sm')}>
             {headings.map(({ slug, text, headings: subHeadings }) => (
-              <li className="my-0">
+              <li className="my-0" key={slug}>
                 <a
                   href={`#${slug}`}
                   className="font-normal no-underline"
@@ -71,7 +71,7 @@ const TableOfContents = ({
                 {subHeadings.length > 0 && (
                   <ol className="-ml-[20px] mb-2 mt-0 space-y-1.5">
                     {subHeadings.map(({ slug, text }) => (
-                      <li className="my-0">
+                      <li className="my-0" key={slug}>
                         <a
                           href={`#${slug}`}
                           className="font-normal no-underline"

@@ -5,6 +5,8 @@ import tailwind from '@astrojs/tailwind';
 import icon from 'astro-icon';
 import { defineConfig } from 'astro/config';
 
+import rehypeCodeGroup from 'rehype-code-group';
+
 // must use relative imports, and their entire import subtrees
 import { remarkReadingTime } from './plugins/remark-reading-time.mjs';
 //
@@ -45,7 +47,13 @@ export default defineConfig({
       config: { forward: ['dataLayer.push'] },
     }),
   ],
-  markdown: { remarkPlugins },
+  markdown: {
+    remarkPlugins,
+    rehypePlugins: [
+      // ...
+      rehypeCodeGroup,
+    ],
+  },
   vite: {
     build: {
       sourcemap: false,

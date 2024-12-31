@@ -1,0 +1,93 @@
+---
+import { cn } from '@/utils/styles';
+
+export interface Props extends astroHTML.JSX.HTMLAttributes {}
+
+// eslint-disable-next-line no-unused-vars
+const { slot, class: className, ...props } = Astro.props as Props;
+---
+
+<gradient-blob>
+  <div
+    {...props}
+    id="gradient-blob"
+    class={cn('transition-all duration-1000 ease-linear', className)}
+    style="background-image: linear-gradient(to right, rgb(134, 239, 172), rgb(59, 130, 246), rgb(147, 51, 234));border-radius: 32% 85% 15% 60% / 47% 74% 42% 70%;"
+  >
+    <slot />
+  </div>
+</gradient-blob>
+
+<script>
+  import { randomizeBlobs } from '@/utils/blobs';
+  import { getRandomGradientStyle } from '@/utils/gradients';
+
+  class GradientBlobElement extends HTMLElement {
+    private blobEl: HTMLElement;
+    private KEY_GRADIENT = 'last-gradient';
+    private KEY_RADIUS = 'last-radius';
+
+    getNewGradientAndRadius = () => {
+      const newGradient = getRandomGradientStyle();
+      const newRadius = randomizeBlobs();
+
+      return {
+        backgroundImage: newGradient,
+        borderRadius: newRadius,
+      };
+    };
+
+    getGradientAndRadiusFromStorage = () => {
+      const newGradient = window.localStorage.getItem(this.KEY_GRADIENT);
+      const newRadius = window.localStorage.getItem(this.KEY_RADIUS);
+
+      if (newGradient && newRadius) {
+        return {
+          backgroundImage: newGradient,
+          borderRadius: newRadius,
+        };
+      }
+
+      return this.getNewGradientAndRadius();
+    };
+
+    setGradientAndRadius = (parameter) => {
+      this.blobEl.style.backgroundImage = parameter.newGradient;
+      this.blobEl.style.borderRadius = parameter.newRadius;
+    };
+
+    eventHandler = (e) => {
+      if (!e.data) {
+        return;
+      }
+
+      if (e.data === 'swap_gradient') {
+        const { backgroundImage, borderRadius } = this.getNewGradientAndRadius();
+
+        window.localStorage.setItem(this.KEY_GRADIENT, backgroundImage);
+        window.localStorage.setItem(this.KEY_RADIUS, borderRadius);
+
+        this.setGradientAndRadius({ newGradient: backgroundImage, newRadius: borderRadius });
+      }
+    };
+
+    constructor() {
+      super();
+      this.blobEl = this.querySelector('#gradient-blob') as HTMLElement;
+    }
+
+    connectedCallback() {
+      // Revived from storage
+      const { backgroundImage, borderRadius } = this.getGradientAndRadiusFromStorage();
+      this.setGradientAndRadius({ newGradient: backgroundImage, newRadius: borderRadius });
+
+      window.addEventListener('message', this.eventHandler);
+    }
+
+    disconnectedCallback() {
+      window.removeEventListener('message', this.eventHandler);
+    }
+  }
+
+  customElements.define('gradient-blob', GradientBlobElement);
+</script>

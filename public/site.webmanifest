@@ -4,19 +4,19 @@
   "icons": [
     {
       "sizes": "192x192",
-      "src": "/favicon/favicon-192x192.png",
+      "src": "/favicon/android-chrome-192x192.png",
       "type": "image/png"
     },
     {
       "sizes": "512x512",
-      "src": "/favicon/favicon-512x512.png",
+      "src": "/favicon/android-chrome-512x512.png",
       "type": "image/png"
     }
   ],
-  "start_url": "/blog",
+  "start_url": "/",
   "scope": "/",
-  "name": "Mazipan.Space",
+  "name": "Mazipan Space",
   "short_name": "MZP",
-  "description": "Mazipan Space -- Personal blog by Irfan Maulana",
+  "description": "Personal blog by Irfan Maulana",
   "theme_color": "#0f172a"
 }
