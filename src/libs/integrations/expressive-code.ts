@@ -8,7 +8,7 @@ import { pluginLanguageBadge } from './expressive-lang-badge';
 
 export const expressiveCodeIntegration = () =>
   expressiveCode({
-    themes: ['light-plus', 'night-owl'],
+    themes: ['solarized-light', 'night-owl'],
     useDarkModeMediaQuery: true,
     themeCssRoot: ':root',
     themeCssSelector: (theme) => {

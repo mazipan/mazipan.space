@@ -32,13 +32,13 @@ const schema = JSON.stringify({
 ---
 
 <nav class={cn('my-2')} aria-label="breadcrumb" {...props}>
-  <div class="flex items-center gap-2">
+  <div class="relative flex items-center gap-2">
     {
       items.map((item) => (
         <a
           href={item.href}
           title={item.text}
-          class="rounded-full bg-yellow-50 p-1 px-2 text-sm text-black no-underline hover:bg-yellow-200 hover:text-black hover:no-underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+          class="bg-primary-50 hover:bg-primary-200 rounded-full p-1 px-2 text-sm text-black no-underline hover:text-black hover:no-underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
         >
           {item.text}
         </a>

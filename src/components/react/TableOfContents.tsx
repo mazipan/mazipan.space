@@ -29,7 +29,7 @@ const TableOfContents = ({
         data-show={showContents}
         role="button"
         type="button"
-        className="fixed bottom-8 right-4 z-50 flex cursor-pointer items-center justify-center gap-2 rounded-lg border-2 border-yellow-400 bg-base-100 p-3 font-mono text-sm transition-all duration-500 data-[show=true]:rotate-180 lg:hidden"
+        className="fixed bottom-8 right-4 z-50 flex cursor-pointer items-center justify-center gap-2 rounded-lg border-2 border-primary bg-base-100 p-3 font-mono text-sm transition-all duration-500 data-[show=true]:rotate-180 lg:hidden"
         onClick={() => {
           setShowContents((prev) => !prev);
         }}
@@ -48,7 +48,7 @@ const TableOfContents = ({
       >
         <div
           className={cn(
-            'toc mx-auto overflow-y-auto rounded-lg border-2 border-dashed border-yellow-400 p-4',
+            'toc mx-auto overflow-y-auto rounded-lg border-2 border-dashed border-primary p-4',
             'max-h-[calc(70vh)] lg:sticky lg:top-20 lg:max-h-[calc(100vh-100px)]'
           )}
         >
