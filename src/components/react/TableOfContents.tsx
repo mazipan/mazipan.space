@@ -43,12 +43,12 @@ const TableOfContents = ({
           'my-prose centered-px bg-base-100',
           className,
           !isLg &&
-            'fixed bottom-24 left-4 z-50 w-[80%] transform rounded-lg border border-base-200 shadow-lg transition-all duration-500 data-[show=false]:-translate-x-[110%] data-[show=true]:translate-x-0'
+            'fixed bottom-24 left-4 z-50 w-[80%] transform rounded-lg shadow-lg transition-all duration-500 data-[show=false]:-translate-x-[110%] data-[show=true]:translate-x-0'
         )}
       >
         <div
           className={cn(
-            'toc mx-auto overflow-y-auto rounded-lg border-2 border-dashed border-base-300 p-4',
+            'toc mx-auto overflow-y-auto rounded-lg border-2 border-dashed border-yellow-400 p-4',
             'max-h-[calc(70vh)] lg:sticky lg:top-20 lg:max-h-[calc(100vh-100px)]'
           )}
         >
@@ -70,8 +70,8 @@ const TableOfContents = ({
 
                 {subHeadings.length > 0 && (
                   <ol className="-ml-[20px] mb-2 mt-0 space-y-1.5">
-                    {subHeadings.map(({ slug, text }) => (
-                      <li className="my-0" key={slug}>
+                    {subHeadings.map(({ slug, text }, idx) => (
+                      <li className={cn('my-0', idx === 0 && 'mt-2')} key={slug}>
                         <a
                           href={`#${slug}`}
                           className="font-normal no-underline"
