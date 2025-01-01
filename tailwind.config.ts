@@ -52,6 +52,9 @@ const config: Config = {
         // brand
         primary: {
           DEFAULT: 'var(--th-primary)',
+          '50': 'var(--th-primary-50)',
+          '100': 'var(--th-primary-100)',
+          '200': 'var(--th-primary-200)',
           hover: 'var(--th-primary-hover)',
           content: 'var(--th-primary-content)',
           'base-200': 'var(--th-primary-base-200)',

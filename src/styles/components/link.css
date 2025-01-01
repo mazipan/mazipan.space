@@ -37,33 +37,19 @@
   .animated-text-link {
     text-decoration: none;
     text-underline-offset: 2px;
+    box-decoration-break: clone;
     z-index: 2;
     line-height: 1.5;
-    @apply relative;
-  }
-
-  .animated-text-link:after {
-    background: none repeat scroll 0 0 transparent;
-    left: 0;
-    bottom: 0px;
-    content: '';
-    height: 0px;
-    z-index: -1;
-    @apply absolute block w-full bg-yellow-400;
-    transition:
-      height 0.5s ease 0s,
-      color 0.7s ease 0s;
-  }
-
-  .animated-text-link:hover:after {
-    height: 30px;
+    @apply relative rounded transition-colors duration-500;
   }
 
   .animated-text-link:hover {
-    @apply text-black;
+    @apply text-white dark:text-black;
+    @apply bg-gradient-to-r from-red-800 via-yellow-600 to-yellow-500;
+    @apply dark:bg-gradient-to-b dark:from-orange-500 dark:to-yellow-300;
   }
 
   .animated-text-link:focus {
-    @apply rounded border-2 border-yellow-400 bg-yellow-100 outline-none;
+    @apply bg-primary-200 rounded border-2 border-primary outline-none;
   }
 }

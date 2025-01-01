@@ -20,11 +20,11 @@
       @apply rounded decoration-dashed underline-offset-2;
 
       &:hover {
-        @apply text-yellow-500 decoration-yellow-500 decoration-wavy dark:text-yellow-400 dark:decoration-yellow-400;
+        @apply text-primary decoration-primary decoration-wavy dark:text-primary dark:decoration-primary;
       }
 
       &:focus {
-        @apply text-yellow-500 no-underline outline-none ring-2 ring-primary ring-offset-2 dark:text-yellow-400;
+        @apply text-primary no-underline outline-none ring-2 ring-primary ring-offset-2 dark:text-primary;
       }
     }
 
@@ -33,7 +33,8 @@
 
     /* code */
     code {
-      @apply me-2 rounded bg-purple-100 px-1 py-0.5 font-mono text-sm font-medium text-purple-800 dark:bg-purple-900 dark:text-purple-300;
+      @apply me-2 rounded bg-base-200 px-1 py-0.5 font-mono text-sm font-light text-primary dark:bg-yellow-100 dark:text-yellow-900;
+      margin-inline-end: 0;
     }
 
     /* vertical margins */
@@ -41,6 +42,11 @@
     .expressive-code,
     .alert {
       @apply b-p-my;
+    }
+
+    .expressive-code {
+      text-rendering: optimizeLegibility;
+      font-variant-ligatures: common-ligatures;
     }
   }
 }
