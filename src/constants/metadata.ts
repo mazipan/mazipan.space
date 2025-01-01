@@ -37,7 +37,6 @@ export const PAGE_METADATA = {
   'lists/blog/tags/tag': {
     title: '🎟️ Tag',
   },
-  // 'src/pages/blog/tags/[tag]/[...page].astro' // dynamic tag param
   'lists/blog/explore': {
     title: '🧗 Explore',
   },
@@ -47,28 +46,33 @@ export const PAGE_METADATA = {
   'lists/blog/categories/category': {
     title: '🧩 Category',
   },
-  // src/pages/blog/categories/[category]/[...page].astro
   'lists/projects': {
     title: '🖥️ Projects',
   },
-  '/talks': {
+  'pages/talks': {
     title: '🎙️ Talks',
+    description: '',
+    path: '/talks',
   },
-  '/guest-book': {
+  'pages/guest-book': {
     title: '📝 Guest Book',
     description: '',
+    path: '/guest-book',
   },
-  '/about': {
+  'pages/about': {
     title: 'About',
     description: '',
+    path: '/about',
   },
-  '/credits': {
-    title: 'Credits',
+  'pages/credits': {
+    title: '❤️ Credits',
     description: '',
+    path: '/credits',
   },
-  '/support': {
-    title: 'Support',
+  'pages/support': {
+    title: '💪 Support',
     description: '',
+    path: '/support',
   },
 } as const;
 

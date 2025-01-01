@@ -8,6 +8,7 @@ import { FILE_PATHS } from '@/constants/file-paths';
 import { CONFIG_CLIENT } from '@/config/client';
 import { getPages } from '@/libs/api/open-graph/pages';
 import templateHtml from '@/libs/api/open-graph/template-html';
+import { getIconCode, loadEmoji } from '@/libs/api/open-graph/twemoji';
 import { removeTrailingSlash } from '@/utils/paths';
 import { trimHttpProtocol } from '@/utils/strings';
 
@@ -83,6 +84,16 @@ export const GET: APIRoute = async ({ props }: APIContext) => {
         style: 'normal',
       },
     ],
+    loadAdditionalAsset: async (code: string, segment: string) => {
+      if (code === 'emoji') {
+        // if segment is an emoji
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+        return `data:image/svg+xml;base64,${btoa(await loadEmoji('twemoji', getIconCode(segment)))}`;
+      }
+
+      // if segment is normal text
+      return code;
+    },
   });
 
   const pngBuffer = await sharp(Buffer.from(svg)).png().toBuffer();
