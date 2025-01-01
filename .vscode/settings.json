@@ -3,9 +3,9 @@
   "editor.detectIndentation": false,
   // applies to search too
   "files.exclude": {
-    "**/node_modules": true,
-    "**/dist": true,
-    "**/.astro": true
+    "**/node_modules": true
+    // "**/dist": true
+    // "**/.astro": true
   },
   "search.exclude": {
     "package-lock.json": true,
@@ -24,7 +24,9 @@
   },
   "tailwindCSS.experimental.classRegex": [
     ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
-    ["cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
+    ["cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"],
+    ["clsx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"],
+    ["cn\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
   ],
   "astro.content-intellisense": true,
   // "gitlens.currentLine.enabled": false,

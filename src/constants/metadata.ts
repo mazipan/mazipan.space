@@ -37,7 +37,6 @@ export const PAGE_METADATA = {
   'lists/blog/tags/tag': {
     title: '🎟️ Tag',
   },
-  // 'src/pages/blog/tags/[tag]/[...page].astro' // dynamic tag param
   'lists/blog/explore': {
     title: '🧗 Explore',
   },
@@ -47,17 +46,34 @@ export const PAGE_METADATA = {
   'lists/blog/categories/category': {
     title: '🧩 Category',
   },
-  // src/pages/blog/categories/[category]/[...page].astro
   'lists/projects': {
     title: '🖥️ Projects',
   },
-  'lists/talks': {
+  'pages/talks': {
     title: '🎙️ Talks',
+    description: '',
+    path: '/talks',
   },
-  // 'pages/guest-book': {
-  //   title: '📝 Guest Book',
-  //   description: '',
-  // },
+  'pages/guest-book': {
+    title: '📝 Guest Book',
+    description: '',
+    path: '/guest-book',
+  },
+  'pages/about': {
+    title: 'About',
+    description: '',
+    path: '/about',
+  },
+  'pages/credits': {
+    title: '❤️ Credits',
+    description: '',
+    path: '/credits',
+  },
+  'pages/support': {
+    title: '💪 Support',
+    description: '',
+    path: '/support',
+  },
 } as const;
 
 export type PageMetadataKey = keyof typeof PAGE_METADATA;

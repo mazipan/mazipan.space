@@ -146,15 +146,18 @@ const copyrightYear = new Date().getFullYear();
         </ul>
       </div>
 
-      <Button
-        class="absolute right-4 top-0 z-10 h-8 w-8 cursor-pointer rounded-full p-1"
-        element="button"
-        variant="outline"
-        colors="primary"
-        id="btn-scroll-to-top"
-      >
-        <Icon name="tabler:arrow-up" class="h-4 w-4" />
-      </Button>
+      <scroll-to-top-button>
+        <Button
+          class="absolute right-4 top-0 z-10 h-8 w-8 cursor-pointer rounded-full p-1"
+          element="button"
+          variant="outline"
+          colors="primary"
+          href="#main-header"
+          id="btn-scroll-to-top"
+        >
+          <Icon name="tabler:arrow-up" class="h-4 w-4" />
+        </Button>
+      </scroll-to-top-button>
     </div>
     <div class="mt-8 space-y-2 border-t border-base-300 py-8 text-center text-sm md:py-4">
       <p>© 2019-{copyrightYear}, All rights reserved</p>
@@ -174,16 +177,22 @@ const copyrightYear = new Date().getFullYear();
 </footer>
 
 <script>
-  const btnScrollToTop = document.querySelector('#btn-scroll-to-top');
+  class ScrollToTop extends HTMLElement {
+    private btnEl: HTMLButtonElement;
 
-  if (btnScrollToTop) {
-    btnScrollToTop.addEventListener('click', () => {
-      requestAnimationFrame(() => {
-        window.scrollTo({
-          top: 0,
-          behavior: 'smooth',
-        });
+    scrollMeToTheTop = () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
       });
-    });
+    };
+
+    constructor() {
+      super();
+      this.btnEl = this.querySelector('#btn-scroll-to-top') as HTMLButtonElement;
+      this.btnEl.addEventListener('click', this.scrollMeToTheTop);
+    }
   }
+
+  customElements.define('scroll-to-top-button', ScrollToTop);
 </script>

@@ -4,22 +4,14 @@ import { Image } from 'astro:assets';
 
 import Centered from '@/layouts/Centered.astro';
 import Button from '@/components/Button.astro';
+import GradientBlob from '@/components/GradientBlob.astro';
 import RainbowTag from '@/components/RainbowTag.astro';
-import { GradientBlobs } from '@/components/react/GradientBlobs';
+// import { GradientBlobs } from '@/components/react/GradientBlobs';
 import SocialLinks from '@/components/SocialLinks.astro';
 import { PROFILE } from '@/constants/profile';
 
 import AvatarSrc from '@/assets/images/avatar.png';
 ---
-
-<script>
-  const btnSwap = document.querySelector('#btn-swap-gradient');
-  if (btnSwap) {
-    btnSwap.addEventListener('click', function () {
-      window.postMessage('swap_gradient');
-    });
-  }
-</script>
 
 <Centered
   metadata={{
@@ -39,27 +31,26 @@ import AvatarSrc from '@/assets/images/avatar.png';
           width={250}
           src={AvatarSrc}
           alt="MZP Avatar"
-          class="relative z-10 transition-all duration-500"
+          class="relative z-10"
           style="border-radius: 77% 23% 70% 30% / 48% 36% 64% 52%;"
         />
-        <GradientBlobs
-          className="absolute top-0 z-0 h-[250px] w-[250px] opacity-90"
-          client:only="react"
-        />
-        <Button
-          variant="solid"
-          colors="primary"
-          element="button"
-          role="button"
-          type="button"
-          size="sm"
-          class="z-5 absolute right-0 top-[165px] h-8 w-8 p-1"
-          id="btn-swap-gradient"
-          title="Shuffle gradient"
-          aria-label="Shuffle gradient"
-        >
-          <Icon name="tabler:refresh" class="h-4 w-4" />
-        </Button>
+        <GradientBlob class="absolute top-0 z-0 h-[250px] w-[250px] opacity-90" />
+        <swap-button>
+          <Button
+            variant="solid"
+            colors="primary"
+            element="button"
+            role="button"
+            type="button"
+            size="sm"
+            class="z-5 absolute right-0 top-[165px] h-8 w-8 p-1"
+            id="btn-swap-gradient"
+            title="Shuffle gradient"
+            aria-label="Shuffle gradient"
+          >
+            <Icon name="tabler:refresh" class="h-4 w-4" />
+          </Button>
+        </swap-button>
       </div>
       <div class="border-b-4 border-dashed border-yellow-400 p-8">
         <SocialLinks />
@@ -89,3 +80,21 @@ import AvatarSrc from '@/assets/images/avatar.png';
     </div>
   </article>
 </Centered>
+
+<script>
+  class ButtonSwap extends HTMLElement {
+    private btnEl: HTMLButtonElement;
+
+    swap = () => {
+      window.postMessage('swap_gradient');
+    };
+
+    constructor() {
+      super();
+      this.btnEl = this.querySelector('#btn-swap-gradient') as HTMLButtonElement;
+      this.btnEl.addEventListener('click', this.swap);
+    }
+  }
+
+  customElements.define('swap-button', ButtonSwap);
+</script>

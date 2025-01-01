@@ -24,7 +24,7 @@ export const FEATURED_OSS = [
     title: 'Ajari Koding',
     desc: 'Curated learning resources by Indonesian Creator',
     repo: 'https://github.com/phpid-jakarta/ajari-koding',
-    url: 'https://s.id/ajari-koding',
+    url: 'https://dub.sh/ajari-koding',
     stacks: ['Svelte', 'Bootstrap 5'],
   },
   {

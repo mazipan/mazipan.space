@@ -1,15 +1,15 @@
 import { getRandomInt } from '@/utils/strings';
 
 export const randomizeBlobs = () => {
-  const r1 = getRandomInt(15, 50);
-  const r2 = getRandomInt(60, 70);
-  const r3 = getRandomInt(10, 90);
-  const r4 = getRandomInt(10, 90);
+  const r1 = getRandomInt(25, 80);
+  const r2 = getRandomInt(25, 80);
+  const r3 = getRandomInt(25, 80);
+  const r4 = getRandomInt(25, 80);
 
-  const r5 = getRandomInt(10, 80);
-  const r6 = getRandomInt(40, 90);
-  const r7 = getRandomInt(10, 50);
-  const r8 = getRandomInt(10, 90);
+  const r11 = 100 - r1;
+  const r21 = 100 - r2;
+  const r31 = 100 - r3;
+  const r41 = 100 - r4;
 
-  return `${r1}% ${r2}% ${r3}% ${r4}% / ${r5}% ${r6}% ${r7}% ${r8}%`;
+  return `${r1}% ${r11}% ${r21}% ${r2}% / ${r3}% ${r4}% ${r41}% ${r31}%`;
 };

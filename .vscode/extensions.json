@@ -2,28 +2,12 @@
   "recommendations": [
     "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode",
-    "dsznajder.es7-react-js-snippets",
     "astro-build.astro-vscode",
     "bradlc.vscode-tailwindcss",
     "csstools.postcss",
-    "streetsidesoftware.code-spell-checker",
     "stylelint.vscode-stylelint",
     "unifiedjs.vscode-mdx",
-    "xyc.vscode-mdx-preview",
-    "yoavbls.pretty-ts-errors",
-
-    "aaron-bond.better-comments",
-    "akmarnafi.comment-headers",
-    "jeremyljackson.vs-docblock",
-    "tyriar.lorem-ipsum",
-
-    "mhutchie.git-graph",
-    "eamodio.gitlens",
-    "mikestead.dotenv",
-    "ms-azuretools.vscode-docker",
-
-    "nick-rudenko.back-n-forth",
-    "ryu1kn.partial-diff"
+    "yoavbls.pretty-ts-errors"
   ],
   "unwantedRecommendations": []
 }
