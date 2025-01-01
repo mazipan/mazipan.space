@@ -1,0 +1,110 @@
+<div class="relative mx-auto h-[100px] w-[90%]">
+  <the-mario>
+    <div class="mario" id="mario" data-credits="https://codepen.io/60ss/pen/oNvawBB"></div>
+    <audio controls="false" class="hidden" id="jump-sound">
+      <source src="/the-mario/sounds_jump.wav" type="audio/wav" />
+    </audio>
+  </the-mario>
+</div>
+
+<script>
+  class TheMario extends HTMLElement {
+    private marioEl: HTMLElement;
+    private soundEl: HTMLAudioElement;
+
+    marioJump = () => {
+      this.marioEl.classList.toggle('jump');
+      this.soundEl.play();
+
+      setTimeout(() => {
+        this.marioEl.classList.remove('jump');
+      }, 150);
+    };
+
+    constructor() {
+      super();
+      this.marioEl = this.querySelector('#mario') as HTMLElement;
+      this.soundEl = this.querySelector('#jump-sound') as HTMLAudioElement;
+
+      this.marioEl.addEventListener('click', this.marioJump);
+    }
+  }
+
+  customElements.define('the-mario', TheMario);
+</script>
+
+<style>
+  @keyframes marioRun {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: -216px 0;
+    }
+  }
+
+  @keyframes marioMoveForward {
+    0% {
+      left: 0%;
+    }
+    10% {
+      left: 10%;
+    }
+    20% {
+      left: 20%;
+    }
+    30% {
+      left: 30%;
+    }
+    40% {
+      left: 40%;
+    }
+    50% {
+      left: 50%;
+    }
+    60% {
+      left: 60%;
+    }
+    70% {
+      left: 70%;
+    }
+    80% {
+      left: 80%;
+    }
+    90% {
+      left: 90%;
+    }
+    100% {
+      left: 100%;
+    }
+  }
+
+  .mario {
+    position: absolute;
+    top: 0;
+    width: 72px;
+    height: 130px;
+    animation:
+      marioRun 0.25s steps(3) infinite,
+      marioMoveForward 20s steps(10) infinite;
+    transition:
+      top 0.15s,
+      left 10s;
+    margin-top: 50px;
+    scale: 40%;
+    cursor: pointer;
+  }
+
+  .mario.jump {
+    top: -70px;
+    animation-play-state: paused;
+  }
+
+  .mario {
+    background: url('/the-mario/mario-run-sprite.png');
+  }
+
+  .jump {
+    background: url('/the-mario/mario-jump-sprite.png');
+  }
+</style>
