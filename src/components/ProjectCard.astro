@@ -18,7 +18,7 @@ export interface Props {
 const { project } = Astro.props;
 
 const { slug, data } = project;
-const { title, description, heroImage, heroAlt, publishDate, updatedDate } = data;
+const { title, description, heroImage, heroAlt, publishDate, updatedDate, tags } = data;
 
 const { lastAccessDate, isUpdatedDate } = getPublishedOrUpdatedDate({
   publishDate,
@@ -50,6 +50,7 @@ const getTransitionNameFromElementId = setTransitionSlug({ pageSlug: slug });
       {title}
     </Link>
   </h4>
+
   {
     description && (
       <p
@@ -63,10 +64,21 @@ const getTransitionNameFromElementId = setTransitionSlug({ pageSlug: slug });
     )
   }
 
-  <p class="flex items-center gap-1 text-xs text-captions">
-    <Icon name={isUpdatedDate ? 'tabler:pencil' : 'tabler:clock'} class="h-4 w-4" />
-    <time itemprop="datePublished" datetime={formatDateIso(lastAccessDate)}>
-      {formatDate(lastAccessDate)}
-    </time>
-  </p>
+  <div class="flex items-center gap-3 text-xs text-captions">
+    <span class="flex items-center gap-1">
+      <Icon name={isUpdatedDate ? 'tabler:pencil' : 'tabler:clock'} class="h-4 w-4" />
+      <time itemprop="datePublished" datetime={formatDateIso(lastAccessDate)}>
+        {formatDate(lastAccessDate)}
+      </time>
+    </span>
+
+    {
+      tags.map((text) => (
+        <span class="flex items-center gap-1">
+          <Icon name={'tabler:tag'} class="h-4 w-4" />
+          <span>#{text}</span>
+        </span>
+      ))
+    }
+  </div>
 </article>

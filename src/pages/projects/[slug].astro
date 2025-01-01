@@ -48,7 +48,7 @@ const breadcrumbs = [BreadcrumbItemHome, BreadcrumbItemProject];
 ---
 
 <Centered {metadata}>
-  <article class="my-prose relative">
+  <article class="my-prose relative [&_h2]:!my-0 [&_img]:!my-0 [&_li]:!my-0">
     <Breadcrumbs items={breadcrumbs} />
     <h1
       class="b-h1 mb-2 font-serif"
@@ -87,6 +87,8 @@ const breadcrumbs = [BreadcrumbItemHome, BreadcrumbItemProject];
       )
     }
     <Content />
-    <Share {...shareProps} />
+    <div class="mt-8">
+      <Share {...shareProps} />
+    </div>
   </article>
 </Centered>
