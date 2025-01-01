@@ -8,6 +8,7 @@ import { getLatestCommitInfo } from '@/libs/git';
 import { shortDate } from '@/utils/datetime';
 import { limitString, trimHttpProtocol } from '@/utils/strings';
 import Button from './Button.astro';
+import Mario from './Mario.astro';
 import SocialLinks from './SocialLinks.astro';
 
 const { SITE_URL, REPO_URL, AUTHOR_ADPLIST, AUTHOR_DECK } = CONFIG_CLIENT;
@@ -159,7 +160,12 @@ const copyrightYear = new Date().getFullYear();
         </Button>
       </scroll-to-top-button>
     </div>
-    <div class="mt-8 space-y-2 border-t border-base-300 py-8 text-center text-sm md:py-4">
+
+    <div class="relative h-[150px] w-full overflow-hidden">
+      <Mario />
+    </div>
+
+    <div class="space-y-2 border-t border-base-300 py-8 text-center text-sm md:py-4">
       <p>© 2019-{copyrightYear}, All rights reserved</p>
       <p>
         <span class="text-primary">v{process.env.APP_VERSION}</span>, deployed at {
