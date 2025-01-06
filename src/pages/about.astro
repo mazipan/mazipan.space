@@ -8,6 +8,7 @@ import { BreadcrumbItemHome } from '@/constants/breadcrumb';
 import { PROFILE } from '@/constants/profile';
 import { ROUTES } from '@/constants/routes';
 import { CONFIG_CLIENT } from '@/config/client';
+import { getPageMetadata } from '@/utils/metadata';
 
 import MeInBlackSrc from '@/assets/images/mazipan-in-black.jpg';
 
@@ -37,13 +38,11 @@ const schema = JSON.stringify({
     image: SITE_URL + '/avatars/avatar-mazipan.png',
   },
 });
+
+const metadata = getPageMetadata('pages/about');
 ---
 
-<Centered
-  metadata={{
-    title: 'About',
-  }}
->
+<Centered {metadata}>
   <article class="flex flex-col">
     <Breadcrumbs items={breadcrumbs} />
     <h1 class="b-h1">I'm Irfan Maulana.</h1>
