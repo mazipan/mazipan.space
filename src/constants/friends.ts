@@ -95,7 +95,7 @@ export const awesomeSdeBlogs: AwesomeSdeBlogs = {
         "link": "https://gading.dev/id"
       },
       "owner": {
-        "name": "Sutan Gading Fadhillah Nasution",
+        "name": "Sutan Gading",
         "link": "https://github.com/gadingnst",
         "icon": "github",
         "avatar": "https://unavatar.io/github/gadingnst"
@@ -191,7 +191,7 @@ export const awesomeSdeBlogs: AwesomeSdeBlogs = {
         "link": "https://www.jurnalanas.com/"
       },
       "owner": {
-        "name": "Anas Muhammad Nasrurrohman",
+        "name": "Anas",
         "link": "https://x.com/oianas_",
         "icon": "x",
         "avatar": "https://unavatar.io/x/oianas_"
@@ -335,7 +335,7 @@ export const awesomeSdeBlogs: AwesomeSdeBlogs = {
         "link": "https://newsletter.lwastuargo.com/"
       },
       "owner": {
-        "name": "Listiarso Wastuargo Gogo",
+        "name": "Gogo",
         "link": "https://x.com/lwastuargo",
         "icon": "x",
         "avatar": "https://unavatar.io/x/lwastuargo"
@@ -371,7 +371,7 @@ export const awesomeSdeBlogs: AwesomeSdeBlogs = {
         "link": "https://zakiego.com/"
       },
       "owner": {
-        "name": "M. Zakiyuddin Munziri Zakiego",
+        "name": "Zakiego",
         "link": "https://x.com/zakiego",
         "icon": "x",
         "avatar": "https://unavatar.io/x/zakiego"
@@ -380,7 +380,7 @@ export const awesomeSdeBlogs: AwesomeSdeBlogs = {
   ],
   "metadata": {
     "total": 29,
-    "updatedAt": "2025-01-06T04:48:31.851Z",
+    "updatedAt": "2025-01-06T07:08:36.232Z",
     "source": "https://github.com/mazipan/awesome-sde-id-blogs"
   }
 }
