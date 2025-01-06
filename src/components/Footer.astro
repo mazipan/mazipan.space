@@ -36,7 +36,23 @@ const copyrightYear = new Date().getFullYear();
       </div>
 
       <div class="space-y-4 whitespace-nowrap text-content">
-        <h3 class="font-semibold">Navigations</h3>
+        <h3 class="font-semibold">Previous Version</h3>
+        <ul class="space-y-2 text-sm">
+          <li>
+            <Link
+              href="https://2024.mazipan.space/"
+              target="_blank"
+              rel="me noreferrer noopener"
+              title="2024 Version"
+            >
+              2024
+            </Link>
+          </li>
+        </ul>
+      </div>
+
+      <div class="space-y-4 whitespace-nowrap text-content">
+        <h3 class="font-semibold">General</h3>
         <ul class="space-y-2 text-sm">
           <li>
             <Link href={ROUTES.BLOG}>Blog</Link>
@@ -47,6 +63,15 @@ const copyrightYear = new Date().getFullYear();
           <li>
             <Link href={ROUTES.PROJECTS}>Projects</Link>
           </li>
+          <li>
+            <Link href={ROUTES.ABOUT}>About</Link>
+          </li>
+        </ul>
+      </div>
+
+      <div class="space-y-4 whitespace-nowrap text-content">
+        <h3 class="font-semibold">Navigations</h3>
+        <ul class="space-y-2 text-sm">
           <li>
             <Link href={ROUTES.TALKS}>Talks</Link>
           </li>
@@ -62,14 +87,11 @@ const copyrightYear = new Date().getFullYear();
           <li>
             <Link href={ROUTES.FRIENDS}>Friends</Link>
           </li>
-          <li>
-            <Link href={ROUTES.ABOUT}>About</Link>
-          </li>
         </ul>
       </div>
 
       <div class="space-y-4 whitespace-nowrap text-content">
-        <h3 class="font-semibold">Resources</h3>
+        <h3 class="font-semibold">Ext. Resources</h3>
         <ul class="space-y-2 text-sm">
           <li>
             <Link
@@ -129,22 +151,6 @@ const copyrightYear = new Date().getFullYear();
               title={`RSS feed for ${domain}`}
             >
               RSS
-            </Link>
-          </li>
-        </ul>
-      </div>
-
-      <div class="space-y-4 whitespace-nowrap text-content">
-        <h3 class="font-semibold">Previous Version</h3>
-        <ul class="space-y-2 text-sm">
-          <li>
-            <Link
-              href="https://2024.mazipan.space/"
-              target="_blank"
-              rel="me noreferrer noopener"
-              title="2024 Version"
-            >
-              2024
             </Link>
           </li>
         </ul>

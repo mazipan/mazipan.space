@@ -25,7 +25,7 @@ const breadcrumbs = [BreadcrumbItemHome];
           href="https://zakiego.com/friends"
           target="blank"
           rel="noopener noreferrer"
-          class="bg-primary text-black hover:bg-primary-hover hover:underline"
+          class="bg-primary text-primary-content hover:bg-primary-hover hover:underline"
           >zakiego.com/friends</a
         >, I felt encouraged to create this dedicated page to highlight and share links to the blogs
         or websites of my dear friends and mentors. It’s my way of celebrating their work, ideas,
@@ -38,7 +38,7 @@ const breadcrumbs = [BreadcrumbItemHome];
           href="https://github.com/mazipan/awesome-sde-id-blogs"
           target="blank"
           rel="noopener noreferrer"
-          class="bg-primary text-black hover:bg-primary-hover hover:underline"
+          class="bg-primary text-primary-content hover:bg-primary-hover hover:underline"
         >
           the repository
         </a>. This collaborative approach allows the list to grow and include a wider variety of
@@ -46,44 +46,43 @@ const breadcrumbs = [BreadcrumbItemHome];
         support!
       </p>
 
-      <div class="mt-8 grid grid-cols-1 gap-4 md:grid-cols-4 lg:grid-cols-5">
+      <div class="mt-8 grid grid-cols-1 gap-4 md:grid-cols-4">
         {
-          awesomeSdeBlogs.data.map((person) => (
-            <div class="flex flex-col justify-between rounded-lg border">
-              <div class="flex flex-col items-center justify-center gap-2 p-4 text-center">
+          awesomeSdeBlogs.data
+            .filter((i) => i.owner.name !== 'Irfan Maulana')
+            .map((person) => (
+              <div class="flex flex-col items-center justify-between gap-4 rounded-lg border border-primary p-4 text-center shadow-lg">
+                <a
+                  href={person.blog.link}
+                  class="flex flex-wrap items-center justify-center gap-1 rounded-br-lg hover:text-primary focus:bg-base-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
+                  <Icon name="tabler:world-www" class="h-5 w-5" />
+                  <span>{person.blog.name}</span>
+                </a>
+
                 <Image
                   {...IMAGE_SIZES.FIXED.AVATAR}
                   src={person.owner.avatar}
                   alt={person.owner.name}
                   class="relative rounded-full"
                 />
-                <span class="font-bold">{person.owner.name}</span>
-              </div>
-
-              <div class="mt-4 flex w-full items-center justify-center gap-2">
                 <a
                   href={person.owner.link}
-                  class="flex flex-grow items-center justify-center rounded-bl-lg p-4 hover:text-primary focus:bg-base-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                  class="flex flex-wrap items-center justify-center gap-1 rounded-bl-lg hover:text-primary focus:bg-base-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
                   target="_blank"
                   rel="noreferrer noopener"
                 >
                   {person.owner.icon === 'github' ? (
-                    <Icon name="tabler:brand-github" class="h-5 w-5" />
+                    <Icon name="tabler:brand-github" class="h-4 w-4" />
                   ) : (
-                    <Icon name="tabler:brand-x" class="h-5 w-5" />
+                    <Icon name="tabler:brand-x" class="h-4 w-4" />
                   )}
-                </a>
-                <a
-                  href={person.blog.link}
-                  class="flex flex-grow items-center justify-center rounded-br-lg p-4 hover:text-primary focus:bg-base-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
-                  target="_blank"
-                  rel="noreferrer noopener"
-                >
-                  <Icon name="tabler:world-www" class="h-5 w-5" />
+                  <span class="text-sm font-bold">{person.owner.name}</span>
                 </a>
               </div>
-            </div>
-          ))
+            ))
         }
       </div>
     </section>
