@@ -1,0 +1,85 @@
+---
+import Centered from '@/layouts/Centered.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import Button from '@/components/Button.astro';
+import { BreadcrumbItemHome } from '@/constants/breadcrumb';
+import { CAREERS } from '@/constants/career';
+import { CONFIG_CLIENT } from '@/config/client';
+import { getPageMetadata } from '@/utils/metadata';
+
+const { AUTHOR_EMAIL } = CONFIG_CLIENT;
+
+const metadata = getPageMetadata('pages/resume');
+const breadcrumbs = [BreadcrumbItemHome];
+---
+
+<Centered {metadata}>
+  <article class="flex flex-col">
+    <Breadcrumbs items={breadcrumbs} />
+    <slot name="heading">
+      <h1 class="b-h1">{metadata.title}</h1>
+    </slot>
+    <section class="flex flex-grow flex-col gap-4">
+      <p>
+        Web developer with extensive experience in building projects from the ground up, enhancing
+        performance and scalability of the web, managing several tech stack migrations, promoting
+        quality-focused practices, and mentoring junior developers. Focused in frontend technologies
+        using Next.js, React.js and TypeScript.
+      </p>
+      <div class="flex flex-col items-start gap-2">
+        <div class="flex items-center gap-2">
+          <span class="relative flex h-3 w-3">
+            <span
+              class="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75"
+            ></span>
+            <span class="relative inline-flex h-3 w-3 rounded-full bg-primary"></span>
+          </span>
+          <span class="text-primary">Available for hire</span>
+        </div>
+        <Button
+          element="a"
+          colors="primary"
+          variant="solid"
+          href={`mailto:${AUTHOR_EMAIL}`}
+          target="_blank"
+          rel="me noreferrer noopener"
+          title="Email"
+        >
+          Send me an email
+        </Button>
+        <small>Or copy this email manually: <code class="font-mono">{AUTHOR_EMAIL}</code></small>
+      </div>
+
+      <ol class="relative mt-8 flex flex-col items-start gap-8 border-s border-primary">
+        {
+          CAREERS.map((c) => (
+            <li class="ms-8">
+              {!c.promotion && (
+                <div class="absolute -start-3 mt-1.5 h-6 w-6 rounded-full border border-white bg-primary dark:border-base-300" />
+              )}
+
+              <time class="mb-1 mt-1 block text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
+                {c.period}&nbsp;&nbsp;•&nbsp;&nbsp;{c.long}
+              </time>
+              <span class="mb-1 block text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
+                {c.location}
+              </span>
+              <h3 class="mb-2 text-lg font-semibold text-gray-900 dark:text-white">
+                {c.title} @ {c.company}
+              </h3>
+              <p class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">{c.summary}</p>
+
+              <div class="flex items-center gap-2">
+                {c.stacks.map((stack) => (
+                  <span class="rounded bg-primary px-1.5 py-0.5 text-xs text-primary-content">
+                    {stack}
+                  </span>
+                ))}
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+    </section>
+  </article>
+</Centered>

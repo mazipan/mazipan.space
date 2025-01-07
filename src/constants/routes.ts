@@ -12,6 +12,7 @@ export const ROUTES = {
   GUEST_BOOK: '/guest-book',
   CREDITS: '/credits',
   FRIENDS: '/friends',
+  RESUME: '/resume',
   TAGS: '/blog/tags',
   CATEGORIES: '/blog/categories',
   EXPLORE: '/blog/explore',

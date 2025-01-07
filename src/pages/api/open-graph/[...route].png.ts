@@ -9,7 +9,6 @@ import { CONFIG_CLIENT } from '@/config/client';
 import { getPages } from '@/libs/api/open-graph/pages';
 import templateHtml from '@/libs/api/open-graph/template-html';
 import { getIconCode, loadEmoji } from '@/libs/api/open-graph/twemoji';
-import { removeTrailingSlash } from '@/utils/paths';
 import { trimHttpProtocol } from '@/utils/strings';
 
 import type { APIContext, APIRoute } from 'astro';
@@ -69,7 +68,7 @@ export const GET: APIRoute = async ({ props }: APIContext) => {
 
   const svg = await satori(templateHtml(templateProps) as React.ReactNode, {
     width: 1200,
-    height: 630,
+    height: 628,
     fonts: [
       {
         name: 'Space Grotesk',
@@ -130,26 +129,4 @@ const getImageType = (imagePath: string) => {
   }
 
   return imageType;
-};
-
-// eslint-disable-next-line no-unused-vars
-const _getRandomImage = async (folderPath: string): Promise<string> => {
-  const trimmedFolderPath = removeTrailingSlash(folderPath);
-
-  const files = await fs.readdir(trimmedFolderPath);
-
-  // omit ./, ../
-  const imageFiles = files.filter((file) => {
-    const ext = path.extname(file).toLowerCase();
-    return ext === '.jpg' || ext === '.jpeg' || ext === '.png';
-  });
-
-  if (imageFiles.length === 0) throw new Error(`No default og images found in: ${folderPath}`);
-
-  const randomIndex = Math.floor(Math.random() * imageFiles.length);
-  const randomImage = imageFiles[randomIndex];
-
-  const randomImageWithPath = `${trimmedFolderPath}/${randomImage}`;
-
-  return randomImageWithPath;
 };

@@ -119,7 +119,17 @@ const metadata = getPageMetadata('pages/about');
         </p>
 
         <h3 class="b-h1">Want to work together?</h3>
-        <div class="mt-2 flex flex-col items-start gap-2">
+
+        <div class="flex flex-col items-start gap-2">
+          <div class="flex items-center gap-2">
+            <span class="relative flex h-3 w-3">
+              <span
+                class="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75"
+              ></span>
+              <span class="relative inline-flex h-3 w-3 rounded-full bg-primary"></span>
+            </span>
+            <span class="text-primary">Available for hire</span>
+          </div>
           <Button
             element="a"
             colors="primary"
