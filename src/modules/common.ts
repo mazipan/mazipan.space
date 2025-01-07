@@ -65,3 +65,9 @@ export const getPublishedOrUpdatedDate = ({
 
   return result;
 };
+
+/*------------------------- for content layer -----------------------*/
+export const idToSlug = <T extends { id: unknown }>(item: T): T & { slug: T['id'] } => ({
+  ...item,
+  slug: item.id,
+});

@@ -80,7 +80,7 @@ const threePageNumbers = (currentPage: number, lastPage: number): number[] => {
         <Link
           href={firstUrl}
           disabled={!prevUrl}
-          class="flex h-8 w-8 items-center justify-center rounded hover:bg-primary-hover hover:text-black"
+          class="flex h-8 w-8 items-center justify-center rounded hover:bg-primary-hover hover:text-primary-content"
         >
           <Icon name="tabler:chevrons-left" />
         </Link>
@@ -88,7 +88,7 @@ const threePageNumbers = (currentPage: number, lastPage: number): number[] => {
         <Link
           href={prevUrl}
           disabled={!prevUrl}
-          class="flex h-8 w-8 items-center justify-center rounded hover:bg-primary-hover hover:text-black"
+          class="flex h-8 w-8 items-center justify-center rounded hover:bg-primary-hover hover:text-primary-content"
         >
           <Icon name="tabler:chevron-left" />
         </Link>
@@ -103,7 +103,7 @@ const threePageNumbers = (currentPage: number, lastPage: number): number[] => {
               href={getPageUrl(pageNumber)}
               disabled={isCurrentPage}
               class={cn(
-                'flex min-h-8 min-w-8 items-center justify-center rounded hover:bg-primary-hover hover:text-black hover:no-underline',
+                'flex min-h-8 min-w-8 items-center justify-center rounded hover:bg-primary-hover hover:text-primary-content hover:no-underline',
                 isCurrentPage ? 'font-semibold' : ''
               )}
             >
@@ -115,7 +115,7 @@ const threePageNumbers = (currentPage: number, lastPage: number): number[] => {
         <Link
           href={nextUrl}
           disabled={!nextUrl}
-          class="flex h-8 w-8 items-center justify-center rounded hover:bg-primary-hover hover:text-black"
+          class="flex h-8 w-8 items-center justify-center rounded hover:bg-primary-hover hover:text-primary-content"
         >
           <Icon name="tabler:chevron-right" />
         </Link>
@@ -123,7 +123,7 @@ const threePageNumbers = (currentPage: number, lastPage: number): number[] => {
         <Link
           href={lastUrl}
           disabled={!nextUrl}
-          class="flex h-8 w-8 items-center justify-center rounded hover:bg-primary-hover hover:text-black"
+          class="flex h-8 w-8 items-center justify-center rounded hover:bg-primary-hover hover:text-primary-content"
         >
           <Icon name="tabler:chevrons-right" />
         </Link>

@@ -1,4 +1,6 @@
-import { getAllEntries } from '@/modules/common';
+import { render } from 'astro:content';
+
+import { getAllEntries, idToSlug } from '@/modules/common';
 import { COLLECTIONS } from '@/constants/collections';
 
 import type { Post, PostCollection } from '@/types/post';
@@ -6,11 +8,13 @@ import type { Post, PostCollection } from '@/types/post';
 /** Sorted posts. */
 export const getAllPosts = (): Promise<PostCollection[]> => getAllEntries(COLLECTIONS.POST);
 
+export const getFeaturedPosts = (): Promise<PostCollection[]> => getAllEntries(COLLECTIONS.POST);
+
 export const getPostsWithReadingTimeFromPosts = async (
   posts: PostCollection[]
 ): Promise<Post[]> => {
   const readingTimePromises = posts.map(async (post) => {
-    const { remarkPluginFrontmatter } = await post.render();
+    const { remarkPluginFrontmatter } = await render(post);
     const { readingTime } = remarkPluginFrontmatter;
     return { readingTime };
   });
@@ -18,10 +22,18 @@ export const getPostsWithReadingTimeFromPosts = async (
 
   // other frontmatter props are in post.data...
   // readingTimes is in post.readingTimes
-  const postsWithReadingTime = posts.map((post, index) => ({ ...post, ...readingTimes[index] }));
-  return postsWithReadingTime;
+  const postsWithReadingTimeAndSlug = posts.map((post, index) => ({
+    ...idToSlug(post),
+    ...readingTimes[index],
+  }));
+
+  return postsWithReadingTimeAndSlug;
 };
 
-/** Prefer over getAllPosts() */
+/**
+ * Prefer over getAllPosts()
+ * From this point Post[] instead of CollectionEntry<'post'>[].
+ * My custom type with slug, readingTime, etc.
+ */
 export const getAllPostsWithReadingTime = async (): Promise<Post[]> =>
   getPostsWithReadingTimeFromPosts(await getAllPosts());
