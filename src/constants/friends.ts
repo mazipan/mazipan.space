@@ -79,6 +79,18 @@ export const awesomeSdeBlogs: AwesomeSdeBlogs = {
     },
     {
       "blog": {
+        "name": "didiktrisusanto.dev",
+        "link": "https://www.didiktrisusanto.dev/"
+      },
+      "owner": {
+        "name": "Didik Tri Susanto",
+        "link": "https://x.com/didikz",
+        "icon": "x",
+        "avatar": "https://unavatar.io/x/didikz"
+      }
+    },
+    {
+      "blog": {
         "name": "fatihkalifa.com",
         "link": "https://fatihkalifa.com/en"
       },
@@ -379,8 +391,8 @@ export const awesomeSdeBlogs: AwesomeSdeBlogs = {
     }
   ],
   "metadata": {
-    "total": 29,
-    "updatedAt": "2025-01-06T07:08:36.232Z",
+    "total": 30,
+    "updatedAt": "2025-01-06T08:50:13.994Z",
     "source": "https://github.com/mazipan/awesome-sde-id-blogs"
   }
 }

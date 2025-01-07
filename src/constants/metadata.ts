@@ -79,6 +79,11 @@ export const PAGE_METADATA = {
     description: '',
     path: '/friends',
   },
+  'pages/resume': {
+    title: '📄 Resume',
+    description: '',
+    path: '/resume',
+  },
 } as const;
 
 export type PageMetadataKey = keyof typeof PAGE_METADATA;

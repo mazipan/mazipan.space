@@ -261,7 +261,7 @@
   ],
   "headers": [
     {
-      "source": "/(thumbnail|meta|favicon|avatars)/(.*)",
+      "source": ".(jpg|jpeg|png|gif|ico|txt|xml|css|js)$",
       "headers": [
         {
           "key": "Cache-Control",
@@ -270,7 +270,7 @@
       ]
     },
     {
-      "source": ".(jpg|jpeg|png|gif|ico|txt|xml|css|js)$",
+      "source": "/(thumbnail|meta|favicon|avatars|the-mario|fonts|images)/(.*)",
       "headers": [
         {
           "key": "Cache-Control",
@@ -292,7 +292,7 @@
       "headers": [
         {
           "key": "Cache-Control",
-          "value": "public, max-age=3600"
+          "value": "public, max-age=86400"
         }
       ]
     },
