@@ -11,4 +11,12 @@
     @apply xl:mx-[calc(50%-50vw)] xl:translate-x-[calc(50vw-50%)];
     @apply max-w-5xl xl:w-[70vw];
   }
+
+  .transform-perspective {
+    transform: perspective(1000px) rotateY(-10deg) translate3d(-3px, 0, 0);
+  }
+
+  .bg-nodes {
+    background-image: url('/images/nodes-bg-light.svg');
+  }
 }

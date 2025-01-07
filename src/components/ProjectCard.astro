@@ -33,7 +33,7 @@ const getTransitionNameFromElementId = setTransitionSlug({ pageSlug: slug });
     {...IMAGE_SIZES.RESPONSIVE.PROJECT_CARD}
     src={heroImage}
     alt={heroAlt}
-    class="mb-2 rounded-t-2xl"
+    class="hover:transform-perspective mb-2 rounded-t-2xl transition-transform duration-300"
     transition:name={getTransitionNameFromElementId({
       elementId: TRANSITION_ELEMENT_IDS.POST_CARD.HERO_IMAGE,
     })}

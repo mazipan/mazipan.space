@@ -11,7 +11,8 @@ const removeDuplicatesAndToLowerCase = (items: string[]) => {
   return Array.from(distinctItems);
 };
 
-const { DRAFT, NO_HERO, HERO_IMAGE, HERO_ALT, TOC, CATEGORY, TITLE, DESCRIPTION } = DEFAULTS_POST;
+const { DRAFT, NO_HERO, HERO_IMAGE, HERO_ALT, TOC, CATEGORY, TITLE, DESCRIPTION, FEATURED } =
+  DEFAULTS_POST;
 
 // schema and collection are separate
 export const postSchema = ({ image }: SchemaContext) =>
@@ -26,6 +27,7 @@ export const postSchema = ({ image }: SchemaContext) =>
     heroAlt: z.string().default(HERO_ALT),
     toc: z.boolean().default(TOC),
     draft: z.boolean().default(DRAFT),
+    featured: z.boolean().default(FEATURED),
     category: z.string().default(CATEGORY),
     tags: z
       .array(

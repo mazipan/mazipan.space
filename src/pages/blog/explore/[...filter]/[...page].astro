@@ -114,7 +114,12 @@ const breadcrumbs = [BreadcrumbItemHome, BreadcrumbItemBlog];
                 </h2>
                 <div>
                   {postsByYear.posts[year].map((post) => (
-                    <PostCardSmall {post} class="last:mb-6" withImage={false} />
+                    <PostCardSmall
+                      {post}
+                      class="last:mb-6"
+                      withImage={false}
+                      withSeparator={true}
+                    />
                   ))}
                 </div>
               </>

@@ -1,6 +1,7 @@
 ---
 import { Icon } from 'astro-icon/components';
 import { Image } from 'astro:assets';
+import { render } from 'astro:content';
 
 import { getAllPostsWithReadingTime } from '@/modules/post/common';
 import { getRandomPosts } from '@/modules/post/random';
@@ -41,7 +42,7 @@ export async function getStaticPaths() {
   return paths;
 }
 
-const { data, render, readingTime, randomPosts } = Astro.props;
+const { data, readingTime, randomPosts } = Astro.props;
 const {
   draft,
   title,
@@ -60,7 +61,8 @@ const { url, params } = Astro;
 const { slug } = params;
 const { pathname } = url;
 
-const { Content, headings: postHeadings } = await render();
+const { Content, headings: postHeadings } = await render(Astro.props);
+
 const headings = getHeadingsForTableOfContents(postHeadings);
 
 const postMetaProps = {
@@ -171,7 +173,7 @@ const schema = JSON.stringify({
   </Fragment>
 
   <Fragment slot="after-content">
-    <div class="b-h2-mb flex flex-col items-start gap-6 md:flex-row md:items-center">
+    <div class="b-h2-mb mt-4 flex flex-col items-start gap-6 md:flex-row md:items-center">
       <TagList tags={tags} size="md" />
       <Share {...shareProps} />
     </div>

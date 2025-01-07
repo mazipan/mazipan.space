@@ -6,6 +6,7 @@ export type PostCollection = CollectionEntry<'post'>;
 // readingTimes is in post.readingTimes
 export type Post = PostCollection & {
   readingTime: number;
+  slug: PostCollection['id']; // Content Layer migration
 };
 
 export interface PostsByYear {

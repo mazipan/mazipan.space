@@ -1,10 +1,15 @@
 import { DEFAULT_METADATA } from '@/constants/metadata';
 
-import DefaultMetaImage from '@/assets/images/meta.png';
+import DefaultMetaImage from '@/assets/images/open-graph/pattern.jpg';
 
 export const COLLECTIONS = {
   POST: 'post',
   PROJECT: 'project',
+} as const;
+
+export const BASE_FOLDERS = {
+  POST: 'src/content/post',
+  PROJECT: 'src/content/project',
 } as const;
 
 export const TAGS = [
@@ -75,6 +80,7 @@ export const DEFAULTS_POST = {
   DRAFT: false,
   CATEGORY: CATEGORIES[0].name,
   TOC: true,
+  FEATURED: false,
 } as const;
 
 export const DEFAULTS_PROJECT = {

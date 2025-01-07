@@ -2,6 +2,7 @@
 import { getAllPostsWithReadingTime } from '@/modules/post/common';
 import List from '@/layouts/List.astro';
 import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import FeaturedPostList from '@/components/FeaturedPostList.astro';
 import PostList from '@/components/PostList.astro';
 import { BreadcrumbItemHome } from '@/constants/breadcrumb';
 import { CONFIG_CLIENT } from '@/config/client';
@@ -9,7 +10,7 @@ import { getPageMetadata } from '@/utils/metadata';
 import { pickPaginationPropsFromPage } from '@/utils/pagination';
 
 import type { Post } from '@/types/post';
-import type { GetStaticPathsOptions } from 'astro';
+import type { GetStaticPathsOptions, Page } from 'astro';
 
 // [page].astro and getStaticPaths because of pagination
 export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
@@ -17,12 +18,28 @@ export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
   const pageSize = CONFIG_CLIENT.PAGE_SIZE_POST_CARD; // must take entire config here, interesting
 
   const pagination = paginate(posts, { pageSize });
-  pagination.push({ params: { page: '1' }, props: pagination[0].props });
+  const featured = posts.filter((post) => post.data.featured);
+
+  const firstPageProps = pagination[0].props;
+  firstPageProps.featured = featured;
+
+  pagination.push({
+    params: {
+      page: '1',
+    },
+    props: firstPageProps,
+  });
+
   return pagination;
 }
 
+type Props = {
+  page: Page<Post>;
+  featured?: Post[];
+};
+
 // page from pagination
-const { page } = Astro.props;
+const { page, featured } = Astro.props;
 const { data: posts } = page;
 
 const paginationProps = pickPaginationPropsFromPage(page);
@@ -38,5 +55,10 @@ const breadcrumbs = [BreadcrumbItemHome];
     <Breadcrumbs items={breadcrumbs} />
     <h1 class="b-h1">{metadata.title}</h1>
   </section>
+
+  {Array.isArray(featured) && <FeaturedPostList posts={featured} />}
+
+  <h3 class="b-h1">Latest Article</h3>
+
   <PostList posts={posts} />
 </List>
