@@ -58,7 +58,13 @@ const breadcrumbs = [BreadcrumbItemHome];
 
   {Array.isArray(featured) && <FeaturedPostList posts={featured} />}
 
-  <h3 class="b-h1">Latest Article</h3>
+  {
+    paginationProps.currentPage === 1 && (
+      <h3 class="b-h1 mb-12 mt-16 underline decoration-wavy underline-offset-8">
+        ✍️ Latest Update
+      </h3>
+    )
+  }
 
   <PostList posts={posts} />
 </List>

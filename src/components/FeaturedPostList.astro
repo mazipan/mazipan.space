@@ -1,13 +1,6 @@
 ---
-import { Icon } from 'astro-icon/components';
-import { Image } from 'astro:assets';
-
-import { IMAGE_SIZES } from '@/constants/image';
-import { ROUTES } from '@/constants/routes';
-import { formatDate, formatDateIso } from '@/utils/datetime';
-import { cn } from '@/utils/styles';
-import Link from './Link.astro';
-import TagList from './TagList.astro';
+import PostCardFeatured from './PostCardFeatured.astro';
+import PostCardSmall from './PostCardSmall.astro';
 
 import type { Post } from '@/types/post';
 
@@ -20,84 +13,6 @@ const [main, ...restPost] = posts;
 ---
 
 <div class="featured mb-8 grid grid-cols-1 gap-8 md:grid-cols-3">
-  <div class={cn(`featured-main flex flex-col gap-8 md:col-span-3 md:flex-row`)}>
-    <Image
-      {...IMAGE_SIZES.RESPONSIVE.POST_HERO}
-      src={main.data.heroImage}
-      alt={main.data.heroAlt}
-      class={cn(
-        'hover:transform-perspective max-h-80 rounded-xl object-cover transition-transform duration-300'
-      )}
-    />
-
-    <div class="flex flex-col gap-4">
-      <h3 class="b-h3 mb-0 line-clamp-2 break-words">
-        <Link
-          variant="link-heading"
-          href={`${ROUTES.BLOG}/${main.slug}`}
-          class="hover:underline hover:decoration-wavy hover:underline-offset-2"
-        >
-          {main.data.title}
-        </Link>
-      </h3>
-
-      {main.data.description && <p class="line-clamp-2 text-base">{main.data.description}</p>}
-
-      <div class="flex items-center gap-2 text-sm leading-none">
-        <span class="inline-flex items-center gap-2 text-captions">
-          <Icon name={'tabler:clock'} class="h-4 w-4" />
-          <time itemprop="datePublished" datetime={formatDateIso(main.data.publishDate)}>
-            {formatDate(main.data.publishDate)}
-          </time>
-        </span>
-
-        <span>
-          In category <Link href={`${ROUTES.CATEGORIES}/${main.data.category}`}>
-            {main.data.category}
-          </Link>
-        </span>
-      </div>
-
-      {/* reading time and read more link */}
-      <div class="flex items-center justify-between xs:items-end">
-        <div class="flex items-center gap-4">
-          <span class="inline-flex items-center gap-2 text-sm text-captions">
-            <Icon name="tabler:book" class="h-4 w-4" />
-            <span class="text-nowrap">{`${Math.round(main.readingTime)} minutes`}</span>
-          </span>
-          <TagList
-            tags={main.data.tags.slice(0, 2)}
-            size="sm"
-            variant="text"
-            class="hidden xs:inline-flex"
-          />
-        </div>
-      </div>
-    </div>
-  </div>
-
-  {
-    restPost.map((post, idx) => (
-      <div class={cn(`featured-${idx}`, 'flex flex-col gap-2')}>
-        <Image
-          {...IMAGE_SIZES.RESPONSIVE.POST_CARD}
-          src={post.data.heroImage}
-          alt={post.data.heroAlt}
-          class={cn(
-            'hover:transform-perspective max-h-44 rounded-xl object-cover transition-transform duration-300'
-          )}
-        />
-        <h4 class="b-h4 mb-2 mt-3 line-clamp-2 break-words">
-          <Link
-            variant="link-heading"
-            href={`${ROUTES.BLOG}/${post.slug}`}
-            class="hover:underline hover:decoration-wavy hover:underline-offset-2"
-          >
-            {post.data.title}
-          </Link>
-        </h4>
-        {post.data.description && <p class="line-clamp-2 text-base">{post.data.description}</p>}
-      </div>
-    ))
-  }
+  <PostCardFeatured post={main} />
+  {restPost.map((post) => <PostCardSmall post={post} withImage={true} />)}
 </div>

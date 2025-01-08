@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "astro": "astro",
-    "build": "APP_VERSION=$(npm pkg get version | xargs) APP_DEPLOY_AT=$(date +'%Y-%m-%d %H:%M:%S') yarn generate && astro build",
+    "build:with-version": "APP_VERSION=$(npm pkg get version | xargs) APP_DEPLOY_AT=$(date +'%Y-%m-%d %H:%M:%S') astro build",
+    "build": "yarn generate && yarn build:with-version",
     "check-types": "tsc --noEmit --pretty",
     "clean": "rm -rf node_modules yarn.lock",
     "dev": "APP_VERSION=$(npm pkg get version | xargs) APP_DEPLOY_AT=$(date +'%Y-%m-%d %H:%M:%S') astro dev",
@@ -58,7 +59,7 @@
     "@expressive-code/plugin-collapsible-sections": "^0.38.3",
     "@ianvs/prettier-plugin-sort-imports": "^4.4.0",
     "@iconify-json/tabler": "^1.2.13",
-    "@tailwindcss/typography": "^0.5.15",
+    "@tailwindcss/typography": "^0.5.16",
     "@types/mdast": "^4.0.4",
     "@types/react": "^18.3.18",
     "@types/react-dom": "^18.3.5",

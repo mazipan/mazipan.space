@@ -2,9 +2,6 @@
 layout: '../../layouts/Page.astro'
 title: Cards
 ---
-
-import PostCard from '../../components/PostCard.astro';
-import PostCardMore from '../../components/PostCardMore.astro';
 import PostCardSmall from '../../components/PostCardSmall.astro';
 
 import ProjectCard from '../../components/ProjectCard.astro';
@@ -30,30 +27,6 @@ export const projects = await getAllProjects();
 export const project = projects[0];
 export const threeProjects = projects.slice(0, 3);
 
-## PostCard
-
-<div class="not-prose">
-  <PostCard post={post} />
-</div>
-
----
-
-## PostCard without Image
-
-<div class="not-prose">
-  <PostCard post={postWithoutImage} />
-</div>
-
----
-
-## PostCardMore
-
-<div class="not-prose flex gap-4">
-  {threePosts.map((post) => (
-    <PostCardMore post={post} />
-  ))}
-</div>
-
 ---
 
 ## PostCardSmall
@@ -61,6 +34,26 @@ export const threeProjects = projects.slice(0, 3);
 <div class="not-prose">
   {threePosts.map((post) => (
     <PostCardSmall post={post} withImage={true} />
+  ))}
+</div>
+
+---
+
+## PostCardSmall Without Image
+
+<div class="not-prose">
+  {threePosts.map((post) => (
+    <PostCardSmall post={post} withImage={false} />
+  ))}
+</div>
+
+---
+
+## PostCardSmall With Separator
+
+<div class="not-prose">
+  {threePosts.map((post) => (
+    <PostCardSmall post={post} withImage={false} withSeparator={true} />
   ))}
 </div>
 
