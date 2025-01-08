@@ -1,6 +1,6 @@
 ---
-import PostCardMore from '@/components/PostCardMore.astro';
 import { cn } from '@/utils/styles';
+import PostCardSmall from './PostCardSmall.astro';
 
 import type { Post } from '@/types/post';
 import type { HTMLAttributes } from 'astro/types';
@@ -18,7 +18,7 @@ const { morePosts, class: className } = Astro.props;
     {
       morePosts.map((post) => (
         <li>
-          <PostCardMore {post} />
+          <PostCardSmall post={post} withImage={true} />
         </li>
       ))
     }

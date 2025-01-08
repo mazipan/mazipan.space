@@ -33,7 +33,7 @@
 
     /* code */
     code {
-      @apply me-2 rounded bg-base-200 px-1 py-0.5 font-mono text-sm font-light text-primary dark:bg-yellow-100 dark:text-yellow-900;
+      @apply me-2 rounded bg-base-200 px-1 py-0.5 font-mono text-sm font-light text-primary dark:bg-base-200 dark:text-white;
       margin-inline-end: 0;
     }
 
