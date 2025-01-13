@@ -53,15 +53,15 @@ const breadcrumbs = [BreadcrumbItemHome];
 <List {...layoutProps}>
   <section slot="heading">
     <Breadcrumbs items={breadcrumbs} />
-    <h1 class="b-h1">{metadata.title}</h1>
+    <h1 class="b-h1 tracking-wide">{metadata.title}</h1>
   </section>
 
   {Array.isArray(featured) && <FeaturedPostList posts={featured} />}
 
   {
     paginationProps.currentPage === 1 && (
-      <h3 class="b-h1 mb-12 mt-16 underline decoration-wavy underline-offset-8">
-        ✍️ Latest Update
+      <h3 class="b-h1 mb-12 mt-16 tracking-wide underline decoration-wavy underline-offset-auto">
+        ✍️ Latest writings
       </h3>
     )
   }
