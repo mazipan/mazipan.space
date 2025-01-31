@@ -6,7 +6,6 @@ import Centered from '@/layouts/Centered.astro';
 import Button from '@/components/Button.astro';
 import GradientBlob from '@/components/GradientBlob.astro';
 import RainbowTag from '@/components/RainbowTag.astro';
-// import { GradientBlobs } from '@/components/react/GradientBlobs';
 import SocialLinks from '@/components/SocialLinks.astro';
 import { PROFILE } from '@/constants/profile';
 
@@ -92,7 +91,14 @@ import AvatarSrc from '@/assets/images/avatar.png';
     constructor() {
       super();
       this.btnEl = this.querySelector('#btn-swap-gradient') as HTMLButtonElement;
+    }
+
+    connectedCallback() {
       this.btnEl.addEventListener('click', this.swap);
+    }
+
+    disconnectedCallback() {
+      this.btnEl.removeEventListener('click', this.swap);
     }
   }
 
