@@ -7,7 +7,7 @@ import Link from '@/components/Link.astro';
 import { IMAGE_SIZES } from '@/constants/image';
 import { ROUTES } from '@/constants/routes';
 import { setTransitionSlug, TRANSITION_ELEMENT_IDS } from '@/constants/transitions';
-import { formatDate, formatDateIso } from '@/utils/datetime';
+import TagList from './TagList.astro';
 
 import type { Project } from '@/types/project';
 
@@ -20,7 +20,7 @@ const { project } = Astro.props;
 const { slug, data } = project;
 const { title, description, heroImage, heroAlt, publishDate, updatedDate, tags } = data;
 
-const { lastAccessDate, isUpdatedDate } = getPublishedOrUpdatedDate({
+const { lastAccessDate } = getPublishedOrUpdatedDate({
   publishDate,
   updatedDate,
 });
@@ -29,17 +29,33 @@ const getTransitionNameFromElementId = setTransitionSlug({ pageSlug: slug });
 ---
 
 <article>
-  <Image
-    {...IMAGE_SIZES.RESPONSIVE.PROJECT_CARD}
-    src={heroImage}
-    alt={heroAlt}
-    class="hover:transform-perspective mb-2 max-h-[200px] rounded-t-2xl object-cover transition-transform duration-300"
-    transition:name={getTransitionNameFromElementId({
-      elementId: TRANSITION_ELEMENT_IDS.POST_CARD.HERO_IMAGE,
-    })}
-  />
+  <a
+    href={`${ROUTES.PROJECTS}/${slug}`}
+    class="group mb-4 block h-fit max-h-[200px] w-fit overflow-clip rounded-lg bg-base-200 bg-cover bg-center shadow-md"
+  >
+    <Image
+      {...IMAGE_SIZES.RESPONSIVE.PROJECT_CARD}
+      src={heroImage}
+      alt={heroAlt}
+      class="aspect-[1.75] h-[inherit] max-h-[inherit] rounded-[inherit] object-center transition-all duration-300 group-hover:scale-125"
+      transition:name={getTransitionNameFromElementId({
+        elementId: TRANSITION_ELEMENT_IDS.POST_CARD.HERO_IMAGE,
+      })}
+    />
+  </a>
 
-  <h4 class="b-h4 mb-0 line-clamp-2 break-words">
+  <div class="mb-1 flex items-center gap-3 text-sm text-captions">
+    <span class="flex items-center gap-1">
+      <Icon name="tabler:calendar" class="h-4 w-4" />
+      <span>
+        {lastAccessDate.getFullYear()}
+      </span>
+    </span>
+
+    <TagList tags={tags} size="sm" class="inline-flex" />
+  </div>
+
+  <h3 class="b-h3 mb-0 line-clamp-2 break-words">
     <Link
       href={`${ROUTES.PROJECTS}/${slug}`}
       variant="link-heading"
@@ -49,7 +65,7 @@ const getTransitionNameFromElementId = setTransitionSlug({ pageSlug: slug });
     >
       {title}
     </Link>
-  </h4>
+  </h3>
 
   {
     description && (
@@ -63,22 +79,4 @@ const getTransitionNameFromElementId = setTransitionSlug({ pageSlug: slug });
       </p>
     )
   }
-
-  <div class="flex items-center gap-3 text-xs text-captions">
-    <span class="flex items-center gap-1">
-      <Icon name={isUpdatedDate ? 'tabler:pencil' : 'tabler:clock'} class="h-4 w-4" />
-      <time itemprop="datePublished" datetime={formatDateIso(lastAccessDate)}>
-        {formatDate(lastAccessDate)}
-      </time>
-    </span>
-
-    {
-      tags.map((text) => (
-        <span class="flex items-center gap-1">
-          <Icon name={'tabler:tag'} class="h-4 w-4" />
-          <span>#{text}</span>
-        </span>
-      ))
-    }
-  </div>
 </article>

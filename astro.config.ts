@@ -30,7 +30,7 @@ export default defineConfig({
     // https://docs.astro.build/en/reference/experimental-flags/content-intellisense/
     contentIntellisense: true,
   },
-  trailingSlash: 'never',
+  trailingSlash: 'ignore',
   // default
   compressHTML: true,
   server: { port: 3000 },
