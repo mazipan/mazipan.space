@@ -78,7 +78,7 @@ const getTransitionNameFromElementId = setTransitionSlug({ pageSlug: slug });
           {formatDate(publishDate)}
         </time>
       </span>
-
+      <span>•</span>
       <span>
         In category <Link href={`${ROUTES.CATEGORIES}/${category}`}>
           {category}
@@ -91,7 +91,7 @@ const getTransitionNameFromElementId = setTransitionSlug({ pageSlug: slug });
       <div class="flex items-center gap-4">
         <span class="inline-flex items-center gap-2 text-sm text-captions">
           <Icon name="tabler:book" class="h-4 w-4" />
-          <span class="text-nowrap">{`${Math.round(readingTime)} minutes`}</span>
+          <span class="text-nowrap">{`${Math.round(readingTime)} min read`}</span>
         </span>
         <TagList tags={tags.slice(0, 2)} size="sm" variant="text" class="hidden xs:inline-flex" />
       </div>

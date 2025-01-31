@@ -29,155 +29,161 @@ const copyrightYear = new Date().getFullYear();
 
 <footer class="border-t border-base-300 px-4 pt-8">
   <div class="relative max-w-6xl md:mx-auto">
-    <div class="relative flex w-full flex-col-reverse gap-8 md:flex-row">
-      <div class="space-y-4 whitespace-nowrap text-content">
-        <h3 class="font-semibold">Irfan Maulana / MZP</h3>
-        <SocialLinks />
+    <scroll-to-top-button>
+      <Button
+        class="absolute right-4 top-0 z-10 h-8 w-8 cursor-pointer rounded-full p-1"
+        element="button"
+        variant="outline"
+        colors="primary"
+        href="#main-header"
+        id="btn-scroll-to-top"
+      >
+        <Icon name="tabler:arrow-up" class="h-4 w-4" />
+      </Button>
+    </scroll-to-top-button>
+
+    <div
+      class="relative flex w-full flex-col-reverse gap-8 pr-16 md:flex-row md:justify-between md:gap-12"
+    >
+      <div class="space-y-8 whitespace-nowrap text-content">
+        <div class="space-y-4 whitespace-nowrap text-content">
+          <h3 class="font-semibold">Irfan Maulana / MZP</h3>
+          <SocialLinks />
+        </div>
+
+        <div class="space-y-4 whitespace-nowrap text-content">
+          <h3 class="font-semibold">Previous Version</h3>
+          <ul class="space-y-2 text-sm">
+            <li>
+              <Link
+                href="https://2024.mazipan.space/"
+                target="_blank"
+                rel="me noreferrer noopener"
+                title="2024 Version"
+              >
+                2024
+              </Link>
+            </li>
+          </ul>
+        </div>
       </div>
 
-      <div class="space-y-4 whitespace-nowrap text-content">
-        <h3 class="font-semibold">Previous Version</h3>
-        <ul class="space-y-2 text-sm">
-          <li>
-            <Link
-              href="https://2024.mazipan.space/"
-              target="_blank"
-              rel="me noreferrer noopener"
-              title="2024 Version"
-            >
-              2024
-            </Link>
-          </li>
-        </ul>
-      </div>
+      <div class="flex w-full flex-col-reverse gap-8 pr-16 md:flex-row md:justify-end md:gap-12">
+        <div class="space-y-4 whitespace-nowrap text-content">
+          <h3 class="font-semibold">General</h3>
+          <ul class="space-y-2 text-sm">
+            <li>
+              <Link href={ROUTES.BLOG}>Blog</Link>
+            </li>
+            <li>
+              <Link href={ROUTES.EXPLORE}>Explore</Link>
+            </li>
+            <li>
+              <Link href={ROUTES.PROJECTS}>Projects</Link>
+            </li>
+            <li>
+              <Link href={ROUTES.ABOUT}>About</Link>
+            </li>
+          </ul>
+        </div>
 
-      <div class="space-y-4 whitespace-nowrap text-content">
-        <h3 class="font-semibold">General</h3>
-        <ul class="space-y-2 text-sm">
-          <li>
-            <Link href={ROUTES.BLOG}>Blog</Link>
-          </li>
-          <li>
-            <Link href={ROUTES.EXPLORE}>Explore</Link>
-          </li>
-          <li>
-            <Link href={ROUTES.PROJECTS}>Projects</Link>
-          </li>
-          <li>
-            <Link href={ROUTES.ABOUT}>About</Link>
-          </li>
-        </ul>
-      </div>
+        <div class="space-y-4 whitespace-nowrap text-content">
+          <h3 class="font-semibold">Navigations</h3>
+          <ul class="space-y-2 text-sm">
+            <li>
+              <Link href={ROUTES.TALKS}>Talks</Link>
+            </li>
+            <li>
+              <Link href={ROUTES.SUPPORT}>Support</Link>
+            </li>
+            <li>
+              <Link href={ROUTES.RESUME}>Resume</Link>
+            </li>
+            <li>
+              <Link href={ROUTES.CREDITS}>Credits</Link>
+            </li>
+            <li>
+              <Link href={ROUTES.FRIENDS}>Friends</Link>
+            </li>
+            <li>
+              <Link href={ROUTES.GUEST_BOOK}>Guest Book</Link>
+            </li>
+          </ul>
+        </div>
 
-      <div class="space-y-4 whitespace-nowrap text-content">
-        <h3 class="font-semibold">Navigations</h3>
-        <ul class="space-y-2 text-sm">
-          <li>
-            <Link href={ROUTES.TALKS}>Talks</Link>
-          </li>
-          <li>
-            <Link href={ROUTES.CREDITS}>Credits</Link>
-          </li>
-          <li>
-            <Link href={ROUTES.SUPPORT}>Support</Link>
-          </li>
-          <li>
-            <Link href={ROUTES.GUEST_BOOK}>Guest Book</Link>
-          </li>
-          <li>
-            <Link href={ROUTES.FRIENDS}>Friends</Link>
-          </li>
-          <li>
-            <Link href={ROUTES.RESUME}>Resume</Link>
-          </li>
-        </ul>
+        <div class="space-y-4 whitespace-nowrap text-content">
+          <h3 class="font-semibold">Ext. Resources</h3>
+          <ul class="space-y-2 text-sm">
+            <li>
+              <Link
+                href={ROUTES.BOOKMARKS}
+                target="_blank"
+                rel="me noreferrer noopener"
+                title="Bookmark collections"
+              >
+                Bookmarks
+              </Link>
+            </li>
+            <li>
+              <Link
+                href={AUTHOR_ADPLIST}
+                title="Meet me at ADPList"
+                target="_blank"
+                rel="me noreferrer noopener"
+              >
+                One on one
+              </Link>
+            </li>
+            <li>
+              <Link
+                href={AUTHOR_DECK}
+                title="Presentation Decks"
+                target="_blank"
+                rel="me noreferrer noopener"
+              >
+                Decks
+              </Link>
+            </li>
+            <li>
+              <Link
+                href={ROUTES.UMAMI_PUBLIC_URL}
+                title="Analytics"
+                target="_blank"
+                rel="me noreferrer noopener"
+              >
+                Analytics
+              </Link>
+            </li>
+            <li>
+              <Link
+                href={ROUTES.GH_NEW_ISSUE}
+                target="_blank"
+                rel="me noreferrer noopener"
+                title={`Submit issue`}
+              >
+                Submit issue
+              </Link>
+            </li>
+            <li>
+              <Link
+                href={ROUTES.API.FEED_RSS}
+                target="_blank"
+                rel="me noreferrer noopener"
+                title={`RSS feed for ${domain}`}
+              >
+                RSS
+              </Link>
+            </li>
+          </ul>
+        </div>
       </div>
-
-      <div class="space-y-4 whitespace-nowrap text-content">
-        <h3 class="font-semibold">Ext. Resources</h3>
-        <ul class="space-y-2 text-sm">
-          <li>
-            <Link
-              href={ROUTES.BOOKMARKS}
-              target="_blank"
-              rel="me noreferrer noopener"
-              title="Bookmark collections"
-            >
-              Bookmarks
-            </Link>
-          </li>
-          <li>
-            <Link
-              href={AUTHOR_ADPLIST}
-              title="Meet me at ADPList"
-              target="_blank"
-              rel="me noreferrer noopener"
-            >
-              One on one
-            </Link>
-          </li>
-          <li>
-            <Link
-              href={AUTHOR_DECK}
-              title="Presentation Decks"
-              target="_blank"
-              rel="me noreferrer noopener"
-            >
-              Decks
-            </Link>
-          </li>
-          <li>
-            <Link
-              href={ROUTES.UMAMI_PUBLIC_URL}
-              title="Analytics"
-              target="_blank"
-              rel="me noreferrer noopener"
-            >
-              Analytics
-            </Link>
-          </li>
-          <li>
-            <Link
-              href={ROUTES.GH_NEW_ISSUE}
-              target="_blank"
-              rel="me noreferrer noopener"
-              title={`Submit issue`}
-            >
-              Submit issue
-            </Link>
-          </li>
-          <li>
-            <Link
-              href={ROUTES.API.FEED_RSS}
-              target="_blank"
-              rel="me noreferrer noopener"
-              title={`RSS feed for ${domain}`}
-            >
-              RSS
-            </Link>
-          </li>
-        </ul>
-      </div>
-
-      <scroll-to-top-button>
-        <Button
-          class="absolute right-4 top-0 z-10 h-8 w-8 cursor-pointer rounded-full p-1"
-          element="button"
-          variant="outline"
-          colors="primary"
-          href="#main-header"
-          id="btn-scroll-to-top"
-        >
-          <Icon name="tabler:arrow-up" class="h-4 w-4" />
-        </Button>
-      </scroll-to-top-button>
     </div>
 
-    <div class="relative h-[150px] w-full overflow-hidden">
+    <!-- <div class="relative h-[150px] w-full overflow-hidden">
       <Mario />
-    </div>
+    </div> -->
 
-    <div class="bg-nodes space-y-2 border-t border-base-300 py-8 text-center text-sm md:py-4">
+    <div class="bg-nodes mt-8 space-y-2 border-t border-base-300 py-8 text-center text-sm md:py-4">
       <p>© 2019-{copyrightYear}, All rights reserved</p>
       <p>
         <span class="text-primary">v{process.env.APP_VERSION}</span>, deployed at {
