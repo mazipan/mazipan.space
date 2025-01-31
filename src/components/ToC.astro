@@ -1,0 +1,173 @@
+---
+import { Icon } from 'astro-icon/components';
+
+import { cn } from '@/utils/styles';
+
+import type { HTMLAttributes } from 'astro/types';
+
+export interface Heading {
+  text: string;
+  slug: string;
+  headings: Heading[];
+}
+
+export interface Props extends HTMLAttributes<'aside'> {
+  headings: Heading[];
+}
+
+const { headings, ...props } = Astro.props;
+---
+
+<toggle-toc class="fixed bottom-8 right-4 z-50 flex lg:hidden">
+  <button
+    data-expanded="false"
+    role="button"
+    type="button"
+    class="toc-btn-toggle flex cursor-pointer items-center justify-center gap-2 rounded-lg border-2 border-primary bg-base-100 p-3 transition-all duration-500 data-[expanded=true]:rotate-180"
+  >
+    <Icon name="tabler:table-column" class="inline h-6 w-6 fill-current" />
+  </button>
+</toggle-toc>
+
+<content-toc
+  data-lg="false"
+  data-expanded="false"
+  class={cn(
+    'my-prose centered-px toc-content z-50 transform rounded-lg bg-base-100 shadow-lg transition-all duration-500 lg:z-0 lg:shadow-none',
+    'data-[lg=false]:fixed data-[lg=false]:bottom-24 data-[lg=false]:left-4 data-[lg=false]:w-[80%]'
+    // 'data-[expanded=false]:-translate-x-[110%] data-[expanded=true]:translate-x-0'
+  )}
+  {...props}
+>
+  <div
+    class={cn(
+      'toc mx-auto overflow-y-auto rounded-lg border-2 border-dashed border-primary p-4',
+      'max-h-[calc(70vh)] lg:sticky lg:top-20 lg:max-h-[calc(100vh-100px)]'
+    )}
+  >
+    <b class="font-semibold">On This Page</b>
+    <ol class={cn('ol-nested-decimal my-0 mt-2 space-y-1.5 text-sm')}>
+      {
+        headings.map(({ slug, text, headings: subHeadings }) => (
+          <li class="my-0">
+            <a href={`#${slug}`} class="toc-link font-normal no-underline">
+              {text}
+            </a>
+
+            {subHeadings.length > 0 && (
+              <ol class="-ml-[20px] mb-2 mt-0 space-y-1.5">
+                {subHeadings.map(({ slug, text }, idx) => (
+                  <li class={cn('my-0', idx === 0 && 'mt-2')}>
+                    <a href={`#${slug}`} class="toc-link font-normal no-underline">
+                      {text}
+                    </a>
+                  </li>
+                ))}
+              </ol>
+            )}
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</content-toc>
+
+<script>
+  class ToggleToc extends HTMLElement {
+    private btnEl: HTMLButtonElement;
+    private contentEl: HTMLDivElement;
+
+    toggle = () => {
+      let prevState = this.btnEl.getAttribute('data-expanded');
+      let nextState = prevState === 'true' ? 'false' : 'true';
+
+      this.btnEl.setAttribute('data-expanded', nextState);
+      this.contentEl.setAttribute('data-expanded', nextState);
+    };
+
+    constructor() {
+      super();
+      this.btnEl = this.querySelector('.toc-btn-toggle') as HTMLButtonElement;
+      this.contentEl = document.querySelector('.toc-content') as HTMLDivElement;
+    }
+
+    connectedCallback() {
+      this.btnEl.addEventListener('click', this.toggle);
+    }
+
+    disconnectedCallback() {
+      this.btnEl.removeEventListener('click', this.toggle);
+    }
+  }
+
+  class ContentToc extends HTMLElement {
+    private allLinks;
+    private btnToggleEl: HTMLButtonElement;
+    private matchMedia: MediaQueryList;
+    private isLargeScreen: boolean = false;
+    private QUERY = '(min-width: 1024px)';
+
+    toggle = () => {
+      let prevState = this.getAttribute('data-expanded');
+      let nextState = prevState === 'true' ? 'false' : 'true';
+
+      this.setAttribute('data-expanded', nextState);
+      this.btnToggleEl.setAttribute('data-expanded', nextState);
+    };
+
+    onChangeMatches = () => {
+      this.isLargeScreen = window.matchMedia(this.QUERY).matches;
+      this.setAttribute('data-lg', this.isLargeScreen.toString());
+
+      if (!this.isLargeScreen) {
+        this.classList.add(
+          'data-[expanded=false]:-translate-x-[110%]',
+          'data-[expanded=true]:translate-x-0'
+        );
+      } else {
+        this.classList.remove(
+          'data-[expanded=false]:-translate-x-[110%]',
+          'data-[expanded=true]:translate-x-0'
+        );
+      }
+    };
+
+    onClickLink = () => {
+      if (!this.isLargeScreen) {
+        this.toggle();
+      }
+    };
+
+    constructor() {
+      super();
+      this.btnToggleEl = document.querySelector('.toc-btn-toggle') as HTMLButtonElement;
+      this.allLinks = this.querySelectorAll<HTMLAnchorElement>('.toc-link');
+
+      this.matchMedia = window.matchMedia(this.QUERY);
+    }
+
+    connectedCallback() {
+      this.matchMedia.addEventListener('change', this.onChangeMatches);
+
+      // Fired this event at first connected
+      this.onChangeMatches();
+
+      for (let index = 0; index < this.allLinks.length; index++) {
+        const link = this.allLinks[index];
+        link.addEventListener('click', this.onClickLink);
+      }
+    }
+
+    disconnectedCallback() {
+      this.matchMedia.removeEventListener('change', this.onChangeMatches);
+
+      for (let index = 0; index < this.allLinks.length; index++) {
+        const link = this.allLinks[index];
+        link.removeEventListener('click', this.onClickLink);
+      }
+    }
+  }
+
+  customElements.define('toggle-toc', ToggleToc);
+  customElements.define('content-toc', ContentToc);
+</script>

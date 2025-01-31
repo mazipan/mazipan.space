@@ -1,5 +1,4 @@
 ---
-import { Icon } from 'astro-icon/components';
 import { Image } from 'astro:assets';
 import { render } from 'astro:content';
 
@@ -10,9 +9,9 @@ import { default as PostLayout } from '@/layouts/Post.astro';
 import Giscus from '@/components/Giscus.astro';
 import PostListMore from '@/components/PostListMore.astro';
 import PostMeta from '@/components/PostMeta.astro';
-import TableOfContents from '@/components/react/TableOfContents';
 import Share from '@/components/Share.astro';
 import TagList from '@/components/TagList.astro';
+import ToC from '@/components/ToC.astro';
 import { DRAFT_TEXT } from '@/constants/data';
 import { IMAGE_SIZES } from '@/constants/image';
 import { ROUTES } from '@/constants/routes';
@@ -109,9 +108,7 @@ const schema = JSON.stringify({
   {
     toc && (
       <Fragment slot="toc">
-        <TableOfContents headings={headings} client:only="react">
-          <Icon name="tabler:table-column" class="inline h-6 w-6 fill-current" />
-        </TableOfContents>
+        <ToC headings={headings} />
       </Fragment>
     )
   }
