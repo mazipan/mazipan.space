@@ -16,6 +16,10 @@
     transform: perspective(1000px) rotateY(-10deg) translate3d(-3px, 0, 0);
   }
 
+  .shadow-3d {
+    box-shadow: 0.5rem 0.5rem 0 hsl(var(--foreground));
+  }
+
   .bg-nodes {
     background-image: url('/images/nodes-bg-light.svg');
   }

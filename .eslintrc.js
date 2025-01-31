@@ -1,9 +1,8 @@
 module.exports = {
   extends: ['eslint:recommended', 'plugin:astro/recommended', 'plugin:mdx/recommended'],
-  plugins: ['astro', 'tailwindcss', 'mdx'],
+  plugins: ['astro', 'mdx'],
   root: true,
   rules: {
-    'tailwindcss/no-custom-classname': 'off',
     'no-console': 'warn',
   },
   globals: {
@@ -12,11 +11,6 @@ module.exports = {
   env: {
     node: true,
     browser: true,
-  },
-  settings: {
-    tailwindcss: {
-      config: './tailwind.config.ts',
-    },
   },
   overrides: [
     { files: ['**/*.mdx'], rules: { 'no-unused-vars': 'off' } },
