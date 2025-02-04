@@ -50,7 +50,7 @@ const breadcrumbs = [BreadcrumbItemHome, BreadcrumbItemProject];
 ---
 
 <Centered {metadata}>
-  <article class="my-prose relative [&_h2]:!my-0 [&_img]:!my-0 [&_li]:!my-0">
+  <div class="my-prose relative [&_h2]:!my-0 [&_img]:!my-0 [&_li]:!my-0">
     <Breadcrumbs items={breadcrumbs} />
     <h1
       class="b-h1 mb-2 font-serif tracking-wide"
@@ -74,23 +74,25 @@ const breadcrumbs = [BreadcrumbItemHome, BreadcrumbItemProject];
     }
     {
       heroImage && (
-        <Image
-          {...IMAGE_SIZES.RESPONSIVE.POST_HERO}
-          src={heroImage}
-          alt={heroAlt}
-          fetchpriority="high"
-          loading="eager"
-          itemprop="image"
-          class="block rounded-2xl"
-          transition:name={getTransitionNameFromElementId({
-            elementId: TRANSITION_ELEMENT_IDS.POST_CARD.HERO_IMAGE,
-          })}
-        />
+        <div class="group mb-4 block h-fit max-h-[600px] w-auto max-w-[500px] overflow-clip rounded-lg bg-base-200 bg-cover bg-center shadow-md">
+          <Image
+            {...IMAGE_SIZES.RESPONSIVE.POST_HERO}
+            src={heroImage}
+            alt={heroAlt}
+            fetchpriority="high"
+            loading="eager"
+            itemprop="image"
+            class="aspect-[1.75] h-[inherit] max-h-[inherit] rounded-[inherit] object-center"
+            transition:name={getTransitionNameFromElementId({
+              elementId: TRANSITION_ELEMENT_IDS.POST_CARD.HERO_IMAGE,
+            })}
+          />
+        </div>
       )
     }
     <Content />
     <div class="mt-8">
       <Share {...shareProps} />
     </div>
-  </article>
+  </div>
 </Centered>
