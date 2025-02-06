@@ -1,0 +1,110 @@
+---
+title: Astro - Alat Terbaik Untuk Membangun Blog di 2025
+publishDate: '2025-02-05'
+updatedDate: '2025-02-05'
+description: Mengupas alasan mengapa Astro menjadi pilihan terbaik saya di tahun 2025 untuk membuat blog
+author: mazipan
+tags:
+  - web
+  - astro
+category: tutorials
+toc: true
+heroImage: '../../content/post/_images/pexels-alancabello-1492364.jpg'
+heroAlt: Astro - Alat Terbaik Untuk Membangun Blog di 2025
+lang: id
+---
+
+## 📄 Mengenai developer blog
+
+Meskipun secara garis besar sama saja dengan blog pada umumnya, blog untuk software engineer/developer memang biasanya memiliki ciri khas yang sedikit membedakan. Ini dikarenakan mereka kemungkinan besar akan menulis berbagai hal teknis yang membutuhkan dukungan bagus saat menampilkannya dalam format yang mudah dibaca oleh orang lain. Paling tidak developer blog mesti bisa menampilkan berbagai code snippet dengan baik. Fitur tambahan seperti bisa menyematkan media macam tweet jadi pelengkap tadi tidak begitu umum.
+
+## 💅 Perlukah kamu membuat blog sendiri?
+
+Jawaban singkatnya tentu saja tidak perlu. Sudah ada banyak blog yang siap pakai dari yang berbayar sampai yang gratisan. Jika kalian hanya ingin mulai menulis blog dan tidak mau disibukkan dengan berbagai urusan rumit menyiapkan dan membangun blog kalian sendiri, pakai yang sudah ada adalah pilihan terbaik.
+
+Kamu bisa memilih alat seperti [WordPress](https://wordpress.com/), [Medium](https://medium.com/), [HashNode](https://hashnode.com/), [DEV.to](https://dev.to/), [Hacker Noon](https://hackernoon.com/) bila memilih platform yang bisa langsung pakai tanpa ribet setup sendiri. Beberapa alat mungkin tidak memperkenankan untuk mengganti domain utamanya, tapi kalau hal itu bukan isu penting buat kalian, maka saya pun menyarankan memilih alat siap pakai saja untuk pertama.
+
+Akhir-akhir ini beberapa developer juga saya pantau beralih dengan platform yang modelnya newsletter semacam [SubStack](https://substack.com/). Bisa jadi alternatif pilihan untuk kalian juga.
+
+Kalaupun mau bikin sendiri, haruskah bikin dari awal? Faktanya banyak juga platform yang modelnya sudah siap pakai sepeti:
+
+- [HashNode](https://hashnode.com/): bisa dengan musah diganti dengan domain kalian sendiri.
+- [Forem](https://forem.com/): bisa dideploy di self host, alat yang sama yang dipakai DEV.to.
+- [Ghost](https://ghost.org/): bisa dideploy di self host juga.
+
+Alat-alat seperti ini sebaiknya juga jadi pertimbangan kalau kalian mau alat yang sudah siap pakai.
+
+## 🪴 Perjalan platform blog yang saya gunakan
+
+Saya memulai menulis blog sejak dari jaman masih kuliah S1, memulai dengan platform WordPress  (*[masih bisa diakses ternyata](https://mazipanneh.wordpress.com/)). Sempat beralih juga ke versi self hosted WordPress untuk beberapa tahun. Sejak saat itu saya memang suka beralih dari alat ke alat lainnya, sepertinya saya memang lebih suka gonta-ganti alat menulis blognya dibandingkan menulisnya sendiri, bisa terlihat dari jumlah artikel yang dipublikasikan yang jumlahnya tidak seberapa dan jenis artikellnya yang remeh-temeh.
+
+Setelah mulai berkenalan dengan GitHub, saya semakin banyak mencoba berbagai peralatan untuk menulis blog. [Jekyll](https://jekyllrb.com/) salah satu yang pertama saya coba karena memang saat itu sampai hari ini masih merupakan alat default saat memilih GitHub Pages yang gratisan sebagai hosting providernya. Sejak pakai Jekyll sepertiya saya jadi terbawa arus dan jadi berasa nyaman ketika menulis blog dengan model statik yang mengharuskan menulis dalam format Markdown tanpa CMS.
+
+Sempat banyak menulis di Medium pada tahun 2014/2015-an, tapi setelah akun di block untuk alasan yang tidak jelas, dan tidak berhasil mengembalikan tulisan-tulisan yang sebelumnya sudah pernah dipublikasikan, akhirnya memutuskan untuk total meninggalkan platform model seperti ini di mana saya tidak memegang konten saya sendiri. Pilihan saya berikutnya selalu berkutat pada statik blog atau [SSG (*Static Site Generation*)](https://nextjs.org/docs/pages/building-your-application/rendering/static-site-generation) dalam istilah sekarang.
+
+Membicarakan SSG, saya sudah mencoba berbagai peralatan, dari mulai Jekyll, [Wintersmith](https://github.com/jnordberg/wintersmith), [Metalsmith](https://github.com/metalsmith/metalsmith), [GatsbyJS](https://www.gatsbyjs.com/), [Gridsome](https://github.com/gridsome/gridsome), [Eleventy / 11ty](https://www.11ty.dev/), [Nuxt.js](https://nuxt.com/) dan [Next.js](https://nextjs.org/). Mereka-mereka adalah alat yang sudah saya coba sendiri untuk bikin-bikin blog saya. 3 Tahunan terakhir saya sebenarnya cukup nyaman-nyaman saja dengan Next.js. Sayangnya keinginan untuk menggunakan Next.js App Router membuat saya malah ingin mencoba sesuatu yang lain setelah sekian lama.
+
+Di samping pilihan yang telah saya cobain sendiri, kalian juga mungkin mau mencoba berbagai peralatan lain untuk JAMStack seperti [Hugo](https://gohugo.io/), [Docusaurus](https://docusaurus.io/docs/blog), [Hexo](https://hexo.io/), [Fresh dari Deno](https://fresh.deno.dev/). Lihat banyak pilihan lainnya di "[A List of Static Site Generators for Jamstack Sites](https://jamstack.org/generators/)".
+
+## 🤷‍♂️ Mengapa memilih Astro di 2025?
+
+Sebenarnya kandidat yang paling saya idamkan untuk platform blog saya itu Eleventy (11ty), namun setelah mempertimbangkan berbagai hal akhirnya saya malah memilih Astro sebagai platform blog saya di akhir tahun 2024 kemarin dan untuk tahun-tahun kedepannya. Keduanya jadi pilihan saya karena punya kemampuan untuk menjadi paltform yang Less-JavaScript. 11ty lebih powerfull karena lebih low-level lagi, sayangnya setelah pernah menggunakan 11ty di masa silam, saya merasa DX (*Developer Experience*) nya belum begitu bagus karena asset pipeline-nya terlalu complicated pada saat itu menurut saya pribadi (*harusnya sudah banyak perbaikan ya sekarang*). Astro sebaliknya mempunyai DX yang mumpuni terutama bagi orang yang bertahun-tahun bisanya cuma ngoding JavaScript aja kaya saya.
+
+Setidaknya buat saya Astro punya strong position karena berbagai hal berikut:
+
+- ✨ **Lebih mudah untuk migrasi**. Karena sebelumnya saya sudah punya blog dengan Next.js, jadinya ada berbagai komponen yang bisa saya "copy-copy" dulu saja agar bisa jalan. Astro memang bisa menyelipkan kode dari JS Framework semacam React.js dengan mudah. Proses migrasinya bisa partial, gak perlu semua hal ditulis ulang sejak awal, kalau ada hal-hal yang belum begitu paham bikinnya di Astro/Vanilla ya sudah tulis aja pakai React.js dulu. Nanti kalau semakin nemu jalannya, bisa diganti sedikit-sedikit biar tidak terlalu tergantung sama React.js nya lagi. Fitur seperti `getStaticPaths()` bahkan sangat mirip dengan Next.js.
+
+- ✨ **Banyak fitur yang sudah built-in.** Di Next.js sebelumnya, saya manual membaca direktori konten, parsing markdown manual dan sebagainya. Di Astro sudah ada [content collection](https://docs.astro.build/en/guides/content-collections/) bawaan yang semudah kita sebutkan saja direktorinya dan schemanya (optional).
+
+```ts
+import { defineCollection, z } from 'astro:content';
+import { glob } from 'astro/loaders';
+
+const blog = defineCollection({
+  loader: glob({ pattern: "**/*.mdx", base: "./src/data/blog" }),
+  schema: /* You can use Zod schema here. */
+});
+
+export const collections = { blog };
+```
+
+- ✨ **Setup syntax highlighter yang mudah.** Berhubung saya sering menyematkan kode snippet, ini jadi salah satu pembeda. Terakhir kali saya pakai [Shiki](https://github.com/shikijs/shiki) di Next.js untuk syntax highlighter tapi saat itu cukup rumit pasangnya. Di Astro sudah ada syntax highlighter bawaan, bahkan sudah ada community plugin [expressive-code](https://expressive-code.com/) yang sudah battery-included dengan fitur-fitur tambahan.
+
+- ✨ **Syntax yang mudah dipelajari.** Syntax templating di Astro seperti kombinasi Svelte dan JSX. Seperation-nya mirip Svelte tapi expression-nya pake JSX, jadi kalian bisa menulis kode-kode seperti ini:
+
+```astro
+---
+const name = "Astro";
+---
+<div>
+  <h1>Hello {name}!</h1>  <!-- Outputs <h1>Hello Astro!</h1> -->
+
+  <!-- Conditional render -->
+  {visible ? <p>Show me!</p> : <p>Else show me!</p>}
+
+  <!-- Looping in JSX -->
+  <ul>
+    {items.map((item) => (
+      <li>{item}</li>
+    ))}
+  </ul>
+</div>
+```
+
+Tapi dibandingkan pakai `className`, ini pakai `class` biasa seperti di HTML. Seperti di Svelte, di Astro tidak juga perlu wrap untuk menulis multiple root. Yang mesti hati-hati itu di Astro tidak bisa langsung menambahkan event macam `onClick`. Harus dibuat terpisah di `<script>` tag di bawahnya. Baca artikel sebelumnya: [Interaktivitas di Astro](/blog/2024-12-25-astro-interactivity).
+
+- ✨ **Projek starter melimpah.** Sebagai orang yang baru belajar, biasanya memang sulit untuk memulai, projek starter membantu memulai. Delivery-nya jadi lebih cepat di awal. Pelan-pelan disesuaikan, dibuang hal-hal yang tidak diperlukan, sembari belajar bagaimana cara kerjanya.
+
+## 🎯 Rekomendasi saya
+
+Jika kalian belum pernah nyobain, silahkan cobain terlebih dahulu. Astro jadi salah satu kandidat oke menurut saya di tahun 2025 terutama kalau produk yang kalian buat semacam blog, landing page, marketing page dan semacamnya yang seharusnya memang bisa dibuat Less-JavaScript dibandingkan produk-produk yang lebih data-intensive yang biasanya sulit kalau pure tanpa JavaScript framework.
+
+---
+
+**👋 Sekian dan terima kasih**
+
+Maaf-maaf aja kalau gak bermanfaat 🙇😭
+
+---
+
+Foto cover diambil dari laman [Pexel](https://www.pexels.com/id-id/foto/tangan-diantara-daun-jeruk-1492364/), Foto oleh [Alan Cabello](https://www.pexels.com/id-id/@alancabello/)
