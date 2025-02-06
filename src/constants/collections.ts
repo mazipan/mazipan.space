@@ -81,6 +81,8 @@ export const DEFAULTS_POST = {
   CATEGORY: CATEGORIES[0].name,
   TOC: true,
   FEATURED: false,
+  AUTHOR: 'mazipan',
+  LANG: 'id',
 } as const;
 
 export const DEFAULTS_PROJECT = {
