@@ -30,7 +30,7 @@ const breadcrumbs = [BreadcrumbItemHome, BreadcrumbItemBlog];
         <section
           class="my-prose centered-px post-detail [&>h2:nth-child(1)]:mt-0 [&>h2:nth-child(3)]:mt-0"
         >
-          <slot name="content" />
+          <content-wrapper><slot name="content" /></content-wrapper>
         </section>
         {Astro.slots.has('toc') && <slot name="toc" />}
       </div>
@@ -45,3 +45,53 @@ const breadcrumbs = [BreadcrumbItemHome, BreadcrumbItemBlog];
     </section>
   </article>
 </FullWidth>
+
+<script>
+  class ContentWrapper extends HTMLElement {
+    constructor() {
+      super();
+    }
+
+    connectedCallback() {
+      const codeGroups = document.querySelectorAll('.rehype-code-group');
+      if (!codeGroups || codeGroups.length <= 0) {
+        return;
+      }
+
+      codeGroups.forEach((group) => {
+        const tabs = group.querySelectorAll('.rcg-tab');
+        const blocks = group.querySelectorAll('.rcg-block');
+        let activeTab = group.querySelector('.rcg-tab.active');
+        let activeBlock = group.querySelector('.rcg-block.active');
+
+        group.addEventListener('click', (event) => {
+          // @ts-ignore
+          const tab = event?.target?.closest('.rcg-tab');
+          if (!tab) return;
+
+          const index = Array.from(tabs).indexOf(tab);
+          if (index === -1) return;
+
+          if (activeTab) {
+            activeTab.classList.remove('active');
+            activeTab.setAttribute('aria-selected', 'false');
+          }
+          if (activeBlock) {
+            activeBlock.classList.remove('active');
+            activeBlock.setAttribute('hidden', 'true');
+          }
+
+          tab.classList.add('active');
+          tab.setAttribute('aria-selected', 'true');
+          blocks[index].classList.add('active');
+          blocks[index].removeAttribute('hidden');
+
+          activeTab = tab;
+          activeBlock = blocks[index];
+        });
+      });
+    }
+  }
+
+  customElements.define('content-wrapper', ContentWrapper);
+</script>
