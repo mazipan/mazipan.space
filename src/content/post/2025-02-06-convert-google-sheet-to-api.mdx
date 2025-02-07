@@ -20,10 +20,10 @@ Sebagai seorang frontend engineer, seringkali kita merasa pusing saat harus sing
 
 Walaupun saya tetap menyarankan untuk setup proper database untuk projek-projek kalian.
 
-- 💠 **Firestore** dari Firebase: Cloud DB dengan basis NoSQL.
-- 💠 **Supabase**: Alternative dari Firebase. Basisnya Postgre, punya SDK yang cukup oke buat digunakan, sudah ada Authentication service juga.
-- 💠 **Neon DB**: Serverless DB yang punya free tier kecil bisa buat POC projek keci. [Vercel Postgres](https://vercel.com/docs/storage/vercel-postgres/usage-and-pricing) under the hood pakai NeonDB juga setahu saya.
-- 💠 **Notion Database**: Bisa diakses lewat Notion API, tapi memang lambat banget dan gak gitu oke buat digunakan, terutama soal *pagination*-nya.
+- 💠 **[Firestore](https://firebase.google.com/docs/firestore)** dari Firebase: Cloud DB dengan basis NoSQL.
+- 💠 **[Supabase](https://supabase.com/)**: Alternative dari Firebase. Basisnya Postgre, punya SDK yang cukup oke buat digunakan, sudah ada Authentication service juga.
+- 💠 **[Neon DB](https://neon.tech/)**: Serverless DB yang punya free tier kecil bisa buat POC projek keci. [Vercel Postgres](https://vercel.com/docs/storage/vercel-postgres/usage-and-pricing) under the hood pakai NeonDB juga setahu saya.
+- 💠 **[Notion Database](https://www.notion.com/help/intro-to-databases)**: Bisa diakses lewat [Notion API](https://developers.notion.com/docs/getting-started), tapi memang lambat banget dan gak gitu oke buat digunakan, terutama soal *pagination*-nya. [TanyaAja.in](https://www.tanyaaja.in/) dari awal dibuat dengan memanfaatkan Notion sebagai databasenya.
 
 Cari tau daftar lebih banyak di [free-databases.vercel.app](https://free-databases.vercel.app/)
 
@@ -148,7 +148,7 @@ export async function dapatkanDaftarSpreadsheet (options: FileOptions): Promise<
 
 ## 🧾 Fungsi untuk mengambil data di dalam suatu sheet
 
-Dalam 1 spreadsheet bisa terdapat lebih dari 1 sheet, karenanya bagian ini berekspektasi kalian sudah tau sheet mana yang dituju. Ada kode terpisah untuk mendapatkan daftar sheet yang tersedia dalam satu spreadsheet, tapi kita akan lewati bagian tersebut dan langsung loncat ke cara mendapatkan dalam di dalam suatu sheet.
+Dalam 1 spreadsheet bisa terdapat lebih dari 1 sheet, karenanya bagian ini berekspektasi kalian sudah tau sheet mana yang dituju. Ada kode terpisah untuk mendapatkan daftar sheet yang tersedia dalam satu spreadsheet, tapi kita akan lewati bagian tersebut dan langsung loncat ke cara mendapatkan data di dalam suatu sheet.
 
 ```ts title=src/utils/sheets.ts
 type Options = {
@@ -301,12 +301,18 @@ Fungsi ini berusaha menebak tipe data dari string menjadi tipe data yang kemungk
 
 ```ts title=src/utils/utils.ts
 export function detectValues(val: string) {
-  if (val === '') return null
-  if (val.toUpperCase() === 'TRUE') return true
-  if (val.toUpperCase() === 'FALSE') return false
+  // Maybe empty
+  if (!val || val === '') return null
+
+  // Maybe boolean
+  if (val?.toUpperCase() === 'TRUE') return true
+  if (val?.toUpperCase() === 'FALSE') return false
+
+  // Maybe number
   if (/^\d+\.\d+$/.test(val)) return parseFloat(val)
   if (/^\d+$/.test(val)) return parseInt(val, 10)
 
+  // Return as it is
   return val
 }
 ```
@@ -589,9 +595,15 @@ Kita sudah membuat berbagai fungsi yang berkomunikasi, membaca dan memodifikasi 
 - 🔘 Generate API Doc, bisa gunakan [Swagger UI](https://swagger.io/tools/swagger-ui/) atau [Scalar](https://scalar.com/). Ini bisa lebih mudah kalau kalian sudah membuat spek APi yang comply dengan Open API di awal.
 - 🔘 Menambahkan simple Auth, jaga-jaga agar tidak diakses oleh selain aplikasi yang kalian inginkan. Kalau mau gampang ya bisa pake Basic Auth saja atau API Key.
 
-## 📦 Kode lengkap
+## 🚀 Deployment
+
+Karena kodenya menggunakan Next.js kalian bisa dengan mudah deploy di Vercel, kalau mau deploy di Netlify akan butuh tambahan adapter sedikit. Baca di [Next.js on Netlify](https://docs.netlify.com/frameworks/next-js/overview/).
+
+## 📦 Repository dan contoh aplikasi
 
 Semua kode yang ada di artikel kali ini saya ambil dari repo [mazipan/gsheet-rest-api](https://github.com/mazipan/gsheet-rest-api), kalian bisa lihat lebih lengkap di repo tersebut.
+
+Saya juga sudah membuat contoh aplikasi kecil yang menggunakan Google Sheet sebagai database, kalian bisa mengaksesnya di [contoh aplikasi todo list](https://gsheet-rest-api.vercel.app/example).
 
 ## 🙌 Kredit
 
