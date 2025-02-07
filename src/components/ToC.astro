@@ -56,10 +56,10 @@ const { headings, ...props } = Astro.props;
 
             {subHeadings.length > 0 && (
               <ol class="-ml-[20px] mb-2 mt-0 space-y-1.5">
-                {subHeadings.map(({ slug, text }, idx) => (
+                {subHeadings.map(({ slug: slugChild, text: textChild }, idx) => (
                   <li class={cn('my-0', idx === 0 && 'mt-2')}>
-                    <a href={`#${slug}`} class="toc-link font-normal no-underline">
-                      {text}
+                    <a href={`#${slugChild}`} class="toc-link font-normal no-underline">
+                      {textChild}
                     </a>
                   </li>
                 ))}
