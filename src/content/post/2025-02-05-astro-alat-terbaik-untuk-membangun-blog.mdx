@@ -56,7 +56,7 @@ Setidaknya buat saya Astro punya strong position karena berbagai hal berikut:
 
 - ✨ **Banyak fitur yang sudah built-in.** Di Next.js sebelumnya, saya manual membaca direktori konten, parsing markdown manual dan sebagainya. Di Astro sudah ada [content collection](https://docs.astro.build/en/guides/content-collections/) bawaan yang semudah kita sebutkan saja direktorinya dan schemanya (optional).
 
-```ts
+```ts title=src/content.config.ts
 import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
 
@@ -72,7 +72,7 @@ export const collections = { blog };
 
 - ✨ **Syntax yang mudah dipelajari.** Syntax templating di Astro seperti kombinasi Svelte dan JSX. Seperation-nya mirip Svelte tapi expression-nya pake JSX, jadi kalian bisa menulis kode-kode seperti ini:
 
-```astro
+```astro title=sample.astro
 ---
 const name = "Astro";
 ---
@@ -93,7 +93,25 @@ const name = "Astro";
 
 Tapi dibandingkan pakai `className`, ini pakai `class` biasa seperti di HTML. Seperti di Svelte, di Astro tidak juga perlu wrap untuk menulis multiple root. Yang mesti hati-hati itu di Astro tidak bisa langsung menambahkan event macam `onClick`. Harus dibuat terpisah di `<script>` tag di bawahnya. Baca artikel sebelumnya: [Interaktivitas di Astro](/blog/2024-12-25-astro-interactivity).
 
-- ✨ **Projek starter melimpah.** Sebagai orang yang baru belajar, biasanya memang sulit untuk memulai, projek starter membantu memulai. Delivery-nya jadi lebih cepat di awal. Pelan-pelan disesuaikan, dibuang hal-hal yang tidak diperlukan, sembari belajar bagaimana cara kerjanya.
+- ✨ **Projek starter melimpah.** Sebagai orang yang baru belajar, biasanya memang sulit untuk memulai, projek starter membantu memulai. Delivery-nya jadi lebih cepat di awal. Pelan-pelan disesuaikan, dibuang hal-hal yang tidak diperlukan, sembari belajar bagaimana cara kerjanya. Blog saya sendiri menggunakan projek starter [nemanjam/nemanjam.github.io](https://github.com/nemanjam/nemanjam.github.io) karena menurutku sudah cukup solid dan memiliki fitur-fitur dasar yang saya mau ada di blog saya.
+
+## ⚡️ Memulai cepat dengan Astro
+
+Saya jelas rekomendasi untuk memilih memulai dengan starter, kalau kalian lebih memilih starter minimal dan official, kalian bisa ke [astro.new](https://astro.new/latest/) dan memilih salah satu yang sesuai dengan keinginan kalian.
+
+Misal kalian memilih template blog, maka bisa menggunakan perintah berikut:
+
+```bash
+npm create astro -- --template blog
+```
+
+Dan bila kalian lebih memilih template starlight, maka bisa menggunakan perintah berikut:
+
+```bash
+npm create astro -- --template starlight
+```
+
+Kalau kalian suka yang community driven, bisa cek ke laman [astro.build/themes](https://astro.build/themes/?search=&categories%5B%5D=blog&price%5B%5D=free). Banyak tersedia contoh starter yang bisa kalian pakai dengan gratis.
 
 ## 🎯 Rekomendasi saya
 

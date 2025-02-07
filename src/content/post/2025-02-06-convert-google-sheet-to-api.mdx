@@ -1,0 +1,610 @@
+---
+title: Mengubah Google Sheet menjadi Rest API
+publishDate: '2025-02-06'
+updatedDate: '2025-02-06'
+description: Cara membuat Rest API sederhana dari Google Sheet untuk aplikasi kecil kalian
+author: mazipan
+tags:
+  - web
+  - nextjs
+category: tutorials
+toc: true
+heroImage: '../../content/post/_images/pexels-chanaka-318741-906494.jpg'
+heroAlt: Mengubah Google Sheet menjadi Rest API
+lang: id
+---
+
+## Alternatif DB untuk frontend engineer
+
+Sebagai seorang frontend engineer, seringkali kita merasa pusing saat harus single fighter membuat POC atau pet project sendirian, dari sekian banyak masalah salah satu yang sering dipusingkan adalah bagaimana cara menyimpan datanya? Di mana akan menyimpan datanya?
+
+Walaupun saya tetap menyarankan untuk setup proper database untuk projek-projek kalian.
+
+- Firestore dari Firebase: Cloud DB dengan basis NoSQL.
+- Supabase: Alternative dari Firebase. Basisnya Postgre, punya SDK yang cukup oke buat digunakan, sudah ada Authentication service juga.
+- NeonDB: Serverless DB yang punya free tier kecil bisa buat POC projek keci. [Vercel Postgres](https://vercel.com/docs/storage/vercel-postgres/usage-and-pricing) under the hood pakai NeonDB juga setahu saya.
+- Notion Database: Bisa diakses lewat Notion API, tapi memang lambat banget dan gak gitu oke buat digunakan, terutama soal *pagination*-nya.
+
+Cari tau daftar lebih banyak di [free-databases.vercel.app](https://free-databases.vercel.app/)
+
+## Google Sheet sebagai database
+
+Google Sheet atau aplikasi Spreadsheet pada umumnya memang bisa dianggap sebagai cikal bakal dalam menyimpan data-data sederhana, memanfaatkan model baris dan kolom yang ada di dalamnya, kita jadi bisa menyimpan bermacam-macam data ke dalam aplikasi tersebut.
+
+Google Sheet bisa juga dipublikasikan sebagai API melalui Google App Script. Baca dokumentasi [Extending Google Sheets](https://developers.google.com/apps-script/guides/sheets). Tapi pada artikel kali ini kita akan menggunakan aplikasi yang dibuat sendiri pakai Next.js untuk mengakses data di dalam Google Sheet.
+
+### Instalasi
+
+Untuk menghubungkan aplikasi Next.js dengan Google Sheet, kita akan menggunakan SDK [googleapis](https://www.npmjs.com/package/googleapis) yang memang diurus secara resmi oleh tim Google sendiri.
+
+::: code-group labels=[npm, pnpm, yarn, bun]
+
+```bash title=zsh frame=terminal
+npm install googleapis
+```
+
+```bash title=zsh frame=terminal
+pnpm add googleapis
+```
+
+```bash title=zsh frame=terminal
+yarn add googleapis
+```
+
+```bash title=zsh frame=terminal
+bun add googleapis
+```
+
+:::
+
+### Persiapan akses
+
+Untuk bisa mengakses API dari Google Drive maupun Google Sheet, kita perlu membuat Service Account Keys, jika kalian belum memiliki projek dengan [Google Cloud Console](https://console.cloud.google.com/), maka kalian perlu membuatnya terlebih dahulu.
+
+Setelah itu kalian perlu membuat [Service Account](https://console.cloud.google.com/iam-admin/serviceaccounts) pada projek tersebut. Setelah memiliki Service Account, kita bisa membuat Service Account Key yang bisa diakses di dalam halaman detail dari Service Account yang kita buat sebelumnya. Service Account Key tersebut bisa diunduh dalam format JSON, simpan data tersebut dengan baik. File tersebut adalah kredensial, jika kalian akan meletakan di projek kalian, pastikan sudah dimasukan ke `.gitignore` sehingga tidak akan secara tidak sengaja terbawa ke remote git. Kita akan meletakkan file JSON tersebut di env var kita nantinya.
+
+Buka akses ke [Google Sheets API](https://console.developers.google.com/apis/api/sheets.googleapis.com/overview) dan [Google Drive API](https://console.developers.google.com/apis/api/drive.googleapis.com/overview). Secara default service ini berada dalam mode disable karenanya perlu diaktifkan secara manual. Google Drive API dibutuhkan untuk mengambil daftar Google Sheet yang sudah diberikan akses, sementara Google Sheet API akan dipakai untuk Read dan Update baris dan kolom di dalam suatu Google Sheet.
+
+### Menambahkan JSON ke env var
+
+Karena bentuk Service Account Key ini adalah JSON, agak sulit untuk langsung disematkan dalam env var seperti biasa, kita perlu membuang semua newline yang ada sehingga bisa disimpan dalam 1 string. Berdasarkan artikel [How to add Firebase service account json files to Vercel](https://dev.to/vvo/how-to-add-firebase-service-account-json-files-to-vercel-ph5), kita bisa menggunakan [remove-line-breaks](https://www.textfixer.com/tools/remove-line-breaks.php) untuk membuang semua newline pada JSON file kita. Setelahnya kita bisa sematkan JSON tersebut ke dalam env var seperti string biasa.
+
+Atau pilihan lainnya, ambil saja kolom-kolom yang dibutuhkan saja. Di artikel kali ini kita hanya akan menggunakan `client_email` dan `private_key`, jadi kalian bisa cukup menyimpan dua nilai ini saja ke dalam env var.
+
+### Auth ke googleapis
+
+```ts title=src/utils/sheets.ts
+import { google, type sheets_v4 } from 'googleapis'
+import { detectValues, numberToLetter } from './utils'
+
+// Dengan asumsi kalian menyimpan di env var GOOGLE_CREDENTIALS
+// Kalian bisa saja skip bagian ini jika tidak relevan
+const keysEnvVar = process.env.GOOGLE_CREDENTIALS as string
+if (!keysEnvVar) {
+  throw new Error('The $GOOGLE_CREDENTIALS environment variable was not found!')
+}
+
+const env = JSON.parse(keysEnvVar)
+
+const auth = new google.auth.JWT({
+  email: env.client_email,
+  key: env.private_key,
+  scopes: ['https://www.googleapis.com/auth/drive'],
+})
+```
+
+Melempar `auth` ke Google Drive dan Google Sheet SDK:
+
+```ts title=src/utils/sheets.ts
+const drive = google.drive({ version: 'v3', auth })
+const sheets = google.sheets({ version: 'v4', auth })
+```
+
+## Fungsi untuk mengambil daftar file
+
+Seperti disebutkan secara singkat di atas, kita akan menggunakan Google Drive API untuk mendapatkan daftar Spreadsheet yang sudah diberikan akses. Untuk memberikan akses kita bisa menambahkan email dari service account yang di atas sudah kita buat ke dalam Spreadsheet tersebut. Kalian bisa tekan tombol "Share", dan tambahkan email pada saat membuka Spreadsheet.
+
+Kode untuk mendapatkan daftar file
+
+```ts title=src/utils/sheets.ts
+type FileData = {
+  id: string
+  name: string
+  modifiedTime: string
+}
+
+type FileOptions = {
+  limit?: number
+  nextToken?: string
+}
+
+export async function dapatkanDaftarSpreadsheet (options: FileOptions): Promise<{
+  next_token: string;
+  data: FileData[]
+}> {
+  try {
+    const driveRes = await drive.files.list({
+      q: "trashed = false and mimeType = 'application/vnd.google-apps.spreadsheet'",
+      fields: 'files(id, name, modifiedTime)',
+      spaces: 'drive',
+      pageSize: options.limit ? options.limit : 10,
+      pageToken: options.nextToken ? options.nextToken : undefined,
+    })
+
+    return {
+      next_token: driveRes.data.nextPageToken || '',
+      data: driveRes.data.files as FileData[]
+    }
+  } catch (e) {
+    console.error('Malahan error', e)
+
+    return {
+      next_token: '',
+      data: null,
+    }
+  }
+}
+```
+
+## Fungsi untuk mengambil data di dalam suatu sheet
+
+Dalam 1 spreadsheet bisa terdapat lebih dari 1 sheet, karenanya bagian ini berekspektasi kalian sudah tau sheet mana yang dituju. Ada kode terpisah untuk mendapatkan daftar sheet yang tersedia dalam satu spreadsheet, tapi kita akan lewati bagian tersebut dan langsung loncat ke cara mendapatkan dalam di dalam suatu sheet.
+
+```ts title=src/utils/sheets.ts
+type Options = {
+  offset?: number
+  limit?: number
+  columnCount?: number
+}
+
+type Column = {
+  title: string
+  cell: string
+}
+
+type Pagination = {
+  limit: number
+  cell_range: string
+  offset: number
+  next_offset: number
+  total: number
+  hasNext: boolean
+}
+
+type DataResponse = {
+  columns: SheetColumn[]
+  pagination: Pagination
+  data: Record<string, string | boolean | number>[]
+}
+
+async function mengambilDataDalamSheet(
+  spreadsheetId: string,
+  sheetName: string,
+  options: Options = { offset: 2, limit: 100, columnCount: 10 }
+): Promise<DataResponse | null> {
+  try {
+    const offset = options?.offset || 2
+    const limit = options?.limit || 100
+    const columnCount = options?.columnCount || 10
+
+    const firstRow = offset
+    const lastRow = offset + limit - 1
+
+    const maxColumn = columnCount ? numberToLetter(Number(columnCount)) : 'EE'
+
+    const headerRange = `${sheetName}!A1:${maxColumn}1`
+    const countRange = `${sheetName}!A2:A`
+    const paginatedRange = `${sheetName}!A${firstRow}:${maxColumn}${lastRow}`
+
+    const sheetRes = await sheets.spreadsheets.values.batchGet({
+      spreadsheetId,
+      ranges: [headerRange, countRange, paginatedRange],
+    })
+
+    if (sheetRes && sheetRes.data && sheetRes.data.valueRanges) {
+      const headerRow = sheetRes.data.valueRanges?.[0]?.values?.[0] || []
+      const total = (sheetRes.data.valueRanges[1].values || []).length
+      const rows = sheetRes.data.valueRanges[2].values || []
+
+      const columns: Column[] = []
+
+      headerRow.forEach((columnName, columnIndex) => {
+        columns.push({
+          title: columnName,
+          cell: `${sheetName}!${numberToLetter(columnIndex + 1)}`,
+        })
+      })
+
+      const data = []
+      for (let i = 0; i < rows.length; i += 1) {
+        const row = {}
+        let validValuesCount = 0
+        // @ts-ignore
+        row._row = firstRow + i
+        headerRow.forEach((columnName, columnIndex) => {
+          // @ts-ignore
+          row[columnName] = detectValues(rows[i][columnIndex])
+
+          // @ts-ignore
+          if (row[columnName]) validValuesCount += 1
+        })
+
+        if (validValuesCount) data.push(row)
+      }
+
+      const pagination: Pagination = {
+        limit,
+        cell_range: paginatedRange,
+        offset,
+        next_offset: offset + limit,
+        total,
+        hasNext: total > offset + limit,
+      }
+
+      return { columns, pagination, data } as DataResponse
+    } else {
+      console.warn('Kok kosong?')
+      return null
+    }
+  } catch (e) {
+    console.error('Sepertinya error?', e)
+    return null
+  }
+}
+```
+
+### Utility function
+
+Sebelum membuka keseluruhan kode, kita akan membutuhkan 2 utility function.
+
+#### ▶️ Mengkonversi angka ke huruf cell
+
+Cell yang dimaksud itu seperti `A`, `B`, ... `Z`, `AA`, `AB`, `AC`. Jadi utility ini akan mengubah angka yang dilempar menjadi huruf seperti di atas.
+
+Pertama kita perlu tau cara mengubah `1` menjadi `A`. Kita bisa memanfaatkan `String.fromCharCode`. Sayangnya kita perlu menambahkan dengan magic number `65` agar angka `0` bisa dikonversi sebagai `A`. Angka ini mengacu pada [spesifikasi ASCII karakter](https://www.ibm.com/docs/en/sdse/6.4.0?topic=configuration-ascii-characters-from-33-126).
+
+```ts title=src/utils/utils.ts
+const START_ASCII_A = 65
+function numberToLetter (num) {
+ return String.fromCharCode(num + START_ASCII_A) // 0 -> A, 26 -> Z
+}
+```
+
+Berikut adalah kode selengkapnya:
+
+```ts title=src/utils/utils.ts
+const START_ASCII_A = 65
+const MAX_LETTER = 26
+
+export function numberToLetter(num: number) {
+  let result = ''
+  let x = 1
+  let y = MAX_LETTER
+  let left = num - x
+
+  while (left >= 0) {
+    const curr = (left % y) / x
+    result = String.fromCharCode(curr + START_ASCII_A) + result
+
+    x = y
+    y *= MAX_LETTER
+    left -= y
+  }
+
+  return result
+}
+```
+
+#### ▶️ Menebak dan mengkonversi tipe data
+
+Fungsi ini berusaha menebak tipe data dari string menjadi tipe data yang kemungkinan adalah seharusnya. Ini diperlukan karena balikan dari googleapis sebagian besar dalam format string, jadi perlu dikonversi ke tipe data yang benar. Fungsi ini hanya berusaha menebak, jadi sangat besar kemungkinan salah.
+
+```ts title=src/utils/utils.ts
+export function detectValues(val: string) {
+  if (val === '') return null
+  if (val.toUpperCase() === 'TRUE') return true
+  if (val.toUpperCase() === 'FALSE') return false
+  if (/^\d+\.\d+$/.test(val)) return parseFloat(val)
+  if (/^\d+$/.test(val)) return parseInt(val, 10)
+
+  return val
+}
+```
+
+Kedua utility function di atas, digunakan pada fungsi untuk mengambil data di dalam suatu sheet.
+
+
+## Fungsi untuk menghapus suatu baris
+
+Fungsi berikut bisa digunakan saat kita ingin menghapus baris di dalam suatu sheet.
+
+```ts title=src/utils/sheets.ts
+async function hapusBaris(
+  spreadsheetId: string,
+  sheetName: string,
+  rows: string[] // Bisa berisi lebih dari 1 baris
+) {
+  try {
+    // Get sheetId
+    const sheetRes = await sheets.spreadsheets.get({
+      spreadsheetId,
+    })
+
+    if (!sheetRes || !sheetRes.data || !sheetRes.data.sheets) return null
+
+    const sheetInfo = sheetRes.data.sheets.find(
+      (d) => d?.properties?.title === sheetName
+    )
+
+    if (!sheetInfo) return null
+
+    const sheetId = sheetInfo.properties?.sheetId
+
+    // Build requests (we should delete from the bottom to top)
+    const rowNumbers = rows.map((d) => Number(d))
+    rowNumbers.sort((a, b) => b - a)
+
+    const requests: sheets_v4.Schema$Request[] = []
+    rowNumbers.forEach((endIndex: number) => {
+      const deleteDimension = {
+        range: {
+          sheetId,
+          dimension: 'ROWS',
+          startIndex: endIndex - 1,
+          endIndex,
+        },
+      } as sheets_v4.Schema$DeleteDimensionRequest
+
+      requests.push({
+        deleteDimension,
+      } as sheets_v4.Schema$Request)
+    })
+
+    // Batch Delete
+    const updatedSheet = await sheets.spreadsheets.batchUpdate({
+      spreadsheetId,
+      requestBody: {
+        requests,
+      },
+    })
+
+    return { deleted_rows: updatedSheet?.data?.replies?.length || 0 }
+  } catch (e) {
+    console.error('Sepertinya error', e)
+    return { deleted_rows: 0 }
+  }
+}
+```
+
+## Fungsi untuk menambah baris baru
+
+Fungsi berikut digunakan bila ingin menambahkan baris baru. Parameter body yang dikirimkan dalam bentuk `Array` berisi `Record` key-value, di mana key-nya berupa nama kolomnya sedangkan valuenya ya isi dari kolom tersebut. Contoh parameter:
+
+```json title=sample-parameter.json
+[
+  { "name": "Jean", "email": "jean@appleseed.com" },
+  { "name": "Bunny", "email": "bunny@appleseed.com" }
+]
+```
+
+Sementara fungsi menambah baris barunya adalah sebagai berikut:
+
+```ts title=src/utils/sheets.ts
+export async function menambahBarisBaru(
+  spreadsheetId: string,
+  sheetName: string,
+  bodyData: Record<string, unknown>[],
+  options = {
+    valueInputOption: 'USER_ENTERED',
+    columnCount: 10,
+  }
+): Promise<sheets_v4.Schema$UpdateValuesResponse | null> {
+  try {
+    const columnCount = options?.columnCount || 10
+    const maxColumn = columnCount ? numberToLetter(Number(columnCount)) : 'EE'
+
+    const defaultRange = `${sheetName}!A:${maxColumn}`
+    const sheetRes = await sheets.spreadsheets.values.get({
+      spreadsheetId,
+      range: defaultRange,
+    })
+
+    if (
+      sheetRes &&
+      sheetRes.data &&
+      sheetRes.data.values &&
+      sheetRes.data.values.length > 0
+    ) {
+      const rows = sheetRes.data.values
+
+      // Existing columns
+      const columns: Record<string, unknown> = {}
+      const columnList = (rows ? rows[0] : []).slice()
+      columnList.forEach((columnName, columnIndex) => {
+        columns[columnName] = `${sheetName}!${numberToLetter(columnIndex + 1)}`
+      })
+
+      // Check if there's new columns
+      let newColCount = 0
+
+      const data: sheets_v4.Schema$ValueRange[] = []
+      bodyData.forEach((body) => {
+        Object.keys(body).forEach((k) => {
+          if (!columns[k]) {
+            newColCount += 1
+            columns[k] = `${sheetName}!${numberToLetter(columnList.length + 1)}`
+            columnList.push(k)
+            data.push({
+              range: `${columns[k]}1`,
+              values: [[k]],
+            })
+          }
+        })
+      })
+
+      if (newColCount) {
+        await sheets.spreadsheets.values.batchUpdate({
+          spreadsheetId,
+          requestBody: {
+            valueInputOption: options.valueInputOption || 'USER_ENTERED',
+            data,
+          },
+        })
+      }
+
+      const values = bodyData.map((r) => columnList.map((c) => r[c] || ''))
+
+      // Append
+      const appendedSheet = await sheets.spreadsheets.values.append({
+        spreadsheetId,
+        range: defaultRange,
+        valueInputOption: options.valueInputOption || 'USER_ENTERED',
+        includeValuesInResponse: true,
+        insertDataOption: 'INSERT_ROWS',
+        requestBody: {
+          values,
+        },
+      })
+
+      return appendedSheet?.data?.updates || null
+    }
+
+    return null
+  } catch (e) {
+    console.error('Sepertinya kok error', e)
+    return null
+  }
+}
+```
+
+## Fungsi untuk mengubah isi dari baris yang sudah ada
+
+
+Fungsi untuk mengubah suatu baris akan membutuhkan parameter body yang dikirimkan dalam bentuk `Record` key-value, di mana key-nya berupa baris yang ingin diubah sedangkan valuenya barupa `Record` key-value lagi, isinya key-nya adalah nama kolom dan value-nya adalah isi terbaru dari kolom yang dimaksud. Contoh parameter:
+
+```json title=sample-parameter.json
+{
+  "4" : {
+    "email": "john@appleseed.com"
+  },
+  "1": {
+    "phone": "415-500-7000"
+  }
+}
+```
+
+Isi dari fungsi untuk mengubah baris adalah sebagai berikut:
+
+```ts title=src/utils/sheets.ts
+export async function mengubahIsiBaris(
+  spreadsheetId: string,
+  sheetName: string,
+  bodyData: Record<string, Record<string, unknown>>,
+  options = {
+    valueInputOption: 'USER_ENTERED',
+    columnCount: 10,
+  }
+): Promise<sheets_v4.Schema$UpdateValuesResponse | null> {
+  try {
+    const columnCount = options?.columnCount || 10
+    const maxColumn = columnCount ? numberToLetter(Number(columnCount)) : 'EE'
+
+    const headerRange = `${sheetName}!A1:${maxColumn}1`
+    const sheetRes = await sheets.spreadsheets.values.get({
+      spreadsheetId,
+      range: headerRange,
+    })
+
+    if (
+      sheetRes &&
+      sheetRes.data &&
+      sheetRes.data.values &&
+      sheetRes.data.values.length > 0
+    ) {
+      const headerRow = sheetRes.data.values[0]
+      const data: sheets_v4.Schema$ValueRange[] = []
+
+      // Existing columns
+      const columns: Record<string, unknown> = {}
+      headerRow.forEach((columnName, columnIndex) => {
+        columns[columnName] = `${sheetName}!${numberToLetter(columnIndex + 1)}`
+      })
+
+      // Build data to update
+      Object.keys(bodyData).forEach((rowNumber) => {
+        const body = bodyData[rowNumber]
+
+        // New columns
+        let newColCount = 0
+        Object.keys(body).forEach((k) => {
+          if (!columns[k]) {
+            newColCount += 1
+            columns[k] = `${sheetName}!${numberToLetter(
+              headerRow.length + newColCount
+            )}`
+            data.push({
+              range: `${columns[k]}1`,
+              values: [[k]],
+            })
+          }
+        })
+
+        // ValueRange
+        Object.keys(body).forEach((columnName) => {
+          data.push({
+            range: `${columns[columnName]}${rowNumber}`,
+            values: [[body[columnName]]],
+          })
+        })
+      })
+
+      // Batch Update
+      const updatedSheet = await sheets.spreadsheets.values.batchUpdate({
+        spreadsheetId,
+        requestBody: {
+          valueInputOption: options.valueInputOption || 'USER_ENTERED',
+          data,
+        },
+      })
+
+      return updatedSheet.data
+        .responses as sheets_v4.Schema$UpdateValuesResponse
+    }
+
+    return null
+  } catch (e) {
+    console.error('Sepertinya error', e)
+    return null
+  }
+}
+```
+
+## Daftar Pekerjaan Tersisa
+
+Kita sudah membuat berbagai fungsi yang berkomunikasi, membaca dan memodifikasi isi dari suatu spreadsheet di Google Sheet, selanjutnya memang masih ada pekerjaan yang tersisa untuk membuat projek kalian bisa diakses, tapi saya hanya akan sebutkan poin-poinnya tanpa menyertakan detail kode implementasinya. Berikut adalah daftar kerja yang tersisa:
+
+- 🔘 Membuat API Route sebagai pintu gerbang komunikasi dengan frontend. Di Next.js ini bisa menggunakan [Route Handler](https://nextjs.org/docs/app/building-your-application/routing/route-handlers). Gak susah, tapi kalau kalian belum pernah bikin hal serupa ya perlu belajar dikit-dikit aja.
+- 🔘 Handle CORS kalau kalian ingin deploy di domain yang berbeda. Mestinya ini bisa di set langsung dari `next.config` atau kalau mau runtime bisa di set juga di Middleware. Contoh kode menangani CORS di Next.js: [Di Route handler](https://nextjs.org/docs/app/building-your-application/routing/route-handlers#cors), [di Middleware](https://nextjs.org/docs/app/building-your-application/routing/middleware#cors), [di next.config](https://nextjs.org/docs/app/api-reference/config/next-config-js/headers#cors).
+- 🔘 Membuat API Spec dengan Open API. Kalian bisa pakai [Swagger Editor](https://editor-next.swagger.io/) untuk memudahkan membuat spesifikasi yang comply dengan Open API.
+- 🔘 Generate API Doc, bisa gunakan [Swagger UI](https://swagger.io/tools/swagger-ui/) atau [Scalar](https://scalar.com/). Ini bisa lebih mudah kalau kalian sudah membuat spek APi yang comply dengan Open API di awal.
+- 🔘 Menambahkan simple Auth, jaga-jaga agar tidak diakses oleh selain aplikasi yang kalian inginkan. Kalau mau gampang ya bisa pake Basic Auth saja atau API Key.
+
+## Kode lengkap
+
+Semua kode yang ada di artikel kali ini saya ambil dari repo [mazipan/gsheet-rest-api](https://github.com/mazipan/gsheet-rest-api), kalian bisa lihat lebih lengkap di repo tersebut.
+
+## Kredit
+
+- [melalj/gsheet-api](https://github.com/melalj/gsheet-api)
+
+---
+
+**👋 Sekian dan terima kasih**
+
+Maaf-maaf aja kalau gak bermanfaat 🙇😭
+
+---
+
+
+Foto cover diambil dari laman [Pexel](https://www.pexels.com/id-id/foto/lot-kontainer-kargo-906494/), Foto oleh [Chanaka](https://www.pexels.com/id-id/@chanaka-318741/)
+
