@@ -33,3 +33,10 @@ pnpm-debug.log*
 
 .astro/*
 !.astro/types.d.ts
+
+# pnpm 11 auto-generates this for build-script approval, but it breaks
+# package managers that treat it as a (monorepo) workspace manifest
+# (e.g. Vercel's pnpm 9: "packages field missing or empty"). This is a
+# single-package repo; build-script approval lives in package.json ->
+# pnpm.onlyBuiltDependencies instead.
+pnpm-workspace.yaml
