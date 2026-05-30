@@ -46,7 +46,7 @@ const tagLinks = getTagLinks(allProjects);
   <section slot="heading">
     <Breadcrumbs items={breadcrumbs} />
     <h1 class="b-h1 tracking-wide">{metadata.title}</h1>
-    <FilterList class="mb-2 mt-4 gap-1" itemLinks={tagLinks}>
+    <FilterList class="mb-8 mt-4 gap-1" itemLinks={tagLinks}>
       {
         ({ href, text, count, isActive }: FilterLink) => (
           <Tag href={href} size="md" colors={isActive ? 'primary' : 'default'}>

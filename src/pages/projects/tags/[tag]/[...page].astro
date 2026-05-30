@@ -61,7 +61,7 @@ const tagLinks = getTagLinks(allProjects, `${ROUTES.PROJECTS_TAGS}/${tag}`);
       <h1 class="b-h1 tracking-wide">{title}</h1>
       <Link href={ROUTES.PROJECTS}>all projects</Link>
     </div>
-    <FilterList class="mb-2 mt-4 gap-1" itemLinks={tagLinks}>
+    <FilterList class="mb-8 mt-4 gap-1" itemLinks={tagLinks}>
       {
         ({ href, text, count, isActive }: FilterLink) => (
           <Tag href={href} size="md" colors={isActive ? 'primary' : 'default'}>
