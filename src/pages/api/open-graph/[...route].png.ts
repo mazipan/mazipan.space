@@ -86,7 +86,6 @@ export const GET: APIRoute = async ({ props }: APIContext) => {
     loadAdditionalAsset: async (code: string, segment: string) => {
       if (code === 'emoji') {
         // if segment is an emoji
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
         return `data:image/svg+xml;base64,${btoa(await loadEmoji('twemoji', getIconCode(segment)))}`;
       }
 
@@ -97,7 +96,7 @@ export const GET: APIRoute = async ({ props }: APIContext) => {
 
   const pngBuffer = await sharp(Buffer.from(svg)).png().toBuffer();
 
-  return new Response(pngBuffer);
+  return new Response(new Uint8Array(pngBuffer));
 };
 
 /*-------------------------------- utils ------------------------------*/

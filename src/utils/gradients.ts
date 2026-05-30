@@ -2,13 +2,12 @@ import { default as twColors } from 'tailwindcss/colors';
 
 import { getRandomElementFromArray as rnd } from '@/utils/strings';
 
-import type { DefaultColors } from 'tailwindcss/types/generated/colors';
-
-type ColorKeys = keyof DefaultColors;
-type ShadeKeys = keyof DefaultColors[ColorKeys];
+// Tailwind v4 no longer ships `tailwindcss/types/generated/colors`,
+// so derive the palette types from the runtime colors export.
+type ColorKeys = keyof typeof twColors;
 
 const colors = ['gray', 'indigo', 'yellow', 'blue', 'cyan', 'lime', 'sky', 'white'] as ColorKeys[];
-const shades = [50, 100, 200] as ShadeKeys[];
+const shades: number[] = [50, 100, 200];
 const directions = ['to right', 'to bottom', '45deg'];
 
 // From: https://hypercolor.dev/
@@ -26,7 +25,9 @@ const gradientStyles = [
 // to support white
 const getRandomColor = () => {
   const rndColor = rnd(colors);
-  return rndColor === 'white' ? rndColor : twColors[rndColor][rnd(shades)];
+  if (rndColor === 'white') return twColors.white;
+  const palette = twColors[rndColor] as Record<number, string>;
+  return palette[rnd(shades)];
 };
 
 export const getRandomGradient = () =>

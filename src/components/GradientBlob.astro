@@ -51,12 +51,12 @@ const { slot, class: className, ...props } = Astro.props as Props;
       return this.getNewGradientAndRadius();
     };
 
-    setGradientAndRadius = (parameter) => {
+    setGradientAndRadius = (parameter: { newGradient: string; newRadius: string }) => {
       this.blobEl.style.backgroundImage = parameter.newGradient;
       this.blobEl.style.borderRadius = parameter.newRadius;
     };
 
-    eventHandler = (e) => {
+    eventHandler = (e: MessageEvent) => {
       if (!e.data) {
         return;
       }

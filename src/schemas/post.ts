@@ -44,10 +44,9 @@ export const postSchema = ({ image }: SchemaContext) =>
     lang: z.string().default(LANG),
     tags: z
       .array(
-        z.string().refine(
-          (tag) => TAGS.includes(tag as (typeof TAGS)[number]),
-          (tag) => ({ message: `Invalid tag: ${tag} in the markdown.` })
-        )
+        z.string().refine((tag) => TAGS.includes(tag as (typeof TAGS)[number]), {
+          error: (issue) => `Invalid tag: ${issue.input} in the markdown.`,
+        })
       )
       .nonempty()
       .transform(removeDuplicatesAndToLowerCase),

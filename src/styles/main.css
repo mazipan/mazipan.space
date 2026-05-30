@@ -1,6 +1,7 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+@import 'tailwindcss';
+
+/* keep the existing JS-based config (theme, plugins, custom variants) */
+@config '../../tailwind.config.ts';
 
 /* first, so base, components, utilities can use it */
 @import './theme/index.css';

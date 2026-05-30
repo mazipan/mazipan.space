@@ -43,23 +43,26 @@
     @apply text-base sm:text-lg;
   }
 
-  /* vertical margins (my-) */
+}
 
-  /* like p */
-  .b-p-my {
-    @apply my-5 md:my-6;
-  }
+/* vertical-margin helpers as utilities so they can be used in markup
+ * and referenced via `@apply` (Tailwind v4 only allows `@apply` on
+ * real utilities, not arbitrary custom classes). */
 
-  /* my- like h2, mt-, mb- first and last child */
-  .b-h2-mt {
-    @apply mt-12 md:mt-14;
-  }
+/* like p */
+@utility b-p-my {
+  @apply my-5 md:my-6;
+}
 
-  .b-h2-mb {
-    @apply mb-6 md:mb-8;
-  }
+/* my- like h2, mt-, mb- first and last child */
+@utility b-h2-mt {
+  @apply mt-12 md:mt-14;
+}
 
-  .b-h2-my {
-    @apply b-h2-mb b-h2-mt;
-  }
+@utility b-h2-mb {
+  @apply mb-6 md:mb-8;
+}
+
+@utility b-h2-my {
+  @apply b-h2-mb b-h2-mt;
 }

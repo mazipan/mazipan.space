@@ -1,6 +1,6 @@
 {
   "framework": "astro",
-  "buildCommand": "yarn build",
+  "buildCommand": "pnpm build",
   "redirects": [
     {
       "source": "/s/ngobrol-santai-reactjs",

@@ -1,0 +1,11 @@
+# Single-package repo (no `packages:` field). Approves native dependencies
+# to run their build/install scripts, which pnpm blocks by default.
+allowBuilds:
+  esbuild: true
+  sharp: true
+
+# eslint 10.4.0 declares @eslint/plugin-kit ^0.7.1, which would resolve to the
+# very recently published 0.7.2 and trip the minimumReleaseAge supply-chain
+# policy. Pin the aged 0.7.1 (compatible with eslint 10.4.0).
+overrides:
+  '@eslint/plugin-kit': 0.7.1

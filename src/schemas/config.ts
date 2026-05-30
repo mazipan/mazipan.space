@@ -9,10 +9,12 @@ export const themeValues = ['default-light', 'default-dark'] as const;
 /** runs after astro:env check in astro.config.ts */
 export const processEnvSchema = z.object({
   NODE_ENV: z.enum(nodeEnvValues),
+  // in zod 4, `.default()` takes the output type (after the transform),
+  // so the default is a boolean here, not the 'false' string
   PREVIEW_MODE: z
     .enum(booleanValues)
     .transform((value) => value === 'true')
-    .default('false'),
+    .default(false),
   // ensure no trailing slash
   SITE_URL: z.string().url().regex(/[^/]$/, 'SITE_URL should not end with a slash "/"'),
   UMAMI_SCRIPT_URL: z.string().url().or(z.literal('')).optional(),

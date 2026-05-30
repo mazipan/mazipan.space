@@ -1,0 +1,6 @@
+/* Reference-only stylesheet for component <style> blocks.
+ * Astro processes each component's styles in isolation, so `@apply`
+ * and custom utilities need the Tailwind theme made available via
+ * `@reference`. This emits no CSS itself. */
+@import 'tailwindcss';
+@config '../../tailwind.config.ts';

@@ -3,7 +3,7 @@ import { z } from 'zod';
 import type { ZodSchema } from 'zod';
 
 export const zodErrorToString = (error: z.ZodError): string => {
-  return error.errors.map((err: z.ZodIssue) => `${err.path.join('.')}: ${err.message}`).join(', ');
+  return error.issues.map((err: z.ZodIssue) => `${err.path.join('.')}: ${err.message}`).join(', ');
 };
 
 export const validateData = <T extends ZodSchema>(config: z.infer<T>, schema: T): z.infer<T> => {

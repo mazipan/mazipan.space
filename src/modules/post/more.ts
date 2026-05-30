@@ -1,13 +1,13 @@
 import { renderMarkdown } from '@/utils/markdown';
 
 import type { PostCollection } from '@/types/post';
-import type { MarkdownProcessorRenderResult } from '@astrojs/markdown-remark';
+import type { MarkdownRenderResult } from '@astrojs/markdown-remark';
 
 // unused
 
 // more posts with rendered md description
 export type CollectionEntryWithRenderedDescription = PostCollection & {
-  renderedDescription: MarkdownProcessorRenderResult;
+  renderedDescription: MarkdownRenderResult;
 };
 
 /** Don't use this, description without markdown, or must wrap with prose. */

@@ -1,3 +1,5 @@
+import type { JSX } from 'react';
+
 /**
  * Use only for components.
  * Unused, use ComponentProps<typeof SomeComponent> instead.

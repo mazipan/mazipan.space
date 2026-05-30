@@ -9,7 +9,6 @@ import type { OgImagePrefixType } from '@/constants/metadata';
 
 export const getOpenGraphImagePath = (path: string): string => {
   // only to throw for invalid path
-  // eslint-disable-next-line no-unused-vars
   const _prefix = getPagePrefix(path);
 
   const trimmedPath = removeLeadingAndTrailingSlashes(path);
