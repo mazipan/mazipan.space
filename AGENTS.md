@@ -184,17 +184,23 @@ Available: `@/assets`, `@/components`, `@/constants`, `@/content`, `@/layouts`,
   `pnpm/action-setup` + `actions/setup-node` reading `.nvmrc`). Keep action
   versions current.
 - **Vercel** deploys the static build (`vercel.json` → `buildCommand: pnpm build`).
-  Vercel uses pnpm 9 by default; to make it use pnpm 11 (matching
-  `packageManager`), set `ENABLE_EXPERIMENTAL_COREPACK=1` in the project settings.
+  Corepack is enabled (`ENABLE_EXPERIMENTAL_COREPACK=1` in project settings), so
+  Vercel uses the pnpm version pinned in `packageManager` (pnpm 11) — matching
+  local dev. Without Corepack, Vercel would fall back to pnpm 9 and choke on
+  `pnpm-workspace.yaml`, so keep Corepack enabled.
 
 ## Gotchas
 
-- **`pnpm-workspace.yaml` is gitignored.** This is a single-package repo, not a
-  monorepo. pnpm 11 may regenerate the file locally to record native-build
-  approval; never commit it (pnpm 9 on Vercel treats it as a workspace manifest
-  and fails with "packages field missing or empty"). Native-build approval lives
-  in `package.json` → `pnpm.onlyBuiltDependencies` (`esbuild`, `sharp`). On
-  pnpm 11 you may be prompted once to `pnpm approve-builds`.
+- **`pnpm-workspace.yaml` is committed and required.** pnpm 11 blocks
+  dependency build scripts by default, so this file approves the native builds
+  (`allowBuilds: { esbuild, sharp }`) — without it, `esbuild`/`sharp` won't
+  build and the production build fails. This is a single-package repo, so the
+  file has **no `packages:` field**; it must only be used with pnpm 10+/Corepack
+  (a pnpm 9 that treats it as a monorepo manifest would fail with "packages
+  field missing or empty"). Note: `onlyBuiltDependencies` is *not* honored by
+  pnpm 11 — use the `allowBuilds` map. Local installs may inject placeholder
+  values or a `minimumReleaseAgeExclude` block (from a machine-global pnpm
+  setting); keep the committed file clean (just `allowBuilds` with `true`).
 - **OG images** are generated at build time with `satori` + `sharp`
   (`src/pages/api/open-graph/[...route].png.ts`). `satori` is strict about image
   sources — always quote attribute interpolations in the HTML template
