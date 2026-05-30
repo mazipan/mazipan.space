@@ -18,6 +18,7 @@ const tagListVariants = cva('not-prose inline-flex flex-wrap items-center', {
 export interface Props extends HTMLAttributes<'ul'>, VariantProps<typeof tagListVariants> {
   tags: string[];
   tagProps?: TagProps;
+  basePath?: string;
 }
 
 const {
@@ -25,12 +26,13 @@ const {
   tagProps,
   variant = 'solid',
   size = 'sm',
+  basePath = ROUTES.TAGS,
   class: className,
   ...props
 } = Astro.props;
 
 const tagLinks = tags.map((tagItem) => ({
-  href: `${ROUTES.TAGS}/${tagItem}`,
+  href: `${basePath}/${tagItem}`,
   text: `#${tagItem}`,
 }));
 ---

@@ -1,26 +1,36 @@
 ---
 import { getAllProjects } from '@/modules/project';
-import { getTagLinks } from '@/modules/project/tag';
+import { getTagLinks, getUniqueTags } from '@/modules/project/tag';
 import List from '@/layouts/List.astro';
 import Breadcrumbs from '@/components/Breadcrumbs.astro';
 import FilterList from '@/components/FilterList.astro';
+import Link from '@/components/Link.astro';
 import ProjectList from '@/components/ProjectList.astro';
 import Tag from '@/components/Tag.astro';
-import { BreadcrumbItemHome } from '@/constants/breadcrumb';
+import { BreadcrumbItemHome, BreadcrumbItemProject } from '@/constants/breadcrumb';
+import { ROUTES } from '@/constants/routes';
 import { CONFIG_CLIENT } from '@/config/client';
 import { getPageMetadata } from '@/utils/metadata';
 import { pickPaginationPropsFromPage } from '@/utils/pagination';
 
 import type { FilterLink } from '@/types/post';
+import type { Metadata } from '@/types/common';
 import type { Project } from '@/types/project';
 import type { GetStaticPathsOptions, Page } from 'astro';
 
 export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
-  const sortedProjects: Project[] = await getAllProjects();
+  const allProjects: Project[] = await getAllProjects();
   const pageSize = CONFIG_CLIENT.PAGE_SIZE_POST_CARD;
 
-  const pagination = paginate(sortedProjects, { pageSize });
-  pagination.push({ params: { page: '1' }, props: pagination[0].props });
+  const uniqueTags = getUniqueTags(allProjects);
+
+  const pagination = uniqueTags.flatMap((tag) => {
+    const filtered = allProjects.filter((p) => p.data.tags.includes(tag));
+    const tagPagination = paginate(filtered, { pageSize, params: { tag } });
+    return tagPagination;
+  });
+
+  pagination.push({ ...pagination[0], params: { ...pagination[0].params, page: '1' } });
   return pagination;
 }
 
@@ -29,23 +39,28 @@ type Props = {
 };
 
 const { page } = Astro.props;
-const { data: projects } = page;
+const { tag } = Astro.params;
+
+const title = `#${tag}`;
+const defaultMetadata = getPageMetadata('lists/projects/tags/tag');
+const metadata: Metadata = { ...defaultMetadata, title };
 
 const paginationProps = pickPaginationPropsFromPage(page);
-
-const metadata = getPageMetadata('lists/projects');
-
 const layoutProps = { metadata, paginationProps };
-const breadcrumbs = [BreadcrumbItemHome];
+
+const breadcrumbs = [BreadcrumbItemHome, BreadcrumbItemProject];
 
 const allProjects = await getAllProjects();
-const tagLinks = getTagLinks(allProjects);
+const tagLinks = getTagLinks(allProjects, `${ROUTES.PROJECTS_TAGS}/${tag}`);
 ---
 
 <List {...layoutProps}>
   <section slot="heading">
     <Breadcrumbs items={breadcrumbs} />
-    <h1 class="b-h1 tracking-wide">{metadata.title}</h1>
+    <div class="flex items-baseline justify-between gap-4">
+      <h1 class="b-h1 tracking-wide">{title}</h1>
+      <Link href={ROUTES.PROJECTS}>all projects</Link>
+    </div>
     <FilterList class="mb-2 mt-4 gap-1" itemLinks={tagLinks}>
       {
         ({ href, text, count, isActive }: FilterLink) => (
@@ -56,5 +71,5 @@ const tagLinks = getTagLinks(allProjects);
       }
     </FilterList>
   </section>
-  <ProjectList {projects} />
+  <ProjectList projects={page.data} />
 </List>
