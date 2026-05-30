@@ -49,6 +49,9 @@ export const PAGE_METADATA = {
   'lists/projects': {
     title: '🖥️ Projects',
   },
+  'lists/projects/tags/tag': {
+    title: '🎟️ Tag',
+  },
   'pages/talks': {
     title: '🎙️ Talks',
     description: '',

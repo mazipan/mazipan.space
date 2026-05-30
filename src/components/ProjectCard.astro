@@ -7,6 +7,7 @@ import Link from '@/components/Link.astro';
 import { IMAGE_SIZES } from '@/constants/image';
 import { ROUTES } from '@/constants/routes';
 import { setTransitionSlug, TRANSITION_ELEMENT_IDS } from '@/constants/transitions';
+
 import TagList from './TagList.astro';
 
 import type { Project } from '@/types/project';
@@ -52,7 +53,7 @@ const getTransitionNameFromElementId = setTransitionSlug({ pageSlug: slug });
       </span>
     </span>
 
-    <TagList tags={tags} size="sm" class="inline-flex" />
+    <TagList tags={tags} size="sm" class="inline-flex" basePath={ROUTES.PROJECTS_TAGS} />
   </div>
 
   <h3 class="b-h3 mb-0 line-clamp-2 break-words">

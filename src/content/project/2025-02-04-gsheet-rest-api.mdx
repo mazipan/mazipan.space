@@ -5,10 +5,23 @@ heroImage: '../../content/project/_images/gsheet-rest-api.png'
 heroAlt: Homepage GSheet Rest API
 publishDate: 2025-02-04
 tags:
-  - personal
+  - experimental
 ---
 
-Simple yet deployable rest API for your Google Sheet. Turn your Google Sheet into API.
+[GSheet Rest API](https://gsheet-rest-api.vercel.app/) turns any Google Sheet into a queryable REST API — no backend setup, no database to manage. Deploy your own instance to Vercel in one click, connect it to your Google Sheet, and you immediately have a working API backed by your spreadsheet data.
+
+I kept running into the same situation across different projects: an internal tool needs data, a non-technical teammate is happily managing that data in Google Sheets, and bridging the two requires either spinning up a proper backend or writing awkward workarounds. Neither is great for something that should take an afternoon.
+
+GSheet Rest API was my answer to that recurring problem — a reusable, self-deployable bridge that lives at the seam between "a spreadsheet someone maintains" and "an API my code can consume." Build it once, deploy it anywhere, forget the infrastructure.
+
+## ✨ Features
+
+- **One-click Vercel deployment** — clone and deploy in seconds, no infrastructure work required
+- **Google Sheets as your database** — use the familiar spreadsheet interface to manage data
+- **REST endpoints** — standard HTTP API with proper request/response structure
+- **OpenAPI 3.0.4 spec** — auto-generated API documentation so consumers know exactly what's available
+- **Scalar docs UI** — interactive API explorer served alongside the API for easy testing
+- **Self-hosted** — you own and control the deployment; no third-party data access
 
 ## 🗂️ Tech Stacks
 
@@ -19,5 +32,5 @@ Simple yet deployable rest API for your Google Sheet. Turn your Google Sheet int
 
 ## 🔗 Links
 
-- Repository: [mazipan/gsheet-rest-api](https://github.com/mazipan/gsheet-rest-api)
 - Website: [gsheet-rest-api.vercel.app](https://gsheet-rest-api.vercel.app/)
+- Repository: [mazipan/gsheet-rest-api](https://github.com/mazipan/gsheet-rest-api)
