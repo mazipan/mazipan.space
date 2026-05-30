@@ -8,11 +8,23 @@ tags:
   - personal
 ---
 
-Xhot it (read as "shot it") is just another screenshot app in your desktop: an experimental application.
+[Xhot It](https://github.com/mazipan/xhotit) (read as "shot it") is an experimental desktop screenshot app built with Tauri v2.
+
+I'd been hearing about Tauri for a while — Rust backend, web-based UI, tiny binary, native performance. It sounded too good to be true compared to Electron. The only way to know was to build something real with it, something that actually touches OS-level APIs rather than just renders a UI.
+
+A screenshot tool was the right scope: it needs to access the screen and interact with the OS in ways a plain web app can't, so it's a genuine stress test for the framework. Xhot It started as that experiment and ended up as something I actually use — which is usually the sign that a side project worked out.
+
+## ✨ Features
+
+- **Area capture** — free-select any region of the screen to capture
+- **Active window capture** — grab only the currently focused window
+- **Full screen capture** — capture the entire display in one shot
+- **Backdrop customization** — change the background/backdrop behind your screenshot for a polished look
+- **Image compression** — export as JPG or PNG with configurable quality (added in v1.1.0)
 
 ## 🗂️ Tech Stacks
 
-- Tauri
+- Tauri v2 (Rust + TypeScript)
 - Tailwind CSS
 
 ## 🔗 Links
