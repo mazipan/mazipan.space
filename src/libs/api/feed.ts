@@ -40,11 +40,11 @@ export const getFeed = async (): Promise<Feed> => {
   const sortedPosts = await getAllPosts();
 
   const itemPromises = sortedPosts.map(async (post) => {
-    const { data, body, slug } = post;
+    const { data, body, id } = post;
     const { title, description, publishDate, heroImage, noHero } = data;
 
-    const url = `${SITE_URL}${ROUTES.BLOG}/${slug}`;
-    const { code: content } = await renderMarkdown(body);
+    const url = `${SITE_URL}${ROUTES.BLOG}/${id}`;
+    const { code: content } = await renderMarkdown(body ?? '');
 
     const item: Item = {
       title,

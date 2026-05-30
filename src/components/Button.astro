@@ -43,7 +43,9 @@ const {
 } = Astro.props;
 
 const classes = buttonVariants({ variant, colors, size, disabled, className });
-const Element = disabled ? 'span' : element;
+// props are typed as anchor attributes (Props extends HTMLAttributes<'a'>),
+// so pin the dynamic tag to 'a' for type-checking; the runtime tag is unchanged
+const Element = (disabled ? 'span' : element) as 'a';
 ---
 
 <Element {...props} class={classes}>

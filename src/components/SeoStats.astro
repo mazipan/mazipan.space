@@ -50,7 +50,7 @@ function toAreaPath(points: string): string {
     .split(/\s+/)
     .map((p) => p.split(',').map(Number));
   if (!pts.length) return '';
-  const [[x0, y0]] = pts;
+  const [[x0]] = pts;
   const [xLast] = pts[pts.length - 1];
   const line = pts.reduce((d, [x, y], i) => d + (i === 0 ? `L ${x},${y}` : ` L ${x},${y}`), '');
   return `M ${x0},50 ${line} L ${xLast},50 Z`;

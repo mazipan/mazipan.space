@@ -1,8 +1,10 @@
-@layer components {
-  .centered {
-    @apply w-full md:mx-auto;
-  }
+/* `centered` is referenced via `@apply` below, so it must be a real
+ * utility in Tailwind v4 (not a plain `@layer components` class). */
+@utility centered {
+  @apply w-full md:mx-auto;
+}
 
+@layer components {
   .centered-px {
     @apply centered px-4 lg:px-0;
   }

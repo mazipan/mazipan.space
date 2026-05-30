@@ -1,7 +1,7 @@
 import mdx from '@astrojs/mdx';
 import partytown from '@astrojs/partytown';
 import react from '@astrojs/react';
-import tailwind from '@astrojs/tailwind';
+import tailwindcss from '@tailwindcss/vite';
 import icon from 'astro-icon';
 import { defineConfig } from 'astro/config';
 
@@ -23,10 +23,7 @@ export default defineConfig({
   site: SITE_URL,
   env: envSchema,
   experimental: {
-    // https://docs.astro.build/en/reference/experimental-flags/responsive-images/
-    responsiveImages: true,
-    // https://docs.astro.build/en/reference/experimental-flags/svg/
-    svg: true,
+    // svg & responsive images graduated to stable in Astro 6
     // https://docs.astro.build/en/reference/experimental-flags/content-intellisense/
     contentIntellisense: true,
   },
@@ -40,8 +37,6 @@ export default defineConfig({
     sitemapIntegration(),
     react(),
     mdx(),
-    // applyBaseStyles: false prevents double loading of tailwind
-    tailwind({ applyBaseStyles: false }),
     icon({ iconDir: 'src/assets/icons' }),
     partytown({
       config: { forward: ['dataLayer.push'] },
@@ -55,6 +50,7 @@ export default defineConfig({
     ],
   },
   vite: {
+    plugins: [tailwindcss()],
     build: {
       sourcemap: false,
     },

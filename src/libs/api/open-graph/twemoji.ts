@@ -45,7 +45,6 @@ export const apis = {
     `https://cdn.jsdelivr.net/gh/shuding/fluentui-emoji-unicode/assets/${code.toLowerCase()}_flat.svg`,
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const emojiCache: Record<string, Promise<string>> = {};
 
 export async function loadEmoji(type: keyof typeof apis, code: string) {

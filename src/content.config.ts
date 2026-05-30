@@ -2,8 +2,8 @@ import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
 
 import { BASE_FOLDERS } from '@/constants/collections';
-import { postSchema } from '../schemas/post';
-import { projectSchema } from '../schemas/project';
+import { postSchema } from '@/schemas/post';
+import { projectSchema } from '@/schemas/project';
 
 const { POST, PROJECT } = BASE_FOLDERS;
 

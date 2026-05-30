@@ -1,3 +1,8 @@
+// CSS-only packages (no bundled types); needed since TS now checks
+// side-effect imports (`noUncheckedSideEffectImports`).
+declare module '@fontsource/*';
+declare module '@fontsource-variable/*';
+
 declare namespace NodeJS {
   /** for astro.config.mjs */
   interface ProcessEnv {

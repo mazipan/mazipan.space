@@ -3,12 +3,11 @@ import defaultTheme from 'tailwindcss/defaultTheme';
 import plugin from 'tailwindcss/plugin';
 
 import type { Config } from 'tailwindcss';
-import type { PluginUtils } from 'tailwindcss/types/config';
 
 const config: Config = {
   content: ['src/**/*.{astro,md,mdx,tsx,ts}', 'astro.config.mjs'],
   // activates only dark: modifier, not color theme
-  darkMode: ['selector'],
+  darkMode: 'selector',
   plugins: [
     typography,
     plugin(({ addVariant }) => {
@@ -76,7 +75,7 @@ const config: Config = {
         button: 'var(--th-rounded-button)',
         tag: 'var(--th-rounded-tag)',
       },
-      typography: ({ theme }: PluginUtils) => ({
+      typography: ({ theme }: { theme: (path: string) => string }) => ({
         DEFAULT: {
           css: {
             'code::before': { content: '""' },

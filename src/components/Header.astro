@@ -129,8 +129,8 @@ const activeNavItemPath = getActiveNavItemPath(routePathname);
 
     toggleMobileMenu = () => {
       // SCROLL_TO_TOP_ID
-      let prevState = this.mobileNav.getAttribute('data-menu');
-      let nextState = prevState === 'open' ? 'close' : 'open';
+      const prevState = this.mobileNav.getAttribute('data-menu');
+      const nextState = prevState === 'open' ? 'close' : 'open';
 
       this.mobileNav.setAttribute('data-menu', nextState);
       this.headerEl.setAttribute('data-menu', nextState);

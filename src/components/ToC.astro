@@ -78,8 +78,8 @@ const { headings, ...props } = Astro.props;
     private contentEl: HTMLDivElement;
 
     toggle = () => {
-      let prevState = this.btnEl.getAttribute('data-expanded');
-      let nextState = prevState === 'true' ? 'false' : 'true';
+      const prevState = this.btnEl.getAttribute('data-expanded');
+      const nextState = prevState === 'true' ? 'false' : 'true';
 
       this.btnEl.setAttribute('data-expanded', nextState);
       this.contentEl.setAttribute('data-expanded', nextState);
@@ -108,8 +108,8 @@ const { headings, ...props } = Astro.props;
     private QUERY = '(min-width: 1024px)';
 
     toggle = () => {
-      let prevState = this.getAttribute('data-expanded');
-      let nextState = prevState === 'true' ? 'false' : 'true';
+      const prevState = this.getAttribute('data-expanded');
+      const nextState = prevState === 'true' ? 'false' : 'true';
 
       this.setAttribute('data-expanded', nextState);
       this.btnToggleEl.setAttribute('data-expanded', nextState);

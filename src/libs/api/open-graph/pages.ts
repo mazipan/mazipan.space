@@ -42,7 +42,7 @@ export const getPages = async () => {
   // ! 2. must not start with '/' blog/slug <- correct, /blog/slug <- incorrect
   const allPosts = await getAllPosts();
   const posts = Object.fromEntries(
-    allPosts.map((post) => [`${OG_IMAGE_PREFIXES.OG_BLOG}/${post.slug}`, post.data])
+    allPosts.map((post) => [`${OG_IMAGE_PREFIXES.OG_BLOG}/${post.id}`, post.data])
   );
 
   const allProjects = await getAllProjects();
