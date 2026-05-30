@@ -1,0 +1,5 @@
+# Single-package repo (no `packages:` field). Approves native dependencies
+# to run their build/install scripts, which pnpm blocks by default.
+allowBuilds:
+  esbuild: true
+  sharp: true
