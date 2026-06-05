@@ -39,5 +39,6 @@ export const ROUTES = {
   UMAMI_PUBLIC_URL: 'https://umami.mazipan.space/share/O3odIJMu00TRHGhb/www.mazipan.space',
   BOOKMARKS: 'https://bookmarks.mazipan.space/',
   TOOLS: 'https://tools.mazipan.space/',
+  GAMES: 'https://games.mazipan.space/',
   GH_NEW_ISSUE: 'https://github.com/mazipan/mazipan.space/issues/new',
 } as const;
