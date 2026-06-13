@@ -79,7 +79,7 @@
     "serve": "^14.2.6",
     "tailwindcss": "^4.3.0",
     "typescript": "^6.0.3",
-    "typescript-eslint": "^8.60.0"
+    "typescript-eslint": "^8.60.1"
   },
   "packageManager": "pnpm@11.5.0",
   "engines": {
