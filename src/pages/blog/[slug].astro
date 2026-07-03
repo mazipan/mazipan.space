@@ -137,6 +137,8 @@ const schema = JSON.stringify({
 
   <Fragment slot="hero-text">
     <h1
+      id="post-title"
+      data-translatable="title"
       class="b-h1 mb-3 mt-0 tracking-wide"
       transition:name={getTransitionNameFromElementId({
         elementId: TRANSITION_ELEMENT_IDS.POST_CARD.TITLE,
@@ -149,6 +151,8 @@ const schema = JSON.stringify({
     {
       description && (
         <p
+          id="post-description"
+          data-translatable="description"
           class="mb-6 text-lg font-normal text-captions md:mb-8 md:text-xl"
           transition:name={getTransitionNameFromElementId({
             elementId: TRANSITION_ELEMENT_IDS.POST_CARD.DESCRIPTION,

@@ -26,7 +26,8 @@ const isAlreadyEnglish = lang === 'en';
 }
 
 <script>
-  const CONTENT_SELECTOR = '.my-prose';
+  const TRANSLATABLE_ATTR = '[data-translatable]';
+  const CONTENT_SELECTOR = '[data-translatable="content"]';
   const TARGET_LANG = 'en';
 
   interface TranslatorInstance {
@@ -110,19 +111,25 @@ const isAlreadyEnglish = lang === 'en';
         }
         console.debug('[TranslatorButton] Translator ready');
 
-        const contentEl = document.querySelector(CONTENT_SELECTOR);
+        // Collect all translatable sections in order: title, description, then content blocks
+        const heroEls = Array.from(
+          document.querySelectorAll<HTMLElement>(`${TRANSLATABLE_ATTR}:not([data-translatable="content"])`)
+        );
+
+        const contentEl = document.querySelector<HTMLElement>(CONTENT_SELECTOR);
         if (!contentEl) {
           throw new Error(`Content element not found: ${CONTENT_SELECTOR}`);
         }
 
-        const blocks = Array.from(
+        const contentBlocks = Array.from(
           contentEl.querySelectorAll<HTMLElement>('p, h1, h2, h3, h4, h5, h6, li, blockquote, td, th')
         ).filter((el) => !el.closest('pre'));
 
-        console.debug(`[TranslatorButton] Found ${blocks.length} blocks to translate`);
+        const allBlocks = [...heroEls, ...contentBlocks];
+        console.debug(`[TranslatorButton] Found ${heroEls.length} hero + ${contentBlocks.length} content blocks = ${allBlocks.length} total`);
 
-        for (let b = 0; b < blocks.length; b++) {
-          const block = blocks[b];
+        for (let b = 0; b < allBlocks.length; b++) {
+          const block = allBlocks[b];
           const walker = document.createTreeWalker(block, NodeFilter.SHOW_TEXT, {
             acceptNode(node) {
               const text = node.textContent?.trim();
@@ -141,7 +148,7 @@ const isAlreadyEnglish = lang === 'en';
           }
           if (!textNodes.length) continue;
 
-          console.debug(`[TranslatorButton] Translating block ${b + 1}/${blocks.length} <${block.tagName.toLowerCase()}>: "${block.textContent?.trim().slice(0, 60)}…"`);
+          console.debug(`[TranslatorButton] Translating block ${b + 1}/${allBlocks.length} <${block.tagName.toLowerCase()}>: "${block.textContent?.trim().slice(0, 60)}…"`);
 
           const translations = await Promise.all(
             textNodes.map((n) => translator.translate(n.textContent ?? ''))
@@ -153,7 +160,7 @@ const isAlreadyEnglish = lang === 'en';
             textNodes[i].textContent = translations[i];
           }
 
-          console.debug(`[TranslatorButton] Block ${b + 1}/${blocks.length} done`);
+          console.debug(`[TranslatorButton] Block ${b + 1}/${allBlocks.length} done`);
         }
 
         console.debug('[TranslatorButton] All blocks translated ✓');
