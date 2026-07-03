@@ -26,7 +26,7 @@ const isAlreadyEnglish = lang === 'en';
 }
 
 <script>
-  const CONTENT_SELECTOR = '.prose';
+  const CONTENT_SELECTOR = '.my-prose';
   const TARGET_LANG = 'en';
 
   interface TranslatorInstance {
@@ -111,7 +111,10 @@ const isAlreadyEnglish = lang === 'en';
         console.debug('[TranslatorButton] Translator ready');
 
         const contentEl = document.querySelector(CONTENT_SELECTOR);
-        if (!contentEl) return;
+        if (!contentEl) {
+          console.debug('[TranslatorButton] Content element not found:', CONTENT_SELECTOR);
+          return;
+        }
 
         const blocks = Array.from(
           contentEl.querySelectorAll<HTMLElement>('p, h1, h2, h3, h4, h5, h6, li, blockquote, td, th')
