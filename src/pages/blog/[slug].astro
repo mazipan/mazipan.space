@@ -165,6 +165,9 @@ const schema = JSON.stringify({
         elementId: TRANSITION_ELEMENT_IDS.POST_CARD.META,
       })}
     />
+
+    <TagList tags={tags} size="md" class="mt-4" />
+    <TranslatorButton lang={lang} />
   </Fragment>
 
   <Fragment slot="content">
@@ -173,9 +176,7 @@ const schema = JSON.stringify({
 
   <Fragment slot="after-content">
     <div class="b-h2-mb mt-4 flex flex-col items-start gap-6 md:flex-row md:items-center">
-      <TagList tags={tags} size="md" />
       <Share {...shareProps} />
-      <TranslatorButton lang={lang} />
     </div>
 
     <Giscus class="b-h2-mt" />
