@@ -112,8 +112,7 @@ const isAlreadyEnglish = lang === 'en';
 
         const contentEl = document.querySelector(CONTENT_SELECTOR);
         if (!contentEl) {
-          console.debug('[TranslatorButton] Content element not found:', CONTENT_SELECTOR);
-          return;
+          throw new Error(`Content element not found: ${CONTENT_SELECTOR}`);
         }
 
         const blocks = Array.from(
