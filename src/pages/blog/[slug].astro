@@ -166,8 +166,10 @@ const schema = JSON.stringify({
       })}
     />
 
-    <TagList tags={tags} size="md" class="mt-4" />
-    <TranslatorButton lang={lang} />
+    <div class="mt-4 flex flex-wrap items-center gap-3">
+      <TagList tags={tags} size="md" />
+      <TranslatorButton lang={lang} />
+    </div>
   </Fragment>
 
   <Fragment slot="content">
