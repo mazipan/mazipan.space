@@ -11,6 +11,7 @@ import PostListMore from '@/components/PostListMore.astro';
 import PostMeta from '@/components/PostMeta.astro';
 import Share from '@/components/Share.astro';
 import TagList from '@/components/TagList.astro';
+import TranslatorButton from '@/components/TranslatorButton.astro';
 import ToC from '@/components/ToC.astro';
 import { DRAFT_TEXT } from '@/constants/data';
 import { IMAGE_SIZES } from '@/constants/image';
@@ -53,6 +54,7 @@ const {
   heroAlt,
   noHero,
   category,
+  lang,
   tags = [],
 } = data;
 
@@ -135,6 +137,8 @@ const schema = JSON.stringify({
 
   <Fragment slot="hero-text">
     <h1
+      id="post-title"
+      data-translatable="title"
       class="b-h1 mb-3 mt-0 tracking-wide"
       transition:name={getTransitionNameFromElementId({
         elementId: TRANSITION_ELEMENT_IDS.POST_CARD.TITLE,
@@ -147,6 +151,8 @@ const schema = JSON.stringify({
     {
       description && (
         <p
+          id="post-description"
+          data-translatable="description"
           class="mb-6 text-lg font-normal text-captions md:mb-8 md:text-xl"
           transition:name={getTransitionNameFromElementId({
             elementId: TRANSITION_ELEMENT_IDS.POST_CARD.DESCRIPTION,
@@ -163,6 +169,11 @@ const schema = JSON.stringify({
         elementId: TRANSITION_ELEMENT_IDS.POST_CARD.META,
       })}
     />
+
+    <div class="mt-4 flex flex-wrap items-center gap-3">
+      <TagList tags={tags} size="md" />
+      <TranslatorButton lang={lang} />
+    </div>
   </Fragment>
 
   <Fragment slot="content">
@@ -171,7 +182,6 @@ const schema = JSON.stringify({
 
   <Fragment slot="after-content">
     <div class="b-h2-mb mt-4 flex flex-col items-start gap-6 md:flex-row md:items-center">
-      <TagList tags={tags} size="md" />
       <Share {...shareProps} />
     </div>
 

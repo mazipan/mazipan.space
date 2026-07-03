@@ -29,6 +29,7 @@ const breadcrumbs = [BreadcrumbItemHome, BreadcrumbItemBlog];
       <div class="relative gap-4 lg:grid lg:grid-cols-[minmax(0,1fr),300px]">
         <section
           class="my-prose centered-px post-detail [&>h2:nth-child(1)]:mt-0 [&>h2:nth-child(3)]:mt-0"
+          data-translatable="content"
         >
           <content-wrapper><slot name="content" /></content-wrapper>
         </section>
