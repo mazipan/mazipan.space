@@ -29,17 +29,23 @@ const isAlreadyEnglish = lang === 'en';
   const CONTENT_SELECTOR = '.prose';
   const TARGET_LANG = 'en';
 
-  type TranslationAPI = {
-    canTranslate: (opts: { sourceLanguage: string; targetLanguage: string }) => Promise<string>;
-    createTranslator: (opts: {
-      sourceLanguage: string;
-      targetLanguage: string;
-    }) => Promise<{ translate: (text: string) => Promise<string> }>;
-  };
+  interface TranslatorInstance {
+    translate: (text: string) => Promise<string>;
+  }
+
+  interface TranslatorConstructor {
+    availability: (opts: { sourceLanguage: string; targetLanguage: string }) => Promise<string>;
+    create: (opts: { sourceLanguage: string; targetLanguage: string }) => Promise<TranslatorInstance>;
+  }
 
   declare global {
     interface Window {
-      translation?: TranslationAPI;
+      Translator?: TranslatorConstructor;
+      // older API shape still present in some builds
+      translation?: {
+        canTranslate: (opts: { sourceLanguage: string; targetLanguage: string }) => Promise<string>;
+        createTranslator: (opts: { sourceLanguage: string; targetLanguage: string }) => Promise<TranslatorInstance>;
+      };
     }
   }
 
@@ -51,21 +57,26 @@ const isAlreadyEnglish = lang === 'en';
 
     if (!wrapper || !btn || !label || !icon) return;
 
-    if (!window.translation) return;
-
     const sourceLang = btn.dataset.sourceLang ?? 'id';
 
-    let availability: string;
+    // Detect which API shape is present
+    const hasNewAPI = typeof window.Translator !== 'undefined';
+    const hasOldAPI = typeof window.translation !== 'undefined';
+
+    if (!hasNewAPI && !hasOldAPI) return;
+
+    // Check availability
     try {
-      availability = await window.translation.canTranslate({
-        sourceLanguage: sourceLang,
-        targetLanguage: TARGET_LANG,
-      });
+      let availability: string;
+      if (hasNewAPI) {
+        availability = await window.Translator!.availability({ sourceLanguage: sourceLang, targetLanguage: TARGET_LANG });
+      } else {
+        availability = await window.translation!.canTranslate({ sourceLanguage: sourceLang, targetLanguage: TARGET_LANG });
+      }
+      if (availability === 'no') return;
     } catch {
       return;
     }
-
-    if (availability === 'no') return;
 
     wrapper.classList.remove('hidden');
 
@@ -74,7 +85,6 @@ const isAlreadyEnglish = lang === 'en';
 
     btn.addEventListener('click', async () => {
       if (translated) {
-        // restore originals
         for (const { node, text } of originalNodes) {
           node.textContent = text;
         }
@@ -90,10 +100,12 @@ const isAlreadyEnglish = lang === 'en';
       icon.textContent = '⏳';
 
       try {
-        const translator = await window.translation!.createTranslator({
-          sourceLanguage: sourceLang,
-          targetLanguage: TARGET_LANG,
-        });
+        let translator: TranslatorInstance;
+        if (hasNewAPI) {
+          translator = await window.Translator!.create({ sourceLanguage: sourceLang, targetLanguage: TARGET_LANG });
+        } else {
+          translator = await window.translation!.createTranslator({ sourceLanguage: sourceLang, targetLanguage: TARGET_LANG });
+        }
 
         const contentEl = document.querySelector(CONTENT_SELECTOR);
         if (!contentEl) return;
@@ -104,7 +116,6 @@ const isAlreadyEnglish = lang === 'en';
             if (!text) return NodeFilter.FILTER_SKIP;
             const parent = node.parentElement;
             if (!parent) return NodeFilter.FILTER_SKIP;
-            // skip code blocks
             if (parent.closest('code, pre')) return NodeFilter.FILTER_SKIP;
             return NodeFilter.FILTER_ACCEPT;
           },
@@ -116,7 +127,6 @@ const isAlreadyEnglish = lang === 'en';
           textNodes.push(node);
         }
 
-        // batch translate all text nodes
         const translations = await Promise.all(
           textNodes.map((n) => translator.translate(n.textContent ?? ''))
         );
