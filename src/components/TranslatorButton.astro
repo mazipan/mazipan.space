@@ -101,12 +101,14 @@ const isAlreadyEnglish = lang === 'en';
       icon.classList.add('spinning');
 
       try {
+        console.debug('[TranslatorButton] Creating translator…', { sourceLang, targetLang: TARGET_LANG });
         let translator: TranslatorInstance;
         if (hasNewAPI) {
           translator = await window.Translator!.create({ sourceLanguage: sourceLang, targetLanguage: TARGET_LANG });
         } else {
           translator = await window.translation!.createTranslator({ sourceLanguage: sourceLang, targetLanguage: TARGET_LANG });
         }
+        console.debug('[TranslatorButton] Translator ready');
 
         const contentEl = document.querySelector(CONTENT_SELECTOR);
         if (!contentEl) return;
@@ -115,7 +117,10 @@ const isAlreadyEnglish = lang === 'en';
           contentEl.querySelectorAll<HTMLElement>('p, h1, h2, h3, h4, h5, h6, li, blockquote, td, th')
         ).filter((el) => !el.closest('pre'));
 
-        for (const block of blocks) {
+        console.debug(`[TranslatorButton] Found ${blocks.length} blocks to translate`);
+
+        for (let b = 0; b < blocks.length; b++) {
+          const block = blocks[b];
           const walker = document.createTreeWalker(block, NodeFilter.SHOW_TEXT, {
             acceptNode(node) {
               const text = node.textContent?.trim();
@@ -134,6 +139,8 @@ const isAlreadyEnglish = lang === 'en';
           }
           if (!textNodes.length) continue;
 
+          console.debug(`[TranslatorButton] Translating block ${b + 1}/${blocks.length} <${block.tagName.toLowerCase()}>: "${block.textContent?.trim().slice(0, 60)}…"`);
+
           const translations = await Promise.all(
             textNodes.map((n) => translator.translate(n.textContent ?? ''))
           );
@@ -143,8 +150,11 @@ const isAlreadyEnglish = lang === 'en';
             originalNodes.push({ node: textNodes[i], text: original });
             textNodes[i].textContent = translations[i];
           }
+
+          console.debug(`[TranslatorButton] Block ${b + 1}/${blocks.length} done`);
         }
 
+        console.debug('[TranslatorButton] All blocks translated ✓');
         translated = true;
         label.textContent = 'Show Original';
         icon.textContent = '↩️';
