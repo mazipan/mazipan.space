@@ -98,6 +98,7 @@ const isAlreadyEnglish = lang === 'en';
       btn.disabled = true;
       label.textContent = 'Translating…';
       icon.textContent = '⏳';
+      icon.classList.add('spinning');
 
       try {
         let translator: TranslatorInstance;
@@ -140,10 +141,12 @@ const isAlreadyEnglish = lang === 'en';
         translated = true;
         label.textContent = 'Show Original';
         icon.textContent = '↩️';
+        icon.classList.remove('spinning');
       } catch (err) {
         console.error('[TranslatorButton]', err);
         label.textContent = 'Translation failed';
         icon.textContent = '⚠️';
+        icon.classList.remove('spinning');
       } finally {
         btn.disabled = false;
       }
@@ -152,3 +155,17 @@ const isAlreadyEnglish = lang === 'en';
 
   init();
 </script>
+
+<style>
+  @keyframes hourglass-spin {
+    0%   { transform: rotate(0deg); }
+    45%  { transform: rotate(0deg); }
+    55%  { transform: rotate(180deg); }
+    100% { transform: rotate(180deg); }
+  }
+
+  .spinning {
+    display: inline-block;
+    animation: hourglass-spin 1.2s ease-in-out infinite;
+  }
+</style>
