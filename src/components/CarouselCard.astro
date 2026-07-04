@@ -1,0 +1,73 @@
+---
+import type { Carousel } from '@/types/carousel';
+import type { CarouselTheme } from '@/schemas/carousel';
+
+interface Props {
+  carousel: Carousel;
+}
+
+const { carousel } = Astro.props;
+const { data, slug } = carousel;
+
+const firstSlide = data.slides[0];
+const coverTheme = firstSlide?.theme ?? 'ocean';
+const coverIcon = firstSlide?.icon ?? '✨';
+
+const GRADIENTS: Record<CarouselTheme, string> = {
+  ocean: 'linear-gradient(135deg, #1d4ed8 0%, #0891b2 100%)',
+  lavender: 'linear-gradient(135deg, #6d28d9 0%, #9333ea 100%)',
+  sunset: 'linear-gradient(135deg, #ea580c 0%, #e11d48 100%)',
+  forest: 'linear-gradient(135deg, #059669 0%, #0d9488 100%)',
+  midnight: 'linear-gradient(135deg, #1e293b 0%, #0f172a 100%)',
+  sunrise: 'linear-gradient(135deg, #f59e0b 0%, #fb923c 100%)',
+  cherry: 'linear-gradient(135deg, #e11d48 0%, #db2777 100%)',
+};
+
+const gradient = GRADIENTS[coverTheme];
+const slideCount = data.slides.length;
+
+const href = `/carousel/${slug}`;
+---
+
+<a
+  href={href}
+  class="group relative flex aspect-square flex-col overflow-hidden rounded-2xl text-white no-underline transition-transform duration-300 hover:scale-[1.02] hover:shadow-2xl focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+  style={`background: ${gradient};`}
+  aria-label={`${data.title} — ${slideCount} slides`}
+>
+  {/* Decorative circles */}
+  <div
+    class="absolute -right-8 -top-8 h-32 w-32 rounded-full opacity-20"
+    style="background: rgba(255,255,255,0.3)"
+    aria-hidden="true"
+  />
+  <div
+    class="absolute -bottom-6 -left-6 h-24 w-24 rounded-full opacity-15"
+    style="background: rgba(255,255,255,0.3)"
+    aria-hidden="true"
+  />
+
+  {/* Centered icon */}
+  <div class="relative flex flex-1 items-center justify-center">
+    <span class="text-5xl transition-transform duration-300 group-hover:scale-110" aria-hidden="true">
+      {coverIcon}
+    </span>
+  </div>
+
+  {/* Bottom info bar */}
+  <div
+    class="relative px-4 pb-4"
+    style="background: linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 100%); padding-top: 2rem;"
+  >
+    <p class="mb-0.5 line-clamp-2 text-sm font-bold leading-tight">{data.title}</p>
+    <p class="text-xs opacity-70">{slideCount} slides</p>
+  </div>
+
+  {/* Slide-count badge */}
+  <div
+    class="absolute right-3 top-3 flex h-7 min-w-[1.75rem] items-center justify-center rounded-full px-2 text-xs font-bold"
+    style="background: rgba(0,0,0,0.35); backdrop-filter: blur(4px);"
+  >
+    {slideCount}
+  </div>
+</a>

@@ -8,3 +8,9 @@
     animation-delay: 4s;
   }
 }
+
+/* Hide scrollbars inside carousel slide content areas while keeping them functional.
+   scrollbarWidth: none handles Firefox via inline style; this covers WebKit browsers. */
+.slide-content::-webkit-scrollbar {
+  display: none;
+}

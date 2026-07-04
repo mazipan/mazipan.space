@@ -7,6 +7,10 @@ export const NAVIGATION_ITEMS = [
     path: ROUTES.BLOG,
   },
   {
+    title: 'Slides',
+    path: ROUTES.CAROUSEL,
+  },
+  {
     title: 'Explore',
     path: ROUTES.EXPLORE,
   },

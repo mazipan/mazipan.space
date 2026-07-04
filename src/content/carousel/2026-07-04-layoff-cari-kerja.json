@@ -1,0 +1,62 @@
+{
+  "publishDate": "2026-07-04",
+  "title": "Catatan Mencari Kerja Setelah Layoff",
+  "description": "Bukan tips ajaib — hanya catatan jujur dari pengalaman mencari kerja di tengah pasar yang tidak mudah.",
+  "series": "layoff",
+  "sourcePost": "2026-07-02-surat-untuk-diriku-setelah-layoff",
+  "tags": ["thought", "experience"],
+  "author": "mazipan",
+  "lang": "id",
+  "draft": false,
+  "slides": [
+    {
+      "type": "cover",
+      "icon": "💼",
+      "title": "Catatan Mencari Kerja Setelah Layoff",
+      "subtitle": "Bukan tips ajaib — hanya yang ==sebenarnya terjadi==",
+      "theme": "sunset"
+    },
+    {
+      "type": "content",
+      "icon": "⚖️",
+      "title": "Situasinya Berbeda Sekarang",
+      "body": "__Dulu kamu yang memilih__. Sekarang **kamu yang dipilih**.\n\nTerima kenyataan ini bukan untuk membuatmu tertekan, tapi supaya kamu bisa merespons dengan cara yang tepat — bukan cara lama yang sudah tidak relevan.",
+      "theme": "midnight"
+    },
+    {
+      "type": "tip",
+      "icon": "📢",
+      "title": "Tampil Lebih Banyak, Meski Terasa Cringe",
+      "body": "Orang tidak bisa merekomendasikanmu kalau mereka ==tidak tahu kamu sedang mencari==. Tulis di LinkedIn. Bagikan apa yang kamu kerjakan. Cukup **terlihat** oleh orang yang kebetulan membutuhkanmu.",
+      "theme": "lavender"
+    },
+    {
+      "type": "content",
+      "icon": "🎯",
+      "title": "Lamar yang Tidak 100% Ideal",
+      "body": "Posisi yang 'cukup baik' sambil terus mencari yang lebih cocok **jauh lebih baik** daripada menunggu yang sempurna sampai ==runway-mu habis==.\n\nIni bukan menyerah pada standar — ini realistis.",
+      "theme": "ocean"
+    },
+    {
+      "type": "tip",
+      "icon": "🤝",
+      "title": "Hubungi Orang yang Sudah Lama Tidak Kamu Sapa",
+      "body": "Terasa canggung, tapi pikir dari sisi sebaliknya: kalau posisi mereka yang terbalik, apakah kamu tidak mau mereka menghubungimu? ==Hampir tidak ada orang yang tersinggung== dihubungi teman yang butuh bantuan.",
+      "theme": "forest"
+    },
+    {
+      "type": "quote",
+      "quote": "Jangan jadikan setiap interview sebagai taruhan **hidup dan mati**. Masuk dengan ==rasa ingin tahu== — bukan sekadar membuktikan diri. Ironisnya, ini justru membuatmu perform lebih baik.",
+      "theme": "cherry"
+    },
+    {
+      "type": "closing",
+      "icon": "🚀",
+      "title": "Prosesnya Memang Brutal, dan Itu ==Bukan Salahmu==",
+      "body": "Sistemnya memang tidak dirancang untuk ramah pencari kerja. Setiap penolakan terasa lebih berat karena kamu sedang **rentan** — bukan karena kamu tidak cukup baik.",
+      "cta": "Baca surat lengkap untuk dirimu",
+      "ctaSlug": "2026-07-02-surat-untuk-diriku-setelah-layoff",
+      "theme": "sunset"
+    }
+  ]
+}

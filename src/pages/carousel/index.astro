@@ -1,0 +1,100 @@
+---
+import Centered from '@/layouts/Centered.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import CarouselCard from '@/components/CarouselCard.astro';
+import { getAllCarousels, SERIES_META } from '@/modules/carousel';
+import { BreadcrumbItemHome } from '@/constants/breadcrumb';
+import { ROUTES } from '@/constants/routes';
+
+import type { Carousel } from '@/types/carousel';
+
+const carousels = await getAllCarousels();
+
+// Group by series; preserve insertion order (already sorted by date)
+const seriesMap = new Map<string, Carousel[]>();
+const standalone: Carousel[] = [];
+
+for (const c of carousels) {
+  const s = c.data.series;
+  if (s) {
+    if (!seriesMap.has(s)) seriesMap.set(s, []);
+    seriesMap.get(s)!.push(c);
+  } else {
+    standalone.push(c);
+  }
+}
+
+const metadata = {
+  title: '✨ Slides',
+  description: 'Short, visual slide decks — ideas from my blog in Instagram carousel format.',
+};
+
+const breadcrumbs = [BreadcrumbItemHome, { text: 'Slides', href: ROUTES.CAROUSEL }];
+---
+
+<Centered {metadata}>
+  <section class="flex flex-col gap-12">
+    <div>
+      <Breadcrumbs items={breadcrumbs} />
+      <h1 class="b-h1 tracking-wide">✨ Slides</h1>
+      <p class="b-p mt-2 max-w-2xl opacity-70">
+        Artikel blog dalam format kartu singkat — baca tanpa harus buka artikel panjang.
+      </p>
+    </div>
+
+    {
+      carousels.length === 0 ? (
+        <p class="opacity-50">No slides yet. Check back soon.</p>
+      ) : (
+        <>
+          {/* Series groups */}
+          {[...seriesMap.entries()].map(([seriesSlug, items]) => {
+            const meta = SERIES_META[seriesSlug];
+            return (
+              <div class="flex flex-col gap-4">
+                <div class="flex items-center gap-3">
+                  <div class="h-px flex-1 bg-base-300" />
+                  <span class="text-xs font-semibold uppercase tracking-widest opacity-40">
+                    Series
+                  </span>
+                  <div class="h-px flex-1 bg-base-300" />
+                </div>
+                <div>
+                  <h2 class="b-h2">{meta?.title ?? seriesSlug}</h2>
+                  {meta?.description && (
+                    <p class="b-p mt-1 max-w-2xl opacity-60">{meta.description}</p>
+                  )}
+                </div>
+                <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 md:gap-5">
+                  {items.map((carousel) => (
+                    <CarouselCard carousel={carousel} />
+                  ))}
+                </div>
+              </div>
+            );
+          })}
+
+          {/* Standalone (no series) */}
+          {standalone.length > 0 && (
+            <div class="flex flex-col gap-4">
+              {seriesMap.size > 0 && (
+                <div class="flex items-center gap-3">
+                  <div class="h-px flex-1 bg-base-300" />
+                  <span class="text-xs font-semibold uppercase tracking-widest opacity-40">
+                    Other
+                  </span>
+                  <div class="h-px flex-1 bg-base-300" />
+                </div>
+              )}
+              <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 md:gap-5">
+                {standalone.map((carousel) => (
+                  <CarouselCard carousel={carousel} />
+                ))}
+              </div>
+            </div>
+          )}
+        </>
+      )
+    }
+  </section>
+</Centered>

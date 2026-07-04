@@ -1,0 +1,71 @@
+---
+import { getCollection } from 'astro:content';
+
+import Centered from '@/layouts/Centered.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import CarouselViewer from '@/components/CarouselViewer';
+import { SERIES_META } from '@/modules/carousel';
+import { BreadcrumbItemHome } from '@/constants/breadcrumb';
+import { ROUTES } from '@/constants/routes';
+
+import type { CarouselCollection } from '@/types/carousel';
+import type { GetStaticPathsResult } from 'astro';
+
+export async function getStaticPaths(): Promise<GetStaticPathsResult> {
+  const carousels = await getCollection('carousel', ({ data }) => {
+    if (import.meta.env.PROD) return !data.draft;
+    return true;
+  });
+
+  return carousels.map((c) => ({
+    params: { slug: c.id },
+    props: { carousel: c },
+  }));
+}
+
+interface Props {
+  carousel: CarouselCollection;
+}
+
+const { carousel } = Astro.props;
+const { data, id } = carousel;
+const seriesTitle = data.series ? (SERIES_META[data.series]?.title ?? data.series) : undefined;
+
+const metadata = {
+  title: data.title,
+  description: data.description,
+};
+
+const breadcrumbs = [
+  BreadcrumbItemHome,
+  { href: ROUTES.CAROUSEL, text: '✨ Slides' },
+];
+---
+
+<Centered {metadata}>
+  <article class="flex flex-col gap-6">
+    <div>
+      <Breadcrumbs items={breadcrumbs} />
+      <h1 class="b-h1 mt-2 tracking-wide">{data.title}</h1>
+      {data.description && <p class="b-p mt-1 opacity-70">{data.description}</p>}
+    </div>
+
+    <div class="flex justify-center">
+      <CarouselViewer client:load slides={data.slides} blogBasePath="/blog" seriesTitle={seriesTitle} />
+    </div>
+
+    {
+      data.sourcePost && (
+        <div class="mt-4 flex flex-col items-center gap-2 text-center">
+          <p class="text-sm opacity-60">Slide ini dirangkum dari artikel:</p>
+          <a
+            href={`/blog/${data.sourcePost}`}
+            class="inline-flex items-center gap-1.5 rounded-full border border-primary px-4 py-2 text-sm font-semibold text-primary no-underline transition-colors hover:bg-primary hover:text-white focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+          >
+            Baca artikel lengkap →
+          </a>
+        </div>
+      )
+    }
+  </article>
+</Centered>
