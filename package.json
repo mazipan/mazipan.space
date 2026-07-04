@@ -28,7 +28,7 @@
     "@fontsource-variable/jetbrains-mono": "^5.2.8",
     "@fontsource-variable/space-grotesk": "^5.2.10",
     "@fontsource/dela-gothic-one": "^5.2.7",
-    "astro": "6.4.2",
+    "astro": "7.0.3",
     "astro-embed": "^0.13.0",
     "astro-expressive-code": "^0.42.0",
     "astro-icon": "^1.1.5",
