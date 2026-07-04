@@ -35,6 +35,7 @@ export const carouselSchema = z.object({
   updatedDate: z.coerce.date().optional(),
   title: z.string(),
   description: z.string(),
+  series: z.string().optional(),
   sourcePost: z.string().optional(),
   tags: z.array(z.string()).nonempty(),
   author: z.string().default('mazipan'),
