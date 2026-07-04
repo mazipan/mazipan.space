@@ -8,5 +8,3 @@ commands, and content authoring (including the Carousel/Slides format).
 - Type-check command requires the env var:
   `SITE_URL=https://www.mazipan.space pnpm astro check`
 - Prefer `pnpm astro check` over `pnpm check-types` — it covers `.astro` files too.
-- The active development branch for the carousel feature is
-  `claude/interactive-blog-carousel-4raj9m`.
