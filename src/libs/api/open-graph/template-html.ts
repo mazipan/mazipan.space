@@ -1,16 +1,19 @@
 import { html } from 'satori-html';
 
+import { getGradientBySlug } from '@/utils/gradients';
 import { limitString } from '@/utils/strings';
 
 export interface TemplateProps {
   title: string;
+  slug: string;
   heroImageUrl: string;
   siteUrl: string;
 }
 
-const templateHtml = ({ title, heroImageUrl, siteUrl }: TemplateProps) => {
+const templateHtml = ({ title, slug, heroImageUrl, siteUrl }: TemplateProps) => {
   const isLongSiteUrl = siteUrl.length > 20;
   const limitedTitle = limitString(title, 70);
+  const gradient = getGradientBySlug(slug);
 
   return html`
     <div
@@ -20,6 +23,11 @@ const templateHtml = ({ title, heroImageUrl, siteUrl }: TemplateProps) => {
       <img
         src="${heroImageUrl}"
         style="position: absolute; top: 0; left: 0; width: 1200px; height: 628px; object-fit: cover;"
+      />
+
+      <!-- stable per-slug gradient tint — lets the hero image show through -->
+      <div
+        style="position: absolute; top: 0; left: 0; width: 1200px; height: 628px; background-image: ${gradient}; opacity: 0.30;"
       />
 
       <!-- glass card — kept inside the 10 % title-safe zone on all sides:

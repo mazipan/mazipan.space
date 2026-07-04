@@ -28,9 +28,9 @@ export const getStaticPaths = async () => {
   return paths;
 };
 
-export const GET: APIRoute = async ({ props }: APIContext) => {
-  // limit number of chars
+export const GET: APIRoute = async ({ props, params }: APIContext) => {
   const { title, heroImage, pageId } = props.page;
+  const slug = (params.route as string) || pageId;
 
   // resize images in template in CSS only, not in sharp
 
@@ -55,6 +55,7 @@ export const GET: APIRoute = async ({ props }: APIContext) => {
 
   const templateProps = {
     title,
+    slug,
     heroImageUrl: heroImageBase64Url,
     siteUrl: trimHttpProtocol(SITE_URL),
   };

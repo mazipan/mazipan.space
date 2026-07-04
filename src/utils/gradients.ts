@@ -39,3 +39,15 @@ export const getRandomGradientStyle = () => {
   const rndClass = rnd(gradientStyles);
   return rndClass;
 };
+
+// djb2 hash — same input always produces the same index
+const hashSlug = (slug: string): number => {
+  let h = 5381;
+  for (let i = 0; i < slug.length; i++) {
+    h = ((h << 5) + h) ^ slug.charCodeAt(i);
+  }
+  return Math.abs(h);
+};
+
+export const getGradientBySlug = (slug: string): string =>
+  gradientStyles[hashSlug(slug) % gradientStyles.length];
