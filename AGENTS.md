@@ -151,6 +151,102 @@ Available: `@/assets`, `@/components`, `@/constants`, `@/content`, `@/layouts`,
 - New blog post → add an `.mdx` file under `src/content/post/`; new project →
   `src/content/project/`. Frontmatter must satisfy the Zod schema (tags must be
   in the allowed `TAGS` list).
+- New carousel (Slides) → add a `.json` file under `src/content/carousel/`. See
+  the **Carousel** section below for the full authoring guide.
+
+## Carousel (Slides)
+
+Interactive slide decks styled like Instagram carousels. Each JSON file in
+`src/content/carousel/` becomes a page at `/carousel/<slug>`. The viewer
+(`src/components/CarouselViewer.tsx`) is a React island — no server-side logic.
+
+### Creating a new carousel
+
+**1. Create the file**
+
+`src/content/carousel/YYYY-MM-DD-<topic-slug>.json` — the filename (without
+`.json`) becomes the URL slug.
+
+```json
+{
+  "publishDate": "YYYY-MM-DD",
+  "updatedDate": "YYYY-MM-DD",
+  "title": "Short, conversational title",
+  "description": "One sentence shown in the listing card.",
+  "sourcePost": "blog-post-slug-without-slash",
+  "tags": ["thought"],
+  "author": "mazipan",
+  "lang": "id",
+  "draft": false,
+  "slides": []
+}
+```
+
+`sourcePost` is optional — set it to the blog post slug to show a
+"Baca artikel lengkap" link on the detail page. `updatedDate` is optional.
+
+**2. Slide types**
+
+Each entry in `slides` needs `type` and `theme`. All other fields are optional.
+
+| Type      | Key fields | Purpose |
+|-----------|-----------|---------|
+| `cover`   | `icon`, `title`, `subtitle` | Opening title card |
+| `content` | `icon`, `title`, `body` | Body text with heading |
+| `quote`   | `quote` | Full-bleed pull quote |
+| `tip`     | `icon`, `title`, `body` | Highlighted advice box |
+| `list`    | `icon`, `title`, `bullets` | Numbered bullet list |
+| `closing` | `icon`, `title`, `body`, `cta`, `ctaSlug` | Last slide with optional CTA |
+
+`body` supports `\n` for line breaks. `bullets` is an array of strings.
+`ctaSlug` is a blog post slug — the CTA button links to `/blog/<ctaSlug>`.
+
+Recommended order: `cover` → 2–5 middle slides → `closing`.
+
+**3. Themes**
+
+Every slide picks its own `theme` — vary them for visual rhythm.
+
+| Theme      | Background | Text |
+|------------|-----------|------|
+| `ocean`    | Blue → cyan | white |
+| `lavender` | Violet → purple | white |
+| `sunset`   | Orange → rose | white |
+| `forest`   | Emerald → teal | white |
+| `midnight` | Slate 800 → 900 | white |
+| `sunrise`  | Amber → orange | **dark** (only light theme) |
+| `cherry`   | Rose → pink | white |
+
+**4. Inline text markup**
+
+Supported in `body`, `quote`, `subtitle`, `title`, and `bullets` items.
+
+| Syntax     | Effect | Use for |
+|------------|--------|---------|
+| `**word**` | Bold + ~10% larger | The single most important claim |
+| `==word==` | Stabilo yellow highlight (dark text) | Hook or surprise phrase |
+| `__word__` | Amber accent colour | Secondary emphasis |
+
+Keep it sparing — 1–3 marks per text block. Do not nest markers. On the
+`sunrise` theme the stabilo switches to a dark overlay automatically.
+
+**5. Naming and tone**
+
+- Filename: `YYYY-MM-DD-<topic>.json`, kebab-case slug
+- Title: short and humble — avoid overclaiming ("Cara Nyata", "Ultimate Guide")
+- Description: one plain sentence, no hype
+- `lang: "id"` for Indonesian (default), `"en"` for English
+
+**6. Key source files**
+
+| Path | Purpose |
+|------|---------|
+| `src/schemas/carousel.ts` | Zod schema — source of truth for all fields |
+| `src/components/CarouselViewer.tsx` | React island (renders + swipe/keyboard) |
+| `src/components/CarouselCard.astro` | Grid card on the `/carousel` listing |
+| `src/pages/carousel/index.astro` | Listing page |
+| `src/pages/carousel/[slug].astro` | Detail page |
+| `src/content/carousel/` | JSON source files |
 
 ### Zod (v4)
 
