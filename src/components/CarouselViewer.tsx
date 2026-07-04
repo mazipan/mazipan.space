@@ -40,6 +40,56 @@ const THEMES: Record<CarouselTheme, { gradient: string; text: string; accent: st
   },
 };
 
+// Inline markup parser for slide text fields.
+// **word**  → bold + ~10% bigger (most important claim)
+// ==word==  → stabilo-style highlight background (hook/surprise phrase)
+// __word__  → accent colour (secondary emphasis)
+function parseRichText(text: string, isLightText: boolean): React.ReactNode[] {
+  const PATTERN = /\*\*(.+?)\*\*|==(.+?)==|__(.+?)__/g;
+  const nodes: React.ReactNode[] = [];
+  let lastIndex = 0;
+  let match: RegExpExecArray | null;
+
+  while ((match = PATTERN.exec(text)) !== null) {
+    if (match.index > lastIndex) nodes.push(text.slice(lastIndex, match.index));
+    const key = match.index;
+
+    if (match[1] !== undefined) {
+      nodes.push(
+        <strong key={key} style={{ fontWeight: 900, fontSize: '1.1em', letterSpacing: '-0.02em' }}>
+          {match[1]}
+        </strong>
+      );
+    } else if (match[2] !== undefined) {
+      nodes.push(
+        <mark
+          key={key}
+          style={{
+            background: isLightText ? 'rgba(255,224,0,0.65)' : 'rgba(0,0,0,0.13)',
+            color: isLightText ? 'rgba(10,10,10,0.95)' : 'inherit',
+            borderRadius: '0.2em',
+            padding: '0.05em 0.3em',
+            fontWeight: 700,
+          }}
+        >
+          {match[2]}
+        </mark>
+      );
+    } else if (match[3] !== undefined) {
+      nodes.push(
+        <span key={key} style={{ color: isLightText ? '#fde68a' : '#3730a3', fontWeight: 700 }}>
+          {match[3]}
+        </span>
+      );
+    }
+
+    lastIndex = PATTERN.lastIndex;
+  }
+
+  if (lastIndex < text.length) nodes.push(text.slice(lastIndex));
+  return nodes;
+}
+
 /** Safe, responsive padding that respects device safe areas. */
 const SAFE_PAD = {
   top: 'max(clamp(1.25rem, 5vw, 2.5rem), env(safe-area-inset-top, 0px))',
@@ -55,6 +105,7 @@ interface SlideProps {
 
 function Slide({ slide, blogBasePath }: SlideProps) {
   const theme = THEMES[slide.theme ?? 'ocean'];
+  const isLightText = theme.text === '#ffffff';
 
   const wrapperStyle: React.CSSProperties = {
     background: theme.gradient,
@@ -132,7 +183,7 @@ function Slide({ slide, blogBasePath }: SlideProps) {
               letterSpacing: '-0.02em',
             }}
           >
-            {slide.title}
+            {parseRichText(slide.title ?? '', isLightText)}
           </h2>
           {slide.subtitle && (
             <p
@@ -143,7 +194,7 @@ function Slide({ slide, blogBasePath }: SlideProps) {
                 lineHeight: 1.5,
               }}
             >
-              {slide.subtitle}
+              {parseRichText(slide.subtitle, isLightText)}
             </p>
           )}
         </div>
@@ -181,7 +232,7 @@ function Slide({ slide, blogBasePath }: SlideProps) {
               fontStyle: 'italic',
             }}
           >
-            {slide.quote}
+            {parseRichText(slide.quote ?? '', isLightText)}
           </blockquote>
           <div
             style={{
@@ -232,7 +283,7 @@ function Slide({ slide, blogBasePath }: SlideProps) {
                   lineHeight: 1.3,
                 }}
               >
-                {slide.title}
+                {parseRichText(slide.title, isLightText)}
               </h3>
             )}
             {slide.body && (
@@ -242,9 +293,10 @@ function Slide({ slide, blogBasePath }: SlideProps) {
                   margin: 0,
                   lineHeight: 1.65,
                   opacity: 0.95,
+                  whiteSpace: 'pre-line',
                 }}
               >
-                {slide.body}
+                {parseRichText(slide.body, isLightText)}
               </p>
             )}
           </div>
@@ -273,7 +325,7 @@ function Slide({ slide, blogBasePath }: SlideProps) {
                   lineHeight: 1.3,
                 }}
               >
-                {slide.title}
+                {parseRichText(slide.title, isLightText)}
               </h3>
             )}
           </div>
@@ -316,7 +368,7 @@ function Slide({ slide, blogBasePath }: SlideProps) {
                   >
                     {i + 1}
                   </span>
-                  <span>{bullet}</span>
+                  <span>{parseRichText(bullet, isLightText)}</span>
                 </li>
               ))}
             </ul>
@@ -358,7 +410,7 @@ function Slide({ slide, blogBasePath }: SlideProps) {
                 lineHeight: 1.3,
               }}
             >
-              {slide.title}
+              {parseRichText(slide.title, isLightText)}
             </h3>
           )}
           {slide.body && (
@@ -369,9 +421,10 @@ function Slide({ slide, blogBasePath }: SlideProps) {
                 lineHeight: 1.65,
                 opacity: 0.9,
                 maxWidth: '28ch',
+                whiteSpace: 'pre-line',
               }}
             >
-              {slide.body}
+              {parseRichText(slide.body, isLightText)}
             </p>
           )}
           {ctaHref && slide.cta && (
@@ -425,7 +478,7 @@ function Slide({ slide, blogBasePath }: SlideProps) {
               flexShrink: 0,
             }}
           >
-            {slide.title}
+            {parseRichText(slide.title, isLightText)}
           </h3>
         )}
         {slide.body && (
@@ -438,7 +491,7 @@ function Slide({ slide, blogBasePath }: SlideProps) {
               whiteSpace: 'pre-line',
             }}
           >
-            {slide.body}
+            {parseRichText(slide.body, isLightText)}
           </p>
         )}
       </div>
