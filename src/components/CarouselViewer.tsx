@@ -507,28 +507,12 @@ function Branding({ color }: { color: string }) {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        gap: '0.375rem',
         opacity: 0.6,
         marginTop: '0.625rem',
         flexShrink: 0,
       }}
     >
-      <svg
-        width="14"
-        height="6"
-        viewBox="0 0 395 167"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        aria-hidden="true"
-      >
-        <path
-          fillRule="evenodd"
-          clipRule="evenodd"
-          d="M29.631 0H0V166.967H29.631V46.8961L82.7237 105.329L135.816 46.8961V166.967H136.131H165.447H252.267H281.668H281.898V122.635L329.475 122.742C340.692 122.742 350.413 121.211 358.639 118.148C366.865 115.015 373.657 110.706 379.016 105.222C384.438 99.6676 388.457 93.1157 391.074 85.5667C393.691 78.0178 395 69.7922 395 60.8902C395 51.4184 393.66 42.908 390.981 35.359C388.363 27.8101 384.344 21.4362 378.923 16.2374C373.501 10.9674 366.678 6.94362 358.452 4.16617C350.226 1.38872 340.505 0 329.288 0H286.248H252.267H165.447H165H135.816L82.7237 60.8902L29.631 0Z"
-          fill={color}
-        />
-      </svg>
-      <span style={{ fontSize: '0.7rem', fontWeight: 600, color, letterSpacing: '0.05em' }}>
+      <span style={{ fontSize: '0.7rem', fontWeight: 600, color, letterSpacing: '0.08em' }}>
         mazipan.space
       </span>
     </div>
