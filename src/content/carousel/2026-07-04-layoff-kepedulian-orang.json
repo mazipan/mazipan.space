@@ -1,0 +1,61 @@
+{
+  "publishDate": "2026-07-04",
+  "title": "Tentang Teman yang Peduli — dan yang Kemudian Sibuk",
+  "description": "Ekspektasi yang realistis tentang dukungan sosial setelah layoff, dan siapa yang benar-benar akan ada sampai akhir.",
+  "sourcePost": "2026-07-02-surat-untuk-diriku-setelah-layoff",
+  "tags": ["thought", "experience"],
+  "author": "mazipan",
+  "lang": "id",
+  "draft": false,
+  "slides": [
+    {
+      "type": "cover",
+      "icon": "🤝",
+      "title": "Tentang Teman yang Peduli — dan yang Kemudian Sibuk",
+      "subtitle": "Jujur soal ==ekspektasi== yang sering mengecewakan",
+      "theme": "ocean"
+    },
+    {
+      "type": "content",
+      "icon": "💌",
+      "title": "Di Hari-Hari Pertama",
+      "body": "Banyak yang kirim pesan. Menanyakan kabarmu. Bilang '==kalau butuh apa-apa kabarin ya==.'\n\nDan itu **tulus** — pada saat itu.",
+      "theme": "lavender"
+    },
+    {
+      "type": "content",
+      "icon": "📅",
+      "title": "Lalu Sehari Berlalu. Seminggu.",
+      "body": "Ada deadline yang menunggu mereka. Ada meeting yang harus dihadiri. Ada masalah mereka sendiri.\n\nAda dan tiadamu tidak membuat dunia mereka ==berhenti== — dan memang **seharusnya tidak**.",
+      "theme": "midnight"
+    },
+    {
+      "type": "quote",
+      "quote": "Ini bukan **pengkhianatan**. Ini bukan munafik.\n\nIni ==manusiawi==.",
+      "theme": "cherry"
+    },
+    {
+      "type": "content",
+      "icon": "🏠",
+      "title": "Yang Benar-Benar Ada",
+      "body": "Mereka yang hidupnya bersinggungan langsung dengan hidupmu. Yang menunggumu pulang. Yang ikut merasakan ==tekanan== itu.\n\nBukan karena mereka lebih baik hatinya — tapi karena **perjalanan ini memang perjalanan mereka juga**.",
+      "theme": "forest"
+    },
+    {
+      "type": "tip",
+      "icon": "✨",
+      "title": "Hargai yang Masih Ingat di Minggu Kedua",
+      "body": "Teman yang masih mengirim pesan setelah berita itu tidak lagi segar — yang mengajak makan siang meski kamu sudah tidak ==satu kantor==.\n\nItu **langka dan berharga**. Catat namanya dalam hati.",
+      "theme": "sunrise"
+    },
+    {
+      "type": "closing",
+      "icon": "❤️",
+      "title": "Simpan Energimu untuk yang Memang Ada",
+      "body": "Jangan habiskan energi untuk menghitung ==siapa yang sudah tidak mengirim pesan==.\n\nFokus pada yang **masih di sana** — mereka yang paling nyata.",
+      "cta": "Baca surat lengkapnya",
+      "ctaSlug": "2026-07-02-surat-untuk-diriku-setelah-layoff",
+      "theme": "ocean"
+    }
+  ]
+}

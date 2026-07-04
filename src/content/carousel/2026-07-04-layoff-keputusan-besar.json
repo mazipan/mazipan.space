@@ -1,0 +1,54 @@
+{
+  "publishDate": "2026-07-04",
+  "title": "Jangan Terburu Mengubah Segalanya",
+  "description": "Tentang godaan untuk membuat keputusan besar di tengah ketidakpastian — dan cara membedakan kejernihan dari kepanikan.",
+  "sourcePost": "2026-07-02-surat-untuk-diriku-setelah-layoff",
+  "tags": ["thought", "experience"],
+  "author": "mazipan",
+  "lang": "id",
+  "draft": false,
+  "slides": [
+    {
+      "type": "cover",
+      "icon": "⚠️",
+      "title": "Jangan Terburu Mengubah Segalanya",
+      "subtitle": "Keputusan besar di tengah ==kepanikan== jarang yang bagus",
+      "theme": "midnight"
+    },
+    {
+      "type": "content",
+      "icon": "💭",
+      "title": "Ide-Ide Itu Bermunculan",
+      "body": "Ganti jalur karir sepenuhnya. Mulai bisnis sendiri. Pindah kota. Semua hal besar yang selama ini kamu tunda.\n\nIde-ide itu mungkin ==bagus==. Tapi kamu perlu membedakan: apakah ini dari **kejernihan pikiran** — atau dari kepanikan?",
+      "theme": "cherry"
+    },
+    {
+      "type": "quote",
+      "quote": "Beri dirimu waktu. Biarkan gelombang pertama emosinya agak reda dulu. Lalu tanyakan: apakah aku masih menginginkan ini kalau kondisi keuanganku ==tidak tertekan==?",
+      "theme": "lavender"
+    },
+    {
+      "type": "tip",
+      "icon": "🔍",
+      "title": "Dua Pertanyaan Sebelum Memutuskan",
+      "body": "Apakah ini sudah lama aku pikirkan — atau baru muncul ==sejak layoff== kemarin?\n\nApakah aku masih menginginkan ini kalau kondisiku **tidak kepepet**?",
+      "theme": "ocean"
+    },
+    {
+      "type": "content",
+      "icon": "⏳",
+      "title": "Tidak Semua Harus Diputuskan Sekarang",
+      "body": "Tidak semua perubahan besar harus dilakukan sekarang.\n\nDan tidak semua ketidakpastian harus diisi dengan ==keputusan besar==. Kadang yang paling tepat adalah **menunggu dengan sadar**.",
+      "theme": "midnight"
+    },
+    {
+      "type": "closing",
+      "icon": "🧭",
+      "title": "Keputusan yang Baik Tidak Lari ke Mana-Mana",
+      "body": "Kalau memang itu arahmu, dia akan ==masih ada== di sana setelah kamu tenang.\n\nTidak perlu diputuskan di hari-hari yang **paling berat**.",
+      "cta": "Baca surat lengkapnya",
+      "ctaSlug": "2026-07-02-surat-untuk-diriku-setelah-layoff",
+      "theme": "sunset"
+    }
+  ]
+}

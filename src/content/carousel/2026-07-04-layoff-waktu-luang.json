@@ -1,0 +1,61 @@
+{
+  "publishDate": "2026-07-04",
+  "title": "Waktu Luang yang Tiba-Tiba Ada",
+  "description": "Ironi terbesar setelah layoff: kamu punya waktu yang selama ini tidak pernah ada — tapi tidak dalam kondisi mental yang baik untuk menikmatinya.",
+  "sourcePost": "2026-07-02-surat-untuk-diriku-setelah-layoff",
+  "tags": ["thought", "experience"],
+  "author": "mazipan",
+  "lang": "id",
+  "draft": false,
+  "slides": [
+    {
+      "type": "cover",
+      "icon": "🌿",
+      "title": "Waktu Luang yang Tiba-Tiba Ada",
+      "subtitle": "Kamu akhirnya punya waktu — tapi ==belum siap== menikmatinya",
+      "theme": "forest"
+    },
+    {
+      "type": "content",
+      "icon": "📱",
+      "title": "Hari-Hari Pertama Itu",
+      "body": "Scrolling job board tanpa henti. Membuka LinkedIn ==setiap lima belas menit==. Merefresh email menunggu balasan rekruter.\n\nWajar di awal. Tapi jangan biarkan itu menjadi caramu menghabiskan **satu bulan penuh**.",
+      "theme": "midnight"
+    },
+    {
+      "type": "content",
+      "icon": "🛠️",
+      "title": "Proyek Kecil yang Selalu Tertunda",
+      "body": "Kamu ingat hal-hal yang selama ini ingin kamu kerjakan tapi selalu terhenti karena '==tidak ada waktu=='?\n\nIni mungkin waktunya. Bukan karena kamu harus produktif — tapi karena kamu butuh rasa **pencapaian kecil** di tengah ketidakpastian.",
+      "theme": "ocean"
+    },
+    {
+      "type": "tip",
+      "icon": "😮‍💨",
+      "title": "Izinkan Dirimu Beristirahat Sungguhan",
+      "body": "Bukan istirahat sambil ==mikir pekerjaan==. Bukan rebahan sambil memutar ulang semua penolakan.\n\nIstirahat **beneran** — seperti yang sudah lama tidak pernah kamu lakukan.",
+      "theme": "lavender"
+    },
+    {
+      "type": "tip",
+      "icon": "🚶",
+      "title": "Tidur Cukup. Jalan-Jalan. Bernapas.",
+      "body": "Ini bukan saran remeh. Otak yang kelelahan membuat semua keputusan terasa **lebih berat**, semua penolakan terasa ==lebih menyakitkan==, semua interview terasa lebih menakutkan.",
+      "theme": "forest"
+    },
+    {
+      "type": "quote",
+      "quote": "Pergi jalan-jalan. Sendirian kalau perlu. Bawa headphone, pilih playlist yang kamu suka. Biarkan ==otakmu bernapas==.",
+      "theme": "cherry"
+    },
+    {
+      "type": "closing",
+      "icon": "🌱",
+      "title": "Istirahat Bukan Kemunduran",
+      "body": "Kamu tidak sedang __membuang waktu__. Kamu sedang menjaga dirimu tetap utuh untuk proses yang masih **panjang** di depan.",
+      "cta": "Baca surat lengkapnya",
+      "ctaSlug": "2026-07-02-surat-untuk-diriku-setelah-layoff",
+      "theme": "forest"
+    }
+  ]
+}
