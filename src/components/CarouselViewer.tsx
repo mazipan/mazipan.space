@@ -101,9 +101,10 @@ const SAFE_PAD = {
 interface SlideProps {
   slide: SlideData;
   blogBasePath: string;
+  seriesTitle?: string;
 }
 
-function Slide({ slide, blogBasePath }: SlideProps) {
+function Slide({ slide, blogBasePath, seriesTitle }: SlideProps) {
   const theme = THEMES[slide.theme ?? 'ocean'];
   const isLightText = theme.text === '#ffffff';
 
@@ -169,6 +170,22 @@ function Slide({ slide, blogBasePath }: SlideProps) {
             gap: 'clamp(0.75rem, 3vw, 1.25rem)',
           }}
         >
+          {seriesTitle && (
+            <div
+              style={{
+                background: 'rgba(255,255,255,0.18)',
+                borderRadius: '2rem',
+                padding: '0.25rem 0.875rem',
+                fontSize: 'clamp(0.6rem, 2vw, 0.7rem)',
+                fontWeight: 700,
+                letterSpacing: '0.1em',
+                textTransform: 'uppercase',
+                flexShrink: 0,
+              }}
+            >
+              {seriesTitle}
+            </div>
+          )}
           {slide.icon && (
             <span style={{ fontSize: 'clamp(2.5rem, 10vw, 4rem)', lineHeight: 1 }}>
               {slide.icon}
@@ -198,7 +215,7 @@ function Slide({ slide, blogBasePath }: SlideProps) {
             </p>
           )}
         </div>
-        <Branding color={theme.text} />
+        <Branding color={theme.text} seriesTitle={seriesTitle} />
       </div>
     );
   }
@@ -248,7 +265,7 @@ function Slide({ slide, blogBasePath }: SlideProps) {
             "
           </div>
         </div>
-        <Branding color={theme.text} />
+        <Branding color={theme.text} seriesTitle={seriesTitle} />
       </div>
     );
   }
@@ -301,7 +318,7 @@ function Slide({ slide, blogBasePath }: SlideProps) {
             )}
           </div>
         </div>
-        <Branding color={theme.text} />
+        <Branding color={theme.text} seriesTitle={seriesTitle} />
       </div>
     );
   }
@@ -374,7 +391,7 @@ function Slide({ slide, blogBasePath }: SlideProps) {
             </ul>
           )}
         </div>
-        <Branding color={theme.text} />
+        <Branding color={theme.text} seriesTitle={seriesTitle} />
       </div>
     );
   }
@@ -450,7 +467,7 @@ function Slide({ slide, blogBasePath }: SlideProps) {
             </a>
           )}
         </div>
-        <Branding color={theme.text} />
+        <Branding color={theme.text} seriesTitle={seriesTitle} />
       </div>
     );
   }
@@ -500,21 +517,35 @@ function Slide({ slide, blogBasePath }: SlideProps) {
   );
 }
 
-function Branding({ color }: { color: string }) {
+function Branding({ color, seriesTitle }: { color: string; seriesTitle?: string }) {
   return (
     <div
       style={{
         display: 'flex',
+        flexDirection: 'column',
         alignItems: 'center',
-        justifyContent: 'center',
         opacity: 0.6,
         marginTop: '0.625rem',
         flexShrink: 0,
+        gap: '0.1rem',
       }}
     >
       <span style={{ fontSize: '0.7rem', fontWeight: 600, color, letterSpacing: '0.08em' }}>
         mazipan.space
       </span>
+      {seriesTitle && (
+        <span
+          style={{
+            fontSize: '0.6rem',
+            fontWeight: 600,
+            color,
+            letterSpacing: '0.1em',
+            textTransform: 'uppercase',
+          }}
+        >
+          {seriesTitle}
+        </span>
+      )}
     </div>
   );
 }
@@ -522,9 +553,10 @@ function Branding({ color }: { color: string }) {
 interface CarouselViewerProps {
   slides: SlideData[];
   blogBasePath?: string;
+  seriesTitle?: string;
 }
 
-export default function CarouselViewer({ slides, blogBasePath = '/blog' }: CarouselViewerProps) {
+export default function CarouselViewer({ slides, blogBasePath = '/blog', seriesTitle }: CarouselViewerProps) {
   const [current, setCurrent] = useState(0);
   const [animating, setAnimating] = useState(false);
   // Height derived from actual container width — guarantees content is never cropped
@@ -667,7 +699,7 @@ export default function CarouselViewer({ slides, blogBasePath = '/blog' }: Carou
               style={{ flexShrink: 0, width: '100%', height: '100%' }}
               aria-hidden={i !== current}
             >
-              <Slide slide={slide} blogBasePath={blogBasePath} />
+              <Slide slide={slide} blogBasePath={blogBasePath} seriesTitle={seriesTitle} />
             </div>
           ))}
         </div>

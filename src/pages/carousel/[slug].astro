@@ -4,6 +4,7 @@ import { getCollection } from 'astro:content';
 import Centered from '@/layouts/Centered.astro';
 import Breadcrumbs from '@/components/Breadcrumbs.astro';
 import CarouselViewer from '@/components/CarouselViewer';
+import { SERIES_META } from '@/modules/carousel';
 import { BreadcrumbItemHome } from '@/constants/breadcrumb';
 import { ROUTES } from '@/constants/routes';
 
@@ -28,6 +29,7 @@ interface Props {
 
 const { carousel } = Astro.props;
 const { data, id } = carousel;
+const seriesTitle = data.series ? (SERIES_META[data.series]?.title ?? data.series) : undefined;
 
 const metadata = {
   title: data.title,
@@ -49,7 +51,7 @@ const breadcrumbs = [
     </div>
 
     <div class="flex justify-center">
-      <CarouselViewer client:load slides={data.slides} blogBasePath="/blog" />
+      <CarouselViewer client:load slides={data.slides} blogBasePath="/blog" seriesTitle={seriesTitle} />
     </div>
 
     {
