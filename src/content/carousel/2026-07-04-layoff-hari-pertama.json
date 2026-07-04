@@ -1,0 +1,64 @@
+{
+  "publishDate": "2026-07-04",
+  "title": "Bertahan Setelah Layoff",
+  "description": "Tentang hari-hari pertama yang berat, emosi yang valid, dan kenapa kamu akan baik-baik saja.",
+  "sourcePost": "2026-07-02-surat-untuk-diriku-setelah-layoff",
+  "tags": ["thought", "experience"],
+  "author": "mazipan",
+  "lang": "id",
+  "draft": false,
+  "slides": [
+    {
+      "type": "cover",
+      "icon": "🌊",
+      "title": "Bertahan Setelah Layoff",
+      "subtitle": "Dari seseorang yang sudah melewatinya dua kali",
+      "theme": "ocean"
+    },
+    {
+      "type": "content",
+      "icon": "😶",
+      "title": "Hari Pertama Itu Aneh",
+      "body": "Tidak ada tempat yang harus dituju. Tidak ada standup pagi. Tidak ada tiket Jira yang menunggu.\n\nKeheningan itu terasa berat sekali — dan itu normal.",
+      "theme": "midnight"
+    },
+    {
+      "type": "quote",
+      "quote": "Kamu boleh marah. Kamu boleh sedih. Kamu boleh bingung. Semua emosi itu valid. Jangan paksa dirimu untuk berpura-pura baik-baik saja.",
+      "theme": "lavender"
+    },
+    {
+      "type": "content",
+      "icon": "🧠",
+      "title": "Pikiran di Minggu Pertama Itu Licik",
+      "body": "Dia akan memutar ulang semua kesalahanmu. Membandingkan dirimu dengan yang masih punya kerja. Mempertanyakan kompetensimu.\n\nJangan percaya semua yang dimainkan pikiranmu.",
+      "theme": "cherry"
+    },
+    {
+      "type": "quote",
+      "quote": "Layoff bukan tentang kamu. Ini tentang spreadsheet keuangan perusahaan, pivot bisnis, investor yang menarik kaki — bukan tentang nilai dirimu.",
+      "theme": "sunset"
+    },
+    {
+      "type": "list",
+      "icon": "📋",
+      "title": "Yang Perlu Diurus Segera",
+      "bullets": [
+        "Hitung runway-mu — lebih panjang dari yang kamu kira",
+        "Kurangi pengeluaran yang tidak darurat",
+        "Klaim BPJS Ketenagakerjaan — itu hakmu",
+        "Minta referensi dari mantan atasan sekarang"
+      ],
+      "theme": "forest"
+    },
+    {
+      "type": "closing",
+      "icon": "❤️",
+      "title": "Kamu Akan Baik-Baik Saja",
+      "body": "Layoff mengakhiri hubungan kerjamu dengan satu perusahaan. Bukan karier-mu. Bukan kemampuanmu. Bukan nilaimu sebagai manusia.",
+      "cta": "Baca surat lengkapnya",
+      "ctaSlug": "2026-07-02-surat-untuk-diriku-setelah-layoff",
+      "theme": "ocean"
+    }
+  ]
+}

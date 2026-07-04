@@ -21,6 +21,7 @@ export const ROUTES = {
   EXPLORE_CATEGORIES: '/blog/explore/categories',
   DESIGN: '/design',
   GALLERY: '/gallery',
+  CAROUSEL: '/carousel',
   /** maybe in future */
   DRAFTS: '/drafts',
   _404: '/404',

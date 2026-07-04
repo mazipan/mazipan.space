@@ -1,0 +1,44 @@
+---
+import Centered from '@/layouts/Centered.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import CarouselCard from '@/components/CarouselCard.astro';
+import { getAllCarousels } from '@/modules/carousel';
+import { BreadcrumbItemHome } from '@/constants/breadcrumb';
+import { ROUTES } from '@/constants/routes';
+
+const carousels = await getAllCarousels();
+
+const metadata = {
+  title: '✨ Slides',
+  description: 'Short, visual slide decks — ideas from my blog in Instagram carousel format.',
+};
+
+const breadcrumbs = [
+  BreadcrumbItemHome,
+  { text: 'Slides', href: ROUTES.CAROUSEL },
+];
+---
+
+<Centered {metadata}>
+  <section class="flex flex-col gap-8">
+    <div>
+      <Breadcrumbs items={breadcrumbs} />
+      <h1 class="b-h1 tracking-wide">✨ Slides</h1>
+      <p class="b-p mt-2 max-w-2xl opacity-70">
+        Artikel blog dalam format kartu singkat — baca tanpa harus buka artikel panjang.
+      </p>
+    </div>
+
+    {
+      carousels.length === 0 ? (
+        <p class="opacity-50">No slides yet. Check back soon.</p>
+      ) : (
+        <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 md:gap-5">
+          {carousels.map((carousel) => (
+            <CarouselCard carousel={carousel} />
+          ))}
+        </div>
+      )
+    }
+  </section>
+</Centered>

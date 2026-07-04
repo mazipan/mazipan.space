@@ -5,11 +5,13 @@ import DefaultMetaImage from '@/assets/images/open-graph/pattern.jpg';
 export const COLLECTIONS = {
   POST: 'post',
   PROJECT: 'project',
+  CAROUSEL: 'carousel',
 } as const;
 
 export const BASE_FOLDERS = {
   POST: 'src/content/post',
   PROJECT: 'src/content/project',
+  CAROUSEL: 'src/content/carousel',
 } as const;
 
 export const TAGS = [
