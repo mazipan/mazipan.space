@@ -23,9 +23,11 @@ const templateHtml = ({ title, heroImageUrl, avatarImageUrl, siteUrl }: Template
         style="position: absolute; top: 0; left: 0; width: 1200px; height: 628px; object-fit: cover;"
       />
 
-      <!-- glass card anchored to bottom -->
+      <!-- glass card — kept inside the 10 % title-safe zone on all sides:
+           outer margin 72 px L/R + inner padding 48 px = 120 px total (10 % of 1200)
+           outer margin 64 px bottom + inner padding 40 px = 104 px total (>10 % of 628) -->
       <div
-        style="position: absolute; bottom: 48px; left: 48px; right: 48px; display: flex; flex-direction: column; background: rgba(0, 0, 0, 0.60); border-radius: 20px; padding: 36px 44px; border: 1px solid rgba(255, 255, 255, 0.18);"
+        style="position: absolute; bottom: 64px; left: 72px; right: 72px; display: flex; flex-direction: column; background: rgba(0, 0, 0, 0.60); border-radius: 20px; padding: 40px 48px; border: 1px solid rgba(255, 255, 255, 0.18);"
       >
         <!-- title -->
         <div
