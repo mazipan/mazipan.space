@@ -1,52 +1,43 @@
 import { html } from 'satori-html';
 
-import { getRandomGradientStyle } from '@/utils/gradients';
+import { getGradientBySlug } from '@/utils/gradients';
 import { limitString } from '@/utils/strings';
 
 export interface TemplateProps {
   title: string;
+  slug: string;
   heroImageUrl: string;
-  avatarImageUrl: string;
   siteUrl: string;
 }
 
-const templateHtml = ({ title, heroImageUrl, avatarImageUrl, siteUrl }: TemplateProps) => {
-  // 2 rows - max 30 chars
-  // 1 row - max 20 chars, max that fits - 12
+const templateHtml = ({ title, slug, heroImageUrl, siteUrl }: TemplateProps) => {
   const isLongSiteUrl = siteUrl.length > 20;
-
-  // max 6 rows x 10-15 chars
   const limitedTitle = limitString(title, 70);
+  const gradient = getGradientBySlug(slug);
 
   return html`
     <div
-      class="flex h-full w-full p-8"
-      style="font-family:'Space Grotesk';background-image:${getRandomGradientStyle()};"
+      style="font-family:'Space Grotesk'; position: relative; display: flex; width: 1200px; height: 628px;"
     >
-      <div class="flex w-full flex-row justify-between text-slate-900">
-        <!-- left column -->
-        <div class="mr-6 flex w-[550px] flex-col justify-between">
-          <!-- title -->
-          <div class="mb-4 flex flex-grow text-6xl font-semibold">${limitedTitle}</div>
-
-          <!-- avatar and site -->
-          <div class="${isLongSiteUrl ? 'flex-col justify-end items-start' : ''} flex items-center">
-            <img
-              src="${avatarImageUrl}"
-              alt="${limitedTitle}"
-              width="80"
-              height="80"
-              class="mr-8 rounded-full"
-            />
-            <div class="${isLongSiteUrl ? 'mt-4 text-3xl' : 'text-4xl'} flex items-center">
-              <div>${siteUrl}</div>
-            </div>
-          </div>
+      <img
+        src="${heroImageUrl}"
+        style="position: absolute; top: 0; left: 0; width: 1200px; height: 628px; object-fit: cover;"
+      />
+      <div
+        style="position: absolute; top: 0; left: 0; width: 1200px; height: 628px; background-image: ${gradient}; opacity: 0.30; display: flex;"
+      ></div>
+      <div
+        style="position: absolute; bottom: 64px; left: 72px; right: 72px; display: flex; flex-direction: column; background: rgba(0, 0, 0, 0.60); border-radius: 20px; padding: 40px 48px; border: 1px solid rgba(255, 255, 255, 0.18);"
+      >
+        <div
+          style="color: white; font-size: 52px; font-weight: 600; line-height: 1.25; margin-bottom: 24px; display: flex;"
+        >
+          ${limitedTitle}
         </div>
-
-        <!-- right column -->
-        <div class="flex w-[550px] items-center">
-          <img src="${heroImageUrl}" class="h-full w-full rounded-2xl" style="object-fit: cover" />
+        <div
+          style="color: rgba(255, 255, 255, 0.88); font-size: ${isLongSiteUrl ? '28px' : '34px'}; display: flex; align-items: center;"
+        >
+          ${siteUrl}
         </div>
       </div>
     </div>
