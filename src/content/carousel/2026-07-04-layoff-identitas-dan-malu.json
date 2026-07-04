@@ -1,0 +1,59 @@
+{
+  "publishDate": "2026-07-04",
+  "title": "Saat Layoff Mengguncang Rasa Dirimu",
+  "description": "Tentang rasa malu yang sering tidak diakui, identitas yang lebih dari sekadar jabatan, dan kenapa kamu tidak harus menanggung ini sendirian.",
+  "sourcePost": "2026-07-02-surat-untuk-diriku-setelah-layoff",
+  "tags": ["thought", "experience"],
+  "author": "mazipan",
+  "lang": "id",
+  "draft": false,
+  "slides": [
+    {
+      "type": "cover",
+      "icon": "🪞",
+      "title": "Saat Layoff Mengguncang Rasa Dirimu",
+      "subtitle": "Tentang malu, identitas, dan siapa kamu ==sebenarnya==",
+      "theme": "lavender"
+    },
+    {
+      "type": "content",
+      "icon": "😔",
+      "title": "Rasa Malu Itu Nyata",
+      "body": "Malu cerita ke orang tua. Malu update LinkedIn. Malu ditanya, '==Sekarang kerja di mana?=='\n\nRasa malu ini bisa jauh lebih **menghancurkan** dari kehilangan pekerjaannya sendiri — dan itu jarang diakui.",
+      "theme": "midnight"
+    },
+    {
+      "type": "quote",
+      "quote": "Istrimu tidak menikahimu karena **jabatanmu**. Anak-anakmu tidak peduli kamu kerja di perusahaan besar — mereka hanya mau kamu ==ada==.",
+      "theme": "cherry"
+    },
+    {
+      "type": "content",
+      "icon": "🧩",
+      "title": "Jabatan Bukan Identitasmu",
+      "body": "Pengetahuanmu tidak hilang ketika kontrakmu diputus. Kemampuanmu tidak lenyap bersama akses laptopmu.\n\nLayoff mengakhiri ==hubungan kerjamu== dengan satu perusahaan — bukan **karier**-mu, bukan **nilai**-mu.",
+      "theme": "ocean"
+    },
+    {
+      "type": "tip",
+      "icon": "💬",
+      "title": "Ceritakan ke Orang Terdekatmu",
+      "body": "Jangan menanggung ini **sendirian** diam-diam. Bukan karena mereka bisa menyelesaikannya — tapi karena kamu tidak harus menjaga ==fasad di rumah juga==.\n\nLelah itu berlipat ganda kalau disimpan sendiri.",
+      "theme": "forest"
+    },
+    {
+      "type": "quote",
+      "quote": "Kamu sudah pernah __tidak tahu apa-apa__ dan tetap bertahan. Kamu sudah pernah merasa tidak cukup bagus — dan tetap **membuktikan sebaliknya**.",
+      "theme": "sunset"
+    },
+    {
+      "type": "closing",
+      "icon": "❤️",
+      "title": "Ketangguhan Itu Masih Ada di Kamu",
+      "body": "Dia tidak hilang karena sebuah surat PHK.\n\nMungkin perlu sedikit ==diingatkan== — tapi dia **masih ada**.",
+      "cta": "Baca surat lengkapnya",
+      "ctaSlug": "2026-07-02-surat-untuk-diriku-setelah-layoff",
+      "theme": "lavender"
+    }
+  ]
+}
