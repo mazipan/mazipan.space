@@ -173,6 +173,7 @@ Interactive slide decks styled like Instagram carousels. Each JSON file in
   "updatedDate": "YYYY-MM-DD",
   "title": "Short, conversational title",
   "description": "One sentence shown in the listing card.",
+  "series": "series-slug",
   "sourcePost": "blog-post-slug-without-slash",
   "tags": ["thought"],
   "author": "mazipan",
@@ -184,6 +185,7 @@ Interactive slide decks styled like Instagram carousels. Each JSON file in
 
 `sourcePost` is optional — set it to the blog post slug to show a
 "Baca artikel lengkap" link on the detail page. `updatedDate` is optional.
+`series` is optional — see **Series** below.
 
 **2. Slide types**
 
@@ -230,7 +232,34 @@ Supported in `body`, `quote`, `subtitle`, `title`, and `bullets` items.
 Keep it sparing — 1–3 marks per text block. Do not nest markers. On the
 `sunrise` theme the stabilo switches to a dark overlay automatically.
 
-**5. Naming and tone**
+**5. Series**
+
+Group related carousels into a named series. Carousels in a series are shown
+together under a section header on the `/carousel` listing page. The series
+name also appears as a frosted pill badge on the cover slide and as a label
+below `mazipan.space` in the branding footer of every slide.
+
+To add a carousel to a series:
+
+1. Set `"series": "<slug>"` in the JSON file (e.g. `"series": "layoff"`).
+2. If the series slug is new, add a matching entry to `SERIES_META` in
+   `src/modules/carousel.ts`:
+
+```ts
+export const SERIES_META: Record<string, SeriesMeta> = {
+  layoff: {
+    title: 'Layoff Series',
+    description: 'One sentence shown under the series heading on the listing page.',
+  },
+  // add new series here
+};
+```
+
+Carousels without a `series` field appear in an "Other" section below all
+series groups. If there are no ungrouped carousels, the "Other" section is
+omitted.
+
+**6. Naming and tone**
 
 - Filename: `YYYY-MM-DD-<topic>.json`, kebab-case slug
 - Title: short and humble — avoid overclaiming ("Cara Nyata", "Ultimate Guide")
@@ -242,9 +271,10 @@ Keep it sparing — 1–3 marks per text block. Do not nest markers. On the
 | Path | Purpose |
 |------|---------|
 | `src/schemas/carousel.ts` | Zod schema — source of truth for all fields |
+| `src/modules/carousel.ts` | Data access + `SERIES_META` registry |
 | `src/components/CarouselViewer.tsx` | React island (renders + swipe/keyboard) |
 | `src/components/CarouselCard.astro` | Grid card on the `/carousel` listing |
-| `src/pages/carousel/index.astro` | Listing page |
+| `src/pages/carousel/index.astro` | Listing page (groups by series) |
 | `src/pages/carousel/[slug].astro` | Detail page |
 | `src/content/carousel/` | JSON source files |
 
