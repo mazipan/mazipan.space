@@ -1,6 +1,5 @@
 import { html } from 'satori-html';
 
-import { getRandomGradientStyle } from '@/utils/gradients';
 import { limitString } from '@/utils/strings';
 
 export interface TemplateProps {
@@ -11,42 +10,42 @@ export interface TemplateProps {
 }
 
 const templateHtml = ({ title, heroImageUrl, avatarImageUrl, siteUrl }: TemplateProps) => {
-  // 2 rows - max 30 chars
-  // 1 row - max 20 chars, max that fits - 12
   const isLongSiteUrl = siteUrl.length > 20;
-
-  // max 6 rows x 10-15 chars
   const limitedTitle = limitString(title, 70);
 
   return html`
     <div
-      class="flex h-full w-full p-8"
-      style="font-family:'Space Grotesk';background-image:${getRandomGradientStyle()};"
+      style="font-family:'Space Grotesk'; position: relative; display: flex; width: 1200px; height: 628px; overflow: hidden;"
     >
-      <div class="flex w-full flex-row justify-between text-slate-900">
-        <!-- left column -->
-        <div class="mr-6 flex w-[550px] flex-col justify-between">
-          <!-- title -->
-          <div class="mb-4 flex flex-grow text-6xl font-semibold">${limitedTitle}</div>
+      <!-- full-bleed background image -->
+      <img
+        src="${heroImageUrl}"
+        style="position: absolute; top: 0; left: 0; width: 1200px; height: 628px; object-fit: cover;"
+      />
 
-          <!-- avatar and site -->
-          <div class="${isLongSiteUrl ? 'flex-col justify-end items-start' : ''} flex items-center">
-            <img
-              src="${avatarImageUrl}"
-              alt="${limitedTitle}"
-              width="80"
-              height="80"
-              class="mr-8 rounded-full"
-            />
-            <div class="${isLongSiteUrl ? 'mt-4 text-3xl' : 'text-4xl'} flex items-center">
-              <div>${siteUrl}</div>
-            </div>
-          </div>
+      <!-- glass card anchored to bottom -->
+      <div
+        style="position: absolute; bottom: 48px; left: 48px; right: 48px; display: flex; flex-direction: column; background: rgba(0, 0, 0, 0.60); border-radius: 20px; padding: 36px 44px; border: 1px solid rgba(255, 255, 255, 0.18);"
+      >
+        <!-- title -->
+        <div
+          style="color: white; font-size: 52px; font-weight: 600; line-height: 1.25; margin-bottom: 24px; display: flex;"
+        >
+          ${limitedTitle}
         </div>
 
-        <!-- right column -->
-        <div class="flex w-[550px] items-center">
-          <img src="${heroImageUrl}" class="h-full w-full rounded-2xl" style="object-fit: cover" />
+        <!-- avatar + site url -->
+        <div style="display: flex; align-items: center;">
+          <img
+            src="${avatarImageUrl}"
+            alt="${limitedTitle}"
+            style="width: 56px; height: 56px; border-radius: 28px; margin-right: 20px; border: 2px solid rgba(255, 255, 255, 0.5); flex-shrink: 0;"
+          />
+          <div
+            style="color: rgba(255, 255, 255, 0.88); font-size: ${isLongSiteUrl ? '28px' : '34px'}; display: flex; align-items: center;"
+          >
+            ${siteUrl}
+          </div>
         </div>
       </div>
     </div>
