@@ -14,7 +14,7 @@ import { trimHttpProtocol } from '@/utils/strings';
 import type { APIContext, APIRoute } from 'astro';
 
 const { SITE_URL } = CONFIG_CLIENT;
-const { FONTS_FOLDER, OG_DEFAULT, IMAGE_404, AVATAR } = FILE_PATHS;
+const { FONTS_FOLDER, OG_DEFAULT, IMAGE_404 } = FILE_PATHS;
 
 export const getStaticPaths = async () => {
   const pages = await getPages();
@@ -33,9 +33,6 @@ export const GET: APIRoute = async ({ props }: APIContext) => {
   const { title, heroImage, pageId } = props.page;
 
   // resize images in template in CSS only, not in sharp
-
-  // avatarImage
-  const avatarImageBase64Url = await getBase64Image(AVATAR);
 
   // heroImage
   let heroImagePath: string;
@@ -59,7 +56,6 @@ export const GET: APIRoute = async ({ props }: APIContext) => {
   const templateProps = {
     title,
     heroImageUrl: heroImageBase64Url,
-    avatarImageUrl: avatarImageBase64Url,
     siteUrl: trimHttpProtocol(SITE_URL),
   };
 

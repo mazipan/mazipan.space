@@ -5,11 +5,10 @@ import { limitString } from '@/utils/strings';
 export interface TemplateProps {
   title: string;
   heroImageUrl: string;
-  avatarImageUrl: string;
   siteUrl: string;
 }
 
-const templateHtml = ({ title, heroImageUrl, avatarImageUrl, siteUrl }: TemplateProps) => {
+const templateHtml = ({ title, heroImageUrl, siteUrl }: TemplateProps) => {
   const isLongSiteUrl = siteUrl.length > 20;
   const limitedTitle = limitString(title, 70);
 
@@ -36,18 +35,11 @@ const templateHtml = ({ title, heroImageUrl, avatarImageUrl, siteUrl }: Template
           ${limitedTitle}
         </div>
 
-        <!-- avatar + site url -->
-        <div style="display: flex; align-items: center;">
-          <img
-            src="${avatarImageUrl}"
-            alt="${limitedTitle}"
-            style="width: 56px; height: 56px; border-radius: 28px; margin-right: 20px; border: 2px solid rgba(255, 255, 255, 0.5); flex-shrink: 0;"
-          />
-          <div
-            style="color: rgba(255, 255, 255, 0.88); font-size: ${isLongSiteUrl ? '28px' : '34px'}; display: flex; align-items: center;"
-          >
-            ${siteUrl}
-          </div>
+        <!-- site url -->
+        <div
+          style="color: rgba(255, 255, 255, 0.88); font-size: ${isLongSiteUrl ? '28px' : '34px'}; display: flex; align-items: center;"
+        >
+          ${siteUrl}
         </div>
       </div>
     </div>
