@@ -27,8 +27,8 @@ const templateHtml = ({ title, slug, heroImageUrl, siteUrl }: TemplateProps) => 
 
       <!-- stable per-slug gradient tint — lets the hero image show through -->
       <div
-        style="position: absolute; top: 0; left: 0; width: 1200px; height: 628px; background-image: ${gradient}; opacity: 0.30;"
-      />
+        style="position: absolute; top: 0; left: 0; width: 1200px; height: 628px; background-image: ${gradient}; opacity: 0.30; display: flex;"
+      ></div>
 
       <!-- glass card — kept inside the 10 % title-safe zone on all sides:
            outer margin 72 px L/R + inner padding 48 px = 120 px total (10 % of 1200)
