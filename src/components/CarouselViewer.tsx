@@ -512,7 +512,7 @@ function Slide({ slide, blogBasePath, seriesTitle }: SlideProps) {
           </p>
         )}
       </div>
-      <Branding color={theme.text} />
+      <Branding color={theme.text} seriesTitle={seriesTitle} />
     </div>
   );
 }
