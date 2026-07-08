@@ -30,7 +30,7 @@ Feel free, just click **"Use this template"** button in this repo.
 
 ## 📈 Stats
 
-![Stats](https://repobeats.axiom.co/api/embed/670a5552b94292f8e9b5acc6ee868457c58eaa0c.svg "Repobeats analytics image")
+![Stats](https://repobeats.axiom.co/api/embed/670a5552b94292f8e9b5acc6ee868457c58eaa0c.svg 'Repobeats analytics image')
 
 ## ⭐ Recognitions
 

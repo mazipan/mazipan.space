@@ -11,8 +11,8 @@ import PostListMore from '@/components/PostListMore.astro';
 import PostMeta from '@/components/PostMeta.astro';
 import Share from '@/components/Share.astro';
 import TagList from '@/components/TagList.astro';
-import TranslatorButton from '@/components/TranslatorButton.astro';
 import ToC from '@/components/ToC.astro';
+import TranslatorButton from '@/components/TranslatorButton.astro';
 import { DRAFT_TEXT } from '@/constants/data';
 import { IMAGE_SIZES } from '@/constants/image';
 import { ROUTES } from '@/constants/routes';
@@ -139,7 +139,7 @@ const schema = JSON.stringify({
     <h1
       id="post-title"
       data-translatable="title"
-      class="b-h1 mb-3 mt-0 tracking-wide"
+      class="b-h1 mt-0 mb-3 tracking-wide"
       transition:name={getTransitionNameFromElementId({
         elementId: TRANSITION_ELEMENT_IDS.POST_CARD.TITLE,
       })}
@@ -153,7 +153,7 @@ const schema = JSON.stringify({
         <p
           id="post-description"
           data-translatable="description"
-          class="mb-6 text-lg font-normal text-captions md:mb-8 md:text-xl"
+          class="text-captions mb-6 text-lg font-normal md:mb-8 md:text-xl"
           transition:name={getTransitionNameFromElementId({
             elementId: TRANSITION_ELEMENT_IDS.POST_CARD.DESCRIPTION,
           })}

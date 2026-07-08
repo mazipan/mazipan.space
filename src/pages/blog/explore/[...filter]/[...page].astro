@@ -95,7 +95,7 @@ const breadcrumbs = [BreadcrumbItemHome, BreadcrumbItemBlog];
     <Breadcrumbs items={breadcrumbs} />
     <h1 class="b-h1 tracking-wide">{metadata.title}</h1>
   </section>
-  <article class="relative pb-16 pt-8">
+  <article class="relative pt-8 pb-16">
     <section class="centered md:centered-px max-w-6xl">
       <div class="relative gap-4 lg:grid lg:grid-cols-[300px,minmax(0,1fr)]">
         <Explore posts={allPosts} {filterPathname} />
@@ -103,12 +103,12 @@ const breadcrumbs = [BreadcrumbItemHome, BreadcrumbItemBlog];
           {
             postsByYear.years.map((year) => (
               <div class="relative">
-                <div class="absolute -top-16 right-0 z-0 font-mono text-[10rem] font-extrabold text-base-300 opacity-60">
+                <div class="text-base-300 absolute -top-16 right-0 z-0 font-mono text-[10rem] font-extrabold opacity-60">
                   {year}
                 </div>
 
                 <h2
-                  class="b-h2 sticky top-20 z-10 mt-0 flex w-fit rounded-lg bg-base-200 p-2 font-serif"
+                  class="b-h2 bg-base-200 sticky top-20 z-10 mt-0 flex w-fit rounded-lg p-2 font-serif"
                   transition:name={getTransitionName({
                     elementId: TRANSITION_ELEMENT_IDS.EXPLORE.YEAR,
                     pageSlug: year,

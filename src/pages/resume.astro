@@ -30,9 +30,9 @@ const breadcrumbs = [BreadcrumbItemHome];
         <div class="flex items-center gap-2">
           <span class="relative flex h-3 w-3">
             <span
-              class="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75"
+              class="bg-primary absolute inline-flex h-full w-full animate-ping rounded-full opacity-75"
             ></span>
-            <span class="relative inline-flex h-3 w-3 rounded-full bg-primary"></span>
+            <span class="bg-primary relative inline-flex h-3 w-3 rounded-full"></span>
           </span>
           <span class="text-primary">Available for hire</span>
         </div>
@@ -50,18 +50,18 @@ const breadcrumbs = [BreadcrumbItemHome];
         <small>Or copy this email manually: <code class="font-mono">{AUTHOR_EMAIL}</code></small>
       </div>
 
-      <ol class="relative mt-8 flex flex-col items-start gap-8 border-s border-primary">
+      <ol class="border-primary relative mt-8 flex flex-col items-start gap-8 border-s">
         {
           CAREERS.map((c) => (
             <li class="ms-8">
               {!c.promotion && (
-                <div class="absolute -start-3 mt-1.5 h-6 w-6 rounded-full border border-white bg-primary dark:border-base-300" />
+                <div class="bg-primary dark:border-base-300 absolute -start-3 mt-1.5 h-6 w-6 rounded-full border border-white" />
               )}
 
-              <time class="mb-1 mt-1 block text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
+              <time class="mt-1 mb-1 block text-sm leading-none font-normal text-gray-400 dark:text-gray-500">
                 {c.period}&nbsp;&nbsp;•&nbsp;&nbsp;{c.long}
               </time>
-              <span class="mb-1 block text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
+              <span class="mb-1 block text-sm leading-none font-normal text-gray-400 dark:text-gray-500">
                 {c.location}
               </span>
               <h3 class="mb-2 text-lg font-semibold text-gray-900 dark:text-white">
@@ -71,7 +71,7 @@ const breadcrumbs = [BreadcrumbItemHome];
 
               <div class="flex items-center gap-2">
                 {c.stacks.map((stack) => (
-                  <span class="rounded bg-primary px-1.5 py-0.5 text-xs text-primary-content">
+                  <span class="bg-primary text-primary-content rounded px-1.5 py-0.5 text-xs">
                     {stack}
                   </span>
                 ))}

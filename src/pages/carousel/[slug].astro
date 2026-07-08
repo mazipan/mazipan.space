@@ -1,10 +1,10 @@
 ---
 import { getCollection } from 'astro:content';
 
+import { SERIES_META } from '@/modules/carousel';
 import Centered from '@/layouts/Centered.astro';
 import Breadcrumbs from '@/components/Breadcrumbs.astro';
 import CarouselViewer from '@/components/CarouselViewer';
-import { SERIES_META } from '@/modules/carousel';
 import { BreadcrumbItemHome } from '@/constants/breadcrumb';
 import { ROUTES } from '@/constants/routes';
 
@@ -28,7 +28,7 @@ interface Props {
 }
 
 const { carousel } = Astro.props;
-const { data, id } = carousel;
+const { data } = carousel;
 const seriesTitle = data.series ? (SERIES_META[data.series]?.title ?? data.series) : undefined;
 
 const metadata = {
@@ -36,10 +36,7 @@ const metadata = {
   description: data.description,
 };
 
-const breadcrumbs = [
-  BreadcrumbItemHome,
-  { href: ROUTES.CAROUSEL, text: '✨ Slides' },
-];
+const breadcrumbs = [BreadcrumbItemHome, { href: ROUTES.CAROUSEL, text: '✨ Slides' }];
 ---
 
 <Centered {metadata}>
@@ -51,7 +48,12 @@ const breadcrumbs = [
     </div>
 
     <div class="flex justify-center">
-      <CarouselViewer client:load slides={data.slides} blogBasePath="/blog" seriesTitle={seriesTitle} />
+      <CarouselViewer
+        client:load
+        slides={data.slides}
+        blogBasePath="/blog"
+        seriesTitle={seriesTitle}
+      />
     </div>
 
     {
@@ -60,7 +62,7 @@ const breadcrumbs = [
           <p class="text-sm opacity-60">Slide ini dirangkum dari artikel:</p>
           <a
             href={`/blog/${data.sourcePost}`}
-            class="inline-flex items-center gap-1.5 rounded-full border border-primary px-4 py-2 text-sm font-semibold text-primary no-underline transition-colors hover:bg-primary hover:text-white focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+            class="border-primary text-primary hover:bg-primary focus:ring-primary inline-flex items-center gap-1.5 rounded-full border px-4 py-2 text-sm font-semibold no-underline transition-colors hover:text-white focus:ring-2 focus:ring-offset-2 focus:outline-none"
           >
             Baca artikel lengkap →
           </a>

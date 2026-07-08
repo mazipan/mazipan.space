@@ -26,7 +26,7 @@ const activeNavItemPath = getActiveNavItemPath(routePathname);
       'relative flex gap-2',
       'md:!flex-row md:items-center md:justify-between',
       'max-w-6xl px-4 py-2 md:mx-auto',
-      'rounded-2xl border border-primary',
+      'border-primary rounded-2xl border',
       'bg-background/95 supports-[backdrop-filter]:bg-background/60 backdrop-blur'
     )}
   >
@@ -35,7 +35,7 @@ const activeNavItemPath = getActiveNavItemPath(routePathname);
       <HeaderLink
         href={ROUTES.HOME}
         isActive={routePathname === ROUTES.HOME}
-        class="flex flex-row items-center gap-2 rounded-lg px-2 py-1 font-serif text-xl hover:bg-base-200 hover:text-primary-hover focus:text-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 xs:text-2xl"
+        class="hover:bg-base-200 hover:text-primary-hover focus:text-primary focus:ring-primary xs:text-2xl flex flex-row items-center gap-2 rounded-lg px-2 py-1 font-serif text-xl focus:ring-2 focus:ring-offset-2 focus:outline-none"
       >
         <svg
           width="72"
@@ -81,7 +81,7 @@ const activeNavItemPath = getActiveNavItemPath(routePathname);
               <HeaderLink
                 href={path}
                 isActive={path === activeNavItemPath}
-                class="rounded-lg px-2 py-1 hover:bg-base-200 hover:text-primary-hover focus:text-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 aria-selected:bg-base-200"
+                class="hover:bg-base-200 hover:text-primary-hover focus:text-primary focus:ring-primary aria-selected:bg-base-200 rounded-lg px-2 py-1 focus:ring-2 focus:ring-offset-2 focus:outline-none"
               >
                 {title}
               </HeaderLink>
@@ -99,7 +99,7 @@ const activeNavItemPath = getActiveNavItemPath(routePathname);
 <aside class="group relative md:hidden" data-menu="close" id="menu-mobile">
   {/* Mobile nav items */}
   <nav
-    class="fixed right-4 top-16 z-20 mt-2 min-w-[200px] transform select-none rounded-lg border border-gray-100 bg-base-100 p-2 shadow-xl transition-all duration-500 group-[[data-menu=close]]:translate-x-[110%] group-[[data-menu=open]]:translate-x-0 md:hidden"
+    class="bg-base-100 fixed top-16 right-4 z-20 mt-2 min-w-[200px] transform rounded-lg border border-gray-100 p-2 shadow-xl transition-all duration-500 select-none group-[[data-menu=close]]:translate-x-[110%] group-[[data-menu=open]]:translate-x-0 md:hidden"
     aria-label="Site navigation"
   >
     <ul class="flex flex-col gap-2">
@@ -109,7 +109,7 @@ const activeNavItemPath = getActiveNavItemPath(routePathname);
             <HeaderLink
               href={path}
               isActive={path === activeNavItemPath}
-              class="block w-full rounded p-2 hover:bg-base-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 aria-selected:bg-base-200 dark:hover:bg-base-300"
+              class="hover:bg-base-300 focus:ring-primary aria-selected:bg-base-200 dark:hover:bg-base-300 block w-full rounded p-2 focus:ring-2 focus:ring-offset-2 focus:outline-none"
             >
               {title}
             </HeaderLink>

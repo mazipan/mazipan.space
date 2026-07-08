@@ -1,4 +1,5 @@
 import { z } from 'astro:content';
+
 import type { infer as ZodInfer } from 'zod';
 
 export const CAROUSEL_THEMES = [

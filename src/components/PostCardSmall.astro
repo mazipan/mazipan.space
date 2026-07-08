@@ -28,7 +28,7 @@ const getTransitionNameFromElementId = setTransitionSlug({ pageSlug: slug });
 ---
 
 <article
-  class={cn('flex flex-col gap-4', withSeparator && 'border-b border-base-300 pb-4', className)}
+  class={cn('flex flex-col gap-4', withSeparator && 'border-base-300 border-b pb-4', className)}
 >
   {
     withImage && (
@@ -48,7 +48,7 @@ const getTransitionNameFromElementId = setTransitionSlug({ pageSlug: slug });
 
   <div class="flex flex-col gap-2">
     <h4
-      class="b-h4 mb-2 mt-3 line-clamp-2 break-words"
+      class="b-h4 mt-3 mb-2 line-clamp-2 break-words"
       transition:name={getTransitionNameFromElementId({
         elementId: TRANSITION_ELEMENT_IDS.POST_CARD.TITLE,
       })}
@@ -78,7 +78,7 @@ const getTransitionNameFromElementId = setTransitionSlug({ pageSlug: slug });
 
     <div class="flex items-center gap-2 text-sm leading-none">
       <span
-        class="inline-flex items-center gap-2 text-captions"
+        class="text-captions inline-flex items-center gap-2"
         transition:name={getTransitionNameFromElementId({
           elementId: TRANSITION_ELEMENT_IDS.POST_CARD.META,
         })}
@@ -99,13 +99,13 @@ const getTransitionNameFromElementId = setTransitionSlug({ pageSlug: slug });
     </div>
 
     {/* reading time and read more link */}
-    <div class="flex items-center justify-between xs:items-end">
+    <div class="xs:items-end flex items-center justify-between">
       <div class="flex items-center gap-4">
-        <span class="inline-flex items-center gap-2 text-sm text-captions">
+        <span class="text-captions inline-flex items-center gap-2 text-sm">
           <Icon name="tabler:book" class="h-4 w-4" />
           <span class="text-nowrap">{`${Math.round(readingTime)} min read`}</span>
         </span>
-        <TagList tags={data.tags.slice(0, 2)} size="sm" class="hidden xs:inline-flex" />
+        <TagList tags={data.tags.slice(0, 2)} size="sm" class="xs:inline-flex hidden" />
       </div>
     </div>
   </div>

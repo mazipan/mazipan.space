@@ -21,7 +21,7 @@
   .b-h2 {
     @apply text-2xl md:text-3xl;
     @apply font-bold;
-    @apply mb-6 mt-12 md:mb-8 md:mt-14;
+    @apply mt-12 mb-6 md:mt-14 md:mb-8;
   }
 
   .b-h3 {
@@ -42,7 +42,6 @@
     @apply text-content;
     @apply text-base sm:text-lg;
   }
-
 }
 
 /* vertical-margin helpers as utilities so they can be used in markup

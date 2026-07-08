@@ -6,8 +6,7 @@ import type { Project } from '@/types/project';
 export const getAllTags = (projects: Project[]): string[] =>
   projects.flatMap((p) => [...p.data.tags]);
 
-export const getUniqueTags = (projects: Project[]): string[] =>
-  [...new Set(getAllTags(projects))];
+export const getUniqueTags = (projects: Project[]): string[] => [...new Set(getAllTags(projects))];
 
 export const getSortedUniqueTagsWithCount = (projects: Project[]): Filter[] => {
   const tags = getAllTags(projects);
@@ -20,7 +19,7 @@ export const getSortedUniqueTagsWithCount = (projects: Project[]): Filter[] => {
       acc[index].count++;
       return acc;
     },
-    <Filter[]>[],
+    <Filter[]>[]
   );
 
   return withCount.sort((a, b) => b.count - a.count);

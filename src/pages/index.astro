@@ -42,7 +42,7 @@ import AvatarSrc from '@/assets/images/avatar.png';
             role="button"
             type="button"
             size="sm"
-            class="z-5 absolute right-0 top-[165px] h-8 w-8 p-1"
+            class="absolute top-[165px] right-0 z-5 h-8 w-8 p-1"
             id="btn-swap-gradient"
             title="Shuffle gradient"
             aria-label="Shuffle gradient"
@@ -51,15 +51,15 @@ import AvatarSrc from '@/assets/images/avatar.png';
           </Button>
         </swap-button>
       </div>
-      <div class="border-b-4 border-dashed border-primary p-8">
+      <div class="border-primary border-b-4 border-dashed p-8">
         <SocialLinks />
-        <h1 class="mb-2 mt-4 font-serif text-5xl text-primary">Irfan Maulana</h1>
+        <h1 class="text-primary mt-4 mb-2 font-serif text-5xl">Irfan Maulana</h1>
         <p class="text-lg font-semibold">Call me "mas ipan"</p>
       </div>
 
       <svg
         aria-hidden="true"
-        class="pointer-events-none absolute inset-0 top-0 -z-[1] h-full w-full fill-neutral-400/80 [mask-image:radial-gradient(500px_circle_at_center,white,transparent)]"
+        class="pointer-events-none absolute inset-0 top-0 -z-[1] h-full w-full [mask-image:radial-gradient(500px_circle_at_center,white,transparent)] fill-neutral-400/80"
       >
         <defs>
           <pattern

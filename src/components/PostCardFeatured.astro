@@ -30,7 +30,7 @@ const getTransitionNameFromElementId = setTransitionSlug({ pageSlug: slug });
     src={heroImage}
     alt={heroAlt}
     class={cn(
-      'hover:transform-perspective max-h-44 rounded-xl object-cover transition-transform duration-300 hover:shadow-base-300 md:max-h-80'
+      'hover:transform-perspective hover:shadow-base-300 max-h-44 rounded-xl object-cover transition-transform duration-300 md:max-h-80'
     )}
     transition:name={getTransitionNameFromElementId({
       elementId: TRANSITION_ELEMENT_IDS.POST_CARD.HERO_IMAGE,
@@ -68,7 +68,7 @@ const getTransitionNameFromElementId = setTransitionSlug({ pageSlug: slug });
 
     <div class="flex items-center gap-2 text-sm leading-none">
       <span
-        class="inline-flex items-center gap-2 text-captions"
+        class="text-captions inline-flex items-center gap-2"
         transition:name={getTransitionNameFromElementId({
           elementId: TRANSITION_ELEMENT_IDS.POST_CARD.META,
         })}
@@ -87,13 +87,13 @@ const getTransitionNameFromElementId = setTransitionSlug({ pageSlug: slug });
     </div>
 
     {/* reading time and read more link */}
-    <div class="flex items-center justify-between xs:items-end">
+    <div class="xs:items-end flex items-center justify-between">
       <div class="flex items-center gap-4">
-        <span class="inline-flex items-center gap-2 text-sm text-captions">
+        <span class="text-captions inline-flex items-center gap-2 text-sm">
           <Icon name="tabler:book" class="h-4 w-4" />
           <span class="text-nowrap">{`${Math.round(readingTime)} min read`}</span>
         </span>
-        <TagList tags={tags.slice(0, 2)} size="sm" variant="text" class="hidden xs:inline-flex" />
+        <TagList tags={tags.slice(0, 2)} size="sm" variant="text" class="xs:inline-flex hidden" />
       </div>
     </div>
   </div>

@@ -1,10 +1,10 @@
 import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
 
-import { BASE_FOLDERS } from '@/constants/collections';
 import { carouselSchema } from '@/schemas/carousel';
 import { postSchema } from '@/schemas/post';
 import { projectSchema } from '@/schemas/project';
+import { BASE_FOLDERS } from '@/constants/collections';
 
 const { POST, PROJECT, CAROUSEL } = BASE_FOLDERS;
 
