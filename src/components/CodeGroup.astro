@@ -1,0 +1,100 @@
+---
+import { Icon } from 'astro-icon/components';
+
+type TabItem = string | { id: string; text: string };
+
+interface Props {
+  labels: TabItem[];
+}
+
+const { labels } = Astro.props;
+
+const tabs = labels.map((item) => (typeof item === 'string' ? { id: item, text: item } : item));
+
+const ICON_MAP: Record<string, string> = {
+  npm: 'pm-npm',
+  pnpm: 'pm-pnpm',
+  yarn: 'pm-yarn',
+  bun: 'pm-bun',
+};
+---
+
+<code-group>
+  <div role="tablist" class="flex flex-wrap border-b border-base-300">
+    {
+      tabs.map(({ id, text }, i) => (
+        <button
+          role="tab"
+          type="button"
+          data-label={id}
+          data-active={i === 0 ? 'true' : 'false'}
+          aria-selected={i === 0 ? 'true' : 'false'}
+          class="-mb-px flex cursor-pointer items-center gap-1.5 border-b-2 border-transparent px-3 py-2 text-sm font-medium transition-colors hover:text-primary data-[active=true]:border-primary data-[active=true]:text-primary"
+        >
+          {ICON_MAP[id] ? <Icon name={ICON_MAP[id]} class="h-4 w-4" /> : null}
+          <span>{text}</span>
+        </button>
+      ))
+    }
+  </div>
+  <div class="panels">
+    <slot />
+  </div>
+</code-group>
+
+<style>
+  code-group .panels > :global([data-label]) {
+    display: none;
+  }
+
+  code-group .panels > :global([data-label][data-active='true']) {
+    display: block;
+  }
+</style>
+
+<script>
+  class CodeGroupElement extends HTMLElement {
+    private tabs: NodeListOf<HTMLButtonElement>;
+    private panels: NodeListOf<HTMLElement>;
+
+    handleTabClick = (e: Event) => {
+      const btn = e.currentTarget as HTMLButtonElement;
+      const label = btn.dataset.label;
+
+      this.tabs.forEach((tab) => {
+        const isActive = tab === btn;
+        tab.dataset.active = isActive ? 'true' : 'false';
+        tab.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      });
+
+      this.panels.forEach((panel) => {
+        panel.dataset.active = panel.dataset.label === label ? 'true' : 'false';
+      });
+    };
+
+    constructor() {
+      super();
+      this.tabs = this.querySelectorAll<HTMLButtonElement>('[role="tablist"] [role="tab"]');
+      this.panels = this.querySelectorAll<HTMLElement>('.panels [data-label]');
+    }
+
+    connectedCallback() {
+      // Show first panel, hide others
+      this.panels.forEach((panel, i) => {
+        panel.dataset.active = i === 0 ? 'true' : 'false';
+      });
+
+      this.tabs.forEach((tab) => {
+        tab.addEventListener('click', this.handleTabClick);
+      });
+    }
+
+    disconnectedCallback() {
+      this.tabs.forEach((tab) => {
+        tab.removeEventListener('click', this.handleTabClick);
+      });
+    }
+  }
+
+  customElements.define('code-group', CodeGroupElement);
+</script>
