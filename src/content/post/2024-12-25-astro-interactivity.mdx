@@ -14,6 +14,8 @@ heroAlt: Cara menambahkan interaktivitas pada framework Astro
 lang: id
 ---
 
+import CodeGroup from '../../components/CodeGroup.astro';
+
 ## Sekilas mengenai Astro
 
 Astro merupakan web framework untuk membuat website yang *content-driven* semacam blog atau marketing. Astro mengambil jalan sebagai UI-agnostik, yang artinya bisa dikombinasikan dengan berbagai UI framework kesukaan kalian macam React, Vue, Svelte dan lainnya. Astro juga terkenal karena menjadi pelopor bagi arsitektur terbaru di dunia persilatan web framework, yakni [Island Arsitektur](https://docs.astro.build/en/concepts/islands/) yang di framework lain mungkin lebih dikenal dengan *partial/selective hydration*.
@@ -30,25 +32,28 @@ npx astro add react
 
 Atau install manual dengan cara:
 
-::: code-group labels=[npm, pnpm, yarn, bun]
-
-```bash title=zsh frame=terminal
-npm install @astrojs/react react react-dom
-```
-
-```bash title=zsh frame=terminal
-pnpm add @astrojs/react react react-dom
-```
-
-```bash title=zsh frame=terminal
-yarn add @astrojs/react react react-dom
-```
-
-```bash title=zsh frame=terminal
-bun add @astrojs/react react react-dom
-```
-
-:::
+<CodeGroup labels={['npm', 'pnpm', 'yarn', 'bun']}>
+  <div data-label="npm">
+    ```bash title=zsh frame=terminal
+    npm install @astrojs/react react react-dom
+    ```
+  </div>
+  <div data-label="pnpm">
+    ```bash title=zsh frame=terminal
+    pnpm add @astrojs/react react react-dom
+    ```
+  </div>
+  <div data-label="yarn">
+    ```bash title=zsh frame=terminal
+    yarn add @astrojs/react react react-dom
+    ```
+  </div>
+  <div data-label="bun">
+    ```bash title=zsh frame=terminal
+    bun add @astrojs/react react react-dom
+    ```
+  </div>
+</CodeGroup>
 
 Kemudian tambahkan konfigurasi di `astro.config.*`
 

@@ -17,7 +17,7 @@ static HTML; there is no runtime server.
 | UI islands | **React 19** (`@astrojs/react`) for interactive bits |
 | Styling | **Tailwind CSS 4** via `@tailwindcss/vite` (no `@astrojs/tailwind`) |
 | Content | Astro **Content Layer** (glob loader) with **Zod 4** schemas |
-| Markdown | MDX (`@astrojs/mdx`), `astro-expressive-code`, `rehype-code-group` |
+| Markdown | MDX (`@astrojs/mdx`), `astro-expressive-code` |
 | Icons | `astro-icon` (Tabler set, local `src/assets/icons`) |
 | Language | **TypeScript 6** (strict) |
 | Lint/format | **ESLint 10** (flat config) + Prettier 3 |
@@ -153,6 +153,52 @@ Available: `@/assets`, `@/components`, `@/constants`, `@/content`, `@/layouts`,
   in the allowed `TAGS` list).
 - New carousel (Slides) → add a `.json` file under `src/content/carousel/`. See
   the **Carousel** section below for the full authoring guide.
+
+## CodeGroup component
+
+`src/components/CodeGroup.astro` renders a tabbed code block for showing the same
+command/snippet across multiple package managers (or any set of tabs).
+
+### Usage in MDX
+
+```mdx
+import CodeGroup from '../../components/CodeGroup.astro';
+
+<CodeGroup labels={['npm', 'pnpm', 'yarn', 'bun']}>
+  <div data-label="npm">
+    ```bash title=zsh frame=terminal
+    npm install foo
+    ```
+  </div>
+  <div data-label="pnpm">
+    ```bash title=zsh frame=terminal
+    pnpm add foo
+    ```
+  </div>
+  <div data-label="yarn">
+    ```bash title=zsh frame=terminal
+    yarn add foo
+    ```
+  </div>
+  <div data-label="bun">
+    ```bash title=zsh frame=terminal
+    bun add foo
+    ```
+  </div>
+</CodeGroup>
+```
+
+- Each panel is a `<div data-label="<id>">` child (matched to a tab by label string).
+- `labels` accepts plain strings **or** `{ id: string; text: string }` objects — plain
+  strings are shorthand where `id === text`.
+- Package manager ids (`npm`, `pnpm`, `yarn`, `bun`) automatically show their logo icon;
+  any other id shows just the text label.
+- Implemented as a web component (`<code-group>`) so it works correctly with View
+  Transitions — no `astro:page-load` boilerplate needed.
+- Icon SVGs live in `src/assets/icons/` with the `pm-` prefix
+  (`pm-npm.svg`, `pm-pnpm.svg`, `pm-yarn.svg`, `pm-bun.svg`).
+
+---
 
 ## Carousel (Slides)
 

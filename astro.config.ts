@@ -5,8 +5,6 @@ import tailwindcss from '@tailwindcss/vite';
 import icon from 'astro-icon';
 import { defineConfig } from 'astro/config';
 
-import rehypeCodeGroup from 'rehype-code-group';
-
 // must use relative imports, and their entire import subtrees
 import { remarkReadingTime } from './plugins/remark-reading-time.mjs';
 //
@@ -44,10 +42,6 @@ export default defineConfig({
   ],
   markdown: {
     remarkPlugins,
-    rehypePlugins: [
-      // ...
-      rehypeCodeGroup,
-    ],
   },
   vite: {
     plugins: [tailwindcss()],

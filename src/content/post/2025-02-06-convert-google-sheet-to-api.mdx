@@ -14,6 +14,8 @@ heroAlt: Mengubah Google Sheet menjadi Rest API
 lang: id
 ---
 
+import CodeGroup from '../../components/CodeGroup.astro';
+
 ## 🛢️ Alternatif DB untuk frontend engineer
 
 Sebagai seorang frontend engineer, seringkali kita merasa pusing saat harus single fighter membuat POC atau pet project sendirian, dari sekian banyak masalah salah satu yang sering dipusingkan adalah bagaimana cara menyimpan datanya? Di mana akan menyimpan datanya?
@@ -37,25 +39,28 @@ Google Sheet bisa juga dipublikasikan sebagai API melalui Google App Script. Bac
 
 Untuk menghubungkan aplikasi Next.js dengan Google Sheet, kita akan menggunakan SDK [googleapis](https://www.npmjs.com/package/googleapis) yang memang diurus secara resmi oleh tim Google sendiri.
 
-::: code-group labels=[npm, pnpm, yarn, bun]
-
-```bash title=zsh frame=terminal
-npm install googleapis
-```
-
-```bash title=zsh frame=terminal
-pnpm add googleapis
-```
-
-```bash title=zsh frame=terminal
-yarn add googleapis
-```
-
-```bash title=zsh frame=terminal
-bun add googleapis
-```
-
-:::
+<CodeGroup labels={['npm', 'pnpm', 'yarn', 'bun']}>
+  <div data-label="npm">
+    ```bash title=zsh frame=terminal
+    npm install googleapis
+    ```
+  </div>
+  <div data-label="pnpm">
+    ```bash title=zsh frame=terminal
+    pnpm add googleapis
+    ```
+  </div>
+  <div data-label="yarn">
+    ```bash title=zsh frame=terminal
+    yarn add googleapis
+    ```
+  </div>
+  <div data-label="bun">
+    ```bash title=zsh frame=terminal
+    bun add googleapis
+    ```
+  </div>
+</CodeGroup>
 
 ### 🔑 Persiapan akses
 
