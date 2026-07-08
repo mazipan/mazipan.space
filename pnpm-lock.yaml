@@ -163,8 +163,8 @@ importers:
         specifier: ^1.7.0
         version: 1.7.0(eslint@10.4.0(jiti@2.7.0))
       eslint-plugin-mdx:
-        specifier: ^3.7.1
-        version: 3.7.1(eslint@10.4.0(jiti@2.7.0))
+        specifier: ^3.8.1
+        version: 3.8.1(eslint@10.4.0(jiti@2.7.0))
       globals:
         specifier: ^17.6.0
         version: 17.6.0
@@ -2219,8 +2219,8 @@ packages:
     peerDependencies:
       eslint: '>=8.57.0'
 
-  eslint-plugin-mdx@3.7.1:
-    resolution: {integrity: sha512-G7Wqce+roWW35pQ/160UJiZdEWEyeR9LLaujDRnSV0O8SLHU6yHrK8C8kJLNtcBuU/AFd54zheefqZOyUr1aiA==}
+  eslint-plugin-mdx@3.8.1:
+    resolution: {integrity: sha512-4OLgotfBxUDc1f6ihXSagT/1+JCCUABA/2r6Kzl6gqFftg4dCV0wBfdwFo6X6UO/FzTHr3g6mVt+6prRXffc/Q==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
       eslint: '>=8.0.0'
@@ -6504,7 +6504,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-plugin-mdx@3.7.1(eslint@10.4.0(jiti@2.7.0)):
+  eslint-plugin-mdx@3.8.1(eslint@10.4.0(jiti@2.7.0)):
     dependencies:
       eslint: 10.4.0(jiti@2.7.0)
       eslint-mdx: 3.8.1(eslint@10.4.0(jiti@2.7.0))
