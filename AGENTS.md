@@ -368,8 +368,8 @@ from 'react'`) or use `React.JSX`.
   (`src/pages/api/open-graph/[...route].png.ts`). `satori` is strict about image
   sources — always quote attribute interpolations in the HTML template
   (`src/libs/api/open-graph/template-html.ts`).
-- `astro.config.ts` markdown uses `processor: unified({...})` from
-  `@astrojs/markdown-remark` (the legacy remark/rehype pipeline). Migrating to
-  Sätteri is tracked in #277.
+- `astro.config.ts` markdown uses `processor: satteri({...})` from
+  `@astrojs/markdown-satteri` (the Sätteri Rust-powered pipeline). MDAST plugins
+  live under `plugins/` and use `defineMdastPlugin` from `satteri`.
 - `pnpm generate` fetches external data (talks, awesome-sde lists) and writes
   into the repo; it runs automatically as part of `pnpm build`.

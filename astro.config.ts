@@ -1,4 +1,4 @@
-import { unified } from '@astrojs/markdown-remark';
+import { satteri } from '@astrojs/markdown-satteri';
 import mdx from '@astrojs/mdx';
 import partytown from '@astrojs/partytown';
 import react from '@astrojs/react';
@@ -8,7 +8,7 @@ import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 
 // must use relative imports, and their entire import subtrees
-import { remarkReadingTime } from './plugins/remark-reading-time.mjs';
+import { satteriReadingTime } from './plugins/satteri-reading-time.mjs';
 //
 // all relative imports in subtree
 // any of these files must not import CONFIG with env vars
@@ -17,7 +17,6 @@ import { expressiveCodeIntegration } from './src/libs/integrations/expressive-co
 import { sitemapIntegration } from './src/libs/integrations/sitemap';
 
 const { SITE_URL } = PROCESS_ENV;
-const remarkPlugins = [remarkReadingTime];
 
 export default defineConfig({
   site: SITE_URL,
@@ -37,8 +36,8 @@ export default defineConfig({
     }),
   ],
   markdown: {
-    processor: unified({
-      remarkPlugins,
+    processor: satteri({
+      mdastPlugins: [satteriReadingTime()],
     }),
   },
   vite: {

@@ -1,7 +1,7 @@
 import { renderMarkdown } from '@/utils/markdown';
 
 import type { PostCollection } from '@/types/post';
-import type { MarkdownRenderResult } from '@astrojs/markdown-remark';
+import type { MarkdownRenderResult } from 'astro/markdown';
 
 // unused
 

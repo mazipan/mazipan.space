@@ -1,9 +1,8 @@
-import { createMarkdownProcessor } from '@astrojs/markdown-remark';
+import { createSatteriMarkdownProcessor } from '@astrojs/markdown-satteri';
 
-import type { MarkdownRenderResult } from '@astrojs/markdown-remark';
+import type { MarkdownRenderResult } from 'astro/markdown';
 
 export const renderMarkdown = async (content: string): Promise<MarkdownRenderResult> => {
-  const { render } = await createMarkdownProcessor();
-  const renderedResult = await render(content);
-  return renderedResult;
+  const processor = await createSatteriMarkdownProcessor();
+  return processor.render(content);
 };

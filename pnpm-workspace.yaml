@@ -8,6 +8,7 @@ allowBuilds:
 # upgrade — exclude them from the minimumReleaseAge supply-chain policy so CI
 # can install them before the 24-hour window elapses.
 minimumReleaseAgeExclude:
+  - '@astrojs/markdown-satteri@0.3.3'
   - '@astrojs/telemetry@3.3.3'
   - astro@7.0.7
 
