@@ -7,6 +7,24 @@ updates:
     cooldown:
       default-days: 7
     open-pull-requests-limit: 10
+    groups:
+      astro:
+        patterns:
+          - 'astro'
+          - '@astrojs/*'
+      linting:
+        patterns:
+          - 'eslint*'
+          - '@eslint/*'
+          - 'prettier*'
+      typescript:
+        patterns:
+          - 'typescript'
+          - '@typescript-eslint/*'
+      minor-and-patch:
+        update-types:
+          - 'minor'
+          - 'patch'
 
   - package-ecosystem: 'github-actions'
     directory: '/'
@@ -15,3 +33,7 @@ updates:
     cooldown:
       default-days: 7
     open-pull-requests-limit: 10
+    groups:
+      github-actions:
+        patterns:
+          - '*'
