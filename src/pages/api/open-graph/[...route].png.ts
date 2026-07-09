@@ -93,7 +93,12 @@ export const GET: APIRoute = async ({ props, params }: APIContext) => {
 
   const pngBuffer = await sharp(Buffer.from(svg)).png().toBuffer();
 
-  return new Response(new Uint8Array(pngBuffer));
+  return new Response(new Uint8Array(pngBuffer), {
+    headers: {
+      'Content-Type': 'image/png',
+      'Cache-Control': 'public, max-age=31536000, immutable',
+    },
+  });
 };
 
 /*-------------------------------- utils ------------------------------*/
