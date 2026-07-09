@@ -7,6 +7,10 @@ updates:
     cooldown:
       default-days: 7
     open-pull-requests-limit: 10
+    labels:
+      - 'dependencies'
+      - 'dependabot'
+      - 'automerge'
     groups:
       astro:
         patterns:
@@ -33,6 +37,10 @@ updates:
     cooldown:
       default-days: 7
     open-pull-requests-limit: 10
+    labels:
+      - 'dependencies'
+      - 'dependabot'
+      - 'automerge'
     groups:
       github-actions:
         patterns:
