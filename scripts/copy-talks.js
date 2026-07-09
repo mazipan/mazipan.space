@@ -1,21 +1,22 @@
 import { execSync } from 'node:child_process';
-import { createWriteStream } from 'node:fs';
+import { writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 
 async function executeTask() {
-  const talks = execSync(
-    'curl https://raw.githubusercontent.com/mazipan/talks/master/all-talks.js'
-  );
-
-  const TARGET_PATH = resolve(`./src/constants/talks.ts`);
-  const stream = createWriteStream(TARGET_PATH);
-
-  stream.once('open', function (fd) {
-    stream.write(talks);
-    stream.end();
+  let talks;
+  try {
+    talks = execSync(
+      'curl -f --silent --show-error https://raw.githubusercontent.com/mazipan/talks/master/all-talks.js'
+    );
+  } catch {
     // eslint-disable-next-line no-console
-    console.log("✅ Success sync 'talks.ts' files");
-  });
+    console.warn("⚠️  Failed to fetch talks.ts (rate-limited or network error) — keeping existing file");
+    return;
+  }
+
+  writeFileSync(resolve('./src/constants/talks.ts'), talks);
+  // eslint-disable-next-line no-console
+  console.log("✅ Success sync 'talks.ts' files");
 }
 
 (async () => {
