@@ -1,8 +1,8 @@
 ---
+import { getAllCarousels, SERIES_META } from '@/modules/carousel';
 import Centered from '@/layouts/Centered.astro';
 import Breadcrumbs from '@/components/Breadcrumbs.astro';
 import CarouselCard from '@/components/CarouselCard.astro';
-import { getAllCarousels, SERIES_META } from '@/modules/carousel';
 import { BreadcrumbItemHome } from '@/constants/breadcrumb';
 import { ROUTES } from '@/constants/routes';
 
@@ -53,11 +53,11 @@ const breadcrumbs = [BreadcrumbItemHome, { text: 'Slides', href: ROUTES.CAROUSEL
             return (
               <div class="flex flex-col gap-4">
                 <div class="flex items-center gap-3">
-                  <div class="h-px flex-1 bg-base-300" />
-                  <span class="text-xs font-semibold uppercase tracking-widest opacity-40">
+                  <div class="bg-base-300 h-px flex-1" />
+                  <span class="text-xs font-semibold tracking-widest uppercase opacity-40">
                     Series
                   </span>
-                  <div class="h-px flex-1 bg-base-300" />
+                  <div class="bg-base-300 h-px flex-1" />
                 </div>
                 <div>
                   <h2 class="b-h2">{meta?.title ?? seriesSlug}</h2>
@@ -79,11 +79,11 @@ const breadcrumbs = [BreadcrumbItemHome, { text: 'Slides', href: ROUTES.CAROUSEL
             <div class="flex flex-col gap-4">
               {seriesMap.size > 0 && (
                 <div class="flex items-center gap-3">
-                  <div class="h-px flex-1 bg-base-300" />
-                  <span class="text-xs font-semibold uppercase tracking-widest opacity-40">
+                  <div class="bg-base-300 h-px flex-1" />
+                  <span class="text-xs font-semibold tracking-widest uppercase opacity-40">
                     Other
                   </span>
-                  <div class="h-px flex-1 bg-base-300" />
+                  <div class="bg-base-300 h-px flex-1" />
                 </div>
               )}
               <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 md:gap-5">

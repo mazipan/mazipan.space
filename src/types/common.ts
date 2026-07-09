@@ -17,11 +17,10 @@ export interface Metadata {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-empty-object-type
-export interface PaginationProps
-  extends Pick<
-    Page<AnyCollection>,
-    'url' | 'currentPage' | 'lastPage' | 'start' | 'end' | 'total'
-  > {
+export interface PaginationProps extends Pick<
+  Page<AnyCollection>,
+  'url' | 'currentPage' | 'lastPage' | 'start' | 'end' | 'total'
+> {
   // Empty object type
 }
 

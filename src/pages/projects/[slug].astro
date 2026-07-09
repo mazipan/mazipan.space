@@ -63,7 +63,7 @@ const breadcrumbs = [BreadcrumbItemHome, BreadcrumbItemProject];
     {
       description && (
         <p
-          class="my-4 text-xl font-normal text-content"
+          class="text-content my-4 text-xl font-normal"
           transition:name={getTransitionNameFromElementId({
             elementId: TRANSITION_ELEMENT_IDS.POST_CARD.DESCRIPTION,
           })}
@@ -74,7 +74,7 @@ const breadcrumbs = [BreadcrumbItemHome, BreadcrumbItemProject];
     }
     {
       heroImage && (
-        <div class="group mb-4 block h-fit max-h-[600px] w-auto max-w-[500px] overflow-clip rounded-lg bg-base-200 bg-cover bg-center shadow-md">
+        <div class="group bg-base-200 mb-4 block h-fit max-h-[600px] w-auto max-w-[500px] overflow-clip rounded-lg bg-cover bg-center shadow-md">
           <Image
             {...IMAGE_SIZES.RESPONSIVE.POST_HERO}
             src={heroImage}

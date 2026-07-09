@@ -1,10 +1,9 @@
 import js from '@eslint/js';
+import eslintConfigPrettier from 'eslint-config-prettier';
 import eslintPluginAstro from 'eslint-plugin-astro';
 import * as mdx from 'eslint-plugin-mdx';
 import globals from 'globals';
 import tseslint from 'typescript-eslint';
-
-import eslintConfigPrettier from 'eslint-config-prettier';
 
 // typescript-eslint rules apply to JS/TS sources only, mirroring the
 // `overrides` scoping of the previous .eslintrc.js (astro & mdx files

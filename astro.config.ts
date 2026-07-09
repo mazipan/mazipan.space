@@ -1,9 +1,11 @@
+import { unified } from '@astrojs/markdown-remark';
 import mdx from '@astrojs/mdx';
 import partytown from '@astrojs/partytown';
 import react from '@astrojs/react';
-import tailwindcss from '@tailwindcss/vite';
 import icon from 'astro-icon';
 import { defineConfig } from 'astro/config';
+
+import tailwindcss from '@tailwindcss/vite';
 
 // must use relative imports, and their entire import subtrees
 import { remarkReadingTime } from './plugins/remark-reading-time.mjs';
@@ -20,13 +22,7 @@ const remarkPlugins = [remarkReadingTime];
 export default defineConfig({
   site: SITE_URL,
   env: envSchema,
-  experimental: {
-    // svg & responsive images graduated to stable in Astro 6
-    // https://docs.astro.build/en/reference/experimental-flags/content-intellisense/
-    contentIntellisense: true,
-  },
   trailingSlash: 'ignore',
-  // default
   compressHTML: true,
   server: { port: 3000 },
   devToolbar: { enabled: false },
@@ -41,7 +37,9 @@ export default defineConfig({
     }),
   ],
   markdown: {
-    remarkPlugins,
+    processor: unified({
+      remarkPlugins,
+    }),
   },
   vite: {
     plugins: [tailwindcss()],

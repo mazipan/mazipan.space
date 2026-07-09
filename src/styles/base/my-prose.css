@@ -3,7 +3,7 @@
 /* prose override */
 @layer base {
   .my-prose:not(:where([class~='not-prose'], [class~='not-prose'] *)) {
-    @apply prose prose-slate max-w-none dark:prose-invert;
+    @apply prose prose-slate dark:prose-invert max-w-none;
 
     /* responsive styling */
     /* all tags */
@@ -20,11 +20,11 @@
       @apply rounded decoration-dashed underline-offset-2;
 
       &:hover {
-        @apply text-primary decoration-primary decoration-wavy dark:text-primary dark:decoration-primary;
+        @apply text-primary decoration-primary dark:text-primary dark:decoration-primary decoration-wavy;
       }
 
       &:focus {
-        @apply text-primary no-underline outline-none ring-2 ring-primary ring-offset-2 dark:text-primary;
+        @apply text-primary ring-primary dark:text-primary no-underline ring-2 ring-offset-2 outline-none;
       }
     }
 
@@ -33,7 +33,7 @@
 
     /* code */
     code {
-      @apply me-2 rounded bg-base-200 px-1 py-0.5 font-mono text-sm font-light text-primary dark:bg-base-200 dark:text-white;
+      @apply bg-base-200 text-primary dark:bg-base-200 me-2 rounded px-1 py-0.5 font-mono text-sm font-light dark:text-white;
       margin-inline-end: 0;
     }
 

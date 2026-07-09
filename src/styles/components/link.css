@@ -26,14 +26,14 @@
   }
 
   .link-nav {
-    @apply whitespace-nowrap text-lg text-headings underline-offset-4;
+    @apply text-headings text-lg whitespace-nowrap underline-offset-4;
     @apply hover:text-links-hover;
     @apply focus:text-links-hover focus:underline;
     @apply active:text-links-hover;
   }
 
   .link-disabled {
-    @apply cursor-not-allowed text-content no-underline hover:text-content;
+    @apply text-content hover:text-content cursor-not-allowed no-underline;
   }
 
   .animated-text-link {
@@ -52,6 +52,6 @@
   }
 
   .animated-text-link:focus {
-    @apply bg-primary-200 rounded border-2 border-primary outline-none;
+    @apply bg-primary-200 border-primary rounded border-2 outline-none;
   }
 }

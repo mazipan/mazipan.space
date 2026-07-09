@@ -51,10 +51,10 @@ const breadcrumbs = [BreadcrumbItemHome];
           awesomeSdeBlogs.data
             .filter((i) => i.owner.name !== 'Irfan Maulana')
             .map((person) => (
-              <div class="flex flex-col items-center justify-between gap-4 rounded-lg border border-primary p-4 text-center shadow-lg">
+              <div class="border-primary flex flex-col items-center justify-between gap-4 rounded-lg border p-4 text-center shadow-lg">
                 <a
                   href={person.blog.link}
-                  class="flex flex-wrap items-center justify-center gap-1 rounded-br-lg hover:text-primary focus:bg-base-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                  class="hover:text-primary focus:bg-base-200 focus:ring-primary flex flex-wrap items-center justify-center gap-1 rounded-br-lg focus:ring-2 focus:ring-offset-2 focus:outline-none"
                   target="_blank"
                   rel="noreferrer noopener"
                 >
@@ -70,7 +70,7 @@ const breadcrumbs = [BreadcrumbItemHome];
                 />
                 <a
                   href={person.owner.link}
-                  class="flex flex-wrap items-center justify-center gap-1 rounded-bl-lg hover:text-primary focus:bg-base-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                  class="hover:text-primary focus:bg-base-200 focus:ring-primary flex flex-wrap items-center justify-center gap-1 rounded-bl-lg focus:ring-2 focus:ring-offset-2 focus:outline-none"
                   target="_blank"
                   rel="noreferrer noopener"
                 >

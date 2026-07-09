@@ -11,19 +11,19 @@ static HTML; there is no runtime server.
 
 ## Tech stack
 
-| Area | Choice |
-| --- | --- |
-| Framework | **Astro 6** (static output) |
-| UI islands | **React 19** (`@astrojs/react`) for interactive bits |
-| Styling | **Tailwind CSS 4** via `@tailwindcss/vite` (no `@astrojs/tailwind`) |
-| Content | Astro **Content Layer** (glob loader) with **Zod 4** schemas |
-| Markdown | MDX (`@astrojs/mdx`), `astro-expressive-code` |
-| Icons | `astro-icon` (Tabler set, local `src/assets/icons`) |
-| Language | **TypeScript 6** (strict) |
-| Lint/format | **ESLint 10** (flat config) + Prettier 3 |
-| Package manager | **pnpm 11** |
-| Runtime | **Node.js 24** (see `.nvmrc`) |
-| Deploy | Vercel (static) + GitHub Pages workflow |
+| Area            | Choice                                                              |
+| --------------- | ------------------------------------------------------------------- |
+| Framework       | **Astro 7** (static output)                                         |
+| UI islands      | **React 19** (`@astrojs/react`) for interactive bits                |
+| Styling         | **Tailwind CSS 4** via `@tailwindcss/vite` (no `@astrojs/tailwind`) |
+| Content         | Astro **Content Layer** (glob loader) with **Zod 4** schemas        |
+| Markdown        | MDX (`@astrojs/mdx`), `astro-expressive-code`                       |
+| Icons           | `astro-icon` (Tabler set, local `src/assets/icons`)                 |
+| Language        | **TypeScript 6** (strict)                                           |
+| Lint/format     | **ESLint 10** (flat config) + Prettier 3                            |
+| Package manager | **pnpm 11**                                                         |
+| Runtime         | **Node.js 24** (see `.nvmrc`)                                       |
+| Deploy          | Vercel (static) + GitHub Pages workflow                             |
 
 ## Prerequisites
 
@@ -69,7 +69,7 @@ src/
   config/        validated env config (client.ts, server.ts, process-env.ts)
   constants/     routes, metadata, collections, dom selectors, etc.
   content/       MDX collections: post/ and project/
-  content.config.ts   collection definitions (Astro 6 location)
+  content.config.ts   collection definitions (Astro 6+ location)
   draft/         example/draft MDX (not published)
   layouts/       page layouts (Base, Post, FullWidth)
   libs/          api/ (feed, open-graph image gen) and integrations/
@@ -92,6 +92,7 @@ no `baseUrl`). Prefer aliases over deep relative paths:
 import { getAllPosts } from '@/modules/post/common';
 import { ROUTES } from '@/constants/routes';
 import { cn } from '@/utils/styles';
+
 import type { Post } from '@/types/post';
 ```
 
@@ -138,7 +139,7 @@ Available: `@/assets`, `@/components`, `@/constants`, `@/content`, `@/layouts`,
 
 ### Content collections (Astro Content Layer)
 
-- Collections are defined in `src/content.config.ts` (Astro 6 location — **not**
+- Collections are defined in `src/content.config.ts` (Astro 6+ location — **not**
   `src/content/config.ts`) using the `glob()` loader. Schemas come from
   `src/schemas/`.
 - Entries use **`entry.id`**, not `entry.slug` (the deprecated `slug` was
@@ -161,32 +162,16 @@ command/snippet across multiple package managers (or any set of tabs).
 
 ### Usage in MDX
 
-```mdx
+````mdx
 import CodeGroup from '../../components/CodeGroup.astro';
 
 <CodeGroup labels={['npm', 'pnpm', 'yarn', 'bun']}>
-  <div data-label="npm">
-    ```bash title=zsh frame=terminal
-    npm install foo
-    ```
-  </div>
-  <div data-label="pnpm">
-    ```bash title=zsh frame=terminal
-    pnpm add foo
-    ```
-  </div>
-  <div data-label="yarn">
-    ```bash title=zsh frame=terminal
-    yarn add foo
-    ```
-  </div>
-  <div data-label="bun">
-    ```bash title=zsh frame=terminal
-    bun add foo
-    ```
-  </div>
+  <div data-label="npm">```bash title=zsh frame=terminal npm install foo ```</div>
+  <div data-label="pnpm">```bash title=zsh frame=terminal pnpm add foo ```</div>
+  <div data-label="yarn">```bash title=zsh frame=terminal yarn add foo ```</div>
+  <div data-label="bun">```bash title=zsh frame=terminal bun add foo ```</div>
 </CodeGroup>
-```
+````
 
 - Each panel is a `<div data-label="<id>">` child (matched to a tab by label string).
 - `labels` accepts plain strings **or** `{ id: string; text: string }` objects — plain
@@ -237,13 +222,13 @@ Interactive slide decks styled like Instagram carousels. Each JSON file in
 
 Each entry in `slides` needs `type` and `theme`. All other fields are optional.
 
-| Type      | Key fields | Purpose |
-|-----------|-----------|---------|
-| `cover`   | `icon`, `title`, `subtitle` | Opening title card |
-| `content` | `icon`, `title`, `body` | Body text with heading |
-| `quote`   | `quote` | Full-bleed pull quote |
-| `tip`     | `icon`, `title`, `body` | Highlighted advice box |
-| `list`    | `icon`, `title`, `bullets` | Numbered bullet list |
+| Type      | Key fields                                | Purpose                      |
+| --------- | ----------------------------------------- | ---------------------------- |
+| `cover`   | `icon`, `title`, `subtitle`               | Opening title card           |
+| `content` | `icon`, `title`, `body`                   | Body text with heading       |
+| `quote`   | `quote`                                   | Full-bleed pull quote        |
+| `tip`     | `icon`, `title`, `body`                   | Highlighted advice box       |
+| `list`    | `icon`, `title`, `bullets`                | Numbered bullet list         |
 | `closing` | `icon`, `title`, `body`, `cta`, `ctaSlug` | Last slide with optional CTA |
 
 `body` supports `\n` for line breaks. `bullets` is an array of strings.
@@ -255,25 +240,25 @@ Recommended order: `cover` → 2–5 middle slides → `closing`.
 
 Every slide picks its own `theme` — vary them for visual rhythm.
 
-| Theme      | Background | Text |
-|------------|-----------|------|
-| `ocean`    | Blue → cyan | white |
-| `lavender` | Violet → purple | white |
-| `sunset`   | Orange → rose | white |
-| `forest`   | Emerald → teal | white |
-| `midnight` | Slate 800 → 900 | white |
-| `sunrise`  | Amber → orange | **dark** (only light theme) |
-| `cherry`   | Rose → pink | white |
+| Theme      | Background      | Text                        |
+| ---------- | --------------- | --------------------------- |
+| `ocean`    | Blue → cyan     | white                       |
+| `lavender` | Violet → purple | white                       |
+| `sunset`   | Orange → rose   | white                       |
+| `forest`   | Emerald → teal  | white                       |
+| `midnight` | Slate 800 → 900 | white                       |
+| `sunrise`  | Amber → orange  | **dark** (only light theme) |
+| `cherry`   | Rose → pink     | white                       |
 
 **4. Inline text markup**
 
 Supported in `body`, `quote`, `subtitle`, `title`, and `bullets` items.
 
-| Syntax     | Effect | Use for |
-|------------|--------|---------|
-| `**word**` | Bold + ~10% larger | The single most important claim |
-| `==word==` | Stabilo yellow highlight (dark text) | Hook or surprise phrase |
-| `__word__` | Amber accent colour | Secondary emphasis |
+| Syntax     | Effect                               | Use for                         |
+| ---------- | ------------------------------------ | ------------------------------- |
+| `**word**` | Bold + ~10% larger                   | The single most important claim |
+| `==word==` | Stabilo yellow highlight (dark text) | Hook or surprise phrase         |
+| `__word__` | Amber accent colour                  | Secondary emphasis              |
 
 Keep it sparing — 1–3 marks per text block. Do not nest markers. On the
 `sunrise` theme the stabilo switches to a dark overlay automatically.
@@ -314,15 +299,15 @@ omitted.
 
 **6. Key source files**
 
-| Path | Purpose |
-|------|---------|
-| `src/schemas/carousel.ts` | Zod schema — source of truth for all fields |
-| `src/modules/carousel.ts` | Data access + `SERIES_META` registry |
-| `src/components/CarouselViewer.tsx` | React island (renders + swipe/keyboard) |
-| `src/components/CarouselCard.astro` | Grid card on the `/carousel` listing |
-| `src/pages/carousel/index.astro` | Listing page (groups by series) |
-| `src/pages/carousel/[slug].astro` | Detail page |
-| `src/content/carousel/` | JSON source files |
+| Path                                | Purpose                                     |
+| ----------------------------------- | ------------------------------------------- |
+| `src/schemas/carousel.ts`           | Zod schema — source of truth for all fields |
+| `src/modules/carousel.ts`           | Data access + `SERIES_META` registry        |
+| `src/components/CarouselViewer.tsx` | React island (renders + swipe/keyboard)     |
+| `src/components/CarouselCard.astro` | Grid card on the `/carousel` listing        |
+| `src/pages/carousel/index.astro`    | Listing page (groups by series)             |
+| `src/pages/carousel/[slug].astro`   | Detail page                                 |
+| `src/content/carousel/`             | JSON source files                           |
 
 ### Zod (v4)
 
@@ -338,7 +323,7 @@ omitted.
 - Strict (`astro/tsconfigs/strict`). No `baseUrl`; `paths` are relative to the
   repo root with a `./src/` prefix.
 - React 19 removed the global `JSX` namespace — import it (`import type { JSX }
-  from 'react'`) or use `React.JSX`.
+from 'react'`) or use `React.JSX`.
 - `tsc` (`pnpm check-types`) only covers `.ts/.tsx`. Use `pnpm astro check` to
   type-check `.astro` files.
 
@@ -347,8 +332,11 @@ omitted.
 - Config is `eslint.config.mjs` (flat). `@typescript-eslint` rules apply to
   JS/TS files only (`**/*.{ts,tsx,mjs,cjs,js}`); `.astro` and `.mdx` are handled
   by their own plugin configs. `no-unused-vars` is intentionally off for `.mdx`.
-- Use `_`-prefixed names for intentionally-unused vars/args (matched by the
-  ignore pattern). Prefer fixing lint issues over adding disable directives.
+- Use `_`-prefixed names for intentionally-unused vars/args in `.ts`/`.tsx`
+  files (matched by `@typescript-eslint/no-unused-vars` `varsIgnorePattern`).
+  **`.astro` files use the base `no-unused-vars` rule which has no ignore
+  pattern** — remove unused bindings there instead of prefixing them.
+  Prefer fixing lint issues over adding disable directives.
 
 ## CI / Deployment
 
@@ -369,16 +357,19 @@ omitted.
   build and the production build fails. This is a single-package repo, so the
   file has **no `packages:` field**; it must only be used with pnpm 10+/Corepack
   (a pnpm 9 that treats it as a monorepo manifest would fail with "packages
-  field missing or empty"). Note: `onlyBuiltDependencies` is *not* honored by
-  pnpm 11 — use the `allowBuilds` map. Local installs may inject placeholder
-  values or a `minimumReleaseAgeExclude` block (from a machine-global pnpm
-  setting); keep the committed file clean (just `allowBuilds` with `true`).
+  field missing or empty"). Note: `onlyBuiltDependencies` is _not_ honored by
+  pnpm 11 — use the `allowBuilds` map. When upgrading to a very recently
+  published package, add a `minimumReleaseAgeExclude` entry so CI can install
+  it before the 24-hour supply-chain policy window elapses — see the existing
+  `astro@7.0.7` entry as an example. Remove these entries once the packages
+  are old enough. Do **not** commit machine-injected placeholder values from
+  local pnpm config.
 - **OG images** are generated at build time with `satori` + `sharp`
   (`src/pages/api/open-graph/[...route].png.ts`). `satori` is strict about image
   sources — always quote attribute interpolations in the HTML template
   (`src/libs/api/open-graph/template-html.ts`).
-- `astro.config.ts` markdown `remarkPlugins`/`rehypePlugins` are deprecated in
-  Astro 6 (still functional, emits a warning); they can be migrated to
-  `@astrojs/markdown-remark`'s `unified()` later.
+- `astro.config.ts` markdown uses `processor: unified({...})` from
+  `@astrojs/markdown-remark` (the legacy remark/rehype pipeline). Migrating to
+  Sätteri is tracked in #277.
 - `pnpm generate` fetches external data (talks, awesome-sde lists) and writes
   into the repo; it runs automatically as part of `pnpm build`.

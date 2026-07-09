@@ -4,6 +4,13 @@ allowBuilds:
   esbuild: true
   sharp: true
 
+# astro@7.0.7 and its telemetry package were published on the same day as this
+# upgrade — exclude them from the minimumReleaseAge supply-chain policy so CI
+# can install them before the 24-hour window elapses.
+minimumReleaseAgeExclude:
+  - '@astrojs/telemetry@3.3.3'
+  - astro@7.0.7
+
 # eslint 10.4.0 declares @eslint/plugin-kit ^0.7.1, which would resolve to the
 # very recently published 0.7.2 and trip the minimumReleaseAge supply-chain
 # policy. Pin the aged 0.7.1 (compatible with eslint 10.4.0).

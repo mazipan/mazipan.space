@@ -277,7 +277,10 @@ function Slide({ slide, blogBasePath, seriesTitle }: SlideProps) {
           style={{ ...decorCircle, width: 200, height: 200, top: -60, right: -60 }}
           aria-hidden="true"
         />
-        <div className="slide-content" style={{ ...contentArea, gap: 'clamp(0.625rem, 2.5vw, 1rem)' }}>
+        <div
+          className="slide-content"
+          style={{ ...contentArea, gap: 'clamp(0.625rem, 2.5vw, 1rem)' }}
+        >
           {slide.icon && (
             <span style={{ fontSize: 'clamp(1.75rem, 7vw, 2.5rem)', lineHeight: 1, flexShrink: 0 }}>
               {slide.icon}
@@ -326,7 +329,10 @@ function Slide({ slide, blogBasePath, seriesTitle }: SlideProps) {
   if (slide.type === 'list') {
     return (
       <div style={wrapperStyle}>
-        <div className="slide-content" style={{ ...contentArea, gap: 'clamp(0.625rem, 2.5vw, 1rem)' }}>
+        <div
+          className="slide-content"
+          style={{ ...contentArea, gap: 'clamp(0.625rem, 2.5vw, 1rem)' }}
+        >
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.625rem', flexShrink: 0 }}>
             {slide.icon && (
               <span style={{ fontSize: 'clamp(1.5rem, 5vw, 2rem)', lineHeight: 1 }}>
@@ -479,7 +485,10 @@ function Slide({ slide, blogBasePath, seriesTitle }: SlideProps) {
         style={{ ...decorCircle, width: 200, height: 200, top: -60, right: -60 }}
         aria-hidden="true"
       />
-      <div className="slide-content" style={{ ...contentArea, gap: 'clamp(0.625rem, 2.5vw, 1rem)' }}>
+      <div
+        className="slide-content"
+        style={{ ...contentArea, gap: 'clamp(0.625rem, 2.5vw, 1rem)' }}
+      >
         {slide.icon && (
           <span style={{ fontSize: 'clamp(1.75rem, 7vw, 2.5rem)', lineHeight: 1, flexShrink: 0 }}>
             {slide.icon}
@@ -556,7 +565,11 @@ interface CarouselViewerProps {
   seriesTitle?: string;
 }
 
-export default function CarouselViewer({ slides, blogBasePath = '/blog', seriesTitle }: CarouselViewerProps) {
+export default function CarouselViewer({
+  slides,
+  blogBasePath = '/blog',
+  seriesTitle,
+}: CarouselViewerProps) {
   const [current, setCurrent] = useState(0);
   const [animating, setAnimating] = useState(false);
   // Height derived from actual container width — guarantees content is never cropped
@@ -739,7 +752,12 @@ export default function CarouselViewer({ slides, blogBasePath = '/blog', seriesT
 
       {/* Arrow buttons */}
       <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center' }}>
-        <NavButton onClick={prev} disabled={current === 0} label="Previous slide" direction="prev" />
+        <NavButton
+          onClick={prev}
+          disabled={current === 0}
+          label="Previous slide"
+          direction="prev"
+        />
         <span style={{ fontSize: '0.8rem', opacity: 0.5, width: '4rem', textAlign: 'center' }}>
           {current + 1} of {total}
         </span>
@@ -766,9 +784,7 @@ export default function CarouselViewer({ slides, blogBasePath = '/blog', seriesT
               border: 'none',
               cursor: 'pointer',
               background:
-                i === current
-                  ? THEMES[slide.theme ?? 'ocean'].gradient
-                  : 'rgba(128,128,128,0.3)',
+                i === current ? THEMES[slide.theme ?? 'ocean'].gradient : 'rgba(128,128,128,0.3)',
               transition: 'all 0.35s ease',
               padding: 0,
             }}

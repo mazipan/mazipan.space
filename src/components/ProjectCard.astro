@@ -7,7 +7,6 @@ import Link from '@/components/Link.astro';
 import { IMAGE_SIZES } from '@/constants/image';
 import { ROUTES } from '@/constants/routes';
 import { setTransitionSlug, TRANSITION_ELEMENT_IDS } from '@/constants/transitions';
-
 import TagList from './TagList.astro';
 
 import type { Project } from '@/types/project';
@@ -32,7 +31,7 @@ const getTransitionNameFromElementId = setTransitionSlug({ pageSlug: slug });
 <article>
   <a
     href={`${ROUTES.PROJECTS}/${slug}`}
-    class="group mb-4 block h-fit max-h-[200px] w-fit overflow-clip rounded-lg bg-base-200 bg-cover bg-center shadow-md"
+    class="group bg-base-200 mb-4 block h-fit max-h-[200px] w-fit overflow-clip rounded-lg bg-cover bg-center shadow-md"
   >
     <Image
       {...IMAGE_SIZES.RESPONSIVE.PROJECT_CARD}
@@ -45,7 +44,7 @@ const getTransitionNameFromElementId = setTransitionSlug({ pageSlug: slug });
     />
   </a>
 
-  <div class="mb-1 flex items-center gap-3 text-sm text-captions">
+  <div class="text-captions mb-1 flex items-center gap-3 text-sm">
     <span class="flex items-center gap-1">
       <Icon name="tabler:calendar" class="h-4 w-4" />
       <span>
@@ -71,7 +70,7 @@ const getTransitionNameFromElementId = setTransitionSlug({ pageSlug: slug });
   {
     description && (
       <p
-        class="mb-2 text-sm text-captions"
+        class="text-captions mb-2 text-sm"
         transition:name={getTransitionNameFromElementId({
           elementId: TRANSITION_ELEMENT_IDS.POST_CARD.DESCRIPTION,
         })}

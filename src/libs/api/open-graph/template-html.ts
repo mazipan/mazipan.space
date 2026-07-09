@@ -35,7 +35,9 @@ const templateHtml = ({ title, slug, heroImageUrl, siteUrl }: TemplateProps) => 
           ${limitedTitle}
         </div>
         <div
-          style="color: rgba(255, 255, 255, 0.88); font-size: ${isLongSiteUrl ? '28px' : '34px'}; display: flex; align-items: center;"
+          style="color: rgba(255, 255, 255, 0.88); font-size: ${isLongSiteUrl
+            ? '28px'
+            : '34px'}; display: flex; align-items: center;"
         >
           ${siteUrl}
         </div>

@@ -18,12 +18,12 @@ export interface Props extends HTMLAttributes<'aside'> {
 const { headings, ...props } = Astro.props;
 ---
 
-<toggle-toc class="fixed bottom-8 right-4 z-50 flex lg:hidden">
+<toggle-toc class="fixed right-4 bottom-8 z-50 flex lg:hidden">
   <button
     data-expanded="false"
     role="button"
     type="button"
-    class="toc-btn-toggle flex cursor-pointer items-center justify-center gap-2 rounded-lg border-2 border-primary bg-base-100 p-3 transition-all duration-500 data-[expanded=true]:rotate-180"
+    class="toc-btn-toggle border-primary bg-base-100 flex cursor-pointer items-center justify-center gap-2 rounded-lg border-2 p-3 transition-all duration-500 data-[expanded=true]:rotate-180"
   >
     <Icon name="tabler:table-column" class="inline h-6 w-6 fill-current" />
   </button>
@@ -33,7 +33,7 @@ const { headings, ...props } = Astro.props;
   data-lg="false"
   data-expanded="false"
   class={cn(
-    'my-prose centered-px toc-content z-50 transform rounded-lg bg-base-100 shadow-lg transition-all duration-500 lg:z-0 lg:shadow-none',
+    'my-prose centered-px toc-content bg-base-100 z-50 transform rounded-lg shadow-lg transition-all duration-500 lg:z-0 lg:shadow-none',
     'data-[lg=false]:fixed data-[lg=false]:bottom-24 data-[lg=false]:left-4 data-[lg=false]:w-[80%]'
     // 'data-[expanded=false]:-translate-x-[110%] data-[expanded=true]:translate-x-0'
   )}
@@ -41,7 +41,7 @@ const { headings, ...props } = Astro.props;
 >
   <div
     class={cn(
-      'toc mx-auto overflow-y-auto rounded-lg border-2 border-dashed border-primary p-4',
+      'toc border-primary mx-auto overflow-y-auto rounded-lg border-2 border-dashed p-4',
       'max-h-[calc(70vh)] lg:sticky lg:top-20 lg:max-h-[calc(100vh-100px)]'
     )}
   >
@@ -55,7 +55,7 @@ const { headings, ...props } = Astro.props;
             </a>
 
             {subHeadings.length > 0 && (
-              <ol class="-ml-[20px] mb-2 mt-0 space-y-1.5">
+              <ol class="mt-0 mb-2 -ml-[20px] space-y-1.5">
                 {subHeadings.map(({ slug: slugChild, text: textChild }, idx) => (
                   <li class={cn('my-0', idx === 0 && 'mt-2')}>
                     <a href={`#${slugChild}`} class="toc-link font-normal no-underline">
