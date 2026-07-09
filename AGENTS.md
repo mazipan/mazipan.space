@@ -69,7 +69,7 @@ src/
   config/        validated env config (client.ts, server.ts, process-env.ts)
   constants/     routes, metadata, collections, dom selectors, etc.
   content/       MDX collections: post/ and project/
-  content.config.ts   collection definitions (Astro 6 location)
+  content.config.ts   collection definitions (Astro 6+ location)
   draft/         example/draft MDX (not published)
   layouts/       page layouts (Base, Post, FullWidth)
   libs/          api/ (feed, open-graph image gen) and integrations/
@@ -139,7 +139,7 @@ Available: `@/assets`, `@/components`, `@/constants`, `@/content`, `@/layouts`,
 
 ### Content collections (Astro Content Layer)
 
-- Collections are defined in `src/content.config.ts` (Astro 6 location — **not**
+- Collections are defined in `src/content.config.ts` (Astro 6+ location — **not**
   `src/content/config.ts`) using the `glob()` loader. Schemas come from
   `src/schemas/`.
 - Entries use **`entry.id`**, not `entry.slug` (the deprecated `slug` was
@@ -332,8 +332,11 @@ from 'react'`) or use `React.JSX`.
 - Config is `eslint.config.mjs` (flat). `@typescript-eslint` rules apply to
   JS/TS files only (`**/*.{ts,tsx,mjs,cjs,js}`); `.astro` and `.mdx` are handled
   by their own plugin configs. `no-unused-vars` is intentionally off for `.mdx`.
-- Use `_`-prefixed names for intentionally-unused vars/args (matched by the
-  ignore pattern). Prefer fixing lint issues over adding disable directives.
+- Use `_`-prefixed names for intentionally-unused vars/args in `.ts`/`.tsx`
+  files (matched by `@typescript-eslint/no-unused-vars` `varsIgnorePattern`).
+  **`.astro` files use the base `no-unused-vars` rule which has no ignore
+  pattern** — remove unused bindings there instead of prefixing them.
+  Prefer fixing lint issues over adding disable directives.
 
 ## CI / Deployment
 
@@ -355,9 +358,12 @@ from 'react'`) or use `React.JSX`.
   file has **no `packages:` field**; it must only be used with pnpm 10+/Corepack
   (a pnpm 9 that treats it as a monorepo manifest would fail with "packages
   field missing or empty"). Note: `onlyBuiltDependencies` is _not_ honored by
-  pnpm 11 — use the `allowBuilds` map. Local installs may inject placeholder
-  values or a `minimumReleaseAgeExclude` block (from a machine-global pnpm
-  setting); keep the committed file clean (just `allowBuilds` with `true`).
+  pnpm 11 — use the `allowBuilds` map. When upgrading to a very recently
+  published package, add a `minimumReleaseAgeExclude` entry so CI can install
+  it before the 24-hour supply-chain policy window elapses — see the existing
+  `astro@7.0.7` entry as an example. Remove these entries once the packages
+  are old enough. Do **not** commit machine-injected placeholder values from
+  local pnpm config.
 - **OG images** are generated at build time with `satori` + `sharp`
   (`src/pages/api/open-graph/[...route].png.ts`). `satori` is strict about image
   sources — always quote attribute interpolations in the HTML template
