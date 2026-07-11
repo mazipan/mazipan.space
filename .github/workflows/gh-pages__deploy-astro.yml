@@ -37,7 +37,7 @@ jobs:
         with:
           fetch-depth: 1
       - name: Install, build, and upload your site output
-        uses: withastro/action@v6
+        uses: withastro/action@v6.1.1
         with:
           path: ./
           node-version: 24.16.0
