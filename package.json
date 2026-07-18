@@ -41,7 +41,7 @@
     "dayjs": "^1.11.21",
     "dotenv": "^17.4.2",
     "expressive-code-color-chips": "^0.2.0",
-    "feed": "^5.2.1",
+    "feed": "^6.0.0",
     "giscus": "^1.6.0",
     "github-slugger": "^2.0.0",
     "object-treeify": "^5.0.1",
