@@ -208,6 +208,9 @@ Rules:
 - **Friends page:** data in `src/constants/friends.ts` (blog, owner, platform, avatar). Interaction is progressive: cards are in the HTML, `friend-list` adds search, filter, sort and shuffle. Avatars always have the initials fallback.
 - **Breadcrumbs:** every `Page` layout page has them; put `breadcrumbs: false` in the frontmatter to hide them (the 404 page does).
 - **404:** `NotFoundArt.astro` (key row 4-0-4: a ginger pixel-art cat batted the 0 key out, a dark pixel cat sleeps in the slot; the cats are crisp `<path>` pixels in fixed colors, generated from small sprite grids, the keys use palette tokens). Cats are part of the site's personality; more cats are welcome in empty states.
+- **Resume order:** `src/constants/career.ts` is newest first; `resume.astro` shows stops oldest first and roles inside one company oldest first too. The card tab reads `Joined <year>` (never 'Exit', it reads like leaving).
+- **About:** has a "Where I've worked" card that links to `ROUTES.RESUME`; keep the resume reachable from About and the footer.
+- **Version:** the footer's `v…` comes from `package.json` `version` through `APP_VERSION` (now 3.0.0), so bump it there only.
 - **Footer:** `Footer.astro` = raised `.footer-deck` (brand + link groups with `.footer-label` plates) over a recessed `.footer-plate` (small print + back-to-top key). New footer links go into the matching `.footer-links` list.
 - **Copy:** short sentences, first person, warm, no repeated message across pages (the tagline lives on Home and About only), no abbreviations in the UI, English UI (the blog posts and slides may be Indonesian). Every page needs a real meta description in `src/constants/metadata.ts`.
 - **Photos and screenshots** are framed (`.frame`, `PolaroidCard`), serve images with `densities` or `widths`, and keep their natural aspect ratio (never force `aspect-*` without `object-cover`). Long reading text (posts, projects, pages, resume) sits on a `.sheet`.
@@ -440,4 +443,3 @@ from 'react'`) or use `React.JSX`.
   live under `plugins/` and use `defineMdastPlugin` from `satteri`.
 - `pnpm generate` fetches external data (talks, awesome-sde lists) and writes
   into the repo; it runs automatically as part of `pnpm build`.
-- **Resume order:** `src/constants/career.ts` is newest first; `resume.astro` shows stops oldest first and roles inside one company oldest first too. The card tab reads `Joined <year>` (never 'Exit', it reads like leaving).
