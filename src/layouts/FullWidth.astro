@@ -8,7 +8,7 @@ const props = Astro.props;
 ---
 
 <Base {...props}>
-  <main id="main" class="relative flex flex-grow flex-col">
+  <main id="main" tabindex="-1" class="relative flex flex-grow flex-col">
     <slot />
   </main>
 </Base>

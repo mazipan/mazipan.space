@@ -1,4 +1,5 @@
 @import './base.css';
+@import './a11y.css';
 @import './my-prose.css';
 /* after, for override */
 @import './tags.css';
