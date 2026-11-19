@@ -49,14 +49,13 @@ const metadata = getPageMetadata('pages/about');
     <b>You can call me "mas ipan"</b>
     <div class="my-8 flex flex-col-reverse gap-16 md:flex-row md:items-start md:justify-between">
       <div class="space-y-6">
-        <p>
-          {PROFILE.TAGLINE}
-        </p>
-        <h3 class="b-h1 tracking-wide">I write some stuffs</h3>
+        <p>{PROFILE.TAGLINE}</p>
+        <h2 class="b-h1 tracking-wide">I write some stuffs</h2>
         <p>
           I don’t write all that often, but you’re welcome to explore my public writings. I mostly
           share personal experiences on technical topics and occasionally throw in some
-          beginner-friendly advice from my perspective. <a
+          beginner-friendly advice from my perspective.{' '}
+          <a
             href={ROUTES.BLOG}
             class="bg-primary text-primary-content hover:bg-primary-hover px-2 hover:underline"
           >
@@ -64,7 +63,7 @@ const metadata = getPageMetadata('pages/about');
           </a>
         </p>
 
-        <h3 class="b-h1 tracking-wide">Randomly speaking</h3>
+        <h2 class="b-h1 tracking-wide">Randomly speaking</h2>
         <p>
           I speak on a variety of topics, including JavaScript, React.js, Next.js, and web
           technologies in general. I also cover areas like contributing to open source, exploring
@@ -82,7 +81,7 @@ const metadata = getPageMetadata('pages/about');
           </a>
         </p>
 
-        <h3 class="b-h1 tracking-wide">One on one discussion</h3>
+        <h2 class="b-h1 tracking-wide">One on one discussion</h2>
         <p>
           I provide one-on-one mentorship through ADPList, which I like to describe as more of a
           two-way discussion than a traditional mentorship. I understand that I may not always be
@@ -100,7 +99,7 @@ const metadata = getPageMetadata('pages/about');
             Check my ADPList profile.
           </a>
         </p>
-        <h3 class="b-h1 tracking-wide">#Build in public</h3>
+        <h2 class="b-h1 tracking-wide">#Build in public</h2>
         <p>
           I enjoy sharing my projects with the public, as I often build them for fun and to explore
           new concepts or technologies. I actively contribute to and maintain community projects,
@@ -114,18 +113,16 @@ const metadata = getPageMetadata('pages/about');
             title="GitHub"
             class="bg-primary text-primary-content hover:bg-primary-hover px-2 hover:underline"
           >
-            Check my public code</a
-          >
+            Check my public code
+          </a>
         </p>
 
-        <h3 class="b-h1 tracking-wide">Want to work together?</h3>
+        <h2 class="b-h1 tracking-wide">Want to work together?</h2>
 
         <div class="flex flex-col items-start gap-2">
           <div class="flex items-center gap-2">
             <span class="relative flex h-3 w-3">
-              <span
-                class="bg-primary absolute inline-flex h-full w-full animate-ping rounded-full opacity-75"
-              ></span>
+              <span class="bg-primary absolute inline-flex h-full w-full animate-ping rounded-full opacity-75"></span>
               <span class="bg-primary relative inline-flex h-3 w-3 rounded-full"></span>
             </span>
             <span class="text-primary">Available for hire</span>
@@ -141,7 +138,9 @@ const metadata = getPageMetadata('pages/about');
           >
             Send me an email
           </Button>
-          <small>Or copy this email manually: <code class="font-mono">{AUTHOR_EMAIL}</code></small>
+          <small>
+            Or copy this email manually: <code class="font-mono">{AUTHOR_EMAIL}</code>
+          </small>
         </div>
       </div>
       <div class="flex items-center justify-center md:min-w-[300px]">

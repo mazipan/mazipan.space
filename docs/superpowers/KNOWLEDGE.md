@@ -61,8 +61,16 @@ Owner preferences in chat: short answers, bullets, tables, diagrams, no long das
 
 ## 5. State right now
 
-- `master` has Phase 1 (#321) and Phase 1b (#322). `feat/2027-design` equals master plus docs (plan, handoff, this file).
+- `master` has Phases 1, 1b, 2, 3, 4 (PRs #321 to #325) and the first part of Phase 5. `feat/2027-design` equals master after each merge. Local mirror branches `feat/2027-post|home|lists|pages` can be deleted.
 - Phase 2 (post page) is done and merged. Paragraphs in posts are direct children of `<content-wrapper>` inside `.post-detail`.
+
+## 5b. Lessons from Phases 3-5 (accessibility audits find real bugs)
+
+- Run Lighthouse on every page type, not only the ones you edited. Typical real findings: heading order (a page starts with `h3` under `h1`; use `h2`), hard-coded Tailwind grays like `text-gray-400 dark:text-gray-500` (use `text-captions` / `text-headings`), `opacity-40` on text (use `text-captions`), `aria-label` that differs from visible text, 8px click targets (wrap in a 24px button), hidden content that is still focusable (use `inert` / `invisible`), anchors without `href` (use `<span>`).
+- Many pages pass `description: ''` in `src/constants/metadata.ts`. `BaseHead.astro` now falls back to the site description; write real descriptions when you have time.
+- Layout shift: Giscus (comments iframe) loads late. A reserved `min-h` helps but does not remove it fully.
+- Shelf on phones is a CSS grid (2 columns); two half-width flex items wrapped because of subpixel rounding.
+- Pages built in this redesign: home (`src/pages/index.astro`), blog index (`src/pages/blog/[...page].astro`, shelves from `src/modules/post/shelf.ts`), post (`src/pages/blog/[slug].astro` + `PostNav`, `ToC`), pagination keys (`Pagination.astro`).
 
 ## 6. Open questions (use the defaults; owner can change later)
 
