@@ -209,6 +209,7 @@ Rules:
 - **Breadcrumbs:** every `Page` layout page has them; put `breadcrumbs: false` in the frontmatter to hide them (the 404 page does).
 - **404:** `NotFoundArt.astro` (key row 4-0-4: a ginger pixel-art cat batted the 0 key out, a dark pixel cat sleeps in the slot; the cats are crisp `<path>` pixels in fixed colors, generated from small sprite grids, the keys use palette tokens). Cats are part of the site's personality; more cats are welcome in empty states.
 - **Resume order:** `src/constants/career.ts` is newest first; `resume.astro` shows stops oldest first and roles inside one company oldest first too. The card tab reads `Joined <year>` (never 'Exit', it reads like leaving).
+- **Resume road:** the dashed center line must be a short tile with `repeat-y` (a single road-high tile ends halfway when scroll shifts it); on phones the road is at `left: 0` on the 48px grid column and the lamp sits on its right edge, so the connector meets it. Do not add a role count to the intro badges.
 - **About:** has a "Where I've worked" card that links to `ROUTES.RESUME`; keep the resume reachable from About and the footer.
 - **Version:** the footer's `v…` comes from `package.json` `version` through `APP_VERSION` (now 3.0.0), so bump it there only.
 - **Footer:** `Footer.astro` = raised `.footer-deck` (brand + link groups with `.footer-label` plates) over a recessed `.footer-plate` (small print + back-to-top key). New footer links go into the matching `.footer-links` list.

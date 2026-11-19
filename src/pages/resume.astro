@@ -67,7 +67,7 @@ const yearsOnTheRoad = new Date().getFullYear() - startYear;
     </slot>
 
     <section class="flex flex-col gap-6">
-      <div class="sheet space-y-4">
+      <div class="sheet flex flex-col gap-5">
         <p class="m-0">
           A road trip through my career, from my first job to today. Scroll to drive: each stop
           lights up as the car passes.
@@ -75,7 +75,6 @@ const yearsOnTheRoad = new Date().getFullYear() - startYear;
         <ul class="m-0 flex list-none flex-wrap gap-3 p-0" aria-label="The trip in numbers">
           <li class="crumb !text-base">{yearsOnTheRoad} years on the road</li>
           <li class="crumb !text-base">{stops.length} companies</li>
-          <li class="crumb !text-base">{CAREERS.length} roles</li>
         </ul>
       </div>
 

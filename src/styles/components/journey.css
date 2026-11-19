@@ -24,8 +24,7 @@
     border: 2px solid var(--th-key-edge);
     border-radius: 14px;
     background:
-      repeating-linear-gradient(to bottom, #f4efe4 0 20px, transparent 20px 42px) center / 4px 100%
-        no-repeat,
+      linear-gradient(to bottom, #f4efe4 0 20px, transparent 20px) center / 4px 42px repeat-y,
       linear-gradient(to right, #3a3633, #4a4540 50%, #3a3633);
     background-position:
       center var(--road-offset),
@@ -280,7 +279,7 @@
       --road-w: 48px;
     }
     .road {
-      left: 24px;
+      left: 0;
       margin-left: 0;
     }
     .car {
@@ -304,7 +303,7 @@
     }
     .stop-lamp,
     .stop:nth-child(even) .stop-lamp {
-      left: calc(24px + 24px - 7px);
+      left: calc(var(--road-w) - 7px);
     }
     .stop-plate {
       display: none;
