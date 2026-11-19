@@ -1,0 +1,45 @@
+---
+layout: '../../layouts/Page.astro'
+title: Keycaps
+---
+import Keycap from '../../components/Keycap.astro';
+
+back to [Index](/design)
+
+export const colors = ['terracotta', 'teal', 'mustard', 'cream', 'navy'];
+
+## Colors
+
+<div class="not-prose flex flex-wrap items-center gap-4 py-2">
+  {colors.map((c) => <Keycap colors={c}>{c}</Keycap>)}
+</div>
+
+## Sizes
+
+<div class="not-prose flex flex-wrap items-center gap-4 py-2">
+  <Keycap size="md">md</Keycap>
+  <Keycap size="sm">sm</Keycap>
+  <Keycap size="square" aria-label="Next">&rarr;</Keycap>
+</div>
+
+## Toggle (pressed = selected)
+
+<div class="not-prose flex flex-wrap items-center gap-4 py-2">
+  <Keycap colors="cream" size="sm" pressed={true}>&#10003; All</Keycap>
+  <Keycap colors="cream" size="sm" pressed={false}>Short reads</Keycap>
+  <Keycap colors="cream" size="sm" pressed={false}>Long stories</Keycap>
+</div>
+
+## Links (current page = pressed in)
+
+<div class="not-prose flex flex-wrap items-center gap-4 py-2">
+  <Keycap element="a" href="/design/keycaps" colors="cream" size="sm" pressed={true}>Keycaps</Keycap>
+  <Keycap element="a" href="/design" colors="cream" size="sm">Design index</Keycap>
+</div>
+
+## Disabled
+
+<div class="not-prose flex flex-wrap items-center gap-4 py-2">
+  <Keycap disabled={true}>Disabled button</Keycap>
+  <Keycap element="a" href="/design" disabled={true}>Disabled link</Keycap>
+</div>

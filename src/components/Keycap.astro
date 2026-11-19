@@ -1,0 +1,53 @@
+---
+import { cva } from 'class-variance-authority';
+
+import type { HTMLAttributes } from 'astro/types';
+import type { VariantProps } from 'class-variance-authority';
+
+const keycapVariants = cva('keycap', {
+  variants: {
+    colors: {
+      terracotta: 'keycap-terracotta',
+      teal: 'keycap-teal',
+      mustard: 'keycap-mustard',
+      cream: 'keycap-cream',
+      navy: 'keycap-navy',
+    },
+    size: { md: '', sm: 'keycap-sm', square: 'keycap-square' },
+  },
+});
+
+export interface Props extends HTMLAttributes<'a'>, VariantProps<typeof keycapVariants> {
+  element?: 'a' | 'button';
+  /** button: sets aria-pressed (toggle). link: true marks the current page. */
+  pressed?: boolean;
+  disabled?: boolean;
+}
+
+const {
+  class: className,
+  colors = 'terracotta',
+  size = 'md',
+  element = 'button',
+  pressed,
+  disabled = false,
+  ...props
+} = Astro.props;
+
+const classes = keycapVariants({ colors, size, class: className });
+
+// a disabled link is not a link: render a span, so it cannot be focused or followed
+const isLink = element === 'a' && !disabled;
+const Element = (disabled && element === 'a' ? 'span' : element) as 'a';
+
+const stateProps =
+  element === 'button'
+    ? { type: 'button', disabled, 'aria-pressed': pressed === undefined ? undefined : pressed }
+    : isLink
+      ? { 'aria-current': pressed ? ('page' as const) : undefined }
+      : { 'aria-disabled': 'true' as const };
+---
+
+<Element {...props} {...stateProps} class={classes}>
+  <span class="keycap-face"><slot /></span>
+</Element>

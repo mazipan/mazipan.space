@@ -2,6 +2,7 @@
 import BaseHead from '@/components/BaseHead.astro';
 import Footer from '@/components/Footer.astro';
 import Header from '@/components/Header.astro';
+import SkipLink from '@/components/SkipLink.astro';
 import Breakpoints from '@/components/utils/breakpoints.astro';
 
 import type { BaseHeadProps } from '@/components/BaseHead.astro';
@@ -16,6 +17,7 @@ const { metadata } = Astro.props as BaseProps;
   <body
     class="bg-base-100 relative flex min-h-screen min-w-80 flex-col scroll-smooth transition-colors duration-500"
   >
+    <SkipLink />
     <Header />
     <div id="app-body" class="app-body relative mt-[65px]">
       <slot />

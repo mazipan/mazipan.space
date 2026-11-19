@@ -11,6 +11,7 @@ import Button from './Button.astro';
     size="sm"
     element="button"
     role="switch"
+    aria-label="Dark mode"
     type="button"
     id="theme-switcher"
     class="relative flex items-center justify-center rounded p-1"
@@ -36,12 +37,20 @@ import Button from './Button.astro';
 
   class ThemeToggle extends HTMLElement {
     #controller: AbortController | undefined;
+    #observer: MutationObserver | undefined;
 
     connectedCallback() {
       const button = this.querySelector('#theme-switcher')!;
       // set aria role value
       button.setAttribute('role', 'switch');
-      // button.setAttribute('aria-checked', String(isDarkMode()));
+
+      // keep aria-checked in step with the `dark` class, however it changes
+      const root = document.documentElement;
+      const syncChecked = () =>
+        button.setAttribute('aria-checked', String(root.classList.contains('dark')));
+      syncChecked();
+      this.#observer = new MutationObserver(syncChecked);
+      this.#observer.observe(root, { attributes: true, attributeFilter: ['class'] });
 
       // Abort signal
       const { signal } = (this.#controller = new AbortController());
@@ -66,6 +75,7 @@ import Button from './Button.astro';
 
     disconnectedCallback() {
       this.#controller?.abort();
+      this.#observer?.disconnect();
     }
   }
 

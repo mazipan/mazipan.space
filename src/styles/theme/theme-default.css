@@ -1,39 +1,38 @@
 @layer base {
-  /* default-light */
+  /* warm paper (light) */
   :root {
     /* background */
-    --th-base-100: theme('colors.orange.100');
-    --th-base-200: theme('colors.orange.200');
-    --th-base-300: theme('colors.orange.300');
-    --th-base-code: theme('colors.slate.400');
+    --th-base-100: #fdf0e3;
+    --th-base-200: #f3e3d0;
+    --th-base-300: #e8d3ba;
+    --th-base-code: #efe0c8;
 
     /* reused from tw-prose-xxx */
-    --th-content: theme('colors.slate.700');
-    --th-headings: theme('colors.orange.900');
-    --th-captions: theme('colors.slate.500');
+    --th-content: #2b1d14;
+    --th-headings: #2b1d14;
+    --th-captions: #5b4a3d;
 
-    --th-primary-50: theme('colors.orange.50');
-    --th-primary-100: theme('colors.orange.100');
-    --th-primary-200: theme('colors.orange.200');
-    --th-primary: theme('colors.orange.900');
-    --th-primary-hover: theme('colors.orange.800');
-    --th-primary-content: theme('colors.white');
+    --th-primary-50: #fff4ec;
+    --th-primary-100: #fbe3d3;
+    --th-primary-200: #f6cdb4;
+    --th-primary: #ae3f27;
+    --th-primary-hover: #8f3220;
+    --th-primary-content: #ffffff;
 
-    --th-primary-base-200: theme('colors.blue.100');
-    --th-primary-base-300: theme('colors.blue.200');
+    --th-primary-base-200: #e3eef0;
+    --th-primary-base-300: #cfe3e6;
 
-    /* links and primary same color */
-    --th-links: theme('colors.orange.900');
-    --th-links-hover: theme('colors.orange.800');
-    --th-links-visited: theme('colors.orange.950');
+    --th-links: #ae3f27;
+    --th-links-hover: #8f3220;
+    --th-links-visited: #7d2c19;
 
-    --th-secondary: theme('colors.orange.400');
-    --th-secondary-hover: theme('colors.orange.600');
-    --th-secondary-content: theme('colors.white');
+    --th-secondary: #e9c46a;
+    --th-secondary-hover: #d4ac4d;
+    --th-secondary-content: #2b1d14;
 
-    --th-accent: theme('colors.teal.400');
-    --th-accent-hover: theme('colors.teal.600');
-    --th-accent-content: theme('colors.slate.700');
+    --th-accent: #1f6f66;
+    --th-accent-hover: #17554e;
+    --th-accent-content: #ffffff;
 
     /* border radius, default for all themes */
     /* rounded-md, rounded-lg, rounded-full */
@@ -44,39 +43,40 @@
     /* change fonts in theme too */
   }
 
-  /* default-dark */
+  /* warm lamp-lit wood (dark) */
   :root.dark {
     /* background */
-    --th-base-100: theme('colors.slate.800');
-    --th-base-200: theme('colors.slate.900');
-    --th-base-300: theme('colors.slate.950');
-    --th-base-code: theme('colors.slate.700');
+    --th-base-100: #1c1410;
+    --th-base-200: #2a1f18;
+    --th-base-300: #120d0a;
+    --th-base-code: #2a1f18;
 
     /* reused from tw-prose-invert-xxx */
-    --th-content: theme('colors.slate.300');
-    --th-headings: theme('colors.yellow.400');
-    --th-captions: theme('colors.slate.400');
+    --th-content: #eadccb;
+    --th-headings: #f6d98b;
+    --th-captions: #b9a590;
 
-    --th-primary-50: theme('colors.yellow.50');
-    --th-primary-100: theme('colors.yellow.100');
-    --th-primary-200: theme('colors.yellow.200');
-    --th-primary: theme('colors.yellow.400');
-    --th-primary-hover: theme('colors.yellow.500');
-    --th-primary-content: theme('colors.slate.900');
+    /* still light tints: components put black text on them in both modes */
+    --th-primary-50: #fff1d6;
+    --th-primary-100: #fbe0b0;
+    --th-primary-200: #f4cc86;
+    --th-primary: #f2b36b;
+    --th-primary-hover: #f6c58f;
+    --th-primary-content: #1c1410;
 
-    --th-primary-base-200: theme('colors.blue.600');
-    --th-primary-base-300: theme('colors.blue.700');
+    --th-primary-base-200: #26413f;
+    --th-primary-base-300: #2f504d;
 
-    --th-links: theme('colors.yellow.400');
-    --th-links-hover: theme('colors.yellow.500');
-    --th-links-visited: theme('colors.yellow.600');
+    --th-links: #f2b36b;
+    --th-links-hover: #f6c58f;
+    --th-links-visited: #d9a066;
 
-    --th-secondary: theme('colors.orange.400');
-    --th-secondary-hover: theme('colors.orange.600');
-    --th-secondary-content: theme('colors.white');
+    --th-secondary: #e9c46a;
+    --th-secondary-hover: #f2d27c;
+    --th-secondary-content: #1c1410;
 
-    --th-accent: theme('colors.teal.400');
-    --th-accent-hover: theme('colors.teal.600');
-    --th-accent-content: theme('colors.slate.300');
+    --th-accent: #5bc0b0;
+    --th-accent-hover: #7ad4c6;
+    --th-accent-content: #1c1410;
   }
 }

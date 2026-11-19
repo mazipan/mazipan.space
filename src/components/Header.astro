@@ -2,6 +2,7 @@
 import { Icon } from 'astro-icon/components';
 
 import HeaderLink from '@/components/HeaderLink.astro';
+import Keycap from '@/components/Keycap.astro';
 import ThemeToggle from '@/components/ThemeToggle.astro';
 import { SELECTORS } from '@/constants/dom';
 import { NAVIGATION_ITEMS } from '@/constants/navigation';
@@ -34,6 +35,7 @@ const activeNavItemPath = getActiveNavItemPath(routePathname);
     <div class="flex w-full items-center justify-between md:w-auto">
       <HeaderLink
         href={ROUTES.HOME}
+        aria-label="Home"
         isActive={routePathname === ROUTES.HOME}
         class="hover:bg-base-200 hover:text-primary-hover focus:text-primary focus:ring-primary xs:text-2xl flex flex-row items-center gap-2 rounded-lg px-2 py-1 font-serif text-xl focus:ring-2 focus:ring-offset-2 focus:outline-none"
       >
@@ -78,13 +80,15 @@ const activeNavItemPath = getActiveNavItemPath(routePathname);
         {
           NAVIGATION_ITEMS.map(({ title, path }) => (
             <li class="relative">
-              <HeaderLink
+              <Keycap
+                element="a"
                 href={path}
-                isActive={path === activeNavItemPath}
-                class="hover:bg-base-200 hover:text-primary-hover focus:text-primary focus:ring-primary aria-selected:bg-base-200 rounded-lg px-2 py-1 focus:ring-2 focus:ring-offset-2 focus:outline-none"
+                colors="cream"
+                size="sm"
+                pressed={path === activeNavItemPath}
               >
                 {title}
-              </HeaderLink>
+              </Keycap>
             </li>
           ))
         }
@@ -106,13 +110,16 @@ const activeNavItemPath = getActiveNavItemPath(routePathname);
       {
         NAVIGATION_ITEMS.map(({ title, path }) => (
           <li class="relative">
-            <HeaderLink
+            <Keycap
+              element="a"
               href={path}
-              isActive={path === activeNavItemPath}
-              class="hover:bg-base-300 focus:ring-primary aria-selected:bg-base-200 dark:hover:bg-base-300 block w-full rounded p-2 focus:ring-2 focus:ring-offset-2 focus:outline-none"
+              colors="cream"
+              size="sm"
+              class="block w-full"
+              pressed={path === activeNavItemPath}
             >
               {title}
-            </HeaderLink>
+            </Keycap>
           </li>
         ))
       }

@@ -1,0 +1,31 @@
+@layer base {
+  /* one strong, visible focus ring for every control */
+  :focus-visible {
+    outline: 3px solid var(--th-headings);
+    outline-offset: 3px;
+    box-shadow: 0 0 0 6px var(--th-base-100);
+  }
+
+  /* skip target gets focus from the skip link, no ring needed */
+  main:focus {
+    outline: none;
+  }
+
+  /* comfortable reading size */
+  body {
+    font-size: 1.0625rem;
+    line-height: 1.7;
+  }
+
+  /* respect the reader's motion setting */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}

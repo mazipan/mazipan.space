@@ -3,8 +3,11 @@ import { ROUTES } from '@/constants/routes';
 
 import type { NavigationItem } from '@/types/constants';
 
-export const getActiveNavItemPath = (routePathname: string): NavigationItem['path'] | undefined => {
+export const getActiveNavItemPath = (rawPathname: string): NavigationItem['path'] | undefined => {
   let activeNavItem: NavigationItem | undefined = undefined;
+
+  // built pages arrive as '/about/', the routes are '/about'
+  const routePathname = rawPathname.replace(/\/+$/, '') || '/';
 
   // don't highlight home route
 
@@ -17,6 +20,9 @@ export const getActiveNavItemPath = (routePathname: string): NavigationItem['pat
       break;
     case routePathname === ROUTES.GALLERY:
       activeNavItem = getNavItem(ROUTES.GALLERY);
+      break;
+    case routePathname.startsWith(ROUTES.CAROUSEL):
+      activeNavItem = getNavItem(ROUTES.CAROUSEL);
       break;
     // unused
     case routePathname.startsWith(ROUTES.PROJECTS):
