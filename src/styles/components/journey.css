@@ -157,23 +157,10 @@
     margin-left: 26px;
   }
 
-  /* connector from the card to the road, ending in a lamp on the road edge */
-  .stop-card::after {
-    content: '';
-    position: absolute;
-    top: 30px;
-    right: -26px;
-    width: 26px;
-    height: 4px;
-    background: var(--th-key-edge);
-  }
-  .stop:nth-child(even) .stop-card::after {
-    right: auto;
-    left: -26px;
-  }
+  /* lamp on the road edge; its ::after is the connector to the card, so the two always move together */
   .stop-lamp {
     position: absolute;
-    /* .stop padding (18) + card border (2) + connector top (30) + half the connector (2) - lamp radius (7) */
+    /* .stop padding (18) + card border (2) + 30 down the card, centered on the title line */
     top: 45px;
     left: calc(50% - 36px - 7px);
     z-index: 4;
@@ -188,6 +175,22 @@
   }
   .stop:nth-child(even) .stop-lamp {
     left: calc(50% + 36px - 7px);
+  }
+  /* connector: starts under the lamp's border (2px overlap) and ends at the card (26px gap) */
+  .stop-lamp::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: calc(100% - 2px);
+    width: calc(26px - 7px + 3px);
+    height: 4px;
+    margin-top: -2px;
+    background: var(--th-key-edge);
+    z-index: -1;
+  }
+  .stop:nth-child(even) .stop-lamp::after {
+    right: auto;
+    left: calc(100% - 2px);
   }
   /* the car has passed: the lamp is on and the card is lifted */
   .stop[data-reached] .stop-lamp {
@@ -296,15 +299,15 @@
       grid-column: 2;
       margin: 0 0 0 22px;
     }
-    .stop-card::after,
-    .stop:nth-child(even) .stop-card::after {
-      right: auto;
-      left: -22px;
-      width: 22px;
-    }
     .stop-lamp,
     .stop:nth-child(even) .stop-lamp {
       left: calc(var(--road-w) - 7px);
+    }
+    .stop-lamp::after,
+    .stop:nth-child(even) .stop-lamp::after {
+      right: auto;
+      left: calc(100% - 2px);
+      width: calc(22px - 7px + 3px);
     }
     .stop-plate {
       display: none;
