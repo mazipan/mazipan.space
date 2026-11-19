@@ -53,18 +53,16 @@ const getTransitionNameFromElementId = setTransitionSlug({ pageSlug: slug });
       </Link>
     </h3>
 
-    {
-      description && (
-        <p
-          class="line-clamp-2 text-base"
-          transition:name={getTransitionNameFromElementId({
-            elementId: TRANSITION_ELEMENT_IDS.POST_CARD.DESCRIPTION,
-          })}
-        >
-          {description}
-        </p>
-      )
-    }
+    {description && (
+      <p
+        class="line-clamp-2 text-base"
+        transition:name={getTransitionNameFromElementId({
+          elementId: TRANSITION_ELEMENT_IDS.POST_CARD.DESCRIPTION,
+        })}
+      >
+        {description}
+      </p>
+    )}
 
     <div class="flex items-center gap-2 text-sm leading-none">
       <span
@@ -80,7 +78,8 @@ const getTransitionNameFromElementId = setTransitionSlug({ pageSlug: slug });
       </span>
       <span>•</span>
       <span>
-        In category <Link href={`${ROUTES.CATEGORIES}/${category}`}>
+        In category{' '}
+        <Link href={`${ROUTES.CATEGORIES}/${category}`} class="underline underline-offset-2">
           {category}
         </Link>
       </span>

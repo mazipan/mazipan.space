@@ -35,6 +35,8 @@ Owner preferences in chat: short answers, bullets, tables, diagrams, no long das
 - CSS utilities: `.b-h1..b-h4` (heading styles as classes, not tag selectors), `.centered-px`, `.my-prose` (`src/styles/base/my-prose.css`, typography plugin `prose prose-slate dark:prose-invert`).
 - OG images are made with satori and the Space Grotesk font. Keep that package.
 - Deploy: Vercel builds `master` (production). CI checks: Vercel and kodiak. There is also a GitHub Pages workflow. Repo allows squash merges only; GitHub deletes the head branch after a merge.
+- Tailwind 4 arbitrary values: use underscores, not commas (`grid-cols-[minmax(0,1fr)_300px]`). A comma version silently produced one column and put the post ToC below the article.
+- In this font (Atkinson Hyperlegible Next) `1ch` is wide: `50ch` gives about 67 characters per line. Measure characters per line in the browser, do not trust `ch` alone.
 - Known old quirks: Header mobile menu script looks up `#main-header` but the header id comes from `SELECTORS.SCROLL_TO_TOP_ID`; mobile menu closes by translate only (keys stay in Tab order); two `ThemeToggle` instances share `id="theme-switcher"`.
 - Where `Button` is used: Explore filters (sm, icons), about, resume, talks, 404, categories index, plus icon-only controls (menu toggle, theme toggle = ghost; footer back-to-top and home shuffle = `flat`).
 
@@ -60,8 +62,7 @@ Owner preferences in chat: short answers, bullets, tables, diagrams, no long das
 ## 5. State right now
 
 - `master` has Phase 1 (#321) and Phase 1b (#322). `feat/2027-design` equals master plus docs (plan, handoff, this file).
-- Phase 2 branch `feat/2027-post` exists with the plan committed, no code yet. Task 1 RED was not measured yet: `document.querySelector('.post-detail > p')` returned null, so paragraphs sit inside `content-wrapper`. Inspect the DOM before writing the CSS selector.
-- Phase 2 sample copy: `bottomLine` for `2018-04-16-intro-to-intersection-observer.mdx`: "Pakai IntersectionObserver untuk tahu kapan elemen masuk layar, tanpa scroll listener." (Indonesian, matches the post).
+- Phase 2 (post page) is done and merged. Paragraphs in posts are direct children of `<content-wrapper>` inside `.post-detail`.
 
 ## 6. Open questions (use the defaults; owner can change later)
 

@@ -15,12 +15,10 @@ const { morePosts, class: className } = Astro.props;
 <div class={cn(className)}>
   <h2 class="b-h2 mt-0">More posts</h2>
   <ul class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
-    {
-      morePosts.map((post) => (
-        <li>
-          <PostCardSmall post={post} withImage={true} />
-        </li>
-      ))
-    }
+    {morePosts.map((post) => (
+      <li>
+        <PostCardSmall post={post} withImage={true} headingLevel="h3" />
+      </li>
+    ))}
   </ul>
 </div>
