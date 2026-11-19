@@ -2,6 +2,7 @@
 // MZP on ONE square keycap: the same drawing as public/logo.svg and the favicon. The key colors are
 // the palette tokens, so the logo follows the chosen palette. Decorative: the link around it carries
 // the name. Hover or focus on the link presses the key in.
+const { id = 'logo-key-face' } = Astro.props;
 const legend = [
   'M11 36 V18 L18 28 L25 18 V36',
   'M28.5 18 H39.5 L28.5 36 H39.5',
@@ -18,7 +19,7 @@ const legend = [
   focusable="false"
 >
   <defs>
-    <linearGradient id="logo-key-face" x1="0" y1="0" x2="0" y2="1">
+    <linearGradient {id} x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" style="stop-color: var(--th-key-terracotta-face-hi)"></stop>
       <stop offset="1" style="stop-color: var(--th-key-terracotta-face-lo)"></stop>
     </linearGradient>
@@ -40,7 +41,7 @@ const legend = [
       width="54"
       height="46"
       rx="12"
-      fill="url(#logo-key-face)"
+      fill={`url(#${id})`}
       stroke="var(--th-key-edge)"
       stroke-width="2"
     ></rect>
