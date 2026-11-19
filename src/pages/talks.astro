@@ -4,7 +4,7 @@ import { Image } from 'astro:assets';
 import Centered from '@/layouts/Centered.astro';
 import Breadcrumbs from '@/components/Breadcrumbs.astro';
 import Button from '@/components/Button.astro';
-import Tag from '@/components/Tag.astro';
+import TicketCard from '@/components/TicketCard.astro';
 import { BreadcrumbItemHome } from '@/constants/breadcrumb';
 import { IMAGE_SIZES } from '@/constants/image';
 import talks from '@/constants/talks';
@@ -59,24 +59,24 @@ const breadcrumbs = [BreadcrumbItemHome];
             {/* @ts-ignore */}
             {talks[year].map((item) => {
               return (
-                <div class="border-base-300 dark:bg-base-100 mb-2 space-y-2 overflow-hidden rounded-lg border-2 bg-white p-4">
-                  <Tag>
-                    <span class="uppercase">🗓 {item.date}</span>
-                  </Tag>
-                  <div class="flex">
-                    <h2 class="link-heading text-lg font-bold md:text-xl">{item.event}</h2>
-                  </div>
-
-                  <p class="text-base">{item.topic}</p>
+                <TicketCard as="div" tone="teal" class="mb-4">
+                  <Fragment slot="stub">
+                    <b class="font-serif text-3xl leading-none">{String(item.date).slice(-4)}</b>
+                    <span class="text-xs font-bold uppercase">
+                      {String(item.date).slice(0, -6)}
+                    </span>
+                  </Fragment>
+                  <h2 class="link-heading mt-0 mb-1 text-lg font-bold md:text-xl">{item.event}</h2>
+                  <p class="mb-0 text-base">{item.topic}</p>
+                  {item.place && <p class="mt-1 mb-0 text-sm">{item.place}</p>}
 
                   {item.link && item.link.length > 0 && (
-                    <div class="!mt-6 flex text-sm">
+                    <div class="mt-4 flex flex-wrap gap-3 text-sm">
                       {item.link.map((link: string) => (
                         <Button
                           element="a"
                           variant="solid"
                           colors="primary"
-                          class="mr-4"
                           href={link}
                           target="blank"
                           rel="noopener noreferrer"
@@ -100,7 +100,7 @@ const breadcrumbs = [BreadcrumbItemHome];
                       )}
                     </div>
                   )}
-                </div>
+                </TicketCard>
               );
             })}
           </div>

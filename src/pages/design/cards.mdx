@@ -5,6 +5,13 @@ title: Cards
 import PostCardSmall from '../../components/PostCardSmall.astro';
 
 import ProjectCard from '../../components/ProjectCard.astro';
+import CarouselCard from '../../components/CarouselCard.astro';
+import PostCardFeatured from '../../components/PostCardFeatured.astro';
+import StackCard from '../../components/StackCard.astro';
+import PolaroidCard from '../../components/PolaroidCard.astro';
+import TicketCard from '../../components/TicketCard.astro';
+import DeckCard from '../../components/DeckCard.astro';
+import { getAllCarousels } from '../../modules/carousel';
 
 import { getAllPostsWithReadingTime } from '../../modules/post/common';
 import { getAllProjects } from '../../modules/project';
@@ -22,6 +29,8 @@ export const postWithoutImage = {
     noHero: true,
   },
 };
+
+export const carousels = (await getAllCarousels()).slice(0, 3);
 
 export const projects = await getAllProjects();
 export const project = projects[0];
@@ -53,7 +62,7 @@ export const threeProjects = projects.slice(0, 3);
 
 <div class="not-prose">
   {threePosts.map((post) => (
-    <PostCardSmall post={post} withImage={false} withSeparator={true} />
+    <PostCardSmall post={post} withImage={false} />
   ))}
 </div>
 
@@ -61,8 +70,39 @@ export const threeProjects = projects.slice(0, 3);
 
 ## ProjectCard
 
-<div class="not-prose flex gap-4">
+<div class="not-prose grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3">
   {threeProjects.map((project) => (
     <ProjectCard project={project} />
   ))}
+</div>
+
+---
+
+## PostCardFeatured
+
+<div class="not-prose grid grid-cols-1 gap-8 md:grid-cols-3">
+  <PostCardFeatured post={post} />
+</div>
+
+---
+
+## CarouselCard (DeckCard)
+
+<div class="not-prose grid max-w-xl grid-cols-2 gap-5 sm:grid-cols-3">
+  {carousels.map((carousel) => (
+    <CarouselCard carousel={carousel} />
+  ))}
+</div>
+
+---
+
+## Parts
+
+`StackCard` (tab, tone), `PolaroidCard` (slot `photo`), `TicketCard` (slot `stub`, tone), `DeckCard` (background). Put one `.card-link` (the title link) in the slot for a stretched link.
+
+<div class="not-prose grid grid-cols-1 gap-8 sm:grid-cols-2">
+  <StackCard tab="notes"><p class="mb-0">A stack card with a plain text body.</p></StackCard>
+  <PolaroidCard><p slot="photo" class="m-0 bg-base-300 p-10 text-center">photo</p><p class="mb-0 font-serif italic">A polaroid caption</p></PolaroidCard>
+  <TicketCard tone="terracotta"><b slot="stub" class="font-serif text-3xl">2026</b><p class="mb-0">A ticket main part</p></TicketCard>
+  <DeckCard background="linear-gradient(135deg,#1d4ed8,#0891b2)"><p class="m-auto font-bold">A deck</p></DeckCard>
 </div>
