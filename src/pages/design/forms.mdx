@@ -1,0 +1,18 @@
+---
+layout: '../../layouts/Page.astro'
+title: Forms
+---
+import Input from '../../components/Input.astro';
+
+back to [Index](/design)
+
+# Forms
+
+## Input
+
+Every field has a visible label. A hint is tied to the field with `aria-describedby`.
+
+<div class="not-prose flex max-w-md flex-col gap-6 py-4">
+  <Input id="demo-name" name="name" label="Your name" placeholder="Irfan" hint="What should I call you?" />
+  <Input id="demo-email" name="email" type="email" label="Email" placeholder="you@example.com" required />
+</div>

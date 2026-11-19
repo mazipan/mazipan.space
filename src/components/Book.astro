@@ -1,0 +1,20 @@
+---
+// One book on a shelf: a single link with a horizontal title. Use inside <Shelf>.
+export interface Props {
+  href: string;
+  title: string;
+  meta?: string;
+  colors?: 'terracotta' | 'teal' | 'mustard' | 'cream' | 'navy';
+  /** decoration only */
+  height?: 'sm' | 'md' | 'lg';
+}
+
+const { href, title, meta, colors = 'terracotta', height = 'md' } = Astro.props;
+---
+
+<li class="book-item">
+  <a {href} class:list={['book', `book-${colors}`, `book-${height}`]}>
+    <span class="book-title">{title}</span>
+    {meta && <span class="book-meta">{meta}</span>}
+  </a>
+</li>

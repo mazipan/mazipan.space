@@ -1,0 +1,30 @@
+---
+// A heading, a list of <Book /> links, and a wood plank under every row of books.
+export interface Props {
+  title: string;
+  /** heading level, pick the one that keeps the page heading order */
+  level?: 2 | 3;
+  href?: string;
+  linkLabel?: string;
+}
+
+const { title, level = 2, href, linkLabel = 'See all' } = Astro.props;
+const Heading = `h${level}` as 'h2';
+const id = `shelf-${title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
+---
+
+<section aria-labelledby={id} class="shelf">
+  <div class="shelf-head">
+    <Heading {id} class="shelf-title">
+      {title}
+    </Heading>
+    {href && (
+      <a {href} class="shelf-link">
+        {linkLabel} &rarr;
+      </a>
+    )}
+  </div>
+  <ul class="shelf-books" role="list">
+    <slot />
+  </ul>
+</section>

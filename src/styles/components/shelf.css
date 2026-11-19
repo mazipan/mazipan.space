@@ -1,0 +1,160 @@
+/* Shelf: every row is exactly --shelf-row tall, so one plank fits under every row, wrapped or not. */
+@layer components {
+  .shelf {
+    --shelf-row: 210px;
+    margin-block: 2rem;
+  }
+
+  .shelf-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .shelf-title {
+    @apply text-headings font-serif text-2xl font-bold;
+  }
+
+  .shelf-link {
+    @apply text-links hover:text-links-hover underline underline-offset-4;
+  }
+
+  .shelf-books {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    align-content: flex-start;
+    column-gap: 12px;
+    margin: 0;
+    padding: 0 44px;
+    list-style: none;
+    /* one plank per row */
+    background-image: linear-gradient(
+      to bottom,
+      transparent calc(var(--shelf-row) - 16px),
+      var(--th-wood-hi) calc(var(--shelf-row) - 16px),
+      var(--th-wood-lo) var(--shelf-row)
+    );
+    background-size: 100% var(--shelf-row);
+    background-position: 0 0;
+    background-repeat: repeat-y;
+  }
+
+  .book-item {
+    display: flex;
+    align-items: flex-end;
+    height: var(--shelf-row);
+    margin: 0;
+    padding: 0 0 16px;
+  }
+
+  .book {
+    --bk-face: var(--th-key-terracotta-face-lo);
+    --bk-side: var(--th-key-terracotta-side);
+    --bk-text: var(--th-key-terracotta-text);
+
+    display: block;
+    width: 132px;
+    padding: 12px 10px 12px 14px;
+    border-left: 10px solid var(--bk-side);
+    border-radius: 3px 8px 8px 3px;
+    background: var(--bk-face);
+    box-shadow: 4px 5px 0 rgb(0 0 0 / 0.25);
+    color: var(--bk-text);
+    text-decoration: none;
+    transition: transform 200ms;
+    /* text never spills onto the plank or the page */
+    overflow: hidden;
+  }
+
+  .book:hover,
+  .book:focus-visible {
+    transform: translateY(-8px) rotate(-1.5deg);
+  }
+
+  .book-sm {
+    height: 136px;
+  }
+  .book-md {
+    height: 156px;
+  }
+  .book-lg {
+    height: 176px;
+  }
+
+  .book-title {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    font-family: theme('fontFamily.serif');
+    font-size: 0.95rem;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  /* the small book has less room: 4 title lines */
+  .book-sm .book-title {
+    -webkit-line-clamp: 4;
+  }
+
+  .book-meta {
+    display: block;
+    overflow: hidden;
+    margin-top: 8px;
+    font-size: 0.75rem;
+    line-height: 1.3;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .book-terracotta {
+    --bk-face: var(--th-key-terracotta-face-lo);
+    --bk-side: var(--th-key-terracotta-side);
+    --bk-text: var(--th-key-terracotta-text);
+  }
+  .book-teal {
+    --bk-face: var(--th-key-teal-face-lo);
+    --bk-side: var(--th-key-teal-side);
+    --bk-text: var(--th-key-teal-text);
+  }
+  .book-mustard {
+    --bk-face: var(--th-key-mustard-face-lo);
+    --bk-side: var(--th-key-mustard-side);
+    --bk-text: var(--th-key-mustard-text);
+  }
+  .book-cream {
+    --bk-face: var(--th-key-cream-face-lo);
+    --bk-side: var(--th-key-cream-side);
+    --bk-text: var(--th-key-cream-text);
+  }
+  .book-navy {
+    --bk-face: var(--th-key-navy-face-lo);
+    --bk-side: var(--th-key-navy-side);
+    --bk-text: var(--th-key-navy-text);
+  }
+
+  /* phone: two books per row, a plank under each row */
+  @media (max-width: 640px) {
+    .shelf-books {
+      padding-inline: 12px;
+    }
+    .book-item {
+      flex: 0 0 calc(50% - 6px);
+    }
+    .book {
+      width: 100%;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .book {
+      transition: none;
+    }
+    .book:hover,
+    .book:focus-visible {
+      transform: none;
+    }
+  }
+}

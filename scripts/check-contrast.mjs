@@ -5,16 +5,18 @@ import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
-const FILES = ['src/styles/theme/theme-default.css', 'src/styles/theme/keycap-tokens.css'];
+const FILES = [
+  'src/styles/theme/theme-default.css',
+  'src/styles/theme/keycap-tokens.css',
+  'src/styles/theme/surface-tokens.css',
+];
 const KEY_COLORS = ['terracotta', 'teal', 'mustard', 'cream', 'navy'];
 const HEX = /^#[0-9a-fA-F]{6}$/;
 
 /** Parse `--th-*` custom properties declared in one scope of a CSS string. */
 export function parseTokens(css, scope) {
   const re =
-    scope === ':root.dark'
-      ? /:root\.dark\s*\{([^}]*)\}/g
-      : /(?:^|[\s{}])(:root)\s*\{([^}]*)\}/g;
+    scope === ':root.dark' ? /:root\.dark\s*\{([^}]*)\}/g : /(?:^|[\s{}])(:root)\s*\{([^}]*)\}/g;
   const tokens = {};
   for (const match of css.matchAll(re)) {
     const body = match[match.length - 1];
@@ -57,6 +59,12 @@ const PAIRS = [
   // key edge: a real border that does not depend on depth (3:1 for UI borders)
   ['key-edge', 'base-100', 3],
   ['key-edge', 'base-200', 3],
+  // sticky note
+  ['note-text', 'note-bg', 4.5],
+  // input field: text, placeholder and border
+  ['content', 'field-bg', 4.5],
+  ['captions', 'field-bg', 4.5],
+  ['key-edge', 'field-bg', 3],
   // light tints used as backgrounds under default black text (breadcrumbs, tags)
   ['#000000', 'primary-50', 4.5],
   ['#000000', 'primary-100', 4.5],
@@ -88,7 +96,9 @@ function main() {
       const label = `${scope.padEnd(5)} ${fg} on ${bg}`;
       if (!a || !b || !HEX.test(a) || !HEX.test(b)) {
         failures++;
-        console.log(`FAIL  ${label}: missing or not a 6-digit hex (${a ?? 'none'}, ${b ?? 'none'})`);
+        console.log(
+          `FAIL  ${label}: missing or not a 6-digit hex (${a ?? 'none'}, ${b ?? 'none'})`
+        );
         continue;
       }
       const ratio = contrastRatio(a, b);
