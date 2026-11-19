@@ -23,26 +23,28 @@ const categoryLinks = getCategoryLinks(posts, filterPathname);
 
 <section {...props} class={cn(className)}>
   <FilterList class="mb-4 gap-1" itemLinks={categoryLinks}>
-    {
-      ({ href, text, isActive, count }: FilterLink) => {
-        const { icon } = getCategoryProps(text);
+    {({ href, text, isActive, count }: FilterLink) => {
+      const { icon } = getCategoryProps(text);
 
-        return (
-          <Button href={href} size="sm" colors="primary" variant={isActive ? 'solid' : 'outline'}>
-            <Icon name={icon} slot="before-icon" class="h-6 w-6 fill-current" />
-            {text} ({count})
-          </Button>
-        );
-      }
-    }
+      return (
+        <Button
+          href={href}
+          size="sm"
+          colors="primary"
+          variant={isActive ? 'solid' : 'outline'}
+          aria-current={isActive ? 'true' : undefined}
+        >
+          <Icon name={icon} slot="before-icon" class="h-6 w-6 fill-current" />
+          {text} ({count})
+        </Button>
+      );
+    }}
   </FilterList>
   <FilterList class="mb-8 gap-1" itemLinks={tagLinks}>
-    {
-      ({ href, text, count, isActive }: FilterLink) => (
-        <Tag href={href} size="md" colors={isActive ? 'primary' : 'default'}>
-          #{text} ({count})
-        </Tag>
-      )
-    }
+    {({ href, text, count, isActive }: FilterLink) => (
+      <Tag href={href} size="md" colors={isActive ? 'primary' : 'default'}>
+        #{text} ({count})
+      </Tag>
+    )}
   </FilterList>
 </section>

@@ -1,0 +1,27 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+export interface Props extends Omit<HTMLAttributes<'input'>, 'id'> {
+  /** always rendered as a visible <label> */
+  label: string;
+  id: string;
+  /** helper text under the field, tied with aria-describedby */
+  hint?: string;
+}
+
+const { label, id, hint, class: className, type = 'text', required, ...props } = Astro.props;
+const hintId = hint ? `${id}-hint` : undefined;
+---
+
+<div class:list={['field', className]}>
+  <label for={id} class="field-label">
+    {label}
+    {required && <span class="field-required">(required)</span>}
+  </label>
+  <input {...props} {id} {type} {required} class="field-input" aria-describedby={hintId} />
+  {hint && (
+    <p id={hintId} class="field-hint">
+      {hint}
+    </p>
+  )}
+</div>

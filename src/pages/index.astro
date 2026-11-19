@@ -18,9 +18,7 @@ import AvatarSrc from '@/assets/images/avatar.png';
   }}
 >
   <article class="flex flex-col">
-    <div
-      class="relative flex min-h-[calc(100vh-100px)] flex-col-reverse items-center justify-center gap-8 overflow-hidden py-8 md:flex-row"
-    >
+    <div class="relative flex min-h-[calc(100vh-100px)] flex-col-reverse items-center justify-center gap-8 overflow-hidden py-8 md:flex-row">
       <div class="flex max-w-[300px] flex-col gap-2">
         <RainbowTag emoji="💅" text="Frontend Web Developer" />
         <p>{PROFILE.TAGLINE}</p>
@@ -36,6 +34,7 @@ import AvatarSrc from '@/assets/images/avatar.png';
         <GradientBlob class="absolute top-0 z-0 h-[250px] w-[250px] opacity-90" />
         <swap-button>
           <Button
+            flat
             variant="solid"
             colors="primary"
             element="button"

@@ -1,0 +1,35 @@
+@layer components {
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .field-label {
+    @apply text-headings font-bold;
+  }
+
+  .field-required {
+    @apply text-captions text-sm font-normal;
+  }
+
+  .field-input {
+    width: 100%;
+    padding: 11px 14px;
+    border: 2px solid var(--th-key-edge);
+    border-radius: 10px;
+    background: var(--th-field-bg);
+    box-shadow: inset 0 3px 5px rgb(0 0 0 / 0.18);
+    color: var(--th-content);
+    font: inherit;
+  }
+
+  .field-input::placeholder {
+    color: var(--th-captions);
+    opacity: 1;
+  }
+
+  .field-hint {
+    @apply text-captions m-0 text-sm;
+  }
+}

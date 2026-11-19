@@ -1,9 +1,12 @@
 ---
 import { cva } from 'class-variance-authority';
 
+import { cn } from '@/utils/styles';
+
 import type { HTMLAttributes } from 'astro/types';
 import type { VariantProps } from 'class-variance-authority';
 
+// flat look: ghost buttons and icon-only controls
 const buttonVariants = cva('button', {
   variants: {
     variant: {
@@ -28,8 +31,18 @@ const buttonVariants = cva('button', {
   ],
 });
 
+// solid and outline buttons are keycaps
+const KEYCAP_COLOR = {
+  'solid-primary': 'terracotta',
+  'solid-default': 'navy',
+  'outline-primary': 'teal',
+  'outline-default': 'cream',
+} as const;
+
 export interface Props extends HTMLAttributes<'a'>, VariantProps<typeof buttonVariants> {
   element?: 'a' | 'button' | 'span';
+  /** Keep the old flat look (for icon-only controls with their own size). Ghost is always flat. */
+  flat?: boolean;
 }
 
 const {
@@ -39,17 +52,37 @@ const {
   size = 'md',
   disabled,
   element = 'a',
+  flat = false,
   ...props
 } = Astro.props;
 
-const classes = buttonVariants({ variant, colors, size, disabled, className });
+const keycapColor =
+  !flat && variant !== 'ghost'
+    ? KEYCAP_COLOR[`${variant}-${colors}` as keyof typeof KEYCAP_COLOR]
+    : undefined;
+
+const classes = keycapColor
+  ? cn('keycap', `keycap-${keycapColor}`, size === 'sm' && 'keycap-sm', className)
+  : buttonVariants({ variant, colors, size, disabled, className });
+
 // props are typed as anchor attributes (Props extends HTMLAttributes<'a'>),
 // so pin the dynamic tag to 'a' for type-checking; the runtime tag is unchanged
 const Element = (disabled ? 'span' : element) as 'a';
+const disabledProps = keycapColor && disabled ? { 'aria-disabled': 'true' as const } : {};
 ---
 
-<Element {...props} class={classes}>
-  <slot name="before-icon" />
-  <slot />
-  <slot name="after-icon" />
-</Element>
+{keycapColor ? (
+  <Element {...props} {...disabledProps} class={classes}>
+    <span class="keycap-face inline-flex items-center justify-center gap-2">
+      <slot name="before-icon" />
+      <slot />
+      <slot name="after-icon" />
+    </span>
+  </Element>
+) : (
+  <Element {...props} class={classes}>
+    <slot name="before-icon" />
+    <slot />
+    <slot name="after-icon" />
+  </Element>
+)}

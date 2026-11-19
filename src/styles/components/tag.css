@@ -13,8 +13,25 @@
     @apply hover:underline;
   }
 
+  /* raised chip: real 2px edge, gradient face, small side shadow */
   .tag-solid {
-    @apply bg-base-200 hover:bg-base-300;
+    border: 2px solid var(--th-key-edge);
+    background: linear-gradient(var(--th-key-cream-face-hi), var(--th-key-cream-face-lo));
+    box-shadow:
+      0 2px 0 var(--th-key-edge),
+      inset 0 1px 0 rgb(255 255 255 / 0.5);
+    color: var(--th-key-cream-text);
+    font-weight: 600;
+    transition: transform 70ms ease-out;
+  }
+
+  .tag-solid:hover {
+    transform: translateY(-1px);
+  }
+
+  .tag-solid:active {
+    transform: translateY(2px);
+    box-shadow: inset 0 2px 3px rgb(0 0 0 / 0.2);
   }
 
   .tag-sm {
@@ -34,7 +51,17 @@
   }
 
   .tag-solid-primary {
-    @apply bg-primary text-primary-content hover:bg-primary-hover;
+    background: linear-gradient(var(--th-key-terracotta-face-hi), var(--th-key-terracotta-face-lo));
+    color: var(--th-key-terracotta-text);
     @apply focus:ring-primary;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .tag-solid {
+      transition: none;
+    }
+    .tag-solid:hover {
+      transform: none;
+    }
   }
 }

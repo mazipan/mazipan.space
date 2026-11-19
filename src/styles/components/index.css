@@ -1,6 +1,9 @@
 @import './link.css';
 @import './button.css';
 @import './keycap.css';
+@import './shelf.css';
+@import './surface.css';
+@import './input.css';
 @import './tag.css';
 @import './layout.css';
 @import './alert.css';

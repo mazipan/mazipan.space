@@ -1,0 +1,15 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+export interface Props extends HTMLAttributes<'div'> {
+  /** bold visible prefix, for example "Bottom line:" */
+  label?: string;
+}
+
+const { label, class: className, ...props } = Astro.props;
+---
+
+<div {...props} class:list={['sticky-note', className]}>
+  {label && <strong class="sticky-label">{label}</strong>}
+  <slot />
+</div>
