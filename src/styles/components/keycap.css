@@ -198,22 +198,17 @@
     border-radius: 9999px;
   }
 
-  /* the logo: three keys that press in one after another when the link is hovered or focused */
+  /* the logo: one key that presses in when the link is hovered or focused */
   .logo-keys {
     display: block;
-    width: auto;
     overflow: visible;
   }
   .logo-key-face {
     transition: transform 90ms ease-out;
-    transition-delay: calc(var(--i, 0) * 60ms);
   }
   .logo-link:hover .logo-key-face,
   .logo-link:focus-visible .logo-key-face {
     transform: translateY(4px);
-  }
-  .logo-link:hover .logo-keys g:nth-of-type(1) .logo-key-face {
-    transition-delay: 0ms;
   }
 
   /* Windows high contrast: colors are replaced, so keep real borders */
