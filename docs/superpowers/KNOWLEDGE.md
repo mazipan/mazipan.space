@@ -66,6 +66,8 @@ Session 2 additions: fewer commits and PRs (each push is a Vercel build, push on
 
 ## 4b. Session 2 tooling and lessons
 
+- **Lighthouse works in the cloud container** (earlier note saying it does not was wrong): `mkdir /tmp/lh && cd /tmp/lh && npm i lighthouse@12`, then `CHROME_PATH=/opt/pw-browsers/chromium-1243/chrome-linux64/chrome npx lighthouse <url> --chrome-flags="--headless --no-sandbox --blink-settings=preferredColorScheme=1" --only-categories=accessibility,best-practices,performance,seo --output=json`. `preferredColorScheme=1` is dark, `0` is light (the theme script falls back to the browser preference). About one minute per page. Do not rebuild `dist` while it runs.
+
 - No Lighthouse in the cloud container. Use axe-core in Playwright instead: `npm i axe-core` in a scratch folder, `page.addScriptTag`, `axe.run({runOnly:['wcag2a','wcag2aa','wcag21aa','wcag22aa','best-practice']})`, both modes (set `localStorage.theme`). Run over every route from `dist/**/index.html`.
 - Measure key groups: collect `.keycap, .tag` bounding boxes, group by vertical center, flag different heights. This found pagination (50x66 arrows vs 43x46 numbers), wrapped tags and a 46 vs 48 footer mismatch.
 - `ch` units scale with the element font: a heading with `max-width: 50ch` is wider than a paragraph. Use rem for a shared column.

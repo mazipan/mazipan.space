@@ -201,6 +201,7 @@ Rules:
 - **Header height:** the fixed header's bottom edge is 98px. `--header-h` (base.css, 6.25rem) is the
   one value for the page offset, burger menu, sticky headings, ToC and `scroll-padding-top`. Never
   hard-code `top-16` / `mt-[65px]` style numbers; change `--header-h` if the header changes.
+- **Photos and screenshots** are framed (`.frame`, `PolaroidCard`), serve images with `densities` or `widths`, and keep their natural aspect ratio (never force `aspect-*` without `object-cover`). Long reading text (posts, projects, pages, resume) sits on a `.sheet`.
 - **Prose colors** come from the tokens (`--tw-prose-*` in `my-prose.css`), not the slate palette.
 - **Reading measure** is `36.5rem` (rem, not `ch`, so headings and text share one column).
 - **Reduced motion:** lift, tilt, and press animation must be off under

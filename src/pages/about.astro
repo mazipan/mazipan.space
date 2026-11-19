@@ -150,7 +150,14 @@ const metadata = getPageMetadata('pages/about');
       </div>
       <div class="flex items-center justify-center md:min-w-[300px]">
         <PolaroidCard as="div" class="w-[300px] max-w-full">
-          <Image slot="photo" width={300} src={MeInBlackSrc} alt="MZP In Black" class="w-full" />
+          <Image
+            slot="photo"
+            width={300}
+            densities={[1, 2]}
+            src={MeInBlackSrc}
+            alt="Irfan Maulana, smiling, arms crossed, in a black t-shirt"
+            class="w-full"
+          />
         </PolaroidCard>
       </div>
     </div>

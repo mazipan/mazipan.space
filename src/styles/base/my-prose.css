@@ -5,6 +5,9 @@
   .my-prose:not(:where([class~='not-prose'], [class~='not-prose'] *)) {
     @apply prose prose-slate dark:prose-invert max-w-none;
 
+    /* a long URL in a link must wrap instead of pushing the page sideways on phones */
+    overflow-wrap: anywhere;
+
     /* responsive styling */
     /* all tags */
     @apply md:prose-lg;
