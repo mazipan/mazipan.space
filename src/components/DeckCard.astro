@@ -1,0 +1,31 @@
+---
+// Stacked deck: two slides peek out behind the top one. Default slot is the top slide content.
+import type { HTMLAttributes } from 'astro/types';
+
+export interface Props extends HTMLAttributes<'article'> {
+  as?: 'div' | 'article' | 'li';
+  /** CSS background of the top slide (gradient). Layers behind use darker fixed colors. */
+  background: string;
+}
+
+const { as: Tag = 'article', background, class: className, ...props } = Astro.props;
+---
+
+<Tag {...props} class:list={['deck-card', className]}>
+  <i
+    class="deck-layer"
+    style="background:#264653;transform:translate(12px,12px) rotate(3deg)"
+    aria-hidden="true"
+  ></i>
+  <i
+    class="deck-layer"
+    style="background:#1f6f66;transform:translate(6px,6px) rotate(1.5deg)"
+    aria-hidden="true"
+  ></i>
+  <div
+    class="deck-top relative flex aspect-square flex-col overflow-hidden rounded-2xl text-white"
+    style={`background: ${background}; border: 2px solid var(--th-key-edge); box-shadow: 0 12px 20px rgb(0 0 0 / 0.3), inset 0 3px 0 rgb(255 255 255 / 0.25);`}
+  >
+    <slot />
+  </div>
+</Tag>

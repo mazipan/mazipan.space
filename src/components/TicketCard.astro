@@ -1,0 +1,23 @@
+---
+// Ticket stub: colored stub (slot "stub": year, date) and the main part (default slot).
+import type { HTMLAttributes } from 'astro/types';
+
+export interface Props extends HTMLAttributes<'article'> {
+  as?: 'div' | 'article' | 'li';
+  tone?: 'terracotta' | 'teal' | 'mustard' | 'navy';
+}
+
+const { as: Tag = 'article', tone = 'teal', class: className, ...props } = Astro.props;
+---
+
+<Tag {...props} class:list={['ticket-card', className]}>
+  <div
+    class="ticket-stub"
+    style={`background: var(--th-key-${tone}-face-lo); color: var(--th-key-${tone}-text);`}
+  >
+    <slot name="stub" />
+  </div>
+  <div class="min-w-0 flex-1 p-4">
+    <slot />
+  </div>
+</Tag>
