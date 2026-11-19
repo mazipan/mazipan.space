@@ -34,6 +34,8 @@ export const postSchema = ({ image }: SchemaContext) =>
     description: z.string().default(DESCRIPTION),
     // one plain sentence shown in a sticky note on top of the post (optional)
     bottomLine: z.string().optional(),
+    // puts the post on the "How-tos" shelf (posts in the tutorials category are there too)
+    kind: z.enum(['how-to']).optional(),
     // convert img to object
     noHero: z.boolean().default(NO_HERO),
     heroImage: image().default(HERO_IMAGE),

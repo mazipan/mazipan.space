@@ -1,7 +1,5 @@
 ---
-import { Icon } from 'astro-icon/components';
-
-import Link from '@/components/Link.astro';
+import Keycap from '@/components/Keycap.astro';
 import { cn } from '@/utils/styles';
 
 import type { PaginationProps } from '@/types/common';
@@ -56,78 +54,73 @@ const threePageNumbers = (currentPage: number, lastPage: number): number[] => {
 
   return pages;
 };
+
+// arrows: a disabled key has no href, so it cannot be followed
+const arrows = [
+  { label: 'First page', glyph: '«', href: prevUrl ? firstUrl : undefined },
+  { label: 'Previous page', glyph: '‹', href: prevUrl },
+  { label: 'Next page', glyph: '›', href: nextUrl },
+  { label: 'Last page', glyph: '»', href: nextUrl ? lastUrl : undefined },
+];
+const [firstKey, prevKey, nextKey, lastKey] = arrows;
 ---
 
-{
-  hasMoreThanOnePage() || showIfOnePage ? (
-    <div
-      class={cn(
-        'flex flex-col-reverse items-center justify-center gap-4 md:flex-row md:justify-between',
-        className
-      )}
-    >
-      <p class="b-p xs:inline-block hidden text-base">
-        Showing
-        <span class="font-bold">{start + 1}</span>
-        to
-        <span class="font-bold">{end + 1}</span>
-        of
-        <span class="font-bold">{total}</span>
-        results
-      </p>
+{hasMoreThanOnePage() || showIfOnePage ? (
+  <div
+    class={cn(
+      'flex flex-col-reverse items-center justify-center gap-4 md:flex-row md:justify-between',
+      className
+    )}
+  >
+    <p class="b-p xs:inline-block hidden text-base">
+      Showing
+      <span class="font-bold">{start + 1}</span>
+      to
+      <span class="font-bold">{end + 1}</span>
+      of
+      <span class="font-bold">{total}</span>
+      results
+    </p>
 
-      <nav aria-label="pages" class="flex items-center justify-end gap-2 text-xl">
-        <Link
-          href={firstUrl}
-          disabled={!prevUrl}
-          class="hover:bg-primary-hover hover:text-primary-content flex h-8 w-8 items-center justify-center rounded"
+    <nav aria-label="Pagination" class="flex flex-wrap items-center justify-end gap-3">
+      {[firstKey, prevKey].map(({ label, glyph, href }) => (
+        <Keycap
+          element="a"
+          colors="navy"
+          size="square"
+          href={href}
+          disabled={!href}
+          aria-label={label}
         >
-          <Icon name="tabler:chevrons-left" />
-        </Link>
+          {glyph}
+        </Keycap>
+      ))}
 
-        <Link
-          href={prevUrl}
-          disabled={!prevUrl}
-          class="hover:bg-primary-hover hover:text-primary-content flex h-8 w-8 items-center justify-center rounded"
+      {threePageNumbers(currentPage, lastPage).map((pageNumber) => (
+        <Keycap
+          element="a"
+          colors="cream"
+          size="sm"
+          href={getPageUrl(pageNumber)}
+          pressed={pageNumber === currentPage}
+          aria-label={`Page ${pageNumber}`}
         >
-          <Icon name="tabler:chevron-left" />
-        </Link>
+          {pageNumber}
+        </Keycap>
+      ))}
 
-        {threePageNumbers(currentPage, lastPage).map((pageNumber) => {
-          const isCurrentPage = pageNumber === currentPage;
-
-          // trimm long pagination with (...)
-
-          return (
-            <Link
-              href={getPageUrl(pageNumber)}
-              disabled={isCurrentPage}
-              class={cn(
-                'hover:bg-primary-hover hover:text-primary-content flex min-h-8 min-w-8 items-center justify-center rounded hover:no-underline',
-                isCurrentPage ? 'font-semibold' : ''
-              )}
-            >
-              {pageNumber}
-            </Link>
-          );
-        })}
-
-        <Link
-          href={nextUrl}
-          disabled={!nextUrl}
-          class="hover:bg-primary-hover hover:text-primary-content flex h-8 w-8 items-center justify-center rounded"
+      {[nextKey, lastKey].map(({ label, glyph, href }) => (
+        <Keycap
+          element="a"
+          colors="navy"
+          size="square"
+          href={href}
+          disabled={!href}
+          aria-label={label}
         >
-          <Icon name="tabler:chevron-right" />
-        </Link>
-
-        <Link
-          href={lastUrl}
-          disabled={!nextUrl}
-          class="hover:bg-primary-hover hover:text-primary-content flex h-8 w-8 items-center justify-center rounded"
-        >
-          <Icon name="tabler:chevrons-right" />
-        </Link>
-      </nav>
-    </div>
-  ) : null
-}
+          {glyph}
+        </Keycap>
+      ))}
+    </nav>
+  </div>
+) : null}

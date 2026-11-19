@@ -25,13 +25,21 @@
     transition: transform 70ms ease-out;
   }
 
-  .tag-solid:hover {
+  /* only links move; a plain label (span) stays still */
+  a.tag-solid:hover {
     transform: translateY(-1px);
   }
 
-  .tag-solid:active {
+  a.tag-solid:active,
+  .tag-solid[aria-current]:not([aria-current='false']) {
     transform: translateY(2px);
     box-shadow: inset 0 2px 3px rgb(0 0 0 / 0.2);
+  }
+
+  /* the selected filter is also underlined: never color alone */
+  .tag-solid[aria-current]:not([aria-current='false']) {
+    text-decoration: underline 2px;
+    text-underline-offset: 3px;
   }
 
   .tag-sm {
@@ -60,7 +68,7 @@
     .tag-solid {
       transition: none;
     }
-    .tag-solid:hover {
+    a.tag-solid:hover {
       transform: none;
     }
   }

@@ -1,14 +1,19 @@
 ---
+import { getAllCarousels } from '@/modules/carousel';
 import { getAllPostsWithReadingTime } from '@/modules/post/common';
+import { getBookProps, getPostShelves, getSlidesBookProps } from '@/modules/post/shelf';
 import List from '@/layouts/List.astro';
+import Book from '@/components/Book.astro';
 import Breadcrumbs from '@/components/Breadcrumbs.astro';
 import FeaturedPostList from '@/components/FeaturedPostList.astro';
 import PostList from '@/components/PostList.astro';
+import Shelf from '@/components/Shelf.astro';
 import { BreadcrumbItemHome } from '@/constants/breadcrumb';
 import { CONFIG_CLIENT } from '@/config/client';
 import { getPageMetadata } from '@/utils/metadata';
 import { pickPaginationPropsFromPage } from '@/utils/pagination';
 
+import type { Carousel } from '@/types/carousel';
 import type { Post } from '@/types/post';
 import type { GetStaticPathsOptions, Page } from 'astro';
 
@@ -22,6 +27,8 @@ export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
 
   const firstPageProps = pagination[0].props;
   firstPageProps.featured = featured;
+  firstPageProps.shelves = getPostShelves(posts);
+  firstPageProps.slides = (await getAllCarousels()).slice(0, 5);
 
   pagination.push({
     params: {
@@ -36,10 +43,12 @@ export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
 type Props = {
   page: Page<Post>;
   featured?: Post[];
+  shelves?: ReturnType<typeof getPostShelves>;
+  slides?: Carousel[];
 };
 
 // page from pagination
-const { page, featured } = Astro.props;
+const { page, featured, shelves, slides } = Astro.props;
 const { data: posts } = page;
 
 const paginationProps = pickPaginationPropsFromPage(page);
@@ -56,15 +65,52 @@ const breadcrumbs = [BreadcrumbItemHome];
     <h1 class="b-h1 tracking-wide">{metadata.title}</h1>
   </section>
 
-  {Array.isArray(featured) && <FeaturedPostList posts={featured} />}
+  {shelves && (
+    <div class="mb-12">
+      <Shelf title="Short reads" href="#all-writing" linkLabel="All writing">
+        {shelves.short.map((post, i) => (
+          <Book {...getBookProps(post, i)} />
+        ))}
+      </Shelf>
+      <Shelf title="Long stories" href="#all-writing" linkLabel="All writing">
+        {shelves.long.map((post, i) => (
+          <Book {...getBookProps(post, i + 1)} />
+        ))}
+      </Shelf>
+      {shelves.howTo.length > 0 && (
+        <Shelf title="How-tos" href="/blog/explore/categories/tutorials" linkLabel="All how-tos">
+          {shelves.howTo.map((post, i) => (
+            <Book {...getBookProps(post, i + 2)} />
+          ))}
+        </Shelf>
+      )}
+      {slides && slides.length > 0 && (
+        <Shelf title="Slides" href="/carousel" linkLabel="All slides">
+          {slides.map((deck, i) => (
+            <Book {...getSlidesBookProps(deck, i + 3)} />
+          ))}
+        </Shelf>
+      )}
+    </div>
+  )}
 
-  {
-    paginationProps.currentPage === 1 && (
-      <h3 class="b-h1 mt-16 mb-12 tracking-wide underline decoration-wavy underline-offset-auto">
-        ✍️ Latest writings
-      </h3>
-    )
-  }
+  {Array.isArray(featured) && (
+    <>
+      <h2 class="sr-only">Featured writing</h2>
+      <FeaturedPostList posts={featured} />
+    </>
+  )}
+
+  <h2
+    id="all-writing"
+    class={
+      paginationProps.currentPage === 1
+        ? 'b-h1 mt-16 mb-12 tracking-wide underline decoration-wavy underline-offset-auto'
+        : 'sr-only'
+    }
+  >
+    ✍️ Latest writings
+  </h2>
 
   <PostList posts={posts} />
 </List>
