@@ -42,7 +42,12 @@ const categoryLinks = getCategoryLinks(posts, filterPathname);
   </FilterList>
   <FilterList class="mb-8 gap-1" itemLinks={tagLinks}>
     {({ href, text, count, isActive }: FilterLink) => (
-      <Tag href={href} size="md" colors={isActive ? 'primary' : 'default'}>
+      <Tag
+        href={href}
+        size="md"
+        colors={isActive ? 'primary' : 'default'}
+        aria-current={isActive ? 'true' : undefined}
+      >
         #{text} ({count})
       </Tag>
     )}

@@ -11,5 +11,7 @@ const { posts } = Astro.props;
 ---
 
 <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
-  {posts.map((post) => <PostCardSmall post={post} withImage={true} />)}
+  {posts.map((post) => (
+    <PostCardSmall post={post} withImage={true} headingLevel="h3" />
+  ))}
 </div>
