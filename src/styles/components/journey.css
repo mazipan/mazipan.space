@@ -173,7 +173,8 @@
   }
   .stop-lamp {
     position: absolute;
-    top: 25px;
+    /* .stop padding (18) + card border (2) + connector top (30) + half the connector (2) - lamp radius (7) */
+    top: 45px;
     left: calc(50% - 36px - 7px);
     z-index: 4;
     width: 14px;
