@@ -1,4 +1,6 @@
 ---
+import { Icon } from 'astro-icon/components';
+
 import NavKey from '@/components/NavKey.astro';
 import { cn } from '@/utils/styles';
 
@@ -57,10 +59,10 @@ const threePageNumbers = (currentPage: number, lastPage: number): number[] => {
 
 // arrows: a disabled key has no href, so it cannot be followed
 const arrows = [
-  { label: 'First page', glyph: '«', href: prevUrl ? firstUrl : undefined },
-  { label: 'Previous page', glyph: '‹', href: prevUrl },
-  { label: 'Next page', glyph: '›', href: nextUrl },
-  { label: 'Last page', glyph: '»', href: nextUrl ? lastUrl : undefined },
+  { label: 'First page', icon: 'tabler:chevrons-left', href: prevUrl ? firstUrl : undefined },
+  { label: 'Previous page', icon: 'tabler:chevron-left', href: prevUrl },
+  { label: 'Next page', icon: 'tabler:chevron-right', href: nextUrl },
+  { label: 'Last page', icon: 'tabler:chevrons-right', href: nextUrl ? lastUrl : undefined },
 ];
 const [firstKey, prevKey, nextKey, lastKey] = arrows;
 // first and last page keys are hidden on phones: seven keys do not fit in one row
@@ -85,7 +87,7 @@ const ends = new Set(['First page', 'Last page']);
     </p>
 
     <nav aria-label="Pagination" class="flex items-center justify-end gap-2 sm:gap-3">
-      {[firstKey, prevKey].map(({ label, glyph, href }) => (
+      {[firstKey, prevKey].map(({ label, icon, href }) => (
         <NavKey
           element="a"
           colors="navy"
@@ -95,7 +97,7 @@ const ends = new Set(['First page', 'Last page']);
           aria-label={label}
           class={ends.has(label) ? 'hidden sm:inline-flex' : undefined}
         >
-          {glyph}
+          <Icon name={icon} class="h-5 w-5" aria-hidden="true" />
         </NavKey>
       ))}
 
@@ -112,7 +114,7 @@ const ends = new Set(['First page', 'Last page']);
         </NavKey>
       ))}
 
-      {[nextKey, lastKey].map(({ label, glyph, href }) => (
+      {[nextKey, lastKey].map(({ label, icon, href }) => (
         <NavKey
           element="a"
           colors="navy"
@@ -122,7 +124,7 @@ const ends = new Set(['First page', 'Last page']);
           aria-label={label}
           class={ends.has(label) ? 'hidden sm:inline-flex' : undefined}
         >
-          {glyph}
+          <Icon name={icon} class="h-5 w-5" aria-hidden="true" />
         </NavKey>
       ))}
     </nav>

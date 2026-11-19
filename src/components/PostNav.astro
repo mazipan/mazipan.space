@@ -1,4 +1,6 @@
 ---
+import { Icon } from 'astro-icon/components';
+
 import { ROUTES } from '@/constants/routes';
 
 import type { Post } from '@/types/post';
@@ -19,7 +21,9 @@ const { prev, next } = Astro.props;
       {prev && (
         <a href={`${ROUTES.BLOG}/${prev.slug}`} class="nav-card">
           <span class="keycap keycap-navy keycap-nav keycap-nav-icon shrink-0" aria-hidden="true">
-            <span class="keycap-face">&larr;</span>
+            <span class="keycap-face">
+              <Icon name="tabler:arrow-left" class="h-5 w-5" aria-hidden="true" />
+            </span>
           </span>
           <span class="min-w-0">
             <span class="block text-sm">Older post</span>
@@ -32,7 +36,9 @@ const { prev, next } = Astro.props;
       {next && (
         <a href={`${ROUTES.BLOG}/${next.slug}`} class="nav-card nav-card-next">
           <span class="keycap keycap-navy keycap-nav keycap-nav-icon shrink-0" aria-hidden="true">
-            <span class="keycap-face">&rarr;</span>
+            <span class="keycap-face">
+              <Icon name="tabler:arrow-right" class="h-5 w-5" aria-hidden="true" />
+            </span>
           </span>
           <span class="min-w-0">
             <span class="block text-sm">Newer post</span>

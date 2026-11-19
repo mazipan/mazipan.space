@@ -1,4 +1,5 @@
 ---
+import { Icon } from 'astro-icon/components';
 import { Image } from 'astro:assets';
 
 import { getAllCarousels } from '@/modules/carousel';
@@ -169,10 +170,11 @@ const doItems = [
             <p class="m-0 flex-1">{text}</p>
             <a
               href={href}
-              class="link-default font-bold underline underline-offset-2"
+              class="link-default arrow-link font-bold underline underline-offset-2"
               {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
             >
-              {linkLabel} &rarr;
+              {linkLabel}
+              <Icon name="tabler:arrow-right" class="arrow-icon" aria-hidden="true" />
             </a>
           </PaperCard>
         ))}
