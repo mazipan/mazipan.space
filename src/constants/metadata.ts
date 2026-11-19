@@ -54,37 +54,40 @@ export const PAGE_METADATA = {
   },
   'pages/talks': {
     title: '🎙️ Talks',
-    description: '',
+    description:
+      'Talks by Irfan Maulana on JavaScript, React.js, Next.js, open source and career growth.',
     path: '/talks',
   },
   'pages/guest-book': {
     title: '📝 Guest Book',
-    description: '',
+    description: 'Leave a message in my guest book.',
     path: '/guest-book',
   },
   'pages/about': {
     title: 'About',
-    description: '',
+    description: 'About Irfan Maulana: web developer, writer, speaker and mentor from Indonesia.',
     path: '/about',
   },
   'pages/credits': {
     title: '❤️ Credits',
-    description: '',
+    description: 'The websites that inspired this one.',
     path: '/credits',
   },
   'pages/support': {
     title: '💪 Support',
-    description: '',
+    description: 'Ways to support Irfan Maulana and keep this blog alive.',
     path: '/support',
   },
   'pages/friends': {
     title: '🤝 Friends',
-    description: '',
+    description:
+      'Blogs and websites of my friends and mentors in the Indonesian software engineering community.',
     path: '/friends',
   },
   'pages/resume': {
     title: '📄 Resume',
-    description: '',
+    description:
+      'A road trip through the career of Irfan Maulana, from SML Technologies in 2013 to Wego today.',
     path: '/resume',
   },
 } as const;
