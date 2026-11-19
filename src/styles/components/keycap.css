@@ -1,0 +1,148 @@
+/* Keycap: outer element is the deep side, .keycap-face is the bevelled top. */
+@layer components {
+  .keycap {
+    --kc-hi: var(--th-key-terracotta-face-hi);
+    --kc-lo: var(--th-key-terracotta-face-lo);
+    --kc-side: var(--th-key-terracotta-side);
+    --kc-text: var(--th-key-terracotta-text);
+
+    display: inline-block;
+    padding: 0 0 8px;
+    border: 0;
+    border-radius: 16px;
+    background: var(--kc-side);
+    box-shadow:
+      0 10px 14px rgb(0 0 0 / 0.25),
+      inset 0 -2px 0 rgb(0 0 0 / 0.25);
+    color: var(--kc-text);
+    font: inherit;
+    text-decoration: none;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .keycap-face {
+    display: block;
+    padding: 12px 24px;
+    border-radius: 13px;
+    border-top: 2px solid rgb(255 255 255 / 0.44);
+    border-left: 2px solid rgb(255 255 255 / 0.2);
+    border-right: 2px solid rgb(0 0 0 / 0.13);
+    border-bottom: 2px solid rgb(0 0 0 / 0.19);
+    background: radial-gradient(ellipse at 50% 30%, var(--kc-hi), var(--kc-lo) 85%);
+    box-shadow:
+      inset 0 -4px 6px rgb(0 0 0 / 0.13),
+      inset 0 3px 4px rgb(255 255 255 / 0.25);
+    color: var(--kc-text);
+    font-weight: 700;
+    line-height: 1.3;
+    transition: transform 70ms ease-out;
+  }
+
+  .keycap:hover .keycap-face {
+    transform: translateY(-1px);
+  }
+
+  /* pressed in: finger down, toggle on, or current page */
+  .keycap:active .keycap-face,
+  .keycap[aria-pressed='true'] .keycap-face,
+  .keycap[aria-current='page'] .keycap-face {
+    transform: translateY(6px);
+    box-shadow: inset 0 2px 4px rgb(0 0 0 / 0.2);
+  }
+
+  .keycap:focus-visible {
+    outline: 3px solid var(--th-headings);
+    outline-offset: 4px;
+    box-shadow: 0 0 0 7px var(--th-base-100);
+  }
+
+  .keycap[disabled],
+  .keycap[aria-disabled='true'] {
+    opacity: 0.55;
+    cursor: not-allowed;
+  }
+
+  .keycap[disabled] .keycap-face,
+  .keycap[aria-disabled='true'] .keycap-face {
+    transform: translateY(3px);
+  }
+
+  .keycap-terracotta {
+    --kc-hi: var(--th-key-terracotta-face-hi);
+    --kc-lo: var(--th-key-terracotta-face-lo);
+    --kc-side: var(--th-key-terracotta-side);
+    --kc-text: var(--th-key-terracotta-text);
+  }
+  .keycap-teal {
+    --kc-hi: var(--th-key-teal-face-hi);
+    --kc-lo: var(--th-key-teal-face-lo);
+    --kc-side: var(--th-key-teal-side);
+    --kc-text: var(--th-key-teal-text);
+  }
+  .keycap-mustard {
+    --kc-hi: var(--th-key-mustard-face-hi);
+    --kc-lo: var(--th-key-mustard-face-lo);
+    --kc-side: var(--th-key-mustard-side);
+    --kc-text: var(--th-key-mustard-text);
+  }
+  .keycap-cream {
+    --kc-hi: var(--th-key-cream-face-hi);
+    --kc-lo: var(--th-key-cream-face-lo);
+    --kc-side: var(--th-key-cream-side);
+    --kc-text: var(--th-key-cream-text);
+  }
+  .keycap-navy {
+    --kc-hi: var(--th-key-navy-face-hi);
+    --kc-lo: var(--th-key-navy-face-lo);
+    --kc-side: var(--th-key-navy-side);
+    --kc-text: var(--th-key-navy-text);
+  }
+
+  .keycap-sm {
+    padding-bottom: 6px;
+    border-radius: 13px;
+  }
+  .keycap-sm .keycap-face {
+    padding: 7px 14px;
+    border-radius: 10px;
+    font-size: 0.875rem;
+  }
+
+  .keycap-square .keycap-face {
+    width: 46px;
+    padding: 12px 0;
+    text-align: center;
+    font-size: 1.25rem;
+  }
+
+  /* Windows high contrast: colors are replaced, so keep real borders */
+  @media (forced-colors: active) {
+    .keycap-face {
+      border: 2px solid ButtonText;
+      forced-color-adjust: none;
+      background: ButtonFace;
+      color: ButtonText;
+    }
+    .keycap[aria-pressed='true'] .keycap-face,
+    .keycap[aria-current='page'] .keycap-face {
+      border-style: dashed;
+      background: Highlight;
+      color: HighlightText;
+    }
+    .keycap[disabled] .keycap-face,
+    .keycap[aria-disabled='true'] .keycap-face {
+      border-color: GrayText;
+      color: GrayText;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .keycap-face {
+      transition: none;
+    }
+    .keycap:hover .keycap-face {
+      transform: none;
+    }
+  }
+}
