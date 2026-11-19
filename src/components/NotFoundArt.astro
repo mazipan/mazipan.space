@@ -1,6 +1,6 @@
 ---
-// The 404 picture: a row of keys reading 4 0 4, and the 0 key has popped out of its slot and floats
-// above the gap. Drawn with the palette tokens, so it follows the chosen palette in light and dark.
+// The 404 picture: a row of keys reading 4 0 4. A ginger cat has batted the 0 key out of its slot
+// and a dark cat is asleep in the gap. Drawn with the palette tokens, so it follows the chosen palette in light and dark.
 // Decorative (the headline says it all), so it is hidden from screen readers.
 ---
 
@@ -60,6 +60,83 @@
     stroke-width="3"
     stroke-dasharray="9 7"
   ></rect>
+
+  <!-- ginger cat behind the right key, batting at the floating 0 -->
+  <g class="nf-cat1" stroke-linejoin="round" stroke-linecap="round">
+    <path
+      d="M424 118 Q384 118 332 80"
+      fill="none"
+      stroke="var(--th-key-edge)"
+      stroke-width="23"
+    ></path>
+    <path
+      d="M424 118 Q384 118 332 80"
+      fill="none"
+      style="stroke: var(--th-key-mustard-face-lo)"
+      stroke-width="17"
+    ></path>
+    <path
+      d="M410 80 L414 54 L430 69 Z"
+      style="fill: var(--th-key-mustard-face-lo)"
+      stroke="var(--th-key-edge)"
+      stroke-width="3"
+    ></path>
+    <path
+      d="M436 69 L452 54 L457 82 Z"
+      style="fill: var(--th-key-mustard-face-lo)"
+      stroke="var(--th-key-edge)"
+      stroke-width="3"
+    ></path>
+    <path d="M416 74 L418 63 L425 70 Z" style="fill: var(--th-key-terracotta-face-hi)"></path>
+    <path d="M441 70 L449 63 L451 75 Z" style="fill: var(--th-key-terracotta-face-hi)"></path>
+    <ellipse
+      cx="433"
+      cy="92"
+      rx="27"
+      ry="24"
+      style="fill: var(--th-key-mustard-face-lo)"
+      stroke="var(--th-key-edge)"
+      stroke-width="3"
+    ></ellipse>
+    <path
+      d="M427 70 v8 M433 68 v9 M439 70 v8"
+      fill="none"
+      style="stroke: var(--th-key-mustard-side)"
+      stroke-width="3"
+    ></path>
+    <ellipse cx="423" cy="91" rx="3.6" ry="5.2" fill="#2b1d14"></ellipse>
+    <ellipse cx="445" cy="91" rx="3.6" ry="5.2" fill="#2b1d14"></ellipse>
+    <circle cx="424.4" cy="89" r="1.3" fill="#fff"></circle>
+    <circle cx="446.4" cy="89" r="1.3" fill="#fff"></circle>
+    <path d="M430.5 99 h7 l-3.5 4 Z" style="fill: var(--th-key-terracotta-face-hi)"></path>
+    <path
+      d="M434 103 v3 M434 106 q-4 4 -8 1 M434 106 q4 4 8 1"
+      fill="none"
+      stroke="var(--th-key-edge)"
+      stroke-width="2"
+    ></path>
+    <path
+      d="M411 98 l-15 -3 M411 103 l-15 3 M456 98 l15 -3 M456 103 l15 3"
+      fill="none"
+      stroke="var(--th-key-edge)"
+      stroke-width="2"
+    ></path>
+    <ellipse
+      cx="333"
+      cy="79"
+      rx="9"
+      ry="8"
+      style="fill: var(--th-key-mustard-face-hi)"
+      stroke="var(--th-key-edge)"
+      stroke-width="3"
+    ></ellipse>
+    <path
+      d="M330 75 v-1 M335 74 v-1 M339 77 v-1"
+      fill="none"
+      stroke="var(--th-key-edge)"
+      stroke-width="2"
+    ></path>
+  </g>
 
   <!-- left 4 -->
   <g>
@@ -141,8 +218,68 @@
     ></path>
   </g>
 
-  <!-- shadow of the floating key on the slot -->
-  <ellipse class="nf-shadow" cx="250" cy="226" rx="48" ry="9" fill="#000" opacity=".28"></ellipse>
+  <!-- dark cat asleep in the empty slot -->
+  <g class="nf-cat2" stroke-linejoin="round" stroke-linecap="round">
+    <path
+      d="M300 212 Q336 198 326 228 Q320 240 292 238"
+      fill="none"
+      stroke="var(--th-key-edge)"
+      stroke-width="17"
+    ></path>
+    <path
+      d="M300 212 Q336 198 326 228 Q320 240 292 238"
+      fill="none"
+      style="stroke: var(--th-key-navy-face-lo)"
+      stroke-width="11"
+    ></path>
+    <ellipse
+      cx="256"
+      cy="214"
+      rx="52"
+      ry="27"
+      style="fill: var(--th-key-navy-face-lo)"
+      stroke="var(--th-key-edge)"
+      stroke-width="3"
+    ></ellipse>
+    <path
+      d="M222 198 Q256 186 292 200"
+      fill="none"
+      stroke="#fff"
+      stroke-opacity=".22"
+      stroke-width="4"
+    ></path>
+    <path
+      d="M194 202 L195 180 L209 194 Z"
+      style="fill: var(--th-key-navy-face-lo)"
+      stroke="var(--th-key-edge)"
+      stroke-width="3"
+    ></path>
+    <path
+      d="M211 194 L225 181 L227 201 Z"
+      style="fill: var(--th-key-navy-face-lo)"
+      stroke="var(--th-key-edge)"
+      stroke-width="3"
+    ></path>
+    <circle
+      cx="211"
+      cy="210"
+      r="20"
+      style="fill: var(--th-key-navy-face-lo)"
+      stroke="var(--th-key-edge)"
+      stroke-width="3"
+    ></circle>
+    <path
+      d="M201 209 q4 4 8 0 M214 209 q4 4 8 0"
+      fill="none"
+      style="stroke: var(--th-key-navy-text)"
+      stroke-width="2.5"
+    ></path>
+    <circle cx="211.5" cy="216" r="2" style="fill: var(--th-key-terracotta-face-hi)"></circle>
+    <g class="nf-zzz" fill="none" stroke="var(--th-key-edge)" stroke-width="3">
+      <path d="M262 178 h11 l-11 13 h11"></path>
+      <path d="M282 160 h8 l-8 10 h8"></path>
+    </g>
+  </g>
 
   <!-- the 0 that popped out, floating and tilted -->
   <g class="nf-float">
@@ -189,8 +326,6 @@
     <g stroke="var(--th-key-edge)" stroke-width="4" stroke-linecap="round" fill="none">
       <path d="M170 70 l-16 -8"></path>
       <path d="M168 94 l-20 0"></path>
-      <path d="M330 56 l16 -10"></path>
-      <path d="M336 80 l20 -2"></path>
     </g>
   </g>
 </svg>
@@ -207,10 +342,8 @@
   .nf-float {
     animation: nf-bob 3.2s ease-in-out infinite;
   }
-  .nf-shadow {
-    transform-box: fill-box;
-    transform-origin: center;
-    animation: nf-shadow 3.2s ease-in-out infinite;
+  .nf-zzz {
+    animation: nf-zzz 3.2s ease-in-out infinite;
   }
   @keyframes nf-bob {
     0%,
@@ -221,19 +354,18 @@
       transform: translateY(-9px);
     }
   }
-  @keyframes nf-shadow {
+  @keyframes nf-zzz {
     0%,
     100% {
-      transform: scale(1);
+      opacity: 0.35;
     }
     50% {
-      transform: scale(0.88);
-      opacity: 0.2;
+      opacity: 1;
     }
   }
   @media (prefers-reduced-motion: reduce) {
     .nf-float,
-    .nf-shadow {
+    .nf-zzz {
       animation: none;
     }
   }
