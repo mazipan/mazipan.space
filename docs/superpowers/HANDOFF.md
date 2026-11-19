@@ -6,7 +6,7 @@ Last updated: 2026-11-19 (end of session 2 depth pass). Keep this file current: 
 
 - **Work until the whole redesign is finished.** Do not stop to ask, do not wait for approval.
 - Decide by yourself. Owner said "you decide it" and "no need to ask".
-- Merge finished phases **without asking**: phase branch -> `feat/2027-design` (no PR), then PR `feat/2027-design` -> `master`, wait for CI green, **squash merge**. Never push to `master` directly.
+- **MERGE RULE (owner, corrected in session 2 - this overrides anything older):** `feat/2027-design` is the central branch. Phase and session branches may merge into it (PR base = `feat/2027-design`). **NEVER merge anything into `master`.** `master` is merged only by the owner's explicit approval, when the whole redesign is finished. "Auto merge" from the owner means into the central branch only. After a PR into the central branch is squash-merged, GitHub deletes the head branch, so check that `feat/2027-design` still exists; never use it as the head of a PR into `master` (that deletes it on merge).
 - **Build budget (owner, session 2):** do NOT make many commits or PRs, each push triggers a Vercel build. Work in the local tree until satisfied, verify locally (build, axe, screenshots), then push ONCE. Open PR #331 (palettes) is the single carrier; fold later work into it and merge once.
 - **Always sync docs:** update this handoff, `AGENTS.md`, `KNOWLEDGE.md` and the spec with every change, so nothing lives only in the conversation.
 - **Precision:** when buttons or keys appear together, measure width and height in the browser and make them exactly consistent (same height in a row, square keys really square). No brute-force tweaks: understand the box model first, double check before writing design.
@@ -37,7 +37,7 @@ Redesign mazipan.space ("Irfan's bookshelf"): home is a warm personal letter, wr
 
 - Central branch: `feat/2027-design`. Phase branches (for example `feat/2027-post`) are cut from it and merged back directly.
 - Repo allows **squash merge only**. A ready-made script that runs the gates, merges, opens the PR, waits for CI, squashes and syncs is `docs/superpowers/ship-phase.sh` (usage in its header; copy it to `.superpowers/tmp/` or run it with `bash`). You need a PR body file; see earlier PRs (#321-#325) for the format.
-- Repo allows **squash merge only**. After a squash to `master`, run `git fetch && git merge origin/master` on `feat/2027-design` and push. GitHub deletes the head branch after merge, so push `feat/2027-design` again.
+- Repo allows **squash merge only**. GitHub deletes a PR's head branch after merge. Incident in session 2: PRs #328-#330 were wrongly squash-merged into `master` (and #328 deleted `feat/2027-design`, which was recreated from the `master` tip). `master` currently contains Phase 5b, Phase 5 part 2 and Phase 6 part 1; ask the owner whether to keep or revert (do not decide alone).
 - `gh` is logged in as `mazipan-wego`; repo is `mazipan/mazipan.space`. PR body uses `.github/pull_request_template.md` sections and ends with `🤖 Generated with [Claude Code](https://claude.com/claude-code)`.
 
 ## Progress

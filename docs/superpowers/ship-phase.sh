@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# WARNING (owner rule, session 2): this script opens a PR into master and squash-merges it. Do NOT run it.
+# Merging into master needs the owner's explicit approval, only when the whole redesign is done.
 # usage: ship.sh <phase-branch> <pr-title> <body-file> <commit-message-subject>
 # Runs the gates, commits, merges into feat/2027-design, opens a PR to master, waits for CI, squashes, syncs.
 set -u
