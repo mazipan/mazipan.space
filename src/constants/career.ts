@@ -17,7 +17,7 @@ export const CAREERS = [
     company: 'GovTech Edu Indonesia',
     link: 'https://www.govtechedu.id/',
     location: 'Jakarta, Indonesia',
-    title: 'Principal Software Development Engineer, Web',
+    title: 'Principal SDE - Web / SDE - Web',
     period: 'Jun 2023 - Dec 2024',
     long: '1 yr 7 mos',
     summary:

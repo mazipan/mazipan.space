@@ -198,6 +198,19 @@
     border-radius: 9999px;
   }
 
+  /* the logo: one key that presses in when the link is hovered or focused */
+  .logo-keys {
+    display: block;
+    overflow: visible;
+  }
+  .logo-key-face {
+    transition: transform 90ms ease-out;
+  }
+  .logo-link:hover .logo-key-face,
+  .logo-link:focus-visible .logo-key-face {
+    transform: translateY(4px);
+  }
+
   /* Windows high contrast: colors are replaced, so keep real borders */
   @media (forced-colors: active) {
     .keycap-face {
@@ -224,7 +237,9 @@
       transition: none;
     }
     .keycap:hover .keycap-face,
-    .keycap-nav:hover .keycap-face {
+    .keycap-nav:hover .keycap-face,
+    .logo-link:hover .logo-key-face,
+    .logo-link:focus-visible .logo-key-face {
       transform: none;
     }
   }
