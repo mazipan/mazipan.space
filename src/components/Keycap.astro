@@ -21,6 +21,8 @@ export interface Props extends HTMLAttributes<'a'>, VariantProps<typeof keycapVa
   element?: 'a' | 'button';
   /** button: sets aria-pressed (toggle). link: true marks the current page. */
   pressed?: boolean;
+  /** link with `pressed`: 'page' for the page itself, 'true' for a section it belongs to */
+  current?: 'page' | 'true';
   disabled?: boolean;
 }
 
@@ -30,6 +32,7 @@ const {
   size = 'md',
   element = 'button',
   pressed,
+  current = 'page',
   disabled = false,
   ...props
 } = Astro.props;
@@ -44,7 +47,7 @@ const stateProps =
   element === 'button'
     ? { type: 'button', disabled, 'aria-pressed': pressed === undefined ? undefined : pressed }
     : isLink
-      ? { 'aria-current': pressed ? ('page' as const) : undefined }
+      ? { 'aria-current': pressed ? current : undefined }
       : { 'aria-disabled': 'true' as const };
 ---
 

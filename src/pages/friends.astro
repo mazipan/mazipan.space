@@ -55,7 +55,7 @@ const breadcrumbs = [BreadcrumbItemHome];
         {awesomeSdeBlogs.data
           .filter((i) => i.owner.name !== 'Irfan Maulana')
           .map((person) => (
-            <div class="paper-card flex flex-col items-center justify-between gap-4 text-center transition-transform hover:-translate-y-1">
+            <div class="paper-card flex flex-col items-center justify-between gap-4 text-center transition-transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:translate-y-0">
               <a
                 href={person.blog.link}
                 class="hover:text-primary focus:bg-base-200 focus:ring-primary flex flex-wrap items-center justify-center gap-1 rounded-br-lg focus:ring-2 focus:ring-offset-2 focus:outline-none"

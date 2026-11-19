@@ -16,6 +16,9 @@ const KEY_TONES = ['terracotta', 'teal', 'mustard', 'navy'] as const;
 
 const { pathname: routePathname } = Astro.url;
 const activeNavItemPath = getActiveNavItemPath(routePathname);
+// the key of the page itself is `page`, the key of a section the page belongs to is `true`
+const currentOf = (path: string) =>
+  routePathname.replace(/\/+$/, '') === path ? ('page' as const) : ('true' as const);
 ---
 
 <header
@@ -85,6 +88,7 @@ const activeNavItemPath = getActiveNavItemPath(routePathname);
                 size="sm"
                 class="keycap-nav"
                 pressed={path === activeNavItemPath}
+                current={currentOf(path)}
               >
                 {title}
               </Keycap>
@@ -115,6 +119,7 @@ const activeNavItemPath = getActiveNavItemPath(routePathname);
             size="sm"
             class="keycap-nav w-full"
             pressed={path === activeNavItemPath}
+            current={currentOf(path)}
           >
             {title}
           </Keycap>

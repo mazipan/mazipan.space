@@ -218,7 +218,8 @@
     .keycap-face {
       transition: none;
     }
-    .keycap:hover .keycap-face {
+    .keycap:hover .keycap-face,
+    .keycap-nav:hover .keycap-face {
       transform: none;
     }
   }
