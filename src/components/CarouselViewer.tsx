@@ -469,7 +469,22 @@ function Slide({ slide, blogBasePath, seriesTitle }: SlideProps) {
                 flexShrink: 0,
               }}
             >
-              {slide.cta} →
+              {slide.cta}
+              <svg
+                aria-hidden="true"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                style={{ marginLeft: 6, verticalAlign: '-2px' }}
+              >
+                <path d="M5 12h14" />
+                <path d="M13 6l6 6-6 6" />
+              </svg>
             </a>
           )}
         </div>

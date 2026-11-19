@@ -1,4 +1,5 @@
 ---
+import { Icon } from 'astro-icon/components';
 import { getCollection } from 'astro:content';
 
 import { SERIES_META } from '@/modules/carousel';
@@ -63,7 +64,8 @@ const breadcrumbs = [BreadcrumbItemHome, { href: ROUTES.CAROUSEL, text: '✨ Sli
           href={`/blog/${data.sourcePost}`}
           class="border-primary text-primary hover:bg-primary focus:ring-primary inline-flex items-center gap-1.5 rounded-full border px-4 py-2 text-sm font-semibold no-underline transition-colors hover:text-white focus:ring-2 focus:ring-offset-2 focus:outline-none"
         >
-          Baca artikel lengkap →
+          Baca artikel lengkap
+          <Icon name="tabler:arrow-right" class="arrow-icon" aria-hidden="true" />
         </a>
       </div>
     )}

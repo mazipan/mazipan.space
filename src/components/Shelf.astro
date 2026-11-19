@@ -1,4 +1,6 @@
 ---
+import { Icon } from 'astro-icon/components';
+
 // A heading, a list of <Book /> links, and a wood plank under every row of books.
 export interface Props {
   title: string;
@@ -22,7 +24,8 @@ const id = idProp ?? `shelf-${title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
     </Heading>
     {href && (
       <a {href} class="shelf-link">
-        {linkLabel} &rarr;
+        {linkLabel}
+        <Icon name="tabler:arrow-right" class="arrow-icon" aria-hidden="true" />
       </a>
     )}
   </div>
