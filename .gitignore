@@ -33,3 +33,6 @@ pnpm-debug.log*
 
 .astro/*
 !.astro/types.d.ts
+
+# design brainstorm and plan workspace
+.superpowers/

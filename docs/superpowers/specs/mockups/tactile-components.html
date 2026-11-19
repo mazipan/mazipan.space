@@ -1,0 +1,67 @@
+<style>
+  .t-wrap{background:#f3e3d0;background-image:radial-gradient(#00000010 1px,transparent 1px);background-size:5px 5px;padding:26px;font-family:'Trebuchet MS',Arial,sans-serif;color:#2b1d14}
+  .t-row{display:flex;gap:22px;flex-wrap:wrap;align-items:flex-start;margin-bottom:26px}
+  .t-label{font:700 12px Arial;letter-spacing:1px;text-transform:uppercase;color:#4a372a;margin-bottom:8px;width:100%}
+  /* pressable button */
+  .t-btn{display:inline-block;background:linear-gradient(#d65a3c,#b8442a);color:#fff;font:700 16px Arial;padding:12px 24px;border-radius:12px;border:2px solid #7d2c19;box-shadow:0 5px 0 #7d2c19,0 10px 14px #0003,inset 0 2px 0 #ffffff40;cursor:pointer;transition:transform .12s,box-shadow .12s}
+  .t-btn:hover{transform:translateY(-2px);box-shadow:0 7px 0 #7d2c19,0 14px 18px #0003,inset 0 2px 0 #ffffff40}
+  .t-btn:active{transform:translateY(4px);box-shadow:0 1px 0 #7d2c19,0 2px 4px #0003,inset 0 2px 0 #ffffff40}
+  .t-btn2{display:inline-block;background:#fffaf2;color:#2b1d14;font:700 16px Arial;padding:12px 24px;border-radius:12px;border:2px solid #2b1d14;box-shadow:0 4px 0 #2b1d14;cursor:pointer;transition:transform .12s,box-shadow .12s}
+  .t-btn2:hover{transform:translateY(-2px);box-shadow:0 6px 0 #2b1d14}
+  /* paper card */
+  .t-paper{background:#fffdf7;background-image:repeating-linear-gradient(transparent 0 27px,#e9ddc8 27px 28px);width:230px;padding:18px 16px 14px;border-radius:3px;box-shadow:0 1px 1px #0003,0 6px 8px #0002,0 18px 24px #0002;position:relative;transform:rotate(-1.5deg);transition:transform .2s}
+  .t-paper:hover{transform:rotate(0) translateY(-4px)}
+  .t-tape{position:absolute;top:-10px;left:50%;width:70px;height:20px;margin-left:-35px;background:#ffd98acc;transform:rotate(3deg);box-shadow:0 1px 2px #0002}
+  /* 3D book */
+  .t-bookwrap{perspective:700px}
+  .t-book{width:130px;height:180px;position:relative;transform:rotateY(-24deg);transform-style:preserve-3d;transition:transform .3s}
+  .t-bookwrap:hover .t-book{transform:rotateY(-8deg) translateY(-6px)}
+  .t-cover{position:absolute;inset:0;background:linear-gradient(100deg,#14262d 0 9%,#264653 9% 12%,#2d5262 12%);color:#fff;border-radius:3px 7px 7px 3px;padding:16px 12px 12px 22px;box-shadow:6px 8px 14px #0004}
+  .t-pages{position:absolute;top:4px;right:-9px;width:10px;height:172px;background:repeating-linear-gradient(#fffdf7 0 2px,#d9ccb4 2px 3px);border-radius:0 3px 3px 0;box-shadow:2px 3px 5px #0003}
+  /* chips */
+  .t-chip{display:inline-block;background:linear-gradient(#fffaf0,#f1e3c9);border:2px solid #2b1d14;border-radius:99px;padding:5px 14px;font:700 13px Arial;box-shadow:0 2px 0 #2b1d14,inset 0 1px 0 #fff}
+  .t-chip.on{background:linear-gradient(#ffe29a,#f4c95a)}
+  /* wood plank */
+  .t-plank{height:22px;border-radius:3px;background:repeating-linear-gradient(90deg,#00000008 0 3px,transparent 3px 9px),linear-gradient(#b17f57,#7d5236);box-shadow:inset 0 2px 0 #ffffff40,0 10px 12px #0004}
+  /* input */
+  .t-input{width:230px;padding:11px 14px;border-radius:10px;border:2px solid #2b1d14;background:#fffdf7;box-shadow:inset 0 3px 5px #0002;font:15px Arial;color:#2b1d14}
+  /* sticky note */
+  .t-note{width:170px;background:#ffe27a;padding:14px 12px 22px;font:italic 15px/1.3 Georgia;box-shadow:0 8px 10px #0003;transform:rotate(2.5deg);border-bottom-right-radius:28px 6px}
+  @media (prefers-reduced-motion:reduce){.t-btn,.t-btn2,.t-paper,.t-book{transition:none}.t-btn:hover,.t-btn2:hover,.t-paper:hover,.t-bookwrap:hover .t-book{transform:none}}
+</style>
+
+<h2>Tactile components</h2>
+<p class="subtitle">Hover and press the items. Depth comes from light and shadow, with real borders so contrast stays safe.</p>
+
+<div class="t-wrap">
+
+  <div class="t-row">
+    <div class="t-label">Buttons: they press down</div>
+    <span class="t-btn">Say hi</span>
+    <span class="t-btn2">Read my story</span>
+    <input class="t-input" placeholder="Your email (optional)" aria-label="demo input">
+  </div>
+
+  <div class="t-row">
+    <div class="t-label">Filter chips: raised, selected glows warm</div>
+    <span class="t-chip on">All</span><span class="t-chip">Short reads</span><span class="t-chip">Long stories</span><span class="t-chip">How-tos</span>
+  </div>
+
+  <div class="t-row" style="align-items:flex-end;gap:40px">
+    <div class="t-label">Paper card with tape, 3D book with page edges, sticky note</div>
+    <div class="t-paper"><div class="t-tape"></div>
+      <div style="font:700 11px Arial;color:#b8442a;letter-spacing:1px">STORY - 7 MIN</div>
+      <div style="font:700 19px/1.25 Georgia;margin:6px 0 8px">What I learned after my team got smaller</div>
+      <div style="font:13px/1.5 Arial;color:#4a372a">It was a regular Tuesday when the news came...</div>
+    </div>
+    <div class="t-bookwrap"><div class="t-book"><div class="t-cover"><div style="font:700 16px/1.2 Georgia">Why I still blog</div><div style="font:11px Arial;margin-top:8px">2 min</div></div><div class="t-pages"></div></div></div>
+    <div class="t-note">Note to self: write slowly, explain plainly.</div>
+  </div>
+
+  <div class="t-row" style="margin-bottom:0">
+    <div class="t-label">Wood shelf plank with grain and light edge</div>
+    <div class="t-plank" style="width:100%"></div>
+  </div>
+
+  <p style="font-size:12px;color:#4a372a;margin:18px 0 0">Reduced motion: no lift, tilt, or press animation. Focus: 3px outline in a high-contrast color on every item. Buttons keep real text and 4.5:1 contrast.</p>
+</div>

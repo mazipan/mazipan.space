@@ -1,0 +1,37 @@
+/* Keycap colors. Order per color: face-hi (center), face-lo (edge), side (deep edge), text. */
+@layer base {
+  :root {
+    --th-key-terracotta-face-hi: #c94f33;
+    --th-key-terracotta-face-lo: #c64b2e;
+    --th-key-terracotta-side: #7d2c19;
+    --th-key-terracotta-text: #ffffff;
+
+    --th-key-teal-face-hi: #2a7f73;
+    --th-key-teal-face-lo: #1f6f66;
+    --th-key-teal-side: #124540;
+    --th-key-teal-text: #ffffff;
+
+    --th-key-mustard-face-hi: #f2d27c;
+    --th-key-mustard-face-lo: #e9c46a;
+    --th-key-mustard-side: #a98a2f;
+    --th-key-mustard-text: #2b1d14;
+
+    --th-key-cream-face-hi: #fffdf7;
+    --th-key-cream-face-lo: #f1e3c9;
+    --th-key-cream-side: #b7a785;
+    --th-key-cream-text: #2b1d14;
+
+    --th-key-navy-face-hi: #37606f;
+    --th-key-navy-face-lo: #264653;
+    --th-key-navy-side: #14262d;
+    --th-key-navy-text: #ffffff;
+  }
+
+  /* cream would glare on a dark page, so it turns into dark wood */
+  :root.dark {
+    --th-key-cream-face-hi: #5a4636;
+    --th-key-cream-face-lo: #4a3b30;
+    --th-key-cream-side: #1c1410;
+    --th-key-cream-text: #f6e9d8;
+  }
+}

@@ -1,0 +1,93 @@
+// Checks WCAG contrast for the theme tokens. Exit code 1 if any pair fails.
+// Usage: pnpm contrast
+import { readFileSync } from 'node:fs';
+import { dirname, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
+const FILES = ['src/styles/theme/theme-default.css', 'src/styles/theme/keycap-tokens.css'];
+const KEY_COLORS = ['terracotta', 'teal', 'mustard', 'cream', 'navy'];
+const HEX = /^#[0-9a-fA-F]{6}$/;
+
+/** Parse `--th-*` custom properties declared in one scope of a CSS string. */
+export function parseTokens(css, scope) {
+  const re =
+    scope === ':root.dark'
+      ? /:root\.dark\s*\{([^}]*)\}/g
+      : /(?:^|[\s{}])(:root)\s*\{([^}]*)\}/g;
+  const tokens = {};
+  for (const match of css.matchAll(re)) {
+    const body = match[match.length - 1];
+    for (const decl of body.matchAll(/--th-([\w-]+)\s*:\s*([^;]+);/g)) {
+      tokens[decl[1]] = decl[2].trim();
+    }
+  }
+  return tokens;
+}
+
+function luminance(hex) {
+  const channels = [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16) / 255);
+  const [r, g, b] = channels.map((c) => (c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4));
+  return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+}
+
+/** WCAG 2.x contrast ratio between two 6-digit hex colors. */
+export function contrastRatio(fg, bg) {
+  const [a, b] = [luminance(fg), luminance(bg)].sort((x, y) => y - x);
+  return (a + 0.05) / (b + 0.05);
+}
+
+const PAIRS = [
+  ['content', 'base-100', 7],
+  ['headings', 'base-100', 7],
+  ['content', 'base-200', 4.5],
+  ['captions', 'base-100', 4.5],
+  ['links', 'base-100', 4.5],
+  ['links-visited', 'base-100', 4.5],
+  ['links-hover', 'base-100', 4.5],
+  ['primary-content', 'primary', 4.5],
+  ['primary-content', 'primary-hover', 4.5],
+  ['secondary-content', 'secondary', 4.5],
+  ['accent-content', 'accent', 4.5],
+  ['content', 'base-code', 4.5],
+  ...KEY_COLORS.flatMap((c) => [
+    [`key-${c}-text`, `key-${c}-face-hi`, 4.5],
+    [`key-${c}-text`, `key-${c}-face-lo`, 4.5],
+  ]),
+];
+
+function main() {
+  const css = FILES.map((f) => {
+    try {
+      return readFileSync(resolve(root, f), 'utf8');
+    } catch {
+      return '';
+    }
+  }).join('\n');
+
+  const light = parseTokens(css, ':root');
+  // dark inherits any token it does not override, like the real cascade
+  const scopes = { light, dark: { ...light, ...parseTokens(css, ':root.dark') } };
+
+  let failures = 0;
+  for (const [scope, tokens] of Object.entries(scopes)) {
+    for (const [fg, bg, min] of PAIRS) {
+      const a = tokens[fg];
+      const b = tokens[bg];
+      const label = `${scope.padEnd(5)} ${fg} on ${bg}`;
+      if (!a || !b || !HEX.test(a) || !HEX.test(b)) {
+        failures++;
+        console.log(`FAIL  ${label}: missing or not a 6-digit hex (${a ?? 'none'}, ${b ?? 'none'})`);
+        continue;
+      }
+      const ratio = contrastRatio(a, b);
+      const ok = ratio >= min;
+      if (!ok) failures++;
+      console.log(`${ok ? 'PASS' : 'FAIL'}  ${label}: ${ratio.toFixed(2)} (min ${min})`);
+    }
+  }
+  console.log(failures ? `\n${failures} failing check(s)` : '\nAll contrast checks passed');
+  process.exit(failures ? 1 : 0);
+}
+
+main();
