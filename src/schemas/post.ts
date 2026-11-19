@@ -32,6 +32,8 @@ export const postSchema = ({ image }: SchemaContext) =>
     updatedDate: z.coerce.date().optional(),
     title: z.string().default(TITLE),
     description: z.string().default(DESCRIPTION),
+    // one plain sentence shown in a sticky note on top of the post (optional)
+    bottomLine: z.string().optional(),
     // convert img to object
     noHero: z.boolean().default(NO_HERO),
     heroImage: image().default(HERO_IMAGE),
