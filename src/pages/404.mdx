@@ -5,18 +5,21 @@ description: 'That page doesn’t exist'
 
 # id for og image
 pageId: 'page404'
+
+# no breadcrumbs on this page
+breadcrumbs: false
 ---
 
-import { Image } from 'astro:assets';
-
-import imgSrc from '../assets/images/404.png';
+import NotFoundArt from '../components/NotFoundArt.astro';
 import Button from '../components/Button.astro';
-import { IMAGE_SIZES } from '../constants/image';
 
 <section class="flex flex-col items-center justify-start text-center">
-  <Image {...IMAGE_SIZES.FIXED._404} src={imgSrc} alt="City square at night." class="mt-0 mb-4" />
-  <h1 class="text-xl md:text-2xl font-bold text-primary mb-4">404: Page not found</h1>
-  <h2 class="font-bold mt-0">This page took a wrong turn.</h2>
-  <p class="text-captions mt-0 mb-4">It may have moved, or it never existed. The home page has plenty to explore.</p>
-  <Button href="/" variant="outline" colors="primary" size="md" class="not-prose">Back to home</Button>
+  <NotFoundArt />
+  <h1 class="text-xl md:text-2xl font-bold text-primary mt-6 mb-2">404: Page not found</h1>
+  <h2 class="font-bold mt-0 text-balance">A cat knocked this page off the keyboard.</h2>
+  <p class="text-captions mt-0 mb-6 max-w-md">The page you are looking for has moved, or it never existed. Head back home, or browse the blog.</p>
+  <div class="not-prose flex flex-wrap items-center justify-center gap-4">
+    <Button href="/" variant="solid" colors="primary" size="md">Back to home</Button>
+    <Button href="/blog" variant="outline" colors="default" size="md">Browse the blog</Button>
+  </div>
 </section>

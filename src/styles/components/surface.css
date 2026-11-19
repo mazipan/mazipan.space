@@ -285,4 +285,108 @@
     box-shadow: inset 0 3px 4px rgb(255 255 255 / 0.3);
     color: var(--th-key-cream-text);
   }
+
+  /* friends page: tools row, avatar with an initials fallback */
+  .friend-tools {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 16px 28px;
+    padding: 16px 18px 18px;
+    border: 2px solid var(--th-key-edge);
+    border-radius: 14px;
+    background-color: var(--th-base-200);
+    box-shadow:
+      inset 0 4px 10px rgb(0 0 0 / 0.14),
+      0 2px 0 rgb(255 255 255 / 0.35);
+  }
+  .friend-search {
+    flex: 1 1 14rem;
+    max-width: 22rem;
+  }
+  .friend-tools-label {
+    margin: 0 0 6px;
+    font-size: 0.875rem;
+    font-weight: 700;
+  }
+  .friend-count {
+    margin: 14px 0 0;
+    font-size: 0.875rem;
+  }
+  .friend-empty {
+    margin: 24px 0 0;
+    padding: 18px;
+    border: 2px dashed var(--th-key-edge);
+    border-radius: 14px;
+    text-align: center;
+  }
+
+  .friend-avatar {
+    position: relative;
+    display: block;
+    width: 48px;
+    height: 48px;
+    border: 2px solid var(--th-key-edge);
+    border-radius: 9999px;
+    background: var(--th-base-300);
+    box-shadow: 0 4px 0 rgb(0 0 0 / 0.25);
+    overflow: hidden;
+  }
+  .friend-avatar > img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: inherit;
+  }
+  /* shown whenever the image is missing, slow or broken */
+  .friend-initials {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+  }
+  .friend-initials-terracotta {
+    background: linear-gradient(
+      to bottom,
+      var(--th-key-terracotta-face-hi),
+      var(--th-key-terracotta-face-lo)
+    );
+    color: var(--th-key-terracotta-text);
+  }
+  .friend-initials-teal {
+    background: linear-gradient(to bottom, var(--th-key-teal-face-hi), var(--th-key-teal-face-lo));
+    color: var(--th-key-teal-text);
+  }
+  .friend-initials-mustard {
+    background: linear-gradient(
+      to bottom,
+      var(--th-key-mustard-face-hi),
+      var(--th-key-mustard-face-lo)
+    );
+    color: var(--th-key-mustard-text);
+  }
+  .friend-initials-navy {
+    background: linear-gradient(to bottom, var(--th-key-navy-face-hi), var(--th-key-navy-face-lo));
+    color: var(--th-key-navy-text);
+  }
+  .friend-card {
+    transition: transform 150ms;
+  }
+  .friend-card:hover {
+    transform: translateY(-4px);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .friend-card {
+      transition: none;
+    }
+    .friend-card:hover {
+      transform: none;
+    }
+  }
 }
