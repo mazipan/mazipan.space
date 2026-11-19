@@ -1,6 +1,6 @@
 ---
 title: GraphQL PokeApi
-description: The Unofficial GraphQL for PokeAPI
+description: A free, typed and edge-cached GraphQL API for PokéAPI
 heroImage: '../../content/project/_images/graphql-pokeapi.png'
 heroAlt: Homepage GraphQL PokeApi
 publishDate: 2020-02-12
@@ -8,7 +8,7 @@ tags:
   - personal
 ---
 
-[GraphQL PokeAPI](https://graphql-pokeapi.vercel.app/) is an unofficial GraphQL wrapper around the popular [PokeAPI](https://pokeapi.co/).
+[GraphQL PokeAPI](https://gql-poke.mazipan.space/) is a free, typed and edge-cached GraphQL wrapper around the popular [PokeAPI](https://pokeapi.co/).
 
 PokeAPI is one of the most-used demo APIs in the world — almost every "build something with a public API" tutorial reaches for it. But it's pure REST, which means every time you want related data (say, a Pokémon's abilities, moves, and evolution chain at once), you're making a cascade of separate requests. GraphQL solves this cleanly: ask for exactly what you need, get it in one round-trip.
 
@@ -16,10 +16,11 @@ I wanted to use PokeAPI for a side project but kept running into that friction. 
 
 ## ✨ Features
 
-- **Interactive Playground** — test and explore queries directly in the browser without any setup
-- **30+ query endpoints** — covers abilities, berries, egg groups, evolution chains, genders, growth rates, locations, moves, natures, regions, species, types, and more
+- **Live Query Lab** - try every query on the [homepage](https://gql-poke.mazipan.space/) with sample variables and real results, or write your own in the [playground](https://gql-poke.mazipan.space/api/graphql)
+- **28 queries** — covers abilities, berries, egg groups, evolution chains, genders, growth rates, locations, moves, natures, regions, species, types, and more
 - **Paginated list queries** — all list endpoints support `limit` and `offset` for cursor-free pagination
-- **Multiple client support** — works with plain `fetch`, Apollo Client, or any GraphQL client
+- **Edge cached** - use `https://graphql-pokeapi.graphcdn.app/` so repeat queries skip PokéAPI
+- **Multiple client support** - copy-ready samples for Fetch, Apollo Client, urql, graphql-request, TanStack Query, Python and curl
 - **Structured responses** — every query returns consistent `status`, `message`, and `results` fields
 
 ## 💡 Example Query
@@ -42,9 +43,10 @@ query pokemons($limit: Int, $offset: Int) {
 ## 🗂️ Tech Stacks
 
 - Apollo GraphQL
+- Stellate (edge cache)
 - Vercel
 
 ## 🔗 Links
 
-- Website: [graphql-pokeapi.vercel.app](https://graphql-pokeapi.vercel.app/)
+- Website: [gql-poke.mazipan.space](https://gql-poke.mazipan.space/)
 - Repository: [mazipan/graphql-pokeapi](https://github.com/mazipan/graphql-pokeapi)

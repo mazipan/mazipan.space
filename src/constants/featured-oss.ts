@@ -50,9 +50,9 @@ export const FEATURED_OSS = [
   },
   {
     title: 'GraphQL PokeApi',
-    desc: 'The GraphQL for PokeApi',
+    desc: 'A free, typed and edge-cached GraphQL API for PokéAPI',
     repo: 'https://github.com/mazipan/graphql-pokeapi',
-    url: 'https://graphql-pokeapi.vercel.app',
+    url: 'https://gql-poke.mazipan.space',
     stacks: ['GraphQl', 'Vercel'],
   },
   {
@@ -61,5 +61,12 @@ export const FEATURED_OSS = [
     repo: 'https://github.com/mazipan/webperf-ecommerce-id',
     url: 'https://webperf-ecommerce-id.vercel.app/',
     stacks: ['Next.js', 'PageSpeedInsight'],
+  },
+  {
+    title: 'CodeKids',
+    desc: 'Free coding and brain training for kids ages 5-14',
+    repo: 'https://github.com/mazipan/coding-kids',
+    url: 'https://coding.mazipan.space',
+    stacks: ['React', 'Blockly', 'Tailwind CSS'],
   },
 ];
