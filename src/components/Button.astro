@@ -68,7 +68,7 @@ const classes = keycapColor
 // props are typed as anchor attributes (Props extends HTMLAttributes<'a'>),
 // so pin the dynamic tag to 'a' for type-checking; the runtime tag is unchanged
 const Element = (disabled ? 'span' : element) as 'a';
-const disabledProps = keycapColor && disabled ? { 'aria-disabled': 'true' as const } : {};
+const disabledProps = disabled ? { 'aria-disabled': 'true' as const } : {};
 ---
 
 {keycapColor ? (
