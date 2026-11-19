@@ -138,8 +138,8 @@
     border-radius: 9999px;
   }
   .keycap.keycap-round .keycap-face {
-    width: 36px;
-    height: 36px;
+    width: 38px;
+    height: 38px;
     padding: 0;
   }
 
@@ -149,8 +149,9 @@
     border-radius: 13px;
   }
   .keycap-square-sm .keycap-face {
-    width: 40px;
-    padding: 6px 0;
+    width: 38px;
+    height: 38px;
+    padding: 0;
   }
 
   /* Windows high contrast: colors are replaced, so keep real borders */
