@@ -1,0 +1,240 @@
+---
+// The 404 picture: a row of keys reading 4 0 4, and the 0 key has popped out of its slot and floats
+// above the gap. Drawn with the palette tokens, so it follows the chosen palette in light and dark.
+// Decorative (the headline says it all), so it is hidden from screen readers.
+---
+
+<svg
+  class="notfound-art"
+  viewBox="0 0 500 270"
+  role="presentation"
+  aria-hidden="true"
+  focusable="false"
+>
+  <defs>
+    <linearGradient id="nf-terracotta" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" style="stop-color: var(--th-key-terracotta-face-hi)"></stop>
+      <stop offset="1" style="stop-color: var(--th-key-terracotta-face-lo)"></stop>
+    </linearGradient>
+    <linearGradient id="nf-teal" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" style="stop-color: var(--th-key-teal-face-hi)"></stop>
+      <stop offset="1" style="stop-color: var(--th-key-teal-face-lo)"></stop>
+    </linearGradient>
+    <linearGradient id="nf-wood" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" style="stop-color: var(--th-wood-hi)"></stop>
+      <stop offset="1" style="stop-color: var(--th-wood-lo)"></stop>
+    </linearGradient>
+  </defs>
+
+  <!-- the tray the keys sit in -->
+  <rect
+    x="6"
+    y="112"
+    width="488"
+    height="150"
+    rx="22"
+    fill="url(#nf-wood)"
+    stroke="var(--th-key-edge)"
+    stroke-width="3"
+  ></rect>
+  <rect x="6" y="112" width="488" height="10" rx="5" fill="#fff" fill-opacity=".18"></rect>
+
+  <!-- the empty slot: sunken, with a dark inside -->
+  <rect
+    x="186"
+    y="142"
+    width="128"
+    height="104"
+    rx="16"
+    style="fill: var(--th-key-cream-side)"
+    opacity=".55"
+  ></rect>
+  <rect
+    x="186"
+    y="142"
+    width="128"
+    height="104"
+    rx="16"
+    fill="none"
+    stroke="var(--th-key-edge)"
+    stroke-width="3"
+    stroke-dasharray="9 7"
+  ></rect>
+
+  <!-- left 4 -->
+  <g>
+    <rect
+      x="30"
+      y="138"
+      width="124"
+      height="110"
+      rx="18"
+      style="fill: var(--th-key-terracotta-side)"
+      stroke="var(--th-key-edge)"
+      stroke-width="3"
+    ></rect>
+    <rect
+      x="34"
+      y="130"
+      width="116"
+      height="94"
+      rx="15"
+      fill="url(#nf-terracotta)"
+      stroke="var(--th-key-edge)"
+      stroke-width="3"
+    ></rect>
+    <path
+      d="M46 142 Q92 134 138 142"
+      stroke="#fff"
+      stroke-opacity=".35"
+      stroke-width="4"
+      stroke-linecap="round"
+      fill="none"
+    ></path>
+    <path
+      d="M108 152 V206 M108 152 L68 188 H122"
+      style="stroke: var(--th-key-terracotta-text)"
+      stroke-width="10"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      fill="none"
+    ></path>
+  </g>
+
+  <!-- right 4 -->
+  <g transform="translate(316 0)">
+    <rect
+      x="30"
+      y="138"
+      width="124"
+      height="110"
+      rx="18"
+      style="fill: var(--th-key-terracotta-side)"
+      stroke="var(--th-key-edge)"
+      stroke-width="3"
+    ></rect>
+    <rect
+      x="34"
+      y="130"
+      width="116"
+      height="94"
+      rx="15"
+      fill="url(#nf-terracotta)"
+      stroke="var(--th-key-edge)"
+      stroke-width="3"
+    ></rect>
+    <path
+      d="M46 142 Q92 134 138 142"
+      stroke="#fff"
+      stroke-opacity=".35"
+      stroke-width="4"
+      stroke-linecap="round"
+      fill="none"
+    ></path>
+    <path
+      d="M108 152 V206 M108 152 L68 188 H122"
+      style="stroke: var(--th-key-terracotta-text)"
+      stroke-width="10"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      fill="none"
+    ></path>
+  </g>
+
+  <!-- shadow of the floating key on the slot -->
+  <ellipse class="nf-shadow" cx="250" cy="226" rx="48" ry="9" fill="#000" opacity=".28"></ellipse>
+
+  <!-- the 0 that popped out, floating and tilted -->
+  <g class="nf-float">
+    <g transform="rotate(-9 250 90)">
+      <rect
+        x="188"
+        y="26"
+        width="124"
+        height="110"
+        rx="18"
+        style="fill: var(--th-key-teal-side)"
+        stroke="var(--th-key-edge)"
+        stroke-width="3"
+      ></rect>
+      <rect
+        x="192"
+        y="18"
+        width="116"
+        height="94"
+        rx="15"
+        fill="url(#nf-teal)"
+        stroke="var(--th-key-edge)"
+        stroke-width="3"
+      ></rect>
+      <path
+        d="M204 30 Q250 22 296 30"
+        stroke="#fff"
+        stroke-opacity=".35"
+        stroke-width="4"
+        stroke-linecap="round"
+        fill="none"
+      ></path>
+      <ellipse
+        cx="250"
+        cy="66"
+        rx="21"
+        ry="29"
+        style="stroke: var(--th-key-teal-text)"
+        stroke-width="10"
+        fill="none"
+      ></ellipse>
+    </g>
+    <!-- little motion lines -->
+    <g stroke="var(--th-key-edge)" stroke-width="4" stroke-linecap="round" fill="none">
+      <path d="M170 70 l-16 -8"></path>
+      <path d="M168 94 l-20 0"></path>
+      <path d="M330 56 l16 -10"></path>
+      <path d="M336 80 l20 -2"></path>
+    </g>
+  </g>
+</svg>
+
+<style>
+  .notfound-art {
+    display: block;
+    width: 100%;
+    max-width: 30rem;
+    height: auto;
+    margin-inline: auto;
+    overflow: visible;
+  }
+  .nf-float {
+    animation: nf-bob 3.2s ease-in-out infinite;
+  }
+  .nf-shadow {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: nf-shadow 3.2s ease-in-out infinite;
+  }
+  @keyframes nf-bob {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-9px);
+    }
+  }
+  @keyframes nf-shadow {
+    0%,
+    100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(0.88);
+      opacity: 0.2;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .nf-float,
+    .nf-shadow {
+      animation: none;
+    }
+  }
+</style>
