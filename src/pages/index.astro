@@ -7,9 +7,8 @@ import { getBookProps } from '@/modules/post/shelf';
 import Centered from '@/layouts/Centered.astro';
 import Book from '@/components/Book.astro';
 import Button from '@/components/Button.astro';
-import GradientBlob from '@/components/GradientBlob.astro';
-import Keycap from '@/components/Keycap.astro';
 import PaperCard from '@/components/PaperCard.astro';
+import PolaroidCard from '@/components/PolaroidCard.astro';
 import Shelf from '@/components/Shelf.astro';
 import SocialLinks from '@/components/SocialLinks.astro';
 import { NOW } from '@/constants/now';
@@ -17,7 +16,7 @@ import { PROFILE } from '@/constants/profile';
 import { ROUTES } from '@/constants/routes';
 import { CONFIG_CLIENT } from '@/config/client';
 
-import AvatarSrc from '@/assets/images/avatar.png';
+import PhotoSrc from '@/assets/images/mazipan-in-black.jpg';
 
 const { AUTHOR_EMAIL, AUTHOR_GITHUB } = CONFIG_CLIENT;
 
@@ -115,34 +114,18 @@ const doItems = [
         </div>
       </div>
 
-      <div class="relative h-[250px] w-[250px] shrink-0 drop-shadow-[0_16px_14px_rgb(0_0_0/0.25)]">
+      <PolaroidCard as="div" class="w-[200px] max-w-full shrink-0 sm:w-[270px] md:w-[300px]">
         <Image
-          width={250}
-          src={AvatarSrc}
-          alt="Irfan Maulana"
-          class="relative z-10"
-          style="border-radius: 77% 23% 70% 30% / 48% 36% 64% 52%;"
+          slot="photo"
+          width={300}
+          src={PhotoSrc}
+          alt="Irfan Maulana, smiling, arms crossed, in a black t-shirt"
+          class="w-full"
+          loading="eager"
+          fetchpriority="high"
         />
-        <GradientBlob class="absolute top-0 z-0 h-[250px] w-[250px] opacity-90" />
-        <swap-button>
-          <Keycap
-            element="button"
-            colors="mustard"
-            class="keycap-nav keycap-nav-icon keycap-nav-round absolute top-[160px] right-0 z-20"
-            id="btn-swap-gradient"
-            title="Shuffle gradient"
-            aria-label="Shuffle gradient"
-          >
-            <svg
-              aria-hidden="true"
-              viewBox="0 0 24 24"
-              class="h-5 w-5 fill-none stroke-current stroke-2"
-            >
-              <path d="M20 11a8 8 0 0 0-14.9-3M4 5v4h4M4 13a8 8 0 0 0 14.9 3M20 19v-4h-4"></path>
-            </svg>
-          </Keycap>
-        </swap-button>
-      </div>
+        <p class="mb-0 text-center font-serif text-lg italic">Mas Ipan</p>
+      </PolaroidCard>
     </section>
 
     <section aria-labelledby="right-now" class="board">
@@ -213,28 +196,3 @@ const doItems = [
     transform: rotate(-1.5deg);
   }
 </style>
-
-<script>
-  class ButtonSwap extends HTMLElement {
-    private btnEl: HTMLButtonElement;
-
-    swap = () => {
-      window.postMessage('swap_gradient');
-    };
-
-    constructor() {
-      super();
-      this.btnEl = this.querySelector('#btn-swap-gradient') as HTMLButtonElement;
-    }
-
-    connectedCallback() {
-      this.btnEl.addEventListener('click', this.swap);
-    }
-
-    disconnectedCallback() {
-      this.btnEl.removeEventListener('click', this.swap);
-    }
-  }
-
-  customElements.define('swap-button', ButtonSwap);
-</script>

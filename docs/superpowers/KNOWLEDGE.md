@@ -17,7 +17,7 @@ Everything the previous session learned that is not obvious from the code. Read 
 | Reading measure 65-70ch, body 17-19px, line height 1.7+ | Owner: blog readability first |
 | Spotify tile skipped (v1) | Needs credentials and fallback. "Right now" = static data file |
 | Scribble-on-photo skipped | Accessibility and effort |
-| Hero photo: keep current avatar until owner sends one | Not supplied |
+| Hero photo: the owner's photo (`mazipan-in-black.jpg`) in a polaroid; the blob avatar was removed | Owner said the blob is their previous design and looks off in the new one (session 2) |
 | UI copy English only | Not answered by owner; posts are mixed `id`/`en`. Revisit if owner wants Indonesian |
 | Shelf mapping: Short < 5 min, Long >= 5 min, How-tos by optional `kind: 'how-to'`, Slides = Carousel collection | Chosen by the previous agent, owner accepted "you decide" |
 | Selectable palettes as Phase 7 | Owner asked; code already has a theme-name skeleton |
