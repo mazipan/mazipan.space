@@ -1,0 +1,60 @@
+---
+import Keycap from '@/components/Keycap.astro';
+import { ROUTES } from '@/constants/routes';
+
+import type { Post } from '@/types/post';
+
+export interface Props {
+  /** older post */
+  prev?: Post;
+  /** newer post */
+  next?: Post;
+}
+
+const { prev, next } = Astro.props;
+---
+
+{(prev || next) && (
+  <nav aria-label="More posts" class="post-nav my-8 grid gap-6 sm:grid-cols-2">
+    <div class="flex items-center gap-3">
+      {prev && (
+        <>
+          <Keycap
+            element="a"
+            href={`${ROUTES.BLOG}/${prev.slug}`}
+            colors="navy"
+            size="square"
+            tabindex="-1"
+            aria-hidden="true"
+          >
+            &larr;
+          </Keycap>
+          <a href={`${ROUTES.BLOG}/${prev.slug}`} class="link-default">
+            <span class="text-captions block text-sm">Older post</span>
+            <span class="font-bold">{prev.data.title}</span>
+          </a>
+        </>
+      )}
+    </div>
+    <div class="flex items-center justify-end gap-3 text-right">
+      {next && (
+        <>
+          <a href={`${ROUTES.BLOG}/${next.slug}`} class="link-default">
+            <span class="text-captions block text-sm">Newer post</span>
+            <span class="font-bold">{next.data.title}</span>
+          </a>
+          <Keycap
+            element="a"
+            href={`${ROUTES.BLOG}/${next.slug}`}
+            colors="navy"
+            size="square"
+            tabindex="-1"
+            aria-hidden="true"
+          >
+            &rarr;
+          </Keycap>
+        </>
+      )}
+    </div>
+  </nav>
+)}

@@ -18,9 +18,18 @@ export interface Props extends HTMLAttributes<'article'> {
   post: Post;
   withImage?: boolean;
   withSeparator?: boolean;
+  /** pick the level that keeps the page heading order */
+  headingLevel?: 'h3' | 'h4';
 }
 
-const { post, class: className, withImage = false, withSeparator = false } = Astro.props;
+const {
+  post,
+  class: className,
+  withImage = false,
+  withSeparator = false,
+  headingLevel = 'h4',
+} = Astro.props;
+const Heading = headingLevel;
 const { data, slug, readingTime } = post;
 const { title, heroImage, heroAlt, description, publishDate, draft, category } = data;
 
@@ -30,24 +39,22 @@ const getTransitionNameFromElementId = setTransitionSlug({ pageSlug: slug });
 <article
   class={cn('flex flex-col gap-4', withSeparator && 'border-base-300 border-b pb-4', className)}
 >
-  {
-    withImage && (
-      <Image
-        {...IMAGE_SIZES.RESPONSIVE.POST_CARD}
-        src={heroImage}
-        alt={heroAlt}
-        class={cn(
-          'hover:transform-perspective max-h-44 rounded-xl object-cover transition-transform duration-300'
-        )}
-        transition:name={getTransitionNameFromElementId({
-          elementId: TRANSITION_ELEMENT_IDS.POST_CARD.HERO_IMAGE,
-        })}
-      />
-    )
-  }
+  {withImage && (
+    <Image
+      {...IMAGE_SIZES.RESPONSIVE.POST_CARD}
+      src={heroImage}
+      alt={heroAlt}
+      class={cn(
+        'hover:transform-perspective max-h-44 rounded-xl object-cover transition-transform duration-300'
+      )}
+      transition:name={getTransitionNameFromElementId({
+        elementId: TRANSITION_ELEMENT_IDS.POST_CARD.HERO_IMAGE,
+      })}
+    />
+  )}
 
   <div class="flex flex-col gap-2">
-    <h4
+    <Heading
       class="b-h4 mt-3 mb-2 line-clamp-2 break-words"
       transition:name={getTransitionNameFromElementId({
         elementId: TRANSITION_ELEMENT_IDS.POST_CARD.TITLE,
@@ -61,20 +68,18 @@ const getTransitionNameFromElementId = setTransitionSlug({ pageSlug: slug });
         {title}
       </Link>
       {draft && <sup class="mr-1 text-sm text-red-500">{DRAFT_TEXT}</sup>}
-    </h4>
+    </Heading>
 
-    {
-      description && (
-        <p
-          class="line-clamp-1 text-base md:line-clamp-2"
-          transition:name={getTransitionNameFromElementId({
-            elementId: TRANSITION_ELEMENT_IDS.POST_CARD.DESCRIPTION,
-          })}
-        >
-          {description}
-        </p>
-      )
-    }
+    {description && (
+      <p
+        class="line-clamp-1 text-base md:line-clamp-2"
+        transition:name={getTransitionNameFromElementId({
+          elementId: TRANSITION_ELEMENT_IDS.POST_CARD.DESCRIPTION,
+        })}
+      >
+        {description}
+      </p>
+    )}
 
     <div class="flex items-center gap-2 text-sm leading-none">
       <span
@@ -92,7 +97,8 @@ const getTransitionNameFromElementId = setTransitionSlug({ pageSlug: slug });
       <span>•</span>
 
       <span>
-        In category <Link href={`${ROUTES.CATEGORIES}/${category}`}>
+        In category{' '}
+        <Link href={`${ROUTES.CATEGORIES}/${category}`} class="underline underline-offset-2">
           {category}
         </Link>
       </span>

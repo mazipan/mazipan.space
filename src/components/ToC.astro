@@ -46,28 +46,37 @@ const { headings, ...props } = Astro.props;
     )}
   >
     <b class="font-semibold">On This Page</b>
+    <div
+      id="reading-progress"
+      role="progressbar"
+      aria-label="Reading progress"
+      aria-valuemin="0"
+      aria-valuemax="100"
+      aria-valuenow="0"
+      class="bg-base-300 mt-3 h-2 w-full overflow-hidden rounded-full border border-[color:var(--th-key-edge)]"
+    >
+      <div data-reading-bar class="bg-primary h-full rounded-full" style="width: 0%"></div>
+    </div>
     <ol class={cn('ol-nested-decimal my-0 mt-2 space-y-1.5 text-sm')}>
-      {
-        headings.map(({ slug, text, headings: subHeadings }) => (
-          <li class="my-0">
-            <a href={`#${slug}`} class="toc-link font-normal no-underline">
-              {text}
-            </a>
+      {headings.map(({ slug, text, headings: subHeadings }) => (
+        <li class="my-0">
+          <a href={`#${slug}`} class="toc-link font-normal no-underline">
+            {text}
+          </a>
 
-            {subHeadings.length > 0 && (
-              <ol class="mt-0 mb-2 -ml-[20px] space-y-1.5">
-                {subHeadings.map(({ slug: slugChild, text: textChild }, idx) => (
-                  <li class={cn('my-0', idx === 0 && 'mt-2')}>
-                    <a href={`#${slugChild}`} class="toc-link font-normal no-underline">
-                      {textChild}
-                    </a>
-                  </li>
-                ))}
-              </ol>
-            )}
-          </li>
-        ))
-      }
+          {subHeadings.length > 0 && (
+            <ol class="mt-0 mb-2 -ml-[20px] space-y-1.5">
+              {subHeadings.map(({ slug: slugChild, text: textChild }, idx) => (
+                <li class={cn('my-0', idx === 0 && 'mt-2')}>
+                  <a href={`#${slugChild}`} class="toc-link font-normal no-underline">
+                    {textChild}
+                  </a>
+                </li>
+              ))}
+            </ol>
+          )}
+        </li>
+      ))}
     </ol>
   </div>
 </content-toc>
@@ -138,6 +147,26 @@ const { headings, ...props } = Astro.props;
       }
     };
 
+    // reading progress: 0 when the post top is at mid screen, 1 when its bottom is
+    private progressEl: HTMLElement | null = null;
+    private barEl: HTMLElement | null = null;
+    private lastStep = -1;
+
+    onScroll = () => {
+      const article = document.querySelector('.post-detail');
+      if (!article || !this.progressEl || !this.barEl) return;
+      const rect = article.getBoundingClientRect();
+      const ratio = (window.innerHeight * 0.5 - rect.top) / Math.max(rect.height, 1);
+      const clamped = Math.min(1, Math.max(0, ratio));
+      this.barEl.style.width = `${(clamped * 100).toFixed(1)}%`;
+      // tell assistive tech in 5% steps, not on every pixel
+      const step = Math.round(clamped * 20) * 5;
+      if (step !== this.lastStep) {
+        this.lastStep = step;
+        this.progressEl.setAttribute('aria-valuenow', String(step));
+      }
+    };
+
     constructor() {
       super();
       this.btnToggleEl = document.querySelector('.toc-btn-toggle') as HTMLButtonElement;
@@ -148,6 +177,11 @@ const { headings, ...props } = Astro.props;
 
     connectedCallback() {
       this.matchMedia.addEventListener('change', this.onChangeMatches);
+
+      this.progressEl = this.querySelector('#reading-progress');
+      this.barEl = this.querySelector('[data-reading-bar]');
+      window.addEventListener('scroll', this.onScroll, { passive: true });
+      this.onScroll();
 
       // Fired this event at first connected
       this.onChangeMatches();
@@ -160,6 +194,7 @@ const { headings, ...props } = Astro.props;
 
     disconnectedCallback() {
       this.matchMedia.removeEventListener('change', this.onChangeMatches);
+      window.removeEventListener('scroll', this.onScroll);
 
       for (let index = 0; index < this.allLinks.length; index++) {
         const link = this.allLinks[index];

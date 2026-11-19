@@ -48,5 +48,18 @@
       text-rendering: optimizeLegibility;
       font-variant-ligatures: common-ligatures;
     }
+
+    /* reading measure: about 70 characters per line. In this font 1ch (the zero) is wide,
+       so 50ch holds about 70 letters. Code, tables and figures stay full width. */
+    content-wrapper > :where(p, ul, ol, blockquote, h2, h3, h4) {
+      max-width: 50ch;
+    }
+
+    /* table of contents: links are at least 24px high (touch target) */
+    .toc-link {
+      display: inline-block;
+      min-height: 24px;
+      padding-block: 2px;
+    }
   }
 }
