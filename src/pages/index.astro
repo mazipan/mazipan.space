@@ -5,11 +5,13 @@ import { Image } from 'astro:assets';
 import { getAllCarousels } from '@/modules/carousel';
 import { getAllPostsWithReadingTime } from '@/modules/post/common';
 import { getBookProps } from '@/modules/post/shelf';
+import { getAllProjects, getSelectedProjects } from '@/modules/project';
 import Centered from '@/layouts/Centered.astro';
 import Book from '@/components/Book.astro';
 import Button from '@/components/Button.astro';
 import PaperCard from '@/components/PaperCard.astro';
 import PolaroidCard from '@/components/PolaroidCard.astro';
+import ProjectCard from '@/components/ProjectCard.astro';
 import Shelf from '@/components/Shelf.astro';
 import SocialLinks from '@/components/SocialLinks.astro';
 import { NOW } from '@/constants/now';
@@ -25,6 +27,7 @@ const { AUTHOR_EMAIL, AUTHOR_GITHUB } = CONFIG_CLIENT;
 const recentPosts = (await getAllPostsWithReadingTime()).slice(0, 4);
 const [newestPost] = recentPosts;
 const [newestSlides] = await getAllCarousels();
+const selectedProjects = getSelectedProjects(await getAllProjects());
 
 // the "Right now" strip: real data first, then the lines from src/constants/now.ts
 const nowItems = [
@@ -158,6 +161,30 @@ const doItems = [
         <Book {...getBookProps(post, index)} />
       ))}
     </Shelf>
+
+    {selectedProjects.length > 0 && (
+      <section aria-labelledby="selected-projects">
+        <div class="shelf-head">
+          <h2 id="selected-projects" class="shelf-title">
+            Selected projects
+          </h2>
+          <a href={ROUTES.PROJECTS} class="shelf-link">
+            All projects
+            <Icon name="tabler:arrow-right" class="arrow-icon" aria-hidden="true" />
+          </a>
+        </div>
+        <ul
+          class="grid grid-cols-1 gap-x-6 gap-y-10 px-1 pt-4 pb-4 sm:grid-cols-2 lg:grid-cols-3"
+          role="list"
+        >
+          {selectedProjects.map((project) => (
+            <li class="flex">
+              <ProjectCard {project} headingLevel="h3" />
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
 
     <section aria-labelledby="do-more">
       <h2 id="do-more" class="b-h2 mt-0 font-serif">

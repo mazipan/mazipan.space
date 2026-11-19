@@ -134,12 +134,15 @@
     transition: transform 200ms;
   }
 
-  .polaroid-card:nth-child(even) {
+  .polaroid-card:nth-child(even),
+  li:nth-child(even) > .polaroid-card {
     transform: rotate(1deg);
   }
 
   .polaroid-card:hover,
-  .polaroid-card:focus-within {
+  .polaroid-card:focus-within,
+  li:nth-child(even) > .polaroid-card:hover,
+  li:nth-child(even) > .polaroid-card:focus-within {
     transform: rotate(0) translateY(-6px);
   }
 
@@ -250,7 +253,9 @@
       transform: rotate(-1.2deg);
     }
     .polaroid-card:nth-child(even):hover,
-    .polaroid-card:nth-child(even):focus-within {
+    .polaroid-card:nth-child(even):focus-within,
+    li:nth-child(even) > .polaroid-card:hover,
+    li:nth-child(even) > .polaroid-card:focus-within {
       transform: rotate(1deg);
     }
   }
