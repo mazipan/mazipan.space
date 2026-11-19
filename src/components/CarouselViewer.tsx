@@ -711,6 +711,8 @@ export default function CarouselViewer({
               key={i}
               style={{ flexShrink: 0, width: '100%', height: '100%' }}
               aria-hidden={i !== current}
+              // hidden slides must not keep focusable links and buttons
+              inert={i !== current}
             >
               <Slide slide={slide} blogBasePath={blogBasePath} seriesTitle={seriesTitle} />
             </div>
@@ -758,7 +760,7 @@ export default function CarouselViewer({
           label="Previous slide"
           direction="prev"
         />
-        <span style={{ fontSize: '0.8rem', opacity: 0.5, width: '4rem', textAlign: 'center' }}>
+        <span style={{ fontSize: '0.8rem', opacity: 0.75, width: '4rem', textAlign: 'center' }}>
           {current + 1} of {total}
         </span>
         <NavButton
@@ -770,29 +772,43 @@ export default function CarouselViewer({
       </div>
 
       {/* Dot indicators */}
-      <div style={{ display: 'flex', gap: '6px', alignItems: 'center' }}>
+      <div style={{ display: 'flex', alignItems: 'center' }}>
         {slides.map((slide, i) => (
           <button
             key={i}
             onClick={() => goTo(i)}
             aria-label={`Slide ${i + 1}`}
             aria-current={i === current}
+            // the button is a 24px touch target, the visible dot is smaller
             style={{
-              width: i === current ? 24 : 8,
-              height: 8,
-              borderRadius: 4,
+              width: 24,
+              height: 24,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              background: 'none',
               border: 'none',
               cursor: 'pointer',
-              background:
-                i === current ? THEMES[slide.theme ?? 'ocean'].gradient : 'rgba(128,128,128,0.3)',
-              transition: 'all 0.35s ease',
               padding: 0,
             }}
-          />
+          >
+            <span
+              aria-hidden="true"
+              style={{
+                display: 'block',
+                width: i === current ? 20 : 8,
+                height: 8,
+                borderRadius: 4,
+                background:
+                  i === current ? THEMES[slide.theme ?? 'ocean'].gradient : 'rgba(128,128,128,0.5)',
+                transition: 'all 0.35s ease',
+              }}
+            />
+          </button>
         ))}
       </div>
 
-      <p style={{ fontSize: '0.75rem', opacity: 0.45, margin: 0, textAlign: 'center' }}>
+      <p style={{ fontSize: '0.75rem', opacity: 0.75, margin: 0, textAlign: 'center' }}>
         Swipe or tap sides to navigate
       </p>
     </div>

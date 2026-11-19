@@ -47,15 +47,13 @@ const getTransitionNameFromElementId = setTransitionSlug({ pageSlug: slug });
   <div class="text-captions mb-1 flex items-center gap-3 text-sm">
     <span class="flex items-center gap-1">
       <Icon name="tabler:calendar" class="h-4 w-4" />
-      <span>
-        {lastAccessDate.getFullYear()}
-      </span>
+      <span>{lastAccessDate.getFullYear()}</span>
     </span>
 
     <TagList tags={tags} size="sm" class="inline-flex" basePath={ROUTES.PROJECTS_TAGS} />
   </div>
 
-  <h3 class="b-h3 mb-0 line-clamp-2 break-words">
+  <h2 class="b-h3 mb-0 line-clamp-2 break-words">
     <Link
       href={`${ROUTES.PROJECTS}/${slug}`}
       variant="link-heading"
@@ -65,18 +63,16 @@ const getTransitionNameFromElementId = setTransitionSlug({ pageSlug: slug });
     >
       {title}
     </Link>
-  </h3>
+  </h2>
 
-  {
-    description && (
-      <p
-        class="text-captions mb-2 text-sm"
-        transition:name={getTransitionNameFromElementId({
-          elementId: TRANSITION_ELEMENT_IDS.POST_CARD.DESCRIPTION,
-        })}
-      >
-        {description}
-      </p>
-    )
-  }
+  {description && (
+    <p
+      class="text-captions mb-2 text-sm"
+      transition:name={getTransitionNameFromElementId({
+        elementId: TRANSITION_ELEMENT_IDS.POST_CARD.DESCRIPTION,
+      })}
+    >
+      {description}
+    </p>
+  )}
 </article>

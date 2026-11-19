@@ -33,21 +33,18 @@ const href = `/carousel/${slug}`;
   href={href}
   class="group focus:ring-primary relative flex aspect-square flex-col overflow-hidden rounded-2xl text-white no-underline transition-transform duration-300 hover:scale-[1.02] hover:shadow-2xl focus:ring-2 focus:ring-offset-2 focus:outline-none"
   style={`background: ${gradient};`}
-  aria-label={`${data.title} — ${slideCount} slides`}
 >
   {/* Decorative circles */}
   <div
     class="absolute -top-8 -right-8 h-32 w-32 rounded-full opacity-20"
     style="background: rgba(255,255,255,0.3)"
     aria-hidden="true"
-  >
-  </div>
+  ></div>
   <div
     class="absolute -bottom-6 -left-6 h-24 w-24 rounded-full opacity-15"
     style="background: rgba(255,255,255,0.3)"
     aria-hidden="true"
-  >
-  </div>
+  ></div>
 
   {/* Centered icon */}
   <div class="relative flex flex-1 items-center justify-center">

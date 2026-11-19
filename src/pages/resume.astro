@@ -29,9 +29,7 @@ const breadcrumbs = [BreadcrumbItemHome];
       <div class="flex flex-col items-start gap-2">
         <div class="flex items-center gap-2">
           <span class="relative flex h-3 w-3">
-            <span
-              class="bg-primary absolute inline-flex h-full w-full animate-ping rounded-full opacity-75"
-            ></span>
+            <span class="bg-primary absolute inline-flex h-full w-full animate-ping rounded-full opacity-75"></span>
             <span class="bg-primary relative inline-flex h-3 w-3 rounded-full"></span>
           </span>
           <span class="text-primary">Available for hire</span>
@@ -47,38 +45,38 @@ const breadcrumbs = [BreadcrumbItemHome];
         >
           Send me an email
         </Button>
-        <small>Or copy this email manually: <code class="font-mono">{AUTHOR_EMAIL}</code></small>
+        <small>
+          Or copy this email manually: <code class="font-mono">{AUTHOR_EMAIL}</code>
+        </small>
       </div>
 
       <ol class="border-primary relative mt-8 flex flex-col items-start gap-8 border-s">
-        {
-          CAREERS.map((c) => (
-            <li class="ms-8">
-              {!c.promotion && (
-                <div class="bg-primary dark:border-base-300 absolute -start-3 mt-1.5 h-6 w-6 rounded-full border border-white" />
-              )}
+        {CAREERS.map((c) => (
+          <li class="ms-8">
+            {!c.promotion && (
+              <div class="bg-primary dark:border-base-300 absolute -start-3 mt-1.5 h-6 w-6 rounded-full border border-white" />
+            )}
 
-              <time class="mt-1 mb-1 block text-sm leading-none font-normal text-gray-400 dark:text-gray-500">
-                {c.period}&nbsp;&nbsp;•&nbsp;&nbsp;{c.long}
-              </time>
-              <span class="mb-1 block text-sm leading-none font-normal text-gray-400 dark:text-gray-500">
-                {c.location}
-              </span>
-              <h3 class="mb-2 text-lg font-semibold text-gray-900 dark:text-white">
-                {c.title} @ {c.company}
-              </h3>
-              <p class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">{c.summary}</p>
+            <time class="mt-1 mb-1 block text-sm leading-none font-normal text-captions">
+              {c.period}&nbsp;&nbsp;•&nbsp;&nbsp;{c.long}
+            </time>
+            <span class="mb-1 block text-sm leading-none font-normal text-captions">
+              {c.location}
+            </span>
+            <h2 class="mb-2 text-lg font-semibold text-headings">
+              {c.title} @ {c.company}
+            </h2>
+            <p class="mb-4 text-base font-normal text-captions">{c.summary}</p>
 
-              <div class="flex items-center gap-2">
-                {c.stacks.map((stack) => (
-                  <span class="bg-primary text-primary-content rounded px-1.5 py-0.5 text-xs">
-                    {stack}
-                  </span>
-                ))}
-              </div>
-            </li>
-          ))
-        }
+            <div class="flex items-center gap-2">
+              {c.stacks.map((stack) => (
+                <span class="bg-primary text-primary-content rounded px-1.5 py-0.5 text-xs">
+                  {stack}
+                </span>
+              ))}
+            </div>
+          </li>
+        ))}
       </ol>
     </section>
   </article>

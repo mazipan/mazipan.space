@@ -37,7 +37,9 @@ const handledMetadata = handleTitle(metadata);
 const filteredMetadata = filterUndefined(handledMetadata);
 const mergedMetadata: Required<Metadata> = { ...DEFAULT_METADATA, ...filteredMetadata };
 
-const { title, description, image } = mergedMetadata;
+const { title, image } = mergedMetadata;
+// some pages pass an empty description: fall back to the site description
+const description = mergedMetadata.description || DEFAULT_METADATA.description;
 
 const ogImageUrl = new URL(image, url);
 ---
@@ -193,21 +195,19 @@ const ogImageUrl = new URL(image, url);
   <meta name="twitter:creator" content={'@maz_ipan'} />
 
   {/* Analytics */}
-  {
-    UMAMI_SCRIPT_URL && (
-      <>
-        <link rel="preconnect" href={UMAMI_SCRIPT_URL} />
-        {/* UMAMI_WEBSITE_ID must be the same for all mirrors */}
-        <script
-          defer
-          is:inline
-          type="text/partytown"
-          src={UMAMI_SCRIPT_URL}
-          data-website-id={UMAMI_WEBSITE_ID}
-        />
-      </>
-    )
-  }
+  {UMAMI_SCRIPT_URL && (
+    <>
+      <link rel="preconnect" href={UMAMI_SCRIPT_URL} />
+      {/* UMAMI_WEBSITE_ID must be the same for all mirrors */}
+      <script
+        defer
+        is:inline
+        type="text/partytown"
+        src={UMAMI_SCRIPT_URL}
+        data-website-id={UMAMI_WEBSITE_ID}
+      />
+    </>
+  )}
 
   {/* Theme */}
   {/* MUST be inside <head /> to avoid white flash, IMPORTANT */}
