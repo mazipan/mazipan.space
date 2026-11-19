@@ -51,20 +51,21 @@
     box-shadow: inset 0 2px 4px rgb(0 0 0 / 0.2);
   }
 
-  /* a cue that is not depth and not color: pressed and current keys light a small lamp,
-     like the caps lock key. The lamp has a dark ring so it reads on every key color. */
+  /* wayfinding and on/off state: keys that opt in with `lamp` light a small lamp on the top rim when
+     pressed or current, like the caps lock key. The lamp has a dark ring so it reads on every key
+     color. Other selected keys (filters, pagination) are pressed in and change color instead. */
   .keycap-face {
     position: relative;
   }
-  .keycap[aria-pressed='true'] .keycap-face::after,
-  .keycap[aria-current]:not([aria-current='false']) .keycap-face::after {
+  .keycap-lamp[aria-pressed='true'] .keycap-face::after,
+  .keycap-lamp[aria-current]:not([aria-current='false']) .keycap-face::after {
     content: '';
     position: absolute;
-    top: 3px;
+    top: 2px;
     left: 50%;
-    width: 6px;
-    height: 6px;
-    margin-left: -4.5px;
+    width: 5px;
+    height: 5px;
+    margin-left: -4px;
     border-radius: 50%;
     border: 1.5px solid rgb(0 0 0 / 0.55);
     background: #ffffff;
@@ -173,6 +174,10 @@
   .keycap-nav[aria-pressed='true'] .keycap-face,
   .keycap-nav[aria-current]:not([aria-current='false']) .keycap-face {
     transform: translateY(4px);
+  }
+  /* for keys in a tight grid (the appearance popover): less side padding */
+  .keycap-nav-tight .keycap-face {
+    padding: 0 10px;
   }
   .keycap-nav-icon {
     width: 48px;

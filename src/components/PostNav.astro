@@ -1,5 +1,4 @@
 ---
-import Keycap from '@/components/Keycap.astro';
 import { ROUTES } from '@/constants/routes';
 
 import type { Post } from '@/types/post';
@@ -16,44 +15,30 @@ const { prev, next } = Astro.props;
 
 {(prev || next) && (
   <nav aria-label="More posts" class="post-nav my-8 grid gap-6 sm:grid-cols-2">
-    <div class="flex items-center gap-3">
+    <div>
       {prev && (
-        <>
-          <Keycap
-            element="a"
-            href={`${ROUTES.BLOG}/${prev.slug}`}
-            colors="navy"
-            size="square"
-            tabindex="-1"
-            aria-hidden="true"
-          >
-            &larr;
-          </Keycap>
-          <a href={`${ROUTES.BLOG}/${prev.slug}`} class="link-default">
-            <span class="text-captions block text-sm">Older post</span>
-            <span class="font-bold">{prev.data.title}</span>
-          </a>
-        </>
+        <a href={`${ROUTES.BLOG}/${prev.slug}`} class="nav-card">
+          <span class="keycap keycap-navy keycap-nav keycap-nav-icon shrink-0" aria-hidden="true">
+            <span class="keycap-face">&larr;</span>
+          </span>
+          <span class="min-w-0">
+            <span class="block text-sm">Older post</span>
+            <span class="block font-bold">{prev.data.title}</span>
+          </span>
+        </a>
       )}
     </div>
-    <div class="flex items-center justify-end gap-3 text-right">
+    <div>
       {next && (
-        <>
-          <a href={`${ROUTES.BLOG}/${next.slug}`} class="link-default">
-            <span class="text-captions block text-sm">Newer post</span>
-            <span class="font-bold">{next.data.title}</span>
-          </a>
-          <Keycap
-            element="a"
-            href={`${ROUTES.BLOG}/${next.slug}`}
-            colors="navy"
-            size="square"
-            tabindex="-1"
-            aria-hidden="true"
-          >
-            &rarr;
-          </Keycap>
-        </>
+        <a href={`${ROUTES.BLOG}/${next.slug}`} class="nav-card nav-card-next">
+          <span class="keycap keycap-navy keycap-nav keycap-nav-icon shrink-0" aria-hidden="true">
+            <span class="keycap-face">&rarr;</span>
+          </span>
+          <span class="min-w-0">
+            <span class="block text-sm">Newer post</span>
+            <span class="block font-bold">{next.data.title}</span>
+          </span>
+        </a>
       )}
     </div>
   </nav>

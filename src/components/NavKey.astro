@@ -1,0 +1,45 @@
+---
+// The one key used for navigation, choices and toggles: header menu, pagination, post prev/next,
+// filters, the appearance popover. Always exactly 48px tall (icon keys 48 x 48, round optional),
+// so keys that sit together always match. The selected / current state (`pressed`) is pressed in
+// plus a small lamp on the rim, the same everywhere. Never size a key with ad hoc classes.
+import Keycap from './Keycap.astro';
+
+import type { Props as KeycapProps } from './Keycap.astro';
+
+export interface Props extends KeycapProps {
+  /** square 48 x 48 key for an icon or a short glyph */
+  icon?: boolean;
+  /** with `icon`: a circle */
+  round?: boolean;
+  /** less side padding, for keys in a tight grid */
+  tight?: boolean;
+  /** light the lamp when pressed / current: for wayfinding and on/off state, not for every key */
+  lamp?: boolean;
+}
+
+const {
+  icon = false,
+  round = false,
+  tight = false,
+  lamp = false,
+  size = 'sm',
+  class: className,
+  ...props
+} = Astro.props;
+---
+
+<Keycap
+  {...props}
+  {size}
+  class:list={[
+    'keycap-nav',
+    icon && 'keycap-nav-icon',
+    icon && round && 'keycap-nav-round',
+    tight && 'keycap-nav-tight',
+    lamp && 'keycap-lamp',
+    className,
+  ]}
+>
+  <slot />
+</Keycap>

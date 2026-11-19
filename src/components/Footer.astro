@@ -7,9 +7,7 @@ import { CONFIG_CLIENT } from '@/config/client';
 import { getLatestCommitInfo } from '@/libs/git';
 import { shortDate } from '@/utils/datetime';
 import { limitString, trimHttpProtocol } from '@/utils/strings';
-import Keycap from './Keycap.astro';
-import KeySoundToggle from './KeySoundToggle.astro';
-import PaletteSwitcher from './PaletteSwitcher.astro';
+import NavKey from './NavKey.astro';
 import SocialLinks from './SocialLinks.astro';
 
 const { SITE_URL, REPO_URL, AUTHOR_ADPLIST, AUTHOR_DECK } = CONFIG_CLIENT;
@@ -31,16 +29,17 @@ const copyrightYear = new Date().getFullYear();
 <footer class="footer-plank px-4 pt-10">
   <div class="relative max-w-6xl md:mx-auto">
     <scroll-to-top-button>
-      <Keycap
+      <NavKey
         element="button"
         colors="terracotta"
-        size="md"
-        class="keycap-nav keycap-nav-icon keycap-nav-round absolute top-0 right-4 z-10"
+        icon
+        round
+        class="absolute top-0 right-4 z-10"
         id="btn-scroll-to-top"
         aria-label="Back to top"
       >
         <Icon name="tabler:arrow-up" class="h-4 w-4" />
-      </Keycap>
+      </NavKey>
     </scroll-to-top-button>
 
     <div class="relative flex w-full flex-col-reverse gap-8 pr-16 md:flex-row md:justify-between md:gap-12">
@@ -75,10 +74,6 @@ const copyrightYear = new Date().getFullYear();
             </li>
           </ul>
         </div>
-
-        <PaletteSwitcher />
-
-        <KeySoundToggle />
       </div>
 
       <div class="flex w-full flex-col-reverse gap-8 pr-16 md:flex-row md:justify-end md:gap-12">

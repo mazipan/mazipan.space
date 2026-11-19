@@ -1,5 +1,5 @@
 ---
-import Keycap from '@/components/Keycap.astro';
+import NavKey from '@/components/NavKey.astro';
 import { cn } from '@/utils/styles';
 
 import type { PaginationProps } from '@/types/common';
@@ -63,6 +63,8 @@ const arrows = [
   { label: 'Last page', glyph: '»', href: nextUrl ? lastUrl : undefined },
 ];
 const [firstKey, prevKey, nextKey, lastKey] = arrows;
+// first and last page keys are hidden on phones: seven keys do not fit in one row
+const ends = new Set(['First page', 'Last page']);
 ---
 
 {hasMoreThanOnePage() || showIfOnePage ? (
@@ -82,47 +84,46 @@ const [firstKey, prevKey, nextKey, lastKey] = arrows;
       results
     </p>
 
-    <nav aria-label="Pagination" class="flex flex-wrap items-center justify-end gap-3">
+    <nav aria-label="Pagination" class="flex items-center justify-end gap-2 sm:gap-3">
       {[firstKey, prevKey].map(({ label, glyph, href }) => (
-        <Keycap
+        <NavKey
           element="a"
           colors="navy"
-          size="sm"
-          class="keycap-nav keycap-nav-icon"
+          icon
           href={href}
           disabled={!href}
           aria-label={label}
+          class={ends.has(label) ? 'hidden sm:inline-flex' : undefined}
         >
           {glyph}
-        </Keycap>
+        </NavKey>
       ))}
 
       {threePageNumbers(currentPage, lastPage).map((pageNumber) => (
-        <Keycap
+        <NavKey
           element="a"
-          colors="cream"
-          size="sm"
-          class="keycap-nav keycap-nav-icon"
+          colors={pageNumber === currentPage ? 'terracotta' : 'cream'}
+          icon
           href={getPageUrl(pageNumber)}
           pressed={pageNumber === currentPage}
           aria-label={`Page ${pageNumber}`}
         >
           {pageNumber}
-        </Keycap>
+        </NavKey>
       ))}
 
       {[nextKey, lastKey].map(({ label, glyph, href }) => (
-        <Keycap
+        <NavKey
           element="a"
           colors="navy"
-          size="sm"
-          class="keycap-nav keycap-nav-icon"
+          icon
           href={href}
           disabled={!href}
           aria-label={label}
+          class={ends.has(label) ? 'hidden sm:inline-flex' : undefined}
         >
           {glyph}
-        </Keycap>
+        </NavKey>
       ))}
     </nav>
   </div>

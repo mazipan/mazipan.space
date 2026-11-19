@@ -14,7 +14,9 @@ const { as: Tag = 'article', class: className, ...props } = Astro.props;
   <div class="polaroid-photo">
     <slot name="photo" />
   </div>
-  <div class="mt-3">
-    <slot />
-  </div>
+  {Astro.slots.has('default') && (
+    <div class="mt-3">
+      <slot />
+    </div>
+  )}
 </Tag>

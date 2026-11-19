@@ -176,7 +176,7 @@ const defaultThemes = getDefaultThemes();
   // View Transitions hook to restore theme
   document.addEventListener('astro:after-swap', () => setTheme(getTheme()));
 
-  // listen for theme-change custom event, fired in src/components/ThemeToggle.astro
+  // listen for theme-change custom event, fired in src/components/ThemePopover.astro
   document.addEventListener(CHANGE_EVENT, (event) => {
     setTheme(event.detail.theme);
   });
