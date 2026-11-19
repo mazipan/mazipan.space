@@ -44,8 +44,8 @@ const stateProps =
   element === 'button'
     ? { type: 'button', disabled, 'aria-pressed': pressed === undefined ? undefined : pressed }
     : isLink
-      ? { 'aria-current': pressed ? 'page' : undefined }
-      : { 'aria-disabled': 'true' };
+      ? { 'aria-current': pressed ? ('page' as const) : undefined }
+      : { 'aria-disabled': 'true' as const };
 ---
 
 <Element {...props} {...stateProps} class={classes}>
