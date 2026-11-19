@@ -171,7 +171,8 @@
     background: var(--th-base-300);
     transition:
       background 200ms,
-      box-shadow 200ms;
+      box-shadow 200ms,
+      transform 220ms;
   }
   .stop:nth-child(even) .stop-lamp {
     left: calc(50% + 36px - 7px);
@@ -197,7 +198,8 @@
     background: #ffe27a;
     box-shadow: 0 0 10px 3px rgb(255 226 122 / 0.8);
   }
-  .stop[data-reached] .stop-card {
+  .stop[data-reached] .stop-card,
+  .stop[data-reached] .stop-lamp {
     transform: translateY(-3px);
   }
 
