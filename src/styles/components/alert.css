@@ -7,40 +7,41 @@
     }
   }
 
-  /* callouts: warm paper tinted by a key color, a thick colored left edge, text from tokens */
-  .alert {
-    --alert-color: var(--th-key-edge);
-    border: 2px solid var(--th-key-edge);
-    border-left: 8px solid var(--alert-color);
-    background: color-mix(in srgb, var(--alert-color) 14%, var(--th-base-100));
-    color: var(--th-content);
-    box-shadow: 0 3px 0 rgb(0 0 0 / 0.12);
-  }
+  /* extract into semantic colors maybe in future */
   .alert--note {
-    --alert-color: var(--th-key-edge);
+    /* use base-200-300 here */
+    @apply border border-slate-200 bg-slate-100 dark:border-slate-800 dark:bg-slate-900;
   }
   .alert--info {
-    --alert-color: var(--th-key-navy-face-hi);
+    @apply border border-blue-200 bg-blue-100 dark:border-blue-800 dark:bg-blue-900;
   }
   .alert--tip {
-    --alert-color: var(--th-key-teal-face-hi);
+    @apply border border-green-200 bg-green-100 dark:border-green-800 dark:bg-green-900;
   }
   .alert--warning {
-    --alert-color: var(--th-key-mustard-face-lo);
+    @apply border border-orange-200 bg-orange-100 dark:border-orange-900 dark:bg-orange-950;
   }
   .alert--danger {
-    --alert-color: var(--th-key-terracotta-face-hi);
+    @apply border border-red-200 bg-red-100 dark:border-red-800 dark:bg-red-900;
   }
 
   .alert__title {
     /* <p> has line-height: 1.7, h4 needs higher mt-1 */
     @apply mt-1 flex items-center gap-1;
   }
-  .alert__title--note,
-  .alert__title--info,
-  .alert__title--tip,
-  .alert__title--warning,
+  .alert__title--note {
+    @apply text-slate-900 dark:text-slate-100;
+  }
+  .alert__title--info {
+    @apply text-blue-900 dark:text-blue-100;
+  }
+  .alert__title--tip {
+    @apply text-green-900 dark:text-green-100;
+  }
+  .alert__title--warning {
+    @apply text-orange-900 dark:text-orange-100;
+  }
   .alert__title--danger {
-    color: var(--th-headings);
+    @apply text-red-900 dark:text-red-100;
   }
 }

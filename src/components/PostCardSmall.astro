@@ -2,27 +2,33 @@
 import { Icon } from 'astro-icon/components';
 import { Image } from 'astro:assets';
 
-import { getCardTone, getReadKind } from '@/modules/post/shelf';
 import Link from '@/components/Link.astro';
 import { DRAFT_TEXT } from '@/constants/data';
 import { IMAGE_SIZES } from '@/constants/image';
 import { ROUTES } from '@/constants/routes';
 import { setTransitionSlug, TRANSITION_ELEMENT_IDS } from '@/constants/transitions';
 import { formatDate, formatDateIso } from '@/utils/datetime';
-import StackCard from './StackCard.astro';
+import { cn } from '@/utils/styles';
+import TagList from './TagList.astro';
 
 import type { Post } from '@/types/post';
 import type { HTMLAttributes } from 'astro/types';
 
-export interface Props extends Omit<HTMLAttributes<'article'>, 'class'> {
-  class?: string;
+export interface Props extends HTMLAttributes<'article'> {
   post: Post;
   withImage?: boolean;
+  withSeparator?: boolean;
   /** pick the level that keeps the page heading order */
   headingLevel?: 'h3' | 'h4';
 }
 
-const { post, class: className, withImage = false, headingLevel = 'h4' } = Astro.props;
+const {
+  post,
+  class: className,
+  withImage = false,
+  withSeparator = false,
+  headingLevel = 'h4',
+} = Astro.props;
 const Heading = headingLevel;
 const { data, slug, readingTime } = post;
 const { title, heroImage, heroAlt, description, publishDate, draft, category } = data;
@@ -30,59 +36,83 @@ const { title, heroImage, heroAlt, description, publishDate, draft, category } =
 const getTransitionNameFromElementId = setTransitionSlug({ pageSlug: slug });
 ---
 
-<StackCard tab={category} tone={getCardTone(category)} class={className}>
+<article
+  class={cn('flex flex-col gap-4', withSeparator && 'border-base-300 border-b pb-4', className)}
+>
   {withImage && (
     <Image
       {...IMAGE_SIZES.RESPONSIVE.POST_CARD}
       src={heroImage}
       alt={heroAlt}
-      class="mb-3 max-h-40 w-full rounded-sm border-2 border-[var(--th-key-edge)] object-cover"
+      class={cn(
+        'hover:transform-perspective max-h-44 rounded-xl object-cover transition-transform duration-300'
+      )}
       transition:name={getTransitionNameFromElementId({
         elementId: TRANSITION_ELEMENT_IDS.POST_CARD.HERO_IMAGE,
       })}
     />
   )}
 
-  <Heading
-    class="b-h4 mt-0 mb-2 line-clamp-2 break-words"
-    transition:name={getTransitionNameFromElementId({
-      elementId: TRANSITION_ELEMENT_IDS.POST_CARD.TITLE,
-    })}
-  >
-    <Link
-      variant="link-heading"
-      href={`${ROUTES.BLOG}/${post.slug}`}
-      class="card-link hover:underline hover:decoration-wavy hover:underline-offset-2"
-    >
-      {title}
-    </Link>
-    {draft && <sup class="mr-1 text-sm text-red-500">{DRAFT_TEXT}</sup>}
-  </Heading>
-
-  {description && (
-    <p
-      class="mb-3 line-clamp-2 text-base"
+  <div class="flex flex-col gap-2">
+    <Heading
+      class="b-h4 mt-3 mb-2 line-clamp-2 break-words"
       transition:name={getTransitionNameFromElementId({
-        elementId: TRANSITION_ELEMENT_IDS.POST_CARD.DESCRIPTION,
+        elementId: TRANSITION_ELEMENT_IDS.POST_CARD.TITLE,
       })}
     >
-      {description}
-    </p>
-  )}
+      <Link
+        variant="link-heading"
+        href={`${ROUTES.BLOG}/${post.slug}`}
+        class="hover:underline hover:decoration-wavy hover:underline-offset-2"
+      >
+        {title}
+      </Link>
+      {draft && <sup class="mr-1 text-sm text-red-500">{DRAFT_TEXT}</sup>}
+    </Heading>
 
-  <p
-    class="mb-0 flex flex-wrap items-center gap-x-2 text-sm"
-    transition:name={getTransitionNameFromElementId({
-      elementId: TRANSITION_ELEMENT_IDS.POST_CARD.META,
-    })}
-  >
-    <Icon name="tabler:clock" class="h-4 w-4" aria-hidden="true" />
-    <time itemprop="datePublished" datetime={formatDateIso(publishDate)}>
-      {formatDate(publishDate)}
-    </time>
-    <span aria-hidden="true">-</span>
-    <span>
-      {getReadKind(readingTime)}, {Math.max(1, Math.round(readingTime))} min read
-    </span>
-  </p>
-</StackCard>
+    {description && (
+      <p
+        class="line-clamp-1 text-base md:line-clamp-2"
+        transition:name={getTransitionNameFromElementId({
+          elementId: TRANSITION_ELEMENT_IDS.POST_CARD.DESCRIPTION,
+        })}
+      >
+        {description}
+      </p>
+    )}
+
+    <div class="flex items-center gap-2 text-sm leading-none">
+      <span
+        class="text-captions inline-flex items-center gap-2"
+        transition:name={getTransitionNameFromElementId({
+          elementId: TRANSITION_ELEMENT_IDS.POST_CARD.META,
+        })}
+      >
+        <Icon name={'tabler:clock'} class="h-4 w-4" />
+        <time itemprop="datePublished" datetime={formatDateIso(publishDate)}>
+          {formatDate(publishDate)}
+        </time>
+      </span>
+
+      <span>•</span>
+
+      <span>
+        In category{' '}
+        <Link href={`${ROUTES.CATEGORIES}/${category}`} class="underline underline-offset-2">
+          {category}
+        </Link>
+      </span>
+    </div>
+
+    {/* reading time and read more link */}
+    <div class="xs:items-end flex items-center justify-between">
+      <div class="flex items-center gap-4">
+        <span class="text-captions inline-flex items-center gap-2 text-sm">
+          <Icon name="tabler:book" class="h-4 w-4" />
+          <span class="text-nowrap">{`${Math.round(readingTime)} min read`}</span>
+        </span>
+        <TagList tags={data.tags.slice(0, 2)} size="sm" class="xs:inline-flex hidden" />
+      </div>
+    </div>
+  </div>
+</article>
