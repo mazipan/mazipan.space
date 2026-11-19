@@ -1,20 +1,18 @@
 ---
 import { Icon } from 'astro-icon/components';
 
-import Button from './Button.astro';
+import Keycap from './Keycap.astro';
 ---
 
 <theme-toggle>
-  <Button
-    variant="ghost"
-    colors="primary"
-    size="sm"
+  <Keycap
+    colors="mustard"
+    size="square"
     element="button"
     role="switch"
     aria-label="Dark mode"
-    type="button"
     id="theme-switcher"
-    class="relative flex items-center justify-center rounded p-1"
+    class="keycap-square-sm"
   >
     <Icon
       name="tabler:sun"
@@ -24,7 +22,7 @@ import Button from './Button.astro';
       name="tabler:moon-stars"
       class="absolute h-[1.2rem] w-[1.2rem] scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0"
     />
-  </Button>
+  </Keycap>
 </theme-toggle>
 
 <script>

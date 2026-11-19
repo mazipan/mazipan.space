@@ -123,10 +123,23 @@
   }
 
   .keycap-square .keycap-face {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 46px;
     padding: 12px 0;
     text-align: center;
     font-size: 1.25rem;
+  }
+
+  /* same height as a small text key, for the header */
+  .keycap-square-sm {
+    padding-bottom: 6px;
+    border-radius: 13px;
+  }
+  .keycap-square-sm .keycap-face {
+    width: 40px;
+    padding: 6px 0;
   }
 
   /* Windows high contrast: colors are replaced, so keep real borders */
