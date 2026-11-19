@@ -25,13 +25,17 @@
     --th-key-navy-face-lo: #264653;
     --th-key-navy-side: #14262d;
     --th-key-navy-text: #ffffff;
+
+    /* real border around every key, 3:1 or more on the page (does not rely on depth) */
+    --th-key-edge: #6b5545;
   }
 
   /* cream would glare on a dark page, so it turns into dark wood */
   :root.dark {
     --th-key-cream-face-hi: #5a4636;
     --th-key-cream-face-lo: #4a3b30;
-    --th-key-cream-side: #1c1410;
+    --th-key-cream-side: #120d0a;
     --th-key-cream-text: #f6e9d8;
+    --th-key-edge: #c9b49c;
   }
 }

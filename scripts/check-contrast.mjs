@@ -50,6 +50,13 @@ const PAIRS = [
   ['secondary-content', 'secondary', 4.5],
   ['accent-content', 'accent', 4.5],
   ['content', 'base-code', 4.5],
+  // inline code and links sit on base-200 (my-prose.css, Details.astro)
+  ['primary', 'base-200', 4.5],
+  ['links', 'base-200', 4.5],
+  ['links-hover', 'base-200', 4.5],
+  // key edge: a real border that does not depend on depth (3:1 for UI borders)
+  ['key-edge', 'base-100', 3],
+  ['key-edge', 'base-200', 3],
   // light tints used as backgrounds under default black text (breadcrumbs, tags)
   ['#000000', 'primary-50', 4.5],
   ['#000000', 'primary-100', 4.5],
