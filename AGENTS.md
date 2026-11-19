@@ -211,6 +211,7 @@ Rules:
 - **Resume order:** `src/constants/career.ts` is newest first; `resume.astro` shows stops oldest first and roles inside one company oldest first too. The card tab reads `Joined <year>` (never 'Exit', it reads like leaving).
 - **Resume road:** the dashed center line must be a short tile with `repeat-y` (a single road-high tile ends halfway when scroll shifts it); on phones the road is at `left: 0` on the 48px grid column and the lamp sits on its right edge, so the connector meets it. Do not add a role count to the intro badges.
 - **About:** has a "Where I've worked" card that links to `ROUTES.RESUME`; keep the resume reachable from About and the footer.
+- **Location and time zone:** `PROFILE.LOCATION` and `PROFILE.TIMEZONE` feed the home 'Based in' note; the footer deploy time is set in `package.json` as Jakarta time with `GMT+7`. If the owner moves, change both.
 - **Version:** the footer's `v…` comes from `package.json` `version` through `APP_VERSION` (now 3.0.0), so bump it there only.
 - **Footer:** `Footer.astro` = raised `.footer-deck` (brand + link groups with `.footer-label` plates) over a recessed `.footer-plate` (small print + back-to-top key). New footer links go into the matching `.footer-links` list.
 - **Copy:** short sentences, first person, warm, no repeated message across pages (the tagline lives on Home and About only), no abbreviations in the UI, English UI (the blog posts and slides may be Indonesian). Every page needs a real meta description in `src/constants/metadata.ts`.

@@ -35,6 +35,10 @@ const nowItems = [
     label: 'Part of',
     text: PROFILE.CURRENT_POSITION.replace(/^Part of\s*/i, '').replace(/\.$/, ''),
   },
+  PROFILE.LOCATION && {
+    label: 'Based in',
+    text: PROFILE.TIMEZONE ? `${PROFILE.LOCATION} (${PROFILE.TIMEZONE})` : PROFILE.LOCATION,
+  },
   NOW.making && { label: 'Making', text: NOW.making },
   NOW.reading && { label: 'Reading', text: NOW.reading },
   NOW.listening && { label: 'Listening', text: NOW.listening },
@@ -137,7 +141,7 @@ const doItems = [
         <h2 id="right-now" class="board-label">
           Right now
         </h2>
-        <dl class="grid grid-cols-1 gap-x-6 gap-y-7 pt-3 sm:grid-cols-2 lg:grid-cols-4">
+        <dl class="grid grid-cols-1 gap-x-6 gap-y-7 pt-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
           {nowItems.map(({ label, text, href }) => (
             <div class="sticky-note board-note">
               <dt class="font-bold">{label}</dt>
@@ -190,7 +194,7 @@ const doItems = [
       <h2 id="do-more" class="b-h2 mt-0 font-serif">
         What I do besides code
       </h2>
-      <ul class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      <ul class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
         {doItems.map(({ title, text, href, linkLabel, external }) => (
           <PaperCard as="li" class="flex flex-col gap-2">
             <h3 class="text-headings font-serif text-lg font-bold">{title}</h3>
