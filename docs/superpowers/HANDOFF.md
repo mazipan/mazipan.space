@@ -136,3 +136,4 @@ SITE_URL=https://www.mazipan.space pnpm preview --port 4399   # then check pages
 - Disabled ghost/flat `Button` has no `aria-disabled`.
 - Talks emoji `mr-2` doubles with keycap face gap.
 - `link-in-text-block` on category links (Phase 4), ToC and related-card issues (Phase 2).
+- [x] **Resume order and tab copy (owner request)**: the journey goes oldest to newest, so the roles inside one company (promotions) now also read oldest first (Bizzy: Software Development Engineer, then Software Architect Frontend; Blibli.com the same). `CAREERS` in `career.ts` stays newest first, `resume.astro` reverses it once. The card tab said 'Exit <year>' but the year is when the job started and 'Exit' reads like leaving, so it is now 'Joined <year>'. `package.json` version is 3.0.0.

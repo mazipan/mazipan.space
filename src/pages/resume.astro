@@ -15,7 +15,7 @@ const metadata = getPageMetadata('pages/resume');
 const breadcrumbs = [BreadcrumbItemHome];
 
 // The journey goes forward in time: oldest job first. Roles at the same company (promotions)
-// share one stop.
+// share one stop, and their roles also read oldest first, so a promotion reads as a step forward.
 const firstYear = (period: string) => Number(period.match(/\d{4}/)?.[0]);
 const stops: {
   company: string;
@@ -173,7 +173,7 @@ const yearsOnTheRoad = new Date().getFullYear() - startYear;
               <span class="stop-lamp" aria-hidden="true" />
               <div class="stop-card">
                 <span class="stop-tab" aria-hidden="true">
-                  Exit {stop.year}
+                  Joined {stop.year}
                 </span>
                 <h2 class="b-h3 mt-0 mb-1">
                   <a
@@ -188,7 +188,7 @@ const yearsOnTheRoad = new Date().getFullYear() - startYear;
                 </h2>
                 <p class="text-captions mt-0 mb-3 text-sm">{stop.location}</p>
 
-                {[...stop.roles].reverse().map((role, i, all) => (
+                {stop.roles.map((role, i, all) => (
                   <section class="mb-4 last:mb-2">
                     <h3 class="m-0 text-base font-bold">{role.title}</h3>
                     <p class="text-captions mt-0 mb-2 text-sm">
