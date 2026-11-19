@@ -63,6 +63,10 @@ const PAIRS = [
   ['key-edge', 'base-200', 3],
   // sticky note
   ['note-text', 'note-bg', 4.5],
+  // input field: text, placeholder and border
+  ['content', 'field-bg', 4.5],
+  ['captions', 'field-bg', 4.5],
+  ['key-edge', 'field-bg', 3],
   // light tints used as backgrounds under default black text (breadcrumbs, tags)
   ['#000000', 'primary-50', 4.5],
   ['#000000', 'primary-100', 4.5],
