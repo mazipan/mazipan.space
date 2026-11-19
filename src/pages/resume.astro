@@ -5,6 +5,7 @@ import Button from '@/components/Button.astro';
 import Tag from '@/components/Tag.astro';
 import { BreadcrumbItemHome } from '@/constants/breadcrumb';
 import { CAREERS } from '@/constants/career';
+import { PROFILE } from '@/constants/profile';
 import { CONFIG_CLIENT } from '@/config/client';
 import { getPageMetadata } from '@/utils/metadata';
 
@@ -12,6 +13,33 @@ const { AUTHOR_EMAIL } = CONFIG_CLIENT;
 
 const metadata = getPageMetadata('pages/resume');
 const breadcrumbs = [BreadcrumbItemHome];
+
+// The journey goes forward in time: oldest job first. Roles at the same company (promotions)
+// share one stop.
+const firstYear = (period: string) => Number(period.match(/\d{4}/)?.[0]);
+const stops: {
+  company: string;
+  link: string;
+  location: string;
+  year: number;
+  roles: (typeof CAREERS)[number][];
+}[] = [];
+for (const career of [...CAREERS].reverse()) {
+  const last = stops[stops.length - 1];
+  if (last && last.company === career.company) last.roles.push(career);
+  else
+    stops.push({
+      company: career.company,
+      link: career.link,
+      location: career.location,
+      year: firstYear(career.period),
+      roles: [career],
+    });
+}
+
+// the numbers on the dashboard come from the data
+const startYear = stops[0].year;
+const yearsOnTheRoad = new Date().getFullYear() - startYear;
 ---
 
 <Centered {metadata}>
@@ -20,63 +48,252 @@ const breadcrumbs = [BreadcrumbItemHome];
     <slot name="heading">
       <h1 class="b-h1 tracking-wide">{metadata.title}</h1>
     </slot>
-    <section class="flex flex-grow flex-col gap-4">
-      <p>
-        Web developer with extensive experience in building projects from the ground up, enhancing
-        performance and scalability of the web, managing several tech stack migrations, promoting
-        quality-focused practices, and mentoring junior developers. Focused in frontend technologies
-        using Next.js, React.js and TypeScript.
-      </p>
-      <div class="flex flex-col items-start gap-2">
-        <div class="flex flex-wrap items-center gap-2">
-          <span class="relative flex h-3 w-3">
-            <span class="bg-primary absolute inline-flex h-full w-full animate-ping rounded-full opacity-75"></span>
-            <span class="bg-primary relative inline-flex h-3 w-3 rounded-full"></span>
-          </span>
-          <span class="text-primary">Available for hire</span>
-        </div>
-        <Button
-          element="a"
-          colors="primary"
-          variant="solid"
-          href={`mailto:${AUTHOR_EMAIL}`}
-          target="_blank"
-          rel="me noreferrer noopener"
-          title="Email"
-        >
-          Send me an email
-        </Button>
-        <small>
-          Or copy this email manually: <code class="font-mono">{AUTHOR_EMAIL}</code>
-        </small>
+
+    <section class="flex flex-col gap-6">
+      <div class="sheet space-y-4">
+        <p class="m-0">
+          A road trip through my career, from the first job to now. Scroll to drive: the car follows
+          you down the road and every stop lights up when you pass it.
+        </p>
+        <ul class="m-0 flex list-none flex-wrap gap-3 p-0" aria-label="The trip in numbers">
+          <li class="crumb !text-base">{yearsOnTheRoad} years on the road</li>
+          <li class="crumb !text-base">{stops.length} companies</li>
+          <li class="crumb !text-base">{CAREERS.length} roles</li>
+        </ul>
       </div>
 
-      <div class="sheet mt-10">
-        <ol class="border-primary relative ms-3 flex flex-col items-start gap-8 border-s-2">
-          {CAREERS.map((c) => (
-            <li class="ms-8">
-              {!c.promotion && <div class="bead absolute -start-3.5 mt-1 h-7 w-7" />}
+      <career-road class="block">
+        <ol class="journey" aria-label="Career, oldest first">
+          <li class="road" aria-hidden="true">
+            <div class="car">
+              <span class="puff"></span>
+              <span class="puff"></span>
+              <span class="puff"></span>
+              <svg viewBox="0 0 40 76" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="car-body" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0" style="stop-color: var(--th-key-terracotta-face-lo)"></stop>
+                    <stop offset="0.5" style="stop-color: var(--th-key-terracotta-face-hi)"></stop>
+                    <stop offset="1" style="stop-color: var(--th-key-terracotta-face-lo)"></stop>
+                  </linearGradient>
+                </defs>
+                <rect
+                  class="car-wheel"
+                  x="1"
+                  y="12"
+                  width="5"
+                  height="14"
+                  rx="2"
+                  fill="#1b1b1d"
+                ></rect>
+                <rect
+                  class="car-wheel"
+                  x="34"
+                  y="12"
+                  width="5"
+                  height="14"
+                  rx="2"
+                  fill="#1b1b1d"
+                ></rect>
+                <rect
+                  class="car-wheel"
+                  x="1"
+                  y="48"
+                  width="5"
+                  height="14"
+                  rx="2"
+                  fill="#1b1b1d"
+                ></rect>
+                <rect
+                  class="car-wheel"
+                  x="34"
+                  y="48"
+                  width="5"
+                  height="14"
+                  rx="2"
+                  fill="#1b1b1d"
+                ></rect>
+                <rect
+                  x="5"
+                  y="3"
+                  width="30"
+                  height="70"
+                  rx="13"
+                  fill="url(#car-body)"
+                  stroke="#2b1d14"
+                  stroke-width="2"
+                ></rect>
+                <rect x="9" y="17" width="22" height="9" rx="3" fill="#1d2a33"></rect>
+                <rect
+                  x="9"
+                  y="26"
+                  width="22"
+                  height="18"
+                  rx="4"
+                  fill="#9a2f1a"
+                  opacity="0.55"
+                ></rect>
+                <path d="M9 45 h22 l-2.5 12 h-17 z" fill="#1d2a33"></path>
+                <path d="M11 47 h8 l-1 4 h-7 z" fill="#ffffff" opacity="0.22"></path>
+                <rect x="9" y="6" width="6" height="3" rx="1.5" fill="#ff4d3a"></rect>
+                <rect x="25" y="6" width="6" height="3" rx="1.5" fill="#ff4d3a"></rect>
+                <circle cx="11" cy="68" r="2.6" fill="#fff7c2"></circle>
+                <circle cx="29" cy="68" r="2.6" fill="#fff7c2"></circle>
+              </svg>
+            </div>
+          </li>
 
-              <time class="mt-1 mb-1 block text-sm leading-none font-normal text-captions">
-                {c.period}&nbsp;&nbsp;•&nbsp;&nbsp;{c.long}
-              </time>
-              <span class="mb-1 block text-sm leading-none font-normal text-captions">
-                {c.location}
-              </span>
-              <h2 class="mb-2 text-lg font-semibold text-headings">
-                {c.title} @ {c.company}
-              </h2>
-              <p class="mb-4 text-base font-normal text-captions">{c.summary}</p>
+          <li class="stop-start">
+            <div class="stop-sign">
+              <p class="m-0 text-sm font-bold tracking-widest uppercase">Starting point</p>
+              <p class="m-0 font-serif text-2xl font-bold">{startYear}</p>
+              <p class="m-0 text-sm">Engine on. Let's go.</p>
+            </div>
+          </li>
 
-              <div class="flex flex-wrap items-center gap-2">
-                {c.stacks.map((stack) => (
-                  <Tag size="sm">{stack}</Tag>
+          {stops.map((stop) => (
+            <li class="stop">
+              <span class="stop-lamp" aria-hidden="true" />
+              <div class="stop-card">
+                <span class="stop-tab" aria-hidden="true">
+                  Exit {stop.year}
+                </span>
+                <h2 class="b-h3 mt-0 mb-1">
+                  <a
+                    href={stop.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="link-heading hover:underline"
+                  >
+                    {stop.company}
+                    <span class="sr-only"> (opens in a new tab)</span>
+                  </a>
+                </h2>
+                <p class="text-captions mt-0 mb-3 text-sm">{stop.location}</p>
+
+                {[...stop.roles].reverse().map((role, i, all) => (
+                  <section class="mb-4 last:mb-2">
+                    <h3 class="m-0 text-base font-bold">{role.title}</h3>
+                    <p class="text-captions mt-0 mb-2 text-sm">
+                      <time>{role.period}</time> - {role.long}
+                    </p>
+                    {role.summary !== all[i - 1]?.summary && (
+                      <p class="mt-0 mb-0 text-base">{role.summary}</p>
+                    )}
+                  </section>
                 ))}
+
+                <div class="flex flex-wrap items-center gap-2">
+                  {[...new Set(stop.roles.flatMap((role) => role.stacks))].map((stack) => (
+                    <Tag size="sm">{stack}</Tag>
+                  ))}
+                </div>
+              </div>
+              <div class="stop-plate" aria-hidden="true">
+                {stop.year}
               </div>
             </li>
           ))}
+
+          <li class="stop-end">
+            <div class="stop-sign">
+              <p class="m-0 text-sm font-bold tracking-widest uppercase">Next stop</p>
+              <p class="m-0 font-serif text-2xl font-bold">Maybe with you?</p>
+              {PROFILE.AVAILABLE_FOR_HIRE && (
+                <p class="m-0 mt-1 text-sm">Open to new roads: available for hire.</p>
+              )}
+              <div class="mt-3 flex justify-center">
+                <Button
+                  element="a"
+                  colors="default"
+                  variant="outline"
+                  href={`mailto:${AUTHOR_EMAIL}`}
+                  target="_blank"
+                  rel="me noreferrer noopener"
+                  title="Email"
+                >
+                  Send me an email
+                </Button>
+              </div>
+              <p class="m-0 mt-3 text-xs">
+                Or copy it: <code class="font-mono">{AUTHOR_EMAIL}</code>
+              </p>
+            </div>
+          </li>
         </ol>
-      </div>
+      </career-road>
     </section>
   </article>
 </Centered>
+
+<script>
+  // Drives the car: its position follows the scroll, the lane dashes flow, the car sways while
+  // you scroll, and each stop lights up when the car passes it. All decoration: without this
+  // script (or with reduced motion) the car is parked at the start and every stop is lit.
+  class CareerRoad extends HTMLElement {
+    #abort: AbortController | undefined;
+
+    connectedCallback() {
+      const journey = this.querySelector<HTMLElement>('.journey');
+      const car = this.querySelector<HTMLElement>('.car');
+      if (!journey || !car) return;
+      const stops = [...journey.querySelectorAll<HTMLElement>('.stop')];
+
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        for (const stop of stops) stop.setAttribute('data-reached', '');
+        return;
+      }
+
+      let frame = 0;
+      let lastScroll = scrollY;
+      let idle: ReturnType<typeof setTimeout> | undefined;
+
+      const update = () => {
+        frame = 0;
+        const rect = journey.getBoundingClientRect();
+        const carHeight = car.offsetHeight;
+        // the car stays at the middle of the screen while the road scrolls under it
+        const y = Math.min(
+          Math.max(0, rect.height - carHeight - 64), // parks before the end so the headlights stay on the road
+          Math.max(0, innerHeight * 0.5 - rect.top - carHeight / 2)
+        );
+        const delta = scrollY - lastScroll;
+        lastScroll = scrollY;
+
+        journey.style.setProperty('--car-y', `${y}px`);
+        journey.style.setProperty('--road-offset', `${-scrollY * 0.8}px`);
+
+        if (delta !== 0) {
+          journey.style.setProperty('--car-tilt', `${Math.max(-4, Math.min(4, delta * 0.2))}deg`);
+          journey.setAttribute('data-driving', '');
+          clearTimeout(idle);
+          idle = setTimeout(() => {
+            journey.removeAttribute('data-driving');
+            journey.style.setProperty('--car-tilt', '0deg');
+          }, 160);
+        }
+
+        for (const stop of stops) {
+          const marker = stop.offsetTop + 32;
+          stop.toggleAttribute('data-reached', y + carHeight / 2 >= marker);
+        }
+      };
+
+      const schedule = () => {
+        if (!frame) frame = requestAnimationFrame(update);
+      };
+
+      this.#abort = new AbortController();
+      const { signal } = this.#abort;
+      addEventListener('scroll', schedule, { passive: true, signal });
+      addEventListener('resize', schedule, { signal });
+      update();
+    }
+
+    disconnectedCallback() {
+      this.#abort?.abort();
+    }
+  }
+
+  if (!customElements.get('career-road')) customElements.define('career-road', CareerRoad);
+</script>

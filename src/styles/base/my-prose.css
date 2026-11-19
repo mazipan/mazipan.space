@@ -5,6 +5,13 @@
   .my-prose:not(:where([class~='not-prose'], [class~='not-prose'] *)) {
     @apply prose prose-slate dark:prose-invert max-w-none;
 
+    /* code blocks stand up from the page like the other surfaces */
+    .expressive-code {
+      --ec-brdRad: 12px;
+      --ec-frm-frameBoxShdCssVal:
+        0 5px 0 -1px var(--th-key-cream-side), 0 12px 20px rgb(0 0 0 / 0.2);
+    }
+
     /* a long URL in a link must wrap instead of pushing the page sideways on phones */
     overflow-wrap: anywhere;
 
@@ -114,6 +121,21 @@
       display: inline-block;
       min-height: 24px;
       padding-block: 2px;
+    }
+
+    /* the number and the link stay on one row, a long heading wraps beside the number;
+       nested lists start on their own row */
+    .toc ol.ol-nested-decimal li {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+    }
+    .toc ol.ol-nested-decimal li > .toc-link {
+      flex: 1 1 0;
+      min-width: 0;
+    }
+    .toc ol.ol-nested-decimal li > ol {
+      flex-basis: 100%;
     }
   }
 }

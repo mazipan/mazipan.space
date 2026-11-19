@@ -27,7 +27,7 @@ const [newestSlides] = await getAllCarousels();
 
 // the "Right now" strip: real data first, then the lines from src/constants/now.ts
 const nowItems = [
-  {
+  PROFILE.CURRENT_POSITION && {
     label: 'Part of',
     text: PROFILE.CURRENT_POSITION.replace(/^Part of\s*/i, '').replace(/\.$/, ''),
   },
