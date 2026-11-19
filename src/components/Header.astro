@@ -35,6 +35,7 @@ const activeNavItemPath = getActiveNavItemPath(routePathname);
     <div class="flex w-full items-center justify-between md:w-auto">
       <HeaderLink
         href={ROUTES.HOME}
+        aria-label="Home"
         isActive={routePathname === ROUTES.HOME}
         class="hover:bg-base-200 hover:text-primary-hover focus:text-primary focus:ring-primary xs:text-2xl flex flex-row items-center gap-2 rounded-lg px-2 py-1 font-serif text-xl focus:ring-2 focus:ring-offset-2 focus:outline-none"
       >

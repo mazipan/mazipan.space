@@ -50,6 +50,10 @@ const PAIRS = [
   ['secondary-content', 'secondary', 4.5],
   ['accent-content', 'accent', 4.5],
   ['content', 'base-code', 4.5],
+  // light tints used as backgrounds under default black text (breadcrumbs, tags)
+  ['#000000', 'primary-50', 4.5],
+  ['#000000', 'primary-100', 4.5],
+  ['#000000', 'primary-200', 4.5],
   ...KEY_COLORS.flatMap((c) => [
     [`key-${c}-text`, `key-${c}-face-hi`, 4.5],
     [`key-${c}-text`, `key-${c}-face-lo`, 4.5],
@@ -72,7 +76,7 @@ function main() {
   let failures = 0;
   for (const [scope, tokens] of Object.entries(scopes)) {
     for (const [fg, bg, min] of PAIRS) {
-      const a = tokens[fg];
+      const a = fg.startsWith('#') ? fg : tokens[fg];
       const b = tokens[bg];
       const label = `${scope.padEnd(5)} ${fg} on ${bg}`;
       if (!a || !b || !HEX.test(a) || !HEX.test(b)) {

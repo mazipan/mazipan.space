@@ -56,9 +56,10 @@
     --th-headings: #f6d98b;
     --th-captions: #b9a590;
 
-    --th-primary-50: #3a2a1f;
-    --th-primary-100: #4a3526;
-    --th-primary-200: #5a4333;
+    /* still light tints: components put black text on them in both modes */
+    --th-primary-50: #fff1d6;
+    --th-primary-100: #fbe0b0;
+    --th-primary-200: #f4cc86;
     --th-primary: #f2b36b;
     --th-primary-hover: #f6c58f;
     --th-primary-content: #1c1410;

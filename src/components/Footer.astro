@@ -36,6 +36,7 @@ const copyrightYear = new Date().getFullYear();
         colors="primary"
         href="#main-header"
         id="btn-scroll-to-top"
+        aria-label="Back to top"
       >
         <Icon name="tabler:arrow-up" class="h-4 w-4" />
       </Button>
@@ -46,12 +47,12 @@ const copyrightYear = new Date().getFullYear();
     >
       <div class="text-content space-y-8 whitespace-nowrap">
         <div class="text-content space-y-4 whitespace-nowrap">
-          <h3 class="font-semibold">Irfan Maulana / MZP</h3>
+          <h2 class="font-semibold">Irfan Maulana / MZP</h2>
           <SocialLinks />
         </div>
 
         <div class="text-content space-y-4 whitespace-nowrap">
-          <h3 class="font-semibold">Previous Version</h3>
+          <h2 class="font-semibold">Previous Version</h2>
           <ul class="space-y-2 text-sm">
             <li>
               <Link
@@ -79,7 +80,7 @@ const copyrightYear = new Date().getFullYear();
 
       <div class="flex w-full flex-col-reverse gap-8 pr-16 md:flex-row md:justify-end md:gap-12">
         <div class="text-content space-y-4 whitespace-nowrap">
-          <h3 class="font-semibold">General</h3>
+          <h2 class="font-semibold">General</h2>
           <ul class="space-y-2 text-sm">
             <li>
               <Link href={ROUTES.BLOG}>Blog</Link>
@@ -100,7 +101,7 @@ const copyrightYear = new Date().getFullYear();
         </div>
 
         <div class="text-content space-y-4 whitespace-nowrap">
-          <h3 class="font-semibold">Navigations</h3>
+          <h2 class="font-semibold">Navigations</h2>
           <ul class="space-y-2 text-sm">
             <li>
               <Link href={ROUTES.TALKS}>Talks</Link>
@@ -124,7 +125,7 @@ const copyrightYear = new Date().getFullYear();
         </div>
 
         <div class="text-content space-y-4 whitespace-nowrap">
-          <h3 class="font-semibold">Ext. Resources</h3>
+          <h2 class="font-semibold">Ext. Resources</h2>
           <ul class="space-y-2 text-sm">
             <li>
               <Link
