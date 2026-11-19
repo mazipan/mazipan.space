@@ -1,0 +1,184 @@
+<style>
+  .p{--bg:#fdf0e3;--bg2:#f3e3d0;--ink:#2b1d14;--cap:#5b4a3d;--pri:#b8442a;--card:#fffdf7;--line:#e6d8c8;--p1:#b17f57;--p2:#7d5236;--note:#ffe27a;--noteink:#2b1d14;
+    background:var(--bg);color:var(--ink);font-family:'Atkinson Hyperlegible','Trebuchet MS',Arial,sans-serif;transition:background .3s,color .3s}
+  .p.dark{--bg:#1c1410;--bg2:#2a1f18;--ink:#eadccb;--cap:#b9a590;--pri:#f2b36b;--card:#2a1f18;--line:#3b2d23;--p1:#6b4a33;--p2:#3d2a1e;--note:#5a4636;--noteink:#f6e9d8}
+  .p *{box-sizing:border-box}
+  .p h1,.p h2,.p h3{font-family:Georgia,'Times New Roman',serif;color:var(--ink);margin:0}
+  .p .wrap{padding:0 30px}
+  .p .skip{position:absolute;left:-999px}
+  .p .skip:focus{left:10px;top:10px;background:var(--ink);color:var(--bg);padding:6px 10px;z-index:9}
+
+  /* keycaps */
+  .p .key{--hi:#c94f33;--lo:#c64b2e;--side:#7d2c19;--tx:#fff;display:inline-block;border:0;background:var(--side);border-radius:15px;padding:0 0 7px;cursor:pointer;font:inherit;box-shadow:0 8px 12px #0004;text-decoration:none}
+  .p .key>span{display:block;color:var(--tx);font:700 15px Arial;padding:11px 22px;border-radius:12px;background:radial-gradient(ellipse at 50% 30%,var(--hi),var(--lo) 85%);border-top:2px solid #ffffff70;border-left:2px solid #ffffff35;border-right:2px solid #00000022;border-bottom:2px solid #00000030;box-shadow:inset 0 -4px 6px #0002,inset 0 3px 4px #ffffff40;transition:transform .07s ease-out}
+  .p .key:hover>span{transform:translateY(-1px)}
+  .p .key:active>span,.p .key.on>span{transform:translateY(5px);box-shadow:inset 0 2px 4px #0003}
+  .p .key:focus-visible{outline:3px solid var(--ink);outline-offset:4px}
+  .p .key.sm>span{padding:7px 14px;font-size:14px;border-radius:10px}
+  .p .key.sm{border-radius:12px;padding-bottom:5px}
+  .p .key.sq>span{width:44px;padding:11px 0;text-align:center;font-size:19px}
+  .p .key.teal{--hi:#2b8074;--lo:#1f6f66;--side:#124540}
+  .p .key.cream{--hi:#fffdf7;--lo:#f1e3c9;--side:#b7a785;--tx:#2b1d14}
+  .p.dark .key.cream{--hi:#5a4636;--lo:#4a3b30;--side:#120d0a;--tx:#f6e9d8}
+  .p .key.navy{--hi:#37606f;--lo:#264653;--side:#14262d}
+  @media (prefers-reduced-motion:reduce){.p .key>span,.p .book{transition:none}}
+
+  /* header */
+  .p .top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 30px;flex-wrap:wrap}
+  .p .logo{font:700 22px Georgia;color:var(--pri)}
+  .p .navkeys{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+
+  /* hero */
+  .p .hero{display:flex;gap:30px;align-items:center;padding:24px 30px 34px;flex-wrap:wrap}
+  .p .hero .txt{flex:1.3;min-width:280px}
+  .p .eyebrow{font:700 15px Arial;color:var(--pri);margin-bottom:6px}
+  .p .hero h1{font-size:52px;line-height:1.03;letter-spacing:-1px}
+  .p .hl{background:#ffd98a;color:#2b1d14;padding:0 8px;border-radius:8px}
+  .p .hero p{font-size:19px;line-height:1.65;max-width:46ch;margin:16px 0}
+  .p .photo{flex:1;min-width:240px;height:290px;background:#ffcf99;border-radius:77% 23% 70% 30% / 48% 36% 64% 52%;display:flex;align-items:center;justify-content:center;color:#6b4a33;text-align:center;font-size:14px;position:relative}
+  .p .badge{position:absolute;right:-4px;bottom:6px;background:var(--card);color:var(--ink);border:2px solid var(--ink);border-radius:14px;padding:8px 12px;font-size:13px;transform:rotate(3deg);box-shadow:0 6px 12px #0003}
+
+  .p .strip{background:var(--card);border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);padding:18px 30px}
+  .p .lab{font:700 12px Arial;letter-spacing:1px;text-transform:uppercase;color:var(--cap);margin-bottom:8px}
+  .p .grid4{display:flex;gap:22px;flex-wrap:wrap;font-size:15px}
+  .p .grid4>div{flex:1;min-width:140px}
+
+  /* shelf */
+  .p .shelfhead{display:flex;justify-content:space-between;align-items:baseline;padding:26px 30px 0}
+  .p .shelfhead a{color:var(--ink);font-size:15px}
+  .p .books{display:flex;align-items:flex-end;gap:12px;padding:12px 44px 0;flex-wrap:wrap}
+  .p .book{display:block;text-decoration:none;color:inherit;border-radius:3px 8px 8px 3px;padding:12px 10px 12px 18px;box-shadow:4px 5px 0 #0003;transition:transform .2s;position:relative}
+  .p .book:hover,.p .book:focus-visible{transform:translateY(-8px) rotate(-1.5deg)}
+  .p .book:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+  .p .book b{display:block;font:700 15px/1.2 Georgia}
+  .p .book i{display:block;font:normal 12px Arial;margin-top:8px}
+  .p .plank{height:16px;margin:0 30px;border-radius:3px;background:repeating-linear-gradient(90deg,#00000010 0 3px,transparent 3px 9px),linear-gradient(var(--p1),var(--p2));box-shadow:inset 0 2px 0 #ffffff40,0 10px 12px #0004}
+
+  /* tiles */
+  .p .tiles{display:flex;gap:12px;padding:10px 30px 30px;flex-wrap:wrap}
+  .p .tile{flex:1;min-width:190px;background:var(--card);border:2px solid var(--ink);border-radius:14px;padding:14px;font-size:15px;line-height:1.45;box-shadow:0 5px 0 var(--ink)}
+  .p .tile b{font:700 17px Georgia;display:block;margin-bottom:4px}
+  .p .foot{background:#2b1d14;color:#fdf0e3;padding:16px 30px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font-size:14px}
+
+  /* post */
+  .p .crumbs{font:14px Arial;color:var(--cap);padding:6px 30px 0}
+  .p .post{display:flex;gap:30px;padding:10px 30px 20px;flex-wrap:wrap}
+  .p .toc{width:190px;font:14px/1.6 Arial;color:var(--cap);border-right:1px solid var(--line);padding-right:12px;align-self:flex-start;position:sticky;top:10px}
+  .p .toc a{display:block;color:var(--ink);text-decoration:none;padding-left:8px;border-left:3px solid transparent}
+  .p .toc a.cur{border-left-color:var(--pri);font-weight:700}
+  .p .bar{height:6px;border-radius:99px;background:var(--line);margin-top:10px}
+  .p .bar div{height:6px;width:35%;border-radius:99px;background:var(--pri)}
+  .p .art{flex:1;min-width:280px;max-width:70ch;font-size:19px;line-height:1.7}
+  .p .art h1{font-size:36px;line-height:1.15;margin:8px 0}
+  .p .meta{font:14px Arial;color:var(--cap);margin-bottom:14px}
+  .p .bottom{background:var(--note);color:var(--noteink);padding:12px 16px;border-radius:2px 2px 22px 2px;box-shadow:0 6px 8px #0003;transform:rotate(-.6deg);font-size:17px;margin:14px 0}
+  .p .art h2{font-size:26px;margin:26px 0 6px}
+  .p pre{background:#1c1410;color:#f6e9d8;padding:14px;border-radius:8px;font:14px/1.5 Menlo,monospace;overflow:auto}
+  .p .pn{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px 30px 28px;border-top:1px solid var(--line);margin:0 30px;font:14px Arial}
+</style>
+
+<h2>Clickable prototype: Home and a Post</h2>
+<p class="subtitle">Try: Tab through everything, press the keys, hover the books, toggle dark mode. Titles are real posts from your blog. Hero copy and the photo are placeholders.</p>
+
+<div class="mockup"><div class="mockup-header">HOME</div>
+<div class="mockup-body" style="padding:0"><div class="p" id="home">
+  <a class="skip" href="#home-main">Skip to content</a>
+  <div class="top">
+    <span class="logo">mazipan</span>
+    <nav class="navkeys" aria-label="Site navigation">
+      <a class="key cream sm on" href="#" aria-current="page"><span>Home</span></a>
+      <a class="key cream sm" href="#"><span>Writing</span></a>
+      <a class="key cream sm" href="#"><span>Talks</span></a>
+      <a class="key cream sm" href="#"><span>Projects</span></a>
+      <a class="key cream sm" href="#"><span>About</span></a>
+      <button class="key navy sm" id="themeBtn" aria-pressed="false"><span>Dark mode</span></button>
+    </nav>
+  </div>
+
+  <main id="home-main">
+  <section class="hero">
+    <div class="txt">
+      <div class="eyebrow">Hello there,</div>
+      <h1>I'm Irfan.<br>Call me <span class="hl">mas ipan.</span></h1>
+      <p>I build things for the web, I write about what I learn, and I talk with people who are figuring out their own careers. Pull up a chair.</p>
+      <div style="display:flex;gap:14px;flex-wrap:wrap">
+        <a class="key" href="#"><span>Say hi</span></a>
+        <a class="key teal" href="#"><span>Read my story</span></a>
+      </div>
+    </div>
+    <div class="photo">[ your photo here ]<div class="badge">Based in Indonesia<br><b>Open to a chat</b></div></div>
+  </section>
+
+  <section class="strip" aria-labelledby="rn">
+    <div class="lab" id="rn">Right now</div>
+    <div class="grid4">
+      <div><b>Making</b><br>this website</div>
+      <div><b>Reading</b><br>placeholder title</div>
+      <div><b>Listening</b><br>placeholder song</div>
+      <div><b>Thinking about</b><br>placeholder sentence</div>
+    </div>
+  </section>
+
+  <div class="shelfhead"><h2 style="font-size:26px">Lately, I wrote</h2><a href="#">All writing &rarr;</a></div>
+  <ul class="books" style="list-style:none;margin:0">
+    <li><a class="book" href="#" style="width:140px;height:158px;background:#264653;color:#fff;border-left:10px solid #14262d"><b>Intro to Intersection Observer</b><i>Short read - 4 min</i></a></li>
+    <li><a class="book" href="#" style="width:128px;height:136px;background:#f4a261;color:#2b1d14;border-left:10px solid #b66a2a"><b>Best practice loading a web</b><i>Long story - 6 min</i></a></li>
+    <li><a class="book" href="#" style="width:134px;height:168px;background:#1f6f66;color:#fff;border-left:10px solid #124540"><b>Layoff: the first day</b><i>Slides - 6 pages</i></a></li>
+    <li><a class="book" href="#" style="width:122px;height:144px;background:#e9c46a;color:#2b1d14;border-left:10px solid #a98a2f"><b>ESLint formatter HTML extended</b><i>How-to - 5 min</i></a></li>
+  </ul>
+  <div class="plank" aria-hidden="true"></div>
+
+  <div class="shelfhead" style="padding-top:30px"><h2 style="font-size:26px">What I do besides code</h2></div>
+  <div class="tiles">
+    <div class="tile"><b>Talk</b>I speak at meetups and events.</div>
+    <div class="tile"><b>Chat 1:1</b>Career talks on ADPList.</div>
+    <div class="tile"><b>Build in public</b>Small projects, shared openly.</div>
+    <div class="tile"><b>Lightning round</b>Tea or coffee? Answers inside.</div>
+  </div>
+  </main>
+  <div class="foot"><span>Made with care by Irfan - email - GitHub - LinkedIn</span><span>&copy; 2026</span></div>
+</div></div></div>
+
+<div class="mockup" style="margin-top:28px"><div class="mockup-header">POST (same theme, follows the dark mode toggle above)</div>
+<div class="mockup-body" style="padding:0"><div class="p" id="post">
+  <div class="crumbs">Home &rsaquo; Writing &rsaquo; Short reads</div>
+  <div class="post">
+    <aside class="toc" aria-label="On this page">
+      <b style="color:var(--ink)">In this post</b>
+      <a class="cur" href="#">The problem</a>
+      <a href="#">A simple example</a>
+      <a href="#">When not to use it</a>
+      <div class="bar" role="progressbar" aria-label="Reading progress" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100"><div></div></div>
+    </aside>
+    <article class="art">
+      <h1>Intro to Intersection Observer</h1>
+      <div class="meta">2018-04-16 - 4 min read - Short read</div>
+      <div class="bottom"><b>Bottom line:</b> Use it to know when something enters the screen. No scroll listeners needed.</div>
+      <h2>The problem</h2>
+      <p>For a long time we watched the scroll event to know if an element was visible. It works, but it runs again and again, and it makes the page feel slow.</p>
+      <h2>A simple example</h2>
+      <p>The browser can tell us when an element enters the screen. We only say what to watch.</p>
+<pre>const io = new IntersectionObserver((entries) =&gt; {
+  entries.forEach((e) =&gt; e.isIntersecting &amp;&amp; show(e.target));
+});
+io.observe(document.querySelector('.card'));</pre>
+    </article>
+  </div>
+  <div class="pn">
+    <span style="display:flex;align-items:center;gap:10px"><button class="key navy sq" aria-label="Older post"><span>&larr;</span></button> Older post</span>
+    <span style="display:flex;align-items:center;gap:10px">Newer post <button class="key navy sq" aria-label="Newer post"><span>&rarr;</span></button></span>
+  </div>
+</div></div></div>
+
+<script>
+(function(){
+  var btn=document.getElementById('themeBtn'), a=document.getElementById('home'), b=document.getElementById('post');
+  btn.addEventListener('click',function(){
+    var d=!a.classList.contains('dark');
+    a.classList.toggle('dark',d); b.classList.toggle('dark',d);
+    btn.setAttribute('aria-pressed',d); btn.classList.toggle('on',d);
+    btn.querySelector('span').textContent=d?'Light mode':'Dark mode';
+  });
+  document.querySelectorAll('.p a[href="#"]').forEach(function(x){x.addEventListener('click',function(e){e.preventDefault();});});
+})();
+</script>

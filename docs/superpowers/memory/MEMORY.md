@@ -1,0 +1,2 @@
+- [2027 redesign branching](project-2027-redesign-branching.md) - central branch feat/2027-design, never merge to master
+- [Design preferences](feedback-design-preferences.md) - friendly, tactile keycaps, accessible, show mockups
