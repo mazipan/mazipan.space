@@ -9,7 +9,8 @@ const configClientData: ConfigClientType = {
   /** all urls without '/' */
   SITE_URL,
   SITE_TITLE: 'Mazipan.Space',
-  SITE_DESCRIPTION: 'A seasoned web developer from Indonesia with 10+ years of experience.',
+  SITE_DESCRIPTION:
+    'Web developer from Indonesia with 11+ years of experience. Writing, talks and projects.',
   UMAMI_SCRIPT_URL,
   UMAMI_WEBSITE_ID,
   UMAMI_PUBLIC_URL,
