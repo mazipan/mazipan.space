@@ -35,6 +35,11 @@ const nowItems = [
     label: 'Part of',
     text: PROFILE.CURRENT_POSITION.replace(/^Part of\s*/i, '').replace(/\.$/, ''),
   },
+  PROFILE.LOCATION && {
+    label: 'Based in',
+    text: PROFILE.TIMEZONE ? `${PROFILE.LOCATION} (${PROFILE.TIMEZONE})` : PROFILE.LOCATION,
+    timeDifference: Boolean(PROFILE.TIMEZONE),
+  },
   NOW.making && { label: 'Making', text: NOW.making },
   NOW.reading && { label: 'Reading', text: NOW.reading },
   NOW.listening && { label: 'Listening', text: NOW.listening },
@@ -48,7 +53,7 @@ const nowItems = [
     text: newestSlides.data.title,
     href: `${ROUTES.CAROUSEL}/${newestSlides.slug}`,
   },
-].filter(Boolean) as { label: string; text: string; href?: string }[];
+].filter(Boolean) as { label: string; text: string; href?: string; timeDifference?: boolean }[];
 
 const doItems = [
   {
@@ -137,8 +142,8 @@ const doItems = [
         <h2 id="right-now" class="board-label">
           Right now
         </h2>
-        <dl class="grid grid-cols-1 gap-x-6 gap-y-7 pt-3 sm:grid-cols-2 lg:grid-cols-4">
-          {nowItems.map(({ label, text, href }) => (
+        <dl class="grid grid-cols-1 gap-x-6 gap-y-7 pt-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+          {nowItems.map(({ label, text, href, timeDifference }) => (
             <div class="sticky-note board-note">
               <dt class="font-bold">{label}</dt>
               <dd class="m-0">
@@ -148,6 +153,11 @@ const doItems = [
                   </a>
                 ) : (
                   text
+                )}
+                {timeDifference && (
+                  <time-difference data-offset={PROFILE.TIMEZONE_OFFSET_MINUTES}>
+                    <span class="mt-1 block text-sm" data-time-difference hidden />
+                  </time-difference>
                 )}
               </dd>
             </div>
@@ -190,7 +200,7 @@ const doItems = [
       <h2 id="do-more" class="b-h2 mt-0 font-serif">
         What I do besides code
       </h2>
-      <ul class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      <ul class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
         {doItems.map(({ title, text, href, linkLabel, external }) => (
           <PaperCard as="li" class="flex flex-col gap-2">
             <h3 class="text-headings font-serif text-lg font-bold">{title}</h3>
@@ -225,3 +235,35 @@ const doItems = [
     transform: rotate(-1.5deg);
   }
 </style>
+
+<script>
+  // Compares the visitor's clock with mine. The time zone is read in the browser from the system
+  // clock and never sent anywhere. Without JavaScript the note just shows my time zone.
+  class TimeDifference extends HTMLElement {
+    connectedCallback() {
+      const target = this.querySelector<HTMLElement>('[data-time-difference]');
+      const mine = Number(this.dataset.offset);
+      if (!target || Number.isNaN(mine)) return;
+
+      // minutes I am ahead of the visitor (negative: behind)
+      const gap = mine + new Date().getTimezoneOffset();
+      const hours = Math.floor(Math.abs(gap) / 60);
+      const minutes = Math.abs(gap) % 60;
+      const amount = [
+        hours && `${hours} ${hours > 1 ? 'hours' : 'hour'}`,
+        minutes && `${minutes} min`,
+      ]
+        .filter(Boolean)
+        .join(' ');
+
+      target.textContent =
+        gap === 0
+          ? "That's your time zone too."
+          : `${amount} ${gap > 0 ? 'ahead of' : 'behind'} you.`;
+      target.hidden = false;
+    }
+  }
+
+  if (!customElements.get('time-difference'))
+    customElements.define('time-difference', TimeDifference);
+</script>

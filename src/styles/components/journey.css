@@ -24,8 +24,7 @@
     border: 2px solid var(--th-key-edge);
     border-radius: 14px;
     background:
-      repeating-linear-gradient(to bottom, #f4efe4 0 20px, transparent 20px 42px) center / 4px 100%
-        no-repeat,
+      linear-gradient(to bottom, #f4efe4 0 20px, transparent 20px) center / 4px 42px repeat-y,
       linear-gradient(to right, #3a3633, #4a4540 50%, #3a3633);
     background-position:
       center var(--road-offset),
@@ -158,23 +157,11 @@
     margin-left: 26px;
   }
 
-  /* connector from the card to the road, ending in a lamp on the road edge */
-  .stop-card::after {
-    content: '';
-    position: absolute;
-    top: 30px;
-    right: -26px;
-    width: 26px;
-    height: 4px;
-    background: var(--th-key-edge);
-  }
-  .stop:nth-child(even) .stop-card::after {
-    right: auto;
-    left: -26px;
-  }
+  /* lamp on the road edge; its ::after is the connector to the card, so the two always move together */
   .stop-lamp {
     position: absolute;
-    top: 25px;
+    /* .stop padding (18) + card border (2) + 30 down the card, centered on the title line */
+    top: 45px;
     left: calc(50% - 36px - 7px);
     z-index: 4;
     width: 14px;
@@ -184,17 +171,35 @@
     background: var(--th-base-300);
     transition:
       background 200ms,
-      box-shadow 200ms;
+      box-shadow 200ms,
+      transform 220ms;
   }
   .stop:nth-child(even) .stop-lamp {
     left: calc(50% + 36px - 7px);
+  }
+  /* connector: starts under the lamp's border (2px overlap) and ends at the card (26px gap) */
+  .stop-lamp::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: calc(100% - 2px);
+    width: calc(26px - 7px + 3px);
+    height: 4px;
+    margin-top: -2px;
+    background: var(--th-key-edge);
+    z-index: -1;
+  }
+  .stop:nth-child(even) .stop-lamp::after {
+    right: auto;
+    left: calc(100% - 2px);
   }
   /* the car has passed: the lamp is on and the card is lifted */
   .stop[data-reached] .stop-lamp {
     background: #ffe27a;
     box-shadow: 0 0 10px 3px rgb(255 226 122 / 0.8);
   }
-  .stop[data-reached] .stop-card {
+  .stop[data-reached] .stop-card,
+  .stop[data-reached] .stop-lamp {
     transform: translateY(-3px);
   }
 
@@ -280,7 +285,7 @@
       --road-w: 48px;
     }
     .road {
-      left: 24px;
+      left: 0;
       margin-left: 0;
     }
     .car {
@@ -296,15 +301,15 @@
       grid-column: 2;
       margin: 0 0 0 22px;
     }
-    .stop-card::after,
-    .stop:nth-child(even) .stop-card::after {
-      right: auto;
-      left: -22px;
-      width: 22px;
-    }
     .stop-lamp,
     .stop:nth-child(even) .stop-lamp {
-      left: calc(24px + 24px - 7px);
+      left: calc(var(--road-w) - 7px);
+    }
+    .stop-lamp::after,
+    .stop:nth-child(even) .stop-lamp::after {
+      right: auto;
+      left: calc(100% - 2px);
+      width: calc(22px - 7px + 3px);
     }
     .stop-plate {
       display: none;

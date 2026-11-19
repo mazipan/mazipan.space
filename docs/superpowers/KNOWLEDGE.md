@@ -40,6 +40,8 @@ Session 2 additions: fewer commits and PRs (each push is a Vercel build, push on
 - CSS utilities: `.b-h1..b-h4` (heading styles as classes, not tag selectors), `.centered-px`, `.my-prose` (`src/styles/base/my-prose.css`, typography plugin `prose prose-slate dark:prose-invert`).
 - OG images are made with satori and the Space Grotesk font. Keep that package.
 - Deploy: Vercel builds `master` (production). CI checks: Vercel and kodiak. There is also a GitHub Pages workflow. Repo allows squash merges only; GitHub deletes the head branch after a merge.
+- Before merging a PR into the central branch, check the commit status `Vercel` (via `get_status`), not only the `check_suite.completed` notice: that notice does not cover legacy commit statuses and can arrive while the Vercel build is still pending.
+- 404 pixel cats: drawn from small text grids (one letter per color, one `<path>` per color with 4 to 5 unit squares, `shape-rendering="crispEdges"`). The grids are not kept in the repo; to change a cat, redraw the grid and regenerate the path data.
 - Tailwind 4 arbitrary values: use underscores, not commas (`grid-cols-[minmax(0,1fr)_300px]`). A comma version silently produced one column and put the post ToC below the article.
 - In this font (Atkinson Hyperlegible Next) `1ch` is wide: `50ch` gives about 67 characters per line. Measure characters per line in the browser, do not trust `ch` alone.
 - Known old quirks: Header mobile menu script looks up `#main-header` but the header id comes from `SELECTORS.SCROLL_TO_TOP_ID`; mobile menu closes by translate only (keys stay in Tab order); two `ThemeToggle` instances share `id="theme-switcher"`.
