@@ -20,22 +20,19 @@ export const getCurrentTheme = () => {
   return currentTheme;
 };
 
+export const getPaletteId = (themeName: string) => themeName.split('-')[0];
+
+/** The theme of a palette in a mode, for example ('ocean', 'dark') -> ocean-dark. */
+export const getThemeFor = (palette: string, mode: Mode) =>
+  THEMES.find((theme) => theme.name === `${palette}-${mode}`);
+
+/** Same palette, other mode: what the light/dark switch does. */
 export const getNextTheme = () => {
   const currentTheme = getCurrentTheme();
+  const nextMode = getCurrentMode() === MODES.dark ? MODES.light : MODES.dark;
+  const palette = currentTheme ? getPaletteId(currentTheme.name) : 'default';
 
-  const currentIndex = THEMES.findIndex(
-    (theme) => currentTheme && currentTheme.name === theme.name
-  );
-
-  if (currentIndex === -1) {
-    const currentMode = getCurrentMode();
-    const defaultThemes = getDefaultThemes();
-
-    return defaultThemes[currentMode];
-  }
-
-  const nextIndex = (currentIndex + 1) % THEMES.length;
-  return THEMES[nextIndex];
+  return getThemeFor(palette, nextMode) ?? getDefaultThemes()[nextMode];
 };
 
 export const validateMode = (mode: Mode): void => {

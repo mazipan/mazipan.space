@@ -9,6 +9,7 @@ import { shortDate } from '@/utils/datetime';
 import { limitString, trimHttpProtocol } from '@/utils/strings';
 import Keycap from './Keycap.astro';
 import KeySoundToggle from './KeySoundToggle.astro';
+import PaletteSwitcher from './PaletteSwitcher.astro';
 import SocialLinks from './SocialLinks.astro';
 
 const { SITE_URL, REPO_URL, AUTHOR_ADPLIST, AUTHOR_DECK } = CONFIG_CLIENT;
@@ -74,6 +75,8 @@ const copyrightYear = new Date().getFullYear();
             </li>
           </ul>
         </div>
+
+        <PaletteSwitcher />
 
         <KeySoundToggle />
       </div>

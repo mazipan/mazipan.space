@@ -9,14 +9,19 @@ const FILES = [
   'src/styles/theme/theme-default.css',
   'src/styles/theme/keycap-tokens.css',
   'src/styles/theme/surface-tokens.css',
+  'src/styles/theme/palettes.css',
 ];
+const PALETTES = ['ocean', 'forest', 'plum'];
 const KEY_COLORS = ['terracotta', 'teal', 'mustard', 'cream', 'navy'];
 const HEX = /^#[0-9a-fA-F]{6}$/;
 
 /** Parse `--th-*` custom properties declared in one scope of a CSS string. */
 export function parseTokens(css, scope) {
+  const escaped = scope.replace(/[.[\]'()]/g, '\\$&');
   const re =
-    scope === ':root.dark' ? /:root\.dark\s*\{([^}]*)\}/g : /(?:^|[\s{}])(:root)\s*\{([^}]*)\}/g;
+    scope === ':root'
+      ? /(?:^|[\s{}])(:root)\s*\{([^}]*)\}/g
+      : new RegExp(`${escaped}\\s*\\{([^}]*)\\}`, 'g');
   const tokens = {};
   for (const match of css.matchAll(re)) {
     const body = match[match.length - 1];
@@ -88,14 +93,25 @@ function main() {
 
   const light = parseTokens(css, ':root');
   // dark inherits any token it does not override, like the real cascade
-  const scopes = { light, dark: { ...light, ...parseTokens(css, ':root.dark') } };
+  const dark = { ...light, ...parseTokens(css, ':root.dark') };
+  const scopes = { light, dark };
+  for (const name of PALETTES) {
+    scopes[`${name}-light`] = {
+      ...light,
+      ...parseTokens(css, `:root[data-theme='${name}-light']`),
+    };
+    scopes[`${name}-dark`] = {
+      ...dark,
+      ...parseTokens(css, `:root[data-theme='${name}-dark']`),
+    };
+  }
 
   let failures = 0;
   for (const [scope, tokens] of Object.entries(scopes)) {
     for (const [fg, bg, min] of PAIRS) {
       const a = fg.startsWith('#') ? fg : tokens[fg];
       const b = tokens[bg];
-      const label = `${scope.padEnd(5)} ${fg} on ${bg}`;
+      const label = `${scope.padEnd(12)} ${fg} on ${bg}`;
       if (!a || !b || !HEX.test(a) || !HEX.test(b)) {
         failures++;
         console.log(

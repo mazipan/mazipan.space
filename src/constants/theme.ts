@@ -5,22 +5,22 @@ export const MODES = {
 } as const;
 
 export const THEMES = [
-  {
-    mode: MODES.light,
-    name: 'default-light',
-  },
-  {
-    mode: MODES.dark,
-    name: 'default-dark',
-  },
-  // {
-  //   mode: MODES.light,
-  //   name: 'green-light',
-  // },
-  // {
-  //   mode: MODES.dark,
-  //   name: 'green-dark',
-  // },
+  { mode: MODES.light, name: 'default-light' },
+  { mode: MODES.dark, name: 'default-dark' },
+  { mode: MODES.light, name: 'ocean-light' },
+  { mode: MODES.dark, name: 'ocean-dark' },
+  { mode: MODES.light, name: 'forest-light' },
+  { mode: MODES.dark, name: 'forest-dark' },
+  { mode: MODES.light, name: 'plum-light' },
+  { mode: MODES.dark, name: 'plum-dark' },
+] as const;
+
+/** Palettes for the footer picker. `swatch` is only a preview dot, the name is always text. */
+export const PALETTES = [
+  { id: 'default', label: 'Warm paper', swatch: '#ae3f27' },
+  { id: 'ocean', label: 'Ocean', swatch: '#1f5f8b' },
+  { id: 'forest', label: 'Forest', swatch: '#2f6b3a' },
+  { id: 'plum', label: 'Plum', swatch: '#7a3b8f' },
 ] as const;
 
 // for debugging

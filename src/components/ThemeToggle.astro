@@ -11,7 +11,7 @@ import Keycap from './Keycap.astro';
     element="button"
     role="switch"
     aria-label="Dark mode"
-    id="theme-switcher"
+    data-theme-switcher
     class="keycap-square-sm keycap-round"
   >
     <Icon
@@ -38,7 +38,7 @@ import Keycap from './Keycap.astro';
     #observer: MutationObserver | undefined;
 
     connectedCallback() {
-      const button = this.querySelector('#theme-switcher')!;
+      const button = this.querySelector('[data-theme-switcher]')!;
       // set aria role value
       button.setAttribute('role', 'switch');
 
