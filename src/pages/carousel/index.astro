@@ -42,59 +42,57 @@ const breadcrumbs = [BreadcrumbItemHome, { text: 'Slides', href: ROUTES.CAROUSEL
       </p>
     </div>
 
-    {
-      carousels.length === 0 ? (
-        <p class="opacity-50">No slides yet. Check back soon.</p>
-      ) : (
-        <>
-          {/* Series groups */}
-          {[...seriesMap.entries()].map(([seriesSlug, items]) => {
-            const meta = SERIES_META[seriesSlug];
-            return (
-              <div class="flex flex-col gap-4">
-                <div class="flex items-center gap-3">
-                  <div class="bg-base-300 h-px flex-1" />
-                  <span class="text-xs font-semibold tracking-widest uppercase opacity-40">
-                    Series
-                  </span>
-                  <div class="bg-base-300 h-px flex-1" />
-                </div>
-                <div>
-                  <h2 class="b-h2">{meta?.title ?? seriesSlug}</h2>
-                  {meta?.description && (
-                    <p class="b-p mt-1 max-w-2xl opacity-60">{meta.description}</p>
-                  )}
-                </div>
-                <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 md:gap-5">
-                  {items.map((carousel) => (
-                    <CarouselCard carousel={carousel} />
-                  ))}
-                </div>
-              </div>
-            );
-          })}
-
-          {/* Standalone (no series) */}
-          {standalone.length > 0 && (
+    {carousels.length === 0 ? (
+      <p class="text-captions">No slides yet. Check back soon.</p>
+    ) : (
+      <>
+        {/* Series groups */}
+        {[...seriesMap.entries()].map(([seriesSlug, items]) => {
+          const meta = SERIES_META[seriesSlug];
+          return (
             <div class="flex flex-col gap-4">
-              {seriesMap.size > 0 && (
-                <div class="flex items-center gap-3">
-                  <div class="bg-base-300 h-px flex-1" />
-                  <span class="text-xs font-semibold tracking-widest uppercase opacity-40">
-                    Other
-                  </span>
-                  <div class="bg-base-300 h-px flex-1" />
-                </div>
-              )}
+              <div class="flex items-center gap-3">
+                <div class="bg-base-300 h-px flex-1" />
+                <span class="text-xs font-semibold tracking-widest uppercase text-captions">
+                  Series
+                </span>
+                <div class="bg-base-300 h-px flex-1" />
+              </div>
+              <div>
+                <h2 class="b-h2">{meta?.title ?? seriesSlug}</h2>
+                {meta?.description && (
+                  <p class="b-p mt-1 max-w-2xl opacity-60">{meta.description}</p>
+                )}
+              </div>
               <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 md:gap-5">
-                {standalone.map((carousel) => (
+                {items.map((carousel) => (
                   <CarouselCard carousel={carousel} />
                 ))}
               </div>
             </div>
-          )}
-        </>
-      )
-    }
+          );
+        })}
+
+        {/* Standalone (no series) */}
+        {standalone.length > 0 && (
+          <div class="flex flex-col gap-4">
+            {seriesMap.size > 0 && (
+              <div class="flex items-center gap-3">
+                <div class="bg-base-300 h-px flex-1" />
+                <span class="text-xs font-semibold tracking-widest uppercase text-captions">
+                  Other
+                </span>
+                <div class="bg-base-300 h-px flex-1" />
+              </div>
+            )}
+            <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 md:gap-5">
+              {standalone.map((carousel) => (
+                <CarouselCard carousel={carousel} />
+              ))}
+            </div>
+          </div>
+        )}
+      </>
+    )}
   </section>
 </Centered>
