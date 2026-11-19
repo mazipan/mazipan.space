@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Non-flat card options</title>
+<style>
+  :root{--bg:#fdf0e3;--ink:#2b1d14;--cap:#5b4a3d;--paper:#fffdf7;--edge:#6b5545;--pri:#ae3f27;--line:rgba(0,0,0,.08);--tab1:#ae3f27;--tab2:#1f6f66;--tab3:#8a6a10}
+  :root.dark{--bg:#1c1410;--ink:#eadccb;--cap:#b9a590;--paper:#4a3b30;--edge:#c9b49c;--pri:#f2b36b;--line:rgba(255,255,255,.08);--tab1:#8f3220;--tab2:#1f6f66;--tab3:#7a5f10}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 'Atkinson Hyperlegible','Trebuchet MS',Arial,sans-serif;padding:24px}
+  h1,h2,h3{font-family:Georgia,serif;margin:0}
+  h1{font-size:34px} h2{font-size:24px;margin:36px 0 6px} .sub{color:var(--cap);margin:0 0 18px}
+  button.mode{float:right;font:700 15px Arial;padding:8px 16px;border-radius:12px;border:2px solid var(--edge);background:var(--paper);color:var(--ink);cursor:pointer;box-shadow:0 3px 0 var(--edge)}
+  .row{display:flex;flex-wrap:wrap;gap:36px;align-items:flex-start;padding:18px 10px}
+  a{color:inherit;text-decoration:none}
+  .meta{font:13px Arial;color:var(--cap)}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+  /* A: stacked index card with a category tab */
+  .stack{position:relative;width:290px;margin-top:22px;transition:transform .2s}
+  .stack .tab{position:absolute;top:-22px;left:14px;padding:3px 14px 2px;border:2px solid var(--edge);border-bottom:0;border-radius:10px 10px 0 0;font:700 12px Arial;letter-spacing:.06em;text-transform:uppercase;color:#fff}
+  .stack .sheet{position:relative;background:var(--paper);border:2px solid var(--edge);border-radius:4px 10px 10px 10px;padding:16px 16px 14px;
+    box-shadow:5px 5px 0 -1px var(--paper),5px 5px 0 1px var(--edge),10px 10px 0 -1px var(--paper),10px 10px 0 1px var(--edge),12px 16px 22px rgba(0,0,0,.25)}
+  .stack .sheet::before{content:"";position:absolute;left:12px;top:50%;width:10px;height:10px;border-radius:50%;border:2px solid var(--edge);background:var(--bg);transform:translateY(-50%)}
+  .stack .body{padding-left:18px;background-image:repeating-linear-gradient(transparent 0 27px,var(--line) 27px 28px)}
+  .stack h3{font-size:19px;line-height:1.25;margin:2px 0 6px}
+  .stack:hover,.stack:focus-within{transform:translateY(-6px) rotate(-.8deg)}
+
+  /* B: polaroid */
+  .polaroid{width:260px;background:var(--paper);border:2px solid var(--edge);border-radius:4px;padding:12px 12px 16px;transform:rotate(-1.5deg);transition:transform .2s;
+    box-shadow:0 1px 1px rgba(0,0,0,.3),0 8px 10px rgba(0,0,0,.2),0 22px 28px rgba(0,0,0,.2);position:relative}
+  .polaroid:nth-child(even){transform:rotate(1.2deg)}
+  .polaroid .photo{height:150px;border-radius:2px;background:linear-gradient(135deg,#2a9d8f,#264653);box-shadow:inset 0 0 0 2px rgba(0,0,0,.25),inset 0 6px 14px rgba(0,0,0,.35);display:flex;align-items:center;justify-content:center;color:#fff;font:700 15px Georgia}
+  .polaroid .tape{position:absolute;top:-12px;left:50%;width:76px;height:22px;margin-left:-38px;background:rgba(233,196,106,.85);transform:rotate(3deg);box-shadow:0 1px 2px rgba(0,0,0,.25)}
+  .polaroid h3{font:700 19px/1.25 'Brush Script MT','Segoe Script',Georgia,cursive;margin:12px 0 2px}
+  .polaroid:hover,.polaroid:focus-within{transform:rotate(0) translateY(-6px)}
+
+  /* C: ticket stub */
+  .ticket{width:300px;display:flex;background:var(--paper);color:var(--ink);border:2px solid var(--edge);border-radius:10px;position:relative;transition:transform .2s;box-shadow:0 10px 18px rgba(0,0,0,.25)}
+  .ticket::before,.ticket::after{content:"";position:absolute;left:84px;width:18px;height:18px;border-radius:50%;background:var(--bg);border:2px solid var(--edge)}
+  .ticket::before{top:-11px;border-top-color:transparent;border-left-color:transparent;transform:rotate(45deg)}
+  .ticket::after{bottom:-11px;border-bottom-color:transparent;border-right-color:transparent;transform:rotate(45deg)}
+  .ticket .stub{width:94px;padding:14px 8px;border-right:2px dashed var(--edge);text-align:center;background:var(--tab2);color:#fff;border-radius:8px 0 0 8px;display:flex;flex-direction:column;justify-content:center}
+  .ticket .stub b{font:700 30px Georgia;line-height:1}
+  .ticket .main{padding:14px 14px 12px}
+  .ticket h3{font-size:18px;line-height:1.25;margin:0 0 4px}
+  .ticket:hover,.ticket:focus-within{transform:translateY(-6px)}
+
+  /* decks: stacked slides */
+  .deck{width:200px;height:200px;position:relative;transition:transform .2s}
+  .deck i{position:absolute;inset:0;border-radius:16px;border:2px solid var(--edge)}
+  .deck i:nth-child(1){transform:translate(12px,12px) rotate(3deg);background:#264653}
+  .deck i:nth-child(2){transform:translate(6px,6px) rotate(1.5deg);background:#1f6f66}
+  .deck .top{position:absolute;inset:0;border-radius:16px;border:2px solid var(--edge);background:linear-gradient(135deg,#a8321a,#8f2a4f);color:#fff;padding:16px;display:flex;flex-direction:column;justify-content:flex-end;box-shadow:0 12px 20px rgba(0,0,0,.3),inset 0 3px 0 rgba(255,255,255,.25)}
+  .deck h3{font-size:17px;line-height:1.25}
+  .deck:hover,.deck:focus-within{transform:translateY(-6px) rotate(-1deg)}
+  .note{font-size:15px;color:var(--cap);max-width:760px}
+  .note li{margin:4px 0}
+</style>
+</head>
+<body>
+<button class="mode" onclick="document.documentElement.classList.toggle('dark')">Toggle dark mode</button>
+<h1>Cards that are not flat</h1>
+<p class="sub">Real titles. Hover or Tab to a card. Pick a direction per card type, or mix.</p>
+
+<h2>A. Index card (posts)</h2>
+<p class="sub">Stacked sheets under the card, a category tab on top, a punched hole and ruled lines. The category tab color is a real label, never color alone.</p>
+<div class="row">
+  <article class="stack"><span class="tab" style="background:var(--tab1)">career</span><div class="sheet"><div class="body"><h3><a href="#">Surat Untuk Diriku di Masa Depan</a></h3><p style="margin:0 0 8px;font-size:15px">Sebuah surat panjang untuk diriku sendiri di masa depan...</p><span class="meta">2026-07-02 - Long story - 17 min</span></div></div></article>
+  <article class="stack"><span class="tab" style="background:var(--tab2)">tutorials</span><div class="sheet"><div class="body"><h3><a href="#">Lewati CORS dengan proxy API</a></h3><p style="margin:0 0 8px;font-size:15px">Cara sederhana melewati CORS saat belajar.</p><span class="meta">2026 - Short read - 5 min</span></div></div></article>
+  <article class="stack"><span class="tab" style="background:var(--tab3)">experience</span><div class="sheet"><div class="body"><h3><a href="#">Interaktivitas di Astro</a></h3><p style="margin:0 0 8px;font-size:15px">Kapan perlu island, kapan tidak.</p><span class="meta">2026 - Long story - 9 min</span></div></div></article>
+</div>
+
+<h2>B. Polaroid (projects)</h2>
+<p class="sub">Photo with an inset frame, a handwritten caption, tape, a small tilt that straightens on hover.</p>
+<div class="row">
+  <article class="polaroid"><span class="tape"></span><div class="photo">screenshot</div><h3><a href="#">Coding Monster</a></h3><span class="meta">Web app - 2025</span></article>
+  <article class="polaroid"><span class="tape"></span><div class="photo" style="background:linear-gradient(135deg,#e9c46a,#a8321a)">screenshot</div><h3><a href="#">CodeKids</a></h3><span class="meta">Education - 2025</span></article>
+  <article class="polaroid"><span class="tape"></span><div class="photo" style="background:linear-gradient(135deg,#264653,#6a4c93)">screenshot</div><h3><a href="#">GraphQL PokeApi</a></h3><span class="meta">Open source - 2026</span></article>
+</div>
+
+<h2>C. Ticket stub (talks, events)</h2>
+<p class="sub">A tear-off stub with the year, a perforation line, notched edges.</p>
+<div class="row">
+  <article class="ticket"><div class="stub"><b>2024</b><span style="font:700 12px Arial">NOV 25</span></div><div class="main"><h3><a href="#">Open Tech Summit Jakarta</a></h3><span class="meta">FOSSASIA - Talk</span></div></article>
+  <article class="ticket"><div class="stub" style="background:var(--tab1)"><b>2023</b><span style="font:700 12px Arial">MAR 04</span></div><div class="main"><h3><a href="#">WebUnconf</a></h3><span class="meta">Meetup - Talk</span></div></article>
+</div>
+
+<h2>D. Deck (slides)</h2>
+<p class="sub">Two slides peek out behind the top slide. The title stays real text on a darkened gradient.</p>
+<div class="row">
+  <article class="deck"><i></i><i></i><div class="top"><span class="meta" style="color:#fff">7 slides</span><h3><a href="#">Catatan Mencari Kerja Setelah Layoff</a></h3></div></article>
+  <article class="deck"><i></i><i></i><div class="top" style="background:linear-gradient(135deg,#124a8c,#0b6b80)"><span class="meta" style="color:#fff">7 slides</span><h3><a href="#">Bertahan Setelah Layoff</a></h3></div></article>
+</div>
+
+<h2>Rules for all cards</h2>
+<ul class="note">
+  <li>Depth from stacked edges, layered shadow, tape and tilt. A real 2px edge around every card (3:1 on the page).</li>
+  <li>One link per card (the title); the whole card may be clickable with a stretched link, never nested links.</li>
+  <li>Tilt at most 1.5 degrees. Hover and focus lift and straighten; both are off under <code>prefers-reduced-motion</code>. Text is never on a texture or ruled line for long reading.</li>
+  <li>Heading level is a prop so page heading order stays valid. Category and kind are text labels.</li>
+</ul>
+</body>
+</html>
