@@ -75,6 +75,12 @@
     transform: translateY(3px);
   }
 
+  /* icons placed inside a key keep a readable size */
+  .keycap-face [data-icon] {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
   .keycap-terracotta {
     --kc-hi: var(--th-key-terracotta-face-hi);
     --kc-lo: var(--th-key-terracotta-face-lo);

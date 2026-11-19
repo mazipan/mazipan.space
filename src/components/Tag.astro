@@ -34,6 +34,13 @@ const {
 } = Astro.props as TagProps;
 ---
 
-<a {...props} class={tagVariants({ variant, colors, size, className })}>
-  <slot />
-</a>
+{/* a tag without a link is a plain label: a <span>, so it does not look or act clickable */}
+{props.href ? (
+  <a {...props} class={tagVariants({ variant, colors, size, className })}>
+    <slot />
+  </a>
+) : (
+  <span class={tagVariants({ variant, colors, size, className })}>
+    <slot />
+  </span>
+)}
