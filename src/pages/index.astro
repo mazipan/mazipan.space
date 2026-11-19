@@ -1,15 +1,79 @@
 ---
-import { Icon } from 'astro-icon/components';
 import { Image } from 'astro:assets';
 
+import { getAllCarousels } from '@/modules/carousel';
+import { getAllPostsWithReadingTime } from '@/modules/post/common';
+import { getBookProps } from '@/modules/post/shelf';
 import Centered from '@/layouts/Centered.astro';
+import Book from '@/components/Book.astro';
 import Button from '@/components/Button.astro';
 import GradientBlob from '@/components/GradientBlob.astro';
-import RainbowTag from '@/components/RainbowTag.astro';
+import PaperCard from '@/components/PaperCard.astro';
+import Shelf from '@/components/Shelf.astro';
 import SocialLinks from '@/components/SocialLinks.astro';
+import { NOW } from '@/constants/now';
 import { PROFILE } from '@/constants/profile';
+import { ROUTES } from '@/constants/routes';
+import { CONFIG_CLIENT } from '@/config/client';
 
 import AvatarSrc from '@/assets/images/avatar.png';
+
+const { AUTHOR_EMAIL, AUTHOR_GITHUB } = CONFIG_CLIENT;
+
+// posts and carousels are sorted newest first
+const recentPosts = (await getAllPostsWithReadingTime()).slice(0, 4);
+const [newestPost] = recentPosts;
+const [newestSlides] = await getAllCarousels();
+
+// the "Right now" strip: real data first, then the lines from src/constants/now.ts
+const nowItems = [
+  {
+    label: 'Part of',
+    text: PROFILE.CURRENT_POSITION.replace(/^Part of\s*/i, '').replace(/\.$/, ''),
+  },
+  NOW.making && { label: 'Making', text: NOW.making },
+  NOW.reading && { label: 'Reading', text: NOW.reading },
+  NOW.listening && { label: 'Listening', text: NOW.listening },
+  newestPost && {
+    label: 'Newest post',
+    text: newestPost.data.title,
+    href: `${ROUTES.BLOG}/${newestPost.slug}`,
+  },
+  newestSlides && {
+    label: 'Newest slides',
+    text: newestSlides.data.title,
+    href: `${ROUTES.CAROUSEL}/${newestSlides.slug}`,
+  },
+].filter(Boolean) as { label: string; text: string; href?: string }[];
+
+const doItems = [
+  {
+    title: 'Talk',
+    text: 'I speak about JavaScript, React.js, Next.js, open source, and career advice.',
+    href: ROUTES.TALKS,
+    linkLabel: 'See my talks',
+  },
+  {
+    title: 'Chat 1:1',
+    text: 'One-on-one talks on ADPList, mostly about careers and productivity.',
+    href: 'https://dub.sh/mzp.adp',
+    linkLabel: 'Book a chat',
+    external: true,
+  },
+  {
+    title: 'Build in public',
+    text: 'Small projects for fun, and community work in PHPID, React.js ID and KawalCovid19.',
+    href: AUTHOR_GITHUB,
+    linkLabel: 'See my code',
+    external: true,
+  },
+  {
+    title: 'Slides',
+    text: 'Short slide stories, like the layoff series.',
+    href: ROUTES.CAROUSEL,
+    linkLabel: 'Open the slides',
+  },
+];
 ---
 
 <Centered
@@ -17,17 +81,44 @@ import AvatarSrc from '@/assets/images/avatar.png';
     title: 'Homepage',
   }}
 >
-  <article class="flex flex-col">
-    <div class="relative flex min-h-[calc(100vh-100px)] flex-col-reverse items-center justify-center gap-8 overflow-hidden py-8 md:flex-row">
-      <div class="flex max-w-[300px] flex-col gap-2">
-        <RainbowTag emoji="💅" text="Frontend Web Developer" />
-        <p>{PROFILE.TAGLINE}</p>
+  <article class="flex flex-col gap-16 pb-16">
+    <section
+      aria-labelledby="hello"
+      class="flex flex-col-reverse items-center gap-10 py-8 md:flex-row"
+    >
+      <div class="flex-1">
+        <p class="text-primary mb-2 text-lg font-bold">Hello there,</p>
+        <h1
+          id="hello"
+          class="text-headings font-serif text-4xl leading-tight font-bold md:text-6xl"
+        >
+          I'm Irfan Maulana.
+          <br />
+          Call me <span class="home-mark">"mas ipan."</span>
+        </h1>
+        <p class="my-5 max-w-[50ch] text-lg">{PROFILE.TAGLINE}</p>
+        <p class="mb-6 max-w-[50ch] text-lg">
+          I write about what I learn, speak at events, and chat with people about their careers.
+          Pull up a chair.
+        </p>
+        <div class="flex flex-wrap items-center gap-4">
+          <Button element="a" href={`mailto:${AUTHOR_EMAIL}`} variant="solid" colors="primary">
+            Say hi
+          </Button>
+          <Button element="a" href={ROUTES.ABOUT} variant="outline" colors="primary">
+            Read my story
+          </Button>
+        </div>
+        <div class="mt-6">
+          <SocialLinks />
+        </div>
       </div>
-      <div class="relative h-[250px] w-[250px]">
+
+      <div class="relative h-[250px] w-[250px] shrink-0">
         <Image
           width={250}
           src={AvatarSrc}
-          alt="MZP Avatar"
+          alt="Irfan Maulana"
           class="relative z-10"
           style="border-radius: 77% 23% 70% 30% / 48% 36% 64% 52%;"
         />
@@ -41,43 +132,87 @@ import AvatarSrc from '@/assets/images/avatar.png';
             role="button"
             type="button"
             size="sm"
-            class="absolute top-[165px] right-0 z-5 h-8 w-8 p-1"
+            class="absolute top-[165px] right-0 z-20 h-8 w-8 p-1"
             id="btn-swap-gradient"
             title="Shuffle gradient"
             aria-label="Shuffle gradient"
           >
-            <Icon name="tabler:refresh" class="h-4 w-4" />
+            <svg
+              aria-hidden="true"
+              viewBox="0 0 24 24"
+              class="h-4 w-4 fill-none stroke-current stroke-2"
+            >
+              <path d="M20 11a8 8 0 0 0-14.9-3M4 5v4h4M4 13a8 8 0 0 0 14.9 3M20 19v-4h-4"></path>
+            </svg>
           </Button>
         </swap-button>
       </div>
-      <div class="border-primary border-b-4 border-dashed p-8">
-        <SocialLinks />
-        <h1 class="text-primary mt-4 mb-2 font-serif text-5xl">Irfan Maulana</h1>
-        <p class="text-lg font-semibold">Call me "mas ipan"</p>
-      </div>
+    </section>
 
-      <svg
-        aria-hidden="true"
-        class="pointer-events-none absolute inset-0 top-0 -z-[1] h-full w-full [mask-image:radial-gradient(500px_circle_at_center,white,transparent)] fill-neutral-400/80"
-      >
-        <defs>
-          <pattern
-            id=":r0:"
-            width="16"
-            height="16"
-            patternUnits="userSpaceOnUse"
-            patternContentUnits="userSpaceOnUse"
-            x="0"
-            y="0"
-          >
-            <circle id="pattern-circle" cx="1" cy="1" r="1"></circle>
-          </pattern>
-        </defs>
-        <rect width="100%" height="100%" stroke-width="0" fill="url(#:r0:)"></rect>
-      </svg>
-    </div>
+    <section aria-labelledby="right-now" class="home-strip -mx-4 px-4 py-5">
+      <h2 id="right-now" class="text-captions mb-3 text-sm font-bold tracking-wider uppercase">
+        Right now
+      </h2>
+      <dl class="grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-2 lg:grid-cols-3">
+        {nowItems.map(({ label, text, href }) => (
+          <div>
+            <dt class="font-bold">{label}</dt>
+            <dd class="m-0">
+              {href ? (
+                <a href={href} class="link-default underline underline-offset-2">
+                  {text}
+                </a>
+              ) : (
+                text
+              )}
+            </dd>
+          </div>
+        ))}
+      </dl>
+    </section>
+
+    <Shelf title="Lately, I wrote" href={ROUTES.BLOG} linkLabel="All writing">
+      {recentPosts.map((post, index) => (
+        <Book {...getBookProps(post, index)} />
+      ))}
+    </Shelf>
+
+    <section aria-labelledby="do-more">
+      <h2 id="do-more" class="text-headings mb-6 font-serif text-2xl font-bold">
+        What I do besides code
+      </h2>
+      <ul class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {doItems.map(({ title, text, href, linkLabel, external }) => (
+          <PaperCard as="li" class="flex flex-col gap-2">
+            <h3 class="text-headings font-serif text-lg font-bold">{title}</h3>
+            <p class="m-0 flex-1">{text}</p>
+            <a
+              href={href}
+              class="link-default font-bold underline underline-offset-2"
+              {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+            >
+              {linkLabel} &rarr;
+            </a>
+          </PaperCard>
+        ))}
+      </ul>
+    </section>
   </article>
 </Centered>
+
+<style>
+  .home-mark {
+    padding: 0 0.3em;
+    border-radius: 0.3em;
+    background: var(--th-note-bg);
+    color: var(--th-note-text);
+  }
+
+  .home-strip {
+    border-block: 2px solid var(--th-key-edge);
+    background: var(--th-base-200);
+  }
+</style>
 
 <script>
   class ButtonSwap extends HTMLElement {
