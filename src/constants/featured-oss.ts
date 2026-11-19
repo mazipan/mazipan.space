@@ -62,4 +62,11 @@ export const FEATURED_OSS = [
     url: 'https://webperf-ecommerce-id.vercel.app/',
     stacks: ['Next.js', 'PageSpeedInsight'],
   },
+  {
+    title: 'CodeKids',
+    desc: 'Free coding and brain training for kids ages 5-14',
+    repo: 'https://github.com/mazipan/coding-kids',
+    url: 'https://coding.mazipan.space',
+    stacks: ['React', 'Blockly', 'Tailwind CSS'],
+  },
 ];
