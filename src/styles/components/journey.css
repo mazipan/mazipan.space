@@ -1,0 +1,331 @@
+/* Resume as a road trip. A road runs down the page, one roadside card per company, a car drives
+   down it as you scroll (see resume.astro). Decoration only: all text is real, in a real list.
+   Without JavaScript or with reduced motion the car parks at the start and every stop is lit. */
+@layer components {
+  .journey {
+    --road-w: 72px;
+    --car-y: 0px;
+    --car-tilt: 0deg;
+    --road-offset: 0px;
+    position: relative;
+    margin: 0;
+    padding: 24px 0 110px;
+    list-style: none;
+  }
+
+  /* the road: raised asphalt with white edge lines and a flowing dashed center line */
+  .road {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: var(--road-w);
+    margin-left: calc(var(--road-w) / -2);
+    border: 2px solid var(--th-key-edge);
+    border-radius: 14px;
+    background:
+      repeating-linear-gradient(to bottom, #f4efe4 0 20px, transparent 20px 42px) center / 4px 100%
+        no-repeat,
+      linear-gradient(to right, #3a3633, #4a4540 50%, #3a3633);
+    background-position:
+      center var(--road-offset),
+      0 0;
+    box-shadow:
+      inset 5px 0 0 -2px rgb(255 255 255 / 0.55),
+      inset -5px 0 0 -2px rgb(255 255 255 / 0.55),
+      inset 0 6px 14px rgb(0 0 0 / 0.5),
+      0 6px 0 -1px var(--th-key-cream-side),
+      0 18px 26px rgb(0 0 0 / 0.22);
+  }
+
+  .car {
+    position: absolute;
+    top: var(--car-y);
+    left: 50%;
+    z-index: 5;
+    width: 38px;
+    margin-left: -19px;
+    transform: rotate(var(--car-tilt));
+    transform-origin: 50% 50%;
+    transition: transform 160ms ease-out;
+    filter: drop-shadow(0 6px 5px rgb(0 0 0 / 0.45));
+  }
+  .car svg {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  /* headlight beams, fainter when parked */
+  .car::after {
+    content: '';
+    position: absolute;
+    top: 92%;
+    left: 8%;
+    width: 84%;
+    height: 70px;
+    background: linear-gradient(to bottom, rgb(255 247 194 / 0.55), transparent);
+    clip-path: polygon(14% 0, 86% 0, 100% 100%, 0 100%);
+    opacity: 0.35;
+    transition: opacity 200ms;
+    pointer-events: none;
+  }
+  .journey[data-driving] .car::after {
+    opacity: 1;
+  }
+
+  .car-wheel {
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+  .journey[data-driving] .car svg {
+    animation: car-bump 180ms linear infinite;
+  }
+  @keyframes car-bump {
+    0%,
+    100% {
+      transform: translateX(0);
+    }
+    50% {
+      transform: translateX(0.8px);
+    }
+  }
+
+  /* exhaust puffs behind the car, only while driving */
+  .puff {
+    position: absolute;
+    top: -6px;
+    left: 50%;
+    width: 8px;
+    height: 8px;
+    margin-left: -4px;
+    border-radius: 50%;
+    background: rgb(255 255 255 / 0.6);
+    opacity: 0;
+  }
+  .journey[data-driving] .puff {
+    animation: puff 700ms ease-out infinite;
+  }
+  .puff:nth-child(2) {
+    animation-delay: 230ms !important;
+  }
+  .puff:nth-child(3) {
+    animation-delay: 460ms !important;
+  }
+  @keyframes puff {
+    0% {
+      opacity: 0.7;
+      transform: translateY(0) scale(0.6);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-34px) scale(1.8);
+    }
+  }
+
+  /* one stop = a row: [card | road | year plate] or the mirror */
+  .stop {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr var(--road-w) 1fr;
+    align-items: start;
+    padding-block: 18px;
+  }
+  .stop-card {
+    position: relative;
+    grid-column: 1;
+    margin-right: 26px;
+    padding: 22px 18px 16px;
+    border: 2px solid var(--th-key-edge);
+    border-radius: 14px;
+    background: var(--th-sheet-bg);
+    box-shadow:
+      inset 0 2px 0 rgb(255 255 255 / 0.5),
+      0 5px 0 -1px var(--th-key-cream-side),
+      0 14px 22px rgb(0 0 0 / 0.14);
+    transition:
+      transform 220ms,
+      box-shadow 220ms;
+  }
+  :root.dark .stop-card {
+    box-shadow:
+      inset 0 2px 0 rgb(255 255 255 / 0.1),
+      0 5px 0 -1px var(--th-key-cream-side),
+      0 14px 22px rgb(0 0 0 / 0.4);
+  }
+  .stop:nth-child(even) .stop-card {
+    grid-column: 3;
+    margin-right: 0;
+    margin-left: 26px;
+  }
+
+  /* connector from the card to the road, ending in a lamp on the road edge */
+  .stop-card::after {
+    content: '';
+    position: absolute;
+    top: 30px;
+    right: -26px;
+    width: 26px;
+    height: 4px;
+    background: var(--th-key-edge);
+  }
+  .stop:nth-child(even) .stop-card::after {
+    right: auto;
+    left: -26px;
+  }
+  .stop-lamp {
+    position: absolute;
+    top: 25px;
+    left: calc(50% - 36px - 7px);
+    z-index: 4;
+    width: 14px;
+    height: 14px;
+    border: 2px solid var(--th-key-edge);
+    border-radius: 50%;
+    background: var(--th-base-300);
+    transition:
+      background 200ms,
+      box-shadow 200ms;
+  }
+  .stop:nth-child(even) .stop-lamp {
+    left: calc(50% + 36px - 7px);
+  }
+  /* the car has passed: the lamp is on and the card is lifted */
+  .stop[data-reached] .stop-lamp {
+    background: #ffe27a;
+    box-shadow: 0 0 10px 3px rgb(255 226 122 / 0.8);
+  }
+  .stop[data-reached] .stop-card {
+    transform: translateY(-3px);
+  }
+
+  /* exit tab on the card */
+  .stop-tab {
+    position: absolute;
+    top: -14px;
+    left: 16px;
+    padding: 2px 12px;
+    border: 2px solid var(--th-key-edge);
+    border-radius: 8px;
+    background: linear-gradient(to bottom, var(--th-key-teal-face-hi), var(--th-key-teal-face-lo));
+    box-shadow: 0 3px 0 var(--th-key-teal-side);
+    color: var(--th-key-teal-text);
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* the year, as a milestone plate on the other side of the road */
+  .stop-plate {
+    grid-row: 1;
+    grid-column: 3;
+    justify-self: start;
+    margin: 14px 0 0 26px;
+    padding: 4px 14px;
+    border: 2px solid var(--th-key-edge);
+    border-radius: 10px;
+    background: linear-gradient(
+      to bottom,
+      var(--th-key-cream-face-hi),
+      var(--th-key-cream-face-lo)
+    );
+    box-shadow:
+      inset 0 2px 0 rgb(255 255 255 / 0.5),
+      0 4px 0 var(--th-key-cream-side);
+    color: var(--th-key-cream-text);
+    font-family: var(--font-serif, serif);
+    font-size: 1.5rem;
+    font-weight: 800;
+    line-height: 1.2;
+  }
+  .stop:nth-child(even) .stop-plate {
+    grid-column: 1;
+    justify-self: end;
+    margin: 14px 26px 0 0;
+  }
+
+  /* start and end signs stand beside the road (start on the left, end on the right) */
+  .stop-start,
+  .stop-end {
+    display: flex;
+    padding-block: 10px 26px;
+  }
+  .stop-start {
+    justify-content: flex-end;
+    padding-right: calc(50% + var(--road-w) / 2 + 26px);
+  }
+  .stop-end {
+    justify-content: flex-start;
+    padding-left: calc(50% + var(--road-w) / 2 + 26px);
+  }
+  .stop-sign {
+    position: relative;
+    z-index: 3;
+    max-width: 24rem;
+    padding: 14px 20px;
+    border: 2px solid var(--th-key-edge);
+    border-radius: 14px;
+    background: linear-gradient(to bottom, var(--th-key-teal-face-hi), var(--th-key-teal-face-lo));
+    box-shadow:
+      inset 0 0 0 4px rgb(255 255 255 / 0.2),
+      0 6px 0 var(--th-key-teal-side),
+      0 16px 24px rgb(0 0 0 / 0.25);
+    color: var(--th-key-teal-text);
+    text-align: center;
+  }
+
+  /* phones: the road moves to the left edge, cards on the right, the year goes into the tab */
+  @media (max-width: 767px) {
+    .journey {
+      --road-w: 48px;
+    }
+    .road {
+      left: 24px;
+      margin-left: 0;
+    }
+    .car {
+      left: 24px;
+      margin-left: -15px;
+      width: 30px;
+    }
+    .stop {
+      grid-template-columns: var(--road-w) 1fr;
+    }
+    .stop-card,
+    .stop:nth-child(even) .stop-card {
+      grid-column: 2;
+      margin: 0 0 0 22px;
+    }
+    .stop-card::after,
+    .stop:nth-child(even) .stop-card::after {
+      right: auto;
+      left: -22px;
+      width: 22px;
+    }
+    .stop-lamp,
+    .stop:nth-child(even) .stop-lamp {
+      left: calc(24px + 24px - 7px);
+    }
+    .stop-plate {
+      display: none;
+    }
+    .stop-start,
+    .stop-end {
+      justify-content: flex-start;
+      padding-right: 0;
+      padding-left: calc(var(--road-w) + 22px);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .car,
+    .stop-card,
+    .stop-lamp {
+      transition: none;
+    }
+    .journey[data-driving] .car svg,
+    .journey[data-driving] .puff {
+      animation: none;
+    }
+  }
+}

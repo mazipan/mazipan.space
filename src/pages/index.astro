@@ -27,7 +27,7 @@ const [newestSlides] = await getAllCarousels();
 
 // the "Right now" strip: real data first, then the lines from src/constants/now.ts
 const nowItems = [
-  {
+  PROFILE.CURRENT_POSITION && {
     label: 'Part of',
     text: PROFILE.CURRENT_POSITION.replace(/^Part of\s*/i, '').replace(/\.$/, ''),
   },
@@ -118,6 +118,7 @@ const doItems = [
         <Image
           slot="photo"
           width={300}
+          densities={[1, 2]}
           src={PhotoSrc}
           alt="Irfan Maulana, smiling, arms crossed, in a black t-shirt"
           class="w-full"

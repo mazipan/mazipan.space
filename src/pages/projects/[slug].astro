@@ -50,8 +50,8 @@ const breadcrumbs = [BreadcrumbItemHome, BreadcrumbItemProject];
 ---
 
 <Centered {metadata}>
-  <div class="my-prose relative [&_h2]:!my-0 [&_img]:!my-0 [&_li]:!my-0">
-    <Breadcrumbs items={breadcrumbs} />
+  <Breadcrumbs items={breadcrumbs} />
+  <div class="my-prose sheet sheet-prose relative [&_h2]:!my-0 [&_img]:!my-0 [&_li]:!my-0">
     <h1
       class="b-h1 mb-2 font-serif tracking-wide"
       transition:name={getTransitionNameFromElementId({
@@ -60,36 +60,32 @@ const breadcrumbs = [BreadcrumbItemHome, BreadcrumbItemProject];
     >
       {title}
     </h1>
-    {
-      description && (
-        <p
-          class="text-content my-4 text-xl font-normal"
+    {description && (
+      <p
+        class="text-content my-4 text-xl font-normal"
+        transition:name={getTransitionNameFromElementId({
+          elementId: TRANSITION_ELEMENT_IDS.POST_CARD.DESCRIPTION,
+        })}
+      >
+        {description}
+      </p>
+    )}
+    {heroImage && (
+      <div class="frame mb-6 max-w-[540px]">
+        <Image
+          {...IMAGE_SIZES.RESPONSIVE.POST_HERO}
+          src={heroImage}
+          alt={heroAlt}
+          fetchpriority="high"
+          loading="eager"
+          itemprop="image"
+          class="h-auto w-full"
           transition:name={getTransitionNameFromElementId({
-            elementId: TRANSITION_ELEMENT_IDS.POST_CARD.DESCRIPTION,
+            elementId: TRANSITION_ELEMENT_IDS.POST_CARD.HERO_IMAGE,
           })}
-        >
-          {description}
-        </p>
-      )
-    }
-    {
-      heroImage && (
-        <div class="group bg-base-200 mb-4 block h-fit max-h-[600px] w-auto max-w-[500px] overflow-clip rounded-lg bg-cover bg-center shadow-md">
-          <Image
-            {...IMAGE_SIZES.RESPONSIVE.POST_HERO}
-            src={heroImage}
-            alt={heroAlt}
-            fetchpriority="high"
-            loading="eager"
-            itemprop="image"
-            class="aspect-[1.75] h-[inherit] max-h-[inherit] rounded-[inherit] object-center"
-            transition:name={getTransitionNameFromElementId({
-              elementId: TRANSITION_ELEMENT_IDS.POST_CARD.HERO_IMAGE,
-            })}
-          />
-        </div>
-      )
-    }
+        />
+      </div>
+    )}
     <Content />
     <div class="mt-8">
       <Share {...shareProps} />

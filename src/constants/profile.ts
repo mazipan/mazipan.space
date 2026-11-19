@@ -1,10 +1,13 @@
 export const PROFILE = {
   TAGLINE:
     'Web developer with extensive experience in building projects from the ground up, enhancing performance and scalability, managing tech stack migrations, promoting quality-focused practices, and mentoring junior developers.',
-  CURRENT_POSITION: 'Part of GovTech Edu Indonesia.',
+  /** Shown in the home "Right now" strip as "Part of ...". Empty hides it. Wego since Mar 2025 (GovTech Edu before). */
+  CURRENT_POSITION: 'Part of Wego.',
+  /** Shows the "Available for hire" status on About and Resume. Set to false when it is no longer true. */
+  AVAILABLE_FOR_HIRE: false,
   HIGHTLIGHT: [
     '⚛️ React.js x TypeScript',
-    '💼 Ex: Sayurbox, Tokopedia, Bizzy Indonesia, Blibli, & SML Technologies.',
+    '💼 Ex: GovTech Edu, Sayurbox, Tokopedia, Bizzy Indonesia, Blibli, & SML Technologies.',
     '🛟 Active contributor to open source project in PHPID, React.js ID, & KawalCovid19.',
   ],
 };

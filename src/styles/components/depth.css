@@ -23,6 +23,22 @@
       0 6px 0 -2px var(--th-key-cream-side),
       0 18px 28px rgb(0 0 0 / 0.16);
   }
+  /* a sheet for reading: the sheet itself is one reading column wide (40.5rem = the 36.5rem
+     text measure plus the sheet padding), so there is no wide empty padding around the text */
+  .sheet-prose {
+    width: 100%;
+    max-width: 40.5rem;
+    margin-inline: auto;
+  }
+  /* no extra margin above the first or below the last block: the sheet padding is enough */
+  .sheet-prose > :first-child,
+  .sheet-prose > content-wrapper > :first-child {
+    margin-top: 0;
+  }
+  .sheet-prose > :last-child,
+  .sheet-prose > content-wrapper > :last-child {
+    margin-bottom: 0;
+  }
   :root.dark .sheet {
     box-shadow:
       inset 0 2px 0 rgb(255 255 255 / 0.1),
