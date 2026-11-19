@@ -5,13 +5,15 @@ import type { Post } from '@/types/post';
 
 export interface Props {
   posts: Post[];
+  /** pick the level that keeps the page heading order */
+  headingLevel?: 'h2' | 'h3';
 }
 
-const { posts } = Astro.props;
+const { posts, headingLevel = 'h3' } = Astro.props;
 ---
 
 <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
   {posts.map((post) => (
-    <PostCardSmall post={post} withImage={true} headingLevel="h3" />
+    <PostCardSmall post={post} withImage={true} {headingLevel} />
   ))}
 </div>

@@ -1,0 +1,84 @@
+---
+// Pick a color palette. Light or dark stays as it is. The choice is stored by ThemeScript.
+import { PALETTES } from '@/constants/theme';
+import Keycap from './Keycap.astro';
+---
+
+<palette-switcher>
+  <p class="mb-2 text-sm font-semibold" id="palette-label">
+    Color palette
+  </p>
+  <ul class="flex flex-wrap gap-2" role="list" aria-labelledby="palette-label">
+    {PALETTES.map(({ id, label, swatch }) => (
+      <li>
+        <Keycap
+          element="button"
+          colors="cream"
+          size="sm"
+          class="keycap-nav"
+          pressed={false}
+          data-palette={id}
+        >
+          <span
+            class="mr-2 inline-block h-3 w-3 rounded-full align-middle"
+            style={`background:${swatch};box-shadow:0 0 0 2px currentColor`}
+            aria-hidden="true"
+          />
+          {label}
+        </Keycap>
+      </li>
+    ))}
+  </ul>
+</palette-switcher>
+
+<script>
+  import { THEME_CONFIG } from '@/constants/theme';
+  import { getCurrentMode, getPaletteId, getThemeFor } from '@/utils/theme';
+
+  import type { ChangeThemeCustomEvent } from '@/types/constants';
+
+  const { CHANGE_EVENT, DATA_ATTRIBUTE } = THEME_CONFIG;
+
+  class PaletteSwitcher extends HTMLElement {
+    #controller: AbortController | undefined;
+    #observer: MutationObserver | undefined;
+
+    connectedCallback() {
+      const root = document.documentElement;
+      const buttons = [...this.querySelectorAll<HTMLButtonElement>('[data-palette]')];
+
+      // keep the pressed key in step with the real theme, however it changed
+      const sync = () => {
+        const current = getPaletteId(root.getAttribute(DATA_ATTRIBUTE) ?? 'default');
+        for (const button of buttons) {
+          button.setAttribute('aria-pressed', String(button.dataset.palette === current));
+        }
+      };
+      sync();
+      this.#observer = new MutationObserver(sync);
+      this.#observer.observe(root, { attributes: true, attributeFilter: [DATA_ATTRIBUTE] });
+
+      const { signal } = (this.#controller = new AbortController());
+      for (const button of buttons) {
+        button.addEventListener(
+          'click',
+          () => {
+            const theme = getThemeFor(button.dataset.palette ?? 'default', getCurrentMode());
+            if (!theme) return;
+            const payload = { detail: { theme } } as ChangeThemeCustomEvent;
+            document.dispatchEvent(new CustomEvent(CHANGE_EVENT, payload));
+          },
+          { signal }
+        );
+      }
+    }
+
+    disconnectedCallback() {
+      this.#controller?.abort();
+      this.#observer?.disconnect();
+    }
+  }
+
+  if (!customElements.get('palette-switcher'))
+    customElements.define('palette-switcher', PaletteSwitcher);
+</script>

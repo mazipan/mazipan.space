@@ -165,15 +165,17 @@ Available: `@/assets`, `@/components`, `@/constants`, `@/content`, `@/layouts`,
 Tactile "keycap" look. Build pages by composing these, never with one-off styles.
 Every component has a reference page under `/design/*` (source: `src/pages/design/`).
 
-| Component                    | Use                                                                                               | Key props                                                                              | Reference          |
-| ---------------------------- | ------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | ------------------ |
-| `Keycap.astro`               | Nav, toggles, buttons                                                                             | `colors`, `size` (`md`/`sm`/`square`), `pressed`, `element` (`a`/`button`), `disabled` | `/design/keycaps`  |
-| `Button.astro`               | Old API on keycaps. `solid`/`outline` are keys, `ghost` and `flat` stay flat (icon-only controls) | `variant`, `colors`, `size`, `flat`, `disabled`                                        | `/design/buttons`  |
-| `Tag.astro`                  | Raised chip (badge)                                                                               | `variant`, `colors`, `size`                                                            | `/design/buttons`  |
-| `Shelf.astro` + `Book.astro` | List of links on a wood shelf                                                                     | Shelf: `title`, `level`, `href`; Book: `href`, `title`, `meta`, `colors`, `height`     | `/design/shelf`    |
-| `PaperCard.astro`            | Paper surface                                                                                     | `as`, `tape`, `lines`, `tilt`                                                          | `/design/surfaces` |
-| `StickyNote.astro`           | "Bottom line" and callouts                                                                        | `label`                                                                                | `/design/surfaces` |
-| `Input.astro`                | Text field with visible label                                                                     | `label`, `id`, `hint`, `required`                                                      | `/design/forms`    |
+| Component                                             | Use                                                                                               | Key props                                                                                                             | Reference          |
+| ----------------------------------------------------- | ------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | ------------------ |
+| `Keycap.astro`                                        | Nav, toggles, buttons                                                                             | `colors`, `size` (`md`/`sm`/`square`), `pressed`, `element` (`a`/`button`), `disabled`                                | `/design/keycaps`  |
+| `Button.astro`                                        | Old API on keycaps. `solid`/`outline` are keys, `ghost` and `flat` stay flat (icon-only controls) | `variant`, `colors`, `size`, `flat`, `disabled`                                                                       | `/design/buttons`  |
+| `Tag.astro`                                           | Raised chip (badge)                                                                               | `variant`, `colors`, `size`                                                                                           | `/design/buttons`  |
+| `Shelf.astro` + `Book.astro`                          | List of links on a wood shelf                                                                     | Shelf: `title`, `level`, `href`; Book: `href`, `title`, `meta`, `colors`, `height`                                    | `/design/shelf`    |
+| `PaperCard.astro`                                     | Paper surface                                                                                     | `as`, `tape`, `lines`, `tilt`                                                                                         | `/design/surfaces` |
+| `StickyNote.astro`                                    | "Bottom line" and callouts                                                                        | `label`                                                                                                               | `/design/surfaces` |
+| `Input.astro`                                         | Text field with visible label                                                                     | `label`, `id`, `hint`, `required`                                                                                     | `/design/forms`    |
+| `StackCard`, `PolaroidCard`, `TicketCard`, `DeckCard` | Non-flat cards: posts, projects, talks, slide decks. One stretched `.card-link` per card          | `StackCard`: `tab`, `tone`; `TicketCard`: `tone`, slot `stub`; `PolaroidCard`: slot `photo`; `DeckCard`: `background` | `/design/cards`    |
+| `PaletteSwitcher`, `KeySoundToggle`                   | Footer controls: color palette (keys) and opt-in click sound                                      | none                                                                                                                  | footer             |
 
 Rules:
 
@@ -182,11 +184,27 @@ Rules:
 - **Contrast is a test:** `pnpm contrast` checks every token pair in light and dark.
   A new token pair needs a new line in `scripts/check-contrast.mjs` **first** (watch it fail,
   then add the token). New token files go into the `FILES` list in that script.
-- **Not only depth:** pressed and current keys are underlined and every key has a 2px edge.
+- **Not only depth:** pressed and current keys light a small lamp on the top rim (a white dot with
+  a dark ring; NOT an underline, the owner dislikes it) and every key has a 2px edge.
   Never carry meaning by color or shadow alone.
+- **Depth layer** (`src/styles/components/depth.css`, reference `/design/depth`): page background has a
+  paper grain plus a dot grid (`--th-grain`, `--th-dot`). Long reading text must sit on a `.sheet`
+  (solid `--th-sheet-bg`, contrast checked AAA by `pnpm contrast`), never on the texture. Titles:
+  `.b-h1` / `.title-3d` / prose `h1` are extruded (`--th-title-side`), `.b-h2` / `.b-h3` / `.shelf-title`
+  are letterpress. Raised small parts: `.crumb` (breadcrumbs), `.link-key` (a link in running
+  text), `.frame` (picture mat), `.well` (recessed), `.board` + `.board-note` (pinboard), `.bead`.
+- **Key sizes together:** header and pagination keys are exactly 48px tall (`keycap keycap-nav`),
+  icon keys 48 x 48 (`keycap-nav-icon`, round: `keycap-nav-round`). Measure groups of keys in the
+  browser, never trust the CSS alone.
+- **Prose colors** come from the tokens (`--tw-prose-*` in `my-prose.css`), not the slate palette.
+- **Reading measure** is `36.5rem` (rem, not `ch`, so headings and text share one column).
 - **Reduced motion:** lift, tilt, and press animation must be off under
   `prefers-reduced-motion`.
 - **Builds need `SITE_URL`:** `SITE_URL=https://www.mazipan.space pnpm build`.
+- **Palettes:** `src/styles/theme/palettes.css` has `[data-theme='<name>-light|dark']` scopes
+  (ocean, forest, plum) that only override what differs. A new palette needs entries in
+  `THEMES` and `PALETTES` (`src/constants/theme.ts`) and its name in `PALETTES` of
+  `scripts/check-contrast.mjs`, so `pnpm contrast` checks it.
 - **Branches:** the redesign lives on `feat/2027-design`. Phase branches merge into it.
 
 ## CodeGroup component

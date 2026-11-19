@@ -7,12 +7,12 @@ import Keycap from './Keycap.astro';
 <theme-toggle>
   <Keycap
     colors="mustard"
-    size="square"
+    size="md"
     element="button"
     role="switch"
     aria-label="Dark mode"
-    id="theme-switcher"
-    class="keycap-square-sm keycap-round"
+    data-theme-switcher
+    class="keycap-nav keycap-nav-icon keycap-nav-round"
   >
     <Icon
       name="tabler:sun"
@@ -38,7 +38,7 @@ import Keycap from './Keycap.astro';
     #observer: MutationObserver | undefined;
 
     connectedCallback() {
-      const button = this.querySelector('#theme-switcher')!;
+      const button = this.querySelector('[data-theme-switcher]')!;
       // set aria role value
       button.setAttribute('role', 'switch');
 

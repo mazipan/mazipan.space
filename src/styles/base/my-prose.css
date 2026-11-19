@@ -13,7 +13,7 @@
     @apply prose-h1:text-3xl md:prose-h1:text-4xl lg:prose-h1:text-5xl;
     @apply prose-h1:font-bold;
     @apply prose-h1:font-serif;
-    @apply prose-h1:text-links;
+    @apply prose-h1:text-headings;
 
     /* a */
     a {
@@ -28,8 +28,58 @@
       }
     }
 
-    /* image */
+    /* prose colors come from the theme tokens (not the slate palette), in light and dark */
+    --tw-prose-body: var(--th-content);
+    --tw-prose-headings: var(--th-headings);
+    --tw-prose-lead: var(--th-captions);
+    --tw-prose-links: var(--th-links);
+    --tw-prose-bold: var(--th-headings);
+    --tw-prose-counters: var(--th-captions);
+    --tw-prose-bullets: var(--th-primary);
+    --tw-prose-hr: var(--th-base-300);
+    --tw-prose-quotes: var(--th-headings);
+    --tw-prose-quote-borders: var(--th-primary);
+    --tw-prose-captions: var(--th-captions);
+    --tw-prose-kbd: var(--th-headings);
+    --tw-prose-code: var(--th-primary);
+    --tw-prose-th-borders: var(--th-key-edge);
+    --tw-prose-td-borders: var(--th-base-300);
+    --tw-prose-invert-body: var(--th-content);
+    --tw-prose-invert-headings: var(--th-headings);
+    --tw-prose-invert-lead: var(--th-captions);
+    --tw-prose-invert-links: var(--th-links);
+    --tw-prose-invert-bold: var(--th-headings);
+    --tw-prose-invert-counters: var(--th-captions);
+    --tw-prose-invert-bullets: var(--th-primary);
+    --tw-prose-invert-hr: var(--th-base-300);
+    --tw-prose-invert-quotes: var(--th-headings);
+    --tw-prose-invert-quote-borders: var(--th-primary);
+    --tw-prose-invert-captions: var(--th-captions);
+    --tw-prose-invert-kbd: var(--th-headings);
+    --tw-prose-invert-code: var(--th-primary);
+    --tw-prose-invert-th-borders: var(--th-key-edge);
+    --tw-prose-invert-td-borders: var(--th-base-300);
+
+    /* image: framed and lifted */
     @apply prose-img:rounded-2xl;
+
+    img {
+      border: 2px solid var(--th-key-edge);
+      box-shadow:
+        0 6px 0 -2px var(--th-key-cream-side),
+        0 14px 22px rgb(0 0 0 / 0.18);
+    }
+
+    /* quote: raised paper with a colored edge */
+    blockquote {
+      padding: 0.5rem 1.25rem;
+      border: 2px solid var(--th-key-edge);
+      border-left: 8px solid var(--th-primary);
+      border-radius: 10px;
+      background: var(--th-base-200);
+      box-shadow: 0 4px 0 -1px var(--th-key-cream-side);
+      font-style: normal;
+    }
 
     /* code */
     code {
@@ -49,10 +99,11 @@
       font-variant-ligatures: common-ligatures;
     }
 
-    /* reading measure: about 70 characters per line. In this font 1ch (the zero) is wide,
-       so 50ch holds about 70 letters. Code, tables and figures stay full width. */
+    /* reading measure: about 70 characters per line (36.5rem, a rem so headings and text
+       share one column; ch would change with the font size). Code, tables and figures stay full width. */
     content-wrapper > :where(p, ul, ol, blockquote, h2, h3, h4) {
-      max-width: 50ch;
+      max-width: 36.5rem;
+      margin-inline: auto;
     }
 
     /* table of contents: links are at least 24px high (touch target) */

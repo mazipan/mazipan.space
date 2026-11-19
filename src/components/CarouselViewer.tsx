@@ -533,7 +533,7 @@ function Branding({ color, seriesTitle }: { color: string; seriesTitle?: string 
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        opacity: 0.6,
+        opacity: 0.8,
         marginTop: '0.625rem',
         flexShrink: 0,
         gap: '0.1rem',
@@ -655,7 +655,7 @@ export default function CarouselViewer({
       }}
     >
       {/* Slide counter */}
-      <div style={{ fontSize: '0.875rem', fontWeight: 600, opacity: 0.6, letterSpacing: '0.05em' }}>
+      <div style={{ fontSize: '0.875rem', fontWeight: 600, opacity: 0.8, letterSpacing: '0.05em' }}>
         {current + 1} / {total}
       </div>
 
@@ -668,9 +668,10 @@ export default function CarouselViewer({
             aria-label={`Go to slide ${i + 1}`}
             style={{
               flex: 1,
-              height: 3,
-              borderRadius: 2,
-              border: 'none',
+              height: 8,
+              borderRadius: 4,
+              border: '1.5px solid rgba(0,0,0,0.35)',
+              boxShadow: 'inset 0 2px 3px rgba(0,0,0,0.25), 0 1px 0 rgba(255,255,255,0.4)',
               cursor: 'pointer',
               background: i <= current ? theme.gradient : 'rgba(128,128,128,0.25)',
               transition: 'background 0.35s ease',
@@ -831,48 +832,37 @@ function NavButton({
       onClick={onClick}
       disabled={disabled}
       aria-label={label}
-      style={{
-        width: 44,
-        height: 44,
-        borderRadius: '50%',
-        border: '1.5px solid currentColor',
-        background: 'transparent',
-        cursor: disabled ? 'not-allowed' : 'pointer',
-        opacity: disabled ? 0.25 : 1,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        transition: 'opacity 0.2s',
-        color: 'currentColor',
-      }}
+      className="keycap keycap-navy keycap-nav keycap-nav-icon keycap-nav-round"
     >
-      {direction === 'prev' ? (
-        <svg
-          width="18"
-          height="18"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <polyline points="15 18 9 12 15 6" />
-        </svg>
-      ) : (
-        <svg
-          width="18"
-          height="18"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <polyline points="9 18 15 12 9 6" />
-        </svg>
-      )}
+      <span className="keycap-face">
+        {direction === 'prev' ? (
+          <svg
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <polyline points="15 18 9 12 15 6" />
+          </svg>
+        ) : (
+          <svg
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <polyline points="9 18 15 12 9 6" />
+          </svg>
+        )}
+      </span>
     </button>
   );
 }

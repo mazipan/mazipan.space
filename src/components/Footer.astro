@@ -9,6 +9,7 @@ import { shortDate } from '@/utils/datetime';
 import { limitString, trimHttpProtocol } from '@/utils/strings';
 import Keycap from './Keycap.astro';
 import KeySoundToggle from './KeySoundToggle.astro';
+import PaletteSwitcher from './PaletteSwitcher.astro';
 import SocialLinks from './SocialLinks.astro';
 
 const { SITE_URL, REPO_URL, AUTHOR_ADPLIST, AUTHOR_DECK } = CONFIG_CLIENT;
@@ -33,8 +34,8 @@ const copyrightYear = new Date().getFullYear();
       <Keycap
         element="button"
         colors="terracotta"
-        size="square"
-        class="keycap-square-sm keycap-round absolute top-0 right-4 z-10"
+        size="md"
+        class="keycap-nav keycap-nav-icon keycap-nav-round absolute top-0 right-4 z-10"
         id="btn-scroll-to-top"
         aria-label="Back to top"
       >
@@ -74,6 +75,8 @@ const copyrightYear = new Date().getFullYear();
             </li>
           </ul>
         </div>
+
+        <PaletteSwitcher />
 
         <KeySoundToggle />
       </div>

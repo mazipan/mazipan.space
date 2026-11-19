@@ -51,11 +51,24 @@
     box-shadow: inset 0 2px 4px rgb(0 0 0 / 0.2);
   }
 
-  /* a cue that is not depth and not color: pressed and current keys are underlined */
-  .keycap[aria-pressed='true'] .keycap-face,
-  .keycap[aria-current]:not([aria-current='false']) .keycap-face {
-    text-decoration: underline 3px;
-    text-underline-offset: 5px;
+  /* a cue that is not depth and not color: pressed and current keys light a small lamp,
+     like the caps lock key. The lamp has a dark ring so it reads on every key color. */
+  .keycap-face {
+    position: relative;
+  }
+  .keycap[aria-pressed='true'] .keycap-face::after,
+  .keycap[aria-current]:not([aria-current='false']) .keycap-face::after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 50%;
+    width: 6px;
+    height: 6px;
+    margin-left: -4.5px;
+    border-radius: 50%;
+    border: 1.5px solid rgb(0 0 0 / 0.55);
+    background: #ffffff;
+    box-shadow: 0 0 6px 1px rgb(255 255 255 / 0.85);
   }
 
   .keycap:focus-visible {
@@ -132,26 +145,52 @@
     font-size: 1.25rem;
   }
 
-  /* round key, for the theme switch */
-  .keycap.keycap-round,
-  .keycap.keycap-round .keycap-face {
+  /* Header keys: every key is exactly 48px tall, icon keys exactly 48 x 48.
+     Outer box = 2px edge + 40px face + 4px side + 2px edge. */
+  .keycap-nav {
+    display: inline-flex;
+    box-sizing: border-box;
+    height: 48px;
+    padding-bottom: 4px;
+    border-radius: 14px;
+  }
+  .keycap-nav .keycap-face {
+    display: flex;
+    flex: 1 1 auto;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    height: 40px;
+    padding: 0 18px;
+    border-radius: 11px;
+    font-size: 0.875rem;
+    white-space: nowrap;
+  }
+  .keycap-nav:hover .keycap-face {
+    transform: translateY(-1px);
+  }
+  .keycap-nav:active .keycap-face,
+  .keycap-nav[aria-pressed='true'] .keycap-face,
+  .keycap-nav[aria-current]:not([aria-current='false']) .keycap-face {
+    transform: translateY(4px);
+  }
+  .keycap-nav-icon {
+    width: 48px;
+    justify-content: center;
+  }
+  .keycap-nav-icon .keycap-face {
+    flex: 0 0 auto;
+    width: 100%;
+    padding: 0;
+    font-size: 1.125rem;
+  }
+  /* round: a 48px circle with a 40px circle face */
+  .keycap-nav-round {
     border-radius: 9999px;
   }
-  .keycap.keycap-round .keycap-face {
-    width: 38px;
-    height: 38px;
-    padding: 0;
-  }
-
-  /* same height as a small text key, for the header */
-  .keycap-square-sm {
-    padding-bottom: 6px;
-    border-radius: 13px;
-  }
-  .keycap-square-sm .keycap-face {
-    width: 38px;
-    height: 38px;
-    padding: 0;
+  .keycap-nav-round .keycap-face {
+    width: 40px;
+    border-radius: 9999px;
   }
 
   /* Windows high contrast: colors are replaced, so keep real borders */
@@ -179,7 +218,8 @@
     .keycap-face {
       transition: none;
     }
-    .keycap:hover .keycap-face {
+    .keycap:hover .keycap-face,
+    .keycap-nav:hover .keycap-face {
       transform: none;
     }
   }

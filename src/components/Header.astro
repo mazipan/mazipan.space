@@ -16,6 +16,9 @@ const KEY_TONES = ['terracotta', 'teal', 'mustard', 'navy'] as const;
 
 const { pathname: routePathname } = Astro.url;
 const activeNavItemPath = getActiveNavItemPath(routePathname);
+// the key of the page itself is `page`, the key of a section the page belongs to is `true`
+const currentOf = (path: string) =>
+  routePathname.replace(/\/+$/, '') === path ? ('page' as const) : ('true' as const);
 ---
 
 <header
@@ -60,12 +63,12 @@ const activeNavItemPath = getActiveNavItemPath(routePathname);
           <Keycap
             id="menu-toggle"
             colors="terracotta"
-            size="square"
+            size="md"
             element="button"
             aria-expanded="false"
             aria-haspopup="menu"
             aria-label="Open main menu"
-            class="group keycap-square-sm"
+            class="group keycap-nav keycap-nav-icon"
           >
             <Icon name="tabler:menu-3" class="h-6 w-6 group-aria-expanded:hidden" />
             <Icon name="tabler:menu-deep" class="hidden h-6 w-6 group-aria-expanded:block" />
@@ -83,7 +86,9 @@ const activeNavItemPath = getActiveNavItemPath(routePathname);
                 href={path}
                 colors={KEY_TONES[index % KEY_TONES.length]}
                 size="sm"
+                class="keycap-nav"
                 pressed={path === activeNavItemPath}
+                current={currentOf(path)}
               >
                 {title}
               </Keycap>
@@ -112,8 +117,9 @@ const activeNavItemPath = getActiveNavItemPath(routePathname);
             href={path}
             colors={KEY_TONES[index % KEY_TONES.length]}
             size="sm"
-            class="block w-full"
+            class="keycap-nav w-full"
             pressed={path === activeNavItemPath}
+            current={currentOf(path)}
           >
             {title}
           </Keycap>

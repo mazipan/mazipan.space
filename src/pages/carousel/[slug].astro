@@ -56,18 +56,16 @@ const breadcrumbs = [BreadcrumbItemHome, { href: ROUTES.CAROUSEL, text: '✨ Sli
       />
     </div>
 
-    {
-      data.sourcePost && (
-        <div class="mt-4 flex flex-col items-center gap-2 text-center">
-          <p class="text-sm opacity-60">Slide ini dirangkum dari artikel:</p>
-          <a
-            href={`/blog/${data.sourcePost}`}
-            class="border-primary text-primary hover:bg-primary focus:ring-primary inline-flex items-center gap-1.5 rounded-full border px-4 py-2 text-sm font-semibold no-underline transition-colors hover:text-white focus:ring-2 focus:ring-offset-2 focus:outline-none"
-          >
-            Baca artikel lengkap →
-          </a>
-        </div>
-      )
-    }
+    {data.sourcePost && (
+      <div class="mt-4 flex flex-col items-center gap-2 text-center">
+        <p class="text-captions text-sm">Slide ini dirangkum dari artikel:</p>
+        <a
+          href={`/blog/${data.sourcePost}`}
+          class="border-primary text-primary hover:bg-primary focus:ring-primary inline-flex items-center gap-1.5 rounded-full border px-4 py-2 text-sm font-semibold no-underline transition-colors hover:text-white focus:ring-2 focus:ring-offset-2 focus:outline-none"
+        >
+          Baca artikel lengkap →
+        </a>
+      </div>
+    )}
   </article>
 </Centered>
