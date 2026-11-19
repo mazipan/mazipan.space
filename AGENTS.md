@@ -3,6 +3,11 @@
 Guidance for AI agents (and humans) working in this repository. Read this
 before making changes so you follow the project's stack and conventions.
 
+> **2027 redesign in progress.** Before changing UI, read
+> `docs/superpowers/HANDOFF.md` (orders, checklist, progress) and
+> `docs/superpowers/KNOWLEDGE.md` (decisions, repo facts, tooling notes). Mockups are in
+> `docs/superpowers/specs/mockups/`.
+
 ## Project overview
 
 Personal website/blog for [mazipan.space](https://www.mazipan.space/), built

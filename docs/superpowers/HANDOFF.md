@@ -20,7 +20,9 @@ Redesign mazipan.space ("Irfan's bookshelf"): home is a warm personal letter, wr
 | What | Path |
 |---|---|
 | Design spec (decisions, rules) | `docs/superpowers/specs/2026-11-19-site-revamp-design.md` |
-| Mockups (look and feel) | `docs/superpowers/specs/mockups/` (`personal-home.html` = home, `f-real-shelf.html`, `keycaps.html`, `tactile-components.html`) |
+| Mockups (look and feel), with a README | `docs/superpowers/specs/mockups/` (`prototype-home-and-post.html` = approved prototype, `personal-home.html` = home spec) |
+| Deep knowledge (decisions, repo facts, tooling) | `docs/superpowers/KNOWLEDGE.md` |
+| Previous agent's memory notes (copy) | `docs/superpowers/memory/` |
 | Plans | `docs/superpowers/plans/` (phase 1, 1b, 2 written; write one per later phase) |
 | Component docs | `AGENTS.md` section "Design system components" |
 | Reference pages | `/design/keycaps`, `/design/buttons`, `/design/shelf`, `/design/surfaces`, `/design/forms` |
