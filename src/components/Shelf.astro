@@ -6,13 +6,11 @@ export interface Props {
   level?: 2 | 3;
   href?: string;
   linkLabel?: string;
-  /** set when two shelves on one page share a title */
-  id?: string;
 }
 
-const { title, level = 2, href, linkLabel = 'See all', id: idProp } = Astro.props;
+const { title, level = 2, href, linkLabel = 'See all' } = Astro.props;
 const Heading = `h${level}` as 'h2';
-const id = idProp ?? `shelf-${title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
+const id = `shelf-${title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
 ---
 
 <section aria-labelledby={id} class="shelf">

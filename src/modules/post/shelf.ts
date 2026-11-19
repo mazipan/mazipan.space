@@ -45,12 +45,3 @@ export const getSlidesBookProps = (carousel: Carousel, index: number) => ({
   colors: BOOK_COLORS[index % BOOK_COLORS.length],
   height: BOOK_HEIGHTS[index % BOOK_HEIGHTS.length],
 });
-
-const CARD_TONES = ['terracotta', 'teal', 'mustard', 'navy'] as const;
-
-/** Stable tab color for a category. Decoration only, the category name is always text. */
-export const getCardTone = (category: string) => {
-  let hash = 0;
-  for (const ch of category) hash = (hash * 31 + ch.charCodeAt(0)) >>> 0;
-  return CARD_TONES[hash % CARD_TONES.length];
-};

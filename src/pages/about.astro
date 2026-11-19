@@ -4,8 +4,6 @@ import { Image } from 'astro:assets';
 import Centered from '@/layouts/Centered.astro';
 import Breadcrumbs from '@/components/Breadcrumbs.astro';
 import Button from '@/components/Button.astro';
-import PaperCard from '@/components/PaperCard.astro';
-import PolaroidCard from '@/components/PolaroidCard.astro';
 import { BreadcrumbItemHome } from '@/constants/breadcrumb';
 import { PROFILE } from '@/constants/profile';
 import { ROUTES } from '@/constants/routes';
@@ -52,114 +50,106 @@ const metadata = getPageMetadata('pages/about');
     <div class="my-8 flex flex-col-reverse gap-16 md:flex-row md:items-start md:justify-between">
       <div class="space-y-6">
         <p>{PROFILE.TAGLINE}</p>
-        <PaperCard as="section" class="space-y-3">
-          <h2 class="b-h2 mt-0">I write some stuffs</h2>
-          <p>
-            I don’t write all that often, but you’re welcome to explore my public writings. I mostly
-            share personal experiences on technical topics and occasionally throw in some
-            beginner-friendly advice from my perspective.{' '}
-            <a
-              href={ROUTES.BLOG}
-              class="bg-primary text-primary-content hover:bg-primary-hover px-2 hover:underline"
-            >
-              Visit my blog
-            </a>
-          </p>
-        </PaperCard>
+        <h2 class="b-h1 tracking-wide">I write some stuffs</h2>
+        <p>
+          I don’t write all that often, but you’re welcome to explore my public writings. I mostly
+          share personal experiences on technical topics and occasionally throw in some
+          beginner-friendly advice from my perspective.{' '}
+          <a
+            href={ROUTES.BLOG}
+            class="bg-primary text-primary-content hover:bg-primary-hover px-2 hover:underline"
+          >
+            Visit my blog
+          </a>
+        </p>
 
-        <PaperCard as="section" class="space-y-3">
-          <h2 class="b-h2 mt-0">Randomly speaking</h2>
-          <p>
-            I speak on a variety of topics, including JavaScript, React.js, Next.js, and web
-            technologies in general. I also cover areas like contributing to open source, exploring
-            architectural approaches in frontend development, and choosing the right tech stack to
-            align with your team’s needs. Additionally, I enjoy sharing insights on how to advance
-            your skills as an engineer and providing career advice based on my personal experiences,
-            all with the goal of empowering others to grow and succeed in their professional
-            journeys. Would you like to invite me to speak at your event?
-            <a
-              href={ROUTES.TALKS}
-              title="Talks"
-              class="bg-primary text-primary-content hover:bg-primary-hover px-2 hover:underline"
-            >
-              Check my latest talks.
-            </a>
-          </p>
-        </PaperCard>
+        <h2 class="b-h1 tracking-wide">Randomly speaking</h2>
+        <p>
+          I speak on a variety of topics, including JavaScript, React.js, Next.js, and web
+          technologies in general. I also cover areas like contributing to open source, exploring
+          architectural approaches in frontend development, and choosing the right tech stack to
+          align with your team’s needs. Additionally, I enjoy sharing insights on how to advance
+          your skills as an engineer and providing career advice based on my personal experiences,
+          all with the goal of empowering others to grow and succeed in their professional journeys.
+          Would you like to invite me to speak at your event?
+          <a
+            href={ROUTES.TALKS}
+            title="Talks"
+            class="bg-primary text-primary-content hover:bg-primary-hover px-2 hover:underline"
+          >
+            Check my latest talks.
+          </a>
+        </p>
 
-        <PaperCard as="section" class="space-y-3">
-          <h2 class="b-h2 mt-0">One on one discussion</h2>
-          <p>
-            I provide one-on-one mentorship through ADPList, which I like to describe as more of a
-            two-way discussion than a traditional mentorship. I understand that I may not always be
-            better or more experienced than the person I’m mentoring, but I aim to share my
-            perspectives and insights. I particularly enjoy discussing non-technical topics related
-            to professional careers and productivity as a software engineer, though I’m also open to
-            technical discussions about web technologies and related areas.
-            <a
-              href="https://dub.sh/mzp.adp"
-              target="_blank"
-              rel="me noreferrer noopener"
-              title="ADPList"
-              class="bg-primary text-primary-content hover:bg-primary-hover px-2 hover:underline"
-            >
-              Check my ADPList profile.
-            </a>
-          </p>
-        </PaperCard>
-        <PaperCard as="section" class="space-y-3">
-          <h2 class="b-h2 mt-0">#Build in public</h2>
-          <p>
-            I enjoy sharing my projects with the public, as I often build them for fun and to
-            explore new concepts or technologies. I actively contribute to and maintain community
-            projects, including PHPID, React.js ID, and KawalCovid19. With over 11 years of
-            experience in frontend development, I’m passionate about “giving back” by sharing my
-            expertise with the broader community and supporting others in their learning journeys.
-            <a
-              href={AUTHOR_GITHUB}
-              target="_blank"
-              rel="me noreferrer noopener"
-              title="GitHub"
-              class="bg-primary text-primary-content hover:bg-primary-hover px-2 hover:underline"
-            >
-              Check my public code
-            </a>
-          </p>
-        </PaperCard>
+        <h2 class="b-h1 tracking-wide">One on one discussion</h2>
+        <p>
+          I provide one-on-one mentorship through ADPList, which I like to describe as more of a
+          two-way discussion than a traditional mentorship. I understand that I may not always be
+          better or more experienced than the person I’m mentoring, but I aim to share my
+          perspectives and insights. I particularly enjoy discussing non-technical topics related to
+          professional careers and productivity as a software engineer, though I’m also open to
+          technical discussions about web technologies and related areas.
+          <a
+            href="https://dub.sh/mzp.adp"
+            target="_blank"
+            rel="me noreferrer noopener"
+            title="ADPList"
+            class="bg-primary text-primary-content hover:bg-primary-hover px-2 hover:underline"
+          >
+            Check my ADPList profile.
+          </a>
+        </p>
+        <h2 class="b-h1 tracking-wide">#Build in public</h2>
+        <p>
+          I enjoy sharing my projects with the public, as I often build them for fun and to explore
+          new concepts or technologies. I actively contribute to and maintain community projects,
+          including PHPID, React.js ID, and KawalCovid19. With over 11 years of experience in
+          frontend development, I’m passionate about “giving back” by sharing my expertise with the
+          broader community and supporting others in their learning journeys.
+          <a
+            href={AUTHOR_GITHUB}
+            target="_blank"
+            rel="me noreferrer noopener"
+            title="GitHub"
+            class="bg-primary text-primary-content hover:bg-primary-hover px-2 hover:underline"
+          >
+            Check my public code
+          </a>
+        </p>
 
-        <PaperCard as="section" tape class="space-y-3">
-          <h2 class="b-h2 mt-0">Want to work together?</h2>
+        <h2 class="b-h1 tracking-wide">Want to work together?</h2>
 
-          <div class="flex flex-col items-start gap-2">
-            <div class="flex items-center gap-2">
-              <span class="relative flex h-3 w-3">
-                <span class="bg-primary absolute inline-flex h-full w-full animate-ping rounded-full opacity-75"></span>
-                <span class="bg-primary relative inline-flex h-3 w-3 rounded-full"></span>
-              </span>
-              <span class="text-primary">Available for hire</span>
-            </div>
-            <Button
-              element="a"
-              colors="primary"
-              variant="solid"
-              href={`mailto:${AUTHOR_EMAIL}`}
-              target="_blank"
-              rel="me noreferrer noopener"
-              title="Email"
-            >
-              Send me an email
-            </Button>
-            <small>
-              Or copy this email manually: <code class="font-mono">{AUTHOR_EMAIL}</code>
-            </small>
+        <div class="flex flex-col items-start gap-2">
+          <div class="flex items-center gap-2">
+            <span class="relative flex h-3 w-3">
+              <span class="bg-primary absolute inline-flex h-full w-full animate-ping rounded-full opacity-75"></span>
+              <span class="bg-primary relative inline-flex h-3 w-3 rounded-full"></span>
+            </span>
+            <span class="text-primary">Available for hire</span>
           </div>
-        </PaperCard>
+          <Button
+            element="a"
+            colors="primary"
+            variant="solid"
+            href={`mailto:${AUTHOR_EMAIL}`}
+            target="_blank"
+            rel="me noreferrer noopener"
+            title="Email"
+          >
+            Send me an email
+          </Button>
+          <small>
+            Or copy this email manually: <code class="font-mono">{AUTHOR_EMAIL}</code>
+          </small>
+        </div>
       </div>
       <div class="flex items-center justify-center md:min-w-[300px]">
-        <PolaroidCard as="div" class="w-[300px] max-w-full">
-          <Image slot="photo" width={300} src={MeInBlackSrc} alt="MZP In Black" class="w-full" />
-          <p class="mb-0 text-center font-serif italic">Mas Ipan</p>
-        </PolaroidCard>
+        <Image
+          width={300}
+          src={MeInBlackSrc}
+          alt="MZP In Black"
+          class="rounded-3xl border-2 border-black p-4 ring-2 ring-black ring-offset-8 ring-offset-white md:rounded-none md:rounded-l-3xl dark:border-0 dark:ring-white dark:ring-offset-transparent"
+        />
       </div>
     </div>
   </article>

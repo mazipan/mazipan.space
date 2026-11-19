@@ -4,7 +4,7 @@ import type { CarouselTheme, SlideData } from '@/schemas/carousel';
 
 const THEMES: Record<CarouselTheme, { gradient: string; text: string; accent: string }> = {
   ocean: {
-    gradient: 'linear-gradient(135deg, #1d4ed8 0%, #0e7490 100%)',
+    gradient: 'linear-gradient(135deg, #1d4ed8 0%, #0891b2 100%)',
     text: '#ffffff',
     accent: 'rgba(255,255,255,0.15)',
   },
@@ -14,12 +14,12 @@ const THEMES: Record<CarouselTheme, { gradient: string; text: string; accent: st
     accent: 'rgba(255,255,255,0.15)',
   },
   sunset: {
-    gradient: 'linear-gradient(135deg, #c2410c 0%, #e11d48 100%)',
+    gradient: 'linear-gradient(135deg, #ea580c 0%, #e11d48 100%)',
     text: '#ffffff',
     accent: 'rgba(255,255,255,0.15)',
   },
   forest: {
-    gradient: 'linear-gradient(135deg, #047857 0%, #0f766e 100%)',
+    gradient: 'linear-gradient(135deg, #059669 0%, #0d9488 100%)',
     text: '#ffffff',
     accent: 'rgba(255,255,255,0.15)',
   },

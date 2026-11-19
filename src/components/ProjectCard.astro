@@ -1,4 +1,5 @@
 ---
+import { Icon } from 'astro-icon/components';
 import { Image } from 'astro:assets';
 
 import { getPublishedOrUpdatedDate } from '@/modules/common';
@@ -6,7 +7,7 @@ import Link from '@/components/Link.astro';
 import { IMAGE_SIZES } from '@/constants/image';
 import { ROUTES } from '@/constants/routes';
 import { setTransitionSlug, TRANSITION_ELEMENT_IDS } from '@/constants/transitions';
-import PolaroidCard from './PolaroidCard.astro';
+import TagList from './TagList.astro';
 
 import type { Project } from '@/types/project';
 
@@ -27,23 +28,35 @@ const { lastAccessDate } = getPublishedOrUpdatedDate({
 const getTransitionNameFromElementId = setTransitionSlug({ pageSlug: slug });
 ---
 
-<PolaroidCard>
-  <Image
-    slot="photo"
-    {...IMAGE_SIZES.RESPONSIVE.PROJECT_CARD}
-    src={heroImage}
-    alt={heroAlt}
-    class="aspect-[1.75] w-full object-cover"
-    transition:name={getTransitionNameFromElementId({
-      elementId: TRANSITION_ELEMENT_IDS.POST_CARD.HERO_IMAGE,
-    })}
-  />
+<article>
+  <a
+    href={`${ROUTES.PROJECTS}/${slug}`}
+    class="group bg-base-200 mb-4 block h-fit max-h-[200px] w-fit overflow-clip rounded-lg bg-cover bg-center shadow-md"
+  >
+    <Image
+      {...IMAGE_SIZES.RESPONSIVE.PROJECT_CARD}
+      src={heroImage}
+      alt={heroAlt}
+      class="aspect-[1.75] h-[inherit] max-h-[inherit] rounded-[inherit] object-center transition-all duration-300 group-hover:scale-125"
+      transition:name={getTransitionNameFromElementId({
+        elementId: TRANSITION_ELEMENT_IDS.POST_CARD.HERO_IMAGE,
+      })}
+    />
+  </a>
 
-  <h2 class="b-h3 mt-0 mb-1 line-clamp-2 font-serif break-words italic">
+  <div class="text-captions mb-1 flex items-center gap-3 text-sm">
+    <span class="flex items-center gap-1">
+      <Icon name="tabler:calendar" class="h-4 w-4" />
+      <span>{lastAccessDate.getFullYear()}</span>
+    </span>
+
+    <TagList tags={tags} size="sm" class="inline-flex" basePath={ROUTES.PROJECTS_TAGS} />
+  </div>
+
+  <h2 class="b-h3 mb-0 line-clamp-2 break-words">
     <Link
       href={`${ROUTES.PROJECTS}/${slug}`}
       variant="link-heading"
-      class="card-link"
       transition:name={getTransitionNameFromElementId({
         elementId: TRANSITION_ELEMENT_IDS.POST_CARD.TITLE,
       })}
@@ -52,14 +65,9 @@ const getTransitionNameFromElementId = setTransitionSlug({ pageSlug: slug });
     </Link>
   </h2>
 
-  <p class="mb-1 text-sm">
-    {lastAccessDate.getFullYear()}
-    {tags.length > 0 && ` - ${tags.slice(0, 2).join(', ')}`}
-  </p>
-
   {description && (
     <p
-      class="mb-0 line-clamp-2 text-sm"
+      class="text-captions mb-2 text-sm"
       transition:name={getTransitionNameFromElementId({
         elementId: TRANSITION_ELEMENT_IDS.POST_CARD.DESCRIPTION,
       })}
@@ -67,4 +75,4 @@ const getTransitionNameFromElementId = setTransitionSlug({ pageSlug: slug });
       {description}
     </p>
   )}
-</PolaroidCard>
+</article>
