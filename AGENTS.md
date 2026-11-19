@@ -21,14 +21,14 @@ static HTML; there is no runtime server.
 | Icons           | `astro-icon` (Tabler set, local `src/assets/icons`)                 |
 | Language        | **TypeScript 6** (strict)                                           |
 | Lint/format     | **ESLint 10** (flat config) + Prettier 3                            |
-| Package manager | **pnpm 11**                                                         |
-| Runtime         | **Node.js 24** (see `.nvmrc`)                                       |
+| Package manager | **pnpm 12**                                                         |
+| Runtime         | **Node.js 26** (see `.nvmrc`)                                       |
 | Deploy          | Vercel (static) + GitHub Pages workflow                             |
 
 ## Prerequisites
 
-- **Node.js 24** — `nvm use` reads `.nvmrc` (`24.16.0`). `engines.node` is `>=24.0.0`.
-- **pnpm 11** — the project pins `packageManager: pnpm@11.5.0`. Enable via
+- **Node.js 26** — `nvm use` reads `.nvmrc` (`26.13.1`). `engines.node` is `>=26.0.0`.
+- **pnpm 12** — the project pins `packageManager: pnpm@12.21.0`. Enable via
   Corepack: `corepack enable`. Do **not** use npm or yarn.
 
 ## Commands
