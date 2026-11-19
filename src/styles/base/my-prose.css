@@ -135,7 +135,10 @@
       min-width: 0;
     }
     .toc ol.ol-nested-decimal li > ol {
-      flex-basis: 100%;
+      /* its own row: a negative margin would let it share the row and squeeze the link */
+      flex: 0 0 100%;
+      margin-left: 0 !important;
+      padding-left: 0.75rem;
     }
   }
 }

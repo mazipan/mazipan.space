@@ -83,6 +83,8 @@ Session 2 additions: fewer commits and PRs (each push is a Vercel build, push on
 
 - Fixed header: bottom edge 98px, `--header-h` is the single value. The hard-coded `mt-[65px]` / `top-16` / `top-20` of the old header were the bug when the header grew.
 
+- Flex wrap gotcha: a negative margin (`-ml-[20px]`) on a flex item makes its outer size smaller than its basis, so a `flex-basis: 100%` item can share the row with the previous items and squeeze them (this broke the ToC). Zero the margin when you rely on wrapping.
+
 ## 5. State right now
 
 - **Merge rule: central branch `feat/2027-design` only, never `master` without the owner's approval** (see HANDOFF). In session 2 PRs #328-#330 were wrongly merged into `master`; the central branch was recreated from the `master` tip and the three merges were reverted on `master` by PR #332 (020482a), merged at the owner's explicit request (the only allowed master merge). Master equals the #326 state. Never merge `master` into `feat/2027-design`; read the revert gotcha in HANDOFF before the final PR. Open PR #331 targets `feat/2027-design`.

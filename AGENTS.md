@@ -201,6 +201,7 @@ Rules:
 - **Header height:** the fixed header's bottom edge is 98px. `--header-h` (base.css, 6.25rem) is the
   one value for the page offset, burger menu, sticky headings, ToC and `scroll-padding-top`. Never
   hard-code `top-16` / `mt-[65px]` style numbers; change `--header-h` if the header changes.
+- **Reading column:** every prose sheet (post, project, `Page` layout) is `sheet sheet-prose` (40.5rem wide, centered, text measure 36.5rem), so there is no wide empty padding around text. Do not put long text on a full-width sheet. The post page puts the ToC beside it (`Post.astro` grid `40.5rem + 300px`, centered).
 - **Photos and screenshots** are framed (`.frame`, `PolaroidCard`), serve images with `densities` or `widths`, and keep their natural aspect ratio (never force `aspect-*` without `object-cover`). Long reading text (posts, projects, pages, resume) sits on a `.sheet`.
 - **Prose colors** come from the tokens (`--tw-prose-*` in `my-prose.css`), not the slate palette.
 - **Reading measure** is `36.5rem` (rem, not `ch`, so headings and text share one column).

@@ -40,7 +40,7 @@ const props = { ...defaultProps, ...shareProps };
 // todo: change package
 ---
 
-<div class={cn('inline-flex items-center gap-3', className)}>
+<div class={cn('inline-flex flex-wrap items-center gap-x-3 gap-y-2', className)}>
   <span class="text-base font-bold">Share:</span>
   <SocialShare {...props} {buttons} />
 </div>
@@ -50,6 +50,9 @@ const props = { ...defaultProps, ...shareProps };
   @reference '../styles/tailwind-reference.css';
   .astro-social-share {
     @apply my-0;
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 8px;
   }
 
   /* a raised round key for every share button */

@@ -1,13 +1,27 @@
 export const CAREERS = [
   {
+    company: 'Wego',
+    link: 'https://www.wego.com/',
+    location: 'Jakarta, Indonesia',
+    title: 'Senior Software Engineer II, Flights OTA',
+    period: 'Mar 2025 - Present',
+    // empty: the resume page counts it up to today
+    long: '',
+    summary:
+      'Delivered new flight booking ancillaries: seat selection, extra baggage, extra meals and travel protection. Shipped the revamped fare comparison pages, booking flow and booking history. Built design system components from scratch with the web platform team, including the monorepo setup and release pipelines. Owned the end-to-end AI-first internal translation pipeline: generation, audit reports, auto-assignment and the management web app. 1st place at the Wego internal hackathon in 2025 and 2nd place in 2026.',
+    stacks: [],
+    layout: 'left',
+    promotion: false,
+  },
+  {
     company: 'GovTech Edu Indonesia',
     link: 'https://www.govtechedu.id/',
     location: 'Jakarta, Indonesia',
-    title: 'Software Development Engineer, Web',
-    period: 'Jul 2023 - Dec 2024',
-    long: '1 yrs 3 mos',
+    title: 'Principal Software Development Engineer, Web',
+    period: 'Jun 2023 - Dec 2024',
+    long: '1 yr 7 mos',
     summary:
-      'Key contributor in a 3-person engineering team building an open data portal for the ministry of education from the ground along with the internal content management system to manage the data. Optimize the seo to gain 12K+ monthly organic traffic from search engines. Managing to get an external security penetration test from BSSN (National Cyber and Crypto Agency) with almost zero reported issues.',
+      'Sole frontend developer in a 3-person engineering team, building the open data portal of the ministry of education from the ground up (up to 12K daily peak visits), with a custom CMS with belajar.id authentication and approval workflows. Delivered the revamped Rapor Pendidikan 2023 platform. Optimized the SEO to gain 12K+ monthly organic traffic and passed an external penetration test from BSSN (National Cyber and Crypto Agency) with almost zero reported issues.',
     stacks: ['Next.js', 'React.js', 'GCP'],
     layout: 'right',
     promotion: false,
