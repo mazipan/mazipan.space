@@ -1,0 +1,34 @@
+---
+layout: '../../layouts/Page.astro'
+title: Paper and notes
+---
+import PaperCard from '../../components/PaperCard.astro';
+import StickyNote from '../../components/StickyNote.astro';
+
+back to [Index](/design)
+
+# Paper and notes
+
+## PaperCard
+
+<div class="not-prose flex flex-wrap items-start gap-8 py-4">
+  <PaperCard tape tilt class="w-64">
+    <p class="font-bold">With tape and tilt</p>
+    <p>It was a regular Tuesday when the news came.</p>
+  </PaperCard>
+  <PaperCard lines class="w-64">
+    <p class="font-bold">With ruled lines</p>
+    <p>Lines are for short notes only, never behind long text.</p>
+  </PaperCard>
+  <PaperCard as="article" class="w-64">
+    <p class="font-bold">Plain</p>
+    <p>The default surface. Use this behind real reading text.</p>
+  </PaperCard>
+</div>
+
+## StickyNote
+
+<div class="not-prose flex flex-wrap items-start gap-8 py-4">
+  <StickyNote label="Bottom line:" class="w-64">Use it to know when something enters the screen. No scroll listeners needed.</StickyNote>
+  <StickyNote class="w-64">A note with no label.</StickyNote>
+</div>

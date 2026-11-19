@@ -1,0 +1,21 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+export interface Props extends HTMLAttributes<'div'> {
+  as?: 'div' | 'article' | 'li';
+  /** decorative tape strip on top */
+  tape?: boolean;
+  /** ruled lines, for short notes only. Never behind long reading text. */
+  lines?: boolean;
+  /** static tilt of 1 degree, straightens on hover */
+  tilt?: boolean;
+}
+
+const { as: Tag = 'div', tape = false, lines = false, tilt = false, class: className, ...props } =
+  Astro.props;
+---
+
+<Tag {...props} class:list={['paper-card', lines && 'paper-lines', tilt && 'paper-tilt', className]}>
+  {tape && <span class="paper-tape" aria-hidden="true" />}
+  <slot />
+</Tag>

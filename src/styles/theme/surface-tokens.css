@@ -3,10 +3,16 @@
   :root {
     --th-wood-hi: #b17f57;
     --th-wood-lo: #7d5236;
+
+    --th-note-bg: #ffe27a;
+    --th-note-text: #2b1d14;
   }
 
   :root.dark {
     --th-wood-hi: #6b4a33;
     --th-wood-lo: #3d2a1e;
+
+    --th-note-bg: #5a4636;
+    --th-note-text: #f6e9d8;
   }
 }
