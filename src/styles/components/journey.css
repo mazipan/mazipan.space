@@ -198,7 +198,7 @@
     transform: translateY(-3px);
   }
 
-  /* exit tab on the card */
+  /* "Joined <year>" tab on the card */
   .stop-tab {
     position: absolute;
     top: -14px;

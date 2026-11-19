@@ -440,3 +440,4 @@ from 'react'`) or use `React.JSX`.
   live under `plugins/` and use `defineMdastPlugin` from `satteri`.
 - `pnpm generate` fetches external data (talks, awesome-sde lists) and writes
   into the repo; it runs automatically as part of `pnpm build`.
+- **Resume order:** `src/constants/career.ts` is newest first; `resume.astro` shows stops oldest first and roles inside one company oldest first too. The card tab reads `Joined <year>` (never 'Exit', it reads like leaving).
