@@ -102,9 +102,11 @@ const breadcrumbs = [BreadcrumbItemHome, BreadcrumbItemBlog];
         <div class="relative">
           {postsByYear.years.map((year) => (
             <div class="relative">
-              <div class="text-base-300 absolute -top-16 right-0 z-0 font-mono text-[10rem] font-extrabold opacity-60">
-                {year}
-              </div>
+              <div
+                aria-hidden="true"
+                data-year={year}
+                class="text-base-300 absolute -top-16 right-0 z-0 font-mono text-[10rem] font-extrabold opacity-60 after:content-[attr(data-year)]"
+              ></div>
 
               <h2
                 class="b-h2 bg-base-200 sticky top-20 z-10 mt-0 flex w-fit rounded-lg p-2 font-serif"
@@ -118,7 +120,7 @@ const breadcrumbs = [BreadcrumbItemHome, BreadcrumbItemBlog];
 
               <div class="relative">
                 {postsByYear.posts[year].map((post) => (
-                  <PostCardSmall {post} class="last:mb-6" withImage={false} />
+                  <PostCardSmall {post} class="last:mb-6" withImage={false} headingLevel="h3" />
                 ))}
               </div>
             </div>

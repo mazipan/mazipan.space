@@ -37,16 +37,14 @@ const tagLinks = tags.map((tagItem) => ({
 }));
 ---
 
-{
-  tagLinks.length > 0 && (
-    <ul {...props} class={tagListVariants({ variant, size, className })}>
-      {tagLinks.map(({ href, text }) => (
-        <li class="inline-flex items-center">
-          <Tag {size} {variant} {href} {...tagProps}>
-            {text}
-          </Tag>
-        </li>
-      ))}
-    </ul>
-  )
-}
+{tagLinks.length > 0 && (
+  <ul {...props} class={tagListVariants({ variant, size, className })}>
+    {tagLinks.map(({ href, text }) => (
+      <li class="inline-flex items-center">
+        <Tag {size} {variant} {href} {...tagProps}>
+          {text}
+        </Tag>
+      </li>
+    ))}
+  </ul>
+)}

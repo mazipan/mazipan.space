@@ -44,7 +44,28 @@ export function contrastRatio(fg, bg) {
   return (a + 0.05) / (b + 0.05);
 }
 
+/** Mix two 6-digit hex colors: `pctA` of a, the rest of b. */
+function mix(a, b, pctA) {
+  const ch = (hex, i) => parseInt(hex.slice(i, i + 2), 16);
+  const out = [1, 3, 5].map((i) => Math.round(ch(a, i) * pctA + ch(b, i) * (1 - pctA)));
+  return `#${out.map((v) => v.toString(16).padStart(2, '0')).join('')}`;
+}
+
+// derived tokens: the reading sheet is mixed from the page color, like in surface-tokens.css
+const withDerived = (tokens, dark) => ({
+  ...tokens,
+  'sheet-bg': mix(tokens['base-100'], '#ffffff', dark ? 0.94 : 0.5),
+});
+
 const PAIRS = [
+  // reading sheet (long text sits on it): AAA for body and headings
+  ['content', 'sheet-bg', 7],
+  ['headings', 'sheet-bg', 7],
+  ['captions', 'sheet-bg', 4.5],
+  ['links', 'sheet-bg', 4.5],
+  ['links-hover', 'sheet-bg', 4.5],
+  ['links-visited', 'sheet-bg', 4.5],
+  ['key-edge', 'sheet-bg', 3],
   ['content', 'base-100', 7],
   ['headings', 'base-100', 7],
   ['content', 'base-200', 4.5],
@@ -94,16 +115,16 @@ function main() {
   const light = parseTokens(css, ':root');
   // dark inherits any token it does not override, like the real cascade
   const dark = { ...light, ...parseTokens(css, ':root.dark') };
-  const scopes = { light, dark };
+  const scopes = { light: withDerived(light, false), dark: withDerived(dark, true) };
   for (const name of PALETTES) {
-    scopes[`${name}-light`] = {
-      ...light,
-      ...parseTokens(css, `:root[data-theme='${name}-light']`),
-    };
-    scopes[`${name}-dark`] = {
-      ...dark,
-      ...parseTokens(css, `:root[data-theme='${name}-dark']`),
-    };
+    scopes[`${name}-light`] = withDerived(
+      { ...light, ...parseTokens(css, `:root[data-theme='${name}-light']`) },
+      false
+    );
+    scopes[`${name}-dark`] = withDerived(
+      { ...dark, ...parseTokens(css, `:root[data-theme='${name}-dark']`) },
+      true
+    );
   }
 
   let failures = 0;

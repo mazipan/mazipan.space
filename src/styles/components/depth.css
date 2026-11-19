@@ -1,0 +1,222 @@
+/* The depth layer: texture, sheets, 3D titles, raised small parts. Everything here is decoration:
+   text colors always come from tokens that scripts/check-contrast.mjs checks. */
+@layer base {
+  body {
+    background-image: var(--th-grain), radial-gradient(var(--th-dot) 1.2px, transparent 1.7px);
+    background-size:
+      160px 160px,
+      22px 22px;
+  }
+}
+
+@layer components {
+  /* reading sheet: solid, lighter paper with a real edge, a paper thickness and a soft shadow */
+  .sheet {
+    position: relative;
+    margin-bottom: 8px;
+    padding: clamp(16px, 3vw, 32px);
+    border: 2px solid var(--th-key-edge);
+    border-radius: 16px;
+    background: var(--th-sheet-bg);
+    box-shadow:
+      inset 0 2px 0 rgb(255 255 255 / 0.5),
+      0 6px 0 -2px var(--th-key-cream-side),
+      0 18px 28px rgb(0 0 0 / 0.16);
+  }
+  :root.dark .sheet {
+    box-shadow:
+      inset 0 2px 0 rgb(255 255 255 / 0.1),
+      0 6px 0 -2px var(--th-key-cream-side),
+      0 18px 28px rgb(0 0 0 / 0.4);
+  }
+
+  /* titles: extruded in the palette color, they stand up from the page */
+  .b-h1,
+  .title-3d,
+  .my-prose:not(:where([class~='not-prose'], [class~='not-prose'] *)) h1 {
+    text-shadow:
+      0.02em 0.02em 0 var(--th-title-side),
+      0.04em 0.04em 0 var(--th-title-side),
+      0.06em 0.06em 0 var(--th-title-side),
+      0.08em 0.2em 0.2em rgb(0 0 0 / 0.18);
+  }
+
+  /* sub headings: letterpress, pressed into the paper */
+  .b-h2,
+  .b-h3,
+  .shelf-title {
+    text-shadow: 0 1px 0 rgb(255 255 255 / 0.75);
+  }
+  :root.dark .b-h2,
+  :root.dark .b-h3,
+  :root.dark .shelf-title {
+    text-shadow: 0 1px 0 rgb(0 0 0 / 0.85);
+  }
+
+  /* breadcrumbs: small raised keys */
+  .crumb {
+    display: inline-flex;
+    align-items: center;
+    min-height: 28px;
+    padding: 2px 12px;
+    border: 2px solid var(--th-key-edge);
+    border-radius: 9999px;
+    background: linear-gradient(
+      to bottom,
+      var(--th-key-cream-face-hi),
+      var(--th-key-cream-face-lo)
+    );
+    box-shadow:
+      inset 0 2px 0 rgb(255 255 255 / 0.5),
+      0 3px 0 var(--th-key-cream-side);
+    color: var(--th-key-cream-text);
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .crumb:hover {
+    transform: translateY(-1px);
+  }
+  .crumb:active {
+    transform: translateY(2px);
+    box-shadow: inset 0 2px 3px rgb(0 0 0 / 0.2);
+  }
+
+  /* a link inside running text, shown as a small raised key */
+  .link-key {
+    display: inline-block;
+    margin-block: 2px 4px;
+    padding: 0 10px;
+    border: 2px solid var(--th-key-edge);
+    border-radius: 8px;
+    background: linear-gradient(
+      to bottom,
+      var(--th-key-terracotta-face-hi),
+      var(--th-key-terracotta-face-lo)
+    );
+    box-shadow:
+      inset 0 2px 0 rgb(255 255 255 / 0.3),
+      0 3px 0 var(--th-key-terracotta-side);
+    color: var(--th-key-terracotta-text);
+    font-weight: 700;
+    line-height: 1.5;
+    text-decoration: none;
+  }
+  .link-key:hover {
+    transform: translateY(-1px);
+    color: var(--th-key-terracotta-text);
+  }
+  .link-key:active {
+    transform: translateY(2px);
+    box-shadow: inset 0 2px 3px rgb(0 0 0 / 0.25);
+  }
+
+  /* framed picture: a mat with a bevel, a thickness and a shadow */
+  .frame {
+    padding: 6px;
+    border: 2px solid var(--th-key-edge);
+    border-radius: 14px;
+    background: var(--th-key-cream-face-hi);
+    box-shadow:
+      inset 0 2px 0 rgb(255 255 255 / 0.5),
+      0 6px 0 -2px var(--th-key-cream-side),
+      0 16px 24px rgb(0 0 0 / 0.2);
+  }
+  .frame > img,
+  .frame > picture > img {
+    display: block;
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: inset 0 0 0 2px rgb(0 0 0 / 0.2);
+  }
+
+  /* recessed surface, for code and quotes */
+  .well {
+    border: 2px solid var(--th-key-edge);
+    border-radius: 12px;
+    background: var(--th-base-200);
+    box-shadow:
+      inset 0 3px 8px rgb(0 0 0 / 0.18),
+      0 2px 0 rgb(255 255 255 / 0.35);
+  }
+
+  /* notice board: a wooden frame, a recessed cork-like surface, pinned notes */
+  .board {
+    position: relative;
+    padding: 10px;
+    border: 2px solid var(--th-key-edge);
+    border-radius: 18px;
+    background: linear-gradient(to bottom, var(--th-wood-hi), var(--th-wood-lo));
+    box-shadow:
+      inset 0 2px 0 rgb(255 255 255 / 0.3),
+      0 6px 0 -2px var(--th-wood-lo),
+      0 18px 28px rgb(0 0 0 / 0.25);
+  }
+  .board-surface {
+    position: relative;
+    padding: 28px 20px 24px;
+    border: 2px solid rgb(0 0 0 / 0.35);
+    border-radius: 10px;
+    background-color: var(--th-base-200);
+    background-image: radial-gradient(var(--th-dot) 1.2px, transparent 1.7px);
+    background-size: 18px 18px;
+    box-shadow: inset 0 5px 12px rgb(0 0 0 / 0.25);
+  }
+  .board-label {
+    position: absolute;
+    top: -18px;
+    left: 18px;
+    margin: 0;
+    padding: 3px 16px;
+    border: 2px solid var(--th-key-edge);
+    border-radius: 9999px;
+    background: linear-gradient(
+      to bottom,
+      var(--th-key-cream-face-hi),
+      var(--th-key-cream-face-lo)
+    );
+    box-shadow:
+      inset 0 2px 0 rgb(255 255 255 / 0.5),
+      0 3px 0 var(--th-key-cream-side);
+    color: var(--th-key-cream-text);
+    font-size: 0.8125rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .board-note:nth-child(even) {
+    transform: rotate(0.8deg);
+  }
+  /* push pin */
+  .board-note::before {
+    content: '';
+    position: absolute;
+    top: -7px;
+    left: 50%;
+    width: 13px;
+    height: 13px;
+    margin-left: -6px;
+    border-radius: 50%;
+    background:
+      radial-gradient(circle at 35% 30%, rgb(255 255 255 / 0.65), transparent 45%),
+      var(--th-key-terracotta-face-lo);
+    box-shadow: 0 3px 3px rgb(0 0 0 / 0.4);
+  }
+
+  /* timeline dot: a small bevelled bead */
+  .bead {
+    border: 2px solid var(--th-key-edge);
+    border-radius: 50%;
+    background:
+      radial-gradient(circle at 35% 30%, rgb(255 255 255 / 0.6), transparent 45%),
+      var(--th-key-terracotta-face-lo);
+    box-shadow: 0 3px 0 var(--th-key-terracotta-side);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .crumb:hover,
+    .link-key:hover {
+      transform: none;
+    }
+  }
+}

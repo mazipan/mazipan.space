@@ -12,6 +12,10 @@ metadata:
 - Wants reusable components first, for consistency (buttons, badges).
 - Wants selectable palettes eventually (data-palette + dark/light); repo already has THEMES/data-theme skeleton.
 
+- (Session 2) Wants EVERYTHING non-flat: bevels, elevation, 3D, including headings (3D typography ok) and a texture/pattern page background.
+- (Session 2) White underline on the current menu key looks odd to them: use a lamp. Header keys and groups of keys must be exactly the same height (and square keys really square).
+- (Session 2) Free to relayout pages for the new look. Fewer commits/PRs (build budget): work locally, verify, push once. Always update handoff and docs.
+
 **Why:** Said directly during the 2026-11-19 redesign brainstorm.
 
 **How to apply:** Propose visually (mockups), keep a11y checks (pnpm contrast, Lighthouse) on every change. Related: [[project-2027-redesign-branching]].

@@ -14,5 +14,7 @@ const [main, ...restPost] = posts;
 
 <div class="featured mb-8 grid grid-cols-1 gap-8 md:grid-cols-3">
   <PostCardFeatured post={main} />
-  {restPost.map((post) => <PostCardSmall post={post} withImage={true} />)}
+  {restPost.map((post) => (
+    <PostCardSmall post={post} withImage={true} />
+  ))}
 </div>

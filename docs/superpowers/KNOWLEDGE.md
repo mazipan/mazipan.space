@@ -10,7 +10,10 @@ Everything the previous session learned that is not obvious from the code. Read 
 | Tactile "keycap" components (bevel, 6px press travel, 2px edge, optional click) | Owner is bored of flat design, likes real keyboard keys, "clicky, like a real thing" |
 | Neumorphism rejected | Low contrast, fails WCAG |
 | Glass/blur only rarely | Hurts text contrast and speed |
-| Post body on plain paper, no texture | Readability first |
+| Page texture (grain + dots) but long reading text on a solid `.sheet` | Owner likes texture (session 2); readability and AAA contrast first |
+| Extruded page titles, letterpress sub headings | Owner asked for 3D bevelled typography (session 2) |
+| Current key = lamp on the rim, not an underline | Owner dislikes the white underline (session 2) |
+| Header = bevelled tray with colored keys, all 48px tall | Owner asked for non-flat header and exact size consistency |
 | Reading measure 65-70ch, body 17-19px, line height 1.7+ | Owner: blog readability first |
 | Spotify tile skipped (v1) | Needs credentials and fallback. "Right now" = static data file |
 | Scribble-on-photo skipped | Accessibility and effort |
@@ -23,6 +26,8 @@ Everything the previous session learned that is not obvious from the code. Read 
 Owner references they liked (One Page Love): clintbalcom.com (personal voice, Bottom Line callouts, Simple/Detailed toggle, Lightning Round, Now Playing), jasonbriscoe.com (big greeting hero, signature), kuldar (bento grid, signature animation, easter eggs). Take ideas, not copies.
 
 Owner preferences in chat: short answers, bullets, tables, diagrams, no long dashes. They want to see the UI (mockups, screenshots) before deciding. They said: "work until finish", "no need to ask", "you decide".
+
+Session 2 additions: fewer commits and PRs (each push is a Vercel build, push once when satisfied), keep all docs synced, be precise about sizes of buttons shown together, free to relayout pages, prefers non-flat everywhere (bevel, elevation, 3D), likes texture and pattern backgrounds.
 
 ## 2. Repo facts (mazipan.space)
 
@@ -44,7 +49,7 @@ Owner preferences in chat: short answers, bullets, tables, diagrams, no long das
 
 - Colors only through `--th-*` variables in `src/styles/theme/*.css`. New pair of text and background = new line in `scripts/check-contrast.mjs` first (watch it fail), then the token. New token file = add it to `FILES` in that script.
 - Contrast: text 4.5:1, UI borders 3:1, post body 7:1. `--th-primary-50/100/200` stay light tints in dark mode (black text sits on them).
-- Never meaning by depth or color alone: keys have a 2px edge (`--th-key-edge`), pressed/current keys are underlined and use `aria-pressed` / `aria-current`.
+- Never meaning by depth or color alone: keys have a 2px edge (`--th-key-edge`), pressed/current keys light a lamp (`::after` on the face) and use `aria-pressed` / `aria-current`.
 - Reduced motion: no lift, tilt, press animation. Forced colors: keys keep borders.
 - `Keycap` props: `colors` (terracotta, teal, mustard, cream, navy), `size` (md, sm, square), `pressed`, `element` (a, button), `disabled`. `Button` solid/outline = keycaps (`solid-primary` terracotta, `solid-default` navy, `outline-primary` teal, `outline-default` cream); ghost and `flat` stay flat.
 - Books reuse the key color tokens (cover = `face-lo`, spine = `side`, text = key text). Shelf rows are exactly `--shelf-row: 210px` so one plank fits under each wrapped row.
@@ -58,6 +63,17 @@ Owner preferences in chat: short answers, bullets, tables, diagrams, no long das
 - `gh`: account `mazipan-wego`, repo `mazipan/mazipan.space`. Create PRs with `--body-file`. Squash merge. After a squash, merge `origin/master` back into `feat/2027-design` and push it again.
 - Workflow used in the first session: superpowers skills (brainstorm -> plan -> execute inline -> one fresh reviewer on the most capable model -> fix pass test-first). Progress ledger lived in `.superpowers/sdd/<plan>/progress.md` (git-ignored, deleted after each phase). You may use the same or a lighter loop, but keep the gates: contrast, astro check, lint, build, Prettier, browser check, Lighthouse.
 - Mockups were served by a local "visual companion" server; the tracked copies are in `docs/superpowers/specs/mockups/` (open them in a browser).
+
+## 4b. Session 2 tooling and lessons
+
+- No Lighthouse in the cloud container. Use axe-core in Playwright instead: `npm i axe-core` in a scratch folder, `page.addScriptTag`, `axe.run({runOnly:['wcag2a','wcag2aa','wcag21aa','wcag22aa','best-practice']})`, both modes (set `localStorage.theme`). Run over every route from `dist/**/index.html`.
+- Measure key groups: collect `.keycap, .tag` bounding boxes, group by vertical center, flag different heights. This found pagination (50x66 arrows vs 43x46 numbers), wrapped tags and a 46 vs 48 footer mismatch.
+- `ch` units scale with the element font: a heading with `max-width: 50ch` is wider than a paragraph. Use rem for a shared column.
+- Prose used `prose-slate`, so pages not using tokens looked blue-grey. `my-prose.css` now maps `--tw-prose-*` to tokens.
+- `text-shadow` in `em` scales the 3D title extrusion with font size (px looked muddy on small titles).
+- Axe reports `color-contrast` on aria-hidden decorative text: render decoration through `::after { content: attr(data-x) }`.
+- `getNextTheme` used to cycle through the whole theme list; it now flips light/dark inside the same palette.
+- Merge flow without force push: squash merges make `master` diverge from the session branch. Merge `origin/master` into the branch and resolve `HANDOFF.md` / `Footer.astro` with `--ours`.
 
 ## 5. State right now
 

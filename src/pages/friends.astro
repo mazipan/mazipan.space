@@ -21,69 +21,72 @@ const breadcrumbs = [BreadcrumbItemHome];
     </slot>
     <section class="flex flex-grow flex-col gap-4">
       <p>
-        Inspired by <a
+        Inspired by{' '}
+        <a
           href="https://zakiego.com/friends"
           target="blank"
           rel="noopener noreferrer"
-          class="bg-primary text-primary-content hover:bg-primary-hover hover:underline"
-          >zakiego.com/friends</a
-        >, I felt encouraged to create this dedicated page to highlight and share links to the blogs
+          class="link-key"
+        >
+          zakiego.com/friends
+        </a>
+        , I felt encouraged to create this dedicated page to highlight and share links to the blogs
         or websites of my dear friends and mentors. It’s my way of celebrating their work, ideas,
         and contributions, and providing others with the opportunity to explore their content.
-        <br /><br />
-
+        <br />
+        <br />
         The complete list of links is available publicly in the associated repository, ensuring
         accessibility for everyone. If you would like to be included in this list, you are more than
-        welcome to add your blog or website by submitting a pull request to <a
+        welcome to add your blog or website by submitting a pull request to{' '}
+        <a
           href="https://github.com/mazipan/awesome-sde-id-blogs"
           target="blank"
           rel="noopener noreferrer"
-          class="bg-primary text-primary-content hover:bg-primary-hover hover:underline"
+          class="link-key"
         >
           the repository
-        </a>. This collaborative approach allows the list to grow and include a wider variety of
-        voices and perspectives. Let’s make this space a hub for connection, inspiration, and mutual
+        </a>
+        . This collaborative approach allows the list to grow and include a wider variety of voices
+        and perspectives. Let’s make this space a hub for connection, inspiration, and mutual
         support!
       </p>
 
       <div class="mt-8 grid grid-cols-1 gap-4 md:grid-cols-4">
-        {
-          awesomeSdeBlogs.data
-            .filter((i) => i.owner.name !== 'Irfan Maulana')
-            .map((person) => (
-              <div class="border-primary flex flex-col items-center justify-between gap-4 rounded-lg border p-4 text-center shadow-lg">
-                <a
-                  href={person.blog.link}
-                  class="hover:text-primary focus:bg-base-200 focus:ring-primary flex flex-wrap items-center justify-center gap-1 rounded-br-lg focus:ring-2 focus:ring-offset-2 focus:outline-none"
-                  target="_blank"
-                  rel="noreferrer noopener"
-                >
-                  <Icon name="tabler:world-www" class="h-5 w-5" />
-                  <span>{person.blog.name}</span>
-                </a>
+        {awesomeSdeBlogs.data
+          .filter((i) => i.owner.name !== 'Irfan Maulana')
+          .map((person) => (
+            <div class="paper-card flex flex-col items-center justify-between gap-4 text-center transition-transform hover:-translate-y-1">
+              <a
+                href={person.blog.link}
+                class="hover:text-primary focus:bg-base-200 focus:ring-primary flex flex-wrap items-center justify-center gap-1 rounded-br-lg focus:ring-2 focus:ring-offset-2 focus:outline-none"
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                <Icon name="tabler:world-www" class="h-5 w-5" />
+                <span>{person.blog.name}</span>
+              </a>
 
-                <Image
-                  {...IMAGE_SIZES.FIXED.AVATAR}
-                  src={person.owner.avatar}
-                  alt={person.owner.name}
-                  class="relative rounded-full"
-                />
-                <a
-                  href={person.owner.link}
-                  class="hover:text-primary focus:bg-base-200 focus:ring-primary flex flex-wrap items-center justify-center gap-1 rounded-bl-lg focus:ring-2 focus:ring-offset-2 focus:outline-none"
-                  target="_blank"
-                  rel="noreferrer noopener"
-                >
-                  {person.owner.icon === 'github' ? (
-                    <Icon name="tabler:brand-github" class="h-4 w-4" />
-                  ) : (
-                    <Icon name="tabler:brand-x" class="h-4 w-4" />
-                  )}
-                  <span class="text-sm font-bold">{person.owner.name}</span>
-                </a>
-              </div>
-            ))
-        }
+              <Image
+                {...IMAGE_SIZES.FIXED.AVATAR}
+                src={person.owner.avatar}
+                alt={person.owner.name}
+                class="relative rounded-full border-2 border-[var(--th-key-edge)] shadow-[0_4px_0_rgb(0_0_0/0.25)]"
+              />
+              <a
+                href={person.owner.link}
+                class="hover:text-primary focus:bg-base-200 focus:ring-primary flex flex-wrap items-center justify-center gap-1 rounded-bl-lg focus:ring-2 focus:ring-offset-2 focus:outline-none"
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                {person.owner.icon === 'github' ? (
+                  <Icon name="tabler:brand-github" class="h-4 w-4" />
+                ) : (
+                  <Icon name="tabler:brand-x" class="h-4 w-4" />
+                )}
+                <span class="text-sm font-bold">{person.owner.name}</span>
+              </a>
+            </div>
+          ))}
       </div>
     </section>
   </article>

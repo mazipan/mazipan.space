@@ -2,6 +2,7 @@
 import { Icon } from 'astro-icon/components';
 
 import { cn } from '@/utils/styles';
+import Keycap from './Keycap.astro';
 
 import type { HTMLAttributes } from 'astro/types';
 
@@ -19,21 +20,25 @@ const { headings, ...props } = Astro.props;
 ---
 
 <toggle-toc class="fixed right-4 bottom-8 z-50 flex lg:hidden">
-  <button
+  <Keycap
+    element="button"
+    colors="mustard"
     data-expanded="false"
-    role="button"
-    type="button"
-    class="toc-btn-toggle border-primary bg-base-100 flex cursor-pointer items-center justify-center gap-2 rounded-lg border-2 p-3 transition-all duration-500 data-[expanded=true]:rotate-180"
+    class="toc-btn-toggle keycap-nav keycap-nav-icon keycap-nav-round"
+    aria-label="Table of contents"
   >
-    <Icon name="tabler:table-column" class="inline h-6 w-6 fill-current" />
-  </button>
+    <Icon
+      name="tabler:table-column"
+      class="inline h-6 w-6 fill-current transition-transform duration-500 [[data-expanded=true]_&]:rotate-180"
+    />
+  </Keycap>
 </toggle-toc>
 
 <content-toc
   data-lg="false"
   data-expanded="false"
   class={cn(
-    'my-prose centered-px toc-content bg-base-100 z-50 transform rounded-lg shadow-lg transition-all duration-500 lg:z-0 lg:shadow-none',
+    'my-prose centered-px toc-content bg-base-100 lg:bg-transparent z-50 transform rounded-lg shadow-lg transition-all duration-500 lg:z-0 lg:shadow-none',
     'data-[lg=false]:fixed data-[lg=false]:bottom-24 data-[lg=false]:left-4 data-[lg=false]:w-[80%]'
     // 'data-[expanded=false]:-translate-x-[110%] data-[expanded=true]:translate-x-0'
   )}
@@ -41,7 +46,7 @@ const { headings, ...props } = Astro.props;
 >
   <div
     class={cn(
-      'toc border-primary mx-auto overflow-y-auto rounded-lg border-2 border-dashed p-4',
+      'toc sheet mx-auto overflow-y-auto !p-4',
       'max-h-[calc(70vh)] lg:sticky lg:top-20 lg:max-h-[calc(100vh-100px)]'
     )}
   >

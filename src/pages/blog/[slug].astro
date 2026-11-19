@@ -122,18 +122,20 @@ const schema = JSON.stringify({
   <Fragment slot="hero-image">
     {/* hero image 1280x720 max, 16:9 */}
     {!noHero && (
-      <Image
-        {...IMAGE_SIZES.RESPONSIVE.MDX_EXPAND_LG}
-        src={heroImage}
-        alt={heroAlt}
-        fetchpriority="high"
-        loading="eager"
-        itemprop="image"
-        class="mt-4 block aspect-[16/8] h-auto max-h-[400px] w-full rounded-lg object-cover object-center"
-        transition:name={getTransitionNameFromElementId({
-          elementId: TRANSITION_ELEMENT_IDS.POST_CARD.HERO_IMAGE,
-        })}
-      />
+      <div class="frame mt-4">
+        <Image
+          {...IMAGE_SIZES.RESPONSIVE.MDX_EXPAND_LG}
+          src={heroImage}
+          alt={heroAlt}
+          fetchpriority="high"
+          loading="eager"
+          itemprop="image"
+          class="aspect-[16/8] h-auto max-h-[400px] object-cover object-center"
+          transition:name={getTransitionNameFromElementId({
+            elementId: TRANSITION_ELEMENT_IDS.POST_CARD.HERO_IMAGE,
+          })}
+        />
+      </div>
     )}
   </Fragment>
 

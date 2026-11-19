@@ -11,7 +11,14 @@ import Keycap from './Keycap.astro';
   <ul class="flex flex-wrap gap-2" role="list" aria-labelledby="palette-label">
     {PALETTES.map(({ id, label, swatch }) => (
       <li>
-        <Keycap element="button" colors="cream" size="sm" pressed={false} data-palette={id}>
+        <Keycap
+          element="button"
+          colors="cream"
+          size="sm"
+          class="keycap-nav"
+          pressed={false}
+          data-palette={id}
+        >
           <span
             class="mr-2 inline-block h-3 w-3 rounded-full align-middle"
             style={`background:${swatch};box-shadow:0 0 0 2px currentColor`}

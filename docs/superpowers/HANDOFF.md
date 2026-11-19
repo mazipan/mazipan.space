@@ -1,12 +1,16 @@
 # 2027 redesign: handoff, checklist, progress
 
-Last updated: 2026-11-19. Keep this file current: tick boxes and edit "Now" after every phase.
+Last updated: 2026-11-19 (end of session 2 depth pass). Keep this file current: tick boxes and edit "Now" after every phase.
 
 ## Standing orders from the owner (follow them)
 
 - **Work until the whole redesign is finished.** Do not stop to ask, do not wait for approval.
 - Decide by yourself. Owner said "you decide it" and "no need to ask".
 - Merge finished phases **without asking**: phase branch -> `feat/2027-design` (no PR), then PR `feat/2027-design` -> `master`, wait for CI green, **squash merge**. Never push to `master` directly.
+- **Build budget (owner, session 2):** do NOT make many commits or PRs, each push triggers a Vercel build. Work in the local tree until satisfied, verify locally (build, axe, screenshots), then push ONCE. Open PR #331 (palettes) is the single carrier; fold later work into it and merge once.
+- **Always sync docs:** update this handoff, `AGENTS.md`, `KNOWLEDGE.md` and the spec with every change, so nothing lives only in the conversation.
+- **Precision:** when buttons or keys appear together, measure width and height in the browser and make them exactly consistent (same height in a row, square keys really square). No brute-force tweaks: understand the box model first, double check before writing design.
+- **Owner design taste (session 2):** NOT flat. Bevels, elevation, 3D everywhere (header, cards, buttons, headings). 3D bevelled / extruded heading typography is welcome. A subtle texture / pattern page background is liked. Free to RELAYOUT pages, do not just keep the old layout if the new look is better. The current-page cue on keys must not be a white underline (owner dislikes it): use another non-color cue.
 - Output style: short, bullets, tables for 3+ items, no long dashes (use "-"). Commit messages end with the Co-Authored-By trailer from the system reminder.
 - Owner wants to SEE UI before deciding: show mockups or screenshots, not walls of text.
 - Owner taste: warm, friendly, personal, NOT techy. Tactile 3D "keycap" look (bevels, clicky), not flat. Blog readability and accessibility first. Wants reusable components, consistent look. Wants selectable palettes eventually.
@@ -25,7 +29,7 @@ Redesign mazipan.space ("Irfan's bookshelf"): home is a warm personal letter, wr
 | Previous agent's memory notes (copy) | `docs/superpowers/memory/` |
 | Plans | `docs/superpowers/plans/` (phase 1, 1b, 2 written; write one per later phase) |
 | Component docs | `AGENTS.md` section "Design system components" |
-| Reference pages | `/design/keycaps`, `/design/buttons`, `/design/shelf`, `/design/surfaces`, `/design/forms` |
+| Reference pages | `/design/depth` (new), `/design/keycaps`, `/design/buttons`, `/design/shelf`, `/design/surfaces`, `/design/forms` |
 | Tokens | `src/styles/theme/` (`theme-default.css`, `keycap-tokens.css`, `surface-tokens.css`) |
 | Contrast test | `scripts/check-contrast.mjs` (`pnpm contrast`) |
 
@@ -65,6 +69,13 @@ Redesign mazipan.space ("Irfan's bookshelf"): home is a warm personal letter, wr
   - [x] About restyled: sections in `PaperCard` (hire card has tape), photo is a `PolaroidCard`, words unchanged
   - [x] `alert.css` rewritten: warm paper tinted by a key color, thick colored left edge, text from `--th-content` / `--th-headings`
   - [ ] Phase done when every public page has Lighthouse a11y 100 in dark (navigation) and light (snapshot) and the checklist above is ticked
+- [x] **Phase 8 DEPTH PASS (owner request in session 2) - DONE, pushed once on PR #331's branch**:
+  - Header: bevelled tray, colored keys, every key exactly 48px (`keycap-nav`), theme key round 48x48, burger 48x48, pressed/current = lamp on the rim (underline removed)
+  - Page texture (grain + dot grid), raised `.sheet` for long text (post body, ToC, About-style pages via `Page.astro`, resume timeline), contrast derived and checked in `pnpm contrast` (AAA)
+  - 3D titles (`.b-h1`, `.title-3d`, prose h1 extruded in palette color; h2/h3/shelf titles letterpress), breadcrumbs `.crumb`, `.link-key`, `.frame` hero image, quote/img depth, prose colors from tokens (no more slate blue), measure `36.5rem`
+  - Home: pinboard with pinned notes, hero h1 extruded, shuffle key round, avatar drop shadow. Friends cards = paper cards. Resume: bead dots, raised tags. Pagination, palette and sound keys all 48px. Carousel viewer prev/next = round keycaps, thicker progress track
+  - Verified: contrast (8 scopes), astro check, lint, build, axe on pages and palettes, measured key groups. NOT verified: Lighthouse (not available in the cloud container), keyboard walkthrough by a human
+  - Ideas not done: texture variants per palette, 3D on `h2` inside post body (kept plain for readability), footer columns still plain text links
 - [~] **Phase 6 polish** (session 2 done: opt-in key click sound `KeySoundToggle` in the footer with localStorage `key-sound`; `Shelf` accepts `id`; disabled `Button` always has `aria-disabled`; footer is a wood plank with a round keycap back-to-top. Still open: reduced-motion audit, `aria-current="true"` for section keys on sub-pages, keyboard walkthrough, Lighthouse), original list: opt-in click sound (footer toggle, off by default, remember choice, WebAudio like `keycaps.html` mockup), reduced-motion audit, add `captions`/`links` contrast pairs on `paper-card` and `sticky-note` surfaces (dark captions is 3.74:1 on cream), `Shelf` id uniqueness, disabled ghost/flat `Button` `aria-disabled`, section keys use `aria-current="true"` not `page` on sub-pages, Lighthouse a11y 100 on every page in light AND dark, keyboard walkthrough, axe
 - [x] **Phase 7 selectable palettes - DONE (session 2)**: ocean, forest, plum (light and dark) in `src/styles/theme/palettes.css`, `PaletteSwitcher` in the footer, `getNextTheme` keeps the palette and flips the mode, `pnpm contrast` checks 8 scopes (280 pairs), axe clean in every palette. Duplicate `#theme-switcher` id removed (data attribute). Not done: free custom accent color. Original plan: repo already has the skeleton (`src/constants/theme.ts` `THEMES`, commented `green-light/green-dark`, `data-theme` attribute, `src/components/ThemeScript.astro`). Add 3-4 palettes (for example Warm paper default, Ocean, Forest, Plum, High contrast), each with light and dark values, as `[data-theme='<name>-light|dark']` scopes; extend `scripts/check-contrast.mjs` to check every scope; picker as swatch `Keycap`s in the footer; persist in `localStorage` key `theme`. Free custom colors: accent only, guarded by a contrast check
 - [ ] Final: whole-site review, update `AGENTS.md`, update this file, announce done

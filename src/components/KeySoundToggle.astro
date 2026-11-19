@@ -4,7 +4,14 @@ import Keycap from './Keycap.astro';
 ---
 
 <key-sound-toggle>
-  <Keycap element="button" colors="cream" size="sm" pressed={false} id="key-sound-toggle">
+  <Keycap
+    element="button"
+    colors="cream"
+    size="sm"
+    class="keycap-nav"
+    pressed={false}
+    id="key-sound-toggle"
+  >
     <span data-label>Key sounds: off</span>
   </Keycap>
 </key-sound-toggle>

@@ -87,7 +87,8 @@ const [firstKey, prevKey, nextKey, lastKey] = arrows;
         <Keycap
           element="a"
           colors="navy"
-          size="square"
+          size="sm"
+          class="keycap-nav keycap-nav-icon"
           href={href}
           disabled={!href}
           aria-label={label}
@@ -101,6 +102,7 @@ const [firstKey, prevKey, nextKey, lastKey] = arrows;
           element="a"
           colors="cream"
           size="sm"
+          class="keycap-nav keycap-nav-icon"
           href={getPageUrl(pageNumber)}
           pressed={pageNumber === currentPage}
           aria-label={`Page ${pageNumber}`}
@@ -113,7 +115,8 @@ const [firstKey, prevKey, nextKey, lastKey] = arrows;
         <Keycap
           element="a"
           colors="navy"
-          size="square"
+          size="sm"
+          class="keycap-nav keycap-nav-icon"
           href={href}
           disabled={!href}
           aria-label={label}

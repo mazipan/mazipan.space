@@ -31,19 +31,17 @@ const schema = JSON.stringify({
 });
 ---
 
-<nav class={cn('my-2')} aria-label="breadcrumb" {...props}>
-  <div class="relative flex items-center gap-2">
-    {
-      items.map((item) => (
-        <a
-          href={item.href}
-          title={item.text}
-          class="bg-primary-50 hover:bg-primary-200 focus:ring-primary rounded-full p-1 px-2 text-sm text-black no-underline hover:text-black hover:no-underline focus:ring-2 focus:ring-offset-2 focus:outline-none"
-        >
-          {item.text}
-        </a>
-      ))
-    }
+<nav class={cn('my-3')} aria-label="breadcrumb" {...props}>
+  <div class="relative flex flex-wrap items-center gap-3 pb-1">
+    {items.map((item) => (
+      <a
+        href={item.href}
+        title={item.text}
+        class="crumb focus-visible:outline-primary no-underline hover:no-underline focus-visible:outline-2 focus-visible:outline-offset-2"
+      >
+        {item.text}
+      </a>
+    ))}
   </div>
 </nav>
 <script type="application/ld+json" set:html={schema} />

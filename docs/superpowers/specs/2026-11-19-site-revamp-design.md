@@ -41,7 +41,10 @@ Mockups: `.superpowers/brainstorm/10293-1795079233/content/` (`personal-home.htm
 | Color | Cream background `#fdf0e3`, ink `#2b1d14`, terracotta `#b8442a`, teal `#1f6f66`, mustard `#e9c46a`, navy `#264653`. Final values must pass the contrast checks below. |
 | Type | Display: a warm serif (Georgia-class, or a variable serif web font). Body: friendly sans or serif at 17-19px. Dela Gothic One is dropped, or kept only for tiny labels. Mono only for code. |
 | Depth | Layered shadows, bevels, paper grain (CSS only or one small image), wood grain via CSS gradients. |
-| Keycap | Base wrapper = deep side, inner face = bevelled top. 6px press travel. 3px focus outline plus white ring. |
+| Keycap | Base wrapper = deep side, inner face = bevelled top. 6px press travel. 3px focus outline plus white ring. Header/pagination keys: exactly 48px tall. Current/toggled key = pressed in plus a small lamp on the rim (owner rejected the underline). |
+| Texture (added session 2) | Page background: paper grain + dot grid. Long reading text sits on a solid raised `.sheet`, never on the texture. |
+| 3D type (added session 2) | Page titles extruded in the palette color, sub headings letterpress. Not applied to body text. |
+| Chrome (added session 2) | Header is a bevelled tray, footer top is a wood plank, home "Right now" is a pinboard with pinned notes, pictures sit in a mat (`.frame`). |
 
 ## Component set
 
@@ -81,7 +84,7 @@ footer: contact + sound toggle
 - Skip link first on every page. Landmarks. One `h1` per page.
 - Visible focus on every control. Logical tab order. Everything works by keyboard.
 - Contrast: 4.5:1 for text, 3:1 for UI borders, AAA (7:1) for post body.
-- Depth, tilt, and color are never the only signal.
+- Depth, tilt, and color are never the only signal (pressed keys also light a lamp).
 - `prefers-reduced-motion`: no lift, tilt, press travel, or scroll effects.
 - Dark mode is kept (`prefers-color-scheme` + existing toggle), with its own palette that passes the same checks.
 - Test targets: Lighthouse accessibility 100, axe with no serious issues, keyboard-only walkthrough, screen reader smoke test.

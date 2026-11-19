@@ -21,21 +21,19 @@ const ICON_MAP: Record<string, string> = {
 
 <code-group>
   <div role="tablist" class="border-base-300 flex flex-wrap border-b">
-    {
-      tabs.map(({ id, text }, i) => (
-        <button
-          role="tab"
-          type="button"
-          data-label={id}
-          data-active={i === 0 ? 'true' : 'false'}
-          aria-selected={i === 0 ? 'true' : 'false'}
-          class="hover:text-primary data-[active=true]:border-primary data-[active=true]:text-primary -mb-px flex cursor-pointer items-center gap-1.5 border-b-2 border-transparent px-3 py-2 text-sm font-medium transition-colors"
-        >
-          {ICON_MAP[id] ? <Icon name={ICON_MAP[id]} class="h-4 w-4" /> : null}
-          <span>{text}</span>
-        </button>
-      ))
-    }
+    {tabs.map(({ id, text }, i) => (
+      <button
+        role="tab"
+        type="button"
+        data-label={id}
+        data-active={i === 0 ? 'true' : 'false'}
+        aria-selected={i === 0 ? 'true' : 'false'}
+        class="hover:text-primary data-[active=true]:border-primary data-[active=true]:text-primary -mb-px flex cursor-pointer items-center gap-1.5 border-b-2 border-transparent px-3 py-2 text-sm font-medium transition-colors"
+      >
+        {ICON_MAP[id] ? <Icon name={ICON_MAP[id]} class="h-4 w-4" /> : null}
+        <span>{text}</span>
+      </button>
+    ))}
   </div>
   <div class="panels">
     <slot />

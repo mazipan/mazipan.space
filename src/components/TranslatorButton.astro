@@ -7,23 +7,21 @@ const { lang = 'id' } = Astro.props;
 const isAlreadyEnglish = lang === 'en';
 ---
 
-{
-  !isAlreadyEnglish && (
-    <div id="translator-wrapper" class="hidden">
-      <button
-        id="translator-btn"
-        type="button"
-        class="text-captions inline-flex items-center gap-2 rounded-lg border border-current px-3 py-1.5 text-sm font-medium transition-opacity hover:opacity-70 disabled:cursor-not-allowed disabled:opacity-40"
-        data-source-lang={lang}
-      >
-        <span id="translator-icon" class="shrink-0" aria-hidden="true">
-          🌐
-        </span>
-        <span id="translator-label">Translate to English</span>
-      </button>
-    </div>
-  )
-}
+{!isAlreadyEnglish && (
+  <div id="translator-wrapper" class="hidden">
+    <button
+      id="translator-btn"
+      type="button"
+      class="text-captions inline-flex items-center gap-2 rounded-lg border border-current px-3 py-1.5 text-sm font-medium transition-opacity hover:opacity-70 disabled:cursor-not-allowed disabled:opacity-40"
+      data-source-lang={lang}
+    >
+      <span id="translator-icon" class="shrink-0" aria-hidden="true">
+        🌐
+      </span>
+      <span id="translator-label">Translate to English</span>
+    </button>
+  </div>
+)}
 
 <script>
   const TRANSLATABLE_ATTR = '[data-translatable]';
