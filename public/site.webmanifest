@@ -1,5 +1,5 @@
 {
-  "background_color": "#c1ddf9",
+  "background_color": "#fdf0e3",
   "display": "standalone",
   "icons": [
     {
@@ -18,5 +18,5 @@
   "name": "Mazipan Space",
   "short_name": "MZP",
   "description": "Personal blog by Irfan Maulana",
-  "theme_color": "#0f172a"
+  "theme_color": "#1c1410"
 }
