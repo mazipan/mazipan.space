@@ -36,10 +36,22 @@
     box-shadow: inset 0 2px 3px rgb(0 0 0 / 0.2);
   }
 
-  /* the selected filter is also underlined: never color alone */
-  .tag-solid[aria-current]:not([aria-current='false']) {
-    text-decoration: underline 2px;
-    text-underline-offset: 3px;
+  /* the selected filter lights the same lamp as a selected key (see .keycap): never color alone */
+  .tag-solid {
+    position: relative;
+  }
+  .tag-solid[aria-current]:not([aria-current='false'])::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    margin-left: -4px;
+    border: 1.5px solid rgb(0 0 0 / 0.55);
+    border-radius: 50%;
+    background: #ffffff;
+    box-shadow: 0 0 5px 1px rgb(255 255 255 / 0.85);
   }
 
   .tag-sm {

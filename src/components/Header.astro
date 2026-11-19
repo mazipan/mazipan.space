@@ -2,8 +2,8 @@
 import { Icon } from 'astro-icon/components';
 
 import HeaderLink from '@/components/HeaderLink.astro';
-import Keycap from '@/components/Keycap.astro';
-import ThemeToggle from '@/components/ThemeToggle.astro';
+import NavKey from '@/components/NavKey.astro';
+import ThemePopover from '@/components/ThemePopover.astro';
 import { SELECTORS } from '@/constants/dom';
 import { NAVIGATION_ITEMS } from '@/constants/navigation';
 import { ROUTES } from '@/constants/routes';
@@ -59,20 +59,20 @@ const currentOf = (path: string) =>
         </HeaderLink>
 
         <mobile-button class="flex items-center gap-2 md:hidden">
-          <ThemeToggle />
-          <Keycap
+          <ThemePopover id="theme-popover-mobile" />
+          <NavKey
             id="menu-toggle"
             colors="terracotta"
-            size="md"
+            icon
             element="button"
             aria-expanded="false"
             aria-haspopup="menu"
             aria-label="Open main menu"
-            class="group keycap-nav keycap-nav-icon"
+            class="group"
           >
             <Icon name="tabler:menu-3" class="h-6 w-6 group-aria-expanded:hidden" />
             <Icon name="tabler:menu-deep" class="hidden h-6 w-6 group-aria-expanded:block" />
-          </Keycap>
+          </NavKey>
         </mobile-button>
       </div>
 
@@ -81,21 +81,20 @@ const currentOf = (path: string) =>
         <ul class="flex gap-2 md:!flex-row md:items-center">
           {NAVIGATION_ITEMS.map(({ title, path }, index) => (
             <li class="relative">
-              <Keycap
+              <NavKey
                 element="a"
                 href={path}
                 colors={KEY_TONES[index % KEY_TONES.length]}
                 size="sm"
-                class="keycap-nav"
                 pressed={path === activeNavItemPath}
                 current={currentOf(path)}
               >
                 {title}
-              </Keycap>
+              </NavKey>
             </li>
           ))}
           <li class="shrink-0">
-            <ThemeToggle />
+            <ThemePopover id="theme-popover-desktop" />
           </li>
         </ul>
       </nav>
@@ -112,17 +111,17 @@ const currentOf = (path: string) =>
     <ul class="flex flex-col gap-2">
       {NAVIGATION_ITEMS.map(({ title, path }, index) => (
         <li class="relative">
-          <Keycap
+          <NavKey
             element="a"
             href={path}
             colors={KEY_TONES[index % KEY_TONES.length]}
             size="sm"
-            class="keycap-nav w-full"
+            class="w-full"
             pressed={path === activeNavItemPath}
             current={currentOf(path)}
           >
             {title}
-          </Keycap>
+          </NavKey>
         </li>
       ))}
     </ul>

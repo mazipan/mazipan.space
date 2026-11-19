@@ -1,0 +1,200 @@
+---
+// One header key that opens one small popover: light or dark, color palette, key sounds.
+// It replaces the old theme key, the footer palette picker and the footer sound toggle.
+import { Icon } from 'astro-icon/components';
+
+import { PALETTES } from '@/constants/theme';
+import KeySoundToggle from './KeySoundToggle.astro';
+import NavKey from './NavKey.astro';
+
+export interface Props {
+  /** unique per instance on the page (the header renders one for phones and one for desktop) */
+  id: string;
+}
+
+const { id } = Astro.props;
+const panelId = `${id}-panel`;
+const titleId = `${id}-title`;
+---
+
+<theme-popover class="md:relative">
+  <NavKey
+    element="button"
+    colors="mustard"
+    icon
+    round
+    aria-label="Appearance: light or dark, palette, key sounds"
+    aria-haspopup="dialog"
+    aria-expanded="false"
+    aria-controls={panelId}
+    data-popover-trigger
+  >
+    <Icon
+      name="tabler:sun"
+      class="h-[1.3rem] w-[1.3rem] scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90"
+    />
+    <Icon
+      name="tabler:moon-stars"
+      class="absolute h-[1.3rem] w-[1.3rem] scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0"
+    />
+  </NavKey>
+
+  <div
+    id={panelId}
+    role="dialog"
+    aria-labelledby={titleId}
+    hidden
+    data-popover-panel
+    class="sheet absolute top-full right-0 z-[60] mt-4 w-[19rem] max-w-[calc(100vw-2rem)] !p-4 md:mt-5"
+  >
+    <h2 id={titleId} class="mt-0 mb-3 text-base font-bold">
+      Appearance
+    </h2>
+
+    <p class="mb-2 text-sm font-semibold" aria-hidden="true">
+      Mode
+    </p>
+    <div class="mb-4 grid grid-cols-2 gap-2" role="group" aria-label="Mode">
+      <NavKey
+        element="button"
+        colors="cream"
+        pressed={false}
+        data-mode="light"
+        tight
+        class="w-full"
+      >
+        <Icon name="tabler:sun" class="mr-2 h-5 w-5" aria-hidden="true" />
+        Light
+      </NavKey>
+      <NavKey element="button" colors="cream" pressed={false} data-mode="dark" tight class="w-full">
+        <Icon name="tabler:moon-stars" class="mr-2 h-5 w-5" aria-hidden="true" />
+        Dark
+      </NavKey>
+    </div>
+
+    <p class="mb-2 text-sm font-semibold" aria-hidden="true">
+      Color palette
+    </p>
+    <div class="mb-4 grid grid-cols-2 gap-2" role="group" aria-label="Color palette">
+      {PALETTES.map(({ id: paletteId, label, swatch }) => (
+        <NavKey
+          element="button"
+          colors="cream"
+          pressed={false}
+          data-palette={paletteId}
+          tight
+          class="w-full"
+        >
+          <span
+            class="mr-2 inline-block h-3 w-3 shrink-0 rounded-full"
+            style={`background:${swatch};box-shadow:0 0 0 2px currentColor`}
+            aria-hidden="true"
+          />
+          {label}
+        </NavKey>
+      ))}
+    </div>
+
+    <p class="mb-2 text-sm font-semibold" aria-hidden="true">
+      Sound
+    </p>
+    <KeySoundToggle />
+  </div>
+</theme-popover>
+
+<script>
+  import { THEME_CONFIG } from '@/constants/theme';
+  import { getCurrentMode, getPaletteId, getThemeFor } from '@/utils/theme';
+
+  import type { ChangeThemeCustomEvent, Mode } from '@/types/constants';
+
+  const { CHANGE_EVENT, DATA_ATTRIBUTE } = THEME_CONFIG;
+
+  class ThemePopover extends HTMLElement {
+    #controller: AbortController | undefined;
+    #observer: MutationObserver | undefined;
+
+    connectedCallback() {
+      const root = document.documentElement;
+      const trigger = this.querySelector<HTMLButtonElement>('[data-popover-trigger]')!;
+      const panel = this.querySelector<HTMLElement>('[data-popover-panel]')!;
+      const modeKeys = [...this.querySelectorAll<HTMLButtonElement>('[data-mode]')];
+      const paletteKeys = [...this.querySelectorAll<HTMLButtonElement>('[data-palette]')];
+
+      const currentPalette = () => getPaletteId(root.getAttribute(DATA_ATTRIBUTE) ?? 'default');
+
+      // keep the pressed keys in step with the real theme, however it changed
+      const sync = () => {
+        const mode = getCurrentMode();
+        const palette = currentPalette();
+        for (const key of modeKeys)
+          key.setAttribute('aria-pressed', String(key.dataset.mode === mode));
+        for (const key of paletteKeys)
+          key.setAttribute('aria-pressed', String(key.dataset.palette === palette));
+      };
+      sync();
+      this.#observer = new MutationObserver(sync);
+      this.#observer.observe(root, {
+        attributes: true,
+        attributeFilter: ['class', DATA_ATTRIBUTE],
+      });
+
+      const setOpen = (open: boolean, returnFocus = false) => {
+        panel.hidden = !open;
+        trigger.setAttribute('aria-expanded', String(open));
+        if (open) {
+          const first = panel.querySelector<HTMLElement>('[aria-pressed="true"]') ?? modeKeys[0];
+          first?.focus();
+        } else if (returnFocus) {
+          trigger.focus();
+        }
+      };
+
+      const choose = (palette: string, mode: Mode) => {
+        const theme = getThemeFor(palette, mode);
+        if (!theme) return;
+        const payload = { detail: { theme } } as ChangeThemeCustomEvent;
+        document.dispatchEvent(new CustomEvent(CHANGE_EVENT, payload));
+      };
+
+      const { signal } = (this.#controller = new AbortController());
+
+      trigger.addEventListener('click', () => setOpen(Boolean(panel.hidden)), { signal });
+      for (const key of modeKeys)
+        key.addEventListener('click', () => choose(currentPalette(), key.dataset.mode as Mode), {
+          signal,
+        });
+      for (const key of paletteKeys)
+        key.addEventListener(
+          'click',
+          () => choose(key.dataset.palette ?? 'default', getCurrentMode()),
+          {
+            signal,
+          }
+        );
+
+      // close with Escape (focus goes back to the key) or a click outside
+      document.addEventListener(
+        'keydown',
+        (event) => {
+          if (event.key === 'Escape' && !panel.hidden) setOpen(false, true);
+        },
+        { signal }
+      );
+      document.addEventListener(
+        'click',
+        (event) => {
+          if (!panel.hidden && !this.contains(event.target as Node)) setOpen(false);
+        },
+        { signal }
+      );
+    }
+
+    disconnectedCallback() {
+      this.#controller?.abort();
+      this.#observer?.disconnect();
+    }
+  }
+
+  if (!customElements.get('theme-popover')) customElements.define('theme-popover', ThemePopover);
+</script>

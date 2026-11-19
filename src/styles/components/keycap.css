@@ -60,11 +60,11 @@
   .keycap[aria-current]:not([aria-current='false']) .keycap-face::after {
     content: '';
     position: absolute;
-    top: 3px;
+    top: 2px;
     left: 50%;
-    width: 6px;
-    height: 6px;
-    margin-left: -4.5px;
+    width: 5px;
+    height: 5px;
+    margin-left: -4px;
     border-radius: 50%;
     border: 1.5px solid rgb(0 0 0 / 0.55);
     background: #ffffff;
@@ -173,6 +173,10 @@
   .keycap-nav[aria-pressed='true'] .keycap-face,
   .keycap-nav[aria-current]:not([aria-current='false']) .keycap-face {
     transform: translateY(4px);
+  }
+  /* for keys in a tight grid (the appearance popover): less side padding */
+  .keycap-nav-tight .keycap-face {
+    padding: 0 10px;
   }
   .keycap-nav-icon {
     width: 48px;

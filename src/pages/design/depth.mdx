@@ -3,7 +3,7 @@ layout: '../../layouts/Page.astro'
 title: Depth
 ---
 
-import Keycap from '../../components/Keycap.astro';
+import NavKey from '../../components/NavKey.astro';
 
 back to [Index](/design)
 
@@ -11,13 +11,13 @@ The depth layer (`src/styles/components/depth.css`). Everything here is decorati
 
 ## Keys of the header size
 
-Every header key is exactly 48px tall. Icon keys are exactly 48 x 48. Text keys: `keycap keycap-nav`. Icon keys: add `keycap-nav-icon`. Round: add `keycap-nav-round`. The current page and toggled keys light a small lamp on the top rim (not an underline, not color alone).
+Use the shared `NavKey` for every navigation key, choice and toggle: exactly 48px tall, icon keys exactly 48 x 48 (`icon`), round optional (`round`), `tight` for narrow grids. The current page and toggled keys light a small lamp on the top rim (not an underline, not color alone).
 
 <div class="not-prose flex flex-wrap items-center gap-3">
-  <Keycap element="a" href="#" colors="terracotta" size="sm" class="keycap-nav">Plain</Keycap>
-  <Keycap element="a" href="#" colors="teal" size="sm" class="keycap-nav" pressed>Pressed</Keycap>
-  <Keycap element="button" colors="mustard" class="keycap-nav keycap-nav-icon">+</Keycap>
-  <Keycap element="button" colors="navy" class="keycap-nav keycap-nav-icon keycap-nav-round">+</Keycap>
+  <NavKey element="a" href="#" colors="terracotta">Plain</NavKey>
+  <NavKey element="a" href="#" colors="teal" pressed>Pressed</NavKey>
+  <NavKey element="button" colors="mustard" icon>+</NavKey>
+  <NavKey element="button" colors="navy" icon round>+</NavKey>
 </div>
 
 ## Sheet (long reading goes here)

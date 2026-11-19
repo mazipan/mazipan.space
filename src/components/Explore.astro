@@ -3,8 +3,8 @@ import { Icon } from 'astro-icon/components';
 
 import { getCategoryLinks, getCategoryProps } from '@/modules/post/category';
 import { getTagLinks } from '@/modules/post/tag';
-import Button from '@/components/Button.astro';
 import FilterList from '@/components/FilterList.astro';
+import NavKey from '@/components/NavKey.astro';
 import Tag from '@/components/Tag.astro';
 import { cn } from '@/utils/styles';
 
@@ -27,27 +27,16 @@ const categoryLinks = getCategoryLinks(posts, filterPathname);
       const { icon } = getCategoryProps(text);
 
       return (
-        <Button
-          href={href}
-          size="sm"
-          colors="primary"
-          variant={isActive ? 'solid' : 'outline'}
-          aria-current={isActive ? 'true' : undefined}
-        >
-          <Icon name={icon} slot="before-icon" class="h-6 w-6 fill-current" />
+        <NavKey element="a" href={href} colors="cream" pressed={isActive} current="true">
+          <Icon name={icon} class="mr-2 h-6 w-6 fill-current" aria-hidden="true" />
           {text} ({count})
-        </Button>
+        </NavKey>
       );
     }}
   </FilterList>
   <FilterList class="mb-8 gap-1" itemLinks={tagLinks}>
     {({ href, text, count, isActive }: FilterLink) => (
-      <Tag
-        href={href}
-        size="md"
-        colors={isActive ? 'primary' : 'default'}
-        aria-current={isActive ? 'true' : undefined}
-      >
+      <Tag href={href} size="md" aria-current={isActive ? 'true' : undefined}>
         #{text} ({count})
       </Tag>
     )}

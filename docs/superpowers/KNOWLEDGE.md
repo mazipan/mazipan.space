@@ -75,6 +75,10 @@ Session 2 additions: fewer commits and PRs (each push is a Vercel build, push on
 - `getNextTheme` used to cycle through the whole theme list; it now flips light/dark inside the same palette.
 - Merge flow without force push: squash merges make `master` diverge from the session branch. Merge `origin/master` into the branch and resolve `HANDOFF.md` / `Footer.astro` with `--ours`.
 
+- Appearance lives in `ThemePopover` (one popover, three groups). It is rendered twice in the header (phone and desktop) so ids must be unique: pass `id`. `getThemeFor(palette, mode)` and the `theme-change` event are the only way to change theme.
+- `NavKey` wraps `Keycap`; never hand-size keys. The Astro `tight` prop adds `keycap-nav-tight` (less side padding) for two-column grids.
+- After editing JSX with Prettier, string `replace` edits may silently miss: always grep the result (this bit us twice with `tight`).
+
 ## 5. State right now
 
 - **Merge rule: central branch `feat/2027-design` only, never `master` without the owner's approval** (see HANDOFF). In session 2 PRs #328-#330 were wrongly merged into `master`; the central branch was recreated from the `master` tip and the three merges were reverted on `master` by PR #332 (020482a), merged at the owner's explicit request (the only allowed master merge). Master equals the #326 state. Never merge `master` into `feat/2027-design`; read the revert gotcha in HANDOFF before the final PR. Open PR #331 targets `feat/2027-design`.

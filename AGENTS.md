@@ -193,9 +193,10 @@ Rules:
   `.b-h1` / `.title-3d` / prose `h1` are extruded (`--th-title-side`), `.b-h2` / `.b-h3` / `.shelf-title`
   are letterpress. Raised small parts: `.crumb` (breadcrumbs), `.link-key` (a link in running
   text), `.frame` (picture mat), `.well` (recessed), `.board` + `.board-note` (pinboard), `.bead`.
-- **Key sizes together:** header and pagination keys are exactly 48px tall (`keycap keycap-nav`),
-  icon keys 48 x 48 (`keycap-nav-icon`, round: `keycap-nav-round`). Measure groups of keys in the
-  browser, never trust the CSS alone.
+- **Key sizes together:** use `NavKey` (never hand-size a `Keycap`): 48px tall, icon keys 48 x 48,
+  round optional. A selected / current key is `pressed` (pressed in + lamp), identical in the header,
+  pagination, filters and the popover. Tags selected with `aria-current` light the same lamp.
+  Measure groups of keys in the browser, never trust the CSS alone.
 - **Prose colors** come from the tokens (`--tw-prose-*` in `my-prose.css`), not the slate palette.
 - **Reading measure** is `36.5rem` (rem, not `ch`, so headings and text share one column).
 - **Reduced motion:** lift, tilt, and press animation must be off under

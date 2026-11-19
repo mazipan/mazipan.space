@@ -2,7 +2,7 @@
 import { Icon } from 'astro-icon/components';
 
 import { cn } from '@/utils/styles';
-import Keycap from './Keycap.astro';
+import NavKey from './NavKey.astro';
 
 import type { HTMLAttributes } from 'astro/types';
 
@@ -20,18 +20,20 @@ const { headings, ...props } = Astro.props;
 ---
 
 <toggle-toc class="fixed right-4 bottom-8 z-50 flex lg:hidden">
-  <Keycap
+  <NavKey
     element="button"
     colors="mustard"
     data-expanded="false"
-    class="toc-btn-toggle keycap-nav keycap-nav-icon keycap-nav-round"
+    icon
+    round
+    class="toc-btn-toggle"
     aria-label="Table of contents"
   >
     <Icon
       name="tabler:table-column"
       class="inline h-6 w-6 fill-current transition-transform duration-500 [[data-expanded=true]_&]:rotate-180"
     />
-  </Keycap>
+  </NavKey>
 </toggle-toc>
 
 <content-toc

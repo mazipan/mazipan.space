@@ -1,19 +1,13 @@
 ---
 // Opt-in key click sound. Off by default, the choice is remembered in localStorage.
-import Keycap from './Keycap.astro';
+// Lives in the appearance popover; there can be more than one instance on a page.
+import NavKey from './NavKey.astro';
 ---
 
 <key-sound-toggle>
-  <Keycap
-    element="button"
-    colors="cream"
-    size="sm"
-    class="keycap-nav"
-    pressed={false}
-    id="key-sound-toggle"
-  >
+  <NavKey element="button" colors="cream" pressed={false} data-key-sound tight class="w-full">
     <span data-label>Key sounds: off</span>
-  </Keycap>
+  </NavKey>
 </key-sound-toggle>
 
 <script>
@@ -83,7 +77,7 @@ import Keycap from './Keycap.astro';
 
   class KeySoundToggle extends HTMLElement {
     connectedCallback() {
-      const button = this.querySelector<HTMLButtonElement>('#key-sound-toggle');
+      const button = this.querySelector<HTMLButtonElement>('[data-key-sound]');
       const label = this.querySelector('[data-label]');
       if (!button || !label) return;
       enabled = read();
@@ -95,7 +89,12 @@ import Keycap from './Keycap.astro';
       button.addEventListener('click', () => {
         enabled = !enabled;
         write(enabled);
-        render();
+        // every instance on the page shows the same state
+        document.querySelectorAll('key-sound-toggle').forEach((el) => {
+          el.querySelector('[data-key-sound]')?.setAttribute('aria-pressed', String(enabled));
+          const l = el.querySelector('[data-label]');
+          if (l) l.textContent = `Key sounds: ${enabled ? 'on' : 'off'}`;
+        });
         // the toggle's own click is the first sound after switching on
         click(0.9, 1800);
       });
