@@ -64,6 +64,8 @@
     color: var(--bk-text);
     text-decoration: none;
     transition: transform 200ms;
+    /* text never spills onto the plank or the page */
+    overflow: hidden;
   }
 
   .book:hover,
@@ -92,10 +94,19 @@
     line-height: 1.2;
   }
 
+  /* the small book has less room: 4 title lines */
+  .book-sm .book-title {
+    -webkit-line-clamp: 4;
+  }
+
   .book-meta {
     display: block;
+    overflow: hidden;
     margin-top: 8px;
     font-size: 0.75rem;
+    line-height: 1.3;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .book-terracotta {
