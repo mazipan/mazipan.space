@@ -21,6 +21,7 @@ https://github.com/mazipan/blog-comments/discussions
 
 ## ⏪ Previous version
 
+- [2026.mazipan.space](https://2026.mazipan.space/)
 - [2024.mazipan.space](https://2024.mazipan.space/)
 
 ## 🔀 Use as a template
