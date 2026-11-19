@@ -1,0 +1,26 @@
+---
+layout: '../../layouts/Page.astro'
+title: Shelf and Book
+---
+import Book from '../../components/Book.astro';
+import Shelf from '../../components/Shelf.astro';
+
+back to [Index](/design)
+
+# Shelf and Book
+
+A shelf is a heading plus a list of links. Each book is one link with a horizontal title.
+Book heights are decoration only.
+
+<Shelf title="Short reads" href="/blog" linkLabel="All writing">
+  <Book href="/blog/2018-04-16-intro-to-intersection-observer" title="Intro to Intersection Observer" meta="Short read - 4 min" colors="terracotta" height="md" />
+  <Book href="/blog/2018-06-09-best-practice-loading-a-web" title="Best practice loading a web" meta="Long story - 6 min" colors="mustard" height="sm" />
+  <Book href="/blog/2019-02-19-eslint-formatter-html-extended" title="ESLint formatter HTML extended" meta="How-to - 5 min" colors="teal" height="lg" />
+  <Book href="/blog/2019-02-21-create-simple-like-button-using-firebase-rtdb" title="Create a like button with Firebase" meta="How-to - 5 min" colors="navy" height="md" />
+</Shelf>
+
+<Shelf title="Long stories" level={2}>
+  <Book href="/carousel/2026-07-04-layoff-cari-kerja" title="Layoff: looking for a job" meta="Slides - 6 pages" colors="cream" height="lg" />
+  <Book href="/carousel/2026-07-04-layoff-hari-pertama" title="Layoff: the first day" meta="Slides - 6 pages" colors="terracotta" height="md" />
+  <Book href="/blog" title="All writing" meta="57 posts" colors="navy" height="sm" />
+</Shelf>

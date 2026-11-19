@@ -1,0 +1,12 @@
+/* Surface tokens for shelf, notes and fields. Decorative colors have no text on them. */
+@layer base {
+  :root {
+    --th-wood-hi: #b17f57;
+    --th-wood-lo: #7d5236;
+  }
+
+  :root.dark {
+    --th-wood-hi: #6b4a33;
+    --th-wood-lo: #3d2a1e;
+  }
+}
