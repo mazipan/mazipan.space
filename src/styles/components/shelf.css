@@ -168,3 +168,17 @@
     }
   }
 }
+
+/* footer: a wood plank across the top, like the shelf planks */
+@layer components {
+  .footer-plank {
+    border-top: 2px solid var(--th-key-edge);
+    background-image: linear-gradient(
+      to bottom,
+      var(--th-wood-hi),
+      var(--th-wood-lo) 12px,
+      transparent 12px
+    );
+    box-shadow: inset 0 3px 0 rgb(255 255 255 / 0.18);
+  }
+}
