@@ -55,7 +55,7 @@
     --bk-text: var(--th-key-terracotta-text);
 
     display: block;
-    width: 132px;
+    width: 160px;
     padding: 12px 10px 12px 14px;
     border-left: 10px solid var(--bk-side);
     border-radius: 3px 8px 8px 3px;
@@ -137,14 +137,24 @@
 
   /* phone: two books per row, a plank under each row */
   @media (max-width: 640px) {
+    /* a grid, not two half-width flex items: no rounding can push a book to its own row */
     .shelf-books {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       padding-inline: 12px;
-    }
-    .book-item {
-      flex: 0 0 calc(50% - 6px);
     }
     .book {
       width: 100%;
+    }
+    /* narrow books: the meta line may wrap to 2 lines, the small book gives up a title line */
+    .book-meta {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      white-space: normal;
+    }
+    .book-sm .book-title {
+      -webkit-line-clamp: 3;
     }
   }
 

@@ -59,6 +59,8 @@ const PAIRS = [
   // key edge: a real border that does not depend on depth (3:1 for UI borders)
   ['key-edge', 'base-100', 3],
   ['key-edge', 'base-200', 3],
+  // home "Right now" strip uses base-200 with caption text
+  ['captions', 'base-200', 4.5],
   // sticky note
   ['note-text', 'note-bg', 4.5],
   // input field: text, placeholder and border
