@@ -1,0 +1,20 @@
+---
+// Polaroid: photo slot, caption slot (default), tape, small tilt that straightens on hover.
+import type { HTMLAttributes } from 'astro/types';
+
+export interface Props extends HTMLAttributes<'article'> {
+  as?: 'div' | 'article' | 'li';
+}
+
+const { as: Tag = 'article', class: className, ...props } = Astro.props;
+---
+
+<Tag {...props} class:list={['polaroid-card', className]}>
+  <span class="paper-tape" aria-hidden="true"></span>
+  <div class="polaroid-photo">
+    <slot name="photo" />
+  </div>
+  <div class="mt-3">
+    <slot />
+  </div>
+</Tag>
