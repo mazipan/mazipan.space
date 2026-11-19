@@ -16,9 +16,7 @@ const HEX = /^#[0-9a-fA-F]{6}$/;
 /** Parse `--th-*` custom properties declared in one scope of a CSS string. */
 export function parseTokens(css, scope) {
   const re =
-    scope === ':root.dark'
-      ? /:root\.dark\s*\{([^}]*)\}/g
-      : /(?:^|[\s{}])(:root)\s*\{([^}]*)\}/g;
+    scope === ':root.dark' ? /:root\.dark\s*\{([^}]*)\}/g : /(?:^|[\s{}])(:root)\s*\{([^}]*)\}/g;
   const tokens = {};
   for (const match of css.matchAll(re)) {
     const body = match[match.length - 1];
@@ -98,7 +96,9 @@ function main() {
       const label = `${scope.padEnd(5)} ${fg} on ${bg}`;
       if (!a || !b || !HEX.test(a) || !HEX.test(b)) {
         failures++;
-        console.log(`FAIL  ${label}: missing or not a 6-digit hex (${a ?? 'none'}, ${b ?? 'none'})`);
+        console.log(
+          `FAIL  ${label}: missing or not a 6-digit hex (${a ?? 'none'}, ${b ?? 'none'})`
+        );
         continue;
       }
       const ratio = contrastRatio(a, b);

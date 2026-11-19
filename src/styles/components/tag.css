@@ -16,10 +16,7 @@
   /* raised chip: real 2px edge, gradient face, small side shadow */
   .tag-solid {
     border: 2px solid var(--th-key-edge);
-    background: linear-gradient(
-      var(--th-key-cream-face-hi),
-      var(--th-key-cream-face-lo)
-    );
+    background: linear-gradient(var(--th-key-cream-face-hi), var(--th-key-cream-face-lo));
     box-shadow:
       0 2px 0 var(--th-key-edge),
       inset 0 1px 0 rgb(255 255 255 / 0.5);
@@ -54,10 +51,7 @@
   }
 
   .tag-solid-primary {
-    background: linear-gradient(
-      var(--th-key-terracotta-face-hi),
-      var(--th-key-terracotta-face-lo)
-    );
+    background: linear-gradient(var(--th-key-terracotta-face-hi), var(--th-key-terracotta-face-lo));
     color: var(--th-key-terracotta-text);
     @apply focus:ring-primary;
   }

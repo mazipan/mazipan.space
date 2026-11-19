@@ -19,5 +19,9 @@ const hintId = hint ? `${id}-hint` : undefined;
     {required && <span class="field-required">(required)</span>}
   </label>
   <input {...props} {id} {type} {required} class="field-input" aria-describedby={hintId} />
-  {hint && <p id={hintId} class="field-hint">{hint}</p>}
+  {hint && (
+    <p id={hintId} class="field-hint">
+      {hint}
+    </p>
+  )}
 </div>

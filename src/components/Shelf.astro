@@ -15,8 +15,14 @@ const id = `shelf-${title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
 
 <section aria-labelledby={id} class="shelf">
   <div class="shelf-head">
-    <Heading {id} class="shelf-title">{title}</Heading>
-    {href && <a {href} class="shelf-link">{linkLabel} &rarr;</a>}
+    <Heading {id} class="shelf-title">
+      {title}
+    </Heading>
+    {href && (
+      <a {href} class="shelf-link">
+        {linkLabel} &rarr;
+      </a>
+    )}
   </div>
   <ul class="shelf-books" role="list">
     <slot />

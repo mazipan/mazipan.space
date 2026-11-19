@@ -11,11 +11,20 @@ export interface Props extends HTMLAttributes<'div'> {
   tilt?: boolean;
 }
 
-const { as: Tag = 'div', tape = false, lines = false, tilt = false, class: className, ...props } =
-  Astro.props;
+const {
+  as: Tag = 'div',
+  tape = false,
+  lines = false,
+  tilt = false,
+  class: className,
+  ...props
+} = Astro.props;
 ---
 
-<Tag {...props} class:list={['paper-card', lines && 'paper-lines', tilt && 'paper-tilt', className]}>
+<Tag
+  {...props}
+  class:list={['paper-card', lines && 'paper-lines', tilt && 'paper-tilt', className]}
+>
   {tape && <span class="paper-tape" aria-hidden="true" />}
   <slot />
 </Tag>

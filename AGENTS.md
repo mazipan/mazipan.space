@@ -155,6 +155,35 @@ Available: `@/assets`, `@/components`, `@/constants`, `@/content`, `@/layouts`,
 - New carousel (Slides) → add a `.json` file under `src/content/carousel/`. See
   the **Carousel** section below for the full authoring guide.
 
+## Design system components (2027 redesign)
+
+Tactile "keycap" look. Build pages by composing these, never with one-off styles.
+Every component has a reference page under `/design/*` (source: `src/pages/design/`).
+
+| Component                    | Use                                                                                               | Key props                                                                              | Reference          |
+| ---------------------------- | ------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | ------------------ |
+| `Keycap.astro`               | Nav, toggles, buttons                                                                             | `colors`, `size` (`md`/`sm`/`square`), `pressed`, `element` (`a`/`button`), `disabled` | `/design/keycaps`  |
+| `Button.astro`               | Old API on keycaps. `solid`/`outline` are keys, `ghost` and `flat` stay flat (icon-only controls) | `variant`, `colors`, `size`, `flat`, `disabled`                                        | `/design/buttons`  |
+| `Tag.astro`                  | Raised chip (badge)                                                                               | `variant`, `colors`, `size`                                                            | `/design/buttons`  |
+| `Shelf.astro` + `Book.astro` | List of links on a wood shelf                                                                     | Shelf: `title`, `level`, `href`; Book: `href`, `title`, `meta`, `colors`, `height`     | `/design/shelf`    |
+| `PaperCard.astro`            | Paper surface                                                                                     | `as`, `tape`, `lines`, `tilt`                                                          | `/design/surfaces` |
+| `StickyNote.astro`           | "Bottom line" and callouts                                                                        | `label`                                                                                | `/design/surfaces` |
+| `Input.astro`                | Text field with visible label                                                                     | `label`, `id`, `hint`, `required`                                                      | `/design/forms`    |
+
+Rules:
+
+- **Tokens:** colors live in `src/styles/theme/` (`theme-default.css`, `keycap-tokens.css`,
+  `surface-tokens.css`) as `--th-*` variables. Dark mode is `:root.dark`.
+- **Contrast is a test:** `pnpm contrast` checks every token pair in light and dark.
+  A new token pair needs a new line in `scripts/check-contrast.mjs` **first** (watch it fail,
+  then add the token). New token files go into the `FILES` list in that script.
+- **Not only depth:** pressed and current keys are underlined and every key has a 2px edge.
+  Never carry meaning by color or shadow alone.
+- **Reduced motion:** lift, tilt, and press animation must be off under
+  `prefers-reduced-motion`.
+- **Builds need `SITE_URL`:** `SITE_URL=https://www.mazipan.space pnpm build`.
+- **Branches:** the redesign lives on `feat/2027-design`. Phase branches merge into it.
+
 ## CodeGroup component
 
 `src/components/CodeGroup.astro` renders a tabbed code block for showing the same

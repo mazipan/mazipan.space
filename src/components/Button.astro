@@ -71,20 +71,18 @@ const Element = (disabled ? 'span' : element) as 'a';
 const disabledProps = keycapColor && disabled ? { 'aria-disabled': 'true' as const } : {};
 ---
 
-{
-  keycapColor ? (
-    <Element {...props} {...disabledProps} class={classes}>
-      <span class="keycap-face inline-flex items-center justify-center gap-2">
-        <slot name="before-icon" />
-        <slot />
-        <slot name="after-icon" />
-      </span>
-    </Element>
-  ) : (
-    <Element {...props} class={classes}>
+{keycapColor ? (
+  <Element {...props} {...disabledProps} class={classes}>
+    <span class="keycap-face inline-flex items-center justify-center gap-2">
       <slot name="before-icon" />
       <slot />
       <slot name="after-icon" />
-    </Element>
-  )
-}
+    </span>
+  </Element>
+) : (
+  <Element {...props} class={classes}>
+    <slot name="before-icon" />
+    <slot />
+    <slot name="after-icon" />
+  </Element>
+)}

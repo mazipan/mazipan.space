@@ -14,10 +14,7 @@
   }
 
   .paper-lines {
-    background-image: repeating-linear-gradient(
-      transparent 0 27px,
-      rgb(0 0 0 / 0.08) 27px 28px
-    );
+    background-image: repeating-linear-gradient(transparent 0 27px, rgb(0 0 0 / 0.08) 27px 28px);
   }
 
   .paper-tilt {
