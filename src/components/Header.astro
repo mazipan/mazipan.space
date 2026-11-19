@@ -82,6 +82,7 @@ const currentOf = (path: string) =>
           {NAVIGATION_ITEMS.map(({ title, path }, index) => (
             <li class="relative">
               <NavKey
+                lamp
                 element="a"
                 href={path}
                 colors={KEY_TONES[index % KEY_TONES.length]}
@@ -105,13 +106,14 @@ const currentOf = (path: string) =>
 <aside class="group relative md:hidden" data-menu="close" id="menu-mobile">
   {/* Mobile nav items */}
   <nav
-    class="bg-base-100 fixed top-16 right-4 z-20 mt-2 min-w-[200px] transform rounded-lg border border-gray-100 p-2 shadow-xl transition-all duration-500 select-none group-[[data-menu=close]]:invisible group-[[data-menu=close]]:translate-x-[110%] group-[[data-menu=open]]:translate-x-0 md:hidden"
+    class="sheet fixed top-[var(--header-h)] right-4 z-20 min-w-[200px] transform !p-3 transition-all duration-500 select-none group-[[data-menu=close]]:invisible group-[[data-menu=close]]:translate-x-[110%] group-[[data-menu=open]]:translate-x-0 md:hidden"
     aria-label="Site navigation"
   >
     <ul class="flex flex-col gap-2">
       {NAVIGATION_ITEMS.map(({ title, path }, index) => (
         <li class="relative">
           <NavKey
+            lamp
             element="a"
             href={path}
             colors={KEY_TONES[index % KEY_TONES.length]}

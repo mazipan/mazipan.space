@@ -14,12 +14,15 @@ export interface Props extends KeycapProps {
   round?: boolean;
   /** less side padding, for keys in a tight grid */
   tight?: boolean;
+  /** light the lamp when pressed / current: for wayfinding and on/off state, not for every key */
+  lamp?: boolean;
 }
 
 const {
   icon = false,
   round = false,
   tight = false,
+  lamp = false,
   size = 'sm',
   class: className,
   ...props
@@ -34,6 +37,7 @@ const {
     icon && 'keycap-nav-icon',
     icon && round && 'keycap-nav-round',
     tight && 'keycap-nav-tight',
+    lamp && 'keycap-lamp',
     className,
   ]}
 >

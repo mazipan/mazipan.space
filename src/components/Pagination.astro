@@ -102,7 +102,7 @@ const ends = new Set(['First page', 'Last page']);
       {threePageNumbers(currentPage, lastPage).map((pageNumber) => (
         <NavKey
           element="a"
-          colors="cream"
+          colors={pageNumber === currentPage ? 'terracotta' : 'cream'}
           icon
           href={getPageUrl(pageNumber)}
           pressed={pageNumber === currentPage}

@@ -184,9 +184,11 @@ Rules:
 - **Contrast is a test:** `pnpm contrast` checks every token pair in light and dark.
   A new token pair needs a new line in `scripts/check-contrast.mjs` **first** (watch it fail,
   then add the token). New token files go into the `FILES` list in that script.
-- **Not only depth:** pressed and current keys light a small lamp on the top rim (a white dot with
-  a dark ring; NOT an underline, the owner dislikes it) and every key has a 2px edge.
-  Never carry meaning by color or shadow alone.
+- **Not only depth:** every key has a 2px edge, a selected key is pressed in. Never carry meaning by
+  color or shadow alone. The lamp (a white dot with a dark ring on the top rim, opt in with `lamp`) is
+  only for wayfinding (header menu) and on/off state (appearance popover). Filters and pagination
+  change color instead (selected = terracotta / primary + pressed in). NOT an underline, the owner
+  dislikes it. Ask "is it needed, does it look good" before adding a cue.
 - **Depth layer** (`src/styles/components/depth.css`, reference `/design/depth`): page background has a
   paper grain plus a dot grid (`--th-grain`, `--th-dot`). Long reading text must sit on a `.sheet`
   (solid `--th-sheet-bg`, contrast checked AAA by `pnpm contrast`), never on the texture. Titles:
@@ -194,9 +196,11 @@ Rules:
   are letterpress. Raised small parts: `.crumb` (breadcrumbs), `.link-key` (a link in running
   text), `.frame` (picture mat), `.well` (recessed), `.board` + `.board-note` (pinboard), `.bead`.
 - **Key sizes together:** use `NavKey` (never hand-size a `Keycap`): 48px tall, icon keys 48 x 48,
-  round optional. A selected / current key is `pressed` (pressed in + lamp), identical in the header,
-  pagination, filters and the popover. Tags selected with `aria-current` light the same lamp.
+  round optional. A selected / current key is `pressed` (pressed in), identical everywhere.
   Measure groups of keys in the browser, never trust the CSS alone.
+- **Header height:** the fixed header's bottom edge is 98px. `--header-h` (base.css, 6.25rem) is the
+  one value for the page offset, burger menu, sticky headings, ToC and `scroll-padding-top`. Never
+  hard-code `top-16` / `mt-[65px]` style numbers; change `--header-h` if the header changes.
 - **Prose colors** come from the tokens (`--tw-prose-*` in `my-prose.css`), not the slate palette.
 - **Reading measure** is `36.5rem` (rem, not `ch`, so headings and text share one column).
 - **Reduced motion:** lift, tilt, and press animation must be off under

@@ -7,15 +7,18 @@ import NavKey from '../../components/NavKey.astro';
 
 back to [Index](/design)
 
+# Depth
+
 The depth layer (`src/styles/components/depth.css`). Everything here is decoration, text colors come from checked tokens.
 
 ## Keys of the header size
 
-Use the shared `NavKey` for every navigation key, choice and toggle: exactly 48px tall, icon keys exactly 48 x 48 (`icon`), round optional (`round`), `tight` for narrow grids. The current page and toggled keys light a small lamp on the top rim (not an underline, not color alone).
+Use the shared `NavKey` for every navigation key, choice and toggle: exactly 48px tall, icon keys exactly 48 x 48 (`icon`), round optional (`round`), `tight` for narrow grids. A selected key is pressed in. Keys that mean wayfinding or on/off state also light a small lamp on the top rim (`lamp`); filters and pagination change color instead. Never an underline.
 
 <div class="not-prose flex flex-wrap items-center gap-3">
   <NavKey element="a" href="#" colors="terracotta">Plain</NavKey>
-  <NavKey element="a" href="#" colors="teal" pressed>Pressed</NavKey>
+  <NavKey element="a" href="#" colors="teal" pressed lamp>Pressed + lamp</NavKey>
+  <NavKey element="a" href="#" colors="terracotta" pressed>Pressed only</NavKey>
   <NavKey element="button" colors="mustard" icon>+</NavKey>
   <NavKey element="button" colors="navy" icon round>+</NavKey>
 </div>

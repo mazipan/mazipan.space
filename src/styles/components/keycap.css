@@ -51,13 +51,14 @@
     box-shadow: inset 0 2px 4px rgb(0 0 0 / 0.2);
   }
 
-  /* a cue that is not depth and not color: pressed and current keys light a small lamp,
-     like the caps lock key. The lamp has a dark ring so it reads on every key color. */
+  /* wayfinding and on/off state: keys that opt in with `lamp` light a small lamp on the top rim when
+     pressed or current, like the caps lock key. The lamp has a dark ring so it reads on every key
+     color. Other selected keys (filters, pagination) are pressed in and change color instead. */
   .keycap-face {
     position: relative;
   }
-  .keycap[aria-pressed='true'] .keycap-face::after,
-  .keycap[aria-current]:not([aria-current='false']) .keycap-face::after {
+  .keycap-lamp[aria-pressed='true'] .keycap-face::after,
+  .keycap-lamp[aria-current]:not([aria-current='false']) .keycap-face::after {
     content: '';
     position: absolute;
     top: 2px;

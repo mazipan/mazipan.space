@@ -1,4 +1,9 @@
 @layer base {
+  html {
+    /* anchors (ToC links, headings) must not land under the fixed header */
+    scroll-padding-top: var(--header-h);
+  }
+
   body {
     /* style base font in body, not in html so rem is unaffected */
     /* not responsive font, will affect buttons, etc, all elements */
@@ -6,6 +11,10 @@
   }
 
   :root {
+    /* The fixed header's bottom edge is at 98px (key 48 + padding + tray) plus a small gap. Everything
+       that sits under it (page offset, burger menu, sticky headings, ToC, anchor scroll) uses this. */
+    --header-h: 6.25rem;
+
     /* code blocks responsive font size */
     @apply [--expressive-code-font-size:0.875rem] md:[--expressive-code-font-size:1rem];
   }

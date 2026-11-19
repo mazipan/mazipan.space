@@ -12,7 +12,7 @@ Everything the previous session learned that is not obvious from the code. Read 
 | Glass/blur only rarely | Hurts text contrast and speed |
 | Page texture (grain + dots) but long reading text on a solid `.sheet` | Owner likes texture (session 2); readability and AAA contrast first |
 | Extruded page titles, letterpress sub headings | Owner asked for 3D bevelled typography (session 2) |
-| Current key = lamp on the rim, not an underline | Owner dislikes the white underline (session 2) |
+| Current key = lamp on the rim for wayfinding/state only (not every selected key), never an underline | Owner dislikes the white underline and said not every selected key needs a lamp (session 2) |
 | Header = bevelled tray with colored keys, all 48px tall | Owner asked for non-flat header and exact size consistency |
 | Reading measure 65-70ch, body 17-19px, line height 1.7+ | Owner: blog readability first |
 | Spotify tile skipped (v1) | Needs credentials and fallback. "Right now" = static data file |
@@ -49,7 +49,7 @@ Session 2 additions: fewer commits and PRs (each push is a Vercel build, push on
 
 - Colors only through `--th-*` variables in `src/styles/theme/*.css`. New pair of text and background = new line in `scripts/check-contrast.mjs` first (watch it fail), then the token. New token file = add it to `FILES` in that script.
 - Contrast: text 4.5:1, UI borders 3:1, post body 7:1. `--th-primary-50/100/200` stay light tints in dark mode (black text sits on them).
-- Never meaning by depth or color alone: keys have a 2px edge (`--th-key-edge`), pressed/current keys light a lamp (`::after` on the face) and use `aria-pressed` / `aria-current`.
+- Never meaning by depth or color alone: keys have a 2px edge (`--th-key-edge`), pressed/current keys use `aria-pressed` / `aria-current`; only keys with `lamp` (header menu, popover state keys) also light a lamp (`::after` on the face).
 - Reduced motion: no lift, tilt, press animation. Forced colors: keys keep borders.
 - `Keycap` props: `colors` (terracotta, teal, mustard, cream, navy), `size` (md, sm, square), `pressed`, `element` (a, button), `disabled`. `Button` solid/outline = keycaps (`solid-primary` terracotta, `solid-default` navy, `outline-primary` teal, `outline-default` cream); ghost and `flat` stay flat.
 - Books reuse the key color tokens (cover = `face-lo`, spine = `side`, text = key text). Shelf rows are exactly `--shelf-row: 210px` so one plank fits under each wrapped row.
@@ -78,6 +78,8 @@ Session 2 additions: fewer commits and PRs (each push is a Vercel build, push on
 - Appearance lives in `ThemePopover` (one popover, three groups). It is rendered twice in the header (phone and desktop) so ids must be unique: pass `id`. `getThemeFor(palette, mode)` and the `theme-change` event are the only way to change theme.
 - `NavKey` wraps `Keycap`; never hand-size keys. The Astro `tight` prop adds `keycap-nav-tight` (less side padding) for two-column grids.
 - After editing JSX with Prettier, string `replace` edits may silently miss: always grep the result (this bit us twice with `tight`).
+
+- Fixed header: bottom edge 98px, `--header-h` is the single value. The hard-coded `mt-[65px]` / `top-16` / `top-20` of the old header were the bug when the header grew.
 
 ## 5. State right now
 

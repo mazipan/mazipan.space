@@ -29,14 +29,7 @@ const titleId = `${id}-title`;
     aria-controls={panelId}
     data-popover-trigger
   >
-    <Icon
-      name="tabler:sun"
-      class="h-[1.3rem] w-[1.3rem] scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90"
-    />
-    <Icon
-      name="tabler:moon-stars"
-      class="absolute h-[1.3rem] w-[1.3rem] scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0"
-    />
+    <Icon name="tabler:palette" class="h-[1.4rem] w-[1.4rem]" aria-hidden="true" />
   </NavKey>
 
   <div
@@ -61,12 +54,21 @@ const titleId = `${id}-title`;
         pressed={false}
         data-mode="light"
         tight
+        lamp
         class="w-full"
       >
         <Icon name="tabler:sun" class="mr-2 h-5 w-5" aria-hidden="true" />
         Light
       </NavKey>
-      <NavKey element="button" colors="cream" pressed={false} data-mode="dark" tight class="w-full">
+      <NavKey
+        element="button"
+        colors="cream"
+        pressed={false}
+        data-mode="dark"
+        tight
+        lamp
+        class="w-full"
+      >
         <Icon name="tabler:moon-stars" class="mr-2 h-5 w-5" aria-hidden="true" />
         Dark
       </NavKey>
@@ -83,6 +85,7 @@ const titleId = `${id}-title`;
           pressed={false}
           data-palette={paletteId}
           tight
+          lamp
           class="w-full"
         >
           <span
