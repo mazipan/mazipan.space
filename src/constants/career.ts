@@ -1,13 +1,27 @@
 export const CAREERS = [
   {
+    company: 'Wego',
+    link: 'https://www.wego.com/',
+    location: 'Jakarta, Indonesia',
+    title: 'Senior Software Engineer II, Flights OTA',
+    period: 'Mar 2025 - Present',
+    // empty: the resume page counts it up to today
+    long: '',
+    summary:
+      'Shipped flight ancillaries (seats, baggage, meals, travel protection) and the revamped fare comparison, booking flow and booking history. Built design system components from scratch, with the monorepo and release pipelines. Own the AI-first internal translation pipeline end to end: generation, audit reports, auto-assignment and the management app. Hackathon: 1st place in 2025, 2nd place in 2026.',
+    stacks: [],
+    layout: 'left',
+    promotion: false,
+  },
+  {
     company: 'GovTech Edu Indonesia',
     link: 'https://www.govtechedu.id/',
     location: 'Jakarta, Indonesia',
-    title: 'Software Development Engineer, Web',
-    period: 'Jul 2023 - Dec 2024',
-    long: '1 yrs 3 mos',
+    title: 'Principal SDE - Web / SDE - Web',
+    period: 'Jun 2023 - Dec 2024',
+    long: '1 yr 7 mos',
     summary:
-      'Key contributor in a 3-person engineering team building an open data portal for the ministry of education from the ground along with the internal content management system to manage the data. Optimize the seo to gain 12K+ monthly organic traffic from search engines. Managing to get an external security penetration test from BSSN (National Cyber and Crypto Agency) with almost zero reported issues.',
+      "Sole frontend developer in a 3-person team. Built the ministry of education's open data portal (up to 12K daily peak visits) with a custom CMS, belajar.id login and approval workflows, plus the revamped Rapor Pendidikan 2023. Gained 12K+ monthly organic traffic through SEO and passed an external penetration test by BSSN (National Cyber and Crypto Agency) with almost zero issues.",
     stacks: ['Next.js', 'React.js', 'GCP'],
     layout: 'right',
     promotion: false,
@@ -20,7 +34,7 @@ export const CAREERS = [
     period: 'Jul 2022 - May 2023',
     long: '11 months',
     summary:
-      'Part of the engineering efficiency team to help engineers deliver the product more efficiently. Maintain the crash free rate from the main application up to 95%+. Unify the deployment strategy and look and feel for all internal tool services. Help the marketing team to increase the page coverage in the search engine to over 10K pages in a month.',
+      "Engineering efficiency team: helped engineers ship faster, kept the app's crash free rate at 95%+, unified deployment and look and feel across internal tools, and helped marketing reach over 10K pages in search a month.",
     stacks: ['React Native', 'React.js', 'GraphQL', 'AWS'],
     layout: 'left',
     promotion: false,
@@ -33,7 +47,7 @@ export const CAREERS = [
     period: 'Jun 2019 - Jul 2022',
     long: '3 yrs 2 mos',
     summary:
-      'Developed and maintained core tool kit for frontend engineers across company-wide. Led several tech migrations for 30+ frontend services such as from Datadog to Newrelic, from JS to TS, from Koa to Fastify, from Monorepo to Multi-repo, from Aliyun to GCP, etc. Championing web performance awareness and building in-house monitoring tools to collect daily performance scores including the one behind the auth. Writing technical documentations for the onboarding and interview process.',
+      'Built and maintained the core toolkit for frontend engineers company-wide. Led tech migrations across 30+ frontend services (Datadog to New Relic, JS to TS, Koa to Fastify, monorepo to multi-repo, Aliyun to GCP and more). Championed web performance with in-house monitoring that scores pages daily, even behind login, and wrote the onboarding and interview docs.',
     stacks: ['React.js', 'Svelte', 'GraphQL', 'GCP'],
     layout: 'right',
     promotion: false,
@@ -46,7 +60,7 @@ export const CAREERS = [
     period: 'Feb 2019 - Jun 2019',
     long: '5 mos',
     summary:
-      'Initiate the coding guidelines best practices using Nuxt.js & Vue.js. Maintain the shared libraries for frontend engineers while working in the transaction tribes to migrate the old features into serverless architecture on AWS. Reduce the bundle size to increase overall performance by splitting into 3 repo based on the domain. Setup static sites development for the marketing team.',
+      'Set the Nuxt.js and Vue.js coding guidelines and maintained the shared libraries, while migrating old features to serverless on AWS in the transaction tribe. Cut the bundle size by splitting into 3 repos by domain, and set up static sites for marketing.',
     stacks: ['Nuxt.js', 'Vue.js', 'AWS'],
     layout: 'left',
     promotion: false,
@@ -59,7 +73,7 @@ export const CAREERS = [
     period: 'Jul 2018 - Feb 2019',
     long: '7 mos',
     summary:
-      'Initiate the coding guidelines best practices using Nuxt.js & Vue.js. Maintain the shared libraries for frontend engineers while working in the transaction tribes to migrate the old features into serverless architecture on AWS. Reduce the bundle size to increase overall performance by splitting into 3 repo based on the domain. Setup static sites development for the marketing team.',
+      'Set the Nuxt.js and Vue.js coding guidelines and maintained the shared libraries, while migrating old features to serverless on AWS in the transaction tribe. Cut the bundle size by splitting into 3 repos by domain, and set up static sites for marketing.',
     stacks: ['Nuxt.js', 'Vue.js', 'AWS'],
     layout: 'left',
     promotion: true,
@@ -72,7 +86,7 @@ export const CAREERS = [
     period: 'Jan 2017 - Jun 2018',
     long: '1 yrs 6 mos',
     summary:
-      'Built our very first digital products such as phone credits top ups, train ticket, flight ticket and hotel reservation. Transforming the frontend development process from SpringMVC in Java to Angular.js to Vue.js with under 10 team members.',
+      'Built the first digital products: phone credit top ups, train and flight tickets, hotel reservations. Moved the frontend process from SpringMVC (Java) to Angular.js to Vue.js with under 10 people.',
     stacks: ['Java', 'Angular.js', 'Vue.js', 'jQuery'],
     layout: 'right',
     promotion: false,
@@ -85,7 +99,7 @@ export const CAREERS = [
     period: 'Oct 2015 - Jan 2017',
     long: '1 yrs 4 mos',
     summary:
-      'Built our very first digital products such as phone credits top ups, train ticket, flight ticket and hotel reservation. Transforming the frontend development process from SpringMVC in Java to Angular.js to Vue.js with under 10 team members.',
+      'Built the first digital products: phone credit top ups, train and flight tickets, hotel reservations. Moved the frontend process from SpringMVC (Java) to Angular.js to Vue.js with under 10 people.',
     stacks: ['Java', 'Angular.js', 'Vue.js', 'jQuery'],
     layout: 'right',
     promotion: true,
@@ -98,7 +112,7 @@ export const CAREERS = [
     period: 'Aug 2013 -Oct 2015',
     long: '2 yrs 3 mos',
     summary:
-      'Built our main product as desktop application using Java Swing and JIDE framework for client in telecom industry. Launch several monitoring dashboard using Sencha Ext.js and Fusion Chart.',
+      'Built the main desktop product (Java Swing, JIDE) for a telecom client and launched monitoring dashboards with Sencha Ext.js and Fusion Chart.',
     stacks: ['Java', 'Ext.js', 'jQuery'],
     layout: 'left',
     promotion: false,

@@ -1,0 +1,26 @@
+---
+// Index card: stacked sheets, a category tab and a punched hole. Put one stretched
+// `.card-link` (the title link) inside the slot so the whole card is one link.
+import type { HTMLAttributes } from 'astro/types';
+
+export interface Props extends HTMLAttributes<'article'> {
+  as?: 'div' | 'article' | 'li';
+  /** label on the tab, shown as real text */
+  tab: string;
+  tone?: 'terracotta' | 'teal' | 'mustard' | 'navy';
+}
+
+const { as: Tag = 'article', tab, tone = 'terracotta', class: className, ...props } = Astro.props;
+---
+
+<Tag {...props} class:list={['stack-card', className]}>
+  <span
+    class="stack-tab"
+    style={`background: var(--th-key-${tone}-face-lo); color: var(--th-key-${tone}-text);`}
+  >
+    {tab}
+  </span>
+  <div class="stack-sheet">
+    <slot />
+  </div>
+</Tag>

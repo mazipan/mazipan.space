@@ -165,15 +165,17 @@ Available: `@/assets`, `@/components`, `@/constants`, `@/content`, `@/layouts`,
 Tactile "keycap" look. Build pages by composing these, never with one-off styles.
 Every component has a reference page under `/design/*` (source: `src/pages/design/`).
 
-| Component                    | Use                                                                                               | Key props                                                                              | Reference          |
-| ---------------------------- | ------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | ------------------ |
-| `Keycap.astro`               | Nav, toggles, buttons                                                                             | `colors`, `size` (`md`/`sm`/`square`), `pressed`, `element` (`a`/`button`), `disabled` | `/design/keycaps`  |
-| `Button.astro`               | Old API on keycaps. `solid`/`outline` are keys, `ghost` and `flat` stay flat (icon-only controls) | `variant`, `colors`, `size`, `flat`, `disabled`                                        | `/design/buttons`  |
-| `Tag.astro`                  | Raised chip (badge)                                                                               | `variant`, `colors`, `size`                                                            | `/design/buttons`  |
-| `Shelf.astro` + `Book.astro` | List of links on a wood shelf                                                                     | Shelf: `title`, `level`, `href`; Book: `href`, `title`, `meta`, `colors`, `height`     | `/design/shelf`    |
-| `PaperCard.astro`            | Paper surface                                                                                     | `as`, `tape`, `lines`, `tilt`                                                          | `/design/surfaces` |
-| `StickyNote.astro`           | "Bottom line" and callouts                                                                        | `label`                                                                                | `/design/surfaces` |
-| `Input.astro`                | Text field with visible label                                                                     | `label`, `id`, `hint`, `required`                                                      | `/design/forms`    |
+| Component                                             | Use                                                                                               | Key props                                                                                                             | Reference          |
+| ----------------------------------------------------- | ------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | ------------------ |
+| `Keycap.astro`                                        | Nav, toggles, buttons                                                                             | `colors`, `size` (`md`/`sm`/`square`), `pressed`, `element` (`a`/`button`), `disabled`                                | `/design/keycaps`  |
+| `Button.astro`                                        | Old API on keycaps. `solid`/`outline` are keys, `ghost` and `flat` stay flat (icon-only controls) | `variant`, `colors`, `size`, `flat`, `disabled`                                                                       | `/design/buttons`  |
+| `Tag.astro`                                           | Raised chip (badge)                                                                               | `variant`, `colors`, `size`                                                                                           | `/design/buttons`  |
+| `Shelf.astro` + `Book.astro`                          | List of links on a wood shelf                                                                     | Shelf: `title`, `level`, `href`; Book: `href`, `title`, `meta`, `colors`, `height`                                    | `/design/shelf`    |
+| `PaperCard.astro`                                     | Paper surface                                                                                     | `as`, `tape`, `lines`, `tilt`                                                                                         | `/design/surfaces` |
+| `StickyNote.astro`                                    | "Bottom line" and callouts                                                                        | `label`                                                                                                               | `/design/surfaces` |
+| `Input.astro`                                         | Text field with visible label                                                                     | `label`, `id`, `hint`, `required`                                                                                     | `/design/forms`    |
+| `StackCard`, `PolaroidCard`, `TicketCard`, `DeckCard` | Non-flat cards: posts, projects, talks, slide decks. One stretched `.card-link` per card          | `StackCard`: `tab`, `tone`; `TicketCard`: `tone`, slot `stub`; `PolaroidCard`: slot `photo`; `DeckCard`: `background` | `/design/cards`    |
+| `PaletteSwitcher`, `KeySoundToggle`                   | Footer controls: color palette (keys) and opt-in click sound                                      | none                                                                                                                  | footer             |
 
 Rules:
 
@@ -182,11 +184,47 @@ Rules:
 - **Contrast is a test:** `pnpm contrast` checks every token pair in light and dark.
   A new token pair needs a new line in `scripts/check-contrast.mjs` **first** (watch it fail,
   then add the token). New token files go into the `FILES` list in that script.
-- **Not only depth:** pressed and current keys are underlined and every key has a 2px edge.
-  Never carry meaning by color or shadow alone.
+- **Not only depth:** every key has a 2px edge, a selected key is pressed in. Never carry meaning by
+  color or shadow alone. The lamp (a white dot with a dark ring on the top rim, opt in with `lamp`) is
+  only for wayfinding (header menu) and on/off state (appearance popover). Filters and pagination
+  change color instead (selected = terracotta / primary + pressed in). NOT an underline, the owner
+  dislikes it. Ask "is it needed, does it look good" before adding a cue.
+- **Depth layer** (`src/styles/components/depth.css`, reference `/design/depth`): page background has a
+  paper grain plus a dot grid (`--th-grain`, `--th-dot`). Long reading text must sit on a `.sheet`
+  (solid `--th-sheet-bg`, contrast checked AAA by `pnpm contrast`), never on the texture. Titles:
+  `.b-h1` / `.title-3d` / prose `h1` are extruded (`--th-title-side`), `.b-h2` / `.b-h3` / `.shelf-title`
+  are letterpress. Raised small parts: `.crumb` (breadcrumbs), `.link-key` (a link in running
+  text), `.frame` (picture mat), `.well` (recessed), `.board` + `.board-note` (pinboard), `.bead`.
+- **Key sizes together:** use `NavKey` (never hand-size a `Keycap`): 48px tall, icon keys 48 x 48,
+  round optional. A selected / current key is `pressed` (pressed in), identical everywhere.
+  Measure groups of keys in the browser, never trust the CSS alone.
+- **Header height:** the fixed header's bottom edge is 98px. `--header-h` (base.css, 6.25rem) is the
+  one value for the page offset, burger menu, sticky headings, ToC and `scroll-padding-top`. Never
+  hard-code `top-16` / `mt-[65px]` style numbers; change `--header-h` if the header changes.
+- **Reading column:** every prose sheet (post, project, `Page` layout) is `sheet sheet-prose` (40.5rem wide, centered, text measure 36.5rem), so there is no wide empty padding around text. Do not put long text on a full-width sheet. The post page puts the ToC beside it (`Post.astro` grid `40.5rem + 300px`, centered).
+- **Logo:** `Logo.astro` is ONE square keycap with MZP on it and takes its colors from the palette tokens (40px, so the header link is 48px). Static brand copies are `public/logo.svg` and `public/favicon.svg` (same drawing); do not reintroduce the old outline logo.
+- **Arrows and chevrons are SVG icons, never text characters** (`→ &rarr; › « ↗`): use `<Icon name="tabler:arrow-right" class="arrow-icon" aria-hidden="true" />` after a link label (`.arrow-icon` aligns it and nudges it on hover), `tabler:chevron(s)-left/right` for pagination keys, `tabler:arrow-up-right` for external links. In React use an inline `<svg>`. Arrows inside post bodies are the author's own writing: leave them. A key that only holds an icon needs an `aria-label`; a disabled link key renders as `span role="link" aria-disabled`.
+- **Selected projects** on the home page come from `featured: true` in project frontmatter (`getSelectedProjects` in `src/modules/project.ts`).
+- **Friends page:** data in `src/constants/friends.ts` (blog, owner, platform, avatar). Interaction is progressive: cards are in the HTML, `friend-list` adds search, filter, sort and shuffle. Avatars always have the initials fallback.
+- **Breadcrumbs:** every `Page` layout page has them; put `breadcrumbs: false` in the frontmatter to hide them (the 404 page does).
+- **404:** `NotFoundArt.astro` (key row 4-0-4: a ginger pixel-art cat batted the 0 key out, a dark pixel cat sleeps in the slot; the cats are crisp `<path>` pixels in fixed colors, generated from small sprite grids, the keys use palette tokens). Cats are part of the site's personality; more cats are welcome in empty states.
+- **Resume order:** `src/constants/career.ts` is newest first; `resume.astro` shows stops oldest first and roles inside one company oldest first too. The card tab reads `Joined <year>` (never 'Exit', it reads like leaving).
+- **Resume road:** the dashed center line must be a short tile with `repeat-y` (a single road-high tile ends halfway when scroll shifts it); on phones the road is at `left: 0` on the 48px grid column and the lamp sits on its right edge, so the connector meets it. Do not add a role count to the intro badges. The brown connector is the lamp's own `::after` (not the card's), so they cannot drift apart, and the lamp lifts with the card when a stop is reached (`.stop[data-reached]`), so keep both transforms equal; the lamp's `top` (45px) is tied to the stop padding and card border, so re-measure from screenshots if you touch those.
+- **About:** has a "Where I've worked" card that links to `ROUTES.RESUME`; keep the resume reachable from About and the footer.
+- **Location and time zone:** `PROFILE.LOCATION` and `PROFILE.TIMEZONE` feed the home 'Based in' note; the footer deploy time is set in `package.json` as Jakarta time with `GMT+7`. If the owner moves, change both, and `PROFILE.TIMEZONE_OFFSET_MINUTES` too (the home note compares the visitor's browser clock with it).
+- **Version:** the footer's `v…` comes from `package.json` `version` through `APP_VERSION` (now 3.0.0), so bump it there only.
+- **Footer:** `Footer.astro` = raised `.footer-deck` (brand + link groups with `.footer-label` plates) over a recessed `.footer-plate` (small print + back-to-top key). New footer links go into the matching `.footer-links` list.
+- **Copy:** short sentences, first person, warm, no repeated message across pages (the tagline lives on Home and About only), no abbreviations in the UI, English UI (the blog posts and slides may be Indonesian). Every page needs a real meta description in `src/constants/metadata.ts`.
+- **Photos and screenshots** are framed (`.frame`, `PolaroidCard`), serve images with `densities` or `widths`, and keep their natural aspect ratio (never force `aspect-*` without `object-cover`). Long reading text (posts, projects, pages, resume) sits on a `.sheet`.
+- **Prose colors** come from the tokens (`--tw-prose-*` in `my-prose.css`), not the slate palette.
+- **Reading measure** is `36.5rem` (rem, not `ch`, so headings and text share one column).
 - **Reduced motion:** lift, tilt, and press animation must be off under
   `prefers-reduced-motion`.
 - **Builds need `SITE_URL`:** `SITE_URL=https://www.mazipan.space pnpm build`.
+- **Palettes:** `src/styles/theme/palettes.css` has `[data-theme='<name>-light|dark']` scopes
+  (ocean, forest, plum) that only override what differs. A new palette needs entries in
+  `THEMES` and `PALETTES` (`src/constants/theme.ts`) and its name in `PALETTES` of
+  `scripts/check-contrast.mjs`, so `pnpm contrast` checks it.
 - **Branches:** the redesign lives on `feat/2027-design`. Phase branches merge into it.
 
 ## CodeGroup component

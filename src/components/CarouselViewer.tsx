@@ -4,7 +4,7 @@ import type { CarouselTheme, SlideData } from '@/schemas/carousel';
 
 const THEMES: Record<CarouselTheme, { gradient: string; text: string; accent: string }> = {
   ocean: {
-    gradient: 'linear-gradient(135deg, #1d4ed8 0%, #0891b2 100%)',
+    gradient: 'linear-gradient(135deg, #1d4ed8 0%, #0e7490 100%)',
     text: '#ffffff',
     accent: 'rgba(255,255,255,0.15)',
   },
@@ -14,12 +14,12 @@ const THEMES: Record<CarouselTheme, { gradient: string; text: string; accent: st
     accent: 'rgba(255,255,255,0.15)',
   },
   sunset: {
-    gradient: 'linear-gradient(135deg, #ea580c 0%, #e11d48 100%)',
+    gradient: 'linear-gradient(135deg, #c2410c 0%, #e11d48 100%)',
     text: '#ffffff',
     accent: 'rgba(255,255,255,0.15)',
   },
   forest: {
-    gradient: 'linear-gradient(135deg, #059669 0%, #0d9488 100%)',
+    gradient: 'linear-gradient(135deg, #047857 0%, #0f766e 100%)',
     text: '#ffffff',
     accent: 'rgba(255,255,255,0.15)',
   },
@@ -469,7 +469,22 @@ function Slide({ slide, blogBasePath, seriesTitle }: SlideProps) {
                 flexShrink: 0,
               }}
             >
-              {slide.cta} →
+              {slide.cta}
+              <svg
+                aria-hidden="true"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                style={{ marginLeft: 6, verticalAlign: '-2px' }}
+              >
+                <path d="M5 12h14" />
+                <path d="M13 6l6 6-6 6" />
+              </svg>
             </a>
           )}
         </div>
@@ -533,7 +548,7 @@ function Branding({ color, seriesTitle }: { color: string; seriesTitle?: string 
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        opacity: 0.6,
+        opacity: 0.8,
         marginTop: '0.625rem',
         flexShrink: 0,
         gap: '0.1rem',
@@ -655,7 +670,7 @@ export default function CarouselViewer({
       }}
     >
       {/* Slide counter */}
-      <div style={{ fontSize: '0.875rem', fontWeight: 600, opacity: 0.6, letterSpacing: '0.05em' }}>
+      <div style={{ fontSize: '0.875rem', fontWeight: 600, opacity: 0.8, letterSpacing: '0.05em' }}>
         {current + 1} / {total}
       </div>
 
@@ -668,9 +683,10 @@ export default function CarouselViewer({
             aria-label={`Go to slide ${i + 1}`}
             style={{
               flex: 1,
-              height: 3,
-              borderRadius: 2,
-              border: 'none',
+              height: 8,
+              borderRadius: 4,
+              border: '1.5px solid rgba(0,0,0,0.35)',
+              boxShadow: 'inset 0 2px 3px rgba(0,0,0,0.25), 0 1px 0 rgba(255,255,255,0.4)',
               cursor: 'pointer',
               background: i <= current ? theme.gradient : 'rgba(128,128,128,0.25)',
               transition: 'background 0.35s ease',
@@ -831,48 +847,37 @@ function NavButton({
       onClick={onClick}
       disabled={disabled}
       aria-label={label}
-      style={{
-        width: 44,
-        height: 44,
-        borderRadius: '50%',
-        border: '1.5px solid currentColor',
-        background: 'transparent',
-        cursor: disabled ? 'not-allowed' : 'pointer',
-        opacity: disabled ? 0.25 : 1,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        transition: 'opacity 0.2s',
-        color: 'currentColor',
-      }}
+      className="keycap keycap-navy keycap-nav keycap-nav-icon keycap-nav-round"
     >
-      {direction === 'prev' ? (
-        <svg
-          width="18"
-          height="18"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <polyline points="15 18 9 12 15 6" />
-        </svg>
-      ) : (
-        <svg
-          width="18"
-          height="18"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <polyline points="9 18 15 12 9 6" />
-        </svg>
-      )}
+      <span className="keycap-face">
+        {direction === 'prev' ? (
+          <svg
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <polyline points="15 18 9 12 15 6" />
+          </svg>
+        ) : (
+          <svg
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <polyline points="9 18 15 12 9 6" />
+          </svg>
+        )}
+      </span>
     </button>
   );
 }

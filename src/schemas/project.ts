@@ -21,5 +21,7 @@ export const projectSchema = ({ image }: SchemaContext) =>
     heroImage: image().default(HERO_IMAGE),
     heroAlt: z.string().default(HERO_ALT),
     draft: z.boolean().default(DRAFT),
+    // shown in "Selected projects" on the home page
+    featured: z.boolean().default(false),
     tags: z.array(z.string()).nonempty().transform(removeDuplicatesAndToLowerCase),
   });

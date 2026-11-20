@@ -54,4 +54,27 @@
   .animated-text-link:focus {
     @apply bg-primary-200 border-primary rounded border-2 outline-none;
   }
+
+  /* a small arrow icon after a link label: it sits on the text line and nudges on hover */
+  .arrow-icon {
+    display: inline-block;
+    width: 1.1em;
+    height: 1.1em;
+    margin-left: 0.25em;
+    vertical-align: -0.2em;
+    transition: transform 150ms;
+  }
+  a:hover > .arrow-icon,
+  a:focus-visible > .arrow-icon {
+    transform: translateX(3px);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .arrow-icon {
+      transition: none;
+    }
+    a:hover > .arrow-icon,
+    a:focus-visible > .arrow-icon {
+      transform: none;
+    }
+  }
 }

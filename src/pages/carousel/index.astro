@@ -26,7 +26,7 @@ for (const c of carousels) {
 
 const metadata = {
   title: '✨ Slides',
-  description: 'Short, visual slide decks — ideas from my blog in Instagram carousel format.',
+  description: 'Short, visual slide decks: ideas from my blog as swipeable cards.',
 };
 
 const breadcrumbs = [BreadcrumbItemHome, { text: 'Slides', href: ROUTES.CAROUSEL }];
@@ -37,8 +37,9 @@ const breadcrumbs = [BreadcrumbItemHome, { text: 'Slides', href: ROUTES.CAROUSEL
     <div>
       <Breadcrumbs items={breadcrumbs} />
       <h1 class="b-h1 tracking-wide">✨ Slides</h1>
-      <p class="b-p mt-2 max-w-2xl opacity-70">
-        Artikel blog dalam format kartu singkat — baca tanpa harus buka artikel panjang.
+      <p class="b-p text-captions mt-2 max-w-2xl">
+        Blog posts as short, swipeable cards: the quick version of the long read. The slides are in
+        Indonesian.
       </p>
     </div>
 
@@ -61,7 +62,7 @@ const breadcrumbs = [BreadcrumbItemHome, { text: 'Slides', href: ROUTES.CAROUSEL
               <div>
                 <h2 class="b-h2">{meta?.title ?? seriesSlug}</h2>
                 {meta?.description && (
-                  <p class="b-p mt-1 max-w-2xl opacity-60">{meta.description}</p>
+                  <p class="b-p text-captions mt-1 max-w-2xl">{meta.description}</p>
                 )}
               </div>
               <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 md:gap-5">

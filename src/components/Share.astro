@@ -40,7 +40,7 @@ const props = { ...defaultProps, ...shareProps };
 // todo: change package
 ---
 
-<div class={cn('inline-flex items-center gap-2', className)}>
+<div class={cn('inline-flex flex-wrap items-center gap-x-3 gap-y-2', className)}>
   <span class="text-base font-bold">Share:</span>
   <SocialShare {...props} {buttons} />
 </div>
@@ -50,12 +50,45 @@ const props = { ...defaultProps, ...shareProps };
   @reference '../styles/tailwind-reference.css';
   .astro-social-share {
     @apply my-0;
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 8px;
   }
 
+  /* a raised round key for every share button */
   .social-share-btn {
-    @apply !mr-4 inline-block h-6 w-6;
-    svg {
-      @apply fill-captions h-full w-full;
+    display: inline-flex;
+    width: 40px;
+    height: 40px;
+    margin-right: 8px;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--th-key-edge);
+    border-radius: 9999px;
+    background: linear-gradient(
+      to bottom,
+      var(--th-key-cream-face-hi),
+      var(--th-key-cream-face-lo)
+    );
+    box-shadow:
+      inset 0 2px 0 rgb(255 255 255 / 0.5),
+      0 4px 0 var(--th-key-cream-side);
+  }
+  .social-share-btn:hover {
+    transform: translateY(-1px);
+  }
+  .social-share-btn:active {
+    transform: translateY(3px);
+    box-shadow: inset 0 2px 3px rgb(0 0 0 / 0.2);
+  }
+  .social-share-btn svg {
+    width: 20px;
+    height: 20px;
+    fill: var(--th-key-cream-text);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .social-share-btn:hover {
+      transform: none;
     }
   }
 </style>

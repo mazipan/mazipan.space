@@ -1,16 +1,41 @@
 ---
 import { Icon } from 'astro-icon/components';
-import { Image } from 'astro:assets';
 
+import { getCardTone } from '@/modules/post/shelf';
 import Centered from '@/layouts/Centered.astro';
 import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import Input from '@/components/Input.astro';
+import NavKey from '@/components/NavKey.astro';
 import { BreadcrumbItemHome } from '@/constants/breadcrumb';
 import { awesomeSdeBlogs } from '@/constants/friends';
-import { IMAGE_SIZES } from '@/constants/image';
 import { getPageMetadata } from '@/utils/metadata';
 
 const metadata = getPageMetadata('pages/friends');
 const breadcrumbs = [BreadcrumbItemHome];
+
+// everyone but me, A to Z by name to start with
+const friends = awesomeSdeBlogs.data
+  .filter((i) => i.owner.name !== 'Irfan Maulana')
+  .sort((a, b) => a.owner.name.localeCompare(b.owner.name));
+
+// "Irfan Maulana" -> "IM", "r17x" -> "R"
+const initialsOf = (name: string) =>
+  name
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((word) => word[0].toUpperCase())
+    .join('');
+
+const platforms = [
+  { id: 'all', label: 'All' },
+  { id: 'github', label: 'GitHub' },
+  { id: 'x', label: 'X' },
+];
+const sorts = [
+  { id: 'name', label: 'Name' },
+  { id: 'site', label: 'Site' },
+];
 ---
 
 <Centered {metadata}>
@@ -21,70 +46,228 @@ const breadcrumbs = [BreadcrumbItemHome];
     </slot>
     <section class="flex flex-grow flex-col gap-4">
       <p>
-        Inspired by <a
+        Inspired by{' '}
+        <a
           href="https://zakiego.com/friends"
           target="blank"
           rel="noopener noreferrer"
-          class="bg-primary text-primary-content hover:bg-primary-hover hover:underline"
-          >zakiego.com/friends</a
-        >, I felt encouraged to create this dedicated page to highlight and share links to the blogs
-        or websites of my dear friends and mentors. It’s my way of celebrating their work, ideas,
-        and contributions, and providing others with the opportunity to explore their content.
-        <br /><br />
-
-        The complete list of links is available publicly in the associated repository, ensuring
-        accessibility for everyone. If you would like to be included in this list, you are more than
-        welcome to add your blog or website by submitting a pull request to <a
+          class="link-key"
+        >
+          zakiego.com/friends
+        </a>
+        , this page celebrates the blogs and websites of my friends and mentors: their work, their
+        ideas, and the things they share with the community.
+        <br />
+        <br />
+        The full list is public in{' '}
+        <a
           href="https://github.com/mazipan/awesome-sde-id-blogs"
           target="blank"
           rel="noopener noreferrer"
-          class="bg-primary text-primary-content hover:bg-primary-hover hover:underline"
+          class="link-key"
         >
-          the repository
-        </a>. This collaborative approach allows the list to grow and include a wider variety of
-        voices and perspectives. Let’s make this space a hub for connection, inspiration, and mutual
-        support!
+          this repository
+        </a>
+        . Want to be on it? Add your blog or website with a pull request. The more voices, the
+        better.
       </p>
 
-      <div class="mt-8 grid grid-cols-1 gap-4 md:grid-cols-4">
-        {
-          awesomeSdeBlogs.data
-            .filter((i) => i.owner.name !== 'Irfan Maulana')
-            .map((person) => (
-              <div class="border-primary flex flex-col items-center justify-between gap-4 rounded-lg border p-4 text-center shadow-lg">
-                <a
-                  href={person.blog.link}
-                  class="hover:text-primary focus:bg-base-200 focus:ring-primary flex flex-wrap items-center justify-center gap-1 rounded-br-lg focus:ring-2 focus:ring-offset-2 focus:outline-none"
-                  target="_blank"
-                  rel="noreferrer noopener"
-                >
-                  <Icon name="tabler:world-www" class="h-5 w-5" />
-                  <span>{person.blog.name}</span>
-                </a>
+      <friend-list class="mt-8 block">
+        <div class="friend-tools" hidden data-tools>
+          <Input
+            id="friend-search"
+            type="search"
+            label="Search"
+            placeholder="A name or a website"
+            autocomplete="off"
+            class="friend-search"
+          />
+          <div>
+            <p class="friend-tools-label" id="friend-filter-label">
+              Show
+            </p>
+            <div class="flex flex-wrap gap-2" role="group" aria-labelledby="friend-filter-label">
+              {platforms.map(({ id, label }) => (
+                <NavKey element="button" colors="cream" pressed={id === 'all'} data-filter={id}>
+                  {label}
+                </NavKey>
+              ))}
+            </div>
+          </div>
+          <div>
+            <p class="friend-tools-label" id="friend-sort-label">
+              Sort by
+            </p>
+            <div class="flex flex-wrap gap-2" role="group" aria-labelledby="friend-sort-label">
+              {sorts.map(({ id, label }) => (
+                <NavKey element="button" colors="cream" pressed={id === 'name'} data-sort={id}>
+                  {label}
+                </NavKey>
+              ))}
+              <NavKey element="button" colors="mustard" data-shuffle>
+                <Icon name="tabler:arrows-shuffle" class="mr-2 h-5 w-5" aria-hidden="true" />
+                Shuffle
+              </NavKey>
+            </div>
+          </div>
+        </div>
 
-                <Image
-                  {...IMAGE_SIZES.FIXED.AVATAR}
-                  src={person.owner.avatar}
-                  alt={person.owner.name}
-                  class="relative rounded-full"
-                />
-                <a
-                  href={person.owner.link}
-                  class="hover:text-primary focus:bg-base-200 focus:ring-primary flex flex-wrap items-center justify-center gap-1 rounded-bl-lg focus:ring-2 focus:ring-offset-2 focus:outline-none"
-                  target="_blank"
-                  rel="noreferrer noopener"
+        <p
+          class="friend-count text-captions"
+          role="status"
+          aria-live="polite"
+          data-count
+          hidden
+        ></p>
+
+        <ul
+          class="mt-6 grid grid-cols-1 gap-4 p-0 sm:grid-cols-2 md:grid-cols-4"
+          role="list"
+          data-list
+        >
+          {friends.map((person) => (
+            <li
+              class="paper-card friend-card m-0 flex list-none flex-col items-center justify-between gap-4 text-center"
+              data-name={person.owner.name.toLowerCase()}
+              data-site={person.blog.name.toLowerCase()}
+              data-source={person.owner.icon}
+            >
+              <a
+                href={person.blog.link}
+                class="hover:text-primary focus:bg-base-200 focus:ring-primary flex flex-wrap items-center justify-center gap-1 rounded-br-lg focus:ring-2 focus:ring-offset-2 focus:outline-none"
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                <Icon name="tabler:world-www" class="h-5 w-5" />
+                <span>{person.blog.name}</span>
+              </a>
+
+              <span class="friend-avatar">
+                <span
+                  class={`friend-initials friend-initials-${getCardTone(person.owner.name)}`}
+                  aria-hidden="true"
                 >
-                  {person.owner.icon === 'github' ? (
-                    <Icon name="tabler:brand-github" class="h-4 w-4" />
-                  ) : (
-                    <Icon name="tabler:brand-x" class="h-4 w-4" />
-                  )}
-                  <span class="text-sm font-bold">{person.owner.name}</span>
-                </a>
-              </div>
-            ))
-        }
-      </div>
+                  {initialsOf(person.owner.name)}
+                </span>
+                <img
+                  src={person.owner.avatar}
+                  alt=""
+                  width="48"
+                  height="48"
+                  loading="lazy"
+                  decoding="async"
+                  data-avatar
+                />
+              </span>
+              <a
+                href={person.owner.link}
+                class="hover:text-primary focus:bg-base-200 focus:ring-primary flex flex-wrap items-center justify-center gap-1 rounded-bl-lg focus:ring-2 focus:ring-offset-2 focus:outline-none"
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                {person.owner.icon === 'github' ? (
+                  <Icon name="tabler:brand-github" class="h-4 w-4" />
+                ) : (
+                  <Icon name="tabler:brand-x" class="h-4 w-4" />
+                )}
+                <span class="text-sm font-bold">{person.owner.name}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+
+        <p class="friend-empty" hidden data-empty>
+          Nobody matches that. Try another word, or show everyone.
+        </p>
+      </friend-list>
     </section>
   </article>
 </Centered>
+
+<script>
+  // Search, filter, sort and shuffle for the friends list. The cards are in the page already, so
+  // without this script you simply see everyone, A to Z. Avatars that fail to load fall back to
+  // the colored initials underneath.
+  class FriendList extends HTMLElement {
+    connectedCallback() {
+      const list = this.querySelector<HTMLUListElement>('[data-list]')!;
+      const cards = [...list.querySelectorAll<HTMLLIElement>('.friend-card')];
+      const tools = this.querySelector<HTMLElement>('[data-tools]')!;
+      const count = this.querySelector<HTMLElement>('[data-count]')!;
+      const empty = this.querySelector<HTMLElement>('[data-empty]')!;
+      const search = this.querySelector<HTMLInputElement>('#friend-search')!;
+      const filterKeys = [...this.querySelectorAll<HTMLButtonElement>('[data-filter]')];
+      const sortKeys = [...this.querySelectorAll<HTMLButtonElement>('[data-sort]')];
+      const shuffleKey = this.querySelector<HTMLButtonElement>('[data-shuffle]')!;
+
+      // 1. avatars: a failed image is removed so the initials show
+      for (const img of this.querySelectorAll<HTMLImageElement>('img[data-avatar]')) {
+        const fail = () => img.remove();
+        img.addEventListener('error', fail, { once: true });
+        if (img.complete && img.naturalWidth === 0) fail();
+      }
+
+      // 2. tools
+      tools.hidden = false;
+      count.hidden = false;
+      let source = 'all';
+      let order = 'name';
+
+      const apply = () => {
+        const query = search.value.trim().toLowerCase();
+        let shown = 0;
+        for (const card of cards) {
+          const matches =
+            (source === 'all' || card.dataset.source === source) &&
+            (!query || card.dataset.name!.includes(query) || card.dataset.site!.includes(query));
+          card.hidden = !matches;
+          if (matches) shown++;
+        }
+        count.textContent =
+          shown === cards.length
+            ? `${cards.length} friends`
+            : `Showing ${shown} of ${cards.length}`;
+        empty.hidden = shown !== 0;
+      };
+
+      const sortBy = (key: 'name' | 'site') => {
+        const sorted = [...cards].sort((a, b) => a.dataset[key]!.localeCompare(b.dataset[key]!));
+        for (const card of sorted) list.append(card);
+      };
+
+      const press = (keys: HTMLButtonElement[], active?: HTMLButtonElement) => {
+        for (const key of keys) key.setAttribute('aria-pressed', String(key === active));
+      };
+
+      search.addEventListener('input', apply);
+      for (const key of filterKeys) {
+        key.addEventListener('click', () => {
+          source = key.dataset.filter!;
+          press(filterKeys, key);
+          apply();
+        });
+      }
+      for (const key of sortKeys) {
+        key.addEventListener('click', () => {
+          order = key.dataset.sort!;
+          press(sortKeys, key);
+          sortBy(order as 'name' | 'site');
+        });
+      }
+      shuffleKey.addEventListener('click', () => {
+        // Fisher-Yates
+        const shuffled = [...cards];
+        for (let i = shuffled.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+        }
+        for (const card of shuffled) list.append(card);
+        press(sortKeys); // nothing is "sorted by" now
+      });
+
+      apply();
+    }
+  }
+
+  if (!customElements.get('friend-list')) customElements.define('friend-list', FriendList);
+</script>

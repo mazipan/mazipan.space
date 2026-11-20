@@ -11,8 +11,8 @@ const { GISCUS_WIDGET_ID } = SELECTORS;
 const { class: className } = Astro.props;
 ---
 
-{/* reserve the widget height so the page does not jump when comments load */}
-<div class={cn('giscus min-h-[360px]', className)}>
+{/* reserve the widget height (comment box + a few comments) so the page does not jump when they load */}
+<div class={cn('giscus min-h-[560px]', className)}>
   <giscus-widget
     id={GISCUS_WIDGET_ID}
     repo="mazipan/blog-comments"

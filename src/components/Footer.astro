@@ -7,7 +7,8 @@ import { CONFIG_CLIENT } from '@/config/client';
 import { getLatestCommitInfo } from '@/libs/git';
 import { shortDate } from '@/utils/datetime';
 import { limitString, trimHttpProtocol } from '@/utils/strings';
-import Button from './Button.astro';
+import Logo from './Logo.astro';
+import NavKey from './NavKey.astro';
 import SocialLinks from './SocialLinks.astro';
 
 const { SITE_URL, REPO_URL, AUTHOR_ADPLIST, AUTHOR_DECK } = CONFIG_CLIENT;
@@ -26,61 +27,49 @@ const copyrightYear = new Date().getFullYear();
 // footer is full width for border, div has max-w
 ---
 
-<footer class="border-base-300 border-t px-4 pt-8">
-  <div class="relative max-w-6xl md:mx-auto">
-    <scroll-to-top-button>
-      <Button
-        class="absolute top-0 right-4 z-10 h-8 w-8 cursor-pointer rounded-full p-1"
-        element="button"
-        flat
-        variant="outline"
-        colors="primary"
-        href="#main-header"
-        id="btn-scroll-to-top"
-        aria-label="Back to top"
-      >
-        <Icon name="tabler:arrow-up" class="h-4 w-4" />
-      </Button>
-    </scroll-to-top-button>
-
-    <div class="relative flex w-full flex-col-reverse gap-8 pr-16 md:flex-row md:justify-between md:gap-12">
-      <div class="text-content space-y-8 whitespace-nowrap">
-        <div class="text-content space-y-4 whitespace-nowrap">
-          <h2 class="font-semibold">Irfan Maulana / MZP</h2>
-          <SocialLinks />
+<footer class="footer-plank px-4 pt-10 pb-6">
+  <div class="max-w-6xl md:mx-auto">
+    <div class="footer-deck">
+      <div class="footer-brand">
+        <div class="flex items-center gap-3">
+          <Logo id="footer-logo-key" />
+          <div>
+            <p class="m-0 font-serif text-xl leading-tight font-bold">Irfan Maulana</p>
+            <p class="text-captions m-0 text-sm">Web developer, writer, speaker.</p>
+          </div>
         </div>
-
-        <div class="text-content space-y-4 whitespace-nowrap">
-          <h2 class="font-semibold">Previous Version</h2>
-          <ul class="space-y-2 text-sm">
-            <li>
-              <Link
-                href="https://2026.mazipan.space/"
-                target="_blank"
-                rel="me noreferrer noopener"
-                title="2026 Version"
-              >
-                2026
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="https://2024.mazipan.space/"
-                target="_blank"
-                rel="me noreferrer noopener"
-                title="2024 Version"
-              >
-                2024
-              </Link>
-            </li>
-          </ul>
+        <SocialLinks />
+        <div>
+          <h2 class="footer-label">Older versions</h2>
+          <div class="flex flex-wrap gap-3">
+            <a
+              href="https://2026.mazipan.space/"
+              target="_blank"
+              rel="me noreferrer noopener"
+              title="2026 Version"
+              class="crumb"
+            >
+              2026
+            </a>
+            <a
+              href="https://2024.mazipan.space/"
+              target="_blank"
+              rel="me noreferrer noopener"
+              title="2024 Version"
+              class="crumb"
+            >
+              2024
+            </a>
+          </div>
         </div>
       </div>
 
-      <div class="flex w-full flex-col-reverse gap-8 pr-16 md:flex-row md:justify-end md:gap-12">
-        <div class="text-content space-y-4 whitespace-nowrap">
-          <h2 class="font-semibold">General</h2>
-          <ul class="space-y-2 text-sm">
+      <div class="footer-cols">
+        <nav aria-labelledby="footer-site">
+          <h2 id="footer-site" class="footer-label">
+            Site
+          </h2>
+          <ul class="footer-links">
             <li>
               <Link href={ROUTES.BLOG}>Blog</Link>
             </li>
@@ -97,11 +86,12 @@ const copyrightYear = new Date().getFullYear();
               <Link href={ROUTES.ABOUT}>About</Link>
             </li>
           </ul>
-        </div>
-
-        <div class="text-content space-y-4 whitespace-nowrap">
-          <h2 class="font-semibold">Navigations</h2>
-          <ul class="space-y-2 text-sm">
+        </nav>
+        <nav aria-labelledby="footer-more-pages">
+          <h2 id="footer-more-pages" class="footer-label">
+            More pages
+          </h2>
+          <ul class="footer-links">
             <li>
               <Link href={ROUTES.TALKS}>Talks</Link>
             </li>
@@ -121,21 +111,12 @@ const copyrightYear = new Date().getFullYear();
               <Link href={ROUTES.GUEST_BOOK}>Guest Book</Link>
             </li>
           </ul>
-        </div>
-
-        <div class="text-content space-y-4 whitespace-nowrap">
-          <h2 class="font-semibold">Ext. Resources</h2>
-          <ul class="space-y-2 text-sm">
-            <li>
-              <Link
-                href={ROUTES.BOOKMARKS}
-                target="_blank"
-                rel="me noreferrer noopener"
-                title="Bookmark collections"
-              >
-                Bookmarks
-              </Link>
-            </li>
+        </nav>
+        <nav aria-labelledby="footer-elsewhere">
+          <h2 id="footer-elsewhere" class="footer-label">
+            Elsewhere
+          </h2>
+          <ul class="footer-links">
             <li>
               <Link
                 href={ROUTES.TOOLS}
@@ -191,9 +172,9 @@ const copyrightYear = new Date().getFullYear();
                 href={ROUTES.GH_NEW_ISSUE}
                 target="_blank"
                 rel="me noreferrer noopener"
-                title={`Submit issue`}
+                title="Report an issue"
               >
-                Submit issue
+                Report an issue
               </Link>
             </li>
             <li>
@@ -207,26 +188,36 @@ const copyrightYear = new Date().getFullYear();
               </Link>
             </li>
           </ul>
-        </div>
+        </nav>
       </div>
     </div>
 
-    <!-- <div class="relative h-[150px] w-full overflow-hidden">
-      <Mario />
-    </div> -->
-
-    <div class="bg-nodes border-base-300 mt-8 space-y-2 border-t py-8 text-center text-sm md:py-4">
-      <p>© 2019-{copyrightYear}, All rights reserved</p>
-      <p>
-        <span class="text-primary">v{process.env.APP_VERSION}</span>, deployed at{' '}
-        {process.env.APP_DEPLOY_AT}
-      </p>
-      <div class="flex items-center justify-center gap-2">
-        <span>Latest commit:</span>
-        <Link href={commitUrl} title={shortDateStr} target="_blank" rel="noreferrer noopener">
-          {trimmedMessage}
-        </Link>
+    <div class="footer-plate bg-nodes">
+      <div class="footer-plate-text">
+        <p class="m-0">© 2019-{copyrightYear} Irfan Maulana</p>
+        <p class="m-0">
+          <span class="text-primary">v{process.env.APP_VERSION}</span>, deployed at{' '}
+          {process.env.APP_DEPLOY_AT}
+        </p>
+        <p class="m-0">
+          Latest change:{' '}
+          <Link href={commitUrl} title={shortDateStr} target="_blank" rel="noreferrer noopener">
+            {trimmedMessage}
+          </Link>
+        </p>
       </div>
+      <scroll-to-top-button>
+        <NavKey
+          element="button"
+          colors="terracotta"
+          icon
+          round
+          id="btn-scroll-to-top"
+          aria-label="Back to top"
+        >
+          <Icon name="tabler:arrow-up" class="h-5 w-5" aria-hidden="true" />
+        </NavKey>
+      </scroll-to-top-button>
     </div>
   </div>
 </footer>

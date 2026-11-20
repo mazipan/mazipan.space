@@ -1,0 +1,58 @@
+---
+layout: '../../layouts/Page.astro'
+title: Depth
+---
+
+import NavKey from '../../components/NavKey.astro';
+
+back to [Index](/design)
+
+# Depth
+
+The depth layer (`src/styles/components/depth.css`). Everything here is decoration, text colors come from checked tokens.
+
+## Keys of the header size
+
+Use the shared `NavKey` for every navigation key, choice and toggle: exactly 48px tall, icon keys exactly 48 x 48 (`icon`), round optional (`round`), `tight` for narrow grids. A selected key is pressed in. Keys that mean wayfinding or on/off state also light a small lamp on the top rim (`lamp`); filters and pagination change color instead. Never an underline.
+
+<div class="not-prose flex flex-wrap items-center gap-3">
+  <NavKey element="a" href="#" colors="terracotta">Plain</NavKey>
+  <NavKey element="a" href="#" colors="teal" pressed lamp>Pressed + lamp</NavKey>
+  <NavKey element="a" href="#" colors="terracotta" pressed>Pressed only</NavKey>
+  <NavKey element="button" colors="mustard" icon>+</NavKey>
+  <NavKey element="button" colors="navy" icon round>+</NavKey>
+</div>
+
+## Sheet (long reading goes here)
+
+`.sheet`: solid paper on top of the textured page, with a real edge and thickness. Body text, headings and links are checked on it at AAA (7:1) in every palette.
+
+<div class="sheet not-prose"><p class="m-0">Text on a sheet. The page behind has a texture, this does not.</p></div>
+
+## Titles
+
+`.b-h1`, `.title-3d` and prose `h1` are extruded in the palette color (the offset scales with the font size). `.b-h2`, `.b-h3`, `.shelf-title` are letterpress.
+
+<div class="not-prose">
+  <p class="title-3d m-0 font-serif text-5xl font-bold text-headings">Extruded title</p>
+  <p class="b-h2 mt-6 mb-0">Letterpress heading</p>
+</div>
+
+## Small parts
+
+<div class="not-prose flex flex-wrap items-center gap-4">
+  <a href="#" class="crumb">Breadcrumb</a>
+  <a href="#" class="link-key">Link key</a>
+  <span class="bead inline-block h-7 w-7"></span>
+</div>
+
+<div class="not-prose mt-6 grid gap-6 sm:grid-cols-2">
+  <div class="frame"><div class="bg-base-300 p-10 text-center">.frame (picture mat)</div></div>
+  <div class="well p-4">.well (recessed, for code and quotes)</div>
+</div>
+
+## Board
+
+<div class="not-prose mt-10">
+  <div class="board"><div class="board-surface"><h2 class="board-label">Board label</h2><div class="sticky-note board-note">A pinned note</div></div></div>
+</div>

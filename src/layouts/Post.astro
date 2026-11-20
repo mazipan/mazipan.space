@@ -26,9 +26,9 @@ const breadcrumbs = [BreadcrumbItemHome, BreadcrumbItemBlog];
     </section>
 
     <section class="centered md:centered-px max-w-6xl">
-      <div class="relative gap-4 lg:grid lg:grid-cols-[minmax(0,1fr)_300px]">
+      <div class="relative gap-4 lg:grid lg:grid-cols-[minmax(0,40.5rem)_300px] lg:justify-center">
         <section
-          class="my-prose centered-px post-detail [&>h2:nth-child(1)]:mt-0 [&>h2:nth-child(3)]:mt-0"
+          class="my-prose sheet sheet-prose post-detail [&>h2:nth-child(1)]:mt-0 [&>h2:nth-child(3)]:mt-0"
           data-translatable="content"
         >
           <content-wrapper>
@@ -56,6 +56,25 @@ const breadcrumbs = [BreadcrumbItemHome, BreadcrumbItemBlog];
     }
 
     connectedCallback() {
+      // Expressive Code makes scrollable code blocks a `region` landmark without a name.
+      // Give each one a unique name (the script adds the role after load, so watch for it).
+      const nameCodeRegions = () => {
+        this.querySelectorAll('pre[role="region"]').forEach((pre, index) => {
+          if (pre.hasAttribute('aria-label')) return;
+          const language = pre.getAttribute('data-language');
+          pre.setAttribute(
+            'aria-label',
+            `Code block ${index + 1}${language ? `, ${language}` : ''}`
+          );
+        });
+      };
+      nameCodeRegions();
+      new MutationObserver(nameCodeRegions).observe(this, {
+        subtree: true,
+        attributes: true,
+        attributeFilter: ['role'],
+      });
+
       const codeGroups = document.querySelectorAll('.rehype-code-group');
       if (!codeGroups || codeGroups.length <= 0) {
         return;

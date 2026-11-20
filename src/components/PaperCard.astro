@@ -2,7 +2,7 @@
 import type { HTMLAttributes } from 'astro/types';
 
 export interface Props extends HTMLAttributes<'div'> {
-  as?: 'div' | 'article' | 'li';
+  as?: 'div' | 'article' | 'section' | 'li';
   /** decorative tape strip on top */
   tape?: boolean;
   /** ruled lines, for short notes only. Never behind long reading text. */

@@ -2,19 +2,24 @@
 import { Icon } from 'astro-icon/components';
 
 import HeaderLink from '@/components/HeaderLink.astro';
-import Keycap from '@/components/Keycap.astro';
-import ThemeToggle from '@/components/ThemeToggle.astro';
+import Logo from '@/components/Logo.astro';
+import NavKey from '@/components/NavKey.astro';
+import ThemePopover from '@/components/ThemePopover.astro';
 import { SELECTORS } from '@/constants/dom';
 import { NAVIGATION_ITEMS } from '@/constants/navigation';
 import { ROUTES } from '@/constants/routes';
 import { getActiveNavItemPath } from '@/utils/navigation';
 import { cn } from '@/utils/styles';
-import Button from './Button.astro';
 
 const { SCROLL_TO_TOP_ID } = SELECTORS;
+// each menu key gets its own color, the label is always text
+const KEY_TONES = ['terracotta', 'teal', 'mustard', 'navy'] as const;
 
 const { pathname: routePathname } = Astro.url;
 const activeNavItemPath = getActiveNavItemPath(routePathname);
+// the key of the page itself is `page`, the key of a section the page belongs to is `true`
+const currentOf = (path: string) =>
+  routePathname.replace(/\/+$/, '') === path ? ('page' as const) : ('true' as const);
 ---
 
 <header
@@ -22,102 +27,91 @@ const activeNavItemPath = getActiveNavItemPath(routePathname);
   data-menu="close"
   class="group fixed top-2 z-50 w-full px-4 py-2 lg:px-0"
 >
-  <div
-    class={cn(
-      'relative flex gap-2',
-      'md:!flex-row md:items-center md:justify-between',
-      'max-w-6xl px-4 py-2 md:mx-auto',
-      'border-primary rounded-2xl border',
-      'bg-background/95 supports-[backdrop-filter]:bg-background/60 backdrop-blur'
-    )}
-  >
-    {/* mobile nav */}
-    <div class="flex w-full items-center justify-between md:w-auto">
-      <HeaderLink
-        href={ROUTES.HOME}
-        aria-label="Home"
-        isActive={routePathname === ROUTES.HOME}
-        class="hover:bg-base-200 hover:text-primary-hover focus:text-primary focus:ring-primary xs:text-2xl flex flex-row items-center gap-2 rounded-lg px-2 py-1 font-serif text-xl focus:ring-2 focus:ring-offset-2 focus:outline-none"
-      >
-        <svg
-          width="72"
-          height="30"
-          viewBox="0 0 395 167"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
+  <div class="header-slab relative max-w-6xl md:mx-auto">
+    <div
+      class={cn(
+        'header-slab-face relative flex gap-2',
+        'md:!flex-row md:items-center md:justify-between',
+        'px-4 py-2'
+      )}
+    >
+      {/* mobile nav */}
+      <div class="flex w-full items-center justify-between md:w-auto">
+        <HeaderLink
+          href={ROUTES.HOME}
+          aria-label="Home"
+          isActive={routePathname === ROUTES.HOME}
+          class="logo-link focus:ring-primary flex items-center rounded-lg px-1 py-1 focus:ring-2 focus:ring-offset-2 focus:outline-none"
         >
-          <path
-            fill-rule="evenodd"
-            clip-rule="evenodd"
-            d="M29.631 0H0V166.967H29.631V46.8961L82.7237 105.329L135.816 46.8961V166.967H136.131H165.447H252.267H281.668H281.898V122.635L329.475 122.742C340.692 122.742 350.413 121.211 358.639 118.148C366.865 115.015 373.657 110.706 379.016 105.222C384.438 99.6676 388.457 93.1157 391.074 85.5667C393.691 78.0178 395 69.7922 395 60.8902C395 51.4184 393.66 42.908 390.981 35.359C388.363 27.8101 384.344 21.4362 378.923 16.2374C373.501 10.9674 366.678 6.94362 358.452 4.16617C350.226 1.38872 340.505 0 329.288 0H286.248H252.267H165.447H165H135.816L82.7237 60.8902L29.631 0ZM165.447 28.8427V124.023L217.078 48.3917L231.099 28.8427H165.447ZM160.343 131.501V5.83406H137.936L82.7237 69.1553L27.5112 5.83406H5.10488V161.133H24.5261V33.1782L82.7237 97.2298L140.921 33.1782V159.95L160.343 131.501ZM252.267 48.7777L204.459 117.401L189.878 138.125H252.267V48.7777ZM276.793 138.125H257.371V41.4501L282.184 5.83406H329.288C340.157 5.83406 349.368 7.18235 357.006 9.76114C364.685 12.3541 370.837 16.0361 375.615 20.6813L375.628 20.694L375.641 20.7066C380.411 25.2803 383.928 30.8557 386.235 37.5081L386.242 37.5301L386.25 37.5521C388.646 44.3007 389.895 52.0494 389.895 60.8902C389.895 69.1275 388.686 76.6159 386.328 83.4176C384.01 90.1051 380.456 95.9115 375.608 100.879C370.868 105.728 364.73 109.676 357.042 112.607C349.457 115.428 340.301 116.907 329.48 116.908H329.475L276.793 116.789V138.125ZM346.261 96.6806L346.238 96.6886C341.453 98.4029 336.024 99.199 330.036 99.199H276.793V23.6496H330.036C341.862 23.6496 351.685 26.5566 358.594 33.3844C365.591 40.1642 368.885 49.6036 368.885 60.8902C368.885 66.4514 368.073 71.6824 366.373 76.5087C364.697 81.3723 362.096 85.5571 358.624 89.0077L358.617 89.014C355.203 92.396 351.044 94.9119 346.283 96.6724L346.261 96.6806ZM361.63 74.3501C363.063 70.2908 363.78 65.8041 363.78 60.8902C363.78 50.9911 360.945 43.2997 355.274 37.816C349.666 32.2611 341.253 29.4837 330.036 29.4837H281.898V93.3649H330.036C335.645 93.3649 340.536 92.6171 344.712 91.1216C348.949 89.5548 352.47 87.3827 355.274 84.6053C358.141 81.7566 360.259 78.3382 361.63 74.3501Z"
-            class="fill-primary"
-          ></path>
-        </svg>
-      </HeaderLink>
+          <Logo />
+        </HeaderLink>
 
-      <mobile-button class="flex items-center gap-2 md:hidden">
-        <ThemeToggle />
-        <Button
-          id="menu-toggle"
-          variant="ghost"
-          colors="primary"
-          size="sm"
-          element="button"
-          type="button"
-          aria-expanded="false"
-          aria-haspopup="menu"
-          aria-label="Open main menu"
-          class="group rounded p-1"
-        >
-          <Icon name="tabler:menu-3" class="h-6 w-6 group-aria-expanded:hidden" />
-          <Icon name="tabler:menu-deep" class="hidden h-6 w-6 group-aria-expanded:block" />
-        </Button>
-      </mobile-button>
-    </div>
+        <mobile-button class="flex items-center gap-2 md:hidden">
+          <ThemePopover id="theme-popover-mobile" />
+          <NavKey
+            id="menu-toggle"
+            colors="terracotta"
+            icon
+            element="button"
+            aria-expanded="false"
+            aria-haspopup="menu"
+            aria-label="Open main menu"
+            class="group"
+          >
+            <Icon name="tabler:menu-3" class="h-6 w-6 group-aria-expanded:hidden" />
+            <Icon name="tabler:menu-deep" class="hidden h-6 w-6 group-aria-expanded:block" />
+          </NavKey>
+        </mobile-button>
+      </div>
 
-    {/* Desktop nav items */}
-    <nav class="mt-0 hidden select-none md:block" aria-label="Site navigation">
-      <ul class="flex gap-2 md:!flex-row md:items-center">
-        {NAVIGATION_ITEMS.map(({ title, path }) => (
-          <li class="relative">
-            <Keycap
-              element="a"
-              href={path}
-              colors="cream"
-              size="sm"
-              pressed={path === activeNavItemPath}
-            >
-              {title}
-            </Keycap>
+      {/* Desktop nav items */}
+      <nav class="mt-0 hidden select-none md:block" aria-label="Site navigation">
+        <ul class="flex gap-2 md:!flex-row md:items-center">
+          {NAVIGATION_ITEMS.map(({ title, path }, index) => (
+            <li class="relative">
+              <NavKey
+                lamp
+                element="a"
+                href={path}
+                colors={KEY_TONES[index % KEY_TONES.length]}
+                size="sm"
+                pressed={path === activeNavItemPath}
+                current={currentOf(path)}
+              >
+                {title}
+              </NavKey>
+            </li>
+          ))}
+          <li class="shrink-0">
+            <ThemePopover id="theme-popover-desktop" />
           </li>
-        ))}
-        <li class="shrink-0">
-          <ThemeToggle />
-        </li>
-      </ul>
-    </nav>
+        </ul>
+      </nav>
+    </div>
   </div>
 </header>
 
 <aside class="group relative md:hidden" data-menu="close" id="menu-mobile">
   {/* Mobile nav items */}
   <nav
-    class="bg-base-100 fixed top-16 right-4 z-20 mt-2 min-w-[200px] transform rounded-lg border border-gray-100 p-2 shadow-xl transition-all duration-500 select-none group-[[data-menu=close]]:invisible group-[[data-menu=close]]:translate-x-[110%] group-[[data-menu=open]]:translate-x-0 md:hidden"
+    class="sheet fixed top-[var(--header-h)] right-4 z-20 min-w-[200px] transform !p-3 transition-all duration-500 select-none group-[[data-menu=close]]:invisible group-[[data-menu=close]]:translate-x-[110%] group-[[data-menu=open]]:translate-x-0 md:hidden"
     aria-label="Site navigation"
   >
     <ul class="flex flex-col gap-2">
-      {NAVIGATION_ITEMS.map(({ title, path }) => (
+      {NAVIGATION_ITEMS.map(({ title, path }, index) => (
         <li class="relative">
-          <Keycap
+          <NavKey
+            lamp
             element="a"
             href={path}
-            colors="cream"
+            colors={KEY_TONES[index % KEY_TONES.length]}
             size="sm"
-            class="block w-full"
+            class="w-full"
             pressed={path === activeNavItemPath}
+            current={currentOf(path)}
           >
             {title}
-          </Keycap>
+          </NavKey>
         </li>
       ))}
     </ul>

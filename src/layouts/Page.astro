@@ -13,6 +13,8 @@ export interface Content {
   url: string;
   /** set max-w-xxx */
   class: string;
+  /** `breadcrumbs: false` in the frontmatter hides the breadcrumbs (the 404 page) */
+  breadcrumbs?: boolean;
 }
 
 export interface Props {
@@ -21,7 +23,7 @@ export interface Props {
 
 // metadata from frontmatter
 const { content } = Astro.props;
-const { title, description, class: className } = content;
+const { title, description, class: className, breadcrumbs: showBreadcrumbs = true } = content;
 
 // available in Layouts
 const { pathname } = Astro.url;
@@ -35,8 +37,8 @@ const breadcrumbs = [BreadcrumbItemHome];
 ---
 
 <Centered {metadata} class={cn(className)}>
-  <Breadcrumbs items={breadcrumbs} />
-  <article class="my-prose">
+  {showBreadcrumbs && <Breadcrumbs items={breadcrumbs} />}
+  <article class="my-prose sheet sheet-prose">
     <slot />
   </article>
 </Centered>

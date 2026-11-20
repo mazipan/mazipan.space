@@ -1,7 +1,7 @@
 ---
 import { Icon } from 'astro-icon/components';
 
-import Link from '@/components/Link.astro';
+import NavKey from '@/components/NavKey.astro';
 import { CONFIG_CLIENT } from '@/config/client';
 
 const {
@@ -17,60 +17,80 @@ const {
 } = CONFIG_CLIENT;
 ---
 
-<ul class="xs:flex-nowrap flex flex-wrap gap-2 lg:items-center">
+<ul class="flex flex-wrap gap-2 lg:items-center">
   <li>
-    <Link
+    <NavKey
+      element="a"
       href={`mailto:${AUTHOR_EMAIL}`}
       target="_blank"
       rel="me noreferrer noopener"
+      aria-label="Email"
       title="Email"
-      class="xs:text-lg flex items-center gap-2 text-base"
+      colors="cream"
+      icon
+      round
     >
-      <Icon name="tabler:mail" class="h-6 w-6 fill-current" />
-    </Link>
+      <Icon name="tabler:mail" class="h-6 w-6" aria-hidden="true" />
+    </NavKey>
   </li>
   <li>
-    <Link
+    <NavKey
+      element="a"
       href={AUTHOR_GITHUB}
       target="_blank"
       rel="me noreferrer noopener"
+      aria-label="GitHub"
       title="GitHub"
-      class="xs:text-lg flex items-center gap-2 text-base"
+      colors="cream"
+      icon
+      round
     >
-      <Icon name="tabler:brand-github" class="h-6 w-6 fill-current" />
-    </Link>
+      <Icon name="tabler:brand-github" class="h-6 w-6" aria-hidden="true" />
+    </NavKey>
   </li>
   <li>
-    <Link
+    <NavKey
+      element="a"
       href={AUTHOR_TWITTER}
       target="_blank"
       rel="me noreferrer noopener"
+      aria-label="Twitter/X"
       title="Twitter/X"
-      class="xs:text-lg flex items-center gap-2 text-base"
+      colors="cream"
+      icon
+      round
     >
-      <Icon name="tabler:brand-x" class="h-6 w-6 fill-current" />
-    </Link>
+      <Icon name="tabler:brand-x" class="h-6 w-6" aria-hidden="true" />
+    </NavKey>
   </li>
   <li>
-    <Link
+    <NavKey
+      element="a"
       href={AUTHOR_LINKEDIN}
       target="_blank"
       rel="me noreferrer noopener"
+      aria-label="LinkedIn"
       title="LinkedIn"
-      class="xs:text-lg flex items-center gap-2 text-base"
+      colors="cream"
+      icon
+      round
     >
-      <Icon name="tabler:brand-linkedin" class="h-6 w-6 fill-current" />
-    </Link>
+      <Icon name="tabler:brand-linkedin" class="h-6 w-6" aria-hidden="true" />
+    </NavKey>
   </li>
   <li>
-    <Link
+    <NavKey
+      element="a"
       href={AUTHOR_YOUTUBE}
       target="_blank"
       rel="me noreferrer noopener"
+      aria-label="YouTube"
       title="YouTube"
-      class="xs:text-lg flex items-center gap-2 text-base"
+      colors="cream"
+      icon
+      round
     >
-      <Icon name="tabler:brand-youtube" class="h-6 w-6 fill-current" />
-    </Link>
+      <Icon name="tabler:brand-youtube" class="h-6 w-6" aria-hidden="true" />
+    </NavKey>
   </li>
 </ul>

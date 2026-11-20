@@ -51,11 +51,25 @@
     box-shadow: inset 0 2px 4px rgb(0 0 0 / 0.2);
   }
 
-  /* a cue that is not depth and not color: pressed and current keys are underlined */
-  .keycap[aria-pressed='true'] .keycap-face,
-  .keycap[aria-current]:not([aria-current='false']) .keycap-face {
-    text-decoration: underline 3px;
-    text-underline-offset: 5px;
+  /* wayfinding and on/off state: keys that opt in with `lamp` light a small lamp on the top rim when
+     pressed or current, like the caps lock key. The lamp has a dark ring so it reads on every key
+     color. Other selected keys (filters, pagination) are pressed in and change color instead. */
+  .keycap-face {
+    position: relative;
+  }
+  .keycap-lamp[aria-pressed='true'] .keycap-face::after,
+  .keycap-lamp[aria-current]:not([aria-current='false']) .keycap-face::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    margin-left: -4px;
+    border-radius: 50%;
+    border: 1.5px solid rgb(0 0 0 / 0.55);
+    background: #ffffff;
+    box-shadow: 0 0 6px 1px rgb(255 255 255 / 0.85);
   }
 
   .keycap:focus-visible {
@@ -123,10 +137,78 @@
   }
 
   .keycap-square .keycap-face {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 46px;
     padding: 12px 0;
     text-align: center;
     font-size: 1.25rem;
+  }
+
+  /* Header keys: every key is exactly 48px tall, icon keys exactly 48 x 48.
+     Outer box = 2px edge + 40px face + 4px side + 2px edge. */
+  .keycap-nav {
+    display: inline-flex;
+    box-sizing: border-box;
+    height: 48px;
+    padding-bottom: 4px;
+    border-radius: 14px;
+  }
+  .keycap-nav .keycap-face {
+    display: flex;
+    flex: 1 1 auto;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    height: 40px;
+    padding: 0 18px;
+    border-radius: 11px;
+    font-size: 0.875rem;
+    white-space: nowrap;
+  }
+  .keycap-nav:hover .keycap-face {
+    transform: translateY(-1px);
+  }
+  .keycap-nav:active .keycap-face,
+  .keycap-nav[aria-pressed='true'] .keycap-face,
+  .keycap-nav[aria-current]:not([aria-current='false']) .keycap-face {
+    transform: translateY(4px);
+  }
+  /* for keys in a tight grid (the appearance popover): less side padding */
+  .keycap-nav-tight .keycap-face {
+    padding: 0 10px;
+  }
+  .keycap-nav-icon {
+    width: 48px;
+    justify-content: center;
+  }
+  .keycap-nav-icon .keycap-face {
+    flex: 0 0 auto;
+    width: 100%;
+    padding: 0;
+    font-size: 1.125rem;
+  }
+  /* round: a 48px circle with a 40px circle face */
+  .keycap-nav-round {
+    border-radius: 9999px;
+  }
+  .keycap-nav-round .keycap-face {
+    width: 40px;
+    border-radius: 9999px;
+  }
+
+  /* the logo: one key that presses in when the link is hovered or focused */
+  .logo-keys {
+    display: block;
+    overflow: visible;
+  }
+  .logo-key-face {
+    transition: transform 90ms ease-out;
+  }
+  .logo-link:hover .logo-key-face,
+  .logo-link:focus-visible .logo-key-face {
+    transform: translateY(4px);
   }
 
   /* Windows high contrast: colors are replaced, so keep real borders */
@@ -154,7 +236,10 @@
     .keycap-face {
       transition: none;
     }
-    .keycap:hover .keycap-face {
+    .keycap:hover .keycap-face,
+    .keycap-nav:hover .keycap-face,
+    .logo-link:hover .logo-key-face,
+    .logo-link:focus-visible .logo-key-face {
       transform: none;
     }
   }

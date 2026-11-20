@@ -5,7 +5,6 @@ import { getBookProps, getPostShelves, getSlidesBookProps } from '@/modules/post
 import List from '@/layouts/List.astro';
 import Book from '@/components/Book.astro';
 import Breadcrumbs from '@/components/Breadcrumbs.astro';
-import FeaturedPostList from '@/components/FeaturedPostList.astro';
 import PostList from '@/components/PostList.astro';
 import Shelf from '@/components/Shelf.astro';
 import { BreadcrumbItemHome } from '@/constants/breadcrumb';
@@ -67,6 +66,13 @@ const breadcrumbs = [BreadcrumbItemHome];
 
   {shelves && (
     <div class="mb-12">
+      {Array.isArray(featured) && featured.length > 0 && (
+        <Shelf title="Featured" href="#all-writing" linkLabel="All writing">
+          {featured.map((post, i) => (
+            <Book {...getBookProps(post, i)} />
+          ))}
+        </Shelf>
+      )}
       <Shelf title="Short reads" href="#all-writing" linkLabel="All writing">
         {shelves.short.map((post, i) => (
           <Book {...getBookProps(post, i)} />
@@ -92,13 +98,6 @@ const breadcrumbs = [BreadcrumbItemHome];
         </Shelf>
       )}
     </div>
-  )}
-
-  {Array.isArray(featured) && (
-    <>
-      <h2 class="sr-only">Featured writing</h2>
-      <FeaturedPostList posts={featured} />
-    </>
   )}
 
   <h2

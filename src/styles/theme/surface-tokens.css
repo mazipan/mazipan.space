@@ -8,6 +8,16 @@
     --th-note-text: #2b1d14;
 
     --th-field-bg: #fffdf7;
+
+    /* page texture: a fine paper grain plus a dot grid. Reading text never sits on it,
+       long text goes on a .sheet (solid color). */
+    --th-dot: rgb(70 40 15 / 0.075);
+    --th-grain: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .35  0 0 0 0 .22  0 0 0 0 .1  0 0 0 .09 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+
+    /* reading sheet: lighter than the page. contrast is derived and checked in
+       scripts/check-contrast.mjs (50% page color, 50% white) */
+    --th-sheet-bg: color-mix(in srgb, var(--th-base-100) 50%, #ffffff);
+    --th-title-side: var(--th-primary);
   }
 
   :root.dark {
@@ -18,5 +28,12 @@
     --th-note-text: #f6e9d8;
 
     --th-field-bg: #120d0a;
+
+    --th-dot: rgb(255 235 210 / 0.05);
+    --th-grain: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 .9  0 0 0 0 .8  0 0 0 .07 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+
+    /* 94% page color, 6% white */
+    --th-sheet-bg: color-mix(in srgb, var(--th-base-100) 94%, #ffffff);
+    --th-title-side: color-mix(in srgb, var(--th-primary) 60%, #000000);
   }
 }
