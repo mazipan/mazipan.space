@@ -1,6 +1,8 @@
 ---
-// The 404 picture: a row of keys reading 4 0 4. A ginger pixel-art cat has batted the 0 key out of its slot
-// and a dark one is asleep in the gap. The cats are fixed-colour pixels; the keys use the palette tokens, so it follows the chosen palette in light and dark.
+// The 404 picture: a row of keys reading 4 0 4, animated in a 12s loop. A ginger pixel-art cat hooks
+// the 0 key and lifts it out of its slot, finds a dark cat asleep in the gap ("!"), and puts the key
+// back. With reduced motion it is one still frame (key out, cats visible). The cats are fixed-colour
+// pixels; the keys use the palette tokens, so it follows the chosen palette in light and dark.
 // Decorative (the headline says it all), so it is hidden from screen readers.
 ---
 
@@ -61,23 +63,41 @@
     stroke-dasharray="9 7"
   ></rect>
 
-  <!-- ginger pixel cat behind the right key, batting at the floating 0 -->
+  <!-- ginger pixel cat behind the right key. Its arm (behind its body) hooks the 0 key and lifts it out of the slot -->
+  <g class="nf-arm" shape-rendering="crispEdges">
+    <path
+      fill="#e9c46a"
+      d="M320 70h5v5h-5zM320 75h5v5h-5zM325 75h5v5h-5zM330 75h5v5h-5zM315 80h5v5h-5zM320 80h5v5h-5zM325 80h5v5h-5zM330 80h5v5h-5zM335 80h5v5h-5zM325 85h5v5h-5zM330 85h5v5h-5zM335 85h5v5h-5zM340 85h5v5h-5zM345 85h5v5h-5zM330 90h5v5h-5zM335 90h5v5h-5zM340 90h5v5h-5zM345 90h5v5h-5zM350 90h5v5h-5zM340 95h5v5h-5zM345 95h5v5h-5zM350 95h5v5h-5zM355 95h5v5h-5zM350 100h5v5h-5z"
+    ></path>
+    <path
+      fill="#f2d27c"
+      d="M310 65h5v5h-5zM305 70h5v5h-5zM310 70h5v5h-5zM315 70h5v5h-5zM310 75h5v5h-5zM315 75h5v5h-5z"
+    ></path>
+    <path
+      fill="#2b1d14"
+      d="M310 60h5v5h-5zM305 65h5v5h-5zM315 65h5v5h-5zM320 65h5v5h-5zM300 70h5v5h-5zM325 70h5v5h-5zM330 70h5v5h-5zM305 75h5v5h-5zM335 75h5v5h-5zM310 80h5v5h-5zM340 80h5v5h-5zM345 80h5v5h-5zM315 85h5v5h-5zM320 85h5v5h-5zM350 85h5v5h-5zM325 90h5v5h-5zM355 90h5v5h-5zM330 95h5v5h-5zM335 95h5v5h-5zM360 95h5v5h-5zM340 100h5v5h-5zM345 100h5v5h-5zM355 100h5v5h-5zM350 105h5v5h-5z"
+    ></path>
+  </g>
   <g class="nf-cat1" shape-rendering="crispEdges">
     <path
       fill="#2b1d14"
-      d="M370 55h5v5h-5zM375 55h5v5h-5zM410 55h5v5h-5zM415 55h5v5h-5zM320 60h5v5h-5zM365 60h5v5h-5zM380 60h5v5h-5zM405 60h5v5h-5zM420 60h5v5h-5zM315 65h5v5h-5zM325 65h5v5h-5zM330 65h5v5h-5zM365 65h5v5h-5zM380 65h5v5h-5zM385 65h5v5h-5zM390 65h5v5h-5zM395 65h5v5h-5zM400 65h5v5h-5zM405 65h5v5h-5zM420 65h5v5h-5zM310 70h5v5h-5zM335 70h5v5h-5zM340 70h5v5h-5zM365 70h5v5h-5zM420 70h5v5h-5zM315 75h5v5h-5zM345 75h5v5h-5zM365 75h5v5h-5zM420 75h5v5h-5zM320 80h5v5h-5zM350 80h5v5h-5zM355 80h5v5h-5zM365 80h5v5h-5zM420 80h5v5h-5zM325 85h5v5h-5zM330 85h5v5h-5zM360 85h5v5h-5zM365 85h5v5h-5zM420 85h5v5h-5zM335 90h5v5h-5zM365 90h5v5h-5zM420 90h5v5h-5zM340 95h5v5h-5zM345 95h5v5h-5zM370 95h5v5h-5zM415 95h5v5h-5zM350 100h5v5h-5zM355 100h5v5h-5zM365 100h5v5h-5zM370 100h5v5h-5zM375 100h5v5h-5zM380 100h5v5h-5zM385 100h5v5h-5zM390 100h5v5h-5zM395 100h5v5h-5zM400 100h5v5h-5zM405 100h5v5h-5zM410 100h5v5h-5zM415 100h5v5h-5zM420 100h5v5h-5zM360 105h5v5h-5zM365 105h5v5h-5zM420 105h5v5h-5zM365 110h5v5h-5zM420 110h5v5h-5zM365 115h5v5h-5zM420 115h5v5h-5zM365 120h5v5h-5zM380 120h5v5h-5zM405 120h5v5h-5zM420 120h5v5h-5zM365 125h5v5h-5zM370 125h5v5h-5zM375 125h5v5h-5zM380 125h5v5h-5zM385 125h5v5h-5zM390 125h5v5h-5zM395 125h5v5h-5zM400 125h5v5h-5zM405 125h5v5h-5zM410 125h5v5h-5zM415 125h5v5h-5zM420 125h5v5h-5z"
+      d="M345 55h5v5h-5zM350 55h5v5h-5zM385 55h5v5h-5zM390 55h5v5h-5zM340 60h5v5h-5zM355 60h5v5h-5zM380 60h5v5h-5zM395 60h5v5h-5zM340 65h5v5h-5zM355 65h5v5h-5zM360 65h5v5h-5zM365 65h5v5h-5zM370 65h5v5h-5zM375 65h5v5h-5zM380 65h5v5h-5zM395 65h5v5h-5zM340 70h5v5h-5zM395 70h5v5h-5zM340 75h5v5h-5zM395 75h5v5h-5zM340 80h5v5h-5zM395 80h5v5h-5zM340 85h5v5h-5zM395 85h5v5h-5zM340 90h5v5h-5zM395 90h5v5h-5zM345 95h5v5h-5zM390 95h5v5h-5zM345 100h5v5h-5zM350 100h5v5h-5zM355 100h5v5h-5zM360 100h5v5h-5zM365 100h5v5h-5zM370 100h5v5h-5zM375 100h5v5h-5zM380 100h5v5h-5zM385 100h5v5h-5zM390 100h5v5h-5zM395 100h5v5h-5zM340 105h5v5h-5zM395 105h5v5h-5zM340 110h5v5h-5zM395 110h5v5h-5zM340 115h5v5h-5zM395 115h5v5h-5zM340 120h5v5h-5zM355 120h5v5h-5zM380 120h5v5h-5zM395 120h5v5h-5zM340 125h5v5h-5zM345 125h5v5h-5zM350 125h5v5h-5zM355 125h5v5h-5zM360 125h5v5h-5zM365 125h5v5h-5zM370 125h5v5h-5zM375 125h5v5h-5zM380 125h5v5h-5zM385 125h5v5h-5zM390 125h5v5h-5zM395 125h5v5h-5z"
     ></path>
     <path
       fill="#e9c46a"
-      d="M370 60h5v5h-5zM415 60h5v5h-5zM370 65h5v5h-5zM375 65h5v5h-5zM410 65h5v5h-5zM415 65h5v5h-5zM330 70h5v5h-5zM370 70h5v5h-5zM375 70h5v5h-5zM380 70h5v5h-5zM385 70h5v5h-5zM390 70h5v5h-5zM395 70h5v5h-5zM400 70h5v5h-5zM405 70h5v5h-5zM410 70h5v5h-5zM415 70h5v5h-5zM330 75h5v5h-5zM335 75h5v5h-5zM340 75h5v5h-5zM370 75h5v5h-5zM375 75h5v5h-5zM385 75h5v5h-5zM390 75h5v5h-5zM395 75h5v5h-5zM400 75h5v5h-5zM410 75h5v5h-5zM415 75h5v5h-5zM325 80h5v5h-5zM330 80h5v5h-5zM335 80h5v5h-5zM340 80h5v5h-5zM345 80h5v5h-5zM370 80h5v5h-5zM375 80h5v5h-5zM385 80h5v5h-5zM390 80h5v5h-5zM395 80h5v5h-5zM400 80h5v5h-5zM410 80h5v5h-5zM415 80h5v5h-5zM335 85h5v5h-5zM340 85h5v5h-5zM345 85h5v5h-5zM350 85h5v5h-5zM355 85h5v5h-5zM370 85h5v5h-5zM375 85h5v5h-5zM380 85h5v5h-5zM385 85h5v5h-5zM400 85h5v5h-5zM405 85h5v5h-5zM410 85h5v5h-5zM415 85h5v5h-5zM340 90h5v5h-5zM345 90h5v5h-5zM350 90h5v5h-5zM355 90h5v5h-5zM360 90h5v5h-5zM370 90h5v5h-5zM380 90h5v5h-5zM385 90h5v5h-5zM390 90h5v5h-5zM395 90h5v5h-5zM400 90h5v5h-5zM405 90h5v5h-5zM415 90h5v5h-5zM350 95h5v5h-5zM355 95h5v5h-5zM360 95h5v5h-5zM365 95h5v5h-5zM375 95h5v5h-5zM380 95h5v5h-5zM385 95h5v5h-5zM390 95h5v5h-5zM395 95h5v5h-5zM400 95h5v5h-5zM405 95h5v5h-5zM410 95h5v5h-5zM360 100h5v5h-5zM370 105h5v5h-5zM375 105h5v5h-5zM380 105h5v5h-5zM405 105h5v5h-5zM410 105h5v5h-5zM415 105h5v5h-5zM370 110h5v5h-5zM375 110h5v5h-5zM380 110h5v5h-5zM405 110h5v5h-5zM410 110h5v5h-5zM415 110h5v5h-5zM370 115h5v5h-5zM375 115h5v5h-5zM380 115h5v5h-5zM405 115h5v5h-5zM410 115h5v5h-5zM415 115h5v5h-5zM370 120h5v5h-5zM375 120h5v5h-5zM410 120h5v5h-5zM415 120h5v5h-5z"
+      d="M345 60h5v5h-5zM390 60h5v5h-5zM345 65h5v5h-5zM350 65h5v5h-5zM385 65h5v5h-5zM390 65h5v5h-5zM345 70h5v5h-5zM350 70h5v5h-5zM355 70h5v5h-5zM360 70h5v5h-5zM365 70h5v5h-5zM370 70h5v5h-5zM375 70h5v5h-5zM380 70h5v5h-5zM385 70h5v5h-5zM390 70h5v5h-5zM345 75h5v5h-5zM350 75h5v5h-5zM360 75h5v5h-5zM365 75h5v5h-5zM370 75h5v5h-5zM375 75h5v5h-5zM385 75h5v5h-5zM390 75h5v5h-5zM345 80h5v5h-5zM350 80h5v5h-5zM360 80h5v5h-5zM365 80h5v5h-5zM370 80h5v5h-5zM375 80h5v5h-5zM385 80h5v5h-5zM390 80h5v5h-5zM345 85h5v5h-5zM350 85h5v5h-5zM355 85h5v5h-5zM360 85h5v5h-5zM375 85h5v5h-5zM380 85h5v5h-5zM385 85h5v5h-5zM390 85h5v5h-5zM345 90h5v5h-5zM355 90h5v5h-5zM360 90h5v5h-5zM365 90h5v5h-5zM370 90h5v5h-5zM375 90h5v5h-5zM380 90h5v5h-5zM390 90h5v5h-5zM350 95h5v5h-5zM355 95h5v5h-5zM360 95h5v5h-5zM365 95h5v5h-5zM370 95h5v5h-5zM375 95h5v5h-5zM380 95h5v5h-5zM385 95h5v5h-5zM345 105h5v5h-5zM350 105h5v5h-5zM355 105h5v5h-5zM380 105h5v5h-5zM385 105h5v5h-5zM390 105h5v5h-5zM345 110h5v5h-5zM350 110h5v5h-5zM355 110h5v5h-5zM380 110h5v5h-5zM385 110h5v5h-5zM390 110h5v5h-5zM345 115h5v5h-5zM350 115h5v5h-5zM355 115h5v5h-5zM380 115h5v5h-5zM385 115h5v5h-5zM390 115h5v5h-5zM345 120h5v5h-5zM350 120h5v5h-5zM385 120h5v5h-5zM390 120h5v5h-5z"
     ></path>
-    <path fill="#d9603f" d="M375 60h5v5h-5zM410 60h5v5h-5zM390 85h5v5h-5zM395 85h5v5h-5z"></path>
-    <path fill="#2b1d14" d="M380 75h5v5h-5zM405 75h5v5h-5zM380 80h5v5h-5zM405 80h5v5h-5z"></path>
-    <path fill="#a98a2f" d="M375 90h5v5h-5zM410 90h5v5h-5z"></path>
+    <path fill="#d9603f" d="M350 60h5v5h-5zM385 60h5v5h-5zM365 85h5v5h-5zM370 85h5v5h-5z"></path>
+    <path fill="#2b1d14" d="M355 75h5v5h-5zM380 75h5v5h-5zM355 80h5v5h-5zM380 80h5v5h-5z"></path>
+    <path fill="#a98a2f" d="M350 90h5v5h-5zM385 90h5v5h-5z"></path>
     <path
       fill="#f2d27c"
-      d="M320 65h5v5h-5zM315 70h5v5h-5zM320 70h5v5h-5zM325 70h5v5h-5zM320 75h5v5h-5zM325 75h5v5h-5zM385 105h5v5h-5zM390 105h5v5h-5zM395 105h5v5h-5zM400 105h5v5h-5zM385 110h5v5h-5zM390 110h5v5h-5zM395 110h5v5h-5zM400 110h5v5h-5zM385 115h5v5h-5zM390 115h5v5h-5zM395 115h5v5h-5zM400 115h5v5h-5zM385 120h5v5h-5zM390 120h5v5h-5zM395 120h5v5h-5zM400 120h5v5h-5z"
+      d="M360 105h5v5h-5zM365 105h5v5h-5zM370 105h5v5h-5zM375 105h5v5h-5zM360 110h5v5h-5zM365 110h5v5h-5zM370 110h5v5h-5zM375 110h5v5h-5zM360 115h5v5h-5zM365 115h5v5h-5zM370 115h5v5h-5zM375 115h5v5h-5zM360 120h5v5h-5zM365 120h5v5h-5zM370 120h5v5h-5zM375 120h5v5h-5z"
     ></path>
+  </g>
+  <!-- the "!" over its head when it finds the sleeping cat -->
+  <g class="nf-bang" shape-rendering="crispEdges" style="fill: var(--th-key-edge)">
+    <path d="M366 22h8v16h-8zM366 42h8v8h-8z"></path>
   </g>
 
   <!-- left 4 -->
@@ -184,62 +204,66 @@
     ></path>
     <g class="nf-zzz">
       <path
-        fill="#2b1d14"
+        style="fill: var(--th-key-edge)"
         d="M204 172h4v4h-4zM208 172h4v4h-4zM212 172h4v4h-4zM216 172h4v4h-4zM220 172h4v4h-4zM216 176h4v4h-4zM212 180h4v4h-4zM208 184h4v4h-4zM204 188h4v4h-4zM208 188h4v4h-4zM212 188h4v4h-4zM216 188h4v4h-4zM220 188h4v4h-4z"
       ></path>
       <path
-        fill="#2b1d14"
+        style="fill: var(--th-key-edge)"
         d="M230 148h3v3h-3zM233 148h3v3h-3zM236 148h3v3h-3zM239 148h3v3h-3zM242 148h3v3h-3zM239 151h3v3h-3zM236 154h3v3h-3zM233 157h3v3h-3zM230 160h3v3h-3zM233 160h3v3h-3zM236 160h3v3h-3zM239 160h3v3h-3zM242 160h3v3h-3z"
       ></path>
     </g>
   </g>
 
-  <!-- the 0 that popped out, floating and tilted -->
-  <g class="nf-float">
-    <g transform="rotate(-9 250 90)">
-      <rect
-        x="188"
-        y="26"
-        width="124"
-        height="110"
-        rx="18"
-        style="fill: var(--th-key-teal-side)"
-        stroke="var(--th-key-edge)"
-        stroke-width="3"
-      ></rect>
-      <rect
-        x="192"
-        y="18"
-        width="116"
-        height="94"
-        rx="15"
-        fill="url(#nf-teal)"
-        stroke="var(--th-key-edge)"
-        stroke-width="3"
-      ></rect>
-      <path
-        d="M204 30 Q250 22 296 30"
-        stroke="#fff"
-        stroke-opacity=".35"
-        stroke-width="4"
-        stroke-linecap="round"
-        fill="none"
-      ></path>
-      <ellipse
-        cx="250"
-        cy="66"
-        rx="21"
-        ry="29"
-        style="stroke: var(--th-key-teal-text)"
-        stroke-width="10"
-        fill="none"
-      ></ellipse>
-    </g>
-    <!-- little motion lines -->
-    <g stroke="var(--th-key-edge)" stroke-width="4" stroke-linecap="round" fill="none">
-      <path d="M170 70 l-16 -8"></path>
-      <path d="M168 94 l-20 0"></path>
-    </g>
+  <!-- the 0 key: it sits in the slot, the cat lifts it out, finds the sleeping cat, puts it back (loop) -->
+  <g class="nf-key">
+    <rect
+      x="188"
+      y="26"
+      width="124"
+      height="110"
+      rx="18"
+      style="fill: var(--th-key-teal-side)"
+      stroke="var(--th-key-edge)"
+      stroke-width="3"
+    ></rect>
+    <rect
+      x="192"
+      y="18"
+      width="116"
+      height="94"
+      rx="15"
+      fill="url(#nf-teal)"
+      stroke="var(--th-key-edge)"
+      stroke-width="3"
+    ></rect>
+    <path
+      d="M204 30 Q250 22 296 30"
+      stroke="#fff"
+      stroke-opacity=".35"
+      stroke-width="4"
+      stroke-linecap="round"
+      fill="none"
+    ></path>
+    <ellipse
+      cx="250"
+      cy="66"
+      rx="21"
+      ry="29"
+      style="stroke: var(--th-key-teal-text)"
+      stroke-width="10"
+      fill="none"
+    ></ellipse>
+  </g>
+  <!-- little motion lines, they flash when the key moves -->
+  <g
+    class="nf-lines"
+    stroke="var(--th-key-edge)"
+    stroke-width="4"
+    stroke-linecap="round"
+    fill="none"
+  >
+    <path d="M170 70 l-16 -8"></path>
+    <path d="M168 94 l-20 0"></path>
   </g>
 </svg>
 
@@ -252,34 +276,135 @@
     margin-inline: auto;
     overflow: visible;
   }
-  .nf-float {
-    animation: nf-bob 3.2s ease-in-out infinite;
+  /* Without motion (reduced motion) the picture is one still frame: the key is out of the slot,
+     the arm is up, the sleeping cat shows its Zs and the cat says "!". */
+  .nf-key {
+    transform-origin: 250px 90px;
+    transform: translate(12px, 0) rotate(-9deg);
   }
-  .nf-zzz {
-    animation: nf-zzz 3.2s ease-in-out infinite;
+  .nf-arm {
+    transform-origin: 352.5px 97.5px;
   }
-  @keyframes nf-bob {
+
+  /* one 12s loop: the key sits in the slot, the cat lifts it (arm up, key out), finds the sleeping
+     cat ("!", Zs), then puts the key back in the slot. All the parts share the same timing. */
+  @media (prefers-reduced-motion: no-preference) {
+    .nf-key,
+    .nf-arm,
+    .nf-bang,
+    .nf-lines,
+    .nf-cat2 .nf-zzz {
+      animation-duration: 12s;
+      animation-iteration-count: infinite;
+      animation-timing-function: ease-in-out;
+    }
+    .nf-key {
+      animation-name: nf-key;
+    }
+    .nf-arm {
+      animation-name: nf-arm;
+    }
+    .nf-bang {
+      animation-name: nf-bang;
+    }
+    .nf-lines {
+      animation-name: nf-lines;
+    }
+    .nf-cat2 .nf-zzz {
+      animation-name: nf-zzz;
+    }
+  }
+  @keyframes nf-key {
     0%,
-    100% {
-      transform: translateY(0);
+    10% {
+      transform: translateY(112px) rotate(0deg);
+    }
+    26% {
+      transform: translate(12px, -8px) rotate(-12deg);
+    }
+    30% {
+      transform: translate(12px, 0) rotate(-9deg);
+    }
+    40% {
+      transform: translate(12px, -7px) rotate(-9deg);
     }
     50% {
-      transform: translateY(-9px);
+      transform: translate(12px, 0) rotate(-9deg);
+    }
+    58% {
+      transform: translate(12px, -7px) rotate(-9deg);
+    }
+    64% {
+      transform: translate(12px, 0) rotate(-9deg);
+    }
+    77%,
+    100% {
+      transform: translateY(112px) rotate(0deg);
+    }
+  }
+  @keyframes nf-arm {
+    0%,
+    10% {
+      transform: rotate(-68deg);
+    }
+    26%,
+    64% {
+      transform: rotate(0deg);
+    }
+    77%,
+    100% {
+      transform: rotate(-68deg);
+    }
+  }
+  @keyframes nf-bang {
+    0%,
+    30% {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+    34%,
+    58% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    64%,
+    100% {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+  }
+  @keyframes nf-lines {
+    0%,
+    12%,
+    30%,
+    66%,
+    80%,
+    100% {
+      opacity: 0;
+    }
+    20%,
+    72% {
+      opacity: 1;
     }
   }
   @keyframes nf-zzz {
     0%,
-    100% {
-      opacity: 0.35;
+    28% {
+      opacity: 0;
     }
-    50% {
+    34%,
+    54% {
       opacity: 1;
     }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .nf-float,
-    .nf-zzz {
-      animation: none;
+    44% {
+      opacity: 0.4;
+    }
+    62% {
+      opacity: 1;
+    }
+    68%,
+    100% {
+      opacity: 0;
     }
   }
 </style>
