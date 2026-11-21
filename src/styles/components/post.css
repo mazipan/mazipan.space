@@ -163,11 +163,28 @@
     grid-template-columns: minmax(0, 1fr);
     gap: 16px;
     @media (min-width: 1024px) {
-      grid-template-columns: 220px minmax(0, 40.5rem) 52px;
+      grid-template-columns: 220px minmax(0, 40.5rem) 56px;
       justify-content: center;
       gap: 28px;
     }
+    /* wide screens: the chapter index sits on the left edge and the share rail on the right edge,
+       in line with the header and the cover, and the page stays centered between them */
+    @media (min-width: 1280px) {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 40.5rem) minmax(0, 1fr);
+      justify-content: stretch;
+    }
   }
+  @media (min-width: 1280px) {
+    .post-grid > content-toc {
+      justify-self: start;
+      width: 100%;
+      max-width: 280px;
+    }
+    .post-rail {
+      justify-self: end;
+    }
+  }
+
   .post-detail.sheet {
     margin-bottom: 18px;
     /* page edges under the page, like the cover */
@@ -306,15 +323,11 @@
       clip-path: inset(50%);
       white-space: nowrap;
     }
-    .post-rail .social-share-btn {
-      margin-right: 0;
-    }
     .post-rail .astro-social-share {
       /* the share styles are unlayered, so they win over this layer without !important */
       flex-direction: column !important;
       flex-wrap: nowrap !important;
       align-items: center;
-      row-gap: 10px !important;
     }
   }
 
