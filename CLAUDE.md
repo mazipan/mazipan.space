@@ -1,7 +1,8 @@
 # CLAUDE.md
 
-See **[AGENTS.md](./AGENTS.md)** for the full project guide — stack, conventions,
-commands, and content authoring (including the Carousel/Slides format).
+See **[AGENTS.md](./AGENTS.md)** for the project guide (stack, conventions, commands) and
+**[docs/agents/README.md](./docs/agents/README.md)** for how to work in the repo: workflow, design system,
+page notes and content authoring (including the Carousel/Slides format).
 
 ## Claude Code-specific notes
 
