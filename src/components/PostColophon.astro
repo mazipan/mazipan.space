@@ -1,0 +1,35 @@
+---
+import { Image } from 'astro:assets';
+
+import PaperCard from '@/components/PaperCard.astro';
+import { ROUTES } from '@/constants/routes';
+import { CONFIG_CLIENT } from '@/config/client';
+
+import type { HTMLAttributes } from 'astro/types';
+
+import MeInBlackSrc from '@/assets/images/mazipan-in-black.jpg';
+
+export interface Props extends HTMLAttributes<'aside'> {}
+
+const { class: className, ...props } = Astro.props;
+const { AUTHOR_NAME } = CONFIG_CLIENT;
+---
+
+<aside aria-label="About the author" class={className} {...props}>
+  <PaperCard tape class="post-colophon">
+    <div class="frame">
+      <Image src={MeInBlackSrc} width={192} densities={[1, 2]} alt="" class="w-full" />
+    </div>
+    <div class="space-y-1">
+      <p class="m-0 text-sm font-bold tracking-widest uppercase">Written by</p>
+      <p class="b-h3 m-0">{AUTHOR_NAME}</p>
+      <p class="m-0">
+        I don't write often, but when I do it is usually a personal experience on a technical topic,
+        with some beginner-friendly advice from my side.
+        <a href={ROUTES.ABOUT} class="link-key">
+          More about me
+        </a>
+      </p>
+    </div>
+  </PaperCard>
+</aside>

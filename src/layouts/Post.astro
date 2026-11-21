@@ -5,28 +5,55 @@ import { BreadcrumbItemBlog, BreadcrumbItemHome } from '@/constants/breadcrumb';
 
 import type { BaseProps } from '@/layouts/Base.astro';
 
-export interface Props extends BaseProps {}
+export interface Props extends BaseProps {
+  /** cover color: one of the key colors */
+  tone?: 'terracotta' | 'teal' | 'mustard' | 'navy';
+  /** small text standing on the spine (decoration) */
+  spineLabel?: string;
+}
 
-const props = Astro.props;
+const { tone = 'terracotta', spineLabel = '', ...props } = Astro.props;
 const breadcrumbs = [BreadcrumbItemHome, BreadcrumbItemBlog];
 ---
 
 <FullWidth {...props}>
   <article class="relative pt-8 pb-16">
-    <section class="centered-px max-w-6xl">
+    <section class="centered max-w-6xl px-4 xl:px-0">
       <Breadcrumbs items={breadcrumbs} />
     </section>
 
-    <figure class="centered-px max-w-6xl">
-      <slot name="hero-image" />
-    </figure>
+    <header class="centered max-w-6xl px-4 xl:px-0">
+      <div class="post-cover" data-tone={tone}>
+        <div class="post-spine" data-label={spineLabel} aria-hidden="true"></div>
+        <div class="post-cover-main" data-art={Astro.slots.has('hero-image') ? 'true' : 'false'}>
+          <div>
+            <slot name="hero-text" />
+          </div>
+          {Astro.slots.has('hero-image') && (
+            <figure class="post-cover-art m-0">
+              <slot name="hero-image" />
+            </figure>
+          )}
+        </div>
+        <div class="post-slip">
+          <slot name="hero-meta" />
+        </div>
+      </div>
+    </header>
 
-    <section class="centered-px b-h2-my max-w-6xl">
-      <slot name="hero-text" />
-    </section>
+    {Astro.slots.has('bottom-line') && (
+      <section class="centered mb-8 max-w-6xl px-4 xl:px-0">
+        <slot name="bottom-line" />
+      </section>
+    )}
 
-    <section class="centered md:centered-px max-w-6xl">
-      <div class="relative gap-4 lg:grid lg:grid-cols-[minmax(0,40.5rem)_300px] lg:justify-center">
+    <section class="centered max-w-6xl px-4 xl:px-0">
+      <div class="post-grid relative">
+        {Astro.slots.has('toc') ? (
+          <slot name="toc" />
+        ) : (
+          <div class="hidden lg:block" aria-hidden="true" />
+        )}
         <section
           class="my-prose sheet sheet-prose post-detail [&>h2:nth-child(1)]:mt-0 [&>h2:nth-child(3)]:mt-0"
           data-translatable="content"
@@ -35,15 +62,19 @@ const breadcrumbs = [BreadcrumbItemHome, BreadcrumbItemBlog];
             <slot name="content" />
           </content-wrapper>
         </section>
-        {Astro.slots.has('toc') && <slot name="toc" />}
+        <aside class="post-rail" aria-label="Share this post">
+          <div class="post-rail-inner">
+            <slot name="rail" />
+          </div>
+        </aside>
       </div>
     </section>
 
-    <section class="centered-px max-w-6xl">
+    <section class="centered max-w-6xl px-4 xl:px-0">
       <slot name="after-content" />
     </section>
 
-    <section class="centered-px b-h2-mt max-w-6xl">
+    <section class="centered b-h2-mt max-w-6xl px-4 xl:px-0">
       <slot name="more-posts" />
     </section>
   </article>

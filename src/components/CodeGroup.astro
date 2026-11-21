@@ -20,7 +20,7 @@ const ICON_MAP: Record<string, string> = {
 ---
 
 <code-group>
-  <div role="tablist" class="border-base-300 flex flex-wrap border-b">
+  <div role="tablist" class="code-tabs">
     {tabs.map(({ id, text }, i) => (
       <button
         role="tab"
@@ -28,9 +28,12 @@ const ICON_MAP: Record<string, string> = {
         data-label={id}
         data-active={i === 0 ? 'true' : 'false'}
         aria-selected={i === 0 ? 'true' : 'false'}
-        class="hover:text-primary data-[active=true]:border-primary data-[active=true]:text-primary -mb-px flex cursor-pointer items-center gap-1.5 border-b-2 border-transparent px-3 py-2 text-sm font-medium transition-colors"
+        tabindex={i === 0 ? 0 : -1}
+        class="code-tab"
       >
-        {ICON_MAP[id] ? <Icon name={ICON_MAP[id]} class="h-4 w-4" /> : null}
+        {ICON_MAP[id] ? (
+          <Icon name={ICON_MAP[id]} class="h-[18px] w-[18px]" aria-hidden="true" />
+        ) : null}
         <span>{text}</span>
       </button>
     ))}
@@ -41,6 +44,10 @@ const ICON_MAP: Record<string, string> = {
 </code-group>
 
 <style>
+  code-group {
+    display: block;
+  }
+
   code-group .panels > :global([data-label]) {
     display: none;
   }
@@ -63,11 +70,28 @@ const ICON_MAP: Record<string, string> = {
         const isActive = tab === btn;
         tab.dataset.active = isActive ? 'true' : 'false';
         tab.setAttribute('aria-selected', isActive ? 'true' : 'false');
+        tab.tabIndex = isActive ? 0 : -1;
       });
 
       this.panels.forEach((panel) => {
         panel.dataset.active = panel.dataset.label === label ? 'true' : 'false';
       });
+    };
+
+    // arrow keys, Home and End move between the tabs (the tabs are one tab stop)
+    handleKeydown = (e: KeyboardEvent) => {
+      const keys = ['ArrowLeft', 'ArrowRight', 'Home', 'End'];
+      if (!keys.includes(e.key)) return;
+      const list = [...this.tabs];
+      const current = list.indexOf(e.currentTarget as HTMLButtonElement);
+      let next = current;
+      if (e.key === 'ArrowRight') next = (current + 1) % list.length;
+      if (e.key === 'ArrowLeft') next = (current - 1 + list.length) % list.length;
+      if (e.key === 'Home') next = 0;
+      if (e.key === 'End') next = list.length - 1;
+      e.preventDefault();
+      list[next].focus();
+      list[next].click();
     };
 
     constructor() {
@@ -84,12 +108,14 @@ const ICON_MAP: Record<string, string> = {
 
       this.tabs.forEach((tab) => {
         tab.addEventListener('click', this.handleTabClick);
+        tab.addEventListener('keydown', this.handleKeydown);
       });
     }
 
     disconnectedCallback() {
       this.tabs.forEach((tab) => {
         tab.removeEventListener('click', this.handleTabClick);
+        tab.removeEventListener('keydown', this.handleKeydown);
       });
     }
   }
