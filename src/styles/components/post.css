@@ -84,9 +84,30 @@
 
   .post-cover-main {
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
     gap: 28px;
     align-items: center;
     padding: clamp(22px, 4vw, 44px);
+  }
+  /* a long word in a title must fit on a phone without breaking in the middle */
+  @media (max-width: 767px) {
+    .post-cover .post-title {
+      font-size: clamp(1.5rem, 7.5vw, 2.25rem);
+    }
+  }
+  @media (max-width: 479px) {
+    .post-cover {
+      grid-template-columns: 34px minmax(0, 1fr);
+    }
+    .post-spine::after {
+      font-size: 0.65rem;
+    }
+    .post-cover-main {
+      padding: 20px 16px;
+    }
+    .post-slip {
+      padding-inline: 16px;
+    }
   }
   .post-cover-main[data-art='true'] {
     @media (min-width: 1024px) {
@@ -97,6 +118,7 @@
     margin: 0 0 12px;
     color: var(--c-text);
     line-height: 1.12;
+    overflow-wrap: anywhere;
     text-wrap: balance;
     text-shadow:
       0.02em 0.02em 0 var(--c-side),
@@ -163,28 +185,31 @@
     grid-template-columns: minmax(0, 1fr);
     gap: 16px;
     @media (min-width: 1024px) {
-      grid-template-columns: 220px minmax(0, 40.5rem) 56px;
-      justify-content: center;
+      /* chapter index | the page fills the rest | share rail: edges line up with the header */
+      grid-template-columns: 220px minmax(0, 1fr) 56px;
       gap: 28px;
     }
-    /* wide screens: the chapter index sits on the left edge and the share rail on the right edge,
-       in line with the header and the cover, and the page stays centered between them */
     @media (min-width: 1280px) {
-      grid-template-columns: minmax(0, 1fr) minmax(0, 40.5rem) minmax(0, 1fr);
-      justify-content: stretch;
-    }
-  }
-  @media (min-width: 1280px) {
-    .post-grid > content-toc {
-      justify-self: start;
-      width: 100%;
-      max-width: 280px;
-    }
-    .post-rail {
-      justify-self: end;
+      grid-template-columns: 280px minmax(0, 1fr) 56px;
     }
   }
 
+  /* the page fills its column (no empty strips around the text); only the text lines keep a
+     reading measure, and a bigger type size from tablet up keeps about 70 characters per line */
+  .post-detail.sheet-prose {
+    max-width: none;
+  }
+  .post-detail content-wrapper > :where(p, ul, ol, blockquote, h2, h3, h4) {
+    max-width: 36.5rem;
+  }
+  @media (min-width: 768px) {
+    .post-detail.my-prose {
+      font-size: 1.25rem !important;
+    }
+    .post-detail content-wrapper > :where(p, ul, ol, blockquote, h2, h3, h4) {
+      max-width: 42rem;
+    }
+  }
   .post-detail.sheet {
     margin-bottom: 18px;
     /* page edges under the page, like the cover */
@@ -323,7 +348,15 @@
       clip-path: inset(50%);
       white-space: nowrap;
     }
+    /* the keys sit against the right edge, in line with the header */
+    .post-rail-inner {
+      display: flex;
+      justify-content: flex-end;
+    }
     .post-rail .astro-social-share {
+      width: 48px;
+      padding: 0 !important;
+      margin: 0 !important;
       /* the share styles are unlayered, so they win over this layer without !important */
       flex-direction: column !important;
       flex-wrap: nowrap !important;
@@ -347,5 +380,132 @@
     aspect-ratio: 1;
     width: 100%;
     object-fit: cover;
+  }
+
+  /* ---------- links in the text: a highlighter stroke with a raised edge ---------- */
+  .post-detail content-wrapper a:not(.link-key) {
+    padding: 0 0.15em;
+    border-radius: 4px;
+    background-image: linear-gradient(
+      to bottom,
+      transparent 56%,
+      color-mix(in srgb, var(--th-primary) 26%, transparent) 56%
+    );
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+    color: var(--th-links);
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 3px solid color-mix(in srgb, var(--th-primary) 70%, transparent);
+    transition:
+      background-color 160ms,
+      box-shadow 160ms,
+      transform 160ms;
+  }
+  .post-detail content-wrapper a:not(.link-key):hover {
+    background-image: none;
+    background-color: color-mix(in srgb, var(--th-primary) 22%, transparent);
+    border-bottom-color: var(--th-primary);
+    box-shadow: 0 3px 0 -1px var(--th-key-edge);
+    text-decoration: none;
+    transform: translateY(-1px);
+  }
+  .post-detail content-wrapper a:not(.link-key):active {
+    transform: translateY(1px);
+    box-shadow: none;
+  }
+  /* a link that leaves the site gets a small arrow (decoration, the link text says where) */
+  .post-detail content-wrapper a[href^='http']:not([href*='mazipan.space'])::after {
+    content: '';
+    display: inline-block;
+    width: 0.75em;
+    height: 0.75em;
+    margin-left: 0.2em;
+    background: currentColor;
+    vertical-align: -0.02em;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M17 7L7 17M8 7h9v9'/%3E%3C/svg%3E")
+      center / contain no-repeat;
+  }
+  /* inside a sticky note the link keeps the note color and a plain underline (the theme link
+     color does not have enough contrast on the note in the dark palettes) */
+  .post-detail content-wrapper blockquote a:not(.link-key),
+  .post-detail content-wrapper blockquote a:not(.link-key):hover {
+    background: none;
+    border-bottom: 2px solid currentColor;
+    box-shadow: none;
+    color: var(--th-note-text);
+    transform: none;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .post-detail content-wrapper a:not(.link-key):hover,
+    .post-detail content-wrapper a:not(.link-key):active {
+      transform: none;
+    }
+  }
+
+  /* ---------- code tabs (install instructions): a recessed tray of small keys ---------- */
+  .code-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0 0 12px;
+    padding: 8px;
+    border: 2px solid var(--th-key-edge);
+    border-radius: 12px;
+    background: var(--th-base-200);
+    box-shadow:
+      inset 0 3px 8px rgb(0 0 0 / 0.18),
+      0 2px 0 rgb(255 255 255 / 0.35);
+  }
+  .code-tab {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 40px;
+    padding: 0 14px;
+    border: 2px solid var(--th-key-edge);
+    border-radius: 10px;
+    background: linear-gradient(
+      to bottom,
+      var(--th-key-cream-face-hi),
+      var(--th-key-cream-face-lo)
+    );
+    box-shadow:
+      inset 0 2px 0 rgb(255 255 255 / 0.5),
+      0 4px 0 var(--th-key-cream-side);
+    color: var(--th-key-cream-text);
+    cursor: pointer;
+    font-size: 0.875rem;
+    font-weight: 700;
+    line-height: 1;
+    transition:
+      transform 120ms,
+      box-shadow 120ms;
+  }
+  .code-tab:hover {
+    transform: translateY(-1px);
+  }
+  /* the selected tab is a terracotta key, pressed in */
+  .code-tab[data-active='true'] {
+    background: linear-gradient(
+      to bottom,
+      var(--th-key-terracotta-face-hi),
+      var(--th-key-terracotta-face-lo)
+    );
+    box-shadow:
+      inset 0 3px 6px rgb(0 0 0 / 0.3),
+      0 1px 0 var(--th-key-terracotta-side);
+    color: var(--th-key-terracotta-text);
+    transform: translateY(3px);
+  }
+  .code-tab:focus-visible {
+    outline: 3px solid var(--th-primary);
+    outline-offset: 3px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .code-tab:hover,
+    .code-tab[data-active='true'] {
+      transform: none;
+    }
   }
 }

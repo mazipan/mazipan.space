@@ -18,11 +18,11 @@ const breadcrumbs = [BreadcrumbItemHome, BreadcrumbItemBlog];
 
 <FullWidth {...props}>
   <article class="relative pt-8 pb-16">
-    <section class="centered-px max-w-6xl">
+    <section class="centered max-w-6xl px-4 xl:px-0">
       <Breadcrumbs items={breadcrumbs} />
     </section>
 
-    <header class="centered-px max-w-6xl">
+    <header class="centered max-w-6xl px-4 xl:px-0">
       <div class="post-cover" data-tone={tone}>
         <div class="post-spine" data-label={spineLabel} aria-hidden="true"></div>
         <div class="post-cover-main" data-art={Astro.slots.has('hero-image') ? 'true' : 'false'}>
@@ -42,12 +42,12 @@ const breadcrumbs = [BreadcrumbItemHome, BreadcrumbItemBlog];
     </header>
 
     {Astro.slots.has('bottom-line') && (
-      <section class="centered-px mb-8 max-w-6xl">
+      <section class="centered mb-8 max-w-6xl px-4 xl:px-0">
         <slot name="bottom-line" />
       </section>
     )}
 
-    <section class="centered md:centered-px max-w-6xl">
+    <section class="centered max-w-6xl px-4 xl:px-0">
       <div class="post-grid relative">
         {Astro.slots.has('toc') ? (
           <slot name="toc" />
@@ -70,11 +70,11 @@ const breadcrumbs = [BreadcrumbItemHome, BreadcrumbItemBlog];
       </div>
     </section>
 
-    <section class="centered-px max-w-6xl">
+    <section class="centered max-w-6xl px-4 xl:px-0">
       <slot name="after-content" />
     </section>
 
-    <section class="centered-px b-h2-mt max-w-6xl">
+    <section class="centered b-h2-mt max-w-6xl px-4 xl:px-0">
       <slot name="more-posts" />
     </section>
   </article>
