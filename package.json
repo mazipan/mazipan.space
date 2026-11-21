@@ -78,7 +78,7 @@
     "satori-html": "^0.3.2",
     "serve": "^14.2.8",
     "tailwindcss": "^4.3.5",
-    "typescript": "^6.0.3",
+    "typescript": "^7.0.2",
     "typescript-eslint": "^8.73.0"
   },
   "packageManager": "pnpm@12.21.0",
