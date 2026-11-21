@@ -1,0 +1,338 @@
+/* The post page is a book on a desk: a cover with a spine, a stack of pages to read, a chapter
+   index (the ToC) on the left, a rail of share keys on the right, and a colophon at the end.
+   Everything here is decoration. Text colors come from tokens: key tokens on the cover, sheet
+   tokens on the pages and the slip. */
+@layer components {
+  /* ---------- cover ---------- */
+  .post-cover {
+    --c-hi: var(--th-key-terracotta-face-hi);
+    --c-lo: var(--th-key-terracotta-face-lo);
+    --c-side: var(--th-key-terracotta-side);
+    --c-text: var(--th-key-terracotta-text);
+    position: relative;
+    display: grid;
+    grid-template-columns: 44px minmax(0, 1fr);
+    margin: 8px 12px 28px 0;
+    border: 2px solid var(--th-key-edge);
+    border-radius: 10px 24px 24px 10px;
+    background: linear-gradient(135deg, var(--c-hi), var(--c-lo));
+    color: var(--c-text);
+    /* two page edges peek out from under the cover, bottom and right */
+    box-shadow:
+      inset 0 2px 0 rgb(255 255 255 / 0.35),
+      4px 6px 0 -1px var(--th-sheet-bg),
+      4px 6px 0 1px var(--th-key-edge),
+      8px 12px 0 -1px var(--th-sheet-bg),
+      8px 12px 0 1px var(--th-key-edge),
+      0 28px 36px rgb(0 0 0 / 0.22);
+  }
+  .post-cover[data-tone='teal'] {
+    --c-hi: var(--th-key-teal-face-hi);
+    --c-lo: var(--th-key-teal-face-lo);
+    --c-side: var(--th-key-teal-side);
+    --c-text: var(--th-key-teal-text);
+  }
+  .post-cover[data-tone='mustard'] {
+    --c-hi: var(--th-key-mustard-face-hi);
+    --c-lo: var(--th-key-mustard-face-lo);
+    --c-side: var(--th-key-mustard-side);
+    --c-text: var(--th-key-mustard-text);
+  }
+  .post-cover[data-tone='navy'] {
+    --c-hi: var(--th-key-navy-face-hi);
+    --c-lo: var(--th-key-navy-face-lo);
+    --c-side: var(--th-key-navy-side);
+    --c-text: var(--th-key-navy-text);
+  }
+
+  /* the spine: darker, stitched, with the category and year standing up (decoration, the real
+     category is in the meta slip) */
+  .post-spine {
+    position: relative;
+    grid-row: 1 / span 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 2px solid var(--th-key-edge);
+    border-radius: 8px 0 0 8px;
+    background: linear-gradient(
+      to right,
+      var(--c-side),
+      color-mix(in srgb, var(--c-side) 65%, var(--c-lo))
+    );
+    box-shadow: inset -4px 0 8px rgb(0 0 0 / 0.25);
+  }
+  .post-spine::before {
+    content: '';
+    position: absolute;
+    inset: 14px 8px 14px auto;
+    width: 0;
+    border-right: 2px dashed rgb(255 255 255 / 0.4);
+  }
+  .post-spine::after {
+    content: attr(data-label);
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    text-shadow: 0 1px 0 rgb(0 0 0 / 0.5);
+  }
+
+  .post-cover-main {
+    display: grid;
+    gap: 28px;
+    align-items: center;
+    padding: clamp(22px, 4vw, 44px);
+  }
+  .post-cover-main[data-art='true'] {
+    @media (min-width: 1024px) {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 340px);
+    }
+  }
+  .post-cover .post-title {
+    margin: 0 0 12px;
+    color: var(--c-text);
+    line-height: 1.12;
+    text-wrap: balance;
+    text-shadow:
+      0.02em 0.02em 0 var(--c-side),
+      0.04em 0.04em 0 var(--c-side),
+      0.06em 0.06em 0 var(--c-side),
+      0.08em 0.2em 0.2em rgb(0 0 0 / 0.28);
+  }
+  .post-cover .post-desc {
+    margin: 0;
+    max-width: 34rem;
+    color: var(--c-text);
+    font-size: 1.125rem;
+    line-height: 1.5;
+  }
+
+  /* the picture: a taped print, a little crooked */
+  .post-cover-art {
+    position: relative;
+    transform: rotate(1.6deg);
+  }
+  .post-cover-art::before {
+    content: '';
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    z-index: 2;
+    width: 88px;
+    height: 24px;
+    margin-left: -44px;
+    background: rgb(255 226 122 / 0.85);
+    border: 1px solid rgb(0 0 0 / 0.15);
+    transform: rotate(-3deg);
+  }
+  .post-cover-art .frame {
+    margin: 0;
+  }
+  .post-cover-art img {
+    aspect-ratio: 4 / 3;
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+  }
+
+  /* the date slip: a paper pocket along the bottom edge of the cover */
+  .post-slip {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px 16px;
+    padding: 14px clamp(22px, 4vw, 44px);
+    border-top: 2px solid var(--th-key-edge);
+    border-radius: 0 0 22px 0;
+    background: var(--th-sheet-bg);
+    color: var(--th-content);
+  }
+  .post-slip p {
+    margin: 0;
+  }
+
+  /* ---------- the stack of pages ---------- */
+  .post-grid {
+    display: grid;
+    /* minmax(0, ...): a wide code block or table must not widen the whole page on phones */
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+    @media (min-width: 1024px) {
+      grid-template-columns: 220px minmax(0, 40.5rem) 52px;
+      justify-content: center;
+      gap: 28px;
+    }
+  }
+  .post-detail.sheet {
+    margin-bottom: 18px;
+    /* page edges under the page, like the cover */
+    box-shadow:
+      inset 0 2px 0 rgb(255 255 255 / 0.5),
+      3px 5px 0 -1px var(--th-sheet-bg),
+      3px 5px 0 1px var(--th-key-edge),
+      6px 10px 0 -1px var(--th-sheet-bg),
+      6px 10px 0 1px var(--th-key-edge),
+      0 24px 30px rgb(0 0 0 / 0.18);
+    /* the binding gutter: a soft shade inside the left edge (inside the padding, behind no text) */
+    background-image: linear-gradient(to right, rgb(0 0 0 / 0.07), transparent 22px);
+  }
+  :root.dark .post-detail.sheet {
+    box-shadow:
+      inset 0 2px 0 rgb(255 255 255 / 0.1),
+      3px 5px 0 -1px var(--th-sheet-bg),
+      3px 5px 0 1px var(--th-key-edge),
+      6px 10px 0 -1px var(--th-sheet-bg),
+      6px 10px 0 1px var(--th-key-edge),
+      0 24px 30px rgb(0 0 0 / 0.4);
+    background-image: linear-gradient(to right, rgb(0 0 0 / 0.25), transparent 22px);
+  }
+
+  /* chapters: every h2 gets a numbered key */
+  .post-detail content-wrapper {
+    counter-reset: chapter;
+  }
+  .post-detail content-wrapper > h2 {
+    counter-increment: chapter;
+    display: flex;
+    align-items: baseline;
+    gap: 0.7rem;
+  }
+  .post-detail content-wrapper > h2::before {
+    content: counter(chapter, decimal-leading-zero) / '';
+    flex: none;
+    align-self: center;
+    padding: 0.15em 0.5em;
+    border: 2px solid var(--th-key-edge);
+    border-radius: 8px;
+    background: linear-gradient(
+      to bottom,
+      var(--th-key-mustard-face-hi),
+      var(--th-key-mustard-face-lo)
+    );
+    box-shadow:
+      inset 0 2px 0 rgb(255 255 255 / 0.45),
+      0 3px 0 var(--th-key-mustard-side);
+    color: var(--th-key-mustard-text);
+    font-family: var(--font-mono, monospace);
+    font-size: 0.55em;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    line-height: 1.3;
+  }
+
+  /* a drop cap on the first paragraph when the post starts with text */
+  .post-detail content-wrapper > p:first-child::first-letter {
+    float: left;
+    margin: 0.04em 0.1em 0 0;
+    color: var(--th-headings);
+    font-family: var(--font-serif, serif);
+    font-size: 3.6em;
+    font-weight: 800;
+    line-height: 0.82;
+    text-shadow:
+      0.03em 0.03em 0 var(--th-title-side),
+      0.06em 0.06em 0 var(--th-title-side);
+  }
+
+  /* quotes are sticky notes pinned to the page */
+  .post-detail blockquote {
+    position: relative;
+    border-left-width: 2px;
+    background: var(--th-note-bg);
+    color: var(--th-note-text);
+    transform: rotate(-0.6deg);
+    box-shadow:
+      0 5px 0 -1px rgb(0 0 0 / 0.18),
+      0 12px 16px rgb(0 0 0 / 0.14);
+    --tw-prose-quotes: var(--th-note-text);
+    --tw-prose-invert-quotes: var(--th-note-text);
+    --tw-prose-body: var(--th-note-text);
+    --tw-prose-invert-body: var(--th-note-text);
+    --tw-prose-bold: var(--th-note-text);
+    --tw-prose-invert-bold: var(--th-note-text);
+  }
+  .post-detail blockquote::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    width: 64px;
+    height: 18px;
+    margin-left: -32px;
+    background: rgb(255 255 255 / 0.55);
+    border: 1px solid rgb(0 0 0 / 0.15);
+    transform: rotate(2deg);
+  }
+  .post-detail blockquote p,
+  .post-detail blockquote a,
+  .post-detail blockquote a:hover {
+    color: var(--th-note-text);
+  }
+  .post-detail blockquote a {
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+  }
+
+  /* a horizontal rule is a row of stitches */
+  .post-detail hr {
+    height: 0;
+    border: 0;
+    border-top: 3px dotted var(--th-captions);
+    background: none;
+  }
+
+  /* ---------- rail of share keys ---------- */
+  .post-rail {
+    display: none;
+  }
+  @media (min-width: 1024px) {
+    .post-rail {
+      display: block;
+    }
+    .post-rail-inner {
+      position: sticky;
+      top: calc(var(--header-h) + 0.5rem);
+    }
+    .post-rail .share-label {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+    .post-rail .social-share-btn {
+      margin-right: 0;
+    }
+    .post-rail .astro-social-share {
+      /* the share styles are unlayered, so they win over this layer without !important */
+      flex-direction: column !important;
+      flex-wrap: nowrap !important;
+      align-items: center;
+      row-gap: 10px !important;
+    }
+  }
+
+  /* ---------- colophon ---------- */
+  .post-colophon {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 18px;
+    align-items: center;
+  }
+  .post-colophon .frame {
+    width: 96px;
+    margin: 0;
+    transform: rotate(-3deg);
+  }
+  .post-colophon .frame img {
+    aspect-ratio: 1;
+    width: 100%;
+    object-fit: cover;
+  }
+}

@@ -4,9 +4,11 @@ import { render } from 'astro:content';
 
 import { getAllPostsWithReadingTime } from '@/modules/post/common';
 import { getRandomPosts } from '@/modules/post/random';
+import { getCardTone } from '@/modules/post/shelf';
 import { getHeadingsForTableOfContents } from '@/modules/post/table-of-contents';
 import { default as PostLayout } from '@/layouts/Post.astro';
 import Giscus from '@/components/Giscus.astro';
+import PostColophon from '@/components/PostColophon.astro';
 import PostListMore from '@/components/PostListMore.astro';
 import PostMeta from '@/components/PostMeta.astro';
 import PostNav from '@/components/PostNav.astro';
@@ -85,6 +87,9 @@ const shareProps = {
   url: `${SITE_URL}${ROUTES.BLOG}/${slug}`,
 };
 
+const tone = getCardTone(category ?? 'post');
+const spineLabel = [category, publishDate.getFullYear()].filter(Boolean).join(' · ');
+
 const getTransitionNameFromElementId = setTransitionSlug({ pageSlug: slug });
 
 // handle all metadata here
@@ -112,17 +117,17 @@ const schema = JSON.stringify({
 });
 ---
 
-<PostLayout {metadata}>
+<PostLayout {metadata} {tone} {spineLabel}>
   {toc && (
     <Fragment slot="toc">
       <ToC headings={headings} />
     </Fragment>
   )}
 
-  <Fragment slot="hero-image">
-    {/* hero image 1280x720 max, 16:9 */}
-    {!noHero && (
-      <div class="frame mt-4">
+  {/* hero image 1280x720 max, 16:9 */}
+  {!noHero && (
+    <Fragment slot="hero-image">
+      <div class="frame">
         <Image
           {...IMAGE_SIZES.RESPONSIVE.MDX_EXPAND_LG}
           src={heroImage}
@@ -130,33 +135,33 @@ const schema = JSON.stringify({
           fetchpriority="high"
           loading="eager"
           itemprop="image"
-          class="aspect-[16/8] h-auto max-h-[400px] object-cover object-center"
+          class="h-auto"
           transition:name={getTransitionNameFromElementId({
             elementId: TRANSITION_ELEMENT_IDS.POST_CARD.HERO_IMAGE,
           })}
         />
       </div>
-    )}
-  </Fragment>
+    </Fragment>
+  )}
 
   <Fragment slot="hero-text">
     <h1
       id="post-title"
       data-translatable="title"
-      class="b-h1 mt-0 mb-3 tracking-wide"
+      class="b-h1 post-title tracking-wide"
       transition:name={getTransitionNameFromElementId({
         elementId: TRANSITION_ELEMENT_IDS.POST_CARD.TITLE,
       })}
     >
       {title}
-      {draft && <sup class="ml-1 text-red-500">{DRAFT_TEXT}</sup>}
+      {draft && <sup class="ml-1">{DRAFT_TEXT}</sup>}
     </h1>
 
     {description && (
       <p
         id="post-description"
         data-translatable="description"
-        class="text-captions mb-6 text-lg font-normal md:mb-8 md:text-xl"
+        class="post-desc"
         transition:name={getTransitionNameFromElementId({
           elementId: TRANSITION_ELEMENT_IDS.POST_CARD.DESCRIPTION,
         })}
@@ -164,24 +169,29 @@ const schema = JSON.stringify({
         {description}
       </p>
     )}
+  </Fragment>
 
-    {bottomLine && (
-      <StickyNote label="Bottom line:" class="mb-6 max-w-2xl text-lg">
-        {bottomLine}
-      </StickyNote>
-    )}
-
+  <Fragment slot="hero-meta">
     <PostMeta
       {...postMetaProps}
       transition:name={getTransitionNameFromElementId({
         elementId: TRANSITION_ELEMENT_IDS.POST_CARD.META,
       })}
     />
+    <TagList tags={tags} size="md" />
+    <TranslatorButton lang={lang} />
+  </Fragment>
 
-    <div class="mt-4 flex flex-wrap items-center gap-3">
-      <TagList tags={tags} size="md" />
-      <TranslatorButton lang={lang} />
-    </div>
+  {bottomLine && (
+    <Fragment slot="bottom-line">
+      <StickyNote label="Bottom line:" class="max-w-2xl text-lg">
+        {bottomLine}
+      </StickyNote>
+    </Fragment>
+  )}
+
+  <Fragment slot="rail">
+    <Share {...shareProps} />
   </Fragment>
 
   <Fragment slot="content">
@@ -189,9 +199,11 @@ const schema = JSON.stringify({
   </Fragment>
 
   <Fragment slot="after-content">
+    <PostColophon class="mt-10" />
+
     <PostNav prev={olderPost} next={newerPost} />
 
-    <div class="b-h2-mb mt-4 flex flex-col items-start gap-6 md:flex-row md:items-center">
+    <div class="b-h2-mb mt-4 flex flex-col items-start gap-6 md:flex-row md:items-center lg:hidden">
       <Share {...shareProps} />
     </div>
 

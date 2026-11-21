@@ -52,7 +52,10 @@ const { headings, ...props } = Astro.props;
       'max-h-[calc(70vh)] lg:sticky lg:top-[calc(var(--header-h)+0.5rem)] lg:max-h-[calc(100vh-var(--header-h)-2rem)]'
     )}
   >
-    <b class="font-semibold">On This Page</b>
+    <b class="toc-title font-semibold">
+      <Icon name="tabler:bookmark" class="inline h-5 w-5 align-text-bottom" aria-hidden="true" />{' '}
+      Chapters
+    </b>
     <div
       id="reading-progress"
       role="progressbar"
