@@ -207,7 +207,7 @@ Rules:
 - **Selected projects** on the home page come from `featured: true` in project frontmatter (`getSelectedProjects` in `src/modules/project.ts`).
 - **Friends page:** data in `src/constants/friends.ts` (blog, owner, platform, avatar). Interaction is progressive: cards are in the HTML, `friend-list` adds search, filter, sort and shuffle. Avatars always have the initials fallback.
 - **Breadcrumbs:** every `Page` layout page has them; put `breadcrumbs: false` in the frontmatter to hide them (the 404 page does).
-- **404:** `NotFoundArt.astro` (key row 4-0-4: a ginger pixel-art cat batted the 0 key out, a dark pixel cat sleeps in the slot; the cats are crisp `<path>` pixels in fixed colors, generated from small sprite grids, the keys use palette tokens). Cats are part of the site's personality; more cats are welcome in empty states.
+- **404:** `NotFoundArt.astro` (key row 4-0-4: a ginger pixel-art cat batted the 0 key out, a dark pixel cat sleeps in the slot; the cats are crisp `<path>` pixels in fixed colors (the Zs use `var(--th-key-edge)` so they show on the dark slot), generated from small sprite grids, the keys use palette tokens). Cats are part of the site's personality; more cats are welcome in empty states.
 - **Resume order:** `src/constants/career.ts` is newest first; `resume.astro` shows stops oldest first and roles inside one company oldest first too. The card tab reads `Joined <year>` (never 'Exit', it reads like leaving).
 - **Resume road:** the dashed center line must be a short tile with `repeat-y` (a single road-high tile ends halfway when scroll shifts it); on phones the road is at `left: 0` on the 48px grid column and the lamp sits on its right edge, so the connector meets it. Do not add a role count to the intro badges. The brown connector is the lamp's own `::after` (not the card's), so they cannot drift apart, and the lamp lifts with the card when a stop is reached (`.stop[data-reached]`), so keep both transforms equal; the lamp's `top` (45px) is tied to the stop padding and card border, so re-measure from screenshots if you touch those.
 - **About:** has a "Where I've worked" card that links to `ROUTES.RESUME`; keep the resume reachable from About and the footer.
@@ -225,7 +225,7 @@ Rules:
   (ocean, forest, plum) that only override what differs. A new palette needs entries in
   `THEMES` and `PALETTES` (`src/constants/theme.ts`) and its name in `PALETTES` of
   `scripts/check-contrast.mjs`, so `pnpm contrast` checks it.
-- **Branches:** the redesign lives on `feat/2027-design`. Phase branches merge into it.
+- **Branches:** the 2027 redesign is on `master` (the owner merged it themself on 2026-11-20). `feat/2027-design` is history; cut new work from `master`. An agent never merges into `master` without the owner's explicit approval.
 
 ## CodeGroup component
 

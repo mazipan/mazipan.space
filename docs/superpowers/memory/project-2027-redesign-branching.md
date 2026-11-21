@@ -17,4 +17,4 @@ Redesign ("Irfan's bookshelf": warm, personal, tactile keycap UI) lives on centr
 
 **State (2026-11-19, late session 2):** PRs #342 and #343 were squash-merged into `feat/2027-design` (not `master`) after their `Vercel` status was green. Standing flow: work on the session branch, push once, open a PR with base `feat/2027-design`, merge it when `Vercel` is green, then merge the central branch back into the session branch.
 
-**Final PR (2026-11-20):** the owner asked for the release PR, so draft PR #345 (`ccr-a07b67f3-mvt1id` -> `master`) is open. Its head tree equals `feat/2027-design` (master was merged in with `-s ours` to neutralise the revert on master). An agent must not merge it; the owner does, with squash.
+**Merged (2026-11-20):** the owner merged PR #345 into `master` themself (squash `a4aa40c`); the redesign is live. `feat/2027-design` is history now; new work is cut from `master`. Agents still do not merge into `master` on their own: the owner approves each master PR (they approved the post-merge docs-sync PR explicitly).

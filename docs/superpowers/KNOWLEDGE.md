@@ -94,7 +94,7 @@ Session 2 additions: fewer commits and PRs (each push is a Vercel build, push on
 
 - **Merge rule: central branch `feat/2027-design` only, never `master` without the owner's approval** (see HANDOFF). In session 2 PRs #328-#330 were wrongly merged into `master`; the central branch was recreated from the `master` tip and the three merges were reverted on `master` by PR #332 (020482a), merged at the owner's explicit request (the only allowed master merge). Master equals the #326 state. Never merge `master` into `feat/2027-design`; read the revert gotcha in HANDOFF before the final PR. Open PR #331 targets `feat/2027-design`.
 
-- `master` has Phases 1, 1b, 2, 3, 4 (PRs #321 to #325) and the first part of Phase 5. `feat/2027-design` equals master after each merge. Local mirror branches `feat/2027-post|home|lists|pages` can be deleted.
+- (Old note) the whole redesign is now on `master`: the owner merged PR #345 on 2026-11-20. `feat/2027-design` is history. Local mirror branches `feat/2027-post|home|lists|pages` can be deleted.
 - Phase 2 (post page) is done and merged. Paragraphs in posts are direct children of `<content-wrapper>` inside `.post-detail`.
 
 ## 5b. Lessons from Phases 3-5 (accessibility audits find real bugs)
